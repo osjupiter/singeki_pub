@@ -73,15 +73,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="anime.h" />
+    <ClInclude Include="object.h" />
     <ClInclude Include="difine.h" />
     <ClInclude Include="fps.h" />
     <ClInclude Include="GV.h" />
     <ClInclude Include="mouse.h" />
+    <ClInclude Include="hohei.h" />
     <ClInclude Include="struct.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="anime.cpp" />
+    <ClCompile Include="object.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mouse.cpp" />
+    <ClCompile Include="hohei.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

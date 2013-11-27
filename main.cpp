@@ -2,7 +2,10 @@
 #include "GV.h"
 #include"fps.h"
 #include"mouse.h"
+#include "anime.h"
 //ŠÖ”‚ÌŽž-----------------------------------------------------
+
+
 
 
 int lcheck(){
@@ -33,12 +36,14 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	//SetDXArchiveExtension( "abb") ;
 
 	fps.fps_change(60);
-
+	anime* ani = new anime();
+	ani->birth(0, 0, HOHEI);
 	while(1){
-		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(0,0,0),TRUE);
+		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(255,255,255),TRUE);
 		mouse_in* mouse=mouse_in::getIns();
 		mouse->input();
-		//main();
+		ani->main();
+		ani->draw();
 		fps.fps_wait();
 		if(lcheck()==1)break;
 	}

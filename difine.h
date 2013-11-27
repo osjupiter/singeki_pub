@@ -23,3 +23,10 @@
 #define KIETIME 30
 
 #define SWAPTIME 45
+
+
+#define ANI_HOHEI 6
+#define WID_HOHEI 68
+#define HEI_HOHEI 90
+
+#define HOHEI 0
