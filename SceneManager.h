@@ -21,7 +21,7 @@ public:
 
 	void loop(){
 		nowScene->main();
-		nowScene->draw();
+		nowScene->render();
 	}
 
 	void title(){

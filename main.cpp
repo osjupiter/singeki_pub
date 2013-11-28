@@ -46,17 +46,17 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	ani->birth(0, 0, HOHEI);
 
 	SceneManager::getIns()->title();
-	Images::getIns()->load();
+	Images::init();
 
 	while(1){
 		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(255,255,255),TRUE);
 		mouse_in* mouse=mouse_in::getIns();
 		mouse->input();
-
+		SceneManager::getIns()->loop();
 		ani->main();
 		ani->draw();
 
-		SceneManager::getIns()->loop();
+		
 
 		fps.fps_wait();
 		if(lcheck()==1)break;

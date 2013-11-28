@@ -4,13 +4,14 @@
 
 class GraphicLayer:public Layer{
 	int x,y;
-	int gnum;
 public:
-	GraphicLayer(){
-	
+	GraphicLayer(int tx,int ty){
+		x=tx;y=ty;
+		printfDx("new Graphic");
 	}
-	virtual void draw(){
-		DrawGraph(x,y,Images::getIns()->graph[],TRUE);
+	void draw(){
+		DrawGraph(x,y,Images::get("pic/test.jpg"),TRUE);
+		printfDx("Graphic");
 	}
 
 };

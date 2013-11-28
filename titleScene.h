@@ -3,14 +3,16 @@
 #include"DxLib.h"
 #include"SceneNode.h"
 #include"Images.h"
+#include"GraphicLayer.h"
 class TitleScene : public SceneNode{
 
 public:
-	TitleScene(){}
+	TitleScene(){
+		shared_ptr<GraphicLayer> p(new GraphicLayer(100,100));
+		addLayer(0,p);
+	}
 	void main(){
-		clsDx();
-		printfDx("Title\n");
-		DrawGraph(0,0,Images::getIns()->gs[0],FALSE);
+
 	}
 	void init(){
 		
