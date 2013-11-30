@@ -8,13 +8,11 @@ class TitleScene : public SceneNode{
 
 public:
 	TitleScene(){
-		shared_ptr<GraphicLayer> p(new GraphicLayer(100,100));
+		shared_ptr<GraphicLayer> p(new GraphicLayer(100,100,Images::get("pic/test.jpg")));
 		addLayer(0,p);
 	}
 	void main(){
 
 	}
-	void init(){
-		
-	}
+
 };

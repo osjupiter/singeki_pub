@@ -46,6 +46,7 @@ public:
 	virtual void called(){}
 
 	void render(){
+		clsDx();
 		beforedraw();
 		draw();
 		for(auto part:layers){
@@ -55,7 +56,7 @@ public:
 		}
 		afterdraw();
 		listpushpop();
-		clsDx();
+		
 	}
 	void rmLayer(int i){
 		std::shared_ptr<LayerPushPop> p(new LayerPushPop(true,i,nullptr));
