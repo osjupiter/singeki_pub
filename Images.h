@@ -1,5 +1,7 @@
 #pragma once
 #include"DxLib.h"
+#include "GV.h"
+
 class Images
 {
 
@@ -12,8 +14,10 @@ public:
 	int trans[50];
 	int yaji[4][4];
 	int font,alphfont;
-	
-	
+
+	int g_hohei[ANI_HOHEI];//•à•º
+	int back[4][3];
+
 	Images(void){}
 	~Images(void){}
 	void load();

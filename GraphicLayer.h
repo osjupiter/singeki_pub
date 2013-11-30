@@ -10,7 +10,7 @@ public:
 	
 	}
 	virtual void draw(){
-		DrawGraph(x,y,Images::getIns()->graph[],TRUE);
+		DrawGraph(x,y,Images::getIns()->gs[0],TRUE);
 	}
 
 };

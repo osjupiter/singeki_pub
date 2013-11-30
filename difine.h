@@ -28,5 +28,10 @@
 #define ANI_HOHEI 6
 #define WID_HOHEI 68
 #define HEI_HOHEI 90
-
+//unit type
 #define HOHEI 0
+
+#define STAGE_NUM 10
+
+#define FIELD_W 650
+#define FIELD_H 450
