@@ -1,7 +1,11 @@
 #include"Images.h"
+#include<map>
+#include <string>
+#include <iostream>
 Images Images::ins;
 
 void Images::load(){
+
 	gs[0]=LoadGraph("pic/test.jpg");
 	LoadDivGraph("dat/img/ï‡ï∫w.png", ANI_HOHEI, ANI_HOHEI, 1, WID_HOHEI, HEI_HOHEI, g_hohei);
 	back[0][0] = LoadGraph("dat/img/îwåiÇPÅ|ÇP.png");
@@ -15,5 +19,17 @@ void Images::load(){
 	back[2][2] = LoadGraph("dat/img/ñÈêÌ/îwåiÇRÅ|ÇR.png");
 	back[3][0] = LoadGraph("dat/img/äC/îwåiÇSÅ|ÇP.png");
 	back[3][2] = LoadGraph("dat/img/äC/îwåiÇSÅ|ÇQ.png");
+
+
+	filelist.push_back("pic/test.jpg");
+
+
+	
+	for(auto s:filelist){
+		gs[s]=LoadGraph(s.c_str());
+
+	}
+	
+
 
 }

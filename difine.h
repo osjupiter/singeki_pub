@@ -1,5 +1,5 @@
-#define WINDOW_X 960
-#define WINDOW_Y 640
+#define WINDOW_X 800
+#define WINDOW_Y 450
 #define mapsize 1024
 #define NODE_SZ 50
 
