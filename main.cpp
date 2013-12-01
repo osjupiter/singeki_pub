@@ -54,14 +54,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		mouse->input();
 
 		
-	//	SceneManager::getIns()->loop();
-		game->loop();
-		
-
 		SceneManager::getIns()->loop();
-		game->main();
-		game->draw();
-
+		game->loop();
 		
 
 

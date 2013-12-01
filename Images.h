@@ -17,7 +17,7 @@ class Images
 	std::map<std::string, int> gs;
 public:	
 
-	int gs[100];
+//	int gs[100];
 	int sound[100];
 	int trans[50];
 	int yaji[4][4];

@@ -11,15 +11,15 @@ public:
 		hundle=th;
 	}
 
-	virtual void draw(){
+	/*virtual void draw(){
 		DrawGraph(x, y, Images::getIns()->gs[0], TRUE);
-	
+		*/
 		void draw(){
 			DrawGraph(x, y, hundle, TRUE);
 
 			DrawGraph(x, y, Images::get("pic/test.jpg"), TRUE);
+		
 
-
-		}
-	
+		
+	}
 };

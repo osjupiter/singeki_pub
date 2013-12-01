@@ -6,7 +6,7 @@ Images Images::ins;
 
 void Images::load(){
 
-	gs[0]=LoadGraph("pic/test.jpg");
+//	gs[0]=LoadGraph("pic/test.jpg");
 	LoadDivGraph("dat/img/ï‡ï∫w.png", ANI_HOHEI, ANI_HOHEI, 1, WID_HOHEI, HEI_HOHEI, g_hohei);
 	back[0][0] = LoadGraph("dat/img/îwåiÇPÅ|ÇP.png");
 	back[0][1] = LoadGraph("dat/img/îwåiÇPÅ|ÇQ.png");
