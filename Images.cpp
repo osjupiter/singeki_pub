@@ -7,7 +7,8 @@ Images Images::ins;
 void Images::load(){
 
 	filelist.push_back("pic/test.jpg");
-
+	filelist.push_back("pic/blend.jpg");
+	filelist.push_back("pic/black.jpg");
 
 	
 	for(auto s:filelist){

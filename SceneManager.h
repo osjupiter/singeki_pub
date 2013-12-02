@@ -6,6 +6,7 @@
 #include <memory>
 #include<algorithm>
 #include"titleScene.h"
+#include "SceneSwicher.h"
 
 
 class SceneManager
@@ -27,6 +28,14 @@ public:
 	void title(){
 		SN_Ptr p(new TitleScene());
 		nowScene=p;
+	}
+
+	void switchScene(SN_Ptr p){
+		SN_Ptr s(new SceneSwitcher(nowScene,p));
+		nowScene=s;
+	}
+	void changeScene(SN_Ptr s){
+		nowScene=s;
 	}
 
 

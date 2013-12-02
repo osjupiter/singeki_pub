@@ -19,7 +19,7 @@ int lcheck(){
 	//if( CheckHitKey( KEY_INPUT_ESCAPE ) ) return 1 ;
 	return 0;
 }
-fps_c fps;
+fps_c fps_c::ins;
 
 // WinMain関数
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
@@ -39,8 +39,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetDrawScreen( DX_SCREEN_BACK ) ;
 	SetAlwaysRunFlag(TRUE) ;
 	//SetDXArchiveExtension( "abb") ;
-
-	fps.fps_change(60);
+	fps_c::getIns()->init();
+	fps_c::getIns()->fps_change(60);
 
 	anime* ani = new anime();
 	ani->birth(0, 0, HOHEI);
@@ -56,9 +56,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		ani->main();
 		ani->draw();
 
-		
-		fps.fps_wait();
-		fps.draw_fps(0,16);
+		fps_c::getIns()->fps_wait();
+		fps_c::getIns()->draw_fps(0,16);
 		if(lcheck()==1)break;
 	}
 	DxLib_End() ;				// ＤＸライブラリ使用の終了処理
