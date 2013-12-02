@@ -46,12 +46,10 @@ public:
 	virtual void called(){}
 
 	void render(){
-		clsDx();
 		beforedraw();
 		draw();
 		for(auto part:layers){
 			part.second->draw();
-			printfDx("Layer\n");
 
 		}
 		afterdraw();
@@ -74,7 +72,9 @@ public:
 				layers.insert(make_pair(p->key,p->pointer));
 			}
 			
+			
 		}
+		pushPop.clear();
 	}
 };
 

@@ -49,7 +49,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	Images::init();
 
 	while(1){
-		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(255,255,255),TRUE);
+		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(0,0,0),TRUE);
 		mouse_in* mouse=mouse_in::getIns();
 		mouse->input();
 		SceneManager::getIns()->loop();
@@ -57,8 +57,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		ani->draw();
 
 		
-
 		fps.fps_wait();
+		fps.draw_fps(0,16);
 		if(lcheck()==1)break;
 	}
 	DxLib_End() ;				// ＤＸライブラリ使用の終了処理
