@@ -3,7 +3,7 @@
 #include"fps.h"
 #include"mouse.h"
 
-#include "anime.h"
+#include "Game.h"
 
 #include"SceneManager.h"
 #include"Images.h"
@@ -42,8 +42,15 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	fps_c::getIns()->init();
 	fps_c::getIns()->fps_change(60);
 	Images::init();
+
 	anime* ani = new anime();
 	ani->birth(0, 0, HOHEI);
+	fps.fps_change(30);
+
+	Game* game = new Game();
+	game->birth(0, 360, HOHEI);
+
+	
 
 	SceneManager::getIns()->title();
 	
@@ -52,9 +59,12 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(0,0,0),TRUE);
 		mouse_in* mouse=mouse_in::getIns();
 		mouse->input();
+
+		
 		SceneManager::getIns()->loop();
-		ani->main();
-		ani->draw();
+		game->loop();
+
+		
 
 		fps_c::getIns()->fps_wait();
 		fps_c::getIns()->draw_fps(0,16);

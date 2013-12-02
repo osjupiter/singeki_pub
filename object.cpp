@@ -8,10 +8,22 @@ int object::getY(){
 	return y;
 }
 
+int object::getW(){
+	return width;
+}
+
+bool object::getLife(){
+	return life;
+}
+
 void object::main(){
 	
 }
 
-void object::draw(){
+void object::draw(int){
 	
+}
+
+bool object::inCamera(int cx){
+	return (cx <= getX() + getW() && getX() <= cx + FIELD_W);
 }
