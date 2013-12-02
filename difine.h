@@ -28,6 +28,7 @@
 #define ANI_HOHEI 6
 #define WID_HOHEI 68
 #define HEI_HOHEI 90
+
 //unit type
 #define HOHEI 0
 

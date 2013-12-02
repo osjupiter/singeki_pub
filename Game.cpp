@@ -77,9 +77,9 @@ void Game::Test(){
 	DrawFormatString(0, 32, GetColor(255, 255, 255), "%d", musume_list.size());
 	DrawFormatString(0, 44, GetColor(255, 255, 255), "%d",x);
 	if (mouse_in::getIns()->Left() == 3)for (int i = 0; i < 1; i++) birth(i%400,360, HOHEI);
-	if (mouse_in::getIns()->Right() == 3)for (int i = 0; i < 1; i++)birth(i % 400,355, HOHEI);
-	if (mouse_in::getIns()->Left() == 1) scrollLeft(3);
-	if (mouse_in::getIns()->Right() == 1) scrollRight(3);
+	if (mouse_in::getIns()->Right() == 3)for (int i = 0; i < 1; i++)birth(i % 400,340, HOHEI);
+	if (mouse_in::getIns()->Left() == 1) scrollLeft(18);
+	if (mouse_in::getIns()->Right() == 1) scrollRight(18);
 	DrawBox(FIELD_W, 0, WINDOW_X, WINDOW_Y, GetColor(0, 255, 255), true);
 
 }

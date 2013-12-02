@@ -40,7 +40,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetAlwaysRunFlag(TRUE) ;
 	//SetDXArchiveExtension( "abb") ;
 
-	fps.fps_change(60);
+	fps.fps_change(30);
 
 	Game* game = new Game();
 	game->birth(0, 360, HOHEI);
@@ -54,7 +54,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		mouse->input();
 
 		
-		SceneManager::getIns()->loop();
+	//	SceneManager::getIns()->loop();
 		game->loop();
 		
 

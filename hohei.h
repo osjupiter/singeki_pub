@@ -5,7 +5,7 @@
 class hohei : public object{
 private:
 	
-	int ani_count;
+	unsigned int ani_count;
 public:
 	hohei(int,int);
 	void main();

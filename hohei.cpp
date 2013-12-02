@@ -1,6 +1,6 @@
 #include "hohei.h"
 #include "Images.h"
-#define ANIM_SPEED 5
+#define ANIM_SPEED 2
 
 hohei::hohei(int fx,int fy){
 	x = fx;
@@ -12,8 +12,8 @@ hohei::hohei(int fx,int fy){
 }
 
 void hohei::main(){
-	x += 1; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-	if (x > FIELD_W*8)life = false;
+	x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+	if (x > FIELD_W*12)life = false;
 	ani_count++;
 }
 
