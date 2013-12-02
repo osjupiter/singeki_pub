@@ -5,8 +5,11 @@
 #include"SceneNode.h"
 #include <memory>
 #include<algorithm>
-#include"titleScene.h"
+#include"Scene.h"
 #include "SceneSwicher.h"
+
+#define SWAPWAIT 60
+#define SWAPTIME 30
 
 
 class SceneManager

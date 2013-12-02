@@ -41,12 +41,12 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	//SetDXArchiveExtension( "abb") ;
 	fps_c::getIns()->init();
 	fps_c::getIns()->fps_change(60);
-
+	Images::init();
 	anime* ani = new anime();
 	ani->birth(0, 0, HOHEI);
 
 	SceneManager::getIns()->title();
-	Images::init();
+	
 
 	while(1){
 		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(0,0,0),TRUE);

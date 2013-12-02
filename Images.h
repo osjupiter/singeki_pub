@@ -11,12 +11,12 @@ class Images
 	static Images ins;
 	std::map<std::string, int> gs;
 public:	
-	
+	int blend;
 	
 	Images(void){}
 	~Images(void){}
 	void load();
-	static void init(){ins.load();}
-	static Images* getIns(){return &ins;}
-	static int get(char name[]){return ins.gs[name];}
+	static void init();
+	static Images* getIns();
+	static int get(char name[]);
 };

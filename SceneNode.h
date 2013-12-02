@@ -68,14 +68,17 @@ public:
 		for(auto p:pushPop){
 			if(p->isPop){
 				layers.erase(p->key);
+				p->pointer->setParent(nullptr);
 			}else{
 				layers.insert(make_pair(p->key,p->pointer));
+				p->pointer->setParent(this);
 			}
 			
 			
 		}
 		pushPop.clear();
 	}
+	virtual void buttonPushed(){}
 };
 
 

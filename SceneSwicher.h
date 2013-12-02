@@ -9,6 +9,7 @@ class SceneSwitcher:public SceneNode
 	int dgree;
 	int phase;
 
+
 	SN_Ptr afterScene;
 	SN_Ptr beforeScene;
 	SN_Ptr nowScene;

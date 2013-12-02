@@ -53,7 +53,7 @@ class fps_c
 		void draw_fps(int x, int y)
 		{
 			if(ave!=0)
-				DrawFormatStringToHandle(x,y,GetColor(255,0,0),s_f,"[%.1f]",1000/ave) ;
+				DrawFormatStringToHandle(x,y,GetColor(0,0,0),s_f,"[%.1f]",1000/ave) ;
 			
 			return;
 		}

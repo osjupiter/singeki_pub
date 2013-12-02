@@ -18,23 +18,22 @@
 	}
 	void SceneSwitcher::main(){
 		dgree--;
-		if(dgree<=0){
+		if(dgree<=-SWAPWAIT){
 			if(phase==0){
 				phase=1;
 				nowScene=afterScene;
 				dgree=SWAPTIME;
 			}else{
 				SceneManager::getIns()->changeScene(afterScene);
-				afterScene.reset();
-				beforeScene.reset();
-				nowScene.reset();
-
 			}
 		}
 
 	}
 	void SceneSwitcher::draw(){
-		int tdg=255/KIETIME*(phase==0)?(SWAPTIME-dgree):dgree;
-		DrawBlendGraph(0,0,Images::get("pic/black.jpg"),FALSE,Images::get("pic/blend.jpg"),tdg,64);
-		nowScene->draw();
+		int tmp=(phase!=0)?(SWAPTIME-dgree):dgree;
+		double p=(tmp/(double)SWAPTIME);
+		int tdg=255*p;
+		nowScene->render();
+		DrawBlendGraph(0,0,Images::get("pic/black.jpg"),FALSE,Images::getIns()->blend,tdg,64);
+		
 	}
