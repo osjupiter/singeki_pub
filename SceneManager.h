@@ -22,23 +22,25 @@ public:
 	static SceneManager* getIns(){return &ins;}
 
 	void loop(){
-		clsDx();
-		printfDx(typeid(*nowScene.get()).name ());
+		//clsDx();
+		//printfDx(typeid(*nowScene.get()).name ());
 		nowScene->main();
 		nowScene->render();
 	}
 
 	void title(){
 		SN_Ptr p(new TitleScene());
-		nowScene=p;
+		changeScene(p);
 	}
 
 	void switchScene(SN_Ptr p){
 		SN_Ptr s(new SceneSwitcher(nowScene,p));
-		nowScene=s;
+		changeScene(s,false);
 	}
-	void changeScene(SN_Ptr s){
+	void changeScene(SN_Ptr s,boolean doLeave=true){
+		if(nowScene!=nullptr&&doLeave)nowScene->leaveScene();
 		nowScene=s;
+		s->enterScene();
 	}
 
 

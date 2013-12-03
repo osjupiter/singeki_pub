@@ -23,6 +23,7 @@
 				if(dgree<=-SWAPWAIT){
 					phase=1;
 					nowScene=afterScene;
+					beforeScene->leaveScene();
 					dgree=SWAPTIME;
 				}
 			}else{

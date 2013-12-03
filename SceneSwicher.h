@@ -6,7 +6,7 @@
 #include"difine.h"
 
 
-#define SWAPWAIT 60
+#define SWAPWAIT 30
 #define SWAPTIME 15
 class SceneSwitcher:public SceneNode
 {

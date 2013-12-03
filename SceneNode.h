@@ -29,9 +29,9 @@ public:
 	
 	virtual void afterdraw(){}
 	virtual void beforedraw(){}
-	virtual void draw(){
-
-	}
+	virtual void draw(){}
+	virtual void enterScene(){}
+	virtual void leaveScene(){}
 	virtual void aftermain(){}
 	virtual void beforemain(){}
 	virtual void main(){

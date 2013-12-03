@@ -19,6 +19,7 @@ void Images::load(){
 	back[2][2] = LoadGraph("dat/img/–éí/”wŒi‚R|‚R.png");
 	back[3][0] = LoadGraph("dat/img/ŠC/”wŒi‚S|‚P.png");
 	back[3][2] = LoadGraph("dat/img/ŠC/”wŒi‚S|‚Q.png");
+	sound[0]=LoadSoundMem("sound/kuma.mp3");
 
 
 	filelist.push_back("pic/test.jpg");

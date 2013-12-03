@@ -4,10 +4,11 @@
 TitleScene::TitleScene(){
 	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/title.png")));
 	addLayer(0,p);
-	LAY_Ptr q((new ButtonLayer(300,250,Images::get("pic/start.png"),0,0,200,100))->setId("start"));
+	LAY_Ptr q((new ButtonLayer(300,200,Images::get("pic/start.png"),0,0,200,100))->setId("start"));
 	addLayer(1,q);
-	LAY_Ptr r(new ButtonLayer(300,400,Images::get("pic/exit.png"),0,0,200,100));
+	LAY_Ptr r(new ButtonLayer(300,350,Images::get("pic/exit.png"),0,0,200,100));
 	addLayer(1,r);
+	
 }
 void TitleScene::buttonPushed(string id){
 	if(id=="start"){
@@ -16,8 +17,16 @@ void TitleScene::buttonPushed(string id){
 	}else{
 		DxLib_End() ;
 		exit(0);
-
 	}
+}
+void TitleScene::enterScene(){
+	printfDx("playsound\n");
+	PlaySoundMem(Images::getIns()->sound[0],DX_PLAYTYPE_LOOP);
+	printf("");
+}
+void TitleScene::leaveScene(){
+	printfDx("stopsound\n");
+	StopSoundMem( Images::getIns()->sound[0]) ;
 }
 
 GameScene::GameScene(){
@@ -25,4 +34,12 @@ GameScene::GameScene(){
 	g->birth(0, 360, HOHEI);
 	LAY_Ptr p(g);
 	addLayer(0,p);
+}
+void GameScene::enterScene(){
+	printfDx("playsound\n");
+	PlaySoundMem( Images::getIns()->sound[0],DX_PLAYTYPE_LOOP);
+}
+void GameScene::leaveScene(){
+	printfDx("stopsound\n");
+	StopSoundMem( Images::getIns()->sound[0]) ;
 }
