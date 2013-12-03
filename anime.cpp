@@ -29,7 +29,7 @@ void anime::main(){
 
 void anime::draw(){
 	for (auto i : musume){
-		i->draw();
+		i->draw(0);
 	}
 }
 

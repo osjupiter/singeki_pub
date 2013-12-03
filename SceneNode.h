@@ -29,9 +29,9 @@ public:
 	
 	virtual void afterdraw(){}
 	virtual void beforedraw(){}
-	virtual void draw(){
-
-	}
+	virtual void draw(){}
+	virtual void enterScene(){}
+	virtual void leaveScene(){}
 	virtual void aftermain(){}
 	virtual void beforemain(){}
 	virtual void main(){
@@ -68,12 +68,17 @@ public:
 		for(auto p:pushPop){
 			if(p->isPop){
 				layers.erase(p->key);
+				p->pointer->setParent(nullptr);
 			}else{
 				layers.insert(make_pair(p->key,p->pointer));
+				p->pointer->setParent(this);
 			}
 			
+			
 		}
+		pushPop.clear();
 	}
+	virtual void buttonPushed(string){}
 };
 
 

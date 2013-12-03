@@ -19,9 +19,15 @@ void Images::load(){
 	back[2][2] = LoadGraph("dat/img/–éí/”wŒi‚R|‚R.png");
 	back[3][0] = LoadGraph("dat/img/ŠC/”wŒi‚S|‚P.png");
 	back[3][2] = LoadGraph("dat/img/ŠC/”wŒi‚S|‚Q.png");
+	sound[0]=LoadSoundMem("sound/kuma.mp3");
 
 
 	filelist.push_back("pic/test.jpg");
+	filelist.push_back("pic/black.jpg");
+	filelist.push_back("pic/title.png");
+	filelist.push_back("pic/game.png");
+	filelist.push_back("pic/start.png");
+	filelist.push_back("pic/exit.png");
 
 
 	
@@ -30,6 +36,11 @@ void Images::load(){
 
 	}
 	
+	blend=LoadBlendGraph("pic/blend.jpg");
 
 
 }
+
+	void Images::init(){ins.load();}
+	Images* Images::getIns(){return &ins;}
+	int Images::get(char name[]){return ins.gs[string(name)];}

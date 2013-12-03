@@ -10,14 +10,15 @@ class fps_c
 		int f[150];	//•½‹Ï‚ðŒvŽZ‚·‚é‚½‚ß60‰ñ‚Ì1ŽüŽžŠÔ‚ð‹L˜^
 		double ave;	//•½‹Ïfps
 		int FLAME;
+		static fps_c ins;
 
 	public:
-		fps_c()
-		{
+		static fps_c* getIns(){return &ins;}
+		fps_c(){}
+		void init(){
 			s_f=CreateFontToHandle(NULL,20,9,DX_FONTTYPE_NORMAL) ;
 			b_f=CreateFontToHandle(NULL,64,9,DX_FONTTYPE_NORMAL);
-			FLAME=60;
-
+			FLAME=60;		
 		}
 		void fps_wait()
 		{
@@ -52,7 +53,7 @@ class fps_c
 		void draw_fps(int x, int y)
 		{
 			if(ave!=0)
-				DrawFormatStringToHandle(x,y,GetColor(255,255,255),s_f,"[%.1f]",1000/ave) ;
+				DrawFormatStringToHandle(x,y,GetColor(0,0,0),s_f,"[%.1f]",1000/ave) ;
 			
 			return;
 		}

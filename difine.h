@@ -1,15 +1,7 @@
 #define WINDOW_X 800
 #define WINDOW_Y 450
-#define mapsize 1024
-#define NODE_SZ 50
 
 
-#define mz_x 20
-#define mz_y 20
-#define cmax 50
-#define amax 5
-#define lmax cmax+amax
-#define emax 20
 
 
 #define PKMAX 10
@@ -20,9 +12,7 @@
 #define M_SX 12 //•¶š•‚ÆŠÔ‚ğ‘«‚µ‚½”i”¼Špj
 #define M_SY 32//ã‚É“¯‚¶
 #define L_MAX 60
-#define KIETIME 30
 
-#define SWAPTIME 45
 
 
 #define ANI_HOHEI 6

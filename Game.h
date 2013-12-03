@@ -28,7 +28,6 @@ public:
 	
 	void main();
 	void draw();
-	void loop();
 	void delete_object();
 
 	

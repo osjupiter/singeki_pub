@@ -14,5 +14,11 @@ public:
 	int Right();
 	int X();
 	int Y();
+	boolean LeftPush();	//‰Ÿ‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
+	boolean LeftClick();	//‰Ÿ‚µ‚½uŠÔ‚©‚Ç‚¤‚©
+	boolean LeftLeave();	//—£‚µ‚½uŠÔ‚©‚Ç‚¤‚©
+	boolean RightPush();	//‰Ÿ‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
+	boolean RightClick();	//‰Ÿ‚µ‚½uŠÔ‚©‚Ç‚¤‚©
+	boolean RightLeave();	//—£‚µ‚½uŠÔ‚©‚Ç‚¤‚©
 	
 };
