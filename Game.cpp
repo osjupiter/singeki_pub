@@ -32,7 +32,7 @@ void Game::birth(int x, int y, int type){
 
 
 void Game::main(){
-	Test();
+	
 	for (auto i : musume_list){
 		i->main();
 	}	
@@ -52,7 +52,7 @@ void Game::draw(){
 		if (i->inCamera(x))
 			i->draw(x);
 	}
-	
+	Test();
 }
 
 void Game::delete_object(){
