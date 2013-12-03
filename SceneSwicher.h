@@ -7,7 +7,7 @@
 
 
 #define SWAPWAIT 60
-#define SWAPTIME 30
+#define SWAPTIME 15
 class SceneSwitcher:public SceneNode
 {
 	int dgree;

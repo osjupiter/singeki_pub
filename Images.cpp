@@ -25,6 +25,8 @@ void Images::load(){
 	filelist.push_back("pic/black.jpg");
 	filelist.push_back("pic/title.png");
 	filelist.push_back("pic/game.png");
+	filelist.push_back("pic/start.png");
+	filelist.push_back("pic/exit.png");
 
 
 	

@@ -2,13 +2,22 @@
 #include "SceneManager.h"
 #include "Game.h"
 TitleScene::TitleScene(){
-	LAY_Ptr p(new ButtonLayer(0,0,Images::get("pic/title.png"),0,0,100,100));
+	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/title.png")));
 	addLayer(0,p);
+	LAY_Ptr q((new ButtonLayer(300,250,Images::get("pic/start.png"),0,0,200,100))->setId("start"));
+	addLayer(1,q);
+	LAY_Ptr r(new ButtonLayer(300,400,Images::get("pic/exit.png"),0,0,200,100));
+	addLayer(1,r);
 }
-void TitleScene::buttonPushed(){
-	SN_Ptr p(new GameScene());
-	SceneManager::getIns()->switchScene(p);
+void TitleScene::buttonPushed(string id){
+	if(id=="start"){
+		SN_Ptr p(new GameScene());
+		SceneManager::getIns()->switchScene(p);
+	}else{
+		DxLib_End() ;
+		exit(0);
 
+	}
 }
 
 GameScene::GameScene(){

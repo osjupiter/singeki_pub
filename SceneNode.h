@@ -78,7 +78,7 @@ public:
 		}
 		pushPop.clear();
 	}
-	virtual void buttonPushed(){}
+	virtual void buttonPushed(string){}
 };
 
 

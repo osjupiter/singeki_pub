@@ -34,6 +34,6 @@ class ButtonLayer:public GraphicLayer{
 	string id;
 public:
 	ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth);
-	void setId(string s);
+	ButtonLayer* setId(string s);
 	void main();
 };

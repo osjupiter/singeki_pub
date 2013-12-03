@@ -8,7 +8,7 @@ class TitleScene : public SceneNode{
 
 public:
 	TitleScene();
-	void buttonPushed();
+	void buttonPushed(string);
 
 };
 

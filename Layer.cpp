@@ -20,11 +20,11 @@ ButtonLayer::ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth):G
 void ButtonLayer::main(){
 	mouse_in* m=mouse_in::getIns();
 	if(m->LeftClick()){
-		if(x+bx<m->X(),y+by<m->Y(),m->X()<x+bx+bw,m->Y()<y+by+bh){
-			if(parentScene!=nullptr)parentScene->buttonPushed();
+		if(x+bx<m->X()&&y+by<m->Y()&&m->X()<x+bx+bw&&m->Y()<y+by+bh){
+			if(parentScene!=nullptr)parentScene->buttonPushed(id);
 		}
 	}
 }
-void ButtonLayer::setId(string s){
-	id=s;
+ButtonLayer* ButtonLayer::setId(string s){
+	id=s;return this;
 }
