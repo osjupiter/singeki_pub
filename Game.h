@@ -13,8 +13,9 @@ using namespace std;
 class Game : public Layer{
 	int x;
 	
-	list<shared_ptr<object>> musume_list;	
+	list<shared_ptr<object>> musume_list;
 	list<shared_ptr<object>> delete_list;
+	
 	list<shared_ptr<background>> back_list;
 	void Test();
 public:
@@ -24,6 +25,7 @@ public:
 	void scrollLeft(int);
 	void scrollRight(int);
 	void birth(int, int, int); //ï∫émê∂ê¨
+	
 	void main();
 	void draw();
 	void loop();

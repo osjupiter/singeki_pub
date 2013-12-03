@@ -1,3 +1,4 @@
+#pragma once
 #include "DxLib.h"
 #include "object.h"
 #include "GV.h"

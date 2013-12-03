@@ -38,6 +38,9 @@ void Game::main(){
 	
 	for (auto i : musume_list){
 		i->main();
+		if (!i->getLife()){
+			delete_list.push_back(i);
+		}
 	}	
 	delete_object();
 	
@@ -58,26 +61,23 @@ void Game::draw(){
 	
 }
 
-void Game::delete_object(){
-	for (auto i : musume_list){
-		if (!i->getLife()){
-			delete_list.push_back(i);		
-		}			
-	}
 
-	for (auto i : delete_list){
-		musume_list.remove(i);
-	}
-	if (!delete_list.empty())	
+void Game::delete_object(){
+	if (!delete_list.empty()){
+		for (auto i : delete_list){
+			musume_list.remove(i);
+		}
+
 		delete_list.clear();
+	}
 }
 
 
 void Game::Test(){
 	DrawFormatString(0, 32, GetColor(255, 255, 255), "%d", musume_list.size());
 	DrawFormatString(0, 44, GetColor(255, 255, 255), "%d",x);
-	if (mouse_in::getIns()->Left() == 3)for (int i = 0; i < 1; i++) birth(i%400,360, HOHEI);
-	if (mouse_in::getIns()->Right() == 3)for (int i = 0; i < 1; i++)birth(i % 400,340, HOHEI);
+	if (mouse_in::getIns()->Left() == 3)for (int i = 0; i < 10; i++) birth(i*10%400,340+i*3%10, HOHEI);
+	if (mouse_in::getIns()->Right() == 3)for (int i = 0; i < 10; i++)birth(i * 10 % 400, 360+i*3%10, HOHEI);
 	if (mouse_in::getIns()->Left() == 1) scrollLeft(18);
 	if (mouse_in::getIns()->Right() == 1) scrollRight(18);
 	DrawBox(FIELD_W, 0, WINDOW_X, WINDOW_Y, GetColor(0, 255, 255), true);
@@ -92,4 +92,5 @@ void Game::scrollLeft(int sx){
 
 void Game::scrollRight(int sx){
 	x += sx;
+	if (x + FIELD_W > FIELD_W * 12) x = FIELD_W * 11;
 }

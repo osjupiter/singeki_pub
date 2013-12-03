@@ -4,5 +4,5 @@
 #include "GV.h"
 
 void effect::draw(){
-
+	
 }
