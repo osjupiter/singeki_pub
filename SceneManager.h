@@ -8,8 +8,6 @@
 #include"Scene.h"
 #include "SceneSwicher.h"
 
-#define SWAPWAIT 60
-#define SWAPTIME 30
 
 
 class SceneManager
@@ -24,6 +22,8 @@ public:
 	static SceneManager* getIns(){return &ins;}
 
 	void loop(){
+		clsDx();
+		printfDx(typeid(*nowScene.get()).name ());
 		nowScene->main();
 		nowScene->render();
 	}

@@ -4,6 +4,10 @@
 #include"Images.h"
 
 #include"difine.h"
+
+
+#define SWAPWAIT 60
+#define SWAPTIME 30
 class SceneSwitcher:public SceneNode
 {
 	int dgree;

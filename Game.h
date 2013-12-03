@@ -26,7 +26,6 @@ public:
 	void birth(int, int, int); //ï∫émê∂ê¨
 	void main();
 	void draw();
-	void loop();
 	void delete_object();
 
 	

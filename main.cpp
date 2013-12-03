@@ -40,15 +40,11 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetAlwaysRunFlag(TRUE) ;
 	//SetDXArchiveExtension( "abb") ;
 	fps_c::getIns()->init();
-	fps_c::getIns()->fps_change(60);
+	fps_c::getIns()->fps_change(30);
 	Images::init();
 
-	anime* ani = new anime();
-	ani->birth(0, 0, HOHEI);
-	fps.fps_change(30);
 
-	Game* game = new Game();
-	game->birth(0, 360, HOHEI);
+
 
 	
 
@@ -62,7 +58,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 		
 		SceneManager::getIns()->loop();
-		game->loop();
+		//game->loop();
 
 		
 

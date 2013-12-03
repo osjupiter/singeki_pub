@@ -18,11 +18,13 @@
 	}
 	void SceneSwitcher::main(){
 		dgree--;
-		if(dgree<=-SWAPWAIT){
+		if(dgree<=0){
 			if(phase==0){
-				phase=1;
-				nowScene=afterScene;
-				dgree=SWAPTIME;
+				if(dgree<=-SWAPWAIT){
+					phase=1;
+					nowScene=afterScene;
+					dgree=SWAPTIME;
+				}
 			}else{
 				SceneManager::getIns()->changeScene(afterScene);
 			}

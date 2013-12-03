@@ -8,6 +8,7 @@ Game::Game(){
 			shared_ptr<background> p(new background(i*FIELD_W *3, i, j, FIELD_W *3));
 			back_list.push_back(p);
 	}
+	x=0;
 
 }
 
@@ -28,14 +29,10 @@ void Game::birth(int x, int y, int type){
 	}	
 }
 
-void Game::loop (){
-	main();
-	draw();
-	Test();
-}
+
 
 void Game::main(){
-	
+	Test();
 	for (auto i : musume_list){
 		i->main();
 	}	
