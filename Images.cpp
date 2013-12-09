@@ -8,9 +8,14 @@ void Images::load(){
 
 //	gs[0]=LoadGraph("pic/test.jpg");
 	LoadDivGraph("dat/img/•à•ºw.png", ANI_HOHEI, ANI_HOHEI, 1, WID_HOHEI, HEI_HOHEI, g_hohei);
-	back[0][0] = LoadGraph("dat/img/”wŒi‚P|‚P.png");
-	back[0][1] = LoadGraph("dat/img/”wŒi‚P|‚Q.png");
-	back[0][2] = LoadGraph("dat/img/”wŒi‚P|‚R.png");
+	LoadDivGraph("dat/img/•à•ºa.png", ANI_HOHEI_ATK, ANI_HOHEI_ATK, 1, WID_HOHEI, HEI_HOHEI, g_hohei_atk);
+
+	LoadDivGraph("dat/img/“GíÔw.png", ANI_TANK, ANI_TANK, 1, WID_TANK, HEI_TANK, g_tank);
+	LoadDivGraph("dat/img/“GíÔa.png", ANI_TANK_ATK, ANI_TANK_ATK, 1, 175 ,HEI_TANK, g_tank_atk);
+
+	back[0][0] = LoadGraph("dat/img/R/”wŒi‚P|‚P.png");
+	back[0][1] = LoadGraph("dat/img/R/”wŒi‚P|‚Q.png");
+	back[0][2] = LoadGraph("dat/img/R/”wŒi‚P|‚R.png");
 	back[1][0] = LoadGraph("dat/img/X/”wŒi‚Q|‚P.png");
 	back[1][1] = LoadGraph("dat/img/X/”wŒi‚Q|‚Q.png");
 	back[1][2] = LoadGraph("dat/img/X/”wŒi‚Q|‚R.png");
@@ -19,8 +24,13 @@ void Images::load(){
 	back[2][2] = LoadGraph("dat/img/–éí/”wŒi‚R|‚R.png");
 	back[3][0] = LoadGraph("dat/img/ŠC/”wŒi‚S|‚P.png");
 	back[3][2] = LoadGraph("dat/img/ŠC/”wŒi‚S|‚Q.png");
-	sound[0]=LoadSoundMem("sound/kuma.mp3");
+	back[4][0] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚P.png");
+	back[4][1] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚Q.png");
+	back[4][2] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚R.png");
+	castle[0] = LoadGraph("dat/img/sirodummy.png");
 
+
+	sound[0]=LoadSoundMem("sound/kuma.mp3");
 
 	filelist.push_back("pic/test.jpg");
 	filelist.push_back("pic/black.jpg");

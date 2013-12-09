@@ -7,13 +7,17 @@ protected:
 	int y;
 	int width;
 	int height;
-	bool life;
-public:
 	
+public:
+	object(int fx,int fy){
+		x = fx;
+		y = fy;
+		
+	}
 	int getX();
 	int getY();
 	int getW();
-	bool getLife();
+	
 	virtual bool inCamera(int);
 	virtual void main();
 	virtual void draw(int);

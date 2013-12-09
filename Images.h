@@ -23,7 +23,12 @@ public:
 
 
 	int g_hohei[ANI_HOHEI];//•à•º
-	int back[4][3];
+	int g_hohei_atk[ANI_HOHEI_ATK];
+	int g_tank[8];
+	int g_tank_atk[5];
+
+	int castle[8];
+	int back[5][3];
 	Images(void){}
 	~Images(void){}
 	void load();

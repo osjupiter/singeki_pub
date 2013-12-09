@@ -31,7 +31,7 @@ void TitleScene::leaveScene(){
 
 GameScene::GameScene(){
 	Game* g=new Game();
-	g->birth(0, 360, HOHEI);
+	//g->birth(0, 360, HOHEI);
 	LAY_Ptr p(g);
 	addLayer(0,p);
 }

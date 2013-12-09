@@ -1,10 +1,10 @@
 #include  "DxLib.h"
 #include "object.h"
 
-class effect:public object{
-
+class castle : public object{
+	int stage;
+	
 public:
-	void main();
+	castle(int,int,int);
 	void draw(int);
-
 };

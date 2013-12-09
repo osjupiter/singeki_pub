@@ -3,6 +3,6 @@
 #include "effect.h"
 #include "GV.h"
 
-void effect::draw(){
-	
+void effect::draw(int cx){
+
 }

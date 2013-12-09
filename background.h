@@ -6,15 +6,9 @@ class background : public object{
 	int stage;
 	int layer;
 	int pic_wid; //‰æ‘œ‰¡ƒTƒCƒY
+	double gap;
 public:
-	background(int x_st,int st,int ly,int w_st){
-		x = x_st;
-		y = 0;
-		stage = st;
-		layer = ly;
-		width = w_st;
-		pic_wid = FIELD_W;
-	}
+	background(int x_st, int st, int ly, int w_st);
 	void main();
 	void draw(int);
 	void calc(int);

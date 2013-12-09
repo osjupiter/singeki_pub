@@ -8,9 +8,17 @@ double remain(double a,int b){
 	return a - c*b;
 }
 
-void background::main(){
+background::background(int x_st, int st, int ly, int w_st):object(x_st,0){
 
+		stage = st;
+		layer = ly;
+		width = w_st;
+		pic_wid = FIELD_W;
+		gap = ((layer + 1) / 3.0 / (3 - layer) / (3 - layer));
+	
 }
+
+void background::main(){}
 
 void background::calc(int cx){
 	if (cx < x)
@@ -21,7 +29,7 @@ void background::calc(int cx){
 	}*/
 	else{
 		//”wŒi‚Ì‚¸‚ç‚µ•û—vŒŸ“¢
-	dx = remain(x/3 - cx*(layer+1)/3, pic_wid);
+		dx = ((int)(remain(x*gap  - cx*gap, pic_wid)));
 	}
 }
 
@@ -30,7 +38,7 @@ void background::draw(int cx){
 
 	DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
 	if ((dx = dx + pic_wid) <= cx + FIELD_W)
-	DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
+		DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
 	
 /*	if (cx < x){
 		remain(x - cx*(layer+1)/3, pic_wid);

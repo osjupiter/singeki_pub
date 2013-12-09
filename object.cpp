@@ -12,9 +12,6 @@ int object::getW(){
 	return width;
 }
 
-bool object::getLife(){
-	return life;
-}
 
 void object::main(){
 	

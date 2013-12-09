@@ -1,15 +1,15 @@
 #pragma once
 #include "DxLib.h"
-#include "object.h"
+#include "musume.h"
 #include "GV.h"
 
-class hohei : public object{
+class hohei : public musume{
 private:
+	int state;
 	
-	unsigned int ani_count;
 public:
-	hohei(int,int);
+	hohei(int fx,int fy,int ln);
 	void main();
 	void draw(int);
-
+	
 };
