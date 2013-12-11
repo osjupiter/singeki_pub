@@ -6,6 +6,7 @@ class enemy : public unit{
 
 
 public:
-	virtual void main();
+	enemy(int,int,int);
+	virtual void main(int);
 	virtual void draw(int);
 };

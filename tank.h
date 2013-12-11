@@ -1,9 +1,12 @@
 #include "enemy.h"
 
 class tank : public enemy{
-
+	static int num;
 public:
 	tank(int, int, int);
-	void main();
-	void draw();
+	void main(int);
+	void draw(int);
+
+	static void setNum(int);
+	static int getNum();
 };

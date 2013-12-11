@@ -13,7 +13,9 @@
 #define M_SY 32//è„Ç…ìØÇ∂
 #define L_MAX 60
 
-
+#define MOV 0
+#define ATK 1
+#define DIE 2
 
 #define ANI_HOHEI 6
 #define ANI_HOHEI_ATK 2
@@ -27,6 +29,8 @@
 
 //unit type
 #define HOHEI 0
+
+#define TANK 10
 
 #define STAGE_NUM 10
 

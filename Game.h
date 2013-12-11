@@ -2,6 +2,7 @@
 #include "GV.h"
 #include "object.h"
 #include "hohei.h"
+#include "tank.h"
 #include "enemy.h"
 #include "castle.h"
 #include "background.h"
@@ -10,12 +11,11 @@
 #include <list>
 #include <memory>
 using namespace std;
-//To Do 奥リスト手前リスト作成
 
 class Game : public Layer{
 	int x; 
 	int front_line;
-	
+
 	list<shared_ptr<enemy>>  enemy_list[3];
 	list<shared_ptr<enemy>>  delete_enemylist;
 	list<shared_ptr<musume>> musume_list[3];
@@ -30,11 +30,11 @@ public:
 	void scrollLeft(int);
 	void scrollRight(int);
 	void birth(int,int); //兵士生成
-	
+	void enemy_birth();
 	void main();
 	void draw();
+	bool getClock(unsigned int);
 	void delete_object();
-
 	
 
 };

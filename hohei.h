@@ -5,11 +5,12 @@
 
 class hohei : public musume{
 private:
-	int state;
 	
+	static int num;
 public:
 	hohei(int fx,int fy,int ln);
-	void main();
+	void main(int);
 	void draw(int);
-	
+	static int getNum();
+	static void setNum(int);
 };
