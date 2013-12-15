@@ -11,7 +11,13 @@ void Images::load(){
 	LoadDivGraph("dat/img/•à•ºa.png", ANI_HOHEI_ATK, ANI_HOHEI_ATK, 1, WID_HOHEI, HEI_HOHEI, g_hohei_atk);
 
 	LoadDivGraph("dat/img/“GíÔw.png", ANI_TANK, ANI_TANK, 1, WID_TANK, HEI_TANK, g_tank);
-	LoadDivGraph("dat/img/“GíÔa.png", ANI_TANK_ATK, ANI_TANK_ATK, 1, 175 ,HEI_TANK, g_tank_atk);
+	LoadDivGraph("dat/img/“GíÔa.png", ANI_TANK_ATK, ANI_TANK_ATK, 1, WID_TANK ,HEI_TANK, g_tank_atk);
+
+	LoadDivGraph("dat/img/•—‘D•ºw.png", ANI_BALLOON, ANI_BALLOON, 1, WID_BALLOON, HEI_BALLOON, g_balloon);
+	LoadDivGraph("dat/img/•—‘D•ºa.png", ANI_BALLOON_ATK, ANI_BALLOON_ATK, 1, WID_BALLOON, HEI_BALLOON, g_balloon_atk);
+
+	LoadDivGraph("dat/img/”š’e.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
+	
 
 	back[0][0] = LoadGraph("dat/img/R/”wŒi‚P|‚P.png");
 	back[0][1] = LoadGraph("dat/img/R/”wŒi‚P|‚Q.png");
@@ -28,10 +34,11 @@ void Images::load(){
 	back[4][1] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚Q.png");
 	back[4][2] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚R.png");
 	castle[0] = LoadGraph("dat/img/sirodummy.png");
+	filelist.push_back("dat/img/”š’e.png");
 
 
 	sound[0]=LoadSoundMem("sound/kuma.mp3");
-
+	
 	filelist.push_back("pic/test.jpg");
 	filelist.push_back("pic/black.jpg");
 	filelist.push_back("pic/title.png");

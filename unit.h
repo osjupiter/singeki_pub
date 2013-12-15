@@ -13,13 +13,14 @@ protected:
 	bool life;
 	int state;
 	int power;
+	int defense;
 	unsigned int ani_count;
 public:
 	unit(int,int,int);
 	virtual void main();
 	int getLine();
 	bool getLife();
-	void damage(int);
+	virtual void damage(int);
 	int getPower();
 	int getState();
 };

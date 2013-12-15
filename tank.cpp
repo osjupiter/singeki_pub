@@ -5,17 +5,29 @@
 int tank::num;
 
 tank::tank(int fx, int fy, int ln) : enemy(fx, fy, ln){
-	power = 4;
-	hp = 200;
+	power = 10;
+	hp = 500;
 	width = WID_TANK;
 	height = HEI_TANK;
+	defense = 1;
 	num++;
 }
+
+
 void tank::main(int front){
 	enemy::main(front);
-	if (state == MOV)x -= 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-	if (x > FIELD_W * 15) life = false;
-	
+	switch (state){
+	case MOV:
+		x -= 5; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		if (x + width < 0) state = DIE;
+		break;
+	case ATK:
+		break;
+	case DIE:
+		del();
+		break;
+		
+	}
 	
 }
 
@@ -25,7 +37,7 @@ void tank::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_tank[ani_count / ANIM_SPEED%ANI_TANK], true);
 		break;
 	case ATK:
-		DrawTurnGraph(x - cx-15, y, Images::getIns()->g_tank_atk[ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
 		break;
 	}
 }

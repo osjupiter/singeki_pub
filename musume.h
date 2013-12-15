@@ -10,5 +10,7 @@ protected:
 public:
 	musume(int,int,int);
 	virtual void main(int);
-	
+	virtual void draw(int);
+	void damage(int);
+	void del();
 };

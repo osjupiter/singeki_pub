@@ -19,6 +19,6 @@ public:
 	int getW();
 	
 	virtual bool inCamera(int);
-	virtual void main();
-	virtual void draw(int);
+	/*virtual void main();
+	virtual void draw(int);*/
 };

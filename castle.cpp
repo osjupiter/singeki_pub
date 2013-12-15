@@ -1,7 +1,7 @@
 #include "castle.h"
 #include "Images.h"
-castle::castle(int fx,int fy,int st):object(fx,fy){
-	
+castle::castle(int fx,int fy,int st,int h):unit(fx,fy,0){
+	hp = h;
 	width = 273;
 	x = fx-width/2;
 	height = 450;

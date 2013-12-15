@@ -31,7 +31,9 @@ bool unit::getLife(){
 
 void unit::damage(int d){
 	if (state == ATK){
-		hp -= d;
-		if (hp < 0)life = false;
+		hp -= max(d-defense,0);
+		if (hp < 0){ 
+			state = DIE; 
+		}
 	}
 }

@@ -1,10 +1,12 @@
 #include  "DxLib.h"
-#include "object.h"
-
-class castle : public object{
+#include "unit.h"
+#include <vector>
+class castle : public unit{
 	int stage;
-	
+
+	vector<int> musume_table;
+	vector<int> enemy_table;
 public:
-	castle(int,int,int);
+	castle(int,int,int,int);
 	void draw(int);
 };

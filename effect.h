@@ -1,10 +1,14 @@
+#pragma once
 #include  "DxLib.h"
 #include "object.h"
 
 class effect:public object{
-
+protected:
+	int type;
+	int ani_count;
 public:
-	void main();
-	void draw(int);
+	effect(int,int);
+	virtual void main();
+	virtual void draw(int);
 
 };

@@ -27,10 +27,24 @@
 #define WID_TANK 150
 #define HEI_TANK 120
 
+#define ANI_BALLOON 8
+#define ANI_BALLOON_ATK 10
+#define WID_BALLOON 90
+#define HEI_BALLOON 180
+
+#define ANI_BOMB 2
+#define WID_BOMB 30
+#define HEI_BOMB 40
+
+
 //unit type
-#define HOHEI 0
+#define NONE 0
+#define HOHEI 1
+#define BALLOON 2
 
 #define TANK 10
+
+#define BOMB 20
 
 #define STAGE_NUM 10
 
