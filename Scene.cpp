@@ -20,26 +20,33 @@ void TitleScene::buttonPushed(string id){
 	}
 }
 void TitleScene::enterScene(){
-	printfDx("playsound\n");
 	PlaySoundMem(Images::getIns()->sound[0],DX_PLAYTYPE_LOOP);
-	printf("");
 }
 void TitleScene::leaveScene(){
-	printfDx("stopsound\n");
 	StopSoundMem( Images::getIns()->sound[0]) ;
 }
 
 GameScene::GameScene(){
-	Game* g=new Game();
 	//g->birth(0, 360, HOHEI);
-	LAY_Ptr p(g);
+	std::shared_ptr<Game> p(new Game());
+	game=p;
 	addLayer(0,p);
+	//"pic/left.png"
+	LAY_Ptr q((new ButtonLayer(600,350,Images::get("pic/left.png"),0,0,100,100))->setId("left")->setClickType(ButtonLayer::PUSH));
+	addLayer(1,q);
+	LAY_Ptr r((new ButtonLayer(700,350,Images::get("pic/right.png"),0,0,100,100))->setId("right")->setClickType(ButtonLayer::PUSH));
+	addLayer(1,r);
 }
 void GameScene::enterScene(){
-	printfDx("playsound\n");
 	PlaySoundMem( Images::getIns()->sound[0],DX_PLAYTYPE_LOOP);
 }
 void GameScene::leaveScene(){
-	printfDx("stopsound\n");
 	StopSoundMem( Images::getIns()->sound[0]) ;
+}
+void GameScene::buttonPushed(string id){
+	if(id=="left"){
+		game->scrollLeft(15);
+	}else if(id=="right"){
+		game->scrollRight(15);
+	}
 }

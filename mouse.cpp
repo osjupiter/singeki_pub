@@ -11,14 +11,14 @@ mouse_in* mouse_in::getIns(){return &ins;}
 			if(l==2||l==0)l=3;
 			else l=1;
 		}else{
-			if(l!=0)l=2;
+			if(l==1||l==3)l=2;
 			else l=0;
 		}
 		if( ( GetMouseInput() & MOUSE_INPUT_RIGHT ) != 0 ){
 			if(r==2||r==0)r=3;
 			else r=1;
 		}else{
-			if(r!=0)r=2;
+			if(r==1||r==3)r=2;
 			else r=0;
 		}
 	}

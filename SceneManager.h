@@ -5,7 +5,6 @@
 #include"SceneNode.h"
 #include <memory>
 #include<algorithm>
-#include"Scene.h"
 #include "SceneSwicher.h"
 
 
@@ -17,32 +16,16 @@ class SceneManager
 
 
 public:
-	SceneManager(void){}
+	SceneManager(void);
 
-	static SceneManager* getIns(){return &ins;}
+	static SceneManager* getIns();
 
-	void loop(){
-		//clsDx();
-		//printfDx(typeid(*nowScene.get()).name ());
-		nowScene->main();
-		nowScene->render();
-	}
+	void loop();
 
-	void title(){
-		SN_Ptr p(new TitleScene());
-		changeScene(p);
-	}
 
-	void switchScene(SN_Ptr p){
-		SN_Ptr s(new SceneSwitcher(nowScene,p));
-		changeScene(s,false);
-	}
-	void changeScene(SN_Ptr s,boolean doLeave=true){
-		if(nowScene!=nullptr&&doLeave)nowScene->leaveScene();
-		nowScene=s;
-		s->enterScene();
-	}
-
+	void switchScene(SN_Ptr p);
+	void changeScene(SN_Ptr s,boolean doLeave);
+	void changeScene(SN_Ptr s);
 
 
 
