@@ -21,6 +21,8 @@
 #define ANI_HOHEI_ATK 2
 #define WID_HOHEI 68
 #define HEI_HOHEI 90
+#define COST_HOHEI 50
+#define CLK_HOHEI 1000
 
 #define ANI_TANK 8
 #define ANI_TANK_ATK 5
@@ -31,11 +33,15 @@
 #define ANI_BALLOON_ATK 10
 #define WID_BALLOON 90
 #define HEI_BALLOON 180
+#define COST_BALLOON 50
+#define CLK_BALLOON 2000
 
 #define ANI_BIG 7
 #define ANI_BIG_ATK 4
 #define WID_BIG 150
 #define HEI_BIG 200
+#define COST_BIG 50
+#define CLK_BIG 4000
 
 #define ANI_BOMB 2
 #define WID_BOMB 30

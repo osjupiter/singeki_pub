@@ -8,7 +8,9 @@
 class castle : public unit{
 	int stage;
 	int tm = 0;
-	static int cleared;
+	static int nowstage;
+	int product_type;
+	int product_clk;
 	vector<int> musume_table;
 	vector<int> enemy_table;
 public:
@@ -18,5 +20,6 @@ public:
 	void damage(int);
 	bool getClock(unsigned int);
 	void setState(int);
-	static int getCleared();
+	void setProduct(int);
+	static int getNowstage();
 };

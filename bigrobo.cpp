@@ -15,6 +15,7 @@ bigrobo::bigrobo(int fx, int fy, int ln) : musume(fx, fy, ln){
 	
 	defense = 1;
 	atk_type = RAND;
+	cost = COST_BIG;
 }
 
 void bigrobo::main(int front){

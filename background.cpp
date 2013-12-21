@@ -13,7 +13,7 @@ background::background(int x_st, int st, int ly, int w_st):object(x_st,0){
 		stage = st;
 		layer = ly;
 		width = w_st;
-		pic_wid = FIELD_W;
+		pic_wid = 650;
 		gap = ((layer + 1) / 3.0 / (3 - layer) / (3 - layer));
 	
 }
