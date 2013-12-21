@@ -29,8 +29,7 @@ public:
 	}
 
 	void title(){
-		SN_Ptr p(new TitleScene());
-		changeScene(p);
+
 	}
 
 	void switchScene(SN_Ptr p){

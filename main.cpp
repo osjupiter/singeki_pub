@@ -46,9 +46,8 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 
 
-	
-
-	SceneManager::getIns()->title();
+	SN_Ptr p(new TitleScene());
+	SceneManager::getIns()->changeScene(p);
 	
 
 	while(1){
