@@ -16,6 +16,7 @@ balloon::balloon(int fx, int fy, int ln) : musume(fx, fy, ln){
 	defense = 1;
 	type = SKY;
 	atk_type = RAND;
+	cost = COST_BALLOON;
 }
 
 void balloon::main(int front){

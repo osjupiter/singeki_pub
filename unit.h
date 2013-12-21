@@ -17,6 +17,7 @@ protected:
 	int defense;
 	int type;
 	int atk_type;
+	int cost;
 	unsigned int ani_count;
 public:
 	unit(int,int,int);

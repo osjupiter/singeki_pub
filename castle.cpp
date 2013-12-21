@@ -1,11 +1,10 @@
 #include "castle.h"
 #include "Images.h"
 #include "Game.h"
-const int castle_hp[8] = { 5000, 50000, 50000, 50000, 50000, 50000, 50000, 50000 };
-int castle::cleared=1;
-#define ACTIVE 4
-#define WAIT 5
-#define OCCUPY 6
+const int castle_hp[9] = { 5000, 5000, 5000, 50000, 5000, 5000, 50000, 50000,50000};
+const int unit_clk[4] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG };
+int castle::nowstage=1;
+
 castle::castle(int fx,int fy,int st):unit(fx,fy,0){
 	hp = castle_hp[st];
 	width = 273;
@@ -17,13 +16,16 @@ castle::castle(int fx,int fy,int st):unit(fx,fy,0){
 	if (st == 0)state = OCCUPY;
 	else if (st == 1)state=ACTIVE;
 	else state = WAIT;
-	tm= 0;
+
+	product_type = NONE;
+	product_clk = NONE;
+
 }
 
 void castle::main(){
 	switch (state){
 	case ACTIVE:
-		if (getClock(3000))
+		if (getClock(1000))
 			Game::getIns()->birth(stage, TANK);
 		break;
 	case WAIT:
@@ -31,10 +33,12 @@ void castle::main(){
 		break;
 	case DIE:
 		state = OCCUPY;
-		cleared++;
+		nowstage++;
+		Game::getIns()->stageInc(nowstage);
 		break;
 	case OCCUPY:
-
+		if (getClock(product_clk))
+			Game::getIns()->birth(stage, product_type);
 		break;
 	}
 }
@@ -86,8 +90,14 @@ bool castle::getClock(unsigned int clk){
 	return false;
 }
 
-int castle::getCleared(){
-	return cleared;
+int castle::getNowstage(){
+	return nowstage;
+}
+
+void castle::setProduct(int p_type){
+	
+	product_type = p_type;
+	product_clk = unit_clk[p_type];
 }
 
 void castle::setState(int s){

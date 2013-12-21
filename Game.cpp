@@ -30,7 +30,7 @@ Game::Game(){
 	balloon::setNum(0);
 	srand((unsigned int)time(NULL));
 	x=0;
-
+	
 }
 
 Game* Game::getIns(){ return ins; }
@@ -80,6 +80,10 @@ void Game::birth(int st,int type){
 	}
 }
 
+void Game::setProduct(int tw_num, int m_type){
+	if (castle::getNowstage() <= tw_num)return;
+	castle_list.at(tw_num)->setProduct(m_type);
+}
 
 void Game::enemy_birth(){
 	if (getClock(STAGE1_W-front_line)) birth(STAGE1_W, TANK);
@@ -113,7 +117,7 @@ void Game::push_del_effect(shared_ptr<effect> p){
 
 
 void Game::main(){
-	int now_stage = castle::getCleared();
+	int now_stage = castle::getNowstage();
 	int frontE = INT_MAX, frontM = 0;
 	int target_X=INT_MAX,target_X_S=INT_MAX;
 	shared_ptr<enemy> target_e;
@@ -136,6 +140,10 @@ void Game::main(){
 	}
 //	if (target_e == NULL) target_X = castle_list.at(now_stage)->getX();
 	target_X = min(castle_list.at(now_stage)->getX(),target_X);
+	
+/*	clsDx();
+	printfDx("target_X %d %d", castle_list.at(now_stage)->getX(), target_X);
+	*/
 	frontE = target_X;
 	/*–¡•ûƒƒCƒ“*/
 	target_X = INT_MIN; target_X_S = INT_MIN;
@@ -161,10 +169,7 @@ void Game::main(){
 
 			}
 
-			//Ž€–S”»’è
-			/*if (!i->getLife()){
-				delete_musumelist.push_back(i);
-			}*/
+			
 		}
 	}
 
@@ -183,9 +188,7 @@ void Game::main(){
 				if (target_m_sky != NULL)
 					target_m_sky->damage(i->getPower(), i->getAtkType());
 			}
-			/*if (!i->getLife()){
-				delete_enemylist.push_back(i);
-			}*/
+
 		}
 	}
 
@@ -234,8 +237,11 @@ void Game::draw(){
 	Test();
 }
 
-void Game::stageInc(){
-
+void Game::stageInc(int next_st){
+	if (next_st == STAGE_NUM + 1)return;
+	castle_list.at(next_st-1)->setState(OCCUPY);
+	castle_list.at(next_st)->setState(ACTIVE);
+	
 }
 
 void Game::delete_object(){
@@ -275,11 +281,13 @@ void Game::Test(){
 	DrawFormatString(FIELD_W - 100, 0, GetColor(255, 255, 255), "%d %d %d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
 	DrawFormatString(FIELD_W - 50, 12, GetColor(255, 255, 255), "%d", x);
 
+
 	//if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);
 	//if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, BALLOON);
 	//if (mouse_in::getIns()->LeftPush()) scrollLeft(18);
 	//if (mouse_in::getIns()->RightPush()) scrollRight(18);
 	//DrawBox(FIELD_W, 0, WINDOW_X, WINDOW_Y, GetColor(0, 255, 255), true);
+
 /*	if (!delete_musumelist.empty()){
 		printfDx("del%dused ", musume_list[0].front().use_count());*/
 }
@@ -291,7 +299,9 @@ void Game::scrollLeft(int sx){
 }
 
 void Game::scrollRight(int sx){
-	x += sx;
+	int r_end = stage_W[castle::getNowstage()];
+	x += sx;	
+	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
 }
 

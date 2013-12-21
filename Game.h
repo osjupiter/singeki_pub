@@ -43,8 +43,8 @@ public:
 	void draw();
 	bool getClock(unsigned int);
 	void delete_object();
-	void stageInc();
-
+	void stageInc(int);
+	void setProduct(int,int);
 	/**/
 	static Game* getIns();
 	void push_del_musume(shared_ptr<musume>);
