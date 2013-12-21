@@ -32,10 +32,15 @@ GameScene::GameScene(){
 	game=p;
 	addLayer(0,p);
 	//"pic/left.png"
-	LAY_Ptr q((new ButtonLayer(600,350,Images::get("pic/left.png"),0,0,100,100))->setId("left")->setClickType(ButtonLayer::PUSH));
+	LAY_Ptr q((new ButtonLayer(0,0,Images::get("pic/left.png"),0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
 	addLayer(1,q);
-	LAY_Ptr r((new ButtonLayer(700,350,Images::get("pic/right.png"),0,0,100,100))->setId("right")->setClickType(ButtonLayer::PUSH));
+	LAY_Ptr r((new ButtonLayer(700,0,Images::get("pic/right.png"),50,0,50,450))->setId("right")->setClickType(ButtonLayer::ONMOUSE));
 	addLayer(1,r);
+	LAY_Ptr s((new ButtonLayer(500,350,Images::get("pic/right.png"),0,0,100,100))->setId("birth")->setClickType(ButtonLayer::PUSH));
+	addLayer(1,s);
+	LAY_Ptr t(new MapLayer());
+	addLayer(5,t);
+	
 }
 void GameScene::enterScene(){
 	PlaySoundMem( Images::getIns()->sound[0],DX_PLAYTYPE_LOOP);
@@ -48,5 +53,7 @@ void GameScene::buttonPushed(string id){
 		game->scrollLeft(15);
 	}else if(id=="right"){
 		game->scrollRight(15);
+	}else if(id=="birth"){
+		game->birth(0, HOHEI);
 	}
 }

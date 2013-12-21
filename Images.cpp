@@ -49,6 +49,7 @@ void Images::load(){
 	filelist.push_back("pic/exit.png");
 	filelist.push_back("pic/left.png");
 	filelist.push_back("pic/right.png");
+	filelist.push_back("pic/tou.png");
 
 
 	

@@ -7,10 +7,11 @@
 #define OCCUPY 6
 class castle : public unit{
 	int stage;
-	int tm = 0;
+	int tm;
 	static int nowstage;
 	int product_type;
 	int product_clk;
+
 	vector<int> musume_table;
 	vector<int> enemy_table;
 public:
