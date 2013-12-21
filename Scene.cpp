@@ -36,6 +36,8 @@ GameScene::GameScene(){
 	addLayer(1,q);
 	LAY_Ptr r((new ButtonLayer(700,350,Images::get("pic/right.png"),0,0,100,100))->setId("right")->setClickType(ButtonLayer::PUSH));
 	addLayer(1,r);
+	LAY_Ptr s((new ButtonLayer(500,350,Images::get("pic/right.png"),0,0,100,100))->setId("birth")->setClickType(ButtonLayer::PUSH));
+	addLayer(1,s);
 }
 void GameScene::enterScene(){
 	PlaySoundMem( Images::getIns()->sound[0],DX_PLAYTYPE_LOOP);
@@ -48,5 +50,7 @@ void GameScene::buttonPushed(string id){
 		game->scrollLeft(15);
 	}else if(id=="right"){
 		game->scrollRight(15);
+	}else if(id=="birth"){
+		game->birth(0, HOHEI);
 	}
 }
