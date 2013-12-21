@@ -1,11 +1,9 @@
 #include "castle.h"
 #include "Images.h"
 #include "Game.h"
-const int castle_hp[8] = { 5000, 50000, 50000, 50000, 50000, 50000, 50000, 50000 };
+const int castle_hp[9] = { 5000, 5000, 5000, 50000, 5000, 5000, 50000, 50000,50000};
 int castle::cleared=1;
-#define ACTIVE 4
-#define WAIT 5
-#define OCCUPY 6
+
 castle::castle(int fx,int fy,int st):unit(fx,fy,0){
 	hp = castle_hp[st];
 	width = 273;
@@ -31,6 +29,7 @@ void castle::main(){
 	case DIE:
 		state = OCCUPY;
 		cleared++;
+		Game::getIns()->stageInc(cleared);
 		break;
 	case OCCUPY:
 

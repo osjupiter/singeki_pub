@@ -234,8 +234,15 @@ void Game::draw(){
 	Test();
 }
 
-void Game::stageInc(){
-
+void Game::stageInc(int next_st){
+	/*
+	for (int i = 0; i <= STAGE_NUM; i++){
+		if (i == next_st) castle_list.at(i)->setState(OCCUPY);
+		else if (i == next_st)castle_list.at(i)->setState(ACTIVE);
+		else castle_list.at(i)->setState(WAIT);
+	}*/
+	castle_list.at(next_st-1)->setState(OCCUPY);
+	castle_list.at(next_st)->setState(ACTIVE);
 }
 
 void Game::delete_object(){

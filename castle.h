@@ -2,6 +2,9 @@
 #include  "DxLib.h"
 #include "unit.h"
 #include <vector>
+#define ACTIVE 4
+#define WAIT 5
+#define OCCUPY 6
 class castle : public unit{
 	int stage;
 	int tm = 0;

@@ -43,7 +43,7 @@ public:
 	void draw();
 	bool getClock(unsigned int);
 	void delete_object();
-	void stageInc();
+	void stageInc(int);
 
 	/**/
 	static Game* getIns();
