@@ -6,11 +6,13 @@ int tank::num;
 
 tank::tank(int fx, int fy, int ln) : enemy(fx, fy, ln){
 	power = 10;
-	hp = 500;
+	hp = 400;
 	width = WID_TANK;
 	height = HEI_TANK;
 	defense = 1;
 	num++;
+	type = RAND;
+	atk_type = RAND;
 }
 
 
@@ -40,6 +42,9 @@ void tank::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
 		break;
 	}
+
+	unit::draw(cx);
+
 }
 
 int tank::getNum(){

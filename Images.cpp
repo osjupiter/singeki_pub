@@ -16,8 +16,10 @@ void Images::load(){
 	LoadDivGraph("dat/img/•—‘D•ºw.png", ANI_BALLOON, ANI_BALLOON, 1, WID_BALLOON, HEI_BALLOON, g_balloon);
 	LoadDivGraph("dat/img/•—‘D•ºa.png", ANI_BALLOON_ATK, ANI_BALLOON_ATK, 1, WID_BALLOON, HEI_BALLOON, g_balloon_atk);
 
+	LoadDivGraph("dat/img/ƒƒ{•ºw.png", ANI_BIG, ANI_BIG, 1, WID_BIG, HEI_BIG, g_robo);
+
 	LoadDivGraph("dat/img/”š’e.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
-	
+	LoadDivGraph("dat/img/bomb0.png", 16, 8, 2, 96, 96, g_exp);
 
 	back[0][0] = LoadGraph("dat/img/R/”wŒi‚P|‚P.png");
 	back[0][1] = LoadGraph("dat/img/R/”wŒi‚P|‚Q.png");
@@ -34,7 +36,7 @@ void Images::load(){
 	back[4][1] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚Q.png");
 	back[4][2] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚R.png");
 	castle[0] = LoadGraph("dat/img/sirodummy.png");
-	filelist.push_back("dat/img/”š’e.png");
+	
 
 
 	sound[0]=LoadSoundMem("sound/kuma.mp3");

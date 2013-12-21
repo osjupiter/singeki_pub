@@ -24,13 +24,15 @@ void musume::main(int front){
 		life = false; }
 }
 
-void musume::draw(int cx){}
+void musume::draw(int cx){
+
+}
 
 void musume::del(){
 	Game::getIns()->push_del_musume(*(new shared_ptr<musume>(this)));
 }
 
-void musume::damage(int d){
-	unit::damage(d);
+void musume::damage(int d,int op_a_type){
+	unit::damage(d, op_a_type);
 	
 }

@@ -10,5 +10,5 @@ public:
 	effect(int,int);
 	virtual void main();
 	virtual void draw(int);
-
+	void del();
 };

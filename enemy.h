@@ -10,5 +10,5 @@ public:
 	virtual void main(int);
 	virtual void draw(int);
 	void del();
-	void damage(int);
+	void damage(int,int);
 };

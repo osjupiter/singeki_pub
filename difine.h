@@ -13,9 +13,9 @@
 #define M_SY 32//è„Ç…ìØÇ∂
 #define L_MAX 60
 
-#define MOV 0
-#define ATK 1
-#define DIE 2
+#define MOV 1
+#define ATK 2
+#define DIE 3
 
 #define ANI_HOHEI 6
 #define ANI_HOHEI_ATK 2
@@ -32,21 +32,32 @@
 #define WID_BALLOON 90
 #define HEI_BALLOON 180
 
+#define ANI_BIG 7
+#define ANI_BIG_ATK 4
+#define WID_BIG 150
+#define HEI_BIG 200
+
 #define ANI_BOMB 2
 #define WID_BOMB 30
 #define HEI_BOMB 40
 
 
+#define ANI_EXP 16
+#define WID_EXP 96
+#define HEI_EXP 96
+
 //unit type
 #define NONE 0
 #define HOHEI 1
 #define BALLOON 2
+#define BIG 3
 
 #define TANK 10
 
 #define BOMB 20
+#define EXP 21
 
-#define STAGE_NUM 10
+#define STAGE_NUM 8
 
 #define FIELD_W 650
 #define FIELD_H 450

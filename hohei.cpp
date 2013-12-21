@@ -11,7 +11,9 @@ hohei::hohei(int fx, int fy, int ln) : musume(fx,fy,ln){
 	width = WID_HOHEI;
 	height = HEI_HOHEI;
 	num++;
+	type = RAND;
 	defense = 1;
+	atk_type = RAND;
 }
 
 void hohei::main(int front){
@@ -27,6 +29,7 @@ void hohei::main(int front){
 }
 
 void hohei::draw(int cx){
+	
 	switch (state){
 	case MOV:
 		DrawGraph(x - cx, y, Images::getIns()->g_hohei[ani_count / ANIM_SPEED%ANI_HOHEI], true);
@@ -35,7 +38,9 @@ void hohei::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_hohei_atk[ani_count / ANIM_SPEED%ANI_HOHEI_ATK], true);
 		break;
 	}
-	
+
+	unit::draw(cx);
+
 }
 
 int hohei::getNum(){

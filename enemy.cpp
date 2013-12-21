@@ -20,15 +20,14 @@ void enemy::main(int front){
 }
 
 void enemy::draw(int cx){
-
 }
 
 void enemy::del(){
 	Game::getIns()->push_del_enemy(*(new shared_ptr<enemy>(this)));
 }
 
-void enemy::damage(int d){
-	unit::damage(d);
+void enemy::damage(int d,int op_a_type){
+	unit::damage(d,op_a_type);
 	
 }
 

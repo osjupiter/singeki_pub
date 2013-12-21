@@ -28,6 +28,7 @@ class Game : public Layer{
 	list<shared_ptr<musume>> delete_musumelist;
 	vector<shared_ptr<castle>> castle_list;
 	list<shared_ptr<background>> back_list;
+
 	void Test();
 public:
 
@@ -42,10 +43,12 @@ public:
 	void draw();
 	bool getClock(unsigned int);
 	void delete_object();
+	void stageInc();
 
 	/**/
 	static Game* getIns();
 	void push_del_musume(shared_ptr<musume>);
 	void push_del_enemy(shared_ptr<enemy>);
 	void push_del_effect(shared_ptr<effect>);
+
 };

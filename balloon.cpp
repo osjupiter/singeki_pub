@@ -14,6 +14,8 @@ balloon::balloon(int fx, int fy, int ln) : musume(fx, fy, ln){
 	num++;
 	test = false;
 	defense = 1;
+	type = SKY;
+	atk_type = RAND;
 }
 
 void balloon::main(int front){
@@ -48,7 +50,12 @@ void balloon::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_balloon_atk[ani_count / ANIM_SPEED%ANI_BALLOON_ATK], true);
 
 		break;
+	case DIE:
+		break;
+
 	}
+
+	unit::draw(cx);
 }
 
 int balloon::getNum(){

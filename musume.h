@@ -11,6 +11,6 @@ public:
 	musume(int,int,int);
 	virtual void main(int);
 	virtual void draw(int);
-	void damage(int);
+	void damage(int,int);
 	void del();
 };
