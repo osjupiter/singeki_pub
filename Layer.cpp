@@ -50,7 +50,8 @@ void MapLayer::main(){
 			ratelist[i]=2.0;//+(35-sqrt((_x-m->X())*(_x-m->X())+(_y-m->Y())*(_y-m->Y())))*0.1;
 			if(m->LeftClick()){
 				m->Reset();
-				printfDx("clickmap!!\n");
+				LAY_Ptr p=make_shared<SelectLayer>(m->X(),0,1);
+				parentScene->addLayer(10,p);
 			}
 		}
 	}
@@ -70,8 +71,21 @@ void MapLayer::draw(){
 }
 
 
-SelectLayer::SelectLayer(int _x,int _y,int _id){x=_x;y=_y;id=_id;}
+SelectLayer::SelectLayer(int _x,int _y,int _id){
+	x=_x;
+	y=_y;
+	w=100;h=100;
+	id=_id;
+}
 void SelectLayer::main(){
+	mouse_in* m=mouse_in::getIns();
+	if(m->LeftClick()){
+		if(x-w<m->X()&&y-w<m->Y()&&m->X()<x+w&&m->Y()<y+w){
+			printfDx("SElectClick!!");
+		}else{
+			parentScene->rmLayer(10);
+		}
+	}
 	
 }
 void SelectLayer::draw(){

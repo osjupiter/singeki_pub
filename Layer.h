@@ -60,7 +60,7 @@ public:
 class SelectLayer:public Layer{
 private:
 	std::shared_ptr<Game> game;
-	int x,y,id;
+	int x,y,id,w,h;
 public:
 	SelectLayer(int,int,int);
 	void draw();
