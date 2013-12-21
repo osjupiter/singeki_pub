@@ -28,6 +28,7 @@
 #define ANI_TANK_ATK 5
 #define WID_TANK 150
 #define HEI_TANK 120
+#define COST_TANK 200
 
 #define ANI_BALLOON 8
 #define ANI_BALLOON_ATK 10

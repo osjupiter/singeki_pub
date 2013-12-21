@@ -14,6 +14,7 @@ Game* Game::ins;
 
 Game::Game(){
 	ins = this;
+	resource = 1000;
 	for (int i = 0; i < 5; i++){
 		for (int j = 0; j < 3; j++){
 			shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3));
@@ -30,6 +31,7 @@ Game::Game(){
 	balloon::setNum(0);
 	srand((unsigned int)time(NULL));
 	x=0;
+	setProduct(0, HOHEI);
 	
 }
 
@@ -42,7 +44,15 @@ bool Game::getClock(unsigned int clk){
 	else return false;
 }
 
-
+int Game::getResource(){
+	return resource;
+}
+void Game::useResource(int cost){
+	resource -= cost;
+}
+void Game::gainResource(int gain){
+	resource += gain;
+}
 int Game::getX(){
 	return x;
 }
@@ -51,26 +61,32 @@ int Game::getX(){
 void Game::birth(int st,int type){
 	int line=(int)(rand()/(RAND_MAX+1.0)*3);
 	switch (type){
-	case HOHEI:{
+	case HOHEI:
+	{
+		if (getResource() < COST_HOHEI) break;
 		shared_ptr<musume> p(new hohei(stage_W[st], WINDOW_Y-HEI_HOHEI-line*3,line));
 		musume_list[line].push_back(p);		
+		useResource(COST_HOHEI);
 		break;
 	}
 	case BALLOON:{
+		if (getResource() < COST_BALLOON) break;
 		shared_ptr<musume> p(new balloon(stage_W[st], 50 - line * 10, line));
 		musume_list[line].push_back(p);
-
+		useResource(COST_BALLOON);
 		break;
 	}
 	case BIG:{
+		if (getResource() < COST_BIG) break;
 		line = 2;
 		shared_ptr<musume> p(new bigrobo(stage_W[st], WINDOW_Y - HEI_BIG - line * 3, line));
 		musume_list[line].push_back(p);
+		useResource(COST_BIG);
 
 		break;
 	}
 	case TANK:{
-		shared_ptr<enemy> p(new tank(stage_W[st], WINDOW_Y - HEI_TANK - line * 3, line));
+		shared_ptr<enemy> p(new tank(stage_W[st], WINDOW_Y - HEI_TANK - line * 3, line,castle::getNowstage()));
 		enemy_list[line].push_back(p);
 		break;
 	}
@@ -280,6 +296,7 @@ void Game::delete_object(){
 void Game::Test(){
 	DrawFormatString(FIELD_W - 100, 0, GetColor(255, 255, 255), "%d %d %d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
 	DrawFormatString(FIELD_W - 50, 12, GetColor(255, 255, 255), "%d", x);
+	DrawFormatString(FIELD_W - 80, 24, GetColor(255, 255, 255), "%d", getResource());
 	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++)birth(i * 10 % 400, HOHEI);
 	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(1,BALLOON);
 	if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);

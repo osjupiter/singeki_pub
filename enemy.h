@@ -4,9 +4,9 @@
 
 class enemy : public unit{
 
-
+	int level;
 public:
-	enemy(int,int,int);
+	enemy(int,int,int,int);
 	virtual void main(int);
 	virtual void draw(int);
 	void del();

@@ -17,6 +17,7 @@ using namespace std;
 class Game : public Layer{
 	int x; 
 	int front_line;
+	int resource;
 	static Game* ins;
 	static const int stage_W[9];
 
@@ -45,6 +46,9 @@ public:
 	void delete_object();
 	void stageInc(int);
 	void setProduct(int,int);
+	int getResource();
+	void useResource(int);
+	void gainResource(int);
 	/**/
 	static Game* getIns();
 	void push_del_musume(shared_ptr<musume>);
