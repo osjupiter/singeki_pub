@@ -7,7 +7,7 @@
 
 #include"SceneManager.h"
 #include"Images.h"
-
+#include"Scene.h"
 //ŠÖ”‚Ì-----------------------------------------------------
 
 
