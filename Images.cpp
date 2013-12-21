@@ -45,6 +45,8 @@ void Images::load(){
 	filelist.push_back("pic/game.png");
 	filelist.push_back("pic/start.png");
 	filelist.push_back("pic/exit.png");
+	filelist.push_back("pic/left.png");
+	filelist.push_back("pic/right.png");
 
 
 	

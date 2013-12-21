@@ -30,10 +30,15 @@ public:
 
 };
 class ButtonLayer:public GraphicLayer{
+public :static enum ClickFlag { CLICK = 3, PUSH = 1,LEAVE=2};
+private:
 	int bx,by,bw,bh;
 	string id;
+	ClickFlag _clicktype;
 public:
+	
 	ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth);
 	ButtonLayer* setId(string s);
+	ButtonLayer* setClickType(ClickFlag s);
 	void main();
 };

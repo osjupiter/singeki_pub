@@ -4,6 +4,7 @@
 #include"SceneNode.h"
 #include"Images.h"
 #include"Layer.h"
+#include"Game.h"
 class TitleScene : public SceneNode{
 
 public:
@@ -15,10 +16,11 @@ public:
 };
 
 class GameScene : public SceneNode{
-
+	std::shared_ptr<Game> game;
 public:
 	GameScene();
 	void enterScene();
 	void leaveScene();
+	void buttonPushed(string);
 
 };
