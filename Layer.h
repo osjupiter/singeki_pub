@@ -46,10 +46,23 @@ public:
 
 class MapLayer:public Layer{
 private:
-	std::shared_ptr<Game> game;
-	
+	int xlist[9];
+	double ratelist[9];
+
 public:
-	MapLayer();
+	MapLayer(std::shared_ptr<Game>);
+	void draw();
+	void main();
+
+	
+};
+
+class SelectLayer:public Layer{
+private:
+	std::shared_ptr<Game> game;
+	int x,y,id;
+public:
+	SelectLayer(int,int,int);
 	void draw();
 	void main();
 	void setGame(std::shared_ptr<Game>);
