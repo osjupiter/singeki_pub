@@ -4,7 +4,7 @@
 #include <vector>
 class castle : public unit{
 	int stage;
-	int tm = 0;
+	int tm ;
 	static int cleared;
 	vector<int> musume_table;
 	vector<int> enemy_table;
