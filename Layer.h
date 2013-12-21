@@ -4,6 +4,7 @@
 #include"DxLib.h"
 using namespace std;
 class SceneNode;
+class Game;
 class Layer
 {
 protected:
@@ -30,7 +31,7 @@ public:
 
 };
 class ButtonLayer:public GraphicLayer{
-public :static enum ClickFlag { CLICK = 3, PUSH = 1,LEAVE=2};
+public :static enum ClickFlag { ONMOUSE=0,CLICK = 3, PUSH = 1,LEAVE=2};
 private:
 	int bx,by,bw,bh;
 	string id;
@@ -41,4 +42,16 @@ public:
 	ButtonLayer* setId(string s);
 	ButtonLayer* setClickType(ClickFlag s);
 	void main();
+};
+
+class MapLayer:public Layer{
+private:
+	std::shared_ptr<Game> game;
+	
+public:
+	MapLayer();
+	void draw();
+	void main();
+	void setGame(std::shared_ptr<Game>);
+	
 };

@@ -294,3 +294,5 @@ void Game::scrollRight(int sx){
 	x += sx;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
 }
+
+

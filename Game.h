@@ -18,7 +18,7 @@ class Game : public Layer{
 	int x; 
 	int front_line;
 	static Game* ins;
-	static const int stage_W[9];
+	
 
 	list<shared_ptr<effect>>  delete_effectlist;
 	list<shared_ptr<effect>>  effect_list;
@@ -31,7 +31,7 @@ class Game : public Layer{
 
 	void Test();
 public:
-
+	static const int stage_W[9];
 	Game();
 	int getX();
 	void scrollLeft(int);
