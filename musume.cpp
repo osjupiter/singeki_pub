@@ -34,5 +34,9 @@ void musume::del(){
 
 void musume::damage(int d,int op_a_type){
 	unit::damage(d, op_a_type);
+	if (state == DIE){
+		vx = -rand()%80;
+		vy = -30;
+	}
 	
 }

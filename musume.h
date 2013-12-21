@@ -6,7 +6,8 @@
 
 class musume :public unit{
 protected:
-
+	int vx;
+	int vy;
 public:
 	musume(int,int,int);
 	virtual void main(int);

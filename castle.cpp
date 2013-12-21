@@ -5,16 +5,16 @@ const int castle_hp[9] = { 5000, 5000, 5000, 50000, 5000, 5000, 50000, 50000,500
 const int unit_clk[4] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG };
 int castle::nowstage=1;
 
-castle::castle(int fx,int fy,int st):unit(fx,fy,0){
+castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	hp = castle_hp[st];
 	width = 273;
-	x = fx-width/2;
+	x = fx - width / 2;
 	height = 450;
 	defense = 1;
 	stage = st;
 	tm = 0;
 	if (st == 0)state = OCCUPY;
-	else if (st == 1)state=ACTIVE;
+	else if (st == 1)state = ACTIVE;
 	else state = WAIT;
 
 	product_type = NONE;

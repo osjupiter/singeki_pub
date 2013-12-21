@@ -4,15 +4,16 @@
 
 int tank::num;
 
-tank::tank(int fx, int fy, int ln) : enemy(fx, fy, ln){
+tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	power = 10;
-	hp = 400;
+	hp = 400*lv;
 	width = WID_TANK;
 	height = HEI_TANK;
-	defense = 1;
+	defense = 2*lv;
 	num++;
 	type = RAND;
 	atk_type = RAND;
+	cost = COST_TANK;
 }
 
 
