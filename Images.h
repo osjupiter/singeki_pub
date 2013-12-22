@@ -31,6 +31,8 @@ public:
 	int g_bomb[2];
 	int g_exp[16];
 	int g_robo[7];
+	int g_robo_atk[18];
+	int g_shock[7];
 
 	int castle[8];
 	int back[5][3];

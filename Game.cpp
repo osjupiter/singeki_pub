@@ -6,6 +6,7 @@
 #include "tank.h"
 #include "balloon.h"
 #include "bomb.h"
+#include "shock.h"
 #include "explode.h"
 #include <time.h>
 #include <algorithm>
@@ -52,6 +53,10 @@ void Game::useResource(int cost){
 }
 void Game::gainResource(int gain){
 	resource += gain;
+}
+
+int Game::getNowStage(){
+	return castle::getNowstage();
 }
 int Game::getX(){
 	return x;
@@ -116,6 +121,11 @@ void Game::effect_create(int fx,int fy,int type){
 		shared_ptr<effect> p(new explode(fx, fy));
 		effect_list.push_back(p);
 		break;
+	}
+	case SHOCK:{
+				 shared_ptr<effect> p(new shock(fx, fy));
+				 effect_list.push_back(p);
+				 break;
 	}
 	}
 }
@@ -298,10 +308,10 @@ void Game::Test(){
 	DrawFormatString(FIELD_W - 50, 12, GetColor(255, 255, 255), "%d", x);
 
 	DrawFormatString(FIELD_W - 80, 24, GetColor(255, 255, 255), "%d", getResource());
-/*	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++)birth(i * 10 % 400, HOHEI);
+	/*if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++)birth(i * 10 % 400, HOHEI);
 	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(1,BALLOON);
 	if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);
-	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, BALLOON);
+	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, BIG);
 */
 /*	if (!delete_musumelist.empty()){
 		printfDx("del%dused ", musume_list[0].front().use_count());*/

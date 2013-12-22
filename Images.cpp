@@ -17,9 +17,11 @@ void Images::load(){
 	LoadDivGraph("dat/img/ïóëDï∫a.png", ANI_BALLOON_ATK, ANI_BALLOON_ATK, 1, WID_BALLOON, HEI_BALLOON, g_balloon_atk);
 
 	LoadDivGraph("dat/img/ÉçÉ{ï∫w.png", ANI_BIG, ANI_BIG, 1, WID_BIG, HEI_BIG, g_robo);
+	LoadDivGraph("dat/img/ÉçÉ{ï∫a.png", ANI_BIG_ATK, 6, 3, WID_BIG_ATK, HEI_BIG, g_robo_atk);
 
 	LoadDivGraph("dat/img/îöíe.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
 	LoadDivGraph("dat/img/bomb0.png", 16, 8, 2, 96, 96, g_exp);
+	LoadDivGraph("dat/img/è’åÇîg.png", ANI_SHOCK, ANI_SHOCK, 1, WID_SHOCK, HEI_SHOCK, g_shock);
 
 	back[0][0] = LoadGraph("dat/img/éR/îwåiÇPÅ|ÇP.png");
 	back[0][1] = LoadGraph("dat/img/éR/îwåiÇPÅ|ÇQ.png");

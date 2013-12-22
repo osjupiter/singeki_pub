@@ -12,7 +12,7 @@ balloon::balloon(int fx, int fy, int ln) : musume(fx, fy, ln){
 	width = WID_BALLOON;
 	height = HEI_BALLOON;
 	num++;
-	test = false;
+	atk = false;
 	defense = 1;
 	type = SKY;
 	atk_type = RAND;
@@ -29,12 +29,12 @@ void balloon::main(int front){
 	case ATK:
 		
 		if ((ani_count / ANIM_SPEED%ANI_BALLOON_ATK)
-			== ANI_BALLOON_ATK - 1 && test){
-			test = false;
+			== ANI_BALLOON_ATK - 1 && atk){
+			atk = false;
 			Game::getIns()->effect_create(x + 59, y + 111, BOMB);
 		}
 		if (!((ani_count / ANIM_SPEED%ANI_BALLOON_ATK)
-			== ANI_BALLOON_ATK - 1))test = true;
+			== ANI_BALLOON_ATK - 1))atk = true;
 			break;
 	case DIE:
 		del();

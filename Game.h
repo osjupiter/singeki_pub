@@ -47,6 +47,7 @@ public:
 	void stageInc(int);
 	void setProduct(int,int);
 	int getResource();
+	int getNowStage();
 	void useResource(int);
 	void gainResource(int);
 	/**/

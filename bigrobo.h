@@ -5,7 +5,7 @@
 
 class bigrobo : public musume{
 private:
-
+	bool atk;
 	static int num;
 public:
 	bigrobo(int fx, int fy, int ln);
