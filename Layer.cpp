@@ -138,6 +138,34 @@ void SelectLayer::draw(){
 			if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
 				DrawBox(x-75+50*i+5,y-75+50*j+5,x-75+50*i+50-5,y-75+50*j+50-5,GetColor(0,255,0),TRUE);
 			}
+			string s;
+			switch (i+j*3){
+				case 0:
+					s="なし";
+					break;
+				case 1:
+					s="歩兵";
+					break;
+				case 2:
+					s="風船";
+					break;
+				case 3:
+					s="ロボ";
+					break;
+				case 4:
+					break;
+				case 5:
+					break;
+				case 6:
+					break;
+				case 7:
+					break;
+				case 8:
+					break;
+				case 9:
+					break;
+			}
+			DrawString(x-75+50*i+5,y-75+50*j+5,s.c_str(),GetColor(0,0,0));
 			
 		
 		}
@@ -172,7 +200,10 @@ void MenuLayer::draw(){
 
 	for(int i=0;i<3;i++){
 		int x1=650-onMouseTime[i],x2=800,y1=5+i*30,y2=35+i*30;
-		DrawBox(x1,y1,x2,y2,GetColor(255,255,0),TRUE);	
+		DrawBox(x1,y1,x2,y2,GetColor(255,255,0),TRUE);
+		if(i==0) DrawString(x1,y1,"生産ユニット変更",GetColor(0,0,0));
+		else if(i==1)DrawString(x1,y1,"強化・改造",GetColor(0,0,0));
+		else if(i==2)DrawString(x1,y1,"設定",GetColor(0,0,0));
 	}
 	//map
 	DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
@@ -205,28 +236,7 @@ void MenuLayer:: main(){
 		}
 	}
 }
-/*
-MapBarLayer::MapBarLayer(){
 
-}
-void MapBarLayer::draw(){
-	DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
-}
-void MapBarLayer:: main(){
-
-}
-	
-//StatusLayer
-StatusLayer::StatusLayer(){
-
-}
-void StatusLayer::draw(){
-	DrawBox(0,0,200,50,GetColor(255,0,0),TRUE);
-}
-void StatusLayer:: main(){
-
-}
-*/
 //MapCloseLayer
 MapCloseLayer::MapCloseLayer(){
 
