@@ -78,3 +78,40 @@ public:
 	void main();
 	
 };
+
+
+
+class MenuLayer:public Layer{
+private:
+	int onMouseTime[3];
+public:
+	MenuLayer();
+	void draw();
+	void main();
+	
+};
+/*
+class MapBarLayer:public Layer{
+private:
+
+public:
+	MapBarLayer();
+	void draw();
+	void main();
+	
+};
+
+class StatusLayer:public Layer{
+private:
+
+public:
+	StatusLayer();
+	void draw();
+	void main();
+	
+};
+
+*/
+
+
+

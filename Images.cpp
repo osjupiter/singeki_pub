@@ -64,7 +64,7 @@ void Images::load(){
 	for(auto s:filelist){
 		gs[s]=LoadGraph(s.c_str());
 
-	}
+	}	
 
 	for(auto s:soundlist){
 		ss[s]=LoadSoundMem(s.c_str());

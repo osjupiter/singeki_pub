@@ -39,6 +39,11 @@ GameScene::GameScene(){
 	addLayer(1,s);
 	LAY_Ptr t(new MapLayer(game));
 	addLayer(5,t);
+	addLayer(2,std::make_shared<MenuLayer>());
+	/*
+	addLayer(3,std::make_shared<MapBarLayer>());
+	addLayer(4,std::make_shared<StatusLayer>());
+	*/
 	old_stage=1;
 	
 }

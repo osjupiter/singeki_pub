@@ -146,4 +146,60 @@ void StageClearLayer:: main(){
 		parentScene->rmLayer(thisLayerID);
 	
 }
+
+MenuLayer::MenuLayer(){
+	for(int i=0;i<3;i++){
+		onMouseTime[i]=0;
+	}
+
+}
+void MenuLayer::draw(){
+	//Menu
+	DrawBox(650,0,800,100,GetColor(255,0,0),TRUE);
+
+	for(int i=0;i<3;i++){
+		int x1=650-onMouseTime[i],x2=800,y1=5+i*30,y2=35+i*30;
+		DrawBox(x1,y1,x2,y2,GetColor(255,255,0),TRUE);	
+	}
+	//map
+	DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
+
+	//status
+	DrawBox(0,0,200,50,GetColor(255,0,0),TRUE);
+}
+void MenuLayer:: main(){
+	auto m= mouse_in::getIns();
+	for(int i=0;i<3;i++){
+		int x1=650,x2=800,y1=5+i*30,y2=35+i*30;
+		if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
+			onMouseTime[i]+=10;
+			if(onMouseTime[i]>50)onMouseTime[i]=50;
+		}else{
+			onMouseTime[i]-=10;
+			if(onMouseTime[i]<0)onMouseTime[i]=0;
+		}
+	}
+}
+/*
+MapBarLayer::MapBarLayer(){
+
+}
+void MapBarLayer::draw(){
+	DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
+}
+void MapBarLayer:: main(){
+
+}
+	
+//StatusLayer
+StatusLayer::StatusLayer(){
+
+}
+void StatusLayer::draw(){
+	DrawBox(0,0,200,50,GetColor(255,0,0),TRUE);
+}
+void StatusLayer:: main(){
+
+}
+*/
 	
