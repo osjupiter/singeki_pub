@@ -7,6 +7,7 @@
 #include "copter.h"
 #include "balloon.h"
 #include "bomb.h"
+#include "missile.h"
 #include "shock.h"
 #include "explode.h"
 #include <time.h>
@@ -131,6 +132,11 @@ void Game::effect_create(int fx,int fy,int type){
 				 shared_ptr<effect> p(new shock(fx, fy));
 				 effect_list.push_back(p);
 				 break;
+	}
+	case MISSILE:{
+				   shared_ptr<effect> p(new missile(fx, fy));
+				   effect_list.push_back(p);
+				   break;
 	}
 	}
 }

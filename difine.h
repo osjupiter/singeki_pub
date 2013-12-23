@@ -65,6 +65,11 @@
 #define WID_SHOCK 150
 #define HEI_SHOCK 350
 
+#define ANI_MISSILE 3
+#define WID_MISSILE 90
+#define HEI_MISSILE 60
+
+
 //unit type
 #define NONE 0
 #define HOHEI 1
@@ -78,6 +83,7 @@
 #define BOMB 20
 #define EXP 21
 #define SHOCK 22
+#define MISSILE 23
 
 #define STAGE_NUM 8
 

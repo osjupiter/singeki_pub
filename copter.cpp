@@ -31,7 +31,7 @@ void copter::main(int front){
 		if ((ani_count / ANIM_SPEED%ANI_COPTER)
 			== ANI_COPTER - 1 && atk){
 			atk = false;
-			//Game::getIns()->effect_create(x + 59, y + 111, BOMB);
+			Game::getIns()->effect_create(x , y + 155, MISSILE);
 		}
 		if (!((ani_count / ANIM_SPEED%ANI_COPTER)
 			== ANI_COPTER - 1))atk = true;

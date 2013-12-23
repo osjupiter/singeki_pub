@@ -34,6 +34,7 @@ public:
 	int g_robo_atk[18];
 	int g_shock[7];
 	int g_copter[6];
+	int g_missile[3];
 	int castle[8];
 	int back[5][3];
 	Images(void){}
