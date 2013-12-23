@@ -37,33 +37,44 @@ ButtonLayer* ButtonLayer::setClickType(ClickFlag c){
 	_clicktype=c;return this;	
 }
 MapLayer::MapLayer(std::shared_ptr<Game> g){
+	lx=200;ly=200;lw=400;lh=200;
 	for(int i=0;i<9;i++)
-		xlist[i]=g->stage_W[i]/(double)g->stage_W[8]*600+100;
+		xlist[i]=g->stage_W[i]/(double)g->stage_W[8]*lw+lx;
+
+	
 
 }
 void MapLayer::main(){
 	mouse_in* m=mouse_in::getIns();
-	for(int i=0;i<9;i++){
-		int _x=xlist[i];
-		int _y=425;
-		int _w=25;
-		ratelist[i]=1.0;
-		if(_x-_w<m->X()&&_y-_w<m->Y()&&m->X()<_x+_w&&m->Y()<_y+_w){
-			ratelist[i]=2.0;//+(35-sqrt((_x-m->X())*(_x-m->X())+(_y-m->Y())*(_y-m->Y())))*0.1;
-			if(m->LeftClick()){
-				m->Reset();
-				LAY_Ptr p=make_shared<SelectLayer>(_x,_y-150,i);
-				parentScene->addLayer(10,p);
+	for(int i=0;i<9;i++)ratelist[i]=1.0;
+	if(lx<m->X()&&ly<m->Y()&&m->X()<lx+lw&&m->Y()<ly+lh){
+		for(int i=0;i<9;i++){
+			int _x=xlist[i];
+			int _y=ly+lh/2;
+			int _w=25;
+			ratelist[i]=1.0;
+			if(_x-_w<m->X()&&_y-_w<m->Y()&&m->X()<_x+_w&&m->Y()<_y+_w){
+				ratelist[i]=2.0;
+				if(m->LeftClick()){
+					printfDx("clickd!!!\n");
+					m->Reset();
+					parentScene->addLayer(11,make_shared<SelectLayer>(_x,_y-150,i));
+				}
 			}
+		}
+	}else{
+		if(m->LeftClick()){
+			parentScene->rmLayer(10);
+			parentScene->rmLayer(9);
 		}
 	}
 	
 }
 void MapLayer::draw(){
-	DrawBox(100,439,700,440,GetColor(255,0,0),TRUE);
+	DrawBox(lx,ly,lx+lw,ly+lh,GetColor(255,0,255),TRUE);
 		for(int i=0;i<9;i++){
 			int _x=xlist[i];
-			int _y=425;
+			int _y=ly+lh/2;
 			int _w=25;
 			double _rate=ratelist[i];
 			DrawRotaGraph(_x,_y,_rate,0,Images::get("pic/tou.png"),TRUE);
@@ -96,6 +107,7 @@ void SelectLayer::main(){
 							if( p != NULL )
 							{
 								p->getGame()->setProduct(id,number);
+								printfDx("%d %d\n",id,number);
 							}
 							//std::shared_ptr<GameScene> b2 = std::dynamic_pointer_cast<GameScene>(parentScene);
 							
@@ -107,7 +119,7 @@ void SelectLayer::main(){
 
 		}else{
 			if(m->LeftClick()||m->RightClick()||m->isUsed())
-				parentScene->rmLayer(10);
+				parentScene->rmLayer(thisLayerID);
 		}
 	
 	
@@ -147,10 +159,11 @@ void StageClearLayer:: main(){
 	
 }
 
-MenuLayer::MenuLayer(){
+MenuLayer::MenuLayer(shared_ptr<Game> g){
 	for(int i=0;i<3;i++){
 		onMouseTime[i]=0;
 	}
+	game=g;
 
 }
 void MenuLayer::draw(){
@@ -174,6 +187,18 @@ void MenuLayer:: main(){
 		if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
 			onMouseTime[i]+=10;
 			if(onMouseTime[i]>50)onMouseTime[i]=50;
+			if(m->LeftClick()){
+				GameScene* p = dynamic_cast<GameScene*>( parentScene );
+				if( p != NULL ){
+					switch (i){
+					case 0:
+						p->addLayer(10,std::make_shared<MapLayer>(game));
+						p->addLayer(9,std::make_shared<MapCloseLayer>());
+						break;
+					}
+				}
+
+			}
 		}else{
 			onMouseTime[i]-=10;
 			if(onMouseTime[i]<0)onMouseTime[i]=0;
@@ -202,4 +227,16 @@ void StatusLayer:: main(){
 
 }
 */
+//MapCloseLayer
+MapCloseLayer::MapCloseLayer(){
+
+}
+void MapCloseLayer::draw(){
+	SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
+	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(0,0,0),TRUE);
+	SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
+}
+void MapCloseLayer:: main(){
+
+}
 	

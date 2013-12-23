@@ -35,15 +35,10 @@ GameScene::GameScene(){
 	addLayer(1,q);
 	LAY_Ptr r((new ButtonLayer(700,0,0,50,0,50,450))->setId("right")->setClickType(ButtonLayer::ONMOUSE));
 	addLayer(1,r);
-	LAY_Ptr s((new ButtonLayer(500,350,Images::get("pic/right.png"),0,0,100,100))->setId("birth")->setClickType(ButtonLayer::PUSH));
-	addLayer(1,s);
-	LAY_Ptr t(new MapLayer(game));
-	addLayer(5,t);
-	addLayer(2,std::make_shared<MenuLayer>());
-	/*
-	addLayer(3,std::make_shared<MapBarLayer>());
-	addLayer(4,std::make_shared<StatusLayer>());
-	*/
+
+	//addLayer(5,std::make_shared<MapLayer>(game));
+	addLayer(2,std::make_shared<MenuLayer>(game));
+
 	old_stage=1;
 	
 }
@@ -65,7 +60,7 @@ void GameScene::buttonPushed(string id){
 void GameScene::aftermain(){
 	if(old_stage!=game->getNowStage()){
 		LAY_Ptr q=std::make_shared<StageClearLayer>(old_stage,100);//((new ButtonLayer(0,0,0,0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
-		addLayer(20,q);
+		addLayer(5,q);
 	}
 	old_stage=game->getNowStage();
 }

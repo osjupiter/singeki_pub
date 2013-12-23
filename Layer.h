@@ -5,6 +5,19 @@
 using namespace std;
 class SceneNode;
 class Game;
+
+/*
+	0 Game
+	1 right left
+	2 Menu
+	5 Clear
+	9 MapClose
+	10 MapLay
+
+*/
+
+
+
 class Layer
 {
 protected:
@@ -49,6 +62,7 @@ class MapLayer:public Layer{
 private:
 	int xlist[9];
 	double ratelist[9];
+	int lx,ly,lw,lh;
 
 public:
 	MapLayer(std::shared_ptr<Game>);
@@ -84,34 +98,24 @@ public:
 class MenuLayer:public Layer{
 private:
 	int onMouseTime[3];
+	shared_ptr<Game> game;
 public:
-	MenuLayer();
+	MenuLayer(shared_ptr<Game>);
 	void draw();
 	void main();
 	
 };
-/*
-class MapBarLayer:public Layer{
+
+class MapCloseLayer:public Layer{
 private:
 
 public:
-	MapBarLayer();
+	MapCloseLayer();
 	void draw();
 	void main();
-	
 };
 
-class StatusLayer:public Layer{
-private:
 
-public:
-	StatusLayer();
-	void draw();
-	void main();
-	
-};
-
-*/
 
 
 
