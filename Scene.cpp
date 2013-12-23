@@ -20,10 +20,10 @@ void TitleScene::buttonPushed(string id){
 	}
 }
 void TitleScene::enterScene(){
-	PlaySoundMem(Images::getIns()->sound[0],DX_PLAYTYPE_LOOP);
+	PlaySoundMem(Images::getSound("sound/kuma.mp3"),DX_PLAYTYPE_LOOP);
 }
 void TitleScene::leaveScene(){
-	StopSoundMem( Images::getIns()->sound[0]) ;
+	StopSoundMem( Images::getSound("sound/kuma.mp3")) ;
 }
 
 GameScene::GameScene(){
@@ -43,10 +43,10 @@ GameScene::GameScene(){
 	
 }
 void GameScene::enterScene(){
-	PlaySoundMem( Images::getIns()->sound[0],DX_PLAYTYPE_LOOP);
+	PlaySoundMem( Images::getSound("sound/kuma.mp3"),DX_PLAYTYPE_LOOP);
 }
 void GameScene::leaveScene(){
-	StopSoundMem( Images::getIns()->sound[0]) ;
+	StopSoundMem( Images::getSound("sound/kuma.mp3")) ;
 }
 void GameScene::buttonPushed(string id){
 	if(id=="left"){

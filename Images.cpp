@@ -45,7 +45,7 @@ void Images::load(){
 	
 
 
-	sound[0]=LoadSoundMem("sound/kuma.mp3");
+	//sound[0]=LoadSoundMem("sound/kuma.mp3");
 	
 	filelist.push_back("pic/test.jpg");
 	filelist.push_back("pic/black.jpg");
@@ -57,10 +57,17 @@ void Images::load(){
 	filelist.push_back("pic/right.png");
 	filelist.push_back("pic/tou.png");
 
+	soundlist.push_back("sound/kuma.mp3");
+
 
 	
 	for(auto s:filelist){
 		gs[s]=LoadGraph(s.c_str());
+
+	}
+
+	for(auto s:soundlist){
+		ss[s]=LoadSoundMem(s.c_str());
 
 	}
 	
@@ -71,4 +78,6 @@ void Images::load(){
 
 	void Images::init(){ins.load();}
 	Images* Images::getIns(){return &ins;}
+
 	int Images::get(char name[]){return ins.gs[string(name)];}
+	int Images::getSound(char name[]){return ins.ss[string(name)];}
