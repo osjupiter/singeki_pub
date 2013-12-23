@@ -55,5 +55,8 @@ void GameScene::buttonPushed(string id){
 		game->scrollRight(15);
 	}else if(id=="birth"){
 		game->birth(0, HOHEI);
-	}
+	}else if(id.find("select",0)!=string::npos)
+		printfDx("%d\n",id[6]-'0');
 }
+
+std::shared_ptr<Game> GameScene::getGame(){return game;}

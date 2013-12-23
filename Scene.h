@@ -22,5 +22,5 @@ public:
 	void enterScene();
 	void leaveScene();
 	void buttonPushed(string);
-
+	std::shared_ptr<Game> getGame();
 };

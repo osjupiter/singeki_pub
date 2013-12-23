@@ -2,6 +2,8 @@
 #include "mouse.h"
 #include "SceneNode.h"
 #include"Game.h"
+#include"Scene.h"
+
 
 GraphicLayer::GraphicLayer(int tx,int ty,int th){
 	x=tx;y=ty;
@@ -50,7 +52,7 @@ void MapLayer::main(){
 			ratelist[i]=2.0;//+(35-sqrt((_x-m->X())*(_x-m->X())+(_y-m->Y())*(_y-m->Y())))*0.1;
 			if(m->LeftClick()){
 				m->Reset();
-				LAY_Ptr p=make_shared<SelectLayer>(m->X(),0,1);
+				LAY_Ptr p=make_shared<SelectLayer>(_x,_y-150,i);
 				parentScene->addLayer(10,p);
 			}
 		}
@@ -79,19 +81,56 @@ SelectLayer::SelectLayer(int _x,int _y,int _id){
 }
 void SelectLayer::main(){
 	mouse_in* m=mouse_in::getIns();
-	if(m->LeftClick()){
 		if(x-w<m->X()&&y-w<m->Y()&&m->X()<x+w&&m->Y()<y+w){
-			printfDx("SElectClick!!");
+			for(int i=0;i<3;i++)
+				for(int j=0;j<3;j++){
+					int x1,x2,y1,y2;
+					x1=x-75+50*i+5;
+					x2=x-75+50*i+50-5;
+					y1=y-75+50*j+5;
+					y2=y-75+50*j+50-5;
+					if(m->LeftClick()&&x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
+							int number=i+j*3;
+							char hoge[10];
+							sprintf_s(hoge,10,"select%d",number);
+							GameScene* p = dynamic_cast<GameScene*>( parentScene );
+							if( p != NULL )
+							{
+								p->getGame()->setProduct(id,number);
+								if(parentScene!=nullptr)parentScene->buttonPushed(hoge);
+							}
+							//std::shared_ptr<GameScene> b2 = std::dynamic_pointer_cast<GameScene>(parentScene);
+							
+					}
+
+		
+				}
+    
+
 		}else{
-			parentScene->rmLayer(10);
+			if(m->LeftClick()||m->RightClick()||m->isUsed())
+				parentScene->rmLayer(10);
 		}
-	}
+	
 	
 }
 void SelectLayer::draw(){
-	DrawBox(x,y,x+100,y+100,GetColor(255,0,0),TRUE);
-	
-
+	mouse_in* m=mouse_in::getIns();
+	DrawBox(x-75,y-75,x+75,y+75,GetColor(255,0,0),TRUE);
+	for(int i=0;i<3;i++)
+		for(int j=0;j<3;j++){
+			int x1,x2,y1,y2;
+			x1=x-75+50*i+5;
+			x2=x-75+50*i+50-5;
+			y1=y-75+50*j+5;
+			y2=y-75+50*j+50-5;
+			DrawBox(x1,y1,x2,y2,GetColor(255,255,0),TRUE);
+			if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
+				DrawBox(x-75+50*i+5,y-75+50*j+5,x-75+50*i+50-5,y-75+50*j+50-5,GetColor(0,255,0),TRUE);
+			}
+			
+		
+		}
     
 
 }
