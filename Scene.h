@@ -17,10 +17,12 @@ public:
 
 class GameScene : public SceneNode{
 	std::shared_ptr<Game> game;
+	int old_stage;
 public:
 	GameScene();
 	void enterScene();
 	void leaveScene();
+	void aftermain();
 	void buttonPushed(string);
 	std::shared_ptr<Game> getGame();
 };

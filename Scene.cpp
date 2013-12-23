@@ -27,7 +27,6 @@ void TitleScene::leaveScene(){
 }
 
 GameScene::GameScene(){
-	//g->birth(0, 360, HOHEI);
 	std::shared_ptr<Game> p(new Game());
 	game=p;
 	addLayer(0,p);
@@ -40,6 +39,7 @@ GameScene::GameScene(){
 	addLayer(1,s);
 	LAY_Ptr t(new MapLayer(game));
 	addLayer(5,t);
+	old_stage=1;
 	
 }
 void GameScene::enterScene(){
@@ -55,8 +55,14 @@ void GameScene::buttonPushed(string id){
 		game->scrollRight(15);
 	}else if(id=="birth"){
 		game->birth(0, HOHEI);
-	}else if(id.find("select",0)!=string::npos)
-		printfDx("%d\n",id[6]-'0');
+	}
+}
+void GameScene::aftermain(){
+	if(old_stage!=game->getNowStage()){
+		LAY_Ptr q=std::make_shared<StageClearLayer>(old_stage,100);//((new ButtonLayer(0,0,0,0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
+		addLayer(20,q);
+	}
+	old_stage=game->getNowStage();
 }
 
 std::shared_ptr<Game> GameScene::getGame(){return game;}

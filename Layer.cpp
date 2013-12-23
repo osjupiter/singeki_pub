@@ -91,13 +91,11 @@ void SelectLayer::main(){
 					y2=y-75+50*j+50-5;
 					if(m->LeftClick()&&x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
 							int number=i+j*3;
-							char hoge[10];
-							sprintf_s(hoge,10,"select%d",number);
+
 							GameScene* p = dynamic_cast<GameScene*>( parentScene );
 							if( p != NULL )
 							{
 								p->getGame()->setProduct(id,number);
-								if(parentScene!=nullptr)parentScene->buttonPushed(hoge);
 							}
 							//std::shared_ptr<GameScene> b2 = std::dynamic_pointer_cast<GameScene>(parentScene);
 							
@@ -134,7 +132,18 @@ void SelectLayer::draw(){
     
 
 }
-void SelectLayer::setGame(std::shared_ptr<Game> g){
-	game=g;
+
+StageClearLayer::StageClearLayer(int sid,int d){
+		stage_id=sid;
+		data=d;
+		remain_time=150;
+}
+void StageClearLayer::draw(){
+	DrawFormatString(0,0,GetColor(255,0,0),"%d is cleard. time = %d",stage_id,remain_time);
+}
+void StageClearLayer:: main(){
+	if(remain_time--<=0)
+		parentScene->rmLayer(thisLayerID);
 	
 }
+	

@@ -108,7 +108,6 @@ void Game::birth(int st,int type){
 }
 
 void Game::setProduct(int tw_num, int m_type){
-	printfDx("%d %d\n",tw_num,m_type);
 	if (castle::getNowstage() <= tw_num)return;
 	castle_list.at(tw_num)->setProduct(m_type);
 }

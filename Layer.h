@@ -9,9 +9,10 @@ class Layer
 {
 protected:
 	SceneNode* parentScene;
+	int thisLayerID;
 public:
 	Layer(void){}
-	void setParent(SceneNode* s){parentScene=s;}
+	void setParent(SceneNode* s,int id){parentScene=s;thisLayerID=id;}
 
 	virtual void draw(){}
 	virtual void main(){}
@@ -59,12 +60,21 @@ public:
 
 class SelectLayer:public Layer{
 private:
-	std::shared_ptr<Game> game;
 	int x,y,id,w,h;
 public:
 	SelectLayer(int,int,int);
 	void draw();
 	void main();
-	void setGame(std::shared_ptr<Game>);
+	
+};
+
+class StageClearLayer:public Layer{
+private:
+	int stage_id, data;
+	int remain_time;
+public:
+	StageClearLayer(int,int);
+	void draw();
+	void main();
 	
 };
