@@ -56,7 +56,6 @@ void MapLayer::main(){
 			if(_x-_w<m->X()&&_y-_w<m->Y()&&m->X()<_x+_w&&m->Y()<_y+_w){
 				ratelist[i]=2.0;
 				if(m->LeftClick()){
-					printfDx("clickd!!!\n");
 					m->Reset();
 					parentScene->addLayer(11,make_shared<SelectLayer>(_x,_y-150,i));
 				}
@@ -66,6 +65,7 @@ void MapLayer::main(){
 		if(m->LeftClick()){
 			parentScene->rmLayer(10);
 			parentScene->rmLayer(9);
+			m->Reset();
 		}
 	}
 	
@@ -102,7 +102,7 @@ void SelectLayer::main(){
 					y2=y-75+50*j+50-5;
 					if(m->LeftClick()&&x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
 							int number=i+j*3;
-
+							m->Reset();
 							GameScene* p = dynamic_cast<GameScene*>( parentScene );
 							if( p != NULL )
 							{

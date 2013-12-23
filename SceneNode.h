@@ -36,8 +36,14 @@ public:
 	virtual void beforemain(){}
 	virtual void main(){
 		beforemain();
-		for(auto part:layers){
+		/*for(auto part:layers){
 			part.second->main();
+		}*/
+		auto rit = layers.rbegin();   // 逆イテレータ
+		while( rit != layers.rend() )  // 先頭まで
+		{
+			rit->second->main();
+			++rit;  // １つ前方に進む
 		}
 		aftermain();
 	
