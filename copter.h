@@ -1,14 +1,14 @@
 #pragma once
 #include "DxLib.h"
-#include "musume.h"
+#include "enemy.h"
 #include "GV.h"
 
-class bigrobo : public musume{
+class copter : public enemy{
 private:
 	bool atk;
 	static int num;
 public:
-	bigrobo(int fx, int fy, int ln);
+	copter(int, int, int,int);
 	void main(int);
 	void draw(int);
 	static int getNum();

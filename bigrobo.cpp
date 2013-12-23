@@ -6,25 +6,36 @@
 int bigrobo::num = 0;
 
 bigrobo::bigrobo(int fx, int fy, int ln) : musume(fx, fy, ln){
-	power = 4;
-	hp = 200;
+	power = 0;
+	hp = 5000;
 	width = WID_BIG;
 	height = HEI_BIG;
 	num++;
 	type = RAND;
-	
+	atk = false;
 	defense = 1;
+	dist = width;
 	atk_type = RAND;
 	cost = COST_BIG;
 }
 
 void bigrobo::main(int front){
 	musume::main(front);
-	state = MOV;
-	switch (state){
-
+//	state = ATK;
+	switch (state){		
 	case MOV:
-		x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		x += 3; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		break;
+	case ATK:
+		if (ani_count / ANIM_SPEED%ANI_BIG_ATK == ANI_BIG_ATK - 1 && atk){
+			Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
+			atk = false;
+			power = 00;
+		}
+		if (!(ani_count / ANIM_SPEED%ANI_BIG_ATK == ANI_BIG_ATK - 1)){
+			atk = true;
+			power = 0;
+		}
 		break;
 	case DIE:
 		del();
@@ -39,7 +50,7 @@ void bigrobo::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_robo[ani_count / ANIM_SPEED%ANI_BIG], true);
 		break;
 	case ATK:
-		DrawGraph(x - cx, y, Images::getIns()->g_hohei_atk[ani_count / ANIM_SPEED%ANI_BIG_ATK], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_robo_atk[ani_count / ANIM_SPEED%ANI_BIG_ATK], true);
 		break;
 	}
 

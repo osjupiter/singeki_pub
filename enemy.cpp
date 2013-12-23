@@ -8,10 +8,16 @@ void enemy::main(int front){
 	unit::main();
 	switch (state){
 	case MOV:
-		if (x < front + dist) state = ATK;
+		if (x < front + dist){ 
+			state = ATK; 
+			ani_count = 0;
+		}
 		break;
 	case ATK:
-		if (!(x < front + dist)) state = MOV;
+		if (!(x < front + dist)){
+			state = MOV;
+			ani_count = 0;
+		}
 		break;
 	case DIE:
 		

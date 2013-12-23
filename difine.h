@@ -37,9 +37,17 @@
 #define COST_BALLOON 50
 #define CLK_BALLOON 2000
 
+#define ANI_COPTER 6
+#define WID_COPTER 280
+#define HEI_COPTER 150
+#define COST_COPTER 50
+//#define CLK_COPTER 2000
+
+
 #define ANI_BIG 7
-#define ANI_BIG_ATK 4
+#define ANI_BIG_ATK 18
 #define WID_BIG 150
+#define WID_BIG_ATK 180
 #define HEI_BIG 200
 #define COST_BIG 50
 #define CLK_BIG 4000
@@ -53,6 +61,15 @@
 #define WID_EXP 96
 #define HEI_EXP 96
 
+#define ANI_SHOCK 7
+#define WID_SHOCK 150
+#define HEI_SHOCK 350
+
+#define ANI_MISSILE 3
+#define WID_MISSILE 90
+#define HEI_MISSILE 60
+
+
 //unit type
 #define NONE 0
 #define HOHEI 1
@@ -60,13 +77,17 @@
 #define BIG 3
 
 #define TANK 10
+#define COPTER 11
+
 
 #define BOMB 20
 #define EXP 21
+#define SHOCK 22
+#define MISSILE 23
 
 #define STAGE_NUM 8
 
-#define FIELD_W 650
+#define FIELD_W 800
 #define FIELD_H 450
 
 

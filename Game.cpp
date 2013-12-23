@@ -4,8 +4,11 @@
 #include "hohei.h"
 #include "bigrobo.h"
 #include "tank.h"
+#include "copter.h"
 #include "balloon.h"
 #include "bomb.h"
+#include "missile.h"
+#include "shock.h"
 #include "explode.h"
 #include <time.h>
 #include <algorithm>
@@ -31,7 +34,7 @@ Game::Game(){
 	balloon::setNum(0);
 	srand((unsigned int)time(NULL));
 	x=0;
-	setProduct(0, HOHEI);
+	//setProduct(0, BIG);
 	
 }
 
@@ -52,6 +55,10 @@ void Game::useResource(int cost){
 }
 void Game::gainResource(int gain){
 	resource += gain;
+}
+
+int Game::getNowStage(){
+	return castle::getNowstage();
 }
 int Game::getX(){
 	return x;
@@ -90,7 +97,11 @@ void Game::birth(int st,int type){
 		enemy_list[line].push_back(p);
 		break;
 	}
-
+	case COPTER:{
+		shared_ptr<enemy> p(new copter(stage_W[st], 50 - line * 3, line, castle::getNowstage()));
+		enemy_list[line].push_back(p);
+		 break;
+	}
 	default:
 		break;
 	}
@@ -117,6 +128,16 @@ void Game::effect_create(int fx,int fy,int type){
 		shared_ptr<effect> p(new explode(fx, fy));
 		effect_list.push_back(p);
 		break;
+	}
+	case SHOCK:{
+				 shared_ptr<effect> p(new shock(fx, fy));
+				 effect_list.push_back(p);
+				 break;
+	}
+	case MISSILE:{
+				   shared_ptr<effect> p(new missile(fx, fy));
+				   effect_list.push_back(p);
+				   break;
 	}
 	}
 }
@@ -192,6 +213,7 @@ void Game::main(){
 
 	for (auto i : effect_list){
 		i->main();
+		
 	}
 
 	frontM = target_X;
@@ -295,15 +317,15 @@ void Game::delete_object(){
 
 
 void Game::Test(){
-	DrawFormatString(FIELD_W - 100, 0, GetColor(255, 255, 255), "%d %d %d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
-	DrawFormatString(FIELD_W - 50, 12, GetColor(255, 255, 255), "%d", x);
+	DrawFormatString(FIELD_W - 200, 0, GetColor(255, 255, 255), "%d %d %d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
+	DrawFormatString(FIELD_W - 200, 13, GetColor(255, 255, 255), "%d", x);
 
-	DrawFormatString(FIELD_W - 80, 24, GetColor(255, 255, 255), "%d", getResource());
-/*	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++)birth(i * 10 % 400, HOHEI);
-	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(1,BALLOON);
+	DrawFormatString(FIELD_W - 200, 26, GetColor(255, 255, 255), "%d", getResource());
+	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++)setProduct(1, BIG);
+	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,BALLOON);
 	if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);
-	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, BALLOON);
-*/
+	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, BIG);
+
 /*	if (!delete_musumelist.empty()){
 		printfDx("del%dused ", musume_list[0].front().use_count());*/
 }
