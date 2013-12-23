@@ -320,6 +320,8 @@ void Game::Test(){
 	DrawFormatString(FIELD_W - 200, 13, GetColor(255, 255, 255), "%d", x);
 
 	DrawFormatString(FIELD_W - 200, 26, GetColor(255, 255, 255), "%d", getResource());
+	DrawFormatString(FIELD_W - 200, 39, GetColor(255, 255, 255), "%d", getNowStage());
+
 	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++)setProduct(1, BIG);
 	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,BALLOON);
 	if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);
