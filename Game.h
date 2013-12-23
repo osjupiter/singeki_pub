@@ -23,6 +23,7 @@ class Game : public Layer{
 
 	list<shared_ptr<effect>>  delete_effectlist;
 	list<shared_ptr<effect>>  effect_list;
+	list<shared_ptr<std::tuple<int,int,int,int>>> range_atk_list;
 	list<shared_ptr<enemy>>  enemy_list[3];
 	list<shared_ptr<enemy>>  delete_enemylist;
 	list<shared_ptr<musume>> musume_list[3];
@@ -45,7 +46,7 @@ public:
 	bool getClock(unsigned int);
 	void delete_object();
 	void stageInc(int);
-	void setProduct(int,int);
+	void setProduct(int,int); //©“®¶¬ƒZƒbƒg
 	int getResource();
 	int getNowStage();
 	void useResource(int);

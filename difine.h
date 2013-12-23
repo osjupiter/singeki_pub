@@ -37,6 +37,13 @@
 #define COST_BALLOON 50
 #define CLK_BALLOON 2000
 
+#define ANI_COPTER 6
+#define WID_COPTER 280
+#define HEI_COPTER 150
+#define COST_COPTER 50
+//#define CLK_COPTER 2000
+
+
 #define ANI_BIG 7
 #define ANI_BIG_ATK 18
 #define WID_BIG 150
@@ -65,6 +72,8 @@
 #define BIG 3
 
 #define TANK 10
+#define COPTER 11
+
 
 #define BOMB 20
 #define EXP 21
@@ -72,7 +81,7 @@
 
 #define STAGE_NUM 8
 
-#define FIELD_W 650
+#define FIELD_W 800
 #define FIELD_H 450
 
 

@@ -37,9 +37,10 @@ void background::draw(int cx){
 	calc(cx);
 
 	DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
-	if ((dx = dx + pic_wid) <= cx + FIELD_W)
-		DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
-	
+	while (dx <= cx + FIELD_W){
+		if ((dx = dx + pic_wid) <= cx + FIELD_W)
+			DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
+	}
 /*	if (cx < x){
 		remain(x - cx*(layer+1)/3, pic_wid);
 		DrawRectGraph(x - cx, y, x - cx- dx, 0, pic_wid - (x - cx - dx), FIELD_H, Images::getIns()->back[stage][layer], true, false);

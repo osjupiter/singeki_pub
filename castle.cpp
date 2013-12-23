@@ -25,8 +25,10 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 void castle::main(){
 	switch (state){
 	case ACTIVE:
-		if (getClock(1000))
+		if (getClock(5000)){
 			Game::getIns()->birth(stage, TANK);
+			Game::getIns()->birth(stage, COPTER);
+		}
 		break;
 	case WAIT:
 

@@ -23,6 +23,9 @@ void Images::load(){
 	LoadDivGraph("dat/img/bomb0.png", 16, 8, 2, 96, 96, g_exp);
 	LoadDivGraph("dat/img/è’åÇîg.png", ANI_SHOCK, ANI_SHOCK, 1, WID_SHOCK, HEI_SHOCK, g_shock);
 
+	LoadDivGraph("dat/img/ÉwÉäw.png", ANI_COPTER, ANI_COPTER, 1, WID_COPTER, HEI_COPTER, g_copter);
+
+
 	back[0][0] = LoadGraph("dat/img/éR/îwåiÇPÅ|ÇP.png");
 	back[0][1] = LoadGraph("dat/img/éR/îwåiÇPÅ|ÇQ.png");
 	back[0][2] = LoadGraph("dat/img/éR/îwåiÇPÅ|ÇR.png");

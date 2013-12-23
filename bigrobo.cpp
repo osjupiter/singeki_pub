@@ -21,15 +21,16 @@ bigrobo::bigrobo(int fx, int fy, int ln) : musume(fx, fy, ln){
 
 void bigrobo::main(int front){
 	musume::main(front);
+//	state = ATK;
 	switch (state){		
 	case MOV:
-		x += 2; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		x += 3; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		break;
 	case ATK:
 		if (ani_count / ANIM_SPEED%ANI_BIG_ATK == ANI_BIG_ATK - 1 && atk){
 			Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
 			atk = false;
-			power = 500;
+			power = 00;
 		}
 		if (!(ani_count / ANIM_SPEED%ANI_BIG_ATK == ANI_BIG_ATK - 1)){
 			atk = true;
