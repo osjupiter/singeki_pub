@@ -32,13 +32,13 @@ GameScene::GameScene(){
 	game=p;
 	addLayer(0,p);
 	//"pic/left.png"
-	LAY_Ptr q((new ButtonLayer(0,0,Images::get("pic/left.png"),0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
+	LAY_Ptr q((new ButtonLayer(0,0,0,0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
 	addLayer(1,q);
-	LAY_Ptr r((new ButtonLayer(700,0,Images::get("pic/right.png"),50,0,50,450))->setId("right")->setClickType(ButtonLayer::ONMOUSE));
+	LAY_Ptr r((new ButtonLayer(700,0,0,50,0,50,450))->setId("right")->setClickType(ButtonLayer::ONMOUSE));
 	addLayer(1,r);
 	LAY_Ptr s((new ButtonLayer(500,350,Images::get("pic/right.png"),0,0,100,100))->setId("birth")->setClickType(ButtonLayer::PUSH));
 	addLayer(1,s);
-	LAY_Ptr t(new MapLayer());
+	LAY_Ptr t(new MapLayer(game));
 	addLayer(5,t);
 	
 }
@@ -55,5 +55,8 @@ void GameScene::buttonPushed(string id){
 		game->scrollRight(15);
 	}else if(id=="birth"){
 		game->birth(0, HOHEI);
-	}
+	}else if(id.find("select",0)!=string::npos)
+		printfDx("%d\n",id[6]-'0');
 }
+
+std::shared_ptr<Game> GameScene::getGame(){return game;}

@@ -31,6 +31,8 @@ mouse_in* mouse_in::getIns(){return &ins;}
 	int mouse_in::X(){return x;}
 	int mouse_in::Y(){return y;}
 
+	
+	boolean mouse_in::isUsed(){return (l==4||r==4);}
 	boolean mouse_in::LeftPush(){return (l==3||l==1);}
 	boolean mouse_in::LeftClick(){return l==3;}
 	boolean mouse_in::LeftLeave(){return l==2;}

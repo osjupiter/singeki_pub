@@ -12,10 +12,10 @@ public:
 	boolean isPop;
 	LAY_Ptr pointer;
 	int key;
-	LayerPushPop(boolean i,int key,LAY_Ptr m){
+	LayerPushPop(boolean i,int k,LAY_Ptr m){
 		isPop=i;
 		pointer=m;
-		key=key;
+		key=k;
 	}
 };
 class SceneNode
@@ -68,7 +68,7 @@ public:
 		for(auto p:pushPop){
 			if(p->isPop){
 				layers.erase(p->key);
-				p->pointer->setParent(nullptr);
+				//p->pointer->setParent(nullptr);
 			}else{
 				layers.insert(make_pair(p->key,p->pointer));
 				p->pointer->setParent(this);

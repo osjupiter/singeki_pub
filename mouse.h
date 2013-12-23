@@ -20,5 +20,5 @@ public:
 	boolean RightPush();	//‰Ÿ‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
 	boolean RightClick();	//‰Ÿ‚µ‚½uŠÔ‚©‚Ç‚¤‚©
 	boolean RightLeave();	//—£‚µ‚½uŠÔ‚©‚Ç‚¤‚©
-	
+	boolean isUsed();	//g‚í‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
 };
