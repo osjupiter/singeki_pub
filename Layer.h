@@ -51,13 +51,17 @@ class ButtonLayer:public GraphicLayer{
 public :static enum ClickFlag { ONMOUSE=0,CLICK = 3, PUSH = 1,LEAVE=2};
 private:
 	int bx,by,bw,bh;
+	boolean _oldMouseisin;
 	string id;
 	ClickFlag _clicktype;
+	string _enterSE,_clickSE;
 public:
 	
 	ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth);
 	ButtonLayer* setId(string s);
 	ButtonLayer* setClickType(ClickFlag s);
+	ButtonLayer* setEnterSE(string);
+	ButtonLayer* setClickSE(string);
 	void main();
 };
 

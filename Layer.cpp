@@ -28,14 +28,21 @@ ButtonLayer::ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth):G
 	bw=ttw;
 	bh=tth;
 	_clicktype=CLICK;
+	_oldMouseisin=false;
 }
 void ButtonLayer::main(){
 	mouse_in* m=mouse_in::getIns();
-	if(_clicktype==ONMOUSE|| m->Left()==_clicktype){
-		if(x+bx<m->X()&&y+by<m->Y()&&m->X()<x+bx+bw&&m->Y()<y+by+bh){
-			if(parentScene!=nullptr)parentScene->buttonPushed(id);
+	if(x+bx<m->X()&&y+by<m->Y()&&m->X()<x+bx+bw&&m->Y()<y+by+bh){
+		if(!_oldMouseisin)
+			Images::playSE(_enterSE);
+		if(_clicktype==ONMOUSE|| m->Left()==_clicktype){
+			if(parentScene!=nullptr){parentScene->buttonPushed(id);Images::playSE(_clickSE);}
 		}
+		_oldMouseisin=true;
+	}else{
+		_oldMouseisin=false;
 	}
+
 }
 ButtonLayer* ButtonLayer::setId(string s){
 	id=s;return this;
@@ -43,6 +50,15 @@ ButtonLayer* ButtonLayer::setId(string s){
 ButtonLayer* ButtonLayer::setClickType(ClickFlag c){
 	_clicktype=c;return this;	
 }
+//setEnterSE
+ButtonLayer* ButtonLayer::setEnterSE(string s){
+	_enterSE=s;return this;	
+}
+ButtonLayer* ButtonLayer::setClickSE(string s){
+	_clickSE=s;return this;	
+}
+
+
 MapLayer::MapLayer(std::shared_ptr<Game> g){
 	lx=200;ly=200;lw=400;lh=200;
 	for(int i=0;i<9;i++)

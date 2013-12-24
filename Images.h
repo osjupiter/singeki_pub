@@ -48,4 +48,6 @@ public:
 	static Images* getIns();
 	static int get(char name[]);
 	static int getSound(char name[]);
+	static void playSE(string name,boolean);
+	static void playSE(string name);
 };
