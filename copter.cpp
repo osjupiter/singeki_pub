@@ -44,6 +44,7 @@ void copter::main(int front){
 			== ANI_COPTER - 1 && atk){
 			atk = false;
 			Game::getIns()->effect_create(x , y + 155, MISSILE,dir);
+			Images::playSE("sound/misairu.mp3");
 		}
 		if (!((ani_count / ANIM_SPEED%ANI_COPTER)
 			== ANI_COPTER - 1))atk = true;

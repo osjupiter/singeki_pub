@@ -40,7 +40,7 @@ public:
 	int g_bazooka[8];
 	int g_bazooka_atk[12];
 	int castle[8];
-	int back[5][5];
+	int back[8][5];
 	Images(void){}
 	~Images(void){}
 	void load();

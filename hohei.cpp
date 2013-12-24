@@ -42,6 +42,9 @@ void hohei::main(int front){
 		x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		break;
 	case ATK:
+		if (ani_count / ANIM_SPEED%ANI_HOHEI_ATK == 0)
+			Images::playSE("sound/gun03.mp3",true);
+			
 		break;
 	case DIE:
 		y += vy;

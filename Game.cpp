@@ -22,7 +22,7 @@ Game* Game::ins;
 Game::Game(){
 	ins = this;
 	resource = 1000;
-	for (int i = 0; i < 5; i++){
+	for (int i = 0; i < STAGE_NUM; i++){
 		for (int j = 0; j < 5; j++){
 			if (j == 2){
 				shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3, true));
@@ -394,6 +394,7 @@ void Game::Test(){
 	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,KAMIKAZE);
 	if (CheckHitKey(KEY_INPUT_C)) for (int i = 0; i < 3; i++)enemy_list[i].clear();
 	if (CheckHitKey(KEY_INPUT_V)) for (int i = 0; i < 3; i++)musume_list[i].clear();
+
 	for (auto i : atkrange_enemy_list){
 		i->draw(x);
 	}
@@ -418,7 +419,7 @@ void Game::scrollLeft(int sx){
 void Game::scrollRight(int sx){
 	int r_end = stage_W[castle::getNowstage()];
 	x += sx;	
-	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
+	//if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
 }
 

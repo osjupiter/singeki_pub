@@ -63,6 +63,24 @@ void Images::load(){
 	back[4][3] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚Q.png");
 	back[4][4] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚R.png");
 
+	back[5][0] = LoadGraph("dat/img/“´ŒA/”wŒi‚U|‚P.png");
+	back[5][1] = LoadGraph("dat/img/“´ŒA/”wŒi‚U|‚Q.png");
+	back[5][2] = 0;
+	back[5][3] = LoadGraph("dat/img/“´ŒA/”wŒi‚U|‚R.png");
+	back[5][4] = LoadGraph("dat/img/“´ŒA/”wŒi‚U|‚S.png");
+
+	back[6][0] = LoadGraph("dat/img/“ss/”wŒi‚V|‚P.png");
+	back[6][1] = LoadGraph("dat/img/“ss/”wŒi‚V|‚Q.png");
+	back[6][2] = 0;
+	back[6][3] = LoadGraph("dat/img/“ss/”wŒi‚V|‚S.png");
+	back[6][4] = LoadGraph("dat/img/“ss/”wŒi‚V|‚T.png");
+	
+	back[7][0] = LoadGraph("dat/img/ˆÅ‚Ì¢ŠE/”wŒi‚W|‚P.png");
+	back[7][1] = 0;
+	back[7][2] = 0;
+	back[7][3] = LoadGraph("dat/img/ˆÅ‚Ì¢ŠE/”wŒi‚W|‚Q.png");
+	back[7][4] = LoadGraph("dat/img/ˆÅ‚Ì¢ŠE/”wŒi‚W|‚R.png");
+
 	castle[0] = LoadGraph("dat/img/sirodummy.png");
 	
 
@@ -82,6 +100,10 @@ void Images::load(){
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
 	soundlist.push_back("sound/button03a.mp3");
+	soundlist.push_back("sound/taihou03.mp3");
+	soundlist.push_back("sound/misairu.mp3");
+	soundlist.push_back("sound/shot002.wav");
+	soundlist.push_back("sound/gun04.mp3");
 
 	
 	for(auto s:filelist){

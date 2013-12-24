@@ -45,6 +45,9 @@ void tank::main(int front){
 		if (x + width < 0) state = DIE;
 		break;
 	case ATK:
+		if (ani_count / ANIM_SPEED%ANI_TANK_ATK == 2){
+			Images::playSE("sound/taihou03.mp3");
+		}
 		break;
 	case DIE:
 		del();
