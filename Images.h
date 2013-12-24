@@ -50,4 +50,5 @@ public:
 	static int getSound(char name[]);
 	static void playSE(string name,boolean);
 	static void playSE(string name);
+	static void stopSE(string name);
 };

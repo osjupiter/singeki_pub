@@ -124,8 +124,8 @@ public:
 
 class FactoryLayer:public Layer{
 private:
-	int x,y,w,h,lh;
-	int select;
+	int x,y,w,h,lh,lxmar,lw;
+	int select,lmartop;
 public:
 	FactoryLayer();
 	void draw();
