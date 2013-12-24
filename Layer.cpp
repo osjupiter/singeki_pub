@@ -238,8 +238,10 @@ void MenuLayer:: main(){
 						break;
 					case 1:
 						p->addLayer(15,std::make_shared<FactoryLayer>());
+						break;
 					case 2:
 						p->addLayer(20,std::make_shared<OptionLayer>());
+						break;
 						
 					}
 				}
