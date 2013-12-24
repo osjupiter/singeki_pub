@@ -114,3 +114,5 @@ void Images::load(){
 		PlaySoundMem(ins.ss[name] ,DX_PLAYTYPE_BACK);
 	}
 	void Images::playSE(string name){Images::playSE(name,false);}
+
+	void Images::stopSE(string name){StopSoundMem(ins.ss[name] );}
