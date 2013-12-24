@@ -8,58 +8,88 @@ double remain(double a,int b){
 	return a - c*b;
 }
 
-background::background(int x_st, int st, int ly, int w_st):object(x_st,0){
+background::background(int x_st, int st, int ly, int w_st,bool mv):object(x_st,0){
 
 		stage = st;
 		layer = ly;
 		width = w_st;
+		height = WINDOW_Y;
 		pic_wid = 650;
-		gap = ((layer + 1) / 3.0 / (3 - layer) / (3 - layer));
+		move = mv;
+		if (move){
+			gap = 0;
+			dx = x;
+		}
+		else
+			gap = ((layer + 1) / 5.0 / (5 - layer) / (5 - layer));
+}
+
+void background::main(int cx){
+	if (move){
+		gap = gap + 1;
+		
+		dx =  - remain((int)gap,pic_wid) ;
+	
+	}
+	else{
+		if (cx < x)
+			dx = x - cx;
+		//	dx = remain(x - cx*(layer + 1) / 3, pic_wid);
+		/*else if (x + width < cx + FIELD_W){
+		dx=x + width - (cx + FIELD_W);
+		}*/
+		else{
+			//”wŒi‚Ì‚¸‚ç‚µ•û—vŒŸ“¢
+			dx = ((int)(remain(x*gap - cx*gap, pic_wid)));
+		}
+	}
+	
+
+}
+
+void background::calc(int cx){
 	
 }
 
-void background::main(){}
-
-void background::calc(int cx){
-	if (cx < x)
-		dx = x - cx;
-	//	dx = remain(x - cx*(layer + 1) / 3, pic_wid);
-	/*else if (x + width < cx + FIELD_W){
-		dx=x + width - (cx + FIELD_W);
-	}*/
-	else{
-		//”wŒi‚Ì‚¸‚ç‚µ•û—vŒŸ“¢
-		dx = ((int)(remain(x*gap  - cx*gap, pic_wid)));
-	}
-}
-
 void background::draw(int cx){
-	calc(cx);
+	
+	if (move){
+		if (cx < x){
+		DrawRectGraph(x - cx, y, x - cx - (dx), y, pic_wid - (x - cx - (dx)), height, Images::getIns()->back[stage][layer], true, false);
 
-	DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
-	while (dx <= cx + FIELD_W){
-		if ((dx = dx + pic_wid) <= cx + FIELD_W)
+		}
+		else{
 			DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
-	}
-/*	if (cx < x){
-		remain(x - cx*(layer+1)/3, pic_wid);
-		DrawRectGraph(x - cx, y, x - cx- dx, 0, pic_wid - (x - cx - dx), FIELD_H, Images::getIns()->back[stage][layer], true, false);
-		if ((dx = dx + pic_wid) <= cx + FIELD_W)
-			DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
+		}
+	/*	clsDx();
+		if (stage == 1 && layer == 2){
+			printfDx("gap%lf x%d dx%d dx+pic%d", gap, x, dx, dx+pic_wid);
+			DrawLine(x - cx, 0, x - cx, WINDOW_Y, GetColor(255, 255, 0), 4);
+			DrawLine(dx, 0, dx, WINDOW_Y, GetColor(0, 255, 0), 4);
+			DrawLine(dx + pic_wid, 0, dx + pic_wid, WINDOW_Y, GetColor(0, 0, 255), 4);
+			DrawLine(dx + pic_wid + pic_wid+1, 0, dx + pic_wid + pic_wid+1, WINDOW_Y, GetColor(255, 0, 0), 4);
 
-	}
-	else if (x + width < cx + FIELD_W){
-		remain(x - cx*(layer+1)/3, pic_wid);
-		DrawRectGraph(x - cx, y, x - cx - dx, 0, pic_wid - (x - cx - dx), FIELD_H, Images::getIns()->back[stage][layer], true, false);
-
-	}
-	else{
-		//”wŒi‚Ì‚¸‚ç‚µ•û—vŒŸ“¢
-		remain(x - cx*(layer+1)/3, pic_wid);
+		}*/
+		if (layer != 1){
+			while (dx <= FIELD_W){
+				if ((dx = dx + pic_wid) <= FIELD_W){
+					if (dx < x - cx)
+						DrawRectGraph(x - cx, y, x - cx - (dx), y, pic_wid - (x - cx - (dx)), height, Images::getIns()->back[stage][layer], true, false);
+					else DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
+				}
+			}
+		}
+	}else{
 		DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
-		if ((dx = dx + pic_wid) <= cx + FIELD_W)
-			DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
+		if (layer != 1){
+			while (dx <= cx + FIELD_W){
+				if ((dx = dx + pic_wid) <= cx + FIELD_W)
+					DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
+			}
+		}
+	}
+	
+	
 
-	}*/
 }
 

@@ -36,7 +36,7 @@ public:
 	int g_copter[6];
 	int g_missile[3];
 	int castle[8];
-	int back[5][3];
+	int back[5][5];
 	Images(void){}
 	~Images(void){}
 	void load();

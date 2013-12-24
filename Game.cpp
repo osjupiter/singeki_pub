@@ -19,9 +19,15 @@ Game::Game(){
 	ins = this;
 	resource = 1000;
 	for (int i = 0; i < 5; i++){
-		for (int j = 0; j < 3; j++){
-			shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3));
-			back_list.push_back(p);
+		for (int j = 0; j < 5; j++){
+			if (j == 2){
+				shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3, true));
+				back_list.push_back(p);
+			}
+			else{
+				shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3, false));
+				back_list.push_back(p);
+			}
 		}
 	}
 
@@ -29,6 +35,7 @@ Game::Game(){
 		shared_ptr<castle> p(new castle(stage_W[i], 0, i));
 		castle_list.push_back(p);
 	}
+
 	hohei::setNum(0);
 	tank::setNum(0);
 	balloon::setNum(0);
@@ -163,6 +170,9 @@ void Game::main(){
 	shared_ptr<enemy> target_e_sky;
 	shared_ptr<musume> target_m_sky;
 
+	for (auto i : back_list){
+			i->main(x);
+	}
 
 	for (int j=0; j < 3; j++){
 		for (auto i : enemy_list[j]){
@@ -341,8 +351,9 @@ void Game::scrollLeft(int sx){
 void Game::scrollRight(int sx){
 	int r_end = stage_W[castle::getNowstage()];
 	x += sx;	
-	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
+//	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
 }
+
 
 

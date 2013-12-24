@@ -28,19 +28,35 @@ void Images::load(){
 
 
 	back[0][0] = LoadGraph("dat/img/R/”wŒi‚P|‚P.png");
-	back[0][1] = LoadGraph("dat/img/R/”wŒi‚P|‚Q.png");
-	back[0][2] = LoadGraph("dat/img/R/”wŒi‚P|‚R.png");
-	back[1][0] = LoadGraph("dat/img/X/”wŒi‚Q|‚P.png");
-	back[1][1] = LoadGraph("dat/img/X/”wŒi‚Q|‚Q.png");
-	back[1][2] = LoadGraph("dat/img/X/”wŒi‚Q|‚R.png");
-	back[2][0] = LoadGraph("dat/img/–éí/”wŒi‚R|‚P.png");
-	back[2][1] = LoadGraph("dat/img/–éí/”wŒi‚R|‚Q.png");
-	back[2][2] = LoadGraph("dat/img/–éí/”wŒi‚R|‚R.png");
+	back[0][1] = LoadGraph("dat/img/R/”wŒi‚P|‚T.png");
+	back[0][2] = LoadGraph("dat/img/R/”wŒi‚P|‚S.png");
+	back[0][3] = LoadGraph("dat/img/R/”wŒi‚P|‚Q.png");
+	back[0][4] = LoadGraph("dat/img/R/”wŒi‚P|‚R.png");
+
+	back[1][0] = 0;
+	back[1][1] = 0;
+	back[1][2] = LoadGraph("dat/img/X/”wŒi‚Q|‚P.png");
+	back[1][3] = LoadGraph("dat/img/X/”wŒi‚Q|‚Q.png");
+	back[1][4] = LoadGraph("dat/img/X/”wŒi‚Q|‚R.png");
+
+	back[2][0] = 0;
+	back[2][1] = 0;
+	back[2][2] = LoadGraph("dat/img/–éí/”wŒi‚R|‚P.png");
+	back[2][3] = LoadGraph("dat/img/–éí/”wŒi‚R|‚Q.png");
+	back[2][4] = LoadGraph("dat/img/–éí/”wŒi‚R|‚R.png");
+
 	back[3][0] = LoadGraph("dat/img/ŠC/”wŒi‚S|‚P.png");
-	back[3][2] = LoadGraph("dat/img/ŠC/”wŒi‚S|‚Q.png");
+	back[3][1] = LoadGraph("dat/img/ŠC/”wŒi‚S|‚R.png");
+	back[3][2] = 0;
+	back[3][3] = 0;
+	back[3][4] = LoadGraph("dat/img/ŠC/”wŒi‚S|‚Q.png");
+
 	back[4][0] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚P.png");
-	back[4][1] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚Q.png");
-	back[4][2] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚R.png");
+	back[4][1] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚S.png");
+	back[4][2] = 0;
+	back[4][3] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚Q.png");
+	back[4][4] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚R.png");
+
 	castle[0] = LoadGraph("dat/img/sirodummy.png");
 	
 
