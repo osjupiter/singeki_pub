@@ -5,13 +5,27 @@
 using namespace std;
 class SceneNode;
 class Game;
+
+/*
+	0 Game
+	1 right left
+	2 Menu
+	5 Clear
+	9 MapClose
+	10 MapLay
+
+*/
+
+
+
 class Layer
 {
 protected:
 	SceneNode* parentScene;
+	int thisLayerID;
 public:
 	Layer(void){}
-	void setParent(SceneNode* s){parentScene=s;}
+	void setParent(SceneNode* s,int id){parentScene=s;thisLayerID=id;}
 
 	virtual void draw(){}
 	virtual void main(){}
@@ -48,6 +62,7 @@ class MapLayer:public Layer{
 private:
 	int xlist[9];
 	double ratelist[9];
+	int lx,ly,lw,lh;
 
 public:
 	MapLayer(std::shared_ptr<Game>);
@@ -59,12 +74,48 @@ public:
 
 class SelectLayer:public Layer{
 private:
-	std::shared_ptr<Game> game;
 	int x,y,id,w,h;
 public:
 	SelectLayer(int,int,int);
 	void draw();
 	void main();
-	void setGame(std::shared_ptr<Game>);
 	
 };
+
+class StageClearLayer:public Layer{
+private:
+	int stage_id, data;
+	int remain_time;
+public:
+	StageClearLayer(int,int);
+	void draw();
+	void main();
+	
+};
+
+
+
+class MenuLayer:public Layer{
+private:
+	int onMouseTime[3];
+	shared_ptr<Game> game;
+public:
+	MenuLayer(shared_ptr<Game>);
+	void draw();
+	void main();
+	
+};
+
+class MapCloseLayer:public Layer{
+private:
+
+public:
+	MapCloseLayer();
+	void draw();
+	void main();
+};
+
+
+
+
+

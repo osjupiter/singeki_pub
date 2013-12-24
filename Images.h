@@ -12,14 +12,14 @@ using namespace std;
 class Images
 {
 	vector<string> filelist;
+	vector<string> soundlist;
 
 	static Images ins;
 	std::map<std::string, int> gs;
+	std::map<std::string, int> ss;
 public:	
 	int blend;
 	
-
-	int sound[100];
 
 
 	int g_hohei[ANI_HOHEI];//•à•º
@@ -43,4 +43,5 @@ public:
 	static void init();
 	static Images* getIns();
 	static int get(char name[]);
+	static int getSound(char name[]);
 };
