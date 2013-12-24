@@ -16,6 +16,7 @@ background::background(int x_st, int st, int ly, int w_st,bool mv):object(x_st,0
 		height = WINDOW_Y;
 		pic_wid = 650;
 		move = mv;
+		dx=0;
 		if (move){
 			gap = 0;
 			dx = x;
@@ -71,20 +72,23 @@ void background::draw(int cx){
 
 		}*/
 		if (layer != 1){
-			while (dx <= FIELD_W){
-				if ((dx = dx + pic_wid) <= FIELD_W){
-					if (dx < x - cx)
-						DrawRectGraph(x - cx, y, x - cx - (dx), y, pic_wid - (x - cx - (dx)), height, Images::getIns()->back[stage][layer], true, false);
-					else DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
+			int tmpdx=dx;
+			while (tmpdx <= FIELD_W){
+				
+				if ((tmpdx = tmpdx + pic_wid) <= FIELD_W){
+					if (tmpdx < x - cx)
+						DrawRectGraph(x - cx, y, x - cx - (tmpdx), y, pic_wid - (x - cx - (tmpdx)), height, Images::getIns()->back[stage][layer], true, false);
+					else DrawGraph(tmpdx, y, Images::getIns()->back[stage][layer], true);
 				}
 			}
 		}
 	}else{
 		DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
+		int tmpdx=dx;
 		if (layer != 1){
-			while (dx <= cx + FIELD_W){
-				if ((dx = dx + pic_wid) <= cx + FIELD_W)
-					DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
+			while (tmpdx <= cx + FIELD_W){
+				if ((tmpdx = tmpdx + pic_wid) <= cx + FIELD_W)
+					DrawGraph(tmpdx, y, Images::getIns()->back[stage][layer], true);
 			}
 		}
 	}
