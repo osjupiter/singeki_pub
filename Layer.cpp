@@ -87,12 +87,14 @@ void MapLayer::draw(){
 SelectLayer::SelectLayer(int _x,int _y,int _id){
 	x=_x;
 	y=_y;
-	w=100;h=100;
+	w=75;h=75;
 	id=_id;
 }
 void SelectLayer::main(){
 	mouse_in* m=mouse_in::getIns();
-		if(x-w<m->X()&&y-w<m->Y()&&m->X()<x+w&&m->Y()<y+w){
+	if(x-w<m->X()&&y-w<m->Y()&&m->X()<x+w&&m->Y()<y+w){
+		if(m->LeftClick()){
+			m->Reset();
 			for(int i=0;i<3;i++)
 				for(int j=0;j<3;j++){
 					int x1,x2,y1,y2;
@@ -100,27 +102,26 @@ void SelectLayer::main(){
 					x2=x-75+50*i+50-5;
 					y1=y-75+50*j+5;
 					y2=y-75+50*j+50-5;
-					if(m->LeftClick()&&x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
+					if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
 							int number=i+j*3;
-							m->Reset();
+							
 							GameScene* p = dynamic_cast<GameScene*>( parentScene );
 							if( p != NULL )
 							{
 								p->getGame()->setProduct(id,number);
-								printfDx("%d %d\n",id,number);
+
 							}
-							//std::shared_ptr<GameScene> b2 = std::dynamic_pointer_cast<GameScene>(parentScene);
 							
 					}
 
 		
 				}
-    
-
-		}else{
-			if(m->LeftClick()||m->RightClick()||m->isUsed())
-				parentScene->rmLayer(thisLayerID);
 		}
+
+	}else{
+		if(m->LeftClick()||m->RightClick()||m->isUsed())
+			parentScene->rmLayer(thisLayerID);
+	}
 	
 	
 }
