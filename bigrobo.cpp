@@ -5,17 +5,34 @@
 #define ANIM_SPEED 3
 int bigrobo::num = 0;
 
+int bigrobo::maxhp;
+int bigrobo::power;
+int bigrobo::speed;
+int bigrobo::defense;
+int bigrobo::atk_freq;
+int bigrobo::atk_type;
+int bigrobo::clk;
+int bigrobo::cost;
+
 bigrobo::bigrobo(int fx, int fy, int ln) : musume(fx, fy, ln){
-	power = 0;
-	hp = 5000;
+	hp = maxhp;
 	width = WID_BIG;
 	height = HEI_BIG;
 	num++;
 	type = RAND;
 	atk = false;
-	defense = 1;
 	dist = width;
+}
+
+void bigrobo::init(){
+	num = 0;
+	maxhp = 500;
+	power = 500;
+	speed = 2;
+	defense = 1;
+	atk_freq = 5;
 	atk_type = RAND;
+	clk = CLK_BIG;
 	cost = COST_BIG;
 }
 
@@ -66,3 +83,19 @@ void bigrobo::setNum(int i){
 	num = i;
 }
 
+int bigrobo::getPower(){
+	return power;
+}
+int bigrobo::getAtkType(){
+	return atk_type;
+}
+void bigrobo::damage(int d, int op_a_type){
+
+	if (op_a_type == NONE || op_a_type == type){
+		hp -= max(d - defense, 0);
+		if (hp < 0){
+			state = DIE;
+		}
+	}
+
+}

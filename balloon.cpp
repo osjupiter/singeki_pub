@@ -2,23 +2,38 @@
 #include "Images.h"
 #include "Game.h"
 
-#define ANIM_SPEED 3
+#define ANIM_SPEED 5
 int balloon::num = 0;
 
+int balloon::maxhp;
+int balloon::power;
+int balloon::speed;
+int balloon::defense;
+int balloon::atk_freq;
+int balloon::atk_type;
+int balloon::clk;
+int balloon::cost;
+
 balloon::balloon(int fx, int fy, int ln) : musume(fx, fy, ln){
-	dist = -dist+100;
-	power = 0;
-	hp = 200;
+	dist = -dist+50;
+	hp = maxhp;
 	width = WID_BALLOON;
 	height = HEI_BALLOON;
 	num++;
 	atk = false;
-	defense = 1;
 	type = SKY;
+}
+void balloon::init(){
+	num = 0;
+	maxhp = 500;
+	power = 0;
+	speed = 4;
+	defense = 1;
+	atk_freq = 5;
 	atk_type = RAND;
+	clk = CLK_BALLOON;
 	cost = COST_BALLOON;
 }
-
 void balloon::main(int front){
 	musume::main(front);
 //	state = ATK;
@@ -67,3 +82,19 @@ void balloon::setNum(int i){
 	num = i;
 }
 
+int balloon::getPower(){
+	return power;
+}
+int balloon::getAtkType(){
+	return atk_type;
+}
+void balloon::damage(int d, int op_a_type){
+
+	if (op_a_type == NONE || op_a_type == type){
+		hp -= max(d - defense, 0);
+		if (hp < 0){
+			state = DIE;
+		}
+	}
+
+}

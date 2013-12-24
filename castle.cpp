@@ -2,8 +2,9 @@
 #include "Images.h"
 #include "Game.h"
 const int castle_hp[9] = { 5000, 5000, 5000, 50000, 5000, 5000, 50000, 50000,50000};
-const int unit_clk[4] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG };
+const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
 int castle::nowstage=1;
+
 
 castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	hp = castle_hp[st];
@@ -25,7 +26,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 void castle::main(){
 	switch (state){
 	case ACTIVE:
-		if (getClock(5000)){
+		if (getClock(10000)){
 			Game::getIns()->birth(stage, TANK);
 			Game::getIns()->birth(stage, COPTER);
 		}

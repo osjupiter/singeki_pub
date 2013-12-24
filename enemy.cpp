@@ -57,14 +57,19 @@ void enemy::draw(int cx){
 }
 
 void enemy::del(){
-	Game::getIns()->push_del_enemy(*(new shared_ptr<enemy>(this)));
-	Game::getIns()->gainResource(cost);
+
 }
 
-void enemy::damage(int d,int op_a_type){
-	unit::damage(d,op_a_type);
+int enemy::getPower(){
+	return 0;
+}
+int enemy::getAtkType(){
+	return 0;
+}
+void enemy::damage(int d, int op_a_type){
 	
 }
+
 
 
 

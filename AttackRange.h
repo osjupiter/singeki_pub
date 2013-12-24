@@ -17,5 +17,5 @@ public:
 	bool judge(int x,int w,int u_type);
 	int getDamage();
 	int getAtkType();
-
+	void draw(int);
 };

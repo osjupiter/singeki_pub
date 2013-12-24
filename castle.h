@@ -8,6 +8,11 @@
 class castle : public unit{
 	int stage;
 	int tm;
+
+	int hp;
+	int defense;
+	int cost;
+
 	static int nowstage;
 	int product_type;
 	int product_clk;
