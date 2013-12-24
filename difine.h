@@ -62,6 +62,14 @@
 #define COST_KAMIKAZE 50
 #define CLK_KAMIKAZE 4000
 
+#define ANI_BAZOOKA 8
+#define ANI_BAZOOKA_ATK 12
+#define WID_BAZOOKA 120
+#define HEI_BAZOOKA 110
+#define WID_BAZOOKA_ATK 130
+#define HEI_BAZOOKA_ATK 110
+#define COST_BAZOOKA 50
+#define CLK_BAZOOKA 4000
 
 #define ANI_BOMB 2
 #define WID_BOMB 30
@@ -87,6 +95,7 @@
 #define BALLOON 2
 #define BIG 3
 #define KAMIKAZE 4
+#define BAZOOKA 5
 
 #define TANK 10
 #define COPTER 11

@@ -6,6 +6,7 @@
 #include "tank.h"
 #include "copter.h"
 #include "kamikaze.h"
+#include "bazooka.h"
 
 #include "balloon.h"
 #include "bomb.h"
@@ -102,13 +103,21 @@ void Game::birth(int st,int type){
 		break;
 	}
 	case KAMIKAZE:{
-					  if (getResource() < COST_KAMIKAZE) break;
-				 line = 2;
-				 shared_ptr<musume> p(new kamikaze(stage_W[st], 50 - line * 3, line));
-				 musume_list[line].push_back(p);
-				 useResource(COST_KAMIKAZE);
+				if (getResource() < COST_KAMIKAZE) break;
+				line = 2;
+				shared_ptr<musume> p(new kamikaze(stage_W[st], 50 - line * 3, line));
+				musume_list[line].push_back(p);
+				useResource(COST_KAMIKAZE);
 
-				 break;
+				break;
+	}
+	case BAZOOKA:
+	{
+			if (getResource() < COST_BAZOOKA) break;
+			shared_ptr<musume> p(new bazooka(stage_W[st], WINDOW_Y - HEI_BAZOOKA - line * 3, line));
+			musume_list[line].push_back(p);
+			useResource(COST_BAZOOKA);
+			break;
 	}
 	case TANK:{
 		shared_ptr<enemy> p(new tank(stage_W[st], WINDOW_Y - HEI_TANK - line * 3, line,castle::getNowstage()));
@@ -346,7 +355,7 @@ void Game::Test(){
 	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++)setProduct(1, BIG);
 	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,BALLOON);
 	if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);
-	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, KAMIKAZE);
+	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, BAZOOKA);
 
 /*	if (!delete_musumelist.empty()){
 		printfDx("del%dused ", musume_list[0].front().use_count());*/
