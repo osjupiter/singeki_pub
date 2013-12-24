@@ -7,6 +7,7 @@ class copter : public enemy{
 private:
 	bool atk;
 	static int num;
+	
 public:
 	copter(int, int, int,int);
 	void main(int);

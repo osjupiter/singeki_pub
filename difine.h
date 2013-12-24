@@ -88,6 +88,8 @@
 #define WID_MISSILE 90
 #define HEI_MISSILE 60
 
+#define MUSUME 0
+#define ENEMY 1
 
 //unit type
 #define NONE 0
@@ -107,6 +109,10 @@
 #define MISSILE 23
 
 #define STAGE_NUM 8
+
+#define RAND 1
+#define SKY 2
+
 
 #define FIELD_W 800
 #define FIELD_H 450

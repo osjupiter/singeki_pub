@@ -17,6 +17,7 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	type = SKY;
 	atk_type = RAND;
 	cost = COST_COPTER;
+	
 }
 
 void copter::main(int front){

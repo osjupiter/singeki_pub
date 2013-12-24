@@ -6,6 +6,7 @@
 #include "effect.h"
 #include "castle.h"
 #include "background.h"
+#include "AttackRange.h"
 #include "Layer.h"
 #include "Images.h"
 #include "musume.h"
@@ -23,13 +24,15 @@ class Game : public Layer{
 
 	list<shared_ptr<effect>>  delete_effectlist;
 	list<shared_ptr<effect>>  effect_list;
-	list<shared_ptr<std::tuple<int,int,int,int>>> range_atk_list;
 	list<shared_ptr<enemy>>  enemy_list[3];
 	list<shared_ptr<enemy>>  delete_enemylist;
 	list<shared_ptr<musume>> musume_list[3];
 	list<shared_ptr<musume>> delete_musumelist;
 	vector<shared_ptr<castle>> castle_list;
 	list<shared_ptr<background>> back_list;
+
+	list<shared_ptr<AttackRange>> atkrange_musume_list;
+	list<shared_ptr<AttackRange>> atkrange_enemy_list;
 
 	void Test();
 public:
@@ -53,6 +56,8 @@ public:
 	void gainResource(int);
 	/**/
 	static Game* getIns();
+	void push_attack_list(shared_ptr<AttackRange>,int unittype);
+
 	void push_del_musume(shared_ptr<musume>);
 	void push_del_enemy(shared_ptr<enemy>);
 	void push_del_effect(shared_ptr<effect>);

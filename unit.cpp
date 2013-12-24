@@ -14,7 +14,8 @@ void unit::main(){
 	ani_count++;
 }
 void unit::draw(int cx){
-	//DrawCircle(x + width / 2 - cx, y + height / 2, width / 4, GetColor(255, 0, 0), true);
+
+	DrawBox(x - cx, y , x+width-cx,y+height ,GetColor(255, 0, 0), false);
 }
 
 int unit::getLine(){
