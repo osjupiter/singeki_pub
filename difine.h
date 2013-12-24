@@ -81,8 +81,8 @@
 #define HEI_EXP 250
 
 #define ANI_SHOCK 7
-#define WID_SHOCK 150
-#define HEI_SHOCK 350
+#define WID_SHOCK 200
+#define HEI_SHOCK 450
 
 #define ANI_MISSILE 3
 #define WID_MISSILE 90

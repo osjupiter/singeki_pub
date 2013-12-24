@@ -4,17 +4,35 @@
 
 #define ANIM_SPEED 3
 int hohei::num=0;
+int hohei::maxhp;
+int hohei::power;
+int hohei::speed;
+int hohei::defense;
+int hohei::atk_freq;
+int hohei::atk_type;
+int hohei::clk;
+int hohei::cost;
 
 hohei::hohei(int fx, int fy, int ln) : musume(fx,fy,ln){
-	power = 0;
-	hp = 200;
+	
+	hp = maxhp;
 	width = WID_HOHEI;
 	height = HEI_HOHEI;
 	num++;
 	type = RAND;
-	defense = 1;
-	atk_type = RAND;
-	cost = COST_HOHEI;
+		
+}
+
+void hohei::init(){
+	num = 0;
+	maxhp=500;
+	power=10;
+	speed=4;
+	defense=1;
+	atk_freq=5;
+	atk_type=RAND;
+	clk=CLK_HOHEI;
+	cost=COST_HOHEI;
 }
 
 void hohei::main(int front){
@@ -62,3 +80,19 @@ void hohei::setNum(int i){
 	num = i;
 }
 
+int hohei::getPower(){
+	return power;
+}
+int hohei::getAtkType(){
+	return atk_type;
+}
+void hohei::damage(int d, int op_a_type){
+	
+	if (op_a_type == NONE || op_a_type == type){
+		hp -= max(d - defense, 0);
+		if (hp < 0){
+			state = DIE;
+		}
+	}
+	
+}

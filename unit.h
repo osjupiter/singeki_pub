@@ -12,11 +12,12 @@ protected:
 	int hp;
 	bool life;
 	int state;
-	int power;
-	int defense;
+//	int power;
+//	int defense;
 	int type;
-	int atk_type;
-	int cost;
+//	int atk_type;
+//	int atk_freq;
+//	int cost;
 	unsigned int ani_count;
 public:
 	unit(int,int,int);
@@ -24,10 +25,10 @@ public:
 	virtual void draw(int);
 	int getLine();
 	bool getLife();
-	virtual void damage(int,int);
-	int getPower();
+//	virtual void damage(int,int);
+	//int getPower();
 	int getState(); 
 	int getType();
-	int getAtkType();
+	//int getAtkType();
 	void switchDirection();
 };

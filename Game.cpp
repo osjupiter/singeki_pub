@@ -15,6 +15,7 @@
 #include "explode.h"
 #include <time.h>
 #include <algorithm>
+
 const int Game::stage_W[9] = {0,STAGE1_W, STAGE2_W, STAGE3_W, STAGE4_W, STAGE5_W, STAGE6_W, STAGE7_W, STAGE8_W };
 Game* Game::ins;
 
@@ -39,11 +40,16 @@ Game::Game(){
 		castle_list.push_back(p);
 	}
 
-	hohei::setNum(0);
-	tank::setNum(0);
-	balloon::setNum(0);
 	srand((unsigned int)time(NULL));
 	x=0;
+
+	balloon::init();
+	bazooka::init();
+	bigrobo::init();
+	copter::init();
+	hohei::init();
+	kamikaze::init();
+	tank::init();
 	//setProduct(0, BIG);
 	
 }
@@ -104,7 +110,6 @@ void Game::birth(int st,int type){
 	}
 	case KAMIKAZE:{
 				if (getResource() < COST_KAMIKAZE) break;
-				line = 2;
 				shared_ptr<musume> p(new kamikaze(stage_W[st], 50 - line * 3, line));
 				musume_list[line].push_back(p);
 				useResource(COST_KAMIKAZE);
@@ -295,8 +300,6 @@ void Game::main(){
 	}
 
 	delete_object();
-	atkrange_musume_list.clear();
-	atkrange_enemy_list.clear();
 
 }
 
@@ -332,6 +335,9 @@ void Game::draw(){
 	}
 
 	Test();
+	atkrange_musume_list.clear();
+	atkrange_enemy_list.clear();
+
 }
 
 void Game::stageInc(int next_st){
@@ -377,20 +383,31 @@ void Game::delete_object(){
 
 
 void Game::Test(){
-	DrawFormatString(FIELD_W - 200, 0, GetColor(255, 255, 255), "%d %d %d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
-	DrawFormatString(FIELD_W - 200, 13, GetColor(255, 255, 255), "%d", x);
+	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "%d %d %d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
+	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "x %d", x);
 
-	DrawFormatString(FIELD_W - 200, 26, GetColor(255, 255, 255), "%d", getResource());
-	DrawFormatString(FIELD_W - 200, 39, GetColor(255, 255, 255), "%d", getNowStage());
+	DrawFormatString(FIELD_W - 200, 126, GetColor(255, 255, 255), "resouce %d", getResource());
+	DrawFormatString(FIELD_W - 200, 139, GetColor(255, 255, 255), "stage %d", getNowStage());
+	DrawFormatString(FIELD_W - 200, 152, GetColor(255, 255, 255), "%d",atkrange_enemy_list.size() );
 
-	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++)setProduct(1, BIG);
-	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,BALLOON);
+	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++);
+	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,KAMIKAZE);
+	if (CheckHitKey(KEY_INPUT_C)) for (int i = 0; i < 3; i++)enemy_list[i].clear();
+	if (CheckHitKey(KEY_INPUT_V)) for (int i = 0; i < 3; i++)musume_list[i].clear();
+	for (auto i : atkrange_enemy_list){
+		i->draw(x);
+	}
+	for (auto i : atkrange_musume_list){
+		i->draw(x);
+	}
+
 	if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);
-	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, BALLOON);
+	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(1, COPTER);
 
 /*	if (!delete_musumelist.empty()){
 		printfDx("del%dused ", musume_list[0].front().use_count());*/
 }
+
 
 
 void Game::scrollLeft(int sx){

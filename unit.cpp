@@ -22,9 +22,6 @@ int unit::getLine(){
 	return line;
 }
 
-int unit::getPower(){
-	return power;
-}
 
 int unit::getState(){
 	return state;
@@ -34,13 +31,16 @@ int unit::getType(){
 	return type;
 }
 
-int unit::getAtkType(){
-	return atk_type;
-}
+
 bool unit::getLife(){
 	return life;
 }
-
+/*int unit::getPower(){
+	return power;
+}
+int unit::getAtkType(){
+	return atk_type;
+}
 void unit::damage(int d,int op_a_type){
 //	if (state == ATK){
 		if (op_a_type == NONE || op_a_type == type){
@@ -50,7 +50,7 @@ void unit::damage(int d,int op_a_type){
 			}
 		}
 //	}
-}
+}*/
 
 void unit::switchDirection(){
 	if (dir == LEFT)

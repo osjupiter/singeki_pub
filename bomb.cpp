@@ -14,7 +14,7 @@ void bomb::main(){
 	if (y > FIELD_H - HEI_BOMB) {
 		del();
 		Game::getIns()->effect_create(x-85,WINDOW_Y-240,EXP);
-		shared_ptr<AttackRange> p(new AttackRange(x-50,x+width+50,500,RAND));
+		shared_ptr<AttackRange> p(new AttackRange(x-50,x+width+50,50,RAND));
 		Game::getIns()->push_attack_list(p,MUSUME);
 	}
 }

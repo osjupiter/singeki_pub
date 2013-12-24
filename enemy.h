@@ -9,6 +9,8 @@ public:
 	enemy(int,int,int,int);
 	virtual void main(int);
 	virtual void draw(int);
-	void del();
-	void damage(int,int);
+	virtual void del();
+	virtual int getPower();
+	virtual int getAtkType();
+	virtual void damage(int, int);
 };
