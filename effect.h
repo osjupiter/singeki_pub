@@ -5,6 +5,7 @@
 class effect:public object{
 protected:
 	int type;
+	
 	int ani_count;
 public:
 	effect(int,int);

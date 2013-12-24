@@ -2,7 +2,7 @@
 #include "Game.h"
 
 musume::musume(int fx,int fy,int ln):unit(fx,fy,ln){
-	
+	dir = Direction::RIGHT;
 }
 
 void musume::main(int front){

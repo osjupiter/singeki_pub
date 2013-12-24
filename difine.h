@@ -1,3 +1,4 @@
+#pragma once
 #define WINDOW_X 800
 #define WINDOW_Y 450
 
@@ -52,14 +53,24 @@
 #define COST_BIG 50
 #define CLK_BIG 4000
 
+#define ANI_KAMIKAZE 6
+#define ANI_KAMIKAZE_ATK 20
+#define WID_KAMIKAZE 120
+#define HEI_KAMIKAZE 140
+#define WID_KAMIKAZE_ATK 140
+#define HEI_KAMIKAZE_ATK 140
+#define COST_KAMIKAZE 50
+#define CLK_KAMIKAZE 4000
+
+
 #define ANI_BOMB 2
 #define WID_BOMB 30
 #define HEI_BOMB 40
 
 
-#define ANI_EXP 16
-#define WID_EXP 96
-#define HEI_EXP 96
+#define ANI_EXP 12
+#define WID_EXP 200
+#define HEI_EXP 250
 
 #define ANI_SHOCK 7
 #define WID_SHOCK 150
@@ -75,6 +86,7 @@
 #define HOHEI 1
 #define BALLOON 2
 #define BIG 3
+#define KAMIKAZE 4
 
 #define TANK 10
 #define COPTER 11
@@ -90,6 +102,7 @@
 #define FIELD_W 800
 #define FIELD_H 450
 
+enum Direction {LEFT=-1,NODIR=0,RIGHT=1};
 
 #define STAGE1_W 1950
 #define STAGE2_W STAGE1_W+1950

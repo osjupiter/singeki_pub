@@ -24,14 +24,13 @@ void copter::main(int front){
 	//	state = ATK;
 	switch (state){
 	case MOV:
-		x -= 3; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		x += 3*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		break;
 	case ATK:
-
 		if ((ani_count / ANIM_SPEED%ANI_COPTER)
 			== ANI_COPTER - 1 && atk){
 			atk = false;
-			Game::getIns()->effect_create(x , y + 155, MISSILE);
+			Game::getIns()->effect_create(x , y + 155, MISSILE,dir);
 		}
 		if (!((ani_count / ANIM_SPEED%ANI_COPTER)
 			== ANI_COPTER - 1))atk = true;
@@ -45,11 +44,16 @@ void copter::main(int front){
 void copter::draw(int cx){
 	switch (state){
 	case MOV:
-		DrawGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
+		if (dir==LEFT)
+			DrawGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
+		else
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
 		break;
 	case ATK:
-		DrawGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
-
+		if (dir==LEFT)
+			DrawGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
+		else
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
 		break;
 	case DIE:
 		break;

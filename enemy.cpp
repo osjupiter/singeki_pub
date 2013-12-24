@@ -2,30 +2,58 @@
 #include "Game.h"
 enemy::enemy(int fx, int fy, int ln,int lv) :unit(fx, fy, ln){
 	level = lv;
+	dir = Direction::LEFT;
 }
 
 void enemy::main(int front){
 	unit::main();
-	switch (state){
-	case MOV:
-		if (x < front + dist){ 
-			state = ATK; 
-			ani_count = 0;
+	if (dir == LEFT){
+		if (x <= front - dist)
+			switchDirection();
+		switch (state){
+		case MOV:
+			if (x < front + dist){
+				state = ATK;
+				ani_count = 0;
+			}
+			break;
+		case ATK:
+			if (!(x < front + dist)){
+				state = MOV;
+				ani_count = 0;
+			}
+			break;
+		case DIE:
+
+			break;
 		}
-		break;
-	case ATK:
-		if (!(x < front + dist)){
-			state = MOV;
-			ani_count = 0;
-		}
-		break;
-	case DIE:
+	}
+	else if (dir == RIGHT){
+		if (x > front + dist)
+			switchDirection();
 		
-		break;
+		switch (state){
+		case MOV:
+			if (x+width > front - dist){
+				state = ATK;
+				ani_count = 0;
+			}
+			break;
+		case ATK:
+			if (!(x + width > front - dist)){
+				state = MOV;
+				ani_count = 0;
+			}
+			break;
+		case DIE:
+
+			break;
+		}
 	}
 }
 
 void enemy::draw(int cx){
+	
 }
 
 void enemy::del(){

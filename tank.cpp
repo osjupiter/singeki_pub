@@ -21,7 +21,7 @@ void tank::main(int front){
 	enemy::main(front);
 	switch (state){
 	case MOV:
-		x -= 5; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		x += 5*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		if (x + width < 0) state = DIE;
 		break;
 	case ATK:

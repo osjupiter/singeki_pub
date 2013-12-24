@@ -6,13 +6,14 @@ bomb::bomb(int fx, int fy) :effect(fx, fy){
 	type = BOMB;
 	width = WID_BOMB;
 	height = HEI_BOMB;
+	
 }
 void bomb::main(){
 	effect::main();
 	y += 7;
 	if (y > FIELD_H - HEI_BOMB) {
 		del();
-		Game::getIns()->effect_create(x-50,y-30,EXP);
+		Game::getIns()->effect_create(x-85,WINDOW_Y-240,EXP);
 	}
 }
 

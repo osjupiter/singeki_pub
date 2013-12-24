@@ -50,3 +50,10 @@ void unit::damage(int d,int op_a_type){
 		}
 //	}
 }
+
+void unit::switchDirection(){
+	if (dir == LEFT)
+		dir = RIGHT;
+	else if (dir == RIGHT)
+		dir = LEFT;
+}

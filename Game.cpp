@@ -5,6 +5,8 @@
 #include "bigrobo.h"
 #include "tank.h"
 #include "copter.h"
+#include "kamikaze.h"
+
 #include "balloon.h"
 #include "bomb.h"
 #include "missile.h"
@@ -99,6 +101,15 @@ void Game::birth(int st,int type){
 
 		break;
 	}
+	case KAMIKAZE:{
+					  if (getResource() < COST_KAMIKAZE) break;
+				 line = 2;
+				 shared_ptr<musume> p(new kamikaze(stage_W[st], 50 - line * 3, line));
+				 musume_list[line].push_back(p);
+				 useResource(COST_KAMIKAZE);
+
+				 break;
+	}
 	case TANK:{
 		shared_ptr<enemy> p(new tank(stage_W[st], WINDOW_Y - HEI_TANK - line * 3, line,castle::getNowstage()));
 		enemy_list[line].push_back(p);
@@ -123,8 +134,8 @@ void Game::enemy_birth(){
 	if (getClock(STAGE1_W-front_line)) birth(STAGE1_W, TANK);
 }
 
-void Game::effect_create(int fx,int fy,int type){
-	switch(type){
+void Game::effect_create(int fx, int fy, int type, Direction dr){
+	switch(type) {
 	case BOMB:{
 		shared_ptr<effect> p(new bomb(fx, fy));
 		effect_list.push_back(p);
@@ -141,7 +152,7 @@ void Game::effect_create(int fx,int fy,int type){
 				 break;
 	}
 	case MISSILE:{
-				   shared_ptr<effect> p(new missile(fx, fy));
+				   shared_ptr<effect> p(new missile(fx, fy,dr));
 				   effect_list.push_back(p);
 				   break;
 	}
@@ -193,7 +204,7 @@ void Game::main(){
 	*/
 	frontE = target_X;
 	/*ñ°ï˚ÉÅÉCÉì*/
-	target_X = INT_MIN; target_X_S = INT_MIN;
+	target_X = 0; target_X_S = 0;
 
 	for (int j = 0; j < 3; j++){
 		for (auto i : musume_list[j]){
@@ -335,7 +346,7 @@ void Game::Test(){
 	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++)setProduct(1, BIG);
 	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,BALLOON);
 	if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);
-	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, BIG);
+	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, KAMIKAZE);
 
 /*	if (!delete_musumelist.empty()){
 		printfDx("del%dused ", musume_list[0].front().use_count());*/

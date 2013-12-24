@@ -6,7 +6,7 @@
 #include "GV.h"
 
 
-effect::effect(int fx,int fy):object(fx,fy){
+effect::effect(int fx, int fy) :object(fx, fy){
 	
 	ani_count=0;
 }

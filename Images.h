@@ -29,12 +29,15 @@ public:
 	int g_balloon[8];
 	int g_balloon_atk[10];
 	int g_bomb[2];
-	int g_exp[16];
+	int g_exp[12];
 	int g_robo[7];
 	int g_robo_atk[18];
 	int g_shock[7];
 	int g_copter[6];
 	int g_missile[3];
+	int g_kamikaze[6];
+	int g_kamikaze_atk[20];
+
 	int castle[8];
 	int back[5][5];
 	Images(void){}

@@ -19,8 +19,11 @@ void Images::load(){
 	LoadDivGraph("dat/img/ロボ兵w.png", ANI_BIG, ANI_BIG, 1, WID_BIG, HEI_BIG, g_robo);
 	LoadDivGraph("dat/img/ロボ兵a.png", ANI_BIG_ATK, 6, 3, WID_BIG_ATK, HEI_BIG, g_robo_atk);
 
+	LoadDivGraph("dat/img/ロデ子w.png", ANI_KAMIKAZE, ANI_KAMIKAZE, 1, WID_KAMIKAZE, HEI_KAMIKAZE, g_kamikaze);
+	LoadDivGraph("dat/img/ロデ子a.png", ANI_KAMIKAZE_ATK, 5, 5, WID_KAMIKAZE_ATK, HEI_KAMIKAZE_ATK, g_kamikaze_atk);
+
 	LoadDivGraph("dat/img/爆弾.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
-	LoadDivGraph("dat/img/bomb0.png", 16, 8, 2, 96, 96, g_exp);
+	LoadDivGraph("dat/img/爆発E.png", ANI_EXP, 6, 2, WID_EXP, HEI_EXP, g_exp);
 	LoadDivGraph("dat/img/衝撃波.png", ANI_SHOCK, ANI_SHOCK, 1, WID_SHOCK, HEI_SHOCK, g_shock);
 	LoadDivGraph("dat/img/ミサイル.png", ANI_MISSILE, ANI_MISSILE, 1, WID_MISSILE, HEI_MISSILE, g_missile);
 

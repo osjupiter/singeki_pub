@@ -1,7 +1,7 @@
 #include "explode.h"
 #include "Images.h"
 #include "Game.h"
-#define ANIM_SPEED 2
+#define ANIM_SPEED 1
 explode::explode(int fx, int fy) :effect(fx, fy){
 	type = EXP;
 	width = WID_EXP;
@@ -15,6 +15,6 @@ void explode::main(){
 }
 
 void explode::draw(int cx){
-	DrawGraph(x - cx, y, Images::getIns()->g_exp[ani_count / 4 % ANI_EXP], true);
+	DrawGraph(x - cx, y, Images::getIns()->g_exp[ani_count / ANIM_SPEED % ANI_EXP], true);
 	effect::draw(cx);
 }

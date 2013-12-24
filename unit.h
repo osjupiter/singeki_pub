@@ -8,6 +8,7 @@ using namespace std;
 
 class unit:public object{
 protected:
+	Direction dir;
 	int line;
 	int dist;
 	int hp;
@@ -30,4 +31,5 @@ public:
 	int getState(); 
 	int getType();
 	int getAtkType();
+	void switchDirection();
 };

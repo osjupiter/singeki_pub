@@ -40,7 +40,7 @@ public:
 	void scrollRight(int);
 	void birth(int,int); //ï∫émê∂ê¨
 	void enemy_birth();
-	void effect_create(int,int,int);
+	void effect_create(int,int,int,Direction dr=NODIR);
 	void main();
 	void draw();
 	bool getClock(unsigned int);
