@@ -289,35 +289,71 @@ FactoryLayer::FactoryLayer(){
 	y=100;
 	w=600;
 	h=300;
+	lxmar=30;
 	lh=30;
+	lw=50;
+	lmartop=30;
 	select=0;
 }
 void FactoryLayer::draw(){
 	mouse_in* m=mouse_in::getIns();
 	int x1=x,x2=x+w,y1=y,y2=y+h;
 	DrawBox(x1,y1,x2,y2,GetColor(255,0,0),TRUE);
+	DrawString(x1+200,y1,"äJî≠ÅEã≠âª",GetColor(255,255,255),TRUE);
 	for(int i=0;i<7;i++){
-		DrawBox(x,y+5+i*lh,x+50,y+5+(i+1)*lh,GetColor(255-i*30,128,0+i*40),TRUE);
-		if(x<m->X() && y+5+i*lh<m->Y() && m->X()<x+50 && m->Y()<y+5+(i+1)*lh){
+		DrawBox(x+lxmar,y+lmartop+i*lh,x+lxmar+lw,y+lmartop+(i+1)*lh,GetColor(255-i*30,128,0+i*40),TRUE);
+		if(x+lxmar<m->X() && y+lmartop+i*lh<m->Y() && m->X()<x+lxmar+lw && m->Y()<y+lmartop+(i+1)*lh){
 			SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
-			DrawBox(x,y+5+i*lh,x+50,y+5+(i+1)*lh,GetColor(0,255,0),TRUE);
+			DrawBox(x+lxmar,y+lmartop+i*lh,x+lxmar+lw,y+lmartop+(i+1)*lh,GetColor(0,255,0),TRUE);
 			SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
-			
-
 		}
 	}
+	int tmpx=x+lw+lxmar,tmpy=y+lmartop;
+	DrawBox(x+lw+lxmar,y+lmartop,x+w-lxmar-lw,y+lmartop+h-50,GetColor(255-select*30,128,0+select*40),TRUE);
 
-	DrawBox(x+50,y+5,x+w-50,y+5+h-50,GetColor(255-select*30,128,0+select*40),TRUE);
+	DrawBox(tmpx+42,tmpy+10,tmpx+42+50,tmpy+10+50,GetColor(0,0,0),TRUE);
+	DrawBox(tmpx+42+50+12,tmpy+10,tmpx+30+300,tmpy+10+50,GetColor(0,0,0),TRUE);
+
+	for(int j=0;j<2;j++)
+		for(int i=0;i<4;i++){
+			int xx,yy,ww,hh;
+			xx=tmpx+12*(i+1)+80*i+30;
+			ww=80;
+			yy=tmpy+70+90*j;
+			hh=80;
+			DrawBox(xx,yy,xx+ww,yy+hh,GetColor(0,0,0),TRUE);
+			
+		
+		}
+			
+	
+
+
+
+
 }
 void FactoryLayer:: main(){
 	mouse_in* m=mouse_in::getIns();
 	int x1=x,x2=x+w,y1=y,y2=y+h;
 
 	if( x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2 ){
-		
-		for(int i=0;i<7;i++){
-			if(m->LeftClick() && x<m->X() && y+5+i*lh<m->Y() && m->X()<x+50 && m->Y()<y+5+(i+1)*lh){
-				select=i;
+		if(m->LeftClick()){
+			for(int i=0;i<7;i++){
+				if(x+lxmar<m->X() && y+lmartop+i*lh<m->Y() && m->X()<x+lxmar+50 && m->Y()<y+lmartop+(i+1)*lh){
+					select=i;
+				}
+			}
+			int tmpx=x+lw+lxmar,tmpy=y+lmartop;
+			for(int j=0;j<2;j++){
+				for(int i=0;i<4;i++){
+					int xx,yy,ww,hh;
+					xx=tmpx+12*(i+1)+80*i+30;
+					ww=80;
+					yy=tmpy+70+90*j;
+					hh=80;
+					if(testBox(xx,yy,xx+ww,yy+hh))
+						printfDx("%d\n",j*4+i);
+				}
 			}
 		}
 	
