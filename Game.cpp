@@ -125,7 +125,7 @@ void Game::birth(int st,int type){
 		break;
 	}
 	case COPTER:{
-		shared_ptr<enemy> p(new copter(stage_W[st], 50 - line * 3, line, castle::getNowstage()));
+					shared_ptr<enemy> p(new copter(stage_W[st], 50 - line * 3, line, castle::getNowstage()));
 		enemy_list[line].push_back(p);
 		 break;
 	}
@@ -176,6 +176,16 @@ void Game::push_del_enemy(shared_ptr<enemy> p){
 }
 void Game::push_del_effect(shared_ptr<effect> p){
 	delete_effectlist.push_back(p);
+}
+void Game::push_attack_list(shared_ptr<AttackRange> p, int unittype){
+	switch (unittype){
+	case MUSUME:
+		atkrange_musume_list.push_back(p);
+		break;
+	case ENEMY:
+		atkrange_enemy_list.push_back(p);
+		break;
+	}
 }
 
 
@@ -266,9 +276,28 @@ void Game::main(){
 		i->main();
 		
 	}
+	for (auto k : atkrange_enemy_list){
+		for (int j = 0; j < 3; j++){
+			for (auto i : musume_list[j]){
+				if (k->judge(i->getX(), i->getW(),i->getType()))
+					i->damage(k->getDamage(),k->getAtkType());
+			}
+		}
+	}
+
+	for (auto k : atkrange_musume_list){
+		for (int j = 0; j < 3; j++){
+			for (auto i : enemy_list[j]){
+				if (k->judge(i->getX(), i->getW(), i->getType()))
+					i->damage(k->getDamage(), k->getAtkType());
+			}
+		}
+	}
 
 	delete_object();
-	
+	atkrange_musume_list.clear();
+	atkrange_enemy_list.clear();
+
 }
 
 void Game::draw(){
@@ -342,6 +371,8 @@ void Game::delete_object(){
 
 		delete_effectlist.clear();
 	}
+
+
 }
 
 
@@ -355,7 +386,7 @@ void Game::Test(){
 	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++)setProduct(1, BIG);
 	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,BALLOON);
 	if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);
-	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, BAZOOKA);
+	if (mouse_in::getIns()->RightClick())for (int i = 0; i < 1; i++)birth(i * 10 % 400, BALLOON);
 
 /*	if (!delete_musumelist.empty()){
 		printfDx("del%dused ", musume_list[0].front().use_count());*/
@@ -370,7 +401,7 @@ void Game::scrollLeft(int sx){
 void Game::scrollRight(int sx){
 	int r_end = stage_W[castle::getNowstage()];
 	x += sx;	
-//	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
+	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
 }
 

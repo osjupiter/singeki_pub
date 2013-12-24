@@ -81,7 +81,6 @@ void Images::load(){
 
 	soundlist.push_back("sound/kuma.mp3");
 
-
 	
 	for(auto s:filelist){
 		gs[s]=LoadGraph(s.c_str());

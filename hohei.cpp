@@ -6,7 +6,7 @@
 int hohei::num=0;
 
 hohei::hohei(int fx, int fy, int ln) : musume(fx,fy,ln){
-	power = 10;
+	power = 0;
 	hp = 200;
 	width = WID_HOHEI;
 	height = HEI_HOHEI;
@@ -22,6 +22,8 @@ void hohei::main(int front){
 	switch (state){
 	case MOV:
 		x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		break;
+	case ATK:
 		break;
 	case DIE:
 		y += vy;

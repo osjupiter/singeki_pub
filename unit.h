@@ -3,8 +3,6 @@
 #include "difine.h"
 #include <memory>
 using namespace std; 
-#define RAND 1
-#define SKY 2
 
 class unit:public object{
 protected:

@@ -16,7 +16,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	if (st == 0)state = OCCUPY;
 	else if (st == 1)state = ACTIVE;
 	else state = WAIT;
-
+	dir = NODIR;
 	product_type = NONE;
 	product_clk = NONE;
 
