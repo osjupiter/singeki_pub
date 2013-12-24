@@ -55,6 +55,8 @@ void GameScene::buttonPushed(string id){
 		game->scrollRight(15);
 	}else if(id=="birth"){
 		game->birth(0, HOHEI);
+	}else if(id=="exit"){
+		SceneManager::getIns()->switchScene(std::make_shared<TitleScene>());
 	}
 }
 void GameScene::aftermain(){
