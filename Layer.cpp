@@ -4,6 +4,13 @@
 #include"Game.h"
 #include"Scene.h"
 
+boolean Layer::testBox(int x1,int y1,int x2,int y2){
+		mouse_in* m=mouse_in::getIns();
+		if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2)
+			return true;
+		return false;
+
+}
 
 GraphicLayer::GraphicLayer(int tx,int ty,int th){
 	x=tx;y=ty;
@@ -21,14 +28,21 @@ ButtonLayer::ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth):G
 	bw=ttw;
 	bh=tth;
 	_clicktype=CLICK;
+	_oldMouseisin=false;
 }
 void ButtonLayer::main(){
 	mouse_in* m=mouse_in::getIns();
-	if(_clicktype==ONMOUSE|| m->Left()==_clicktype){
-		if(x+bx<m->X()&&y+by<m->Y()&&m->X()<x+bx+bw&&m->Y()<y+by+bh){
-			if(parentScene!=nullptr)parentScene->buttonPushed(id);
+	if(x+bx<m->X()&&y+by<m->Y()&&m->X()<x+bx+bw&&m->Y()<y+by+bh){
+		if(!_oldMouseisin)
+			Images::playSE(_enterSE);
+		if(_clicktype==ONMOUSE|| m->Left()==_clicktype){
+			if(parentScene!=nullptr){parentScene->buttonPushed(id);Images::playSE(_clickSE);}
 		}
+		_oldMouseisin=true;
+	}else{
+		_oldMouseisin=false;
 	}
+
 }
 ButtonLayer* ButtonLayer::setId(string s){
 	id=s;return this;
@@ -36,6 +50,15 @@ ButtonLayer* ButtonLayer::setId(string s){
 ButtonLayer* ButtonLayer::setClickType(ClickFlag c){
 	_clicktype=c;return this;	
 }
+//setEnterSE
+ButtonLayer* ButtonLayer::setEnterSE(string s){
+	_enterSE=s;return this;	
+}
+ButtonLayer* ButtonLayer::setClickSE(string s){
+	_clickSE=s;return this;	
+}
+
+
 MapLayer::MapLayer(std::shared_ptr<Game> g){
 	lx=200;ly=200;lw=400;lh=200;
 	for(int i=0;i<9;i++)
@@ -154,8 +177,10 @@ void SelectLayer::draw(){
 					s="ロボ";
 					break;
 				case 4:
+					s="カミカゼ";
 					break;
 				case 5:
+					s="バズーカ";
 					break;
 				case 6:
 					break;
@@ -227,6 +252,13 @@ void MenuLayer:: main(){
 						p->addLayer(10,std::make_shared<MapLayer>(game));
 						p->addLayer(9,std::make_shared<MapCloseLayer>());
 						break;
+					case 1:
+						p->addLayer(15,std::make_shared<FactoryLayer>());
+						break;
+					case 2:
+						p->addLayer(20,std::make_shared<OptionLayer>());
+						break;
+						
 					}
 				}
 
@@ -243,7 +275,7 @@ MapCloseLayer::MapCloseLayer(){
 
 }
 void MapCloseLayer::draw(){
-	SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
+	SetDrawBlendMode( DX_BLENDMODE_ALPHA , 0 ) ;
 	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(0,0,0),TRUE);
 	SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
 }
@@ -251,3 +283,73 @@ void MapCloseLayer:: main(){
 
 }
 	
+
+FactoryLayer::FactoryLayer(){
+	x=100;
+	y=100;
+	w=600;
+	h=300;
+	lh=30;
+	select=0;
+}
+void FactoryLayer::draw(){
+	mouse_in* m=mouse_in::getIns();
+	int x1=x,x2=x+w,y1=y,y2=y+h;
+	DrawBox(x1,y1,x2,y2,GetColor(255,0,0),TRUE);
+	for(int i=0;i<7;i++){
+		DrawBox(x,y+5+i*lh,x+50,y+5+(i+1)*lh,GetColor(255-i*30,128,0+i*40),TRUE);
+		if(x<m->X() && y+5+i*lh<m->Y() && m->X()<x+50 && m->Y()<y+5+(i+1)*lh){
+			SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
+			DrawBox(x,y+5+i*lh,x+50,y+5+(i+1)*lh,GetColor(0,255,0),TRUE);
+			SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
+			
+
+		}
+	}
+
+	DrawBox(x+50,y+5,x+w-50,y+5+h-50,GetColor(255-select*30,128,0+select*40),TRUE);
+}
+void FactoryLayer:: main(){
+	mouse_in* m=mouse_in::getIns();
+	int x1=x,x2=x+w,y1=y,y2=y+h;
+
+	if( x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2 ){
+		
+		for(int i=0;i<7;i++){
+			if(m->LeftClick() && x<m->X() && y+5+i*lh<m->Y() && m->X()<x+50 && m->Y()<y+5+(i+1)*lh){
+				select=i;
+			}
+		}
+	
+	}else{
+		if(m->LeftClick()){
+			parentScene->rmLayer(thisLayerID);
+		}
+	}
+	
+}
+
+
+
+OptionLayer::OptionLayer(){
+	x=100;
+	y=100;
+	w=600;
+	h=300;
+
+}
+void OptionLayer::draw(){
+	DrawBox(x,y,x+w,y+h,GetColor(255,0,0),TRUE);
+	DrawBox(x+100,y+h-100,x+w-100,y+h-50,GetColor(255,255,0),TRUE);
+	DrawString(x+100,y+h-100,"ゲームを終了する",GetColor(0,0,0));
+}
+void OptionLayer:: main(){
+	mouse_in* m=mouse_in::getIns();
+		if(testBox(x+100,y+h-100,x+w-100,y+h-50)){
+			if(m->LeftClick())parentScene->buttonPushed("exit");
+		}else{
+			if(m->LeftClick())
+				parentScene->rmLayer(thisLayerID);
+		}
+	
+}

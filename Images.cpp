@@ -80,6 +80,8 @@ void Images::load(){
 	filelist.push_back("pic/tou.png");
 
 	soundlist.push_back("sound/kuma.mp3");
+	soundlist.push_back("sound/se_maoudamashii_system49.wav");
+	soundlist.push_back("sound/button03a.mp3");
 
 	
 	for(auto s:filelist){
@@ -102,3 +104,13 @@ void Images::load(){
 
 	int Images::get(char name[]){return ins.gs[string(name)];}
 	int Images::getSound(char name[]){return ins.ss[string(name)];}
+
+	
+	void Images::playSE(string name,boolean ischeck){
+		if(ischeck){
+			if(CheckSoundMem(ins.ss[name])==1)
+				return;
+		}
+		PlaySoundMem(ins.ss[name] ,DX_PLAYTYPE_BACK);
+	}
+	void Images::playSE(string name){Images::playSE(name,false);}
