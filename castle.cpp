@@ -53,6 +53,8 @@ void castle::main(){
 	case DIE:
 		state = OCCUPY;
 		nowstage++;
+		product_clk=0;
+		now_clk=0;
 		Game::getIns()->stageInc(nowstage);
 		break;
 	case OCCUPY:
@@ -131,6 +133,11 @@ void castle::setProduct(int p_type){
 }
 int castle::getProduct(){
 	return product_type;
+	
+}
+double castle::getProductCLKPAR(){
+	if(product_clk==0)return 0;
+	return now_clk/(double)product_clk;
 	
 }
 

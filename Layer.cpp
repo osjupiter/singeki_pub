@@ -199,9 +199,21 @@ void MenuLayer::draw(){
 		int _y=ly;
 		int _w=25;
 		double _rate=ratelist[i];
-		int tmp=(game->getNowStage()>i)?Images::getSiroIcon(i):Images::get("pic/tou.png");
-		DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
-		DrawRotaGraph(_x,_y+30,1.0,0,Images::getMusumeIcon(game->getProduct(i)),TRUE);
+		if(game->getNowStage()>i){
+			int tmp=Images::getSiroIcon(i);
+			DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
+			DrawRotaGraph(_x,_y+30,1.0,0,Images::getMusumeIcon(game->getProduct(i)),TRUE);
+			//ƒ[ƒ^[
+			double f=game->getProductCLKPAR(i);
+			if(f!=0){
+				DrawBox(_x-25,_y+55,_x-25+50,_y+60,GetColor(255,0,0),TRUE);
+				DrawBox(_x-25,_y+55,_x-25+50*f,_y+60,GetColor(0,255,0),TRUE);
+			}
+		}else{
+			int tmp=Images::get("pic/tou.png");
+			DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
+		}
+		
 	}
 
 	//factory

@@ -31,5 +31,6 @@ public:
 	void setState(int);
 	void setProduct(int);
 	int getProduct();
+	double getProductCLKPAR();
 	static int getNowstage();
 };
