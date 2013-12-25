@@ -43,7 +43,7 @@ public:
 	Game();
 	void background_init();
 	void param_init();
-
+	void castle_init();
 	int getX();
 
 	void scrollLeft(int);

@@ -16,7 +16,7 @@
 #include <time.h>
 #include <algorithm>
 
-#define RESOURCE_INIT 2000
+#define RESOURCE_INIT 200000
 const int Game::stage_W[9] = {0,STAGE1_W, STAGE2_W, STAGE3_W, STAGE4_W, STAGE5_W, STAGE6_W, STAGE7_W, STAGE8_W };
 Game* Game::ins;
 
@@ -26,12 +26,7 @@ Game::Game(){
 	ins = this;
 	resource = RESOURCE_INIT;
 	background_init();
-
-	for (int i=0; i < 9; i++){
-		shared_ptr<castle> p(new castle(stage_W[i], 0, i));
-		castle_list.push_back(p);
-	}
-
+	castle_init();
 	srand((unsigned int)time(NULL));
 	x=0;
 
@@ -78,6 +73,16 @@ void Game::background_init(){
 			}
 		}
 	}
+}
+
+void Game::castle_init(){
+
+	for (int i = 0; i < 9; i++){
+		shared_ptr<castle> p(new castle(stage_W[i], 0, i));
+		castle_list.push_back(p);
+	
+	}
+
 }
 
 Game* Game::getIns(){ return ins; }
@@ -407,12 +412,17 @@ void Game::delete_object(){
 }
 
 
+
 void Game::Test(){
 	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "m%d en%d ef%d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
 	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "x %d", x);
 
 	DrawFormatString(FIELD_W - 200, 126, GetColor(255, 255, 255), "resouce %d", getResource());
 	DrawFormatString(FIELD_W - 200, 139, GetColor(255, 255, 255), "stage %d", getNowStage());
+	DrawFormatString(FIELD_W - 200, 152, GetColor(255, 255, 255), "x %d", mouse_in::getIns()->X());
+	for (auto i : back_list){
+		DrawLine(i->getX() - x, 0, i->getX() - x, 450, GetColor(0, 0, 255), 2);
+	}
 
 	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++);
 	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,KAMIKAZE);
@@ -430,7 +440,7 @@ void Game::Test(){
 		param_list[i]->draw(0, 200+30*i);
 	}
 
-	if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);
+	//if (mouse_in::getIns()->LeftClick())  birth(castle::getNowstage(), HOHEI);
 	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(1, COPTER);
 
 /*	if (!delete_musumelist.empty()){
@@ -445,9 +455,10 @@ void Game::scrollLeft(int sx){
 }
 
 void Game::scrollRight(int sx){
-	int r_end = stage_W[castle::getNowstage()];
+	int r_end = stage_W[castle::getNowstage()]+WID_CASTLE/2-100;
 	x += sx;	
-	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
+	if (!CheckHitKey(KEY_INPUT_Z))
+		if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
 }
 
