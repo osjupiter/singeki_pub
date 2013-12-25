@@ -71,7 +71,7 @@ void Images::load(){
 
 	back[6][0] = LoadGraph("dat/img/“ss/”wŒi‚V|‚P.png");
 	back[6][1] = LoadGraph("dat/img/“ss/”wŒi‚V|‚Q.png");
-	back[6][2] = 0;
+	back[6][2] = LoadGraph("dat/img/“ss/”wŒi‚V|‚R.png");
 	back[6][3] = LoadGraph("dat/img/“ss/”wŒi‚V|‚S.png");
 	back[6][4] = LoadGraph("dat/img/“ss/”wŒi‚V|‚T.png");
 	
@@ -81,8 +81,41 @@ void Images::load(){
 	back[7][3] = LoadGraph("dat/img/ˆÅ‚Ì¢ŠE/”wŒi‚W|‚Q.png");
 	back[7][4] = LoadGraph("dat/img/ˆÅ‚Ì¢ŠE/”wŒi‚W|‚R.png");
 
-	castle[0] = LoadGraph("dat/img/sirodummy.png");
+	castle[0][0] = LoadGraph("dat/img/sirodummy.png");
+	castle[0][1] = LoadGraph("dat/img/sirodummy.png");
+	castle[0][2] = LoadGraph("dat/img/sirodummy.png");
 	
+	castle[1][0] = LoadGraph("dat/img/R/Ré.png");
+	castle[1][1] = LoadGraph("dat/img/R/Ré”¼‰ó.png");
+	castle[1][2] = LoadGraph("dat/img/R/ƒƒJRé.png");
+	
+	castle[2][0] = LoadGraph("dat/img/X/Xé.png");
+	castle[2][1] = LoadGraph("dat/img/X/Xé”¼‰ó.png");
+	castle[2][2] = LoadGraph("dat/img/X/ƒƒJXé.png");
+	
+	castle[3][0] = LoadGraph("dat/img/–éí/–éíé.png");
+	castle[3][1] = LoadGraph("dat/img/–éí/–éíé”¼‰ó.png");
+	castle[3][2] = LoadGraph("dat/img/–éí/ƒƒJ–éíé.png");
+	
+	castle[4][0] = LoadGraph("dat/img/ŠC/ŠCé.png");
+	castle[4][1] = LoadGraph("dat/img/ŠC/ŠCé”¼‰ó.png");
+	castle[4][2] = LoadGraph("dat/img/ŠC/ƒƒJŠCé.png");
+	
+	castle[5][0] = LoadGraph("dat/img/‘Œ´/‘Œ´é.png");
+	castle[5][1] = LoadGraph("dat/img/‘Œ´/‘Œ´é”¼‰ó.png");
+	castle[5][2] = LoadGraph("dat/img/‘Œ´/ƒƒJ‘Œ´é.png");
+	
+	castle[6][0] = LoadGraph("dat/img/“´ŒA/“´ŒAé.png");
+	castle[6][1] = LoadGraph("dat/img/“´ŒA/“´ŒAé”¼‰ó.png");
+	castle[6][2] = LoadGraph("dat/img/“´ŒA/ƒƒJ“´ŒAé.png");
+	
+	castle[7][0] = LoadGraph("dat/img/“ss/“ssé.png");
+	castle[7][1] = LoadGraph("dat/img/“ss/“ssé”¼‰ó.png");
+	castle[7][2] = LoadGraph("dat/img/“ss/ƒƒJ“ssé.png");
+	
+	castle[8][0] = LoadGraph("dat/img/sirodummy.png");
+	castle[8][1] = LoadGraph("dat/img/sirodummy.png");
+	castle[8][2] = LoadGraph("dat/img/sirodummy.png");
 
 
 	//sound[0]=LoadSoundMem("sound/kuma.mp3");

@@ -192,3 +192,5 @@ enum Position{ ALL, RAND, SKY };
 #define STAGE7_W STAGE6_W+1950
 #define STAGE8_W STAGE7_W+1950
 
+#define WID_CASTLE 650
+#define HEI_CASTLE 450

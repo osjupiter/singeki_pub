@@ -39,7 +39,7 @@ public:
 	int g_kamikaze_atk[20];
 	int g_bazooka[8];
 	int g_bazooka_atk[12];
-	int castle[8];
+	int castle[9][3];
 	int back[8][5];
 	Images(void){}
 	~Images(void){}

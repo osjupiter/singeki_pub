@@ -27,5 +27,6 @@ public:
 	bool getClock(unsigned int);
 	void setState(int);
 	void setProduct(int);
+	int getProduct();
 	static int getNowstage();
 };

@@ -53,7 +53,6 @@ void hohei::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_hohei_atk[0], true);
 		break;
 	}
-
 	unit::draw(cx);
 
 }

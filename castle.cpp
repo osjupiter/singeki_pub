@@ -1,16 +1,29 @@
 #include "castle.h"
 #include "Images.h"
 #include "Game.h"
-const int castle_hp[9] = { 5000, 5000, 5000, 50000, 5000, 5000, 50000, 50000,50000};
+const int castle_hp[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000,5000};
 const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
+const int draw_gap[9][3] = {
+	{0,0,0},
+	{62,-16,-16}, 
+	{25,30,-70}, 
+	{5,5,0}, 
+	{170,160,0},  //
+	{0,0,0}, // 2‚Ì‚Ý–¢Œˆ’è
+	{0,0,0}, // 
+	{0,0,0}, // 2‚Ì‚Ý–¢Œˆ’è
+	{0,0,0}, //–¢Œˆ’è
+
+
+};
 int castle::nowstage=1;
 
 
 castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	hp = castle_hp[st];
-	width = 273;
+	width = WID_CASTLE;
 	x = fx - width / 2;
-	height = 450;
+	height = HEI_CASTLE;
 	defense = 1;
 	stage = st;
 	tm = 0;
@@ -28,7 +41,7 @@ void castle::main(){
 	case ACTIVE:
 		if (getClock(1000)){
 			Game::getIns()->birth(stage, TANK);
-			//Game::getIns()->birth(stage, COPTER);
+			Game::getIns()->birth(stage, COPTER);
 		}
 		break;
 	case WAIT:
@@ -47,18 +60,19 @@ void castle::main(){
 }
 
 void castle::draw(int cx){
+	int koma = (castle_hp[stage] - hp > castle_hp[stage] / 2) ? 1 : 0;
 	switch (state){
-	case ACTIVE:
-		DrawGraph(x - cx, y, Images::getIns()->castle[0], true);
+	case ACTIVE:	
+		DrawGraph(x - draw_gap[stage][koma] - cx, y, Images::getIns()->castle[stage][koma], true);
 		DrawFormatString(FIELD_W - 50, 200, GetColor(0, 0, 0), "%d", hp);
 		break;
 	case WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->castle[0], true);
+		DrawGraph(x - cx, y, Images::getIns()->castle[stage][0], true);
 		break;
 	case DIE:
-
 		break;
 	case OCCUPY:
+		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->castle[stage][2], true);
 
 		break;
 	}
@@ -101,6 +115,10 @@ void castle::setProduct(int p_type){
 	
 	product_type = p_type;
 	product_clk = unit_clk[p_type];
+}
+
+int castle::getProduct(){
+	return product_type;
 }
 
 void castle::setState(int s){

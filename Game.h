@@ -43,7 +43,7 @@ public:
 	Game();
 	void background_init();
 	void param_init();
-
+	void castle_init();
 	int getX();
 
 	void scrollLeft(int);
@@ -59,6 +59,7 @@ public:
 	void setProduct(int,int); //©“®¶¬ƒZƒbƒg
 	int getResource();
 	int getNowStage();
+	int getProduct(int);
 	void useResource(int);
 	void gainResource(int);
 	/**/
