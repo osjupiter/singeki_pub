@@ -33,13 +33,16 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	dir = NODIR;
 	product_type = NONE;
 	product_clk = NONE;
+	now_clk=0;
 
 }
 
 void castle::main(){
 	switch (state){
 	case ACTIVE:
-		if (getClock(1000)){
+		product_clk=30;
+		//if (getClock(1000)){
+		if(isProductTime()){
 			Game::getIns()->birth(stage, TANK);
 		//	Game::getIns()->birth(stage, COPTER);
 		}
@@ -53,7 +56,8 @@ void castle::main(){
 		Game::getIns()->stageInc(nowstage);
 		break;
 	case OCCUPY:
-		if (getClock(product_clk))
+		//if (getClock(product_clk))
+		if(isProductTime())
 			Game::getIns()->birth(stage, product_type);
 		break;
 	}
@@ -98,6 +102,13 @@ void castle::damage(int d){
 
 		break;
 	}
+}
+
+bool castle::isProductTime(){
+	clsDx();
+	printfDx("%d %d",now_clk,product_clk);
+	if(now_clk++>=product_clk){now_clk=0;return true;}
+	return false;
 }
 
 bool castle::getClock(unsigned int clk){

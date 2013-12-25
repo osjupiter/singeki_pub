@@ -35,7 +35,7 @@ enum Position{ ALL, RAND, SKY };
 #define SPEED_HOHEI 5
 #define A_TYPE_HOHEI RAND
 #define COST_HOHEI 50
-#define CLK_HOHEI 4000
+#define CLK_HOHEI 120
 #define A_FREQ_HOHEI 1000
 
 /*戦車*/
@@ -50,7 +50,7 @@ enum Position{ ALL, RAND, SKY };
 #define SPEED_TANK 50
 #define A_TYPE_TANK RAND
 #define COST_TANK 50
-#define CLK_TANK 4000
+#define CLK_TANK 120
 #define A_FREQ_TANK 1000
 
 /*風船兵*/
@@ -65,7 +65,7 @@ enum Position{ ALL, RAND, SKY };
 #define SPEED_BALLOON 5
 #define A_TYPE_BALLOON RAND
 #define COST_BALLOON 50
-#define CLK_BALLOON 4000
+#define CLK_BALLOON 120
 #define A_FREQ_BALLOON 1000
 
 /*ヘリ*/
@@ -79,7 +79,7 @@ enum Position{ ALL, RAND, SKY };
 #define SPEED_COPTER 50
 #define A_TYPE_COPTER RAND
 #define COST_COPTER 200
-#define CLK_COPTER 4000
+#define CLK_COPTER 120
 #define A_FREQ_COPTER 1000
 
 /*ロボ兵*/
@@ -95,7 +95,7 @@ enum Position{ ALL, RAND, SKY };
 #define SPEED_BIG 2
 #define A_TYPE_BIG RAND
 #define COST_BIG 50
-#define CLK_BIG 4000
+#define CLK_BIG 120
 #define A_FREQ_BIG 1000
 /*神風兵*/
 #define ANI_KAMIKAZE 6
@@ -111,7 +111,7 @@ enum Position{ ALL, RAND, SKY };
 #define SPEED_KAMIKAZE 10
 #define A_TYPE_KAMIKAZE SKY
 #define COST_KAMIKAZE 50
-#define CLK_KAMIKAZE 4000
+#define CLK_KAMIKAZE 120
 #define A_FREQ_KAMIKAZE 1000
 /*バズーカ兵*/
 #define ANI_BAZOOKA 8
@@ -127,7 +127,7 @@ enum Position{ ALL, RAND, SKY };
 #define SPEED_BAZOOKA 5
 #define A_TYPE_BAZOOKA RAND
 #define COST_BAZOOKA 50
-#define CLK_BAZOOKA 4000
+#define CLK_BAZOOKA 120
 #define A_FREQ_BAZOOKA 1000
 /*爆弾*/
 #define ANI_BOMB 2

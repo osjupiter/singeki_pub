@@ -17,6 +17,8 @@ class castle : public unit{
 	int product_type;
 	int product_clk;
 
+	int now_clk;
+
 	vector<int> musume_table;
 	vector<int> enemy_table;
 public:
@@ -25,6 +27,7 @@ public:
 	void draw(int);
 	void damage(int);
 	bool getClock(unsigned int);
+	bool isProductTime();
 	void setState(int);
 	void setProduct(int);
 	int getProduct();
