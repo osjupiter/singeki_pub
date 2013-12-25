@@ -5,17 +5,9 @@
 #define ANIM_SPEED 3
 int bazooka::num = 0;
 
-int bazooka::maxhp;
-int bazooka::power;
-int bazooka::speed;
-int bazooka::defense;
-int bazooka::atk_freq;
-int bazooka::atk_type;
-int bazooka::clk;
-int bazooka::cost;
 
-bazooka::bazooka(int fx, int fy, int ln) : musume(fx, fy, ln){
-	hp = maxhp;
+bazooka::bazooka(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
+	hp = param->getParam(MAXHP);
 	width = WID_BAZOOKA;
 	height = HEI_BAZOOKA;
 	num++;
@@ -23,14 +15,6 @@ bazooka::bazooka(int fx, int fy, int ln) : musume(fx, fy, ln){
 }
 void bazooka::init(){
 	num = 0;
-	maxhp = 500;
-	power = 10;
-	speed = 4;
-	defense = 1;
-	atk_freq = 5;
-	atk_type = RAND;
-	clk = CLK_BAZOOKA;
-	cost = COST_BAZOOKA;
 }
 void bazooka::main(int front){
 	musume::main(front);
@@ -73,21 +57,4 @@ int bazooka::getNum(){
 
 void bazooka::setNum(int i){
 	num = i;
-}
-
-int bazooka::getPower(){
-	return power;
-}
-int bazooka::getAtkType(){
-	return atk_type;
-}
-void bazooka::damage(int d, int op_a_type){
-
-	if (op_a_type == NONE || op_a_type == type){
-		hp -= max(d - defense, 0);
-		if (hp < 0){
-			state = DIE;
-		}
-	}
-
 }

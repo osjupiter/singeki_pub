@@ -16,12 +16,29 @@
 #include <time.h>
 #include <algorithm>
 
+#define RESOURCE_INIT 2000
 const int Game::stage_W[9] = {0,STAGE1_W, STAGE2_W, STAGE3_W, STAGE4_W, STAGE5_W, STAGE6_W, STAGE7_W, STAGE8_W };
 Game* Game::ins;
 
 Game::Game(){
+	param_list[HOHEI] = shared_ptr<Parameter>(
+		new Parameter(POWER_HOHEI, MAXHP_HOHEI
+		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI));
+	param_list[BALLOON] = shared_ptr<Parameter>(
+		new Parameter(POWER_BALLOON, MAXHP_BALLOON
+		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON));
+	param_list[BAZOOKA] = shared_ptr<Parameter>(
+		new Parameter(POWER_BAZOOKA, MAXHP_BAZOOKA
+		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA));
+	param_list[BIG] = shared_ptr<Parameter>(
+		new Parameter(POWER_BIG, MAXHP_BIG
+		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG));
+	param_list[KAMIKAZE] = shared_ptr<Parameter>(
+		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
+		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE));
+
 	ins = this;
-	resource = 1000;
+	resource = RESOURCE_INIT;
 	for (int i = 0; i < STAGE_NUM; i++){
 		for (int j = 0; j < 5; j++){
 			if (j == 2){
@@ -50,7 +67,7 @@ Game::Game(){
 	hohei::init();
 	kamikaze::init();
 	tank::init();
-	//setProduct(0, BIG);
+	
 	
 }
 
@@ -87,14 +104,14 @@ void Game::birth(int st,int type){
 	case HOHEI:
 	{
 		if (getResource() < COST_HOHEI) break;
-		shared_ptr<musume> p(new hohei(stage_W[st], WINDOW_Y-HEI_HOHEI-line*3,line));
+		shared_ptr<musume> p(new hohei(stage_W[st], WINDOW_Y - HEI_HOHEI - line * 3, line, param_list[HOHEI]));
 		musume_list[line].push_back(p);		
 		useResource(COST_HOHEI);
 		break;
 	}
 	case BALLOON:{
 		if (getResource() < COST_BALLOON) break;
-		shared_ptr<musume> p(new balloon(stage_W[st], 50 - line * 10, line));
+		shared_ptr<musume> p(new balloon(stage_W[st], 50 - line * 10, line, param_list[BALLOON]));
 		musume_list[line].push_back(p);
 		useResource(COST_BALLOON);
 		break;
@@ -102,7 +119,7 @@ void Game::birth(int st,int type){
 	case BIG:{
 		if (getResource() < COST_BIG) break;
 		line = 2;
-		shared_ptr<musume> p(new bigrobo(stage_W[st], WINDOW_Y - HEI_BIG - line * 3, line));
+		shared_ptr<musume> p(new bigrobo(stage_W[st], WINDOW_Y - HEI_BIG - line * 3, line, param_list[BIG]));
 		musume_list[line].push_back(p);
 		useResource(COST_BIG);
 
@@ -110,7 +127,7 @@ void Game::birth(int st,int type){
 	}
 	case KAMIKAZE:{
 				if (getResource() < COST_KAMIKAZE) break;
-				shared_ptr<musume> p(new kamikaze(stage_W[st], 50 - line * 3, line));
+				shared_ptr<musume> p(new kamikaze(stage_W[st], 50 - line * 3, line, param_list[KAMIKAZE]));
 				musume_list[line].push_back(p);
 				useResource(COST_KAMIKAZE);
 
@@ -119,7 +136,7 @@ void Game::birth(int st,int type){
 	case BAZOOKA:
 	{
 			if (getResource() < COST_BAZOOKA) break;
-			shared_ptr<musume> p(new bazooka(stage_W[st], WINDOW_Y - HEI_BAZOOKA - line * 3, line));
+			shared_ptr<musume> p(new bazooka(stage_W[st], WINDOW_Y - HEI_BAZOOKA - line * 3, line, param_list[BAZOOKA]));
 			musume_list[line].push_back(p);
 			useResource(COST_BAZOOKA);
 			break;
@@ -383,12 +400,11 @@ void Game::delete_object(){
 
 
 void Game::Test(){
-	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "%d %d %d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
+	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "m%d en%d ef%d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
 	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "x %d", x);
 
 	DrawFormatString(FIELD_W - 200, 126, GetColor(255, 255, 255), "resouce %d", getResource());
 	DrawFormatString(FIELD_W - 200, 139, GetColor(255, 255, 255), "stage %d", getNowStage());
-	DrawFormatString(FIELD_W - 200, 152, GetColor(255, 255, 255), "%d",atkrange_enemy_list.size() );
 
 	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++);
 	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,KAMIKAZE);
@@ -400,6 +416,10 @@ void Game::Test(){
 	}
 	for (auto i : atkrange_musume_list){
 		i->draw(x);
+	}
+
+	for (int i = 1; i < UNIT_M_NUM+1; i++){
+		param_list[i]->draw(0, 200+30*i);
 	}
 
 	if (mouse_in::getIns()->LeftClick())for (int i = 0; i < 1; i++) birth(i*10%400, HOHEI);
@@ -419,9 +439,23 @@ void Game::scrollLeft(int sx){
 void Game::scrollRight(int sx){
 	int r_end = stage_W[castle::getNowstage()];
 	x += sx;	
-	//if (x + FIELD_W > r_end) x = r_end - FIELD_W;
+	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
 }
 
 
+/*ƒpƒ‰ƒ[ƒ^Žæ“¾ŠÖ”*/
+int Game::getParam(int u_type, ParamType p_type){
+	return param_list[u_type]->getParam(p_type);
+}
+int Game::getParamLevel(int u_type, ParamType p_type){
+	return param_list[u_type]->getParamLevel(p_type);
+}
+int Game::getParamCost(int u_type, ParamType p_type){
+	return param_list[u_type]->getCost(p_type);
+}
+
+bool Game::incParamLevel(int u_type, ParamType p_type){
+	return param_list[u_type]->LevelUp(p_type);
+}
 

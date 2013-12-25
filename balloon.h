@@ -5,20 +5,12 @@
 
 class balloon : public musume{
 private:
-	static int maxhp;
-	static int power;
-	static int speed;
-	static int atk_freq;
-	static int defense;
-	static int atk_type;
-	static int clk;
-	static int cost;
 
 
 	bool atk;
 	static int num;
 public:
-	balloon(int fx, int fy, int ln);
+	balloon(int fx, int fy, int ln, shared_ptr<Parameter>);
 	void main(int);
 	void draw(int);
 	static void init();

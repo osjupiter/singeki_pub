@@ -14,7 +14,7 @@ protected:
 	int state;
 //	int power;
 //	int defense;
-	int type;
+	Position type;
 //	int atk_type;
 //	int atk_freq;
 //	int cost;
@@ -28,7 +28,7 @@ public:
 //	virtual void damage(int,int);
 	//int getPower();
 	int getState(); 
-	int getType();
+	Position getType();
 	//int getAtkType();
 	void switchDirection();
 };

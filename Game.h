@@ -10,6 +10,7 @@
 #include "Layer.h"
 #include "Images.h"
 #include "musume.h"
+
 #include <list>
 #include <vector>
 #include <memory>
@@ -34,11 +35,14 @@ class Game : public Layer{
 	list<shared_ptr<AttackRange>> atkrange_musume_list;
 	list<shared_ptr<AttackRange>> atkrange_enemy_list;
 
+	shared_ptr<Parameter> param_list[UNIT_M_NUM + 1];
+
 	void Test();
 public:
 	static const int stage_W[9];
 	Game();
 	int getX();
+
 	void scrollLeft(int);
 	void scrollRight(int);
 	void birth(int,int); //ï∫émê∂ê¨
@@ -61,5 +65,11 @@ public:
 	void push_del_musume(shared_ptr<musume>);
 	void push_del_enemy(shared_ptr<enemy>);
 	void push_del_effect(shared_ptr<effect>);
+
+	int getParam(int u_type, ParamType p_type);
+	int getParamLevel(int u_type, ParamType p_type);
+	int getParamCost(int u_type, ParamType p_type);
+	bool incParamLevel(int u_type, ParamType p_type);
+
 
 };

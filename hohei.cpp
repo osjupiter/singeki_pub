@@ -3,19 +3,10 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
-int hohei::num=0;
-int hohei::maxhp;
-int hohei::power;
-int hohei::speed;
-int hohei::defense;
-int hohei::atk_freq;
-int hohei::atk_type;
-int hohei::clk;
-int hohei::cost;
-
-hohei::hohei(int fx, int fy, int ln) : musume(fx,fy,ln){
+int hohei::num = 0;
+hohei::hohei(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
 	
-	hp = maxhp;
+	hp = param->getParam(MAXHP);
 	width = WID_HOHEI;
 	height = HEI_HOHEI;
 	num++;
@@ -25,21 +16,13 @@ hohei::hohei(int fx, int fy, int ln) : musume(fx,fy,ln){
 
 void hohei::init(){
 	num = 0;
-	maxhp=500;
-	power=10;
-	speed=4;
-	defense=1;
-	atk_freq=5;
-	atk_type=RAND;
-	clk=CLK_HOHEI;
-	cost=COST_HOHEI;
 }
 
 void hohei::main(int front){
 	musume::main(front);
 	switch (state){
 	case MOV:
-		x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		x += param->getParam(SPEED); //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		break;
 	case ATK:
 		if (ani_count / ANIM_SPEED%ANI_HOHEI_ATK == 0)
@@ -83,19 +66,3 @@ void hohei::setNum(int i){
 	num = i;
 }
 
-int hohei::getPower(){
-	return power;
-}
-int hohei::getAtkType(){
-	return atk_type;
-}
-void hohei::damage(int d, int op_a_type){
-	
-	if (op_a_type == NONE || op_a_type == type){
-		hp -= max(d - defense, 0);
-		if (hp < 0){
-			state = DIE;
-		}
-	}
-	
-}
