@@ -199,8 +199,35 @@ void StageClearLayer::draw(){
 	DrawFormatString(0,0,GetColor(255,0,0),"%d is cleard. time = %d",stage_id,remain_time);
 }
 void StageClearLayer:: main(){
-	if(remain_time--<=0)
+	if(remain_time--<=0){
+		string s;
+		switch(stage_id){
+		case 1:
+			s="sound/X.mp3";
+			break;
+		case 2:
+			s="sound/–éí.mp3";
+			break;
+		case 3:
+			s="sound/‹´.mp3";
+			break;
+		case 4:
+			s="sound/‘Œ´.mp3";
+			break;
+		case 5:
+			s="sound/“´ŒA.mp3";
+			break;
+		case 6:
+			s="sound/“sŽs.mp3";
+			break;
+		case 7:
+			s="sound/‹´.mp3";
+			break;
+		}
+		Images::playBGM(s.c_str());
 		parentScene->rmLayer(thisLayerID);
+
+	}
 	
 }
 

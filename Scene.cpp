@@ -20,10 +20,10 @@ void TitleScene::buttonPushed(string id){
 	}
 }
 void TitleScene::enterScene(){
-	PlaySoundMem(Images::getSound("sound/kuma.mp3"),DX_PLAYTYPE_LOOP);
+	Images::playBGM("sound/ŽR.mp3");
 }
 void TitleScene::leaveScene(){
-	StopSoundMem( Images::getSound("sound/kuma.mp3")) ;
+	Images::playBGM("");
 }
 
 GameScene::GameScene(){
@@ -44,10 +44,12 @@ GameScene::GameScene(){
 	
 }
 void GameScene::enterScene(){
-	PlaySoundMem( Images::getSound("sound/kuma.mp3"),DX_PLAYTYPE_LOOP);
+	//PlaySoundMem( Images::getSound("sound/kuma.mp3"),DX_PLAYTYPE_LOOP);
+	Images::playBGM("sound/ŽR.mp3");
 }
 void GameScene::leaveScene(){
-	StopSoundMem( Images::getSound("sound/kuma.mp3")) ;
+	//StopSoundMem( Images::getSound("sound/kuma.mp3")) ;
+	Images::playBGM("");
 }
 void GameScene::buttonPushed(string id){
 	if(id=="left"){

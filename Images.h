@@ -13,7 +13,7 @@ class Images
 {
 	vector<string> filelist;
 	vector<string> soundlist;
-
+	string _nowBGM;
 	static Images ins;
 	std::map<std::string, int> gs;
 	std::map<std::string, int> ss;
@@ -51,5 +51,6 @@ public:
 	static void playSE(string name,boolean);
 	static void playSE(string name);
 	static void stopSE(string name);
+	static void playBGM(string name);
 	static int getMusumeIcon(int);
 };

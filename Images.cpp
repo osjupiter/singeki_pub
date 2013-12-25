@@ -5,6 +5,7 @@
 Images Images::ins;
 
 void Images::load(){
+	_nowBGM="";
 
 //	gs[0]=LoadGraph("pic/test.jpg");
 	LoadDivGraph("dat/img/ï‡ï∫w.png", ANI_HOHEI, ANI_HOHEI, 1, WID_HOHEI, HEI_HOHEI, g_hohei);
@@ -144,6 +145,15 @@ void Images::load(){
 	soundlist.push_back("sound/shot002.wav");
 	soundlist.push_back("sound/gun04.mp3");
 
+
+	soundlist.push_back("sound/ã¥.mp3");
+	soundlist.push_back("sound/éR.mp3");
+	soundlist.push_back("sound/êX.mp3");
+	soundlist.push_back("sound/ëêå¥.mp3");
+	soundlist.push_back("sound/ìsés.mp3");
+	soundlist.push_back("sound/ì¥åA.mp3");
+	soundlist.push_back("sound/ñÈêÌ.mp3");
+
 	
 	for(auto s:filelist){
 		gs[s]=LoadGraph(s.c_str());
@@ -209,4 +219,13 @@ void Images::load(){
 				break;
 		}
 		return ins.get(s.c_str());
+	}
+
+	void Images::playBGM(string name){
+		printfDx(name.c_str());
+		if(ins._nowBGM!="")
+			StopSoundMem(getSound(ins._nowBGM.c_str()));
+		if(name!="")
+			PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_LOOP);
+		ins._nowBGM=name;
 	}
