@@ -395,7 +395,7 @@ void FactoryLayer:: main(){
 					hh=80;
 					ParamType hoge=static_cast<ParamType>(j*4+i);
 					if(testBox(xx,yy,xx+ww,yy+hh)){
-						game->incParamLevel(select,hoge,50);
+						game->incParamLevel(select+1,hoge,50);
 						printfDx("%d\n",j*4+i);
 					}
 				}

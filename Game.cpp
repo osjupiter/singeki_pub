@@ -109,45 +109,40 @@ int Game::getX(){
 
 void Game::birth(int st,int type){
 	int line=(int)(rand()/(RAND_MAX+1.0)*3);
+	//自分のユニットのときリソース確認消費
+	if(type<10){
+		int t=getParam(type,ParamType::COST);
+		if (getResource() < t) return;
+		useResource(t);
+	}
 	switch (type){
 	case HOHEI:
 	{
-		if (getResource() < COST_HOHEI) break;
 		shared_ptr<musume> p(new hohei(stage_W[st], WINDOW_Y - HEI_HOHEI - line * 3, line, param_list[HOHEI]));
 		musume_list[line].push_back(p);		
-		useResource(COST_HOHEI);
 		break;
 	}
 	case BALLOON:{
-		if (getResource() < COST_BALLOON) break;
 		shared_ptr<musume> p(new balloon(stage_W[st], 50 - line * 10, line, param_list[BALLOON]));
 		musume_list[line].push_back(p);
-		useResource(COST_BALLOON);
 		break;
 	}
 	case BIG:{
-		if (getResource() < COST_BIG) break;
 		line = 2;
 		shared_ptr<musume> p(new bigrobo(stage_W[st], WINDOW_Y - HEI_BIG - line * 3, line, param_list[BIG]));
 		musume_list[line].push_back(p);
-		useResource(COST_BIG);
 
 		break;
 	}
 	case KAMIKAZE:{
-				if (getResource() < COST_KAMIKAZE) break;
 				shared_ptr<musume> p(new kamikaze(stage_W[st], 50 - line * 3, line, param_list[KAMIKAZE]));
 				musume_list[line].push_back(p);
-				useResource(COST_KAMIKAZE);
-
 				break;
 	}
 	case BAZOOKA:
 	{
-			if (getResource() < COST_BAZOOKA) break;
 			shared_ptr<musume> p(new bazooka(stage_W[st], WINDOW_Y - HEI_BAZOOKA - line * 3, line, param_list[BAZOOKA]));
 			musume_list[line].push_back(p);
-			useResource(COST_BAZOOKA);
 			break;
 	}
 	case TANK:{
@@ -459,6 +454,7 @@ void Game::scrollRight(int sx){
 
 /*パラメータ取得関数*/
 int Game::getParam(int u_type, ParamType p_type){
+	if(u_type==0)return 0;
 	return param_list[u_type]->getParam(p_type);
 }
 int Game::getParamLevel(int u_type, ParamType p_type){
