@@ -54,6 +54,7 @@ public:
 	void delete_object();
 	void stageInc(int);
 	void setProduct(int,int); //©“®¶¬ƒZƒbƒg
+	int getProduct(int);
 	int getResource();
 	int getNowStage();
 	void useResource(int);

@@ -51,4 +51,5 @@ public:
 	static void playSE(string name,boolean);
 	static void playSE(string name);
 	static void stopSE(string name);
+	static int getMusumeIcon(int);
 };

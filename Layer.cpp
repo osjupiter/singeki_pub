@@ -209,6 +209,11 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 		onMouseTime[i]=0;
 	}
 	game=g;
+	lx=275;ly=30;lw=500;lh=10;
+	for(int i=0;i<9;i++){
+		xlist[i]=g->stage_W[i]/(double)g->stage_W[8]*lw+lx;
+		ratelist[i]=1.0;
+	}
 
 }
 void MenuLayer::draw(){
@@ -225,6 +230,18 @@ void MenuLayer::draw(){
 	}*/
 	//map
 	//DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
+	DrawBox(lx,ly-lh/2,lx+lw,ly+lh/2,GetColor(255,0,255),TRUE);
+	clsDx();
+	for(int i=0;i<9;i++){
+		int _x=xlist[i];
+		int _y=ly;
+		int _w=25;
+		double _rate=ratelist[i];
+		DrawRotaGraph(_x,_y,_rate,0,Images::get("pic/tou.png"),TRUE);
+		printfDx("%d ",game->getProduct(i));
+		int hoge=Images::getMusumeIcon(game->getProduct(i));
+		DrawRotaGraph(_x,_y+30,1.0,0,Images::getMusumeIcon(game->getProduct(i)),TRUE);
+	}
 
 	//factory
 	DrawBox(200,10,200+50,10+50,GetColor(0,255,0),TRUE);
@@ -238,6 +255,20 @@ void MenuLayer::draw(){
 }
 void MenuLayer:: main(){
 	auto m= mouse_in::getIns();
+	for(int i=0;i<9;i++)ratelist[i]=1.0;
+	for(int i=0;i<9;i++){
+		int _x=xlist[i];
+		int _y=ly;
+		int _w=25;
+		ratelist[i]=1.0;
+		if(_x-_w<m->X()&&_y-_w<m->Y()&&m->X()<_x+_w&&m->Y()<_y+_w){
+			ratelist[i]=2.0;
+			if(m->LeftClick()){
+				m->Reset();
+				parentScene->addLayer(11,make_shared<SelectLayer>(_x,_y+150,i));
+			}
+		}
+	}
 	if(m->LeftClick()){
 		if(testBox(200,10,250,60)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );

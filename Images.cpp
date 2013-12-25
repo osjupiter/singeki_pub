@@ -144,3 +144,36 @@ void Images::load(){
 	void Images::playSE(string name){Images::playSE(name,false);}
 
 	void Images::stopSE(string name){StopSoundMem(ins.ss[name] );}
+
+	int Images::getMusumeIcon(int id){
+		string s;
+		switch (id){
+			case 0:
+				s="pic/null.png";
+				break;
+			case 1:
+				s="pic/na.png";
+				break;
+			case 2:
+				s="pic/ha.png";
+				break;
+			case 3:
+				s="pic/ra.png";
+				break;
+			case 4:
+				s="pic/ka.png";
+				break;
+			case 5:
+				s="pic/ba.png";
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9:
+				break;
+		}
+		return ins.get(s.c_str());
+	}

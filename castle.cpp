@@ -102,6 +102,10 @@ void castle::setProduct(int p_type){
 	product_type = p_type;
 	product_clk = unit_clk[p_type];
 }
+int castle::getProduct(){
+	return product_type;
+	
+}
 
 void castle::setState(int s){
 	state = s;

@@ -106,6 +106,9 @@ class MenuLayer:public Layer{
 private:
 	int onMouseTime[3];
 	shared_ptr<Game> game;
+	int xlist[9];
+	double ratelist[9];
+	int lx,ly,lw,lh;
 public:
 	MenuLayer(shared_ptr<Game>);
 	void draw();
