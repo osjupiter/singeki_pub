@@ -5,7 +5,7 @@ class Parameter{
 	
 	int base[PARAM_NUM];
 	int level[PARAM_NUM];
-	int cost[PARAM_NUM];
+//	int cost[PARAM_NUM];
 
 public:
 	Parameter(){};
@@ -15,7 +15,7 @@ public:
 	void draw(int x,int y);
 	int getParam(ParamType p_type);
 	int getParamLevel(ParamType p_type);
-	int getCost(ParamType p_type);
+//	int getCost(ParamType p_type);
 	bool LevelUp(ParamType p_type);
 
 };

@@ -41,6 +41,9 @@ class Game : public Layer{
 public:
 	static const int stage_W[9];
 	Game();
+	void background_init();
+	void param_init();
+
 	int getX();
 
 	void scrollLeft(int);
@@ -70,7 +73,7 @@ public:
 	int getParam(int u_type, ParamType p_type);
 	int getParamLevel(int u_type, ParamType p_type);
 	int getParamCost(int u_type, ParamType p_type);
-	bool incParamLevel(int u_type, ParamType p_type);
+	bool incParamLevel(int u_type, ParamType p_type,int lvcost);
 
 
 };

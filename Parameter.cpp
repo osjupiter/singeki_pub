@@ -36,11 +36,12 @@ int Parameter::getParamLevel(ParamType p_type){
 int Parameter::getParam(ParamType p_type){
 	return base[p_type];
 }
-
+/*
 int Parameter::getCost(ParamType p_type){
 	return cost[p_type];
-}
+}*/
 
+/*ƒŒƒxƒ‹ãŒÀ’l‚Ìê‡FALSE‚ð•Ô‚·*/
 bool Parameter::LevelUp(ParamType p_type){
 	if (level[p_type] >= MAXLEVEL)
 		return false;
