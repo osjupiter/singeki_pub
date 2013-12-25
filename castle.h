@@ -15,7 +15,6 @@ class castle : public unit{
 
 	static int nowstage;
 	int product_type;
-	int product_clk;
 
 	int now_clk;
 
