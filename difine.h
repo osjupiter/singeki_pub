@@ -149,6 +149,9 @@ enum Position{ ALL, RAND, SKY };
 #define WID_MISSILE 90
 #define HEI_MISSILE 60
 
+#define ANI_TEPODON 3
+#define WID_TEPODON 140
+#define HEI_TEPODON 70
 
 #define MUSUME 0
 #define ENEMY 1
@@ -173,7 +176,7 @@ enum Position{ ALL, RAND, SKY };
 #define EXP 21
 #define SHOCK 22
 #define MISSILE 23
-
+#define TEPODON 24
 #define STAGE_NUM 8
 
 

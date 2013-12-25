@@ -30,6 +30,7 @@ void Images::load(){
 	LoadDivGraph("dat/img/îöî≠E.png", ANI_EXP, 6, 2, WID_EXP, HEI_EXP, g_exp);
 	LoadDivGraph("dat/img/è’åÇîg.png", ANI_SHOCK, ANI_SHOCK, 1, WID_SHOCK, HEI_SHOCK, g_shock);
 	LoadDivGraph("dat/img/É~ÉTÉCÉã.png", ANI_MISSILE, ANI_MISSILE, 1, WID_MISSILE, HEI_MISSILE, g_missile);
+	LoadDivGraph("dat/img/ÉeÉ|ÉhÉì.png", ANI_TEPODON, ANI_TEPODON, 1, WID_TEPODON, HEI_TEPODON, g_tepodon);
 
 	LoadDivGraph("dat/img/ÉwÉäw.png", ANI_COPTER, ANI_COPTER, 1, WID_COPTER, HEI_COPTER, g_copter);
 
@@ -81,6 +82,7 @@ void Images::load(){
 	back[7][2] = 0;
 	back[7][3] = LoadGraph("dat/img/à≈ÇÃê¢äE/îwåiÇWÅ|ÇQ.png");
 	back[7][4] = LoadGraph("dat/img/à≈ÇÃê¢äE/îwåiÇWÅ|ÇR.png");
+
 
 	castle[0][0] = LoadGraph("dat/img/sirodummy.png");
 	castle[0][1] = LoadGraph("dat/img/sirodummy.png");
