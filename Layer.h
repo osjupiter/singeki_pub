@@ -108,7 +108,7 @@ private:
 	shared_ptr<Game> game;
 	int xlist[9];
 	double ratelist[9];
-	int lx,ly,lw,lh;
+	int lx,ly,lw,lh,martop;
 public:
 	MenuLayer(shared_ptr<Game>);
 	void draw();

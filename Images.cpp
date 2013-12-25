@@ -138,6 +138,17 @@ void Images::load(){
 	filelist.push_back("pic/ka.png");
 	filelist.push_back("pic/na.png");
 	filelist.push_back("pic/ra.png");
+	filelist.push_back("pic/sa.png");
+
+	filelist.push_back("pic/メカ海城a.png");
+	filelist.push_back("pic/メカ山城a.png");
+	filelist.push_back("pic/メカ森城a.png");
+	filelist.push_back("pic/メカ都市城a.png");
+	filelist.push_back("pic/メカ洞窟城a.png");
+	filelist.push_back("pic/メカ夜戦城a.png");
+	filelist.push_back("pic/最初の拠点a.png");
+	filelist.push_back("pic/草原城a.png");
+
 
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
@@ -212,8 +223,43 @@ void Images::load(){
 				s="pic/ba.png";
 				break;
 			case 6:
+				s="pic/sa.png";
 				break;
 			case 7:
+				break;
+			case 8:
+				break;
+			case 9:
+				break;
+		}
+		return ins.get(s.c_str());
+	}
+	int Images::getSiroIcon(int id){
+		string s;
+		switch (id){
+			case 0:
+				s="pic/最初の拠点a.png";
+				break;
+			case 1:
+				s="pic/メカ山城a.png";
+				break;
+			case 2:
+				s="pic/メカ森城a.png";
+				break;
+			case 3:
+				s="pic/メカ夜戦城a.png";
+				break;
+			case 4:
+				s="pic/メカ海城a.png";
+				break;
+			case 5:
+				s="pic/草原城a.png";
+				break;
+			case 6:
+				s="pic/メカ洞窟城a.png";
+				break;
+			case 7:
+				s="pic/メカ都市城a.png";
 				break;
 			case 8:
 				break;
