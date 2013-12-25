@@ -59,6 +59,7 @@ void castle::main(){
 	}
 }
 
+
 void castle::draw(int cx){
 	int koma = (castle_hp[stage] - hp > castle_hp[stage] / 2) ? 1 : 0;
 	switch (state){

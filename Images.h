@@ -37,8 +37,10 @@ public:
 	int g_missile[3];
 	int g_kamikaze[6];
 	int g_kamikaze_atk[20];
+	int g_tepodon[3];
 	int g_bazooka[8];
 	int g_bazooka_atk[12];
+
 	int castle[9][3];
 	int back[8][5];
 	Images(void){}
