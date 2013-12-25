@@ -14,11 +14,10 @@
 #define M_SY 32//è„Ç…ìØÇ∂
 #define L_MAX 60
 
-#define MOV 1
-#define ATK 2
-#define DIE 3
 
+enum UnitState{ MOV, WAIT,ATK, DIE};
 
+enum CastleState{ACTIVE,STAY,OCCUPY,EN_DIE,MEKA_DIE};
 enum Direction { LEFT = -1, NODIR = 0, RIGHT = 1 };
 enum ParamType{ POWER, MAXHP, SPEED, DEFENSE, A_TYPE, CLK, COST, A_FREQ, PARAM_NUM };
 enum Position{ ALL, RAND, SKY };
@@ -36,7 +35,7 @@ enum Position{ ALL, RAND, SKY };
 #define A_TYPE_HOHEI RAND
 #define COST_HOHEI 50
 #define CLK_HOHEI 4000
-#define A_FREQ_HOHEI 1000
+#define A_FREQ_HOHEI 15
 
 /*êÌé‘*/
 #define ANI_TANK 8
@@ -44,7 +43,7 @@ enum Position{ ALL, RAND, SKY };
 #define WID_TANK 150
 #define HEI_TANK 120
 
-#define POWER_TANK 500
+#define POWER_TANK 0
 #define MAXHP_TANK 50
 #define DEFENSE_TANK 1
 #define SPEED_TANK 50
@@ -80,7 +79,7 @@ enum Position{ ALL, RAND, SKY };
 #define A_TYPE_COPTER RAND
 #define COST_COPTER 200
 #define CLK_COPTER 4000
-#define A_FREQ_COPTER 1000
+#define A_FREQ_COPTER 50
 
 /*ÉçÉ{ï∫*/
 #define ANI_BIG 7
@@ -89,14 +88,14 @@ enum Position{ ALL, RAND, SKY };
 #define WID_BIG_ATK 180
 #define HEI_BIG 200
 
-#define POWER_BIG 5
+#define POWER_BIG 50
 #define MAXHP_BIG 5000
 #define DEFENSE_BIG 1
 #define SPEED_BIG 2
 #define A_TYPE_BIG RAND
 #define COST_BIG 50
 #define CLK_BIG 4000
-#define A_FREQ_BIG 1000
+#define A_FREQ_BIG 50
 /*ê_ïóï∫*/
 #define ANI_KAMIKAZE 6
 #define ANI_KAMIKAZE_ATK 20

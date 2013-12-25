@@ -18,26 +18,28 @@ tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	type = RAND;
 	atk_type = RAND;
 	cost = COST_TANK;
+	atk_freq = A_FREQ_TANK;
 }
+
 
 void tank::init(){
 	num = 0;	
-
 }
+
 
 void tank::main(int front){
 	enemy::main(front);
 	switch (state){
-	case MOV:
+	case UnitState::MOV:
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		if (x + width < 0) state = DIE;
 		break;
-	case ATK:
+	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED%ANI_TANK_ATK == 2){
 			Images::playSE("sound/taihou03.mp3");
 		}
 		break;
-	case DIE:
+	case UnitState::DIE:
 		del();
 		break;
 		
@@ -47,16 +49,15 @@ void tank::main(int front){
 
 void tank::draw(int cx){
 	switch (state){
-	case MOV:
+	case UnitState::MOV:
 		DrawGraph(x - cx, y, Images::getIns()->g_tank[ani_count / ANIM_SPEED%ANI_TANK], true);
 		break;
-	case ATK:
+	case UnitState::ATK:
 		DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
 		break;
 	}
 
 	unit::draw(cx);
-
 }
 
 int tank::getNum(){

@@ -8,7 +8,7 @@ int bigrobo::num = 0;
 
 
 bigrobo::bigrobo(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-	//hp = param->getParam(MAXHP);
+
 	width = WID_BIG;
 	height = HEI_BIG;
 	num++;
@@ -24,24 +24,28 @@ void bigrobo::init(){
 
 void bigrobo::main(int front){
 	musume::main(front);
-//	state = ATK;
+
 	switch (state){		
-	case MOV:
-		//x += 3; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+	case UnitState::MOV:
+
 		break;
-	case ATK:
-		if (ani_count / ANIM_SPEED%ANI_BIG_ATK == ANI_BIG_ATK - 1 && atk){
-			Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
+	case UnitState::ATK:
+		if (ani_count / ANIM_SPEED % ANI_BIG_ATK == ANI_BIG_ATK - 1 ){
+			if (!atk){
+				Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
+				atk = true;
+			}
+		}
+		else {
 			atk = false;
-			//power = 500;
 		}
-		if (!(ani_count / ANIM_SPEED%ANI_BIG_ATK == ANI_BIG_ATK - 1)){
-			atk = true;
-		//	power = 0;
+		if ((ani_count / ANIM_SPEED == ANI_BIG_ATK )){
+			changeState(WAIT);
+			atk = false;
 		}
 		break;
-	case DIE:
-		del();
+	case UnitState::DIE:
+		
 		break;
 	}
 }
@@ -49,11 +53,17 @@ void bigrobo::main(int front){
 void bigrobo::draw(int cx){
 	
 	switch (state){
-	case MOV:
+	case UnitState::MOV:
 		DrawGraph(x - cx, y, Images::getIns()->g_robo[ani_count / ANIM_SPEED%ANI_BIG], true);
 		break;
-	case ATK:
+	case UnitState::ATK:
 		DrawGraph(x - cx, y, Images::getIns()->g_robo_atk[ani_count / ANIM_SPEED%ANI_BIG_ATK], true);
+		break;
+	case UnitState::DIE:
+		DrawGraph(x - cx, y, Images::getIns()->g_robo_atk[0], true);
+		break;
+	case UnitState::WAIT:
+		DrawGraph(x - cx, y, Images::getIns()->g_robo_atk[0], true);
 		break;
 	}
 
@@ -69,3 +79,6 @@ void bigrobo::setNum(int i){
 	num = i;
 }
 
+int bigrobo::getPower(){	
+	return param->getParam(POWER)*atk;
+}

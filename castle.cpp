@@ -2,13 +2,14 @@
 #include "Images.h"
 #include "Game.h"
 const int castle_hp[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000,5000};
-const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
+const int meka_castle_hp[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000 };
+//const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
 const int draw_gap[9][3] = {
-	{0,0,0},
+	{0,0,20},
 	{62,-16,-16}, 
 	{25,30,-70}, 
 	{5,5,0}, 
-	{170,160,0},  //
+	{170,160,0},  
 	{0,0,0}, // 2‚Ì‚Ý–¢Œˆ’è
 	{0,0,0}, // 
 	{0,0,0}, // 2‚Ì‚Ý–¢Œˆ’è
@@ -22,14 +23,16 @@ int castle::nowstage=1;
 castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	hp = castle_hp[st];
 	width = WID_CASTLE;
-	x = fx - width / 2;
+	if (st == 0)x = 0;
+	else x = fx - width / 2;
+
 	height = HEI_CASTLE;
 	defense = 1;
 	stage = st;
 	tm = 0;
-	if (st == 0)state = OCCUPY;
-	else if (st == 1)state = ACTIVE;
-	else state = WAIT;
+	if (st == 0)state = CastleState::OCCUPY;
+	else if (st == 1)state = CastleState::ACTIVE;
+	else state = CastleState::STAY;
 	dir = NODIR;
 	product_type = NONE;
 	product_clk = NONE;
@@ -38,21 +41,22 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 
 void castle::main(){
 	switch (state){
-	case ACTIVE:
+	case CastleState::ACTIVE:
 		if (getClock(1000)){
 			Game::getIns()->birth(stage, TANK);
 		//	Game::getIns()->birth(stage, COPTER);
 		}
 		break;
-	case WAIT:
+	case CastleState::STAY:
 
 		break;
-	case DIE:
+	case CastleState::EN_DIE:
 		state = OCCUPY;
 		nowstage++;
 		Game::getIns()->stageInc(nowstage);
+		hp = meka_castle_hp[stage];
 		break;
-	case OCCUPY:
+	case CastleState::OCCUPY:
 		if (getClock(product_clk))
 			Game::getIns()->birth(stage, product_type);
 		break;
@@ -63,18 +67,20 @@ void castle::main(){
 void castle::draw(int cx){
 	int koma = (castle_hp[stage] - hp > castle_hp[stage] / 2) ? 1 : 0;
 	switch (state){
-	case ACTIVE:	
-		DrawGraph(x - draw_gap[stage][koma] - cx, y, Images::getIns()->castle[stage][koma], true);
+	case CastleState::ACTIVE:
+		DrawGraph(x - draw_gap[stage][koma] - cx, y, Images::getIns()->g_castle[stage][koma], true);
 		DrawFormatString(FIELD_W - 50, 200, GetColor(0, 0, 0), "%d", hp);
 		break;
-	case WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->castle[stage][0], true);
+	case CastleState::STAY:
+		DrawGraph(x - cx, y, Images::getIns()->g_castle[stage][0], true);
 		break;
-	case DIE:
+	case CastleState::EN_DIE:
 		break;
-	case OCCUPY:
-		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->castle[stage][2], true);
-
+	case CastleState::OCCUPY:
+		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_castle[stage][2], true);
+	
+		break;
+	case CastleState::MEKA_DIE:
 		break;
 	}
 	
@@ -82,20 +88,25 @@ void castle::draw(int cx){
 
 void castle::damage(int d){
 	switch (state){
-	case ACTIVE:
+	case CastleState::ACTIVE:
 		hp -= max(d - defense, 0);
 		if (hp < 0){
-			state = DIE;
+			state = CastleState::EN_DIE;
 		}
 		break;
-	case WAIT:
+	case CastleState::STAY:
 
 		break;
 	case DIE:
 
 		break;
-	case OCCUPY:
-
+	case CastleState::OCCUPY:
+		hp -= max(d - defense, 0);
+		if (hp < 0){
+			state = CastleState::MEKA_DIE;
+		}
+		break;
+	case CastleState::MEKA_DIE:
 		break;
 	}
 }
@@ -110,6 +121,10 @@ bool castle::getClock(unsigned int clk){
 
 int castle::getNowstage(){
 	return nowstage;
+}
+
+void castle::setNowstage(int st){
+	nowstage=st;
 }
 
 void castle::setProduct(int p_type){

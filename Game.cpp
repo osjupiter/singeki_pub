@@ -37,7 +37,7 @@ Game::Game(){
 	hohei::init();
 	kamikaze::init();
 	tank::init();
-	
+	castle::setNowstage(1);
 	
 }
 
@@ -253,12 +253,11 @@ void Game::main(){
 //	if (target_e == NULL) target_X = castle_list.at(now_stage)->getX();
 	target_X = min(castle_list.at(now_stage)->getX(),target_X);
 	
-/*	clsDx();
-	printfDx("target_X %d %d", castle_list.at(now_stage)->getX(), target_X);
-	*/
+
 	frontE = target_X;
+
 	/*–¡•ûƒƒCƒ“*/
-	target_X = 0; target_X_S = 0;
+	target_X = stage_W[now_stage - 1] -1; target_X_S = stage_W[now_stage - 1] -1;
 
 	for (int j = 0; j < 3; j++){
 		for (auto i : musume_list[j]){
@@ -278,7 +277,6 @@ void Game::main(){
 				else castle_list.at(now_stage)->damage(i->getPower());
 				if (target_e_sky != NULL)
 					target_e_sky->damage(i->getPower(),i->getAtkType());
-
 			}
 
 			
@@ -298,6 +296,7 @@ void Game::main(){
 			if (i->getState() == ATK){
 				if (target_m != NULL)	
 					target_m->damage(i->getPower(), i->getAtkType());
+				else castle_list.at(now_stage-1)->damage(i->getPower());
 				if (target_m_sky != NULL)
 					target_m_sky->damage(i->getPower(), i->getAtkType());
 			}
@@ -309,8 +308,8 @@ void Game::main(){
 	
 	for (auto i : castle_list){
 		i->main();
-		
 	}
+
 	for (auto k : atkrange_enemy_list){
 		for (int j = 0; j < 3; j++){
 			for (auto i : musume_list[j]){
@@ -374,7 +373,6 @@ void Game::stageInc(int next_st){
 	if (next_st == STAGE_NUM + 1)return;
 	castle_list.at(next_st-1)->setState(OCCUPY);
 	castle_list.at(next_st)->setState(ACTIVE);
-	
 }
 
 void Game::delete_object(){
@@ -441,6 +439,8 @@ void Game::Test(){
 	}
 
 	//if (mouse_in::getIns()->LeftClick())  birth(castle::getNowstage(), HOHEI);
+	if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
+
 	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(1, COPTER);
 
 /*	if (!delete_musumelist.empty()){

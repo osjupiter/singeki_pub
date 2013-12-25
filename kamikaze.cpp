@@ -28,7 +28,7 @@ void kamikaze::main(int front){
 	//	state = ATK;
 	switch (state){
 
-	case ATK:
+	case UnitState::ATK:
 	/*	if (gap_y == -3)
 			gap_vy = gap_vy*-1;
 		else if (gap_y == 0)
@@ -43,7 +43,7 @@ void kamikaze::main(int front){
 		if (!((ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK)
 			== ANI_KAMIKAZE_ATK - 1))atk = true;
 		break;
-	case DIE:
+	case UnitState::DIE:
 		del();
 		break;
 	}
@@ -51,13 +51,13 @@ void kamikaze::main(int front){
 
 void kamikaze::draw(int cx){
 	switch (state){
-	case MOV:
+	case UnitState::MOV:
 		DrawGraph(x - cx, y+gap_y, Images::getIns()->g_kamikaze[ani_count / ANIM_SPEED%ANI_KAMIKAZE], true);
 		break;
-	case ATK:
+	case UnitState::ATK:
 		DrawGraph(x - cx, y + gap_y, Images::getIns()->g_kamikaze_atk[ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK], true);
 		break;
-	case DIE:
+	case UnitState::DIE:
 		break;
 
 	}
@@ -71,4 +71,7 @@ int kamikaze::getNum(){
 
 void kamikaze::setNum(int i){
 	num = i;
+}
+int kamikaze::getPower(){
+	return musume::getPower();
 }

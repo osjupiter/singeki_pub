@@ -21,4 +21,5 @@ public:
 	int getPower();
 	Position getAtkType();
 	void damage(int, Position);
+	void changeState(UnitState);
 };

@@ -22,10 +22,9 @@ void balloon::main(int front){
 	musume::main(front);
 //	state = ATK;
 	switch (state){
-	case MOV:
-		//x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+	case UnitState::MOV:
 		break;
-	case ATK:
+	case UnitState::ATK:
 		
 		if ((ani_count / ANIM_SPEED%ANI_BALLOON_ATK)
 			== ANI_BALLOON_ATK - 1 && atk){
@@ -35,22 +34,22 @@ void balloon::main(int front){
 		if (!((ani_count / ANIM_SPEED%ANI_BALLOON_ATK)
 			== ANI_BALLOON_ATK - 1))atk = true;
 			break;
-	case DIE:
-		del();
+	case UnitState::DIE:
+	//	del();
 		break;
 	}
 }
 
 void balloon::draw(int cx){
 	switch (state){
-	case MOV:
+	case UnitState::MOV:
 		DrawGraph(x - cx, y, Images::getIns()->g_balloon[ani_count / ANIM_SPEED%ANI_BALLOON], true);
 		break;
-	case ATK:
+	case UnitState::ATK:
 		DrawGraph(x - cx, y, Images::getIns()->g_balloon_atk[ani_count / ANIM_SPEED%ANI_BALLOON_ATK], true);
 
 		break;
-	case DIE:
+	case UnitState::DIE:
 		break;
 
 	}
@@ -66,3 +65,6 @@ void balloon::setNum(int i){
 	num = i;
 }
 
+int balloon::getPower(){
+	return musume::getPower();
+}

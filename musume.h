@@ -15,9 +15,9 @@ public:
 	virtual void main(int);
 	virtual void draw(int);
 	void damage(int, Position);
-	int getPower();
+	virtual int getPower();
 	Position getAtkType();
-
+	void changeState(UnitState);
 
 	void del();
 };

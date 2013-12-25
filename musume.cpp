@@ -5,26 +5,43 @@ musume::musume(int fx, int fy, int ln, shared_ptr<Parameter> pm) :unit(fx, fy, l
 	param = pm;
 	dir = Direction::RIGHT;
 	hp = param->getParam(MAXHP);
+	
 }
 
 void musume::main(int front){
 	unit::main();
+	if (wait_time>0)
+		wait_time--;
 	switch (state){
-	case MOV:
+	case UnitState::MOV:
 		x += param->getParam(SPEED); //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-		if (x > front - dist){ 
-			state = ATK; 
-			ani_count = 0;
+		if (x > front - dist){
+			if (wait_time==0)
+				changeState(ATK);	
+			else changeState(WAIT);
 		}
 		break;
-	case ATK:
+	case UnitState::ATK:
 		if (!(x > front - dist)) {
-			state = MOV;
-			ani_count = 0;
+			changeState(MOV);
 		}
 		break;
-	case DIE:
-	
+	case UnitState::WAIT:
+		if (!(x > front - dist)) {
+			changeState(MOV);
+		}
+		
+		else if (wait_time == 0){
+			changeState(ATK);
+		}
+		break;
+	case UnitState::DIE:
+		y += vy;
+		x += vx;
+		vy -= 10;
+		vx -= 5;
+		if (y + height<0)
+			del();
 		break;
 	}
 
@@ -37,6 +54,48 @@ void musume::draw(int cx){
 
 }
 
+void musume::changeState(UnitState next_state){
+	switch (next_state){
+	case UnitState::MOV:
+		state = next_state;
+		ani_count = 0;
+		switch (state){
+		case ATK:
+			wait_time = param->getParam(A_FREQ);
+			break;
+		}
+		break;
+	case UnitState::ATK:
+		switch (state){
+		case MOV:
+			state = ATK;
+			ani_count = 0;
+		
+			break;
+		case WAIT:
+			state = ATK;
+			ani_count = 0;
+			break;
+		}
+		break;
+	case UnitState::WAIT:
+		switch (state){
+		case MOV:
+			state = WAIT;
+			break;
+		case ATK:
+			wait_time = param->getParam(A_FREQ);
+			state = WAIT;
+			break;
+		}
+		break;
+	case UnitState::DIE:
+		state = next_state;
+		break;
+	}
+}
+
+
 void musume::del(){
 	Game::getIns()->push_del_musume(*(new shared_ptr<musume>(this)));
 }
@@ -45,20 +104,23 @@ void musume::damage(int d, Position op_a_type){
 	if (op_a_type == ALL || op_a_type == type){
 		hp -= max(d - param->getParam(DEFENSE), 0);
 		if (hp < 0){
-			state = DIE;
+			changeState(DIE);
 		}
 	}
 
-	if (state == DIE){
+	if (state == UnitState::DIE){
 		vx = -rand()%80;
 		vy = -30;
 	}
 	
 }
 
+
 int musume::getPower(){
 	return param->getParam(POWER);
 }
+
+
 Position musume::getAtkType(){
 	return (Position) param->getParam(A_TYPE);
 }

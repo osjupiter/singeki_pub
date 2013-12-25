@@ -17,6 +17,7 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	type = SKY;
 	atk_type = RAND;
 	cost = COST_COPTER;
+	atk_freq = A_FREQ_COPTER;
 	
 }
 void copter::init(){
@@ -27,20 +28,26 @@ void copter::main(int front){
 	enemy::main(front);
 	//	state = ATK;
 	switch (state){
-	case MOV:
+	case UnitState::MOV:
 		x += 3*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		break;
 	case ATK:
-		if ((ani_count / ANIM_SPEED%ANI_COPTER)
-			== ANI_COPTER - 1 && atk){
-			atk = false;
-			Game::getIns()->effect_create(x , y + 155, MISSILE,dir);
-			Images::playSE("sound/misairu.mp3");
+		if ((ani_count / ANIM_SPEED)== ANI_COPTER - 1 ){
+			if (!atk){
+				atk = true;
+				Game::getIns()->effect_create(x + width / 2, y + 155, MISSILE, dir);
+				Images::playSE("sound/misairu.mp3");
+			}
 		}
-		if (!((ani_count / ANIM_SPEED%ANI_COPTER)
-			== ANI_COPTER - 1))atk = true;
+		else{
+			atk = false;
+		}
+	
+		if (((ani_count / ANIM_SPEED) == ANI_COPTER)){ 
+			changeState(WAIT);
+		}
 		break;
-	case DIE:
+	case UnitState::DIE:
 		del();
 		break;
 	}
@@ -48,19 +55,25 @@ void copter::main(int front){
 
 void copter::draw(int cx){
 	switch (state){
-	case MOV:
+	case UnitState::MOV:
 		if (dir==LEFT)
 			DrawGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
 		else
 			DrawTurnGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
 		break;
-	case ATK:
+	case UnitState::ATK:
 		if (dir==LEFT)
 			DrawGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
 		else
 			DrawTurnGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
 		break;
-	case DIE:
+	case UnitState::WAIT:
+		if (dir == LEFT)
+			DrawGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
+		else
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
+		break;
+	case UnitState::DIE:
 		break;
 
 	}

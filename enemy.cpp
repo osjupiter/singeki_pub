@@ -7,23 +7,34 @@ enemy::enemy(int fx, int fy, int ln,int lv) :unit(fx, fy, ln){
 
 void enemy::main(int front){
 	unit::main();
+	if (wait_time>0)
+		wait_time--;
 	if (dir == LEFT){
 		if (x <= front - dist)
 			switchDirection();
 		switch (state){
-		case MOV:
+		case UnitState::MOV:
 			if (x < front + dist){
-				state = ATK;
-				ani_count = 0;
+				if (wait_time == 0)
+					changeState(ATK);
+				else changeState(WAIT);
 			}
 			break;
-		case ATK:
+		case UnitState::ATK:
 			if (!(x < front + dist)){
-				state = MOV;
-				ani_count = 0;
+				changeState(MOV);
 			}
 			break;
-		case DIE:
+		case UnitState::WAIT:
+			if (!(x < front + dist)) {
+				changeState(MOV);
+			}
+
+			else if (wait_time == 0){
+				changeState(ATK);
+			}
+			break;
+		case UnitState::DIE:
 
 			break;
 		}
@@ -33,19 +44,28 @@ void enemy::main(int front){
 			switchDirection();
 		
 		switch (state){
-		case MOV:
+		case UnitState::MOV:
 			if (x+width > front - dist){
-				state = ATK;
-				ani_count = 0;
+				if (wait_time == 0)
+					changeState(ATK);
+				else changeState(WAIT);
 			}
 			break;
-		case ATK:
+		case UnitState::ATK:
 			if (!(x + width > front - dist)){
-				state = MOV;
-				ani_count = 0;
+				changeState(MOV);
 			}
 			break;
-		case DIE:
+		case UnitState::WAIT:
+			if (!(x + width > front - dist)) {
+				changeState(MOV);
+			}
+
+			else if (wait_time == 0){
+				changeState(ATK);
+			}
+			break;
+		case UnitState::DIE:
 
 			break;
 		}
@@ -77,6 +97,49 @@ void enemy::damage(int d, Position op_a_type){
 
 }
 
+
+void enemy::changeState(UnitState next_state){
+	switch (next_state){
+	case UnitState::MOV:
+		state = next_state;
+		ani_count = 0;
+		switch (state){
+		case ATK:
+		//	wait_time = param->getParam(A_FREQ);
+			wait_time = atk_freq;
+			break;
+		}
+		break;
+	case UnitState::ATK:
+		switch (state){
+		case MOV:
+			state = ATK;
+			ani_count = 0;
+
+			break;
+		case WAIT:
+			state = ATK;
+			ani_count = 0;
+			break;
+		}
+		break;
+	case UnitState::WAIT:
+		switch (state){
+		case MOV:
+			state = WAIT;
+			break;
+		case ATK:
+			//	wait_time = param->getParam(A_FREQ);
+			wait_time = atk_freq;
+			state = WAIT;
+			break;
+		}
+		break;
+	case UnitState::DIE:
+		state = next_state;
+		break;
+	}
+}
 
 
 
