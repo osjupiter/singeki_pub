@@ -10,7 +10,7 @@ int kamikaze::num = 0;
 kamikaze::kamikaze(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
 	dist = -dist + 100;
 	
-	hp = param->getParam(MAXHP);
+	//hp = param->getParam(MAXHP);
 	width = WID_KAMIKAZE;
 	height = HEI_KAMIKAZE;
 	num++;
@@ -27,15 +27,7 @@ void kamikaze::main(int front){
 	musume::main(front);
 	//	state = ATK;
 	switch (state){
-	case MOV:
-		x += param->getParam(SPEED); //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-	/*	if (gap_y == -3)
-			gap_vy = gap_vy*-1;
-		else if (gap_y == 0)
-			gap_vy = gap_vy*-1;
-		gap_y+=gap_vy;*/
 
-		break;
 	case ATK:
 	/*	if (gap_y == -3)
 			gap_vy = gap_vy*-1;

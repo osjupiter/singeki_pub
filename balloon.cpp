@@ -8,7 +8,7 @@ int balloon::num = 0;
 
 balloon::balloon(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
 	dist = -dist+50;
-	hp = param->getParam(MAXHP);
+	//hp = param->getParam(MAXHP);
 	width = WID_BALLOON;
 	height = HEI_BALLOON;
 	num++;
@@ -23,7 +23,7 @@ void balloon::main(int front){
 //	state = ATK;
 	switch (state){
 	case MOV:
-		x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		//x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		break;
 	case ATK:
 		

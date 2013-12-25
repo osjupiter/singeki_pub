@@ -7,7 +7,7 @@ int bazooka::num = 0;
 
 
 bazooka::bazooka(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-	hp = param->getParam(MAXHP);
+	//hp = param->getParam(MAXHP);
 	width = WID_BAZOOKA;
 	height = HEI_BAZOOKA;
 	num++;
@@ -20,7 +20,7 @@ void bazooka::main(int front){
 	musume::main(front);
 	switch (state){
 	case MOV:
-		x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		//x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		break;
 	case DIE:
 		y += vy;

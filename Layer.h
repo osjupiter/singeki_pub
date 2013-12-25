@@ -129,8 +129,9 @@ class FactoryLayer:public Layer{
 private:
 	int x,y,w,h,lh,lxmar,lw;
 	int select,lmartop;
+	shared_ptr<Game> game;
 public:
-	FactoryLayer();
+	FactoryLayer(shared_ptr<Game>);
 	void draw();
 	void main();
 };

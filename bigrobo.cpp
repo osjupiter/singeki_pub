@@ -8,7 +8,7 @@ int bigrobo::num = 0;
 
 
 bigrobo::bigrobo(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-	hp = param->getParam(MAXHP);
+	//hp = param->getParam(MAXHP);
 	width = WID_BIG;
 	height = HEI_BIG;
 	num++;
@@ -27,7 +27,7 @@ void bigrobo::main(int front){
 //	state = ATK;
 	switch (state){		
 	case MOV:
-		x += 3; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		//x += 3; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		break;
 	case ATK:
 		if (ani_count / ANIM_SPEED%ANI_BIG_ATK == ANI_BIG_ATK - 1 && atk){

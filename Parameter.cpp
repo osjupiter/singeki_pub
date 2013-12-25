@@ -34,7 +34,7 @@ int Parameter::getParamLevel(ParamType p_type){
 }
 
 int Parameter::getParam(ParamType p_type){
-	return base[p_type];
+	return base[p_type]*(1+0.5*level[p_type]);
 }
 /*
 int Parameter::getCost(ParamType p_type){
