@@ -416,9 +416,7 @@ void Game::delete_object(){
 
 }
 
-int Game::getProduct(int st){
-	return castle_list.at(st)->getProduct();
-}
+
 
 void Game::Test(){
 	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "m%d en%d ef%d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());

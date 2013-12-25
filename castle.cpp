@@ -41,7 +41,7 @@ void castle::main(){
 	case ACTIVE:
 		if (getClock(1000)){
 			Game::getIns()->birth(stage, TANK);
-			Game::getIns()->birth(stage, COPTER);
+		//	Game::getIns()->birth(stage, COPTER);
 		}
 		break;
 	case WAIT:
@@ -119,10 +119,6 @@ void castle::setProduct(int p_type){
 int castle::getProduct(){
 	return product_type;
 	
-}
-
-int castle::getProduct(){
-	return product_type;
 }
 
 void castle::setState(int s){

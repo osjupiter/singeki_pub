@@ -60,7 +60,6 @@ public:
 	int getProduct(int);
 	int getResource();
 	int getNowStage();
-	int getProduct(int);
 	void useResource(int);
 	void gainResource(int);
 	/**/
