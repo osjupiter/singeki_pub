@@ -231,14 +231,12 @@ void MenuLayer::draw(){
 	//map
 	//DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
 	DrawBox(lx,ly-lh/2,lx+lw,ly+lh/2,GetColor(255,0,255),TRUE);
-	clsDx();
 	for(int i=0;i<9;i++){
 		int _x=xlist[i];
 		int _y=ly;
 		int _w=25;
 		double _rate=ratelist[i];
 		DrawRotaGraph(_x,_y,_rate,0,Images::get("pic/tou.png"),TRUE);
-		printfDx("%d ",game->getProduct(i));
 		int hoge=Images::getMusumeIcon(game->getProduct(i));
 		DrawRotaGraph(_x,_y+30,1.0,0,Images::getMusumeIcon(game->getProduct(i)),TRUE);
 	}
@@ -272,7 +270,7 @@ void MenuLayer:: main(){
 	if(m->LeftClick()){
 		if(testBox(200,10,250,60)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
-			if( p != NULL )	p->addLayer(15,std::make_shared<FactoryLayer>());
+			if( p != NULL )	p->addLayer(15,std::make_shared<FactoryLayer>(game));
 			m->Reset();
 		}else	if(testBox(700,0,750,50)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
@@ -327,7 +325,8 @@ void MapCloseLayer:: main(){
 }
 	
 
-FactoryLayer::FactoryLayer(){
+FactoryLayer::FactoryLayer(shared_ptr<Game> g){
+	game=g;
 	x=100;
 	y=100;
 	w=600;
@@ -394,8 +393,11 @@ void FactoryLayer:: main(){
 					ww=80;
 					yy=tmpy+70+90*j;
 					hh=80;
-					if(testBox(xx,yy,xx+ww,yy+hh))
+					ParamType hoge=static_cast<ParamType>(j*4+i);
+					if(testBox(xx,yy,xx+ww,yy+hh)){
+						game->incParamLevel(select+1,hoge,50);
 						printfDx("%d\n",j*4+i);
+					}
 				}
 			}
 		}

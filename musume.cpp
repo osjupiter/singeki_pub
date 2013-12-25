@@ -4,12 +4,14 @@
 musume::musume(int fx, int fy, int ln, shared_ptr<Parameter> pm) :unit(fx, fy, ln){
 	param = pm;
 	dir = Direction::RIGHT;
+	hp = param->getParam(MAXHP);
 }
 
 void musume::main(int front){
 	unit::main();
 	switch (state){
 	case MOV:
+		x += param->getParam(SPEED); //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		if (x > front - dist){ 
 			state = ATK; 
 			ani_count = 0;

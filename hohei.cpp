@@ -6,7 +6,7 @@
 int hohei::num = 0;
 hohei::hohei(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
 	
-	hp = param->getParam(MAXHP);
+	//hp = param->getParam(MAXHP);
 	width = WID_HOHEI;
 	height = HEI_HOHEI;
 	num++;
@@ -21,9 +21,7 @@ void hohei::init(){
 void hohei::main(int front){
 	musume::main(front);
 	switch (state){
-	case MOV:
-		x += param->getParam(SPEED); //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-		break;
+
 	case ATK:
 		if (ani_count / ANIM_SPEED%ANI_HOHEI_ATK == 0)
 			Images::playSE("sound/gun03.mp3",true);

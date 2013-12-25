@@ -115,7 +115,8 @@ int castle::getNowstage(){
 void castle::setProduct(int p_type){
 	
 	product_type = p_type;
-	product_clk = unit_clk[p_type];
+	//product_clk = unit_clk[p_type];
+	product_clk =Game::getIns()->getParam(p_type,ParamType::CLK);
 }
 int castle::getProduct(){
 	return product_type;
