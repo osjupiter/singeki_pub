@@ -60,44 +60,34 @@ ButtonLayer* ButtonLayer::setClickSE(string s){
 
 
 MapLayer::MapLayer(std::shared_ptr<Game> g){
-	lx=200;ly=200;lw=400;lh=200;
+	lx=275;ly=50;lw=500;lh=10;
 	for(int i=0;i<9;i++)
 		xlist[i]=g->stage_W[i]/(double)g->stage_W[8]*lw+lx;
-
-	
-
 }
 void MapLayer::main(){
 	mouse_in* m=mouse_in::getIns();
 	for(int i=0;i<9;i++)ratelist[i]=1.0;
-	if(lx<m->X()&&ly<m->Y()&&m->X()<lx+lw&&m->Y()<ly+lh){
-		for(int i=0;i<9;i++){
-			int _x=xlist[i];
-			int _y=ly+lh/2;
-			int _w=25;
-			ratelist[i]=1.0;
-			if(_x-_w<m->X()&&_y-_w<m->Y()&&m->X()<_x+_w&&m->Y()<_y+_w){
-				ratelist[i]=2.0;
-				if(m->LeftClick()){
-					m->Reset();
-					parentScene->addLayer(11,make_shared<SelectLayer>(_x,_y-150,i));
-				}
+	for(int i=0;i<9;i++){
+		int _x=xlist[i];
+		int _y=ly;
+		int _w=25;
+		ratelist[i]=1.0;
+		if(_x-_w<m->X()&&_y-_w<m->Y()&&m->X()<_x+_w&&m->Y()<_y+_w){
+			ratelist[i]=2.0;
+			if(m->LeftClick()){
+				m->Reset();
+				parentScene->addLayer(11,make_shared<SelectLayer>(_x,_y+150,i));
 			}
-		}
-	}else{
-		if(m->LeftClick()){
-			parentScene->rmLayer(10);
-			parentScene->rmLayer(9);
-			m->Reset();
 		}
 	}
 	
+	
 }
 void MapLayer::draw(){
-	DrawBox(lx,ly,lx+lw,ly+lh,GetColor(255,0,255),TRUE);
+		DrawBox(lx,ly-lh/2,lx+lw,ly+lh/2,GetColor(255,0,255),TRUE);
 		for(int i=0;i<9;i++){
 			int _x=xlist[i];
-			int _y=ly+lh/2;
+			int _y=ly;
 			int _w=25;
 			double _rate=ratelist[i];
 			DrawRotaGraph(_x,_y,_rate,0,Images::get("pic/tou.png"),TRUE);
@@ -165,22 +155,22 @@ void SelectLayer::draw(){
 			string s;
 			switch (i+j*3){
 				case 0:
-					s="なし";
+					s="pic/null.png";
 					break;
 				case 1:
-					s="歩兵";
+					s="pic/na.png";
 					break;
 				case 2:
-					s="風船";
+					s="pic/ha.png";
 					break;
 				case 3:
-					s="ロボ";
+					s="pic/ra.png";
 					break;
 				case 4:
-					s="カミカゼ";
+					s="pic/ka.png";
 					break;
 				case 5:
-					s="バズーカ";
+					s="pic/ba.png";
 					break;
 				case 6:
 					break;
@@ -191,6 +181,7 @@ void SelectLayer::draw(){
 				case 9:
 					break;
 			}
+			DrawGraph(x-75+50*i+5,y-75+50*j+5,Images::get(s.c_str()),TRUE);
 			DrawString(x-75+50*i+5,y-75+50*j+5,s.c_str(),GetColor(0,0,0));
 			
 		
@@ -222,23 +213,43 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 }
 void MenuLayer::draw(){
 	//Menu
-	DrawBox(650,0,800,100,GetColor(255,0,0),TRUE);
+	//DrawBox(650,0,800,100,GetColor(255,0,0),TRUE);
 
+	/*
 	for(int i=0;i<3;i++){
 		int x1=650-onMouseTime[i],x2=800,y1=5+i*30,y2=35+i*30;
 		DrawBox(x1,y1,x2,y2,GetColor(255,255,0),TRUE);
-		if(i==0) DrawString(x1,y1,"生産ユニット変更",GetColor(0,0,0));
+		if(i==0); //DrawString(x1,y1,"生産ユニット変更",GetColor(0,0,0));
 		else if(i==1)DrawString(x1,y1,"強化・改造",GetColor(0,0,0));
 		else if(i==2)DrawString(x1,y1,"設定",GetColor(0,0,0));
-	}
+	}*/
 	//map
-	DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
+	//DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
+
+	//factory
+	DrawBox(200,10,200+50,10+50,GetColor(0,255,0),TRUE);
+
+	
+	//option
+	DrawBox(700,0,750,50,GetColor(0,255,0),TRUE);
 
 	//status
-	DrawBox(0,0,200,50,GetColor(255,0,0),TRUE);
+	DrawBox(0,0,150,50,GetColor(255,0,0),TRUE);
 }
 void MenuLayer:: main(){
 	auto m= mouse_in::getIns();
+	if(m->LeftClick()){
+		if(testBox(200,10,250,60)){
+			GameScene* p = dynamic_cast<GameScene*>( parentScene );
+			if( p != NULL )	p->addLayer(15,std::make_shared<FactoryLayer>());
+			m->Reset();
+		}else	if(testBox(700,0,750,50)){
+			GameScene* p = dynamic_cast<GameScene*>( parentScene );
+			if( p != NULL )	p->addLayer(15,std::make_shared<OptionLayer>());
+			m->Reset();
+		}
+	}
+	/*
 	for(int i=0;i<3;i++){
 		int x1=650,x2=800,y1=5+i*30,y2=35+i*30;
 		if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
@@ -250,7 +261,7 @@ void MenuLayer:: main(){
 					switch (i){
 					case 0:
 						p->addLayer(10,std::make_shared<MapLayer>(game));
-						p->addLayer(9,std::make_shared<MapCloseLayer>());
+						//p->addLayer(9,std::make_shared<MapCloseLayer>());
 						break;
 					case 1:
 						p->addLayer(15,std::make_shared<FactoryLayer>());
@@ -268,6 +279,7 @@ void MenuLayer:: main(){
 			if(onMouseTime[i]<0)onMouseTime[i]=0;
 		}
 	}
+	*/
 }
 
 //MapCloseLayer

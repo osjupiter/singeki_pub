@@ -46,8 +46,8 @@ public:
 	void load();
 	static void init();
 	static Images* getIns();
-	static int get(char name[]);
-	static int getSound(char name[]);
+	static int get(const char name[]);
+	static int getSound(const char name[]);
 	static void playSE(string name,boolean);
 	static void playSE(string name);
 	static void stopSE(string name);
