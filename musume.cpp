@@ -1,7 +1,8 @@
 #include "musume.h"
 #include "Game.h"
 
-musume::musume(int fx,int fy,int ln):unit(fx,fy,ln){
+musume::musume(int fx, int fy, int ln, shared_ptr<Parameter> pm) :unit(fx, fy, ln){
+	param = pm;
 	dir = Direction::RIGHT;
 }
 
@@ -38,8 +39,14 @@ void musume::del(){
 	Game::getIns()->push_del_musume(*(new shared_ptr<musume>(this)));
 }
 
-void musume::damage(int d,int op_a_type){
-	
+void musume::damage(int d, Position op_a_type){
+	if (op_a_type == ALL || op_a_type == type){
+		hp -= max(d - param->getParam(DEFENSE), 0);
+		if (hp < 0){
+			state = DIE;
+		}
+	}
+
 	if (state == DIE){
 		vx = -rand()%80;
 		vy = -30;
@@ -48,9 +55,11 @@ void musume::damage(int d,int op_a_type){
 }
 
 int musume::getPower(){
-	return 0;
+	return param->getParam(POWER);
 }
-int musume::getAtkType(){
-	return 0;
+Position musume::getAtkType(){
+	return (Position) param->getParam(A_TYPE);
 }
+
+
 

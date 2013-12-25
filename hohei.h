@@ -5,18 +5,11 @@
 
 class hohei : public musume{
 private:
-	static int maxhp;
-	static int power;
-	static int speed;
-	static int atk_freq;
-	static int defense;
-	static int atk_type;
-	static int clk;
-	static int cost;
+
 
 	static int num;
 public:
-	hohei(int fx,int fy,int ln);
+	hohei(int fx, int fy, int ln, shared_ptr<Parameter>);
 	static void init();
 	void main(int);
 	void draw(int);

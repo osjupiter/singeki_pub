@@ -27,7 +27,7 @@ int unit::getState(){
 	return state;
 }
 
-int unit::getType(){
+Position unit::getType(){
 	return type;
 }
 
@@ -35,22 +35,7 @@ int unit::getType(){
 bool unit::getLife(){
 	return life;
 }
-/*int unit::getPower(){
-	return power;
-}
-int unit::getAtkType(){
-	return atk_type;
-}
-void unit::damage(int d,int op_a_type){
-//	if (state == ATK){
-		if (op_a_type == NONE || op_a_type == type){
-			hp -= max(d - defense, 0);
-			if (hp < 0){
-				state = DIE;
-			}
-		}
-//	}
-}*/
+
 
 void unit::switchDirection(){
 	if (dir == LEFT)

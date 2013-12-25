@@ -5,19 +5,12 @@
 #define ANIM_SPEED 3
 int kamikaze::num = 0;
 
-int kamikaze::maxhp;
-int kamikaze::power;
-int kamikaze::speed;
-int kamikaze::defense;
-int kamikaze::atk_freq;
-int kamikaze::atk_type;
-int kamikaze::clk;
-int kamikaze::cost;
 
-kamikaze::kamikaze(int fx, int fy, int ln) : musume(fx, fy, ln){
+
+kamikaze::kamikaze(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
 	dist = -dist + 100;
 	
-	hp = maxhp;
+	hp = param->getParam(MAXHP);
 	width = WID_KAMIKAZE;
 	height = HEI_KAMIKAZE;
 	num++;
@@ -28,21 +21,14 @@ kamikaze::kamikaze(int fx, int fy, int ln) : musume(fx, fy, ln){
 }
 void kamikaze::init(){
 	num = 0;
-	maxhp = 500;
-	power = 10;
-	speed = 4;
-	defense = 1;
-	atk_freq = 5;
-	atk_type = SKY;
-	clk = CLK_KAMIKAZE;
-	cost = COST_KAMIKAZE;
+
 }
 void kamikaze::main(int front){
 	musume::main(front);
 	//	state = ATK;
 	switch (state){
 	case MOV:
-		x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		x += param->getParam(SPEED); //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 	/*	if (gap_y == -3)
 			gap_vy = gap_vy*-1;
 		else if (gap_y == 0)
@@ -93,21 +79,4 @@ int kamikaze::getNum(){
 
 void kamikaze::setNum(int i){
 	num = i;
-}
-
-int kamikaze::getPower(){
-	return power;
-}
-int kamikaze::getAtkType(){
-	return atk_type;
-}
-void kamikaze::damage(int d, int op_a_type){
-
-	if (op_a_type == NONE || op_a_type == type){
-		hp -= max(d - defense, 0);
-		if (hp < 0){
-			state = DIE;
-		}
-	}
-
 }

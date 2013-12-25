@@ -57,17 +57,24 @@ void enemy::draw(int cx){
 }
 
 void enemy::del(){
-
+	Game::getIns()->push_del_enemy(*(new shared_ptr<enemy>(this)));
+	Game::getIns()->gainResource(cost);
 }
 
 int enemy::getPower(){
-	return 0;
+	return power;
 }
-int enemy::getAtkType(){
-	return 0;
+Position enemy::getAtkType(){
+	return atk_type;
 }
-void enemy::damage(int d, int op_a_type){
-	
+void enemy::damage(int d, Position op_a_type){
+	if (op_a_type == ALL || op_a_type == type){
+		hp -= max(d - defense, 0);
+		if (hp < 0){
+			state = DIE;
+		}
+	}
+
 }
 
 

@@ -5,20 +5,14 @@
 #define ANIM_SPEED 3
 
 int tank::num;
-/*
-int tank::power;
-int tank::speed;
-int tank::defense;
-int tank::atk_freq;
-int tank::atk_type;
-int tank::clk;
-int tank::cost;*/
+
 
 tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	power = 5;
 	hp = 400*lv;
 	width = WID_TANK;
 	height = HEI_TANK;
+	speed = 5;
 	defense = 2*lv;
 	num++;
 	type = RAND;
@@ -28,20 +22,14 @@ tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 
 void tank::init(){
 	num = 0;	
-/*	power = 10;
-	speed = 4;
-	defense = 1;
-	atk_freq = 5;
-	atk_type = RAND;
-	clk = 0;
-	cost = COST_TANK;*/
+
 }
 
 void tank::main(int front){
 	enemy::main(front);
 	switch (state){
 	case MOV:
-		x += 5*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		if (x + width < 0) state = DIE;
 		break;
 	case ATK:
@@ -80,24 +68,3 @@ void tank::setNum(int i){
 }
 
 
-int tank::getPower(){
-	return power;
-}
-int tank::getAtkType(){
-	return atk_type;
-}
-void tank::damage(int d, int op_a_type){
-
-	if (op_a_type == NONE || op_a_type == type){
-		hp -= max(d - defense, 0);
-		if (hp < 0){
-			state = DIE;
-		}
-	}
-
-}
-
-void tank::del(){
-	Game::getIns()->push_del_enemy(*(new shared_ptr<enemy>(this)));
-	Game::getIns()->gainResource(cost);
-}

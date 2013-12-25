@@ -5,24 +5,15 @@
 #define ANIM_SPEED 3
 int copter::num = 0;
 
-/*
-int copter::power;
-int copter::speed;
-int copter::defense;
-int copter::atk_freq;
-int copter::atk_type;
-int copter::clk;
-int copter::cost;*/
-
 copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	
-	power = 0;
-	hp = 500;
+	power = 10*lv;
+	hp = 200*lv;
 	width = WID_COPTER;
 	height = HEI_COPTER;
 	num++;
 	atk = false;
-	defense = 1;
+	defense = 1*lv;
 	type = SKY;
 	atk_type = RAND;
 	cost = COST_COPTER;
@@ -85,23 +76,3 @@ void copter::setNum(int i){
 	num = i;
 }
 
-int copter::getPower(){
-	return power;
-}
-int copter::getAtkType(){
-	return atk_type;
-}
-void copter::damage(int d, int op_a_type){
-
-	if (op_a_type == NONE || op_a_type == type){
-		hp -= max(d - defense, 0);
-		if (hp < 0){
-			state = DIE;
-		}
-	}
-
-}
-void copter::del(){
-	Game::getIns()->push_del_enemy(*(new shared_ptr<enemy>(this)));
-	Game::getIns()->gainResource(cost);
-}
