@@ -174,6 +174,10 @@ void Game::setProduct(int tw_num, int m_type){
 	if (castle::getNowstage() <= tw_num)return;
 	castle_list.at(tw_num)->setProduct(m_type);
 }
+int Game::getProduct(int tw_num){
+	if (castle::getNowstage() <= tw_num)return 0;
+	return castle_list.at(tw_num)->getProduct();
+}
 
 void Game::enemy_birth(){
 	if (getClock(STAGE1_W-front_line)) birth(STAGE1_W, TANK);

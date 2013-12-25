@@ -130,6 +130,12 @@ void Images::load(){
 	filelist.push_back("pic/right.png");
 	filelist.push_back("pic/tou.png");
 
+	filelist.push_back("pic/ba.png");
+	filelist.push_back("pic/ha.png");
+	filelist.push_back("pic/ka.png");
+	filelist.push_back("pic/na.png");
+	filelist.push_back("pic/ra.png");
+
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
 	soundlist.push_back("sound/button03a.mp3");
@@ -157,8 +163,8 @@ void Images::load(){
 	void Images::init(){ins.load();}
 	Images* Images::getIns(){return &ins;}
 
-	int Images::get(char name[]){return ins.gs[string(name)];}
-	int Images::getSound(char name[]){return ins.ss[string(name)];}
+	int Images::get(const char name[]){return ins.gs[string(name)];}
+	int Images::getSound(const char name[]){return ins.ss[string(name)];}
 
 	
 	void Images::playSE(string name,boolean ischeck){
@@ -171,3 +177,36 @@ void Images::load(){
 	void Images::playSE(string name){Images::playSE(name,false);}
 
 	void Images::stopSE(string name){StopSoundMem(ins.ss[name] );}
+
+	int Images::getMusumeIcon(int id){
+		string s;
+		switch (id){
+			case 0:
+				s="pic/null.png";
+				break;
+			case 1:
+				s="pic/na.png";
+				break;
+			case 2:
+				s="pic/ha.png";
+				break;
+			case 3:
+				s="pic/ra.png";
+				break;
+			case 4:
+				s="pic/ka.png";
+				break;
+			case 5:
+				s="pic/ba.png";
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9:
+				break;
+		}
+		return ins.get(s.c_str());
+	}
