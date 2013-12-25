@@ -21,36 +21,11 @@ const int Game::stage_W[9] = {0,STAGE1_W, STAGE2_W, STAGE3_W, STAGE4_W, STAGE5_W
 Game* Game::ins;
 
 Game::Game(){
-	param_list[HOHEI] = shared_ptr<Parameter>(
-		new Parameter(POWER_HOHEI, MAXHP_HOHEI
-		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI));
-	param_list[BALLOON] = shared_ptr<Parameter>(
-		new Parameter(POWER_BALLOON, MAXHP_BALLOON
-		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON));
-	param_list[BAZOOKA] = shared_ptr<Parameter>(
-		new Parameter(POWER_BAZOOKA, MAXHP_BAZOOKA
-		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA));
-	param_list[BIG] = shared_ptr<Parameter>(
-		new Parameter(POWER_BIG, MAXHP_BIG
-		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG));
-	param_list[KAMIKAZE] = shared_ptr<Parameter>(
-		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
-		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE));
+	param_init();
 
 	ins = this;
 	resource = RESOURCE_INIT;
-	for (int i = 0; i < STAGE_NUM; i++){
-		for (int j = 0; j < 5; j++){
-			if (j == 2){
-				shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3, true));
-				back_list.push_back(p);
-			}
-			else{
-				shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3, false));
-				back_list.push_back(p);
-			}
-		}
-	}
+	background_init();
 
 	for (int i=0; i < 9; i++){
 		shared_ptr<castle> p(new castle(stage_W[i], 0, i));
@@ -69,6 +44,40 @@ Game::Game(){
 	tank::init();
 	
 	
+}
+
+void Game::param_init(){
+	param_list[HOHEI] = shared_ptr<Parameter>(
+		new Parameter(POWER_HOHEI, MAXHP_HOHEI
+		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI));
+	param_list[BALLOON] = shared_ptr<Parameter>(
+		new Parameter(POWER_BALLOON, MAXHP_BALLOON
+		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON));
+	param_list[BAZOOKA] = shared_ptr<Parameter>(
+		new Parameter(POWER_BAZOOKA, MAXHP_BAZOOKA
+		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA));
+	param_list[BIG] = shared_ptr<Parameter>(
+		new Parameter(POWER_BIG, MAXHP_BIG
+		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG));
+	param_list[KAMIKAZE] = shared_ptr<Parameter>(
+		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
+		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE));
+
+}
+
+void Game::background_init(){
+	for (int i = 0; i < STAGE_NUM; i++){
+		for (int j = 0; j < 5; j++){
+			if (j == 2){
+				shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3, true));
+				back_list.push_back(p);
+			}
+			else{
+				shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3, false));
+				back_list.push_back(p);
+			}
+		}
+	}
 }
 
 Game* Game::getIns(){ return ins; }
@@ -451,11 +460,18 @@ int Game::getParam(int u_type, ParamType p_type){
 int Game::getParamLevel(int u_type, ParamType p_type){
 	return param_list[u_type]->getParamLevel(p_type);
 }
+/*
 int Game::getParamCost(int u_type, ParamType p_type){
 	return param_list[u_type]->getCost(p_type);
-}
+}*/
 
-bool Game::incParamLevel(int u_type, ParamType p_type){
-	return param_list[u_type]->LevelUp(p_type);
+bool Game::incParamLevel(int u_type, ParamType p_type,int lvcost){
+	if (getResource() <= lvcost) return false;
+	
+	if (param_list[u_type]->LevelUp(p_type)){
+		useResource(lvcost);
+		return true;
+	}
+	return false;
 }
 
