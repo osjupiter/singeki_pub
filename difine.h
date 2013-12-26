@@ -41,8 +41,12 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 /*êÌé‘*/
 #define ANI_TANK 8
 #define ANI_TANK_ATK 5
+#define ANI_TANK_DEL 6
 #define WID_TANK 150
+#define WID_TANK_DEL 220
+
 #define HEI_TANK 120
+#define HEI_TANK_DEL 120
 
 #define POWER_TANK 1
 #define MAXHP_TANK 50

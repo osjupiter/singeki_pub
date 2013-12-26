@@ -99,6 +99,7 @@ void musume::changeState(UnitState next_state){
 	case UnitState::DIE:
 		state = next_state;
 		atk = false;
+		ani_count = 0;
 		break;
 	}
 }
@@ -140,7 +141,7 @@ Position musume::decideTargetPos(int target_x_rand, int target_x_sky){
 	Position ret;
 	switch (param->getParam(A_TYPE)){
 	case ALL:
-		if(target_x_rand < target_x_sky) ret = RAND;
+		if(target_x_rand <= target_x_sky) ret = RAND;
 		else ret = SKY;
 		break;
 	case RAND:

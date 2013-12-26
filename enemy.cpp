@@ -92,8 +92,8 @@ void enemy::damage(int d, Position op_a_type){
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type){
 		hp -= max(d - defense, 0);
-		if (hp < 0){
-			state = DIE;
+		if (state!=DIE && hp < 0){
+			changeState(DIE);
 		}
 	}
 
@@ -148,6 +148,8 @@ void enemy::changeState(UnitState next_state){
 		break;
 	case UnitState::DIE:
 		state = next_state;
+		ani_count = 0;
+		atk = false;
 		break;
 	}
 }

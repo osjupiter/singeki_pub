@@ -41,7 +41,9 @@ void tank::main(int front){
 		}
 		break;
 	case UnitState::DIE:
-		del();
+		if (ani_count / ANIM_SPEED >= ANI_TANK_DEL){
+			del();
+		}
 		break;
 		
 	}
@@ -56,7 +58,12 @@ void tank::draw(int cx){
 	case UnitState::ATK:
 		DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
 		break;
-
+	case UnitState::WAIT:
+		DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
+		break;
+	case UnitState::DIE:
+		DrawGraph(x - cx, y, Images::getIns()->g_tank_dei[ani_count / ANIM_SPEED%ANI_TANK_DEL], true);
+		break;
 	}
 
 	unit::draw(cx);

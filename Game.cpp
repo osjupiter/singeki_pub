@@ -234,11 +234,11 @@ void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, 
 					 effect_list.push_back(p);
 					 break;
 	}
-/*	case BEAM:{
+	case BEAM:{
 					 shared_ptr<effect> p(new beam(fx, fy, atk_power));
 					 effect_list.push_back(p);
 					 break;
-	}*/
+	}
 	}
 }
 
@@ -292,8 +292,8 @@ void Game::main(){
 		}
 	}
 
-	target_X = min(castle_list.at(now_stage)->getX(),target_X);
-	target_X_S = min(castle_list.at(now_stage)->getX(), target_X_S);
+/*	target_X = min(castle_list.at(now_stage)->getX(), target_X);
+	target_X_S = min(castle_list.at(now_stage)->getX(), target_X_S);*/
 
 	front_tmp = target_X;
 	front_S_tmp = target_X_S;
@@ -309,10 +309,12 @@ void Game::main(){
 			front_type = i->decideTargetPos(front_tmp, front_S_tmp);
 
 			if (front_type == RAND){
-				front = front_tmp;
+//				front = front_tmp;
+				front = min(castle_list.at(now_stage)->getX(), front_tmp);
 			}
 			else if(front_type == SKY){
-				front = front_S_tmp;
+//				front = front_S_tmp;
+				front = min(castle_list.at(now_stage)->getX(), front_S_tmp);
 			}
 
 			i->main(front);

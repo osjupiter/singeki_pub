@@ -13,6 +13,7 @@ void Images::load(){
 
 	LoadDivGraph("dat/img/ìGêÌé‘w.png", ANI_TANK, ANI_TANK, 1, WID_TANK, HEI_TANK, g_tank);
 	LoadDivGraph("dat/img/ìGêÌé‘a.png", ANI_TANK_ATK, ANI_TANK_ATK, 1, WID_TANK ,HEI_TANK, g_tank_atk);
+	LoadDivGraph("dat/img/êÌé‘éÄñS.png", ANI_TANK_DEL,1, ANI_TANK_DEL, WID_TANK_DEL, HEI_TANK_DEL, g_tank_dei);
 
 	LoadDivGraph("dat/img/ïóëDï∫w.png", ANI_BALLOON, ANI_BALLOON, 1, WID_BALLOON, HEI_BALLOON, g_balloon);
 	LoadDivGraph("dat/img/ïóëDï∫a.png", ANI_BALLOON_ATK, ANI_BALLOON_ATK, 1, WID_BALLOON, HEI_BALLOON, g_balloon_atk);
