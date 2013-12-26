@@ -5,6 +5,7 @@
 #include "bigrobo.h"
 #include "tank.h"
 #include "copter.h"
+#include "segway.h"
 #include "kamikaze.h"
 #include "bazooka.h"
 #include "tepodon.h"
@@ -37,6 +38,7 @@ Game::Game(){
 	hohei::init();
 	kamikaze::init();
 	tank::init();
+	segway::init();
 //	castle::setNowstage(1);
 	
 }
@@ -57,6 +59,9 @@ void Game::param_init(){
 	param_list[KAMIKAZE] = shared_ptr<Parameter>(
 		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
 		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE));
+	param_list[SEGWAY] = shared_ptr<Parameter>(
+		new Parameter(POWER_SEGWAY, MAXHP_SEGWAY
+		, SPEED_SEGWAY, DEFENSE_SEGWAY, A_TYPE_SEGWAY, CLK_SEGWAY, COST_SEGWAY, A_FREQ_SEGWAY));
 
 }
 
@@ -149,6 +154,12 @@ void Game::birth(int st,int type){
 			shared_ptr<musume> p(new bazooka(stage_W[st], WINDOW_Y - HEI_BAZOOKA - line * 3, line, param_list[BAZOOKA]));
 			musume_list[line].push_back(p);
 			break;
+	}
+	case SEGWAY:
+	{
+				   shared_ptr<musume> p(new segway(stage_W[st], WINDOW_Y - HEI_SEGWAY - line * 3, line, param_list[SEGWAY]));
+					musume_list[line].push_back(p);
+					break;
 	}
 	case TANK:{
 		shared_ptr<enemy> p(new tank(stage_W[st], WINDOW_Y - HEI_TANK - line * 3, line,getNowStage()));
@@ -281,13 +292,13 @@ void Game::main(){
 				target_X_S = i->getX();
 			}
 
-			if (i->getState() == ATK){
+		//	if (i->getState() == ATK){
 				if (target_e != NULL)
 					target_e->damage(i->getPower(), i->getAtkType());
 				else castle_list.at(now_stage)->damage(i->getPower());
 				if (target_e_sky != NULL)
 					target_e_sky->damage(i->getPower(),i->getAtkType());
-			}
+			//}
 
 			
 		}

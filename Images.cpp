@@ -26,6 +26,11 @@ void Images::load(){
 	LoadDivGraph("dat/img/バズーカ兵w.png", ANI_BAZOOKA, ANI_BAZOOKA, 1, WID_BAZOOKA, HEI_BAZOOKA, g_bazooka);
 	LoadDivGraph("dat/img/バズーカ兵a.png", ANI_BAZOOKA_ATK, 6, 2, WID_BAZOOKA_ATK, HEI_BAZOOKA_ATK, g_bazooka_atk);
 
+	LoadDivGraph("dat/img/セグウェイ兵w.png", ANI_SEGWAY, ANI_SEGWAY, 1, WID_SEGWAY, HEI_SEGWAY, g_segway);
+	LoadDivGraph("dat/img/セグウェイ兵爆走直前.png", ANI_SEGWAY_WAIT, ANI_SEGWAY_WAIT, 1, WID_SEGWAY_WAIT, HEI_SEGWAY, g_segway_wait);
+	LoadDivGraph("dat/img/セグウェイ兵爆走中.png", ANI_SEGWAY, ANI_SEGWAY, 1, WID_SEGWAY_RUN, HEI_SEGWAY, g_segway_run);
+
+
 	LoadDivGraph("dat/img/爆弾.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
 	LoadDivGraph("dat/img/爆発E.png", ANI_EXP, 6, 2, WID_EXP, HEI_EXP, g_exp);
 	LoadDivGraph("dat/img/衝撃波.png", ANI_SHOCK, ANI_SHOCK, 1, WID_SHOCK, HEI_SHOCK, g_shock);

@@ -56,8 +56,7 @@ void musume::draw(int cx){
 
 void musume::changeState(UnitState next_state){
 	switch (next_state){
-	case UnitState::MOV:
-		state = next_state;
+	case UnitState::MOV:		
 		ani_count = 0;
 		switch (state){
 		case ATK:
@@ -65,6 +64,7 @@ void musume::changeState(UnitState next_state){
 			atk = false;
 			break;
 		}
+		state = next_state;
 		break;
 	case UnitState::ATK:
 		switch (state){
