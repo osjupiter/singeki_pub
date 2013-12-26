@@ -144,6 +144,8 @@ void Images::load(){
 	filelist.push_back("pic/na.png");
 	filelist.push_back("pic/ra.png");
 	filelist.push_back("pic/sa.png");
+	filelist.push_back("pic/‘Œ¹.png");
+
 
 	filelist.push_back("pic/ƒƒJŠCéa.png");
 	filelist.push_back("pic/ƒƒJRéa.png");
@@ -153,6 +155,7 @@ void Images::load(){
 	filelist.push_back("pic/ƒƒJ–éíéa.png");
 	filelist.push_back("pic/Å‰‚Ì‹’“_a.png");
 	filelist.push_back("pic/ƒƒJ‘Œ´éa.png");
+	filelist.push_back("pic/¶Y’†~a.png");
 
 
 	soundlist.push_back("sound/kuma.mp3");
@@ -212,7 +215,7 @@ void Images::load(){
 		string s;
 		switch (id){
 			case 0:
-				s="pic/null.png";
+				s="pic/¶Y’†~a.png";
 				break;
 			case 1:
 				s="pic/na.png";

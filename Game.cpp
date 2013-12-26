@@ -560,3 +560,7 @@ bool Game::isClear(){
 bool Game::isGameover(){
 	return (castle_list.at(getNowStage()-1)->getState()==MEKA_DIE);
 }
+
+pair<list<shared_ptr<enemy>>*,list<shared_ptr<musume>>*> Game::getDarkness(){
+	return std::make_pair(enemy_list,musume_list);
+}

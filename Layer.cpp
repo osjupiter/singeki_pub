@@ -230,18 +230,7 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 }
 void MenuLayer::draw(){
 	//Menu
-	//DrawBox(650,0,800,100,GetColor(255,0,0),TRUE);
 
-	/*
-	for(int i=0;i<3;i++){
-		int x1=650-onMouseTime[i],x2=800,y1=5+i*30,y2=35+i*30;
-		DrawBox(x1,y1,x2,y2,GetColor(255,255,0),TRUE);
-		if(i==0); //DrawString(x1,y1,"生産ユニット変更",GetColor(0,0,0));
-		else if(i==1)DrawString(x1,y1,"強化・改造",GetColor(0,0,0));
-		else if(i==2)DrawString(x1,y1,"設定",GetColor(0,0,0));
-	}*/
-	//map
-	//DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
 	DrawBox(lx,ly+martop,lx+lw,ly+lh+martop,GetColor(255,0,255),TRUE);
 	for(int i=0;i<9;i++){
 		int _x=xlist[i];
@@ -265,6 +254,28 @@ void MenuLayer::draw(){
 		
 	}
 
+	DrawBox(lx,100,lx+lw,100+5,GetColor(255,0,255),TRUE);
+	auto hoge=game->getDarkness();
+	for(int i=0;i<3;i++){
+		for(auto d:hoge.first[i]){
+			//int dndn=(d->getX()*lw/(double)STAGE8_W)+lx;
+			int tmpx=d->getX()/(double)game->stage_W[8]*lw+lx;
+			DrawBox(tmpx-2,100,tmpx+2,104,GetColor(255,0,0),TRUE);
+			//printfDx("ene->X=%d ans %lf  stage5 %d ans %lf\n",d->getX(),d->getX()/(double)game->stage_W[8]*lw+lx,game->stage_W[5],game->stage_W[5]/(double)game->stage_W[8]*lw+lx);
+		}
+		
+	}
+	for(int i=0;i<3;i++){
+		for(auto d:hoge.second[i]){
+			//int dndn=(d->getX()*lw/(double)STAGE8_W)+lx;
+			int tmpx=d->getX()/(double)game->stage_W[8]*lw+lx;
+			DrawBox(tmpx-2,100,tmpx+2,104,GetColor(255,255,255),TRUE);
+			//printfDx("ene->X=%d ans %lf  stage5 %d ans %lf\n",d->getX(),d->getX()/(double)game->stage_W[8]*lw+lx,game->stage_W[5],game->stage_W[5]/(double)game->stage_W[8]*lw+lx);
+		}
+		
+	}
+
+
 	//factory
 	DrawBox(200,10,200+50,10+50,GetColor(0,255,0),TRUE);
 
@@ -274,6 +285,12 @@ void MenuLayer::draw(){
 
 	//status
 	DrawBox(0,0,150,50,GetColor(255,0,0),TRUE);
+
+	DrawRotaGraph(13,13,0.5,0,Images::get("pic/資源.png"),TRUE);
+	DrawFormatString(25,0,GetColor(0,0,255),"%d",game->getResource());
+
+	
+	
 }
 void MenuLayer:: main(){
 	auto m= mouse_in::getIns();
@@ -373,6 +390,7 @@ void FactoryLayer::draw(){
 			DrawBox(x+lxmar,y+lmartop+i*lh,x+lxmar+lw,y+lmartop+(i+1)*lh,GetColor(0,255,0),TRUE);
 			SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
 		}
+		DrawRotaGraph(x+lxmar+lw/2,y+lmartop+i*lh+lh/2,0.5,0,Images::getMusumeIcon(i),TRUE);
 	}
 	int tmpx=x+lw+lxmar,tmpy=y+lmartop;
 	DrawBox(x+lw+lxmar,y+lmartop,x+w-lxmar-lw,y+lmartop+h-50,GetColor(255-select*30,128,0+select*40),TRUE);
@@ -391,13 +409,8 @@ void FactoryLayer::draw(){
 			
 		
 		}
-			
-	
-
-
-
-
 }
+
 void FactoryLayer:: main(){
 	mouse_in* m=mouse_in::getIns();
 	int x1=x,x2=x+w,y1=y,y2=y+h;
@@ -419,7 +432,7 @@ void FactoryLayer:: main(){
 					hh=80;
 					ParamType hoge=static_cast<ParamType>(j*4+i);
 					if(testBox(xx,yy,xx+ww,yy+hh)){
-						game->incParamLevel(select+1,hoge,50);
+						game->incParamLevel(select,hoge,50);
 					}
 				}
 			}
