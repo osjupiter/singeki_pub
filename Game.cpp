@@ -43,6 +43,11 @@ Game::Game(){
 	tank::init();
 	segway::init();
 //	castle::setNowstage(1);
+
+	cameraTargetSpeed=0;
+	cameraMoveCount=0;
+
+	musume_nuber_list.assign(10,0);
 	
 }
 
@@ -127,6 +132,7 @@ void Game::birth(int st,int type){
 		int t=getParam(type,ParamType::COST);
 		if (getResource() < t) return;
 		useResource(t);
+		musume_nuber_list.at(type)++;
 	}
 	switch (type){
 	case HOHEI:
@@ -187,6 +193,7 @@ void Game::birth(int st,int type){
 	default:
 		break;
 	}
+	
 }
 
 void Game::setProduct(int tw_num, int m_type){
@@ -243,6 +250,7 @@ void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, 
 }
 
 void Game::push_del_musume(shared_ptr<musume> p){
+	musume_nuber_list.at((int)p->getUnitType())--;
 	delete_musumelist.push_back(p);
 }
 void Game::push_del_enemy(shared_ptr<enemy> p){
@@ -274,6 +282,14 @@ void Game::main(){
 	shared_ptr<musume> target_m;
 	shared_ptr<enemy> target_e_sky;
 	shared_ptr<musume> target_m_sky;
+
+	if(cameraMoveCount-->0){
+		x+=cameraTargetSpeed;
+		int r_end = stage_W[getNowStage()] + WID_CASTLE / 2 - 100;
+		if (x + FIELD_W > r_end){ x = r_end - FIELD_W;cameraMoveCount=0;}
+		if (x + FIELD_W > STAGE8_W){ x = STAGE8_W - FIELD_W ;cameraMoveCount=0;}
+
+	}
 
 	for (auto i : back_list){
 			i->main(x);
@@ -467,16 +483,19 @@ void Game::delete_object(){
 			for (int j = 0; j < 3; j++){
 				musume_list[j].remove(i);
 			}
+			memfree_list.push_back(i);
 		}
 		
 		delete_musumelist.clear();
+		
+		
 	}
 	if (!delete_enemylist.empty()){
 		for (auto i : delete_enemylist){
 			for (int j = 0; j < 3; j++){
 				enemy_list[j].remove(i);
-				
 			}
+			memfree_list.push_back(i);
 			
 		}
 		delete_enemylist.clear();
@@ -485,11 +504,16 @@ void Game::delete_object(){
 	if (!delete_effectlist.empty()){
 		for (auto i : delete_effectlist){		
 			effect_list.remove(i);
-
+			memfree_list.push_back(i);
 		}
-
 		delete_effectlist.clear();
 	}
+	
+
+	if(memfree_list.size()<10)
+		memfree_list.clear();
+	else
+		memfree_list.erase(memfree_list.begin(),memfree_list.begin()+10);
 
 
 }
@@ -544,6 +568,10 @@ void Game::scrollRight(int sx){
 		if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
 }
+void Game::setCamera(int tar){
+	cameraMoveCount=10;
+	cameraTargetSpeed=(tar-x)/10;
+}
 
 
 /*ƒpƒ‰ƒ[ƒ^Žæ“¾ŠÖ”*/
@@ -573,4 +601,13 @@ bool Game::isClear(){
 
 bool Game::isGameover(){
 	return (castle_list.at(getNowStage()-1)->getState()==MEKA_DIE);
+}
+
+pair<list<shared_ptr<enemy>>*,list<shared_ptr<musume>>*> Game::getDarkness(){
+	return std::make_pair(enemy_list,musume_list);
+}
+
+
+vector<int> Game::getMusumeNumber(){
+	return musume_nuber_list;
 }

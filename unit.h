@@ -11,6 +11,7 @@ protected:
 	int dist;
 	int hp;
 	int wait_time;
+	UnitType unit_type;
 
 	bool life;
 	int state;
@@ -33,5 +34,6 @@ public:
 	Position getType();
 	//int getAtkType();
 	void switchDirection();
+	UnitType getUnitType();
 
 };

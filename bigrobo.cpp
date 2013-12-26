@@ -15,6 +15,7 @@ bigrobo::bigrobo(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, 
 	type = RAND;
 	atk = false;
 	dist = width;
+	unit_type=UnitType::_BIG;
 }
 
 void bigrobo::init(){

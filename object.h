@@ -17,6 +17,7 @@ public:
 	int getX();
 	int getY();
 	int getW();
+	~object();
 	
 	virtual bool inCamera(int);
 	/*virtual void main();

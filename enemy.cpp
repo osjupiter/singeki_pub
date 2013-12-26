@@ -78,7 +78,8 @@ void enemy::draw(int cx){
 }
 
 void enemy::del(){
-	Game::getIns()->push_del_enemy(*(new shared_ptr<enemy>(this)));
+	Game::getIns()->push_del_enemy(this->shared_from_this());
+	//Game::getIns()->push_del_enemy(*(new shared_ptr<enemy>(this)));
 	Game::getIns()->gainResource(cost);
 }
 

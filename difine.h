@@ -21,6 +21,11 @@ enum CastleState{ACTIVE,STAY,OCCUPY,EN_DIE,MEKA_DIE};
 enum Direction { LEFT = -1, NODIR = 0, RIGHT = 1 };
 enum ParamType{ POWER, MAXHP, SPEED, DEFENSE, A_TYPE, CLK, COST, A_FREQ, PARAM_NUM };
 enum Position{ RAND, SKY ,ALL,NOATK};
+
+
+
+enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUSUME,_TANK=10,_COPTER};
+
 /*•à•º*/
 #define ANI_HOHEI 6
 #define ANI_HOHEI_ATK 2

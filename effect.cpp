@@ -23,6 +23,8 @@ void effect::draw(int cx){
 }
 
 void effect::del(){
-	Game::getIns()->push_del_effect(*(new shared_ptr<effect>(this)));
+	Game::getIns()->push_del_effect(shared_from_this());
+	//Game::getIns()->push_del_effect(*(new shared_ptr<effect>(this)));
 }
 
+effect::~effect(){}

@@ -230,18 +230,7 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 }
 void MenuLayer::draw(){
 	//Menu
-	//DrawBox(650,0,800,100,GetColor(255,0,0),TRUE);
 
-	/*
-	for(int i=0;i<3;i++){
-		int x1=650-onMouseTime[i],x2=800,y1=5+i*30,y2=35+i*30;
-		DrawBox(x1,y1,x2,y2,GetColor(255,255,0),TRUE);
-		if(i==0); //DrawString(x1,y1,"生産ユニット変更",GetColor(0,0,0));
-		else if(i==1)DrawString(x1,y1,"強化・改造",GetColor(0,0,0));
-		else if(i==2)DrawString(x1,y1,"設定",GetColor(0,0,0));
-	}*/
-	//map
-	//DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
 	DrawBox(lx,ly+martop,lx+lw,ly+lh+martop,GetColor(255,0,255),TRUE);
 	for(int i=0;i<9;i++){
 		int _x=xlist[i];
@@ -265,6 +254,33 @@ void MenuLayer::draw(){
 		
 	}
 
+	DrawBox(lx,100,lx+lw,100+5,GetColor(255,0,255),TRUE);
+	for(int i=0;i<=game->getNowStage();i++){
+		int tmp=(i!=game->getNowStage())?Images::getSiroIcon(i):Images::get("pic/tou.png");
+		int tmpx=game->stage_W[i]/(double)game->stage_W[game->getNowStage()]*lw+lx;
+		DrawRotaGraph(tmpx,100,0.5,0,tmp,TRUE);
+	}
+	auto hoge=game->getDarkness();
+	for(int i=0;i<3;i++){
+		for(auto d:hoge.first[i]){
+			//int dndn=(d->getX()*lw/(double)STAGE8_W)+lx;
+			int tmpx=d->getX()/(double)game->stage_W[game->getNowStage()]*lw+lx;
+			DrawBox(tmpx-2,100,tmpx+2,104,GetColor(255,0,0),TRUE);
+			//printfDx("ene->X=%d ans %lf  stage5 %d ans %lf\n",d->getX(),d->getX()/(double)game->stage_W[8]*lw+lx,game->stage_W[5],game->stage_W[5]/(double)game->stage_W[8]*lw+lx);
+		}
+		
+	}
+	for(int i=0;i<3;i++){
+		for(auto d:hoge.second[i]){
+			//int dndn=(d->getX()*lw/(double)STAGE8_W)+lx;
+			int tmpx=d->getX()/(double)game->stage_W[game->getNowStage()]*lw+lx;
+			DrawBox(tmpx-2,100,tmpx+2,104,GetColor(255,255,255),TRUE);
+			//printfDx("ene->X=%d ans %lf  stage5 %d ans %lf\n",d->getX(),d->getX()/(double)game->stage_W[8]*lw+lx,game->stage_W[5],game->stage_W[5]/(double)game->stage_W[8]*lw+lx);
+		}
+		
+	}
+
+
 	//factory
 	DrawBox(200,10,200+50,10+50,GetColor(0,255,0),TRUE);
 
@@ -274,6 +290,19 @@ void MenuLayer::draw(){
 
 	//status
 	DrawBox(0,0,150,50,GetColor(255,0,0),TRUE);
+
+	DrawRotaGraph(13,13,0.5,0,Images::get("pic/資源.png"),TRUE);
+	DrawFormatString(25,0,GetColor(0,0,255),"%d",game->getResource());
+
+	auto numberlist=game->getMusumeNumber();
+	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::END_MUSUME);i++){
+			DrawRotaGraph(5+40*((i-1)%3),20+((i-1)/3)*20,0.5,0,Images::getMusumeIcon(i),TRUE);
+			DrawFormatString(15+40*((i-1)%3)+10,20+((i-1)/3)*20,GetColor(0,255,0),"%d",numberlist.at(i));
+		
+	}
+
+	
+	
 }
 void MenuLayer:: main(){
 	auto m= mouse_in::getIns();
@@ -300,6 +329,9 @@ void MenuLayer:: main(){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<OptionLayer>());
 			m->Reset();
+		}else if(testBox(lx,100,lx+lw,100+5)){
+			int targe=(m->X()-lx)/(double)lw*game->stage_W[game->getNowStage()];
+			game->setCamera(targe);
 		}
 	}
 	/*
@@ -373,6 +405,7 @@ void FactoryLayer::draw(){
 			DrawBox(x+lxmar,y+lmartop+i*lh,x+lxmar+lw,y+lmartop+(i+1)*lh,GetColor(0,255,0),TRUE);
 			SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
 		}
+		DrawRotaGraph(x+lxmar+lw/2,y+lmartop+i*lh+lh/2,0.5,0,Images::getMusumeIcon(i),TRUE);
 	}
 	int tmpx=x+lw+lxmar,tmpy=y+lmartop;
 	DrawBox(x+lw+lxmar,y+lmartop,x+w-lxmar-lw,y+lmartop+h-50,GetColor(255-select*30,128,0+select*40),TRUE);
@@ -388,16 +421,12 @@ void FactoryLayer::draw(){
 			yy=tmpy+70+90*j;
 			hh=80;
 			DrawBox(xx,yy,xx+ww,yy+hh,GetColor(0,0,0),TRUE);
+			DrawGraph(xx,yy,Images::getParamTypeIcon((ParamType)(i+j*4)),TRUE);
 			
 		
 		}
-			
-	
-
-
-
-
 }
+
 void FactoryLayer:: main(){
 	mouse_in* m=mouse_in::getIns();
 	int x1=x,x2=x+w,y1=y,y2=y+h;
@@ -419,7 +448,7 @@ void FactoryLayer:: main(){
 					hh=80;
 					ParamType hoge=static_cast<ParamType>(j*4+i);
 					if(testBox(xx,yy,xx+ww,yy+hh)){
-						game->incParamLevel(select+1,hoge,50);
+						game->incParamLevel(select,hoge,50);
 					}
 				}
 			}

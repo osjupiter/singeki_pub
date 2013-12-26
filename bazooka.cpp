@@ -12,6 +12,7 @@ bazooka::bazooka(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, 
 	height = HEI_BAZOOKA;
 	num++;
 	type = RAND;
+	unit_type=UnitType::_BAZOOKA;
 }
 void bazooka::init(){
 	num = 0;

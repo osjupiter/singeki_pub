@@ -30,6 +30,13 @@ class Game : public Layer{
 	list<shared_ptr<enemy>>  delete_enemylist;
 	list<shared_ptr<musume>> musume_list[3];
 	list<shared_ptr<musume>> delete_musumelist;
+
+	vector<shared_ptr<object>> memfree_list;
+
+	vector<int> musume_nuber_list;
+	
+	
+
 	vector<shared_ptr<castle>> castle_list;
 	list<shared_ptr<background>> back_list;
 
@@ -39,6 +46,8 @@ class Game : public Layer{
 	shared_ptr<Parameter> param_list[UNIT_M_NUM + 1];
 
 	void Test();
+	int cameraTargetSpeed;
+	int cameraMoveCount;
 public:
 	static const int stage_W[9];
 	Game();
@@ -49,6 +58,8 @@ public:
 
 	void scrollLeft(int);
 	void scrollRight(int);
+	void setCamera(int);
+
 	void birth(int,int); //ï∫émê∂ê¨
 	void enemy_birth();
 	void effect_create(int,int,int,Direction dr=NODIR,int atk_power=0,int dest=0);
@@ -83,5 +94,7 @@ public:
 	int getParamCost(int u_type, ParamType p_type);
 	bool incParamLevel(int u_type, ParamType p_type,int lvcost);
 
+	pair<list<shared_ptr<enemy>>*,list<shared_ptr<musume>>*> getDarkness();
 
+	vector<int> getMusumeNumber();
 };

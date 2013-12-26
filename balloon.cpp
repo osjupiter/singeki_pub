@@ -15,6 +15,7 @@ balloon::balloon(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, 
 	atk = false;
 	stopper = false;
 	type = SKY;
+	unit_type=UnitType::_BALOON;
 }
 void balloon::init(){
 	num = 0;

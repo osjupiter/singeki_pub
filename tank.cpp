@@ -19,6 +19,7 @@ tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	atk_type = A_TYPE_TANK;
 	cost = COST_TANK;
 	atk_freq = A_FREQ_TANK;
+	unit_type=UnitType::_TANK;
 }
 
 

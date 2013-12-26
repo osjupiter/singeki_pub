@@ -20,6 +20,7 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	atk_freq = A_FREQ_COPTER;
 	stopper = false;
 	speed = SPEED_COPTER;
+	unit_type=UnitType::_COPTER;
 }
 void copter::init(){
 	num = 0;
