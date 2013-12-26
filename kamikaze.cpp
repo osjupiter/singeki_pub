@@ -47,7 +47,7 @@ void kamikaze::main(int front){
 
 		break;
 	case UnitState::DIE:
-		del();
+
 		break;
 	}
 }
