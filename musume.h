@@ -9,7 +9,7 @@ protected:
 	int vx;
 	int vy;
 	shared_ptr<Parameter> param;
-
+	bool atk;
 public:
 	musume(int, int, int, shared_ptr<Parameter>);
 	virtual void main(int);
@@ -17,7 +17,7 @@ public:
 	void damage(int, Position);
 	int getPower();
 	Position getAtkType();
-
+	void changeState(UnitState);
 
 	void del();
 };

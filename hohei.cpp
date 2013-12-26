@@ -22,18 +22,27 @@ void hohei::main(int front){
 	musume::main(front);
 	switch (state){
 
-	case ATK:
-		if (ani_count / ANIM_SPEED%ANI_HOHEI_ATK == 0)
-			Images::playSE("sound/gun03.mp3",true);
-			
+	case UnitState::ATK:
+
+
+		if (ani_count / ANIM_SPEED % ANI_HOHEI_ATK == 0){
+			if (!atk){
+				Images::playSE("sound/gun03.mp3", true);
+				atk = true;
+			}
+		}
+		else {
+			atk = false;
+		}
+		if ((ani_count / ANIM_SPEED == ANI_HOHEI_ATK)){
+			changeState(WAIT);
+			atk = false;
+		}
+
+
 		break;
-	case DIE:
-		y += vy;
-		x += vx;
-		vy -= 10;
-		vx -= 5;
-		if (y+height<0)
-			del();
+	case UnitState::DIE:
+	
 		break;
 	}
 }
@@ -41,14 +50,17 @@ void hohei::main(int front){
 void hohei::draw(int cx){
 	
 	switch (state){
-	case MOV:
+	case UnitState::MOV:
 		DrawGraph(x - cx, y, Images::getIns()->g_hohei[ani_count / ANIM_SPEED%ANI_HOHEI], true);
 		break;
-	case ATK:
+	case UnitState::ATK:
 		DrawGraph(x - cx, y, Images::getIns()->g_hohei_atk[ani_count / ANIM_SPEED%ANI_HOHEI_ATK], true);
 		break;
-	case DIE:
+	case UnitState::DIE:
 		DrawGraph(x - cx, y, Images::getIns()->g_hohei_atk[0], true);
+		break;
+	case UnitState::WAIT:
+		DrawGraph(x - cx, y, Images::getIns()->g_hohei[ani_count / ANIM_SPEED%ANI_HOHEI_ATK], true);
 		break;
 	}
 	unit::draw(cx);

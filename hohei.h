@@ -15,7 +15,6 @@ public:
 	void draw(int);
 	static int getNum();
 	static void setNum(int);
-	int getPower();
-	int getAtkType();
+
 	void damage(int,int);
 };

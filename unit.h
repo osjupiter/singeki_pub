@@ -10,6 +10,8 @@ protected:
 	int line;
 	int dist;
 	int hp;
+	int wait_time;
+
 	bool life;
 	int state;
 //	int power;

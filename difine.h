@@ -14,14 +14,13 @@
 #define M_SY 32//上に同じ
 #define L_MAX 60
 
-#define MOV 1
-#define ATK 2
-#define DIE 3
 
+enum UnitState{ MOV, WAIT,ATK, DIE};
 
+enum CastleState{ACTIVE,STAY,OCCUPY,EN_DIE,MEKA_DIE};
 enum Direction { LEFT = -1, NODIR = 0, RIGHT = 1 };
 enum ParamType{ POWER, MAXHP, SPEED, DEFENSE, A_TYPE, CLK, COST, A_FREQ, PARAM_NUM };
-enum Position{ ALL, RAND, SKY };
+enum Position{ ALL, RAND, SKY ,NOATK};
 /*歩兵*/
 #define ANI_HOHEI 6
 #define ANI_HOHEI_ATK 2
@@ -29,14 +28,15 @@ enum Position{ ALL, RAND, SKY };
 #define HEI_HOHEI 90
 
 
-#define POWER_HOHEI 5
+#define POWER_HOHEI 2
 #define MAXHP_HOHEI 500
 #define DEFENSE_HOHEI 1
 #define SPEED_HOHEI 5
 #define A_TYPE_HOHEI RAND
 #define COST_HOHEI 50
+
 #define CLK_HOHEI 120
-#define A_FREQ_HOHEI 1000
+#define A_FREQ_HOHEI 1
 
 /*戦車*/
 #define ANI_TANK 8
@@ -44,10 +44,10 @@ enum Position{ ALL, RAND, SKY };
 #define WID_TANK 150
 #define HEI_TANK 120
 
-#define POWER_TANK 500
+#define POWER_TANK 1
 #define MAXHP_TANK 50
 #define DEFENSE_TANK 1
-#define SPEED_TANK 50
+#define SPEED_TANK 5
 #define A_TYPE_TANK RAND
 #define COST_TANK 50
 #define CLK_TANK 120
@@ -59,28 +59,29 @@ enum Position{ ALL, RAND, SKY };
 #define WID_BALLOON 90
 #define HEI_BALLOON 180
 
-#define POWER_BALLOON 0
+#define POWER_BALLOON 400
 #define MAXHP_BALLOON 500
 #define DEFENSE_BALLOON 1
 #define SPEED_BALLOON 5
-#define A_TYPE_BALLOON RAND
+#define A_TYPE_BALLOON NOATK
 #define COST_BALLOON 50
 #define CLK_BALLOON 120
-#define A_FREQ_BALLOON 1000
+#define A_FREQ_BALLOON 100
 
 /*ヘリ*/
 #define ANI_COPTER 6
 #define WID_COPTER 280
 #define HEI_COPTER 150
 
-#define POWER_COPTER 0
+#define POWER_COPTER 500
 #define MAXHP_COPTER 50
 #define DEFENSE_COPTER 1
-#define SPEED_COPTER 50
-#define A_TYPE_COPTER RAND
+#define SPEED_COPTER 10
+#define A_TYPE_COPTER NOATK
 #define COST_COPTER 200
+
 #define CLK_COPTER 120
-#define A_FREQ_COPTER 1000
+#define A_FREQ_COPTER 50
 
 /*ロボ兵*/
 #define ANI_BIG 7
@@ -89,14 +90,15 @@ enum Position{ ALL, RAND, SKY };
 #define WID_BIG_ATK 180
 #define HEI_BIG 200
 
-#define POWER_BIG 5
+#define POWER_BIG 50
 #define MAXHP_BIG 5000
 #define DEFENSE_BIG 1
 #define SPEED_BIG 2
 #define A_TYPE_BIG RAND
 #define COST_BIG 50
 #define CLK_BIG 120
-#define A_FREQ_BIG 1000
+#define A_FREQ_BIG 50
+
 /*神風兵*/
 #define ANI_KAMIKAZE 6
 #define ANI_KAMIKAZE_ATK 20
@@ -105,14 +107,14 @@ enum Position{ ALL, RAND, SKY };
 #define WID_KAMIKAZE_ATK 140
 #define HEI_KAMIKAZE_ATK 140
 
-#define POWER_KAMIKAZE 5
+#define POWER_KAMIKAZE 100
 #define MAXHP_KAMIKAZE 500
 #define DEFENSE_KAMIKAZE 1
 #define SPEED_KAMIKAZE 10
-#define A_TYPE_KAMIKAZE SKY
+#define A_TYPE_KAMIKAZE NOATK
 #define COST_KAMIKAZE 50
 #define CLK_KAMIKAZE 120
-#define A_FREQ_KAMIKAZE 1000
+#define A_FREQ_KAMIKAZE 10
 /*バズーカ兵*/
 #define ANI_BAZOOKA 8
 #define ANI_BAZOOKA_ATK 12
@@ -128,7 +130,24 @@ enum Position{ ALL, RAND, SKY };
 #define A_TYPE_BAZOOKA RAND
 #define COST_BAZOOKA 50
 #define CLK_BAZOOKA 120
-#define A_FREQ_BAZOOKA 1000
+#define A_FREQ_BAZOOKA 20
+
+/*セグウェイ兵*/
+#define ANI_SEGWAY 3
+#define ANI_SEGWAY_WAIT 2
+#define WID_SEGWAY 70
+#define HEI_SEGWAY 110
+#define WID_SEGWAY_WAIT 85
+#define WID_SEGWAY_RUN 85
+
+#define POWER_SEGWAY 100
+#define MAXHP_SEGWAY 500
+#define DEFENSE_SEGWAY 1
+#define SPEED_SEGWAY 5
+#define A_TYPE_SEGWAY RAND
+#define COST_SEGWAY 50
+#define CLK_SEGWAY 120
+#define A_FREQ_SEGWAY 40
 /*爆弾*/
 #define ANI_BOMB 2
 #define WID_BOMB 30
@@ -159,7 +178,7 @@ enum Position{ ALL, RAND, SKY };
 
 
 //unit type
-#define UNIT_M_NUM 5 //娘ユニットの種類
+#define UNIT_M_NUM 6 //娘ユニットの種類
 
 #define NONE 0
 #define HOHEI 1
@@ -167,6 +186,8 @@ enum Position{ ALL, RAND, SKY };
 #define BIG 3
 #define KAMIKAZE 4
 #define BAZOOKA 5
+#define SEGWAY 6
+
 
 #define TANK 10
 #define COPTER 11

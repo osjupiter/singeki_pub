@@ -5,9 +5,10 @@
 #include "bigrobo.h"
 #include "tank.h"
 #include "copter.h"
+#include "segway.h"
 #include "kamikaze.h"
 #include "bazooka.h"
-
+#include "tepodon.h"
 #include "balloon.h"
 #include "bomb.h"
 #include "missile.h"
@@ -29,7 +30,7 @@ Game::Game(){
 	castle_init();
 	srand((unsigned int)time(NULL));
 	x=0;
-
+	nowstage = 1;
 	balloon::init();
 	bazooka::init();
 	bigrobo::init();
@@ -37,7 +38,8 @@ Game::Game(){
 	hohei::init();
 	kamikaze::init();
 	tank::init();
-	
+	segway::init();
+//	castle::setNowstage(1);
 	
 }
 
@@ -57,6 +59,9 @@ void Game::param_init(){
 	param_list[KAMIKAZE] = shared_ptr<Parameter>(
 		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
 		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE));
+	param_list[SEGWAY] = shared_ptr<Parameter>(
+		new Parameter(POWER_SEGWAY, MAXHP_SEGWAY
+		, SPEED_SEGWAY, DEFENSE_SEGWAY, A_TYPE_SEGWAY, CLK_SEGWAY, COST_SEGWAY, A_FREQ_SEGWAY));
 
 }
 
@@ -105,7 +110,7 @@ void Game::gainResource(int gain){
 }
 
 int Game::getNowStage(){
-	return castle::getNowstage();
+	return nowstage;
 }
 int Game::getX(){
 	return x;
@@ -150,13 +155,19 @@ void Game::birth(int st,int type){
 			musume_list[line].push_back(p);
 			break;
 	}
+	case SEGWAY:
+	{
+				   shared_ptr<musume> p(new segway(stage_W[st], WINDOW_Y - HEI_SEGWAY - line * 3, line, param_list[SEGWAY]));
+					musume_list[line].push_back(p);
+					break;
+	}
 	case TANK:{
-		shared_ptr<enemy> p(new tank(stage_W[st], WINDOW_Y - HEI_TANK - line * 3, line,castle::getNowstage()));
+		shared_ptr<enemy> p(new tank(stage_W[st], WINDOW_Y - HEI_TANK - line * 3, line,getNowStage()));
 		enemy_list[line].push_back(p);
 		break;
 	}
 	case COPTER:{
-					shared_ptr<enemy> p(new copter(stage_W[st], 50 - line * 3, line, castle::getNowstage()));
+					shared_ptr<enemy> p(new copter(stage_W[st], 50 - line * 3, line, getNowStage()));
 		enemy_list[line].push_back(p);
 		 break;
 	}
@@ -166,16 +177,16 @@ void Game::birth(int st,int type){
 }
 
 void Game::setProduct(int tw_num, int m_type){
-	if (castle::getNowstage() <= tw_num)return;
+	if (getNowStage() <= tw_num)return;
 	castle_list.at(tw_num)->setProduct(m_type);
 }
 int Game::getProduct(int tw_num){
-	if (castle::getNowstage() <= tw_num)return 0;
+	if (getNowStage() <= tw_num)return 0;
 	return castle_list.at(tw_num)->getProduct();
 }
 
 double Game::getProductCLKPAR(int tw_num){
-	if (castle::getNowstage() <= tw_num)return 0;
+	if (getNowStage() <= tw_num)return 0;
 	return castle_list.at(tw_num)->getProductCLKPAR();
 }
 
@@ -183,10 +194,10 @@ void Game::enemy_birth(){
 	if (getClock(STAGE1_W-front_line)) birth(STAGE1_W, TANK);
 }
 
-void Game::effect_create(int fx, int fy, int type, Direction dr){
+void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, int dest){
 	switch(type) {
 	case BOMB:{
-		shared_ptr<effect> p(new bomb(fx, fy));
+				  shared_ptr<effect> p(new bomb(fx, fy, atk_power));
 		effect_list.push_back(p);
 		break; 
 	}
@@ -201,9 +212,14 @@ void Game::effect_create(int fx, int fy, int type, Direction dr){
 				 break;
 	}
 	case MISSILE:{
-				   shared_ptr<effect> p(new missile(fx, fy,dr));
+				   shared_ptr<effect> p(new missile(fx, fy,dr,atk_power));
 				   effect_list.push_back(p);
 				   break;
+	}
+	case TEPODON:{
+					 shared_ptr<effect> p(new tepodon(fx, fy, atk_power,dest));
+					 effect_list.push_back(p);
+					 break;
 	}
 	}
 }
@@ -231,7 +247,7 @@ void Game::push_attack_list(shared_ptr<AttackRange> p, int unittype){
 
 
 void Game::main(){
-	int now_stage = castle::getNowstage();
+	int now_stage = getNowStage();
 	int frontE = INT_MAX, frontM = 0;
 	int target_X=INT_MAX,target_X_S=INT_MAX;
 	shared_ptr<enemy> target_e;
@@ -258,12 +274,11 @@ void Game::main(){
 //	if (target_e == NULL) target_X = castle_list.at(now_stage)->getX();
 	target_X = min(castle_list.at(now_stage)->getX(),target_X);
 	
-/*	clsDx();
-	printfDx("target_X %d %d", castle_list.at(now_stage)->getX(), target_X);
-	*/
+
 	frontE = target_X;
+
 	/*ñ°ï˚ÉÅÉCÉì*/
-	target_X = 0; target_X_S = 0;
+	target_X = stage_W[now_stage - 1] -1; target_X_S = stage_W[now_stage - 1] -1;
 
 	for (int j = 0; j < 3; j++){
 		for (auto i : musume_list[j]){
@@ -277,14 +292,13 @@ void Game::main(){
 				target_X_S = i->getX();
 			}
 
-			if (i->getState() == ATK){
+		//	if (i->getState() == ATK){
 				if (target_e != NULL)
 					target_e->damage(i->getPower(), i->getAtkType());
 				else castle_list.at(now_stage)->damage(i->getPower());
 				if (target_e_sky != NULL)
 					target_e_sky->damage(i->getPower(),i->getAtkType());
-
-			}
+			//}
 
 			
 		}
@@ -303,6 +317,7 @@ void Game::main(){
 			if (i->getState() == ATK){
 				if (target_m != NULL)	
 					target_m->damage(i->getPower(), i->getAtkType());
+				else castle_list.at(now_stage-1)->damage(i->getPower());
 				if (target_m_sky != NULL)
 					target_m_sky->damage(i->getPower(), i->getAtkType());
 			}
@@ -314,8 +329,8 @@ void Game::main(){
 	
 	for (auto i : castle_list){
 		i->main();
-		
 	}
+
 	for (auto k : atkrange_enemy_list){
 		for (int j = 0; j < 3; j++){
 			for (auto i : musume_list[j]){
@@ -375,11 +390,11 @@ void Game::draw(){
 
 }
 
-void Game::stageInc(int next_st){
-	if (next_st == STAGE_NUM + 1)return;
-	castle_list.at(next_st-1)->setState(OCCUPY);
-	castle_list.at(next_st)->setState(ACTIVE);
-	
+void Game::stageInc(){
+	if (nowstage+1 == STAGE_NUM + 1)return;
+	nowstage++;
+	castle_list.at(nowstage-1)->setState(OCCUPY);
+	castle_list.at(nowstage)->setState(ACTIVE);
 }
 
 void Game::delete_object(){
@@ -424,7 +439,7 @@ void Game::Test(){
 
 	DrawFormatString(FIELD_W - 200, 126, GetColor(255, 255, 255), "resouce %d", getResource());
 	DrawFormatString(FIELD_W - 200, 139, GetColor(255, 255, 255), "stage %d", getNowStage());
-	DrawFormatString(FIELD_W - 200, 152, GetColor(255, 255, 255), "x %d", mouse_in::getIns()->X());
+	DrawFormatString(FIELD_W - 200, 152, GetColor(255, 255, 255), "clear %d over %d",isClear(),isGameover());
 	for (auto i : back_list){
 		DrawLine(i->getX() - x, 0, i->getX() - x, 450, GetColor(0, 0, 255), 2);
 	}
@@ -446,6 +461,8 @@ void Game::Test(){
 	}
 
 	//if (mouse_in::getIns()->LeftClick())  birth(castle::getNowstage(), HOHEI);
+	if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
+
 	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(1, COPTER);
 
 /*	if (!delete_musumelist.empty()){
@@ -460,7 +477,7 @@ void Game::scrollLeft(int sx){
 }
 
 void Game::scrollRight(int sx){
-	int r_end = stage_W[castle::getNowstage()]+WID_CASTLE/2-100;
+	int r_end = stage_W[getNowStage()] + WID_CASTLE / 2 - 100;
 	x += sx;	
 	if (!CheckHitKey(KEY_INPUT_Z))
 		if (x + FIELD_W > r_end) x = r_end - FIELD_W;
@@ -491,3 +508,11 @@ bool Game::incParamLevel(int u_type, ParamType p_type,int lvcost){
 	return false;
 }
 
+bool Game::isClear(){
+	int now_st = castle_list.at(STAGE_NUM)->getState();
+	return !(now_st == CastleState::ACTIVE || now_st == CastleState::STAY);
+}
+
+bool Game::isGameover(){
+	return (castle_list.at(getNowStage()-1)->getState()==MEKA_DIE);
+}

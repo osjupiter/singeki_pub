@@ -4,8 +4,8 @@ unit::unit(int fx,int fy,int ln) : object(fx,fy){
 	life = true;
 	line = ln;
 	state = MOV;
-	
-	dist = 100+(rand() / (RAND_MAX + 1.0)*180);
+	wait_time = 2;
+	dist = 130+(rand() / (RAND_MAX + 1.0)*180);
 	ani_count = 0;
 }
 

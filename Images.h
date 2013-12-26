@@ -40,8 +40,11 @@ public:
 	int g_tepodon[3];
 	int g_bazooka[8];
 	int g_bazooka_atk[12];
+	int g_segway[3];
+	int g_segway_wait[2];
+	int g_segway_run[3];
 
-	int castle[9][3];
+	int g_castle[9][3];
 	int back[8][5];
 	Images(void){}
 	~Images(void){}

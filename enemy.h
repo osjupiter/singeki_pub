@@ -12,7 +12,7 @@ protected:
 	Position atk_type;
 	int clk;
 	int cost;
-	
+	bool atk;
 public:
 	enemy(int,int,int,int);
 	virtual void main(int);
@@ -21,4 +21,5 @@ public:
 	int getPower();
 	Position getAtkType();
 	void damage(int, Position);
+	void changeState(UnitState);
 };
