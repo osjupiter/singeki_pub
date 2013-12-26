@@ -4,7 +4,7 @@
 #include "unit.h"
 #include "Parameter.h"
 
-class musume :public unit{
+class musume :public unit, enable_shared_from_this<musume>{
 protected:
 	int vx;
 	int vy;

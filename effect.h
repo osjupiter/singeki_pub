@@ -1,8 +1,8 @@
 #pragma once
 #include  "DxLib.h"
 #include "object.h"
-
-class effect:public object{
+#include <memory>
+class effect:public object, std::enable_shared_from_this<effect>{
 protected:
 	int type;
 	
@@ -12,4 +12,5 @@ public:
 	virtual void main();
 	virtual void draw(int);
 	void del();
+	~effect();
 };

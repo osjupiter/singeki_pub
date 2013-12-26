@@ -100,7 +100,8 @@ void musume::changeState(UnitState next_state){
 
 
 void musume::del(){
-	Game::getIns()->push_del_musume(*(new shared_ptr<musume>(this)));
+	//Game::getIns()->push_del_musume(*(new shared_ptr<musume>(this)));
+	Game::getIns()->push_del_musume(shared_from_this());
 }
 
 void musume::damage(int d, Position op_a_type){

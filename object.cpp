@@ -24,3 +24,6 @@ void object::draw(int){
 bool object::inCamera(int cx){
 	return (cx <= getX() + getW() && getX() <= cx + FIELD_W);
 }
+object::~object(){
+	
+}

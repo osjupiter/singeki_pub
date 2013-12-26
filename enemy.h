@@ -2,7 +2,7 @@
 #include  "DxLib.h"
 #include "unit.h"
 
-class enemy : public unit{
+class enemy : public unit,enable_shared_from_this<enemy>{
 protected:
 	int level;
 	int power;
