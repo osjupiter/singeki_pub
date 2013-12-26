@@ -68,7 +68,7 @@ public:
 	int getResource();
 
 	bool isClear();
-	bool isGameOver();
+	bool isGameover();
 
 	/**/
 	static Game* getIns();

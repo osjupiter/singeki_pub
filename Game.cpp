@@ -261,7 +261,7 @@ void Game::main(){
 		}
 	}
 //	if (target_e == NULL) target_X = castle_list.at(now_stage)->getX();
-	target_X = min(castle_list.at(now_stage)->getX()-WID_CASTLE/2,target_X);
+	target_X = min(castle_list.at(now_stage)->getX(),target_X);
 	
 
 	frontE = target_X;
@@ -428,7 +428,7 @@ void Game::Test(){
 
 	DrawFormatString(FIELD_W - 200, 126, GetColor(255, 255, 255), "resouce %d", getResource());
 	DrawFormatString(FIELD_W - 200, 139, GetColor(255, 255, 255), "stage %d", getNowStage());
-	DrawFormatString(FIELD_W - 200, 152, GetColor(255, 255, 255), "x %d", mouse_in::getIns()->X());
+	DrawFormatString(FIELD_W - 200, 152, GetColor(255, 255, 255), "clear %d over %d",isClear(),isGameover());
 	for (auto i : back_list){
 		DrawLine(i->getX() - x, 0, i->getX() - x, 450, GetColor(0, 0, 255), 2);
 	}
@@ -497,3 +497,11 @@ bool Game::incParamLevel(int u_type, ParamType p_type,int lvcost){
 	return false;
 }
 
+bool Game::isClear(){
+	int now_st = castle_list.at(STAGE_NUM)->getState();
+	return !(now_st == CastleState::ACTIVE || now_st == CastleState::STAY);
+}
+
+bool Game::isGameover(){
+	return (castle_list.at(getNowStage()-1)->getState()==MEKA_DIE);
+}
