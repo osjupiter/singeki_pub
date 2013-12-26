@@ -17,7 +17,7 @@ const int draw_gap[9][3] = {
 
 
 };
-int castle::nowstage=1;
+//int castle::nowstage=1;
 
 
 castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
@@ -58,9 +58,9 @@ void castle::main(){
 		break;
 	case CastleState::EN_DIE:
 		state = OCCUPY;
-		nowstage++;
+	//	nowstage++;
 		now_clk=0;
-		Game::getIns()->stageInc(nowstage);
+		Game::getIns()->stageInc();
 		hp = meka_castle_hp[stage];
 		break;
 /*
@@ -136,7 +136,7 @@ bool castle::getClock(unsigned int clk){
 	else if (nowt < 0)tm = 0;
 	return false;
 }
-
+/*
 int castle::getNowstage(){
 	return nowstage;
 }
@@ -144,7 +144,7 @@ int castle::getNowstage(){
 void castle::setNowstage(int st){
 	nowstage=st;
 }
-
+*/
 void castle::setProduct(int p_type){
 	
 	product_type = p_type;

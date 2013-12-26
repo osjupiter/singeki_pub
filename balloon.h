@@ -6,7 +6,7 @@
 class balloon : public musume{
 private:
 
-
+	bool stopper;
 	bool atk;
 	static int num;
 public:
@@ -16,7 +16,6 @@ public:
 	static void init();
 	static int getNum();
 	static void setNum(int);
-	int getPower();
-	int getAtkType();
+
 	void damage(int, int);
 };

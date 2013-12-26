@@ -9,13 +9,13 @@ protected:
 	int vx;
 	int vy;
 	shared_ptr<Parameter> param;
-
+	bool atk;
 public:
 	musume(int, int, int, shared_ptr<Parameter>);
 	virtual void main(int);
 	virtual void draw(int);
 	void damage(int, Position);
-	virtual int getPower();
+	int getPower();
 	Position getAtkType();
 	void changeState(UnitState);
 

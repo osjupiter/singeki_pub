@@ -8,12 +8,12 @@ int tank::num;
 
 
 tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
-	power = 5;
-	hp = 400*lv;
+	power = POWER_TANK;
+	hp = MAXHP_TANK*lv;
 	width = WID_TANK;
 	height = HEI_TANK;
-	speed = 5;
-	defense = 2*lv;
+	speed = SPEED_TANK;
+	defense = DEFENSE_TANK*lv;
 	num++;
 	type = RAND;
 	atk_type = RAND;

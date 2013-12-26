@@ -3,6 +3,7 @@
 enemy::enemy(int fx, int fy, int ln,int lv) :unit(fx, fy, ln){
 	level = lv;
 	dir = Direction::LEFT;
+	atk = false;
 }
 
 void enemy::main(int front){
@@ -66,7 +67,7 @@ void enemy::main(int front){
 			}
 			break;
 		case UnitState::DIE:
-
+			atk = false;
 			break;
 		}
 	}
@@ -82,12 +83,13 @@ void enemy::del(){
 }
 
 int enemy::getPower(){
-	return power;
+	return power*atk;
 }
 Position enemy::getAtkType(){
 	return atk_type;
 }
 void enemy::damage(int d, Position op_a_type){
+	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type){
 		hp -= max(d - defense, 0);
 		if (hp < 0){
@@ -107,6 +109,7 @@ void enemy::changeState(UnitState next_state){
 		case ATK:
 		//	wait_time = param->getParam(A_FREQ);
 			wait_time = atk_freq;
+			atk = false;
 			break;
 		}
 		break;
@@ -131,6 +134,7 @@ void enemy::changeState(UnitState next_state){
 		case ATK:
 			//	wait_time = param->getParam(A_FREQ);
 			wait_time = atk_freq;
+			atk = false;
 			state = WAIT;
 			break;
 		}

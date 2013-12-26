@@ -13,6 +13,7 @@ balloon::balloon(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, 
 	height = HEI_BALLOON;
 	num++;
 	atk = false;
+	stopper = false;
 	type = SKY;
 }
 void balloon::init(){
@@ -26,14 +27,19 @@ void balloon::main(int front){
 		break;
 	case UnitState::ATK:
 		
-		if ((ani_count / ANIM_SPEED%ANI_BALLOON_ATK)
-			== ANI_BALLOON_ATK - 1 && atk){
-			atk = false;
-			Game::getIns()->effect_create(x + 59, y + 111, BOMB);
+		if (ani_count / ANIM_SPEED % ANI_BALLOON_ATK == ANI_BALLOON_ATK - 1){
+			if (!atk){
+				Game::getIns()->effect_create(x + 59, y + 111, BOMB,Direction::NODIR,param->getParam(POWER));
+				atk = true;
+			}
 		}
-		if (!((ani_count / ANIM_SPEED%ANI_BALLOON_ATK)
-			== ANI_BALLOON_ATK - 1))atk = true;
-			break;
+		else{ atk = false; }
+		
+		if ((ani_count / ANIM_SPEED == ANI_BALLOON_ATK)){
+			changeState(WAIT);
+//			atk = false;
+		}
+
 	case UnitState::DIE:
 	//	del();
 		break;
@@ -48,6 +54,9 @@ void balloon::draw(int cx){
 	case UnitState::ATK:
 		DrawGraph(x - cx, y, Images::getIns()->g_balloon_atk[ani_count / ANIM_SPEED%ANI_BALLOON_ATK], true);
 
+		break;
+	case UnitState::WAIT:
+		DrawGraph(x - cx, y, Images::getIns()->g_balloon[ani_count / ANIM_SPEED%ANI_BALLOON], true);
 		break;
 	case UnitState::DIE:
 		break;
@@ -65,6 +74,4 @@ void balloon::setNum(int i){
 	num = i;
 }
 
-int balloon::getPower(){
-	return musume::getPower();
-}
+

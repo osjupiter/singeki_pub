@@ -7,7 +7,7 @@
 #include "copter.h"
 #include "kamikaze.h"
 #include "bazooka.h"
-
+#include "tepodon.h"
 #include "balloon.h"
 #include "bomb.h"
 #include "missile.h"
@@ -29,7 +29,7 @@ Game::Game(){
 	castle_init();
 	srand((unsigned int)time(NULL));
 	x=0;
-
+	nowstage = 1;
 	balloon::init();
 	bazooka::init();
 	bigrobo::init();
@@ -37,7 +37,7 @@ Game::Game(){
 	hohei::init();
 	kamikaze::init();
 	tank::init();
-	castle::setNowstage(1);
+//	castle::setNowstage(1);
 	
 }
 
@@ -105,7 +105,7 @@ void Game::gainResource(int gain){
 }
 
 int Game::getNowStage(){
-	return castle::getNowstage();
+	return nowstage;
 }
 int Game::getX(){
 	return x;
@@ -151,12 +151,12 @@ void Game::birth(int st,int type){
 			break;
 	}
 	case TANK:{
-		shared_ptr<enemy> p(new tank(stage_W[st], WINDOW_Y - HEI_TANK - line * 3, line,castle::getNowstage()));
+		shared_ptr<enemy> p(new tank(stage_W[st], WINDOW_Y - HEI_TANK - line * 3, line,getNowStage()));
 		enemy_list[line].push_back(p);
 		break;
 	}
 	case COPTER:{
-					shared_ptr<enemy> p(new copter(stage_W[st], 50 - line * 3, line, castle::getNowstage()));
+					shared_ptr<enemy> p(new copter(stage_W[st], 50 - line * 3, line, getNowStage()));
 		enemy_list[line].push_back(p);
 		 break;
 	}
@@ -166,16 +166,16 @@ void Game::birth(int st,int type){
 }
 
 void Game::setProduct(int tw_num, int m_type){
-	if (castle::getNowstage() <= tw_num)return;
+	if (getNowStage() <= tw_num)return;
 	castle_list.at(tw_num)->setProduct(m_type);
 }
 int Game::getProduct(int tw_num){
-	if (castle::getNowstage() <= tw_num)return 0;
+	if (getNowStage() <= tw_num)return 0;
 	return castle_list.at(tw_num)->getProduct();
 }
 
 double Game::getProductCLKPAR(int tw_num){
-	if (castle::getNowstage() <= tw_num)return 0;
+	if (getNowStage() <= tw_num)return 0;
 	return castle_list.at(tw_num)->getProductCLKPAR();
 }
 
@@ -183,10 +183,10 @@ void Game::enemy_birth(){
 	if (getClock(STAGE1_W-front_line)) birth(STAGE1_W, TANK);
 }
 
-void Game::effect_create(int fx, int fy, int type, Direction dr){
+void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, int dest){
 	switch(type) {
 	case BOMB:{
-		shared_ptr<effect> p(new bomb(fx, fy));
+				  shared_ptr<effect> p(new bomb(fx, fy, atk_power));
 		effect_list.push_back(p);
 		break; 
 	}
@@ -201,9 +201,14 @@ void Game::effect_create(int fx, int fy, int type, Direction dr){
 				 break;
 	}
 	case MISSILE:{
-				   shared_ptr<effect> p(new missile(fx, fy,dr));
+				   shared_ptr<effect> p(new missile(fx, fy,dr,atk_power));
 				   effect_list.push_back(p);
 				   break;
+	}
+	case TEPODON:{
+					 shared_ptr<effect> p(new tepodon(fx, fy, atk_power,dest));
+					 effect_list.push_back(p);
+					 break;
 	}
 	}
 }
@@ -231,7 +236,7 @@ void Game::push_attack_list(shared_ptr<AttackRange> p, int unittype){
 
 
 void Game::main(){
-	int now_stage = castle::getNowstage();
+	int now_stage = getNowStage();
 	int frontE = INT_MAX, frontM = 0;
 	int target_X=INT_MAX,target_X_S=INT_MAX;
 	shared_ptr<enemy> target_e;
@@ -256,7 +261,7 @@ void Game::main(){
 		}
 	}
 //	if (target_e == NULL) target_X = castle_list.at(now_stage)->getX();
-	target_X = min(castle_list.at(now_stage)->getX(),target_X);
+	target_X = min(castle_list.at(now_stage)->getX()-WID_CASTLE/2,target_X);
 	
 
 	frontE = target_X;
@@ -374,10 +379,11 @@ void Game::draw(){
 
 }
 
-void Game::stageInc(int next_st){
-	if (next_st == STAGE_NUM + 1)return;
-	castle_list.at(next_st-1)->setState(OCCUPY);
-	castle_list.at(next_st)->setState(ACTIVE);
+void Game::stageInc(){
+	if (nowstage+1 == STAGE_NUM + 1)return;
+	nowstage++;
+	castle_list.at(nowstage-1)->setState(OCCUPY);
+	castle_list.at(nowstage)->setState(ACTIVE);
 }
 
 void Game::delete_object(){
@@ -460,7 +466,7 @@ void Game::scrollLeft(int sx){
 }
 
 void Game::scrollRight(int sx){
-	int r_end = stage_W[castle::getNowstage()]+WID_CASTLE/2-100;
+	int r_end = stage_W[getNowStage()] + WID_CASTLE / 2 - 100;
 	x += sx;	
 	if (!CheckHitKey(KEY_INPUT_Z))
 		if (x + FIELD_W > r_end) x = r_end - FIELD_W;

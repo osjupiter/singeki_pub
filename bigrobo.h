@@ -7,7 +7,7 @@ class bigrobo : public musume{
 private:
 
 
-	bool atk;
+	
 	static int num;
 public:
 	bigrobo(int fx, int fy, int ln, shared_ptr<Parameter>);
@@ -16,7 +16,6 @@ public:
 	static void init();
 	static int getNum();
 	static void setNum(int);
-	int getPower();
-	int getAtkType();
+
 	void damage(int, int);
 };

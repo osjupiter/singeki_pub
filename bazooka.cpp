@@ -20,15 +20,26 @@ void bazooka::main(int front){
 	musume::main(front);
 	switch (state){
 	case UnitState::MOV:
-		//x += 4; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+
+		break;
+	case UnitState::ATK:
+		if (ani_count / ANIM_SPEED % ANI_BAZOOKA_ATK == 9){
+			if (!atk){
+
+				atk = true;
+			}
+		}
+		else {
+			atk = false;
+		}
+		if ((ani_count / ANIM_SPEED == ANI_BAZOOKA_ATK)){
+			changeState(WAIT);
+			atk = false;
+		}
+
 		break;
 	case UnitState::DIE:
-	/*	y += vy;
-		x += vx;
-		vy -= 10;
-		vx -= 5;
-		if (y + height<0)
-			del();*/
+
 		break;
 	}
 }
@@ -41,6 +52,9 @@ void bazooka::draw(int cx){
 		break;
 	case UnitState::ATK:
 		DrawGraph(x - cx, y, Images::getIns()->g_bazooka_atk[ani_count / ANIM_SPEED%ANI_BAZOOKA_ATK], true);
+		break;
+	case UnitState::WAIT:
+		DrawGraph(x - cx, y, Images::getIns()->g_bazooka[0], true);
 		break;
 	case UnitState::DIE:
 		DrawGraph(x - cx, y, Images::getIns()->g_bazooka_atk[0], true);
@@ -59,6 +73,3 @@ void bazooka::setNum(int i){
 	num = i;
 }
 
-int bazooka::getPower(){
-	return musume::getPower();
-}

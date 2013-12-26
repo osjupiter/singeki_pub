@@ -49,7 +49,7 @@ int Parameter::getParam(ParamType p_type){
 			ret=_base*(1+0.5*_level);
 			break;
 		case ParamType::A_TYPE:
-			ret=Position::ALL;
+			ret=_base;
 			break;
 		case ParamType::CLK:
 			ret=_base*(1-0.1*_level);

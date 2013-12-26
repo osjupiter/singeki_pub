@@ -79,6 +79,3 @@ void bigrobo::setNum(int i){
 	num = i;
 }
 
-int bigrobo::getPower(){	
-	return param->getParam(POWER)*atk;
-}

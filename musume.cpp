@@ -5,7 +5,7 @@ musume::musume(int fx, int fy, int ln, shared_ptr<Parameter> pm) :unit(fx, fy, l
 	param = pm;
 	dir = Direction::RIGHT;
 	hp = param->getParam(MAXHP);
-	
+	atk = false;
 }
 
 void musume::main(int front){
@@ -62,6 +62,7 @@ void musume::changeState(UnitState next_state){
 		switch (state){
 		case ATK:
 			wait_time = param->getParam(A_FREQ);
+			atk = false;
 			break;
 		}
 		break;
@@ -86,11 +87,13 @@ void musume::changeState(UnitState next_state){
 		case ATK:
 			wait_time = param->getParam(A_FREQ);
 			state = WAIT;
+			atk = false;
 			break;
 		}
 		break;
 	case UnitState::DIE:
 		state = next_state;
+		atk = false;
 		break;
 	}
 }
@@ -101,6 +104,7 @@ void musume::del(){
 }
 
 void musume::damage(int d, Position op_a_type){
+	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type){
 		hp -= max(d - param->getParam(DEFENSE), 0);
 		if (hp < 0){
@@ -117,7 +121,7 @@ void musume::damage(int d, Position op_a_type){
 
 
 int musume::getPower(){
-	return param->getParam(POWER);
+	return param->getParam(POWER)*atk;
 }
 
 

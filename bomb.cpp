@@ -2,11 +2,11 @@
 #include "Images.h"
 #include "Game.h"
 #define ANIM_SPEED 3
-bomb::bomb(int fx, int fy) :effect(fx, fy){
+bomb::bomb(int fx, int fy,int pw) :effect(fx, fy){
 	type = BOMB;
 	width = WID_BOMB;
 	height = HEI_BOMB;
-	
+	power = pw;
 }
 void bomb::main(){
 	effect::main();
@@ -14,7 +14,7 @@ void bomb::main(){
 	if (y > FIELD_H - HEI_BOMB) {
 		del();
 		Game::getIns()->effect_create(x-85,WINDOW_Y-240,EXP);
-		shared_ptr<AttackRange> p(new AttackRange(x-50,x+width+50,50,RAND));
+		shared_ptr<AttackRange> p(new AttackRange(x-50,x+width+50,power,RAND));
 		Game::getIns()->push_attack_list(p,MUSUME);
 	}
 }

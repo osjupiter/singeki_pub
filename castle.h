@@ -13,7 +13,7 @@ class castle : public unit{
 	int defense;
 	int cost;
 
-	static int nowstage;
+	//static int nowstage;
 	int product_type;
 
 	int now_clk;
@@ -31,6 +31,6 @@ public:
 	void setProduct(int);
 	int getProduct();
 	double getProductCLKPAR();
-	static int getNowstage();
-	static void setNowstage(int st);
+//	static int getNowstage();
+//	static void setNowstage(int st);
 };

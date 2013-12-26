@@ -8,7 +8,7 @@ int kamikaze::num = 0;
 
 
 kamikaze::kamikaze(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-	dist = -dist + 100;
+	dist = dist + 1000;
 	
 	//hp = param->getParam(MAXHP);
 	width = WID_KAMIKAZE;
@@ -35,13 +35,22 @@ void kamikaze::main(int front){
 			gap_vy = gap_vy*-1;
 		gap_y += gap_vy;
 		*/
-		if ((ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK)
-			== ANI_KAMIKAZE_ATK - 1 && atk){
-			atk = false;
-//			Game::getIns()->effect_create(x + 59, y + 111, BOMB);
+	
+		if ((ani_count / ANIM_SPEED % ANI_KAMIKAZE_ATK) == ANI_KAMIKAZE_ATK-1){
+
 		}
-		if (!((ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK)
-			== ANI_KAMIKAZE_ATK - 1))atk = true;
+		else {
+			//atk = false;
+		}
+		if ((ani_count / ANIM_SPEED == ANI_KAMIKAZE_ATK)){
+			if (!atk){
+				Game::getIns()->effect_create(x, y + 75, TEPODON, dir, param->getParam(POWER), front - 200);
+				atk = true;
+			}
+			changeState(DIE);
+		//	atk = false;
+		}
+
 		break;
 	case UnitState::DIE:
 		del();
@@ -55,6 +64,9 @@ void kamikaze::draw(int cx){
 		DrawGraph(x - cx, y+gap_y, Images::getIns()->g_kamikaze[ani_count / ANIM_SPEED%ANI_KAMIKAZE], true);
 		break;
 	case UnitState::ATK:
+		DrawGraph(x - cx, y + gap_y, Images::getIns()->g_kamikaze_atk[ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK], true);
+		break;
+	case UnitState::WAIT:
 		DrawGraph(x - cx, y + gap_y, Images::getIns()->g_kamikaze_atk[ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK], true);
 		break;
 	case UnitState::DIE:
@@ -71,7 +83,4 @@ int kamikaze::getNum(){
 
 void kamikaze::setNum(int i){
 	num = i;
-}
-int kamikaze::getPower(){
-	return musume::getPower();
 }

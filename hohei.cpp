@@ -23,10 +23,23 @@ void hohei::main(int front){
 	switch (state){
 
 	case UnitState::ATK:
-		if (ani_count / ANIM_SPEED%ANI_HOHEI_ATK == 0)
-			Images::playSE("sound/gun03.mp3",true);
-		if (ani_count / ANIM_SPEED == ANI_HOHEI_ATK)
+
+
+		if (ani_count / ANIM_SPEED % ANI_HOHEI_ATK == 0){
+			if (!atk){
+				Images::playSE("sound/gun03.mp3", true);
+				atk = true;
+			}
+		}
+		else {
+			atk = false;
+		}
+		if ((ani_count / ANIM_SPEED == ANI_HOHEI_ATK)){
 			changeState(WAIT);
+			atk = false;
+		}
+
+
 		break;
 	case UnitState::DIE:
 	
@@ -62,6 +75,3 @@ void hohei::setNum(int i){
 	num = i;
 }
 
-int hohei::getPower(){
-	return musume::getPower();
-}

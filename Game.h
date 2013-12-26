@@ -18,10 +18,11 @@ using namespace std;
 
 class Game : public Layer{
 	int x; 
+
 	int front_line;
 	int resource;
 	static Game* ins;
-	
+	int nowstage;
 
 	list<shared_ptr<effect>>  delete_effectlist;
 	list<shared_ptr<effect>>  effect_list;
@@ -50,19 +51,25 @@ public:
 	void scrollRight(int);
 	void birth(int,int); //兵士生成
 	void enemy_birth();
-	void effect_create(int,int,int,Direction dr=NODIR);
+	void effect_create(int,int,int,Direction dr=NODIR,int atk_power=0,int dest=0);
 	void main();
 	void draw();
 	bool getClock(unsigned int);
 	void delete_object();
-	void stageInc(int);
+	void stageInc(); //ステージクリア
 	void setProduct(int,int); //自動生成セット
 	int getProduct(int);
 	double getProductCLKPAR(int);
-	int getResource();
 	int getNowStage();
+	
+	/*資源*/
 	void useResource(int);
 	void gainResource(int);
+	int getResource();
+
+	bool isClear();
+	bool isGameOver();
+
 	/**/
 	static Game* getIns();
 	void push_attack_list(shared_ptr<AttackRange>,int unittype);
