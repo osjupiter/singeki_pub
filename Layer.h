@@ -93,13 +93,34 @@ class StageClearLayer:public Layer{
 private:
 	int stage_id, data;
 	int remain_time;
+	int default_time;
 public:
 	StageClearLayer(int,int);
 	void draw();
 	void main();
+};
+class GameClearLayer:public Layer{
+private:
+	int remain_time;
+	int default_time;
+public:
+	GameClearLayer();
+	void draw();
+	void main();
+	void called();
 	
 };
-
+class GameOverLayer:public Layer{
+private:
+	int remain_time;
+	int default_time;
+public:
+	GameOverLayer();
+	void draw();
+	void main();
+	void called();
+	
+};
 
 
 class MenuLayer:public Layer{

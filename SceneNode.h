@@ -78,6 +78,7 @@ public:
 			}else{
 				layers.insert(make_pair(p->key,p->pointer));
 				p->pointer->setParent(this,p->key);
+				p->pointer->called();
 			}
 			
 			

@@ -128,10 +128,13 @@ void SelectLayer::draw(){
 StageClearLayer::StageClearLayer(int sid,int d){
 		stage_id=sid;
 		data=d;
-		remain_time=150;
+		default_time=150;
+		remain_time=default_time;
 }
 void StageClearLayer::draw(){
 	DrawFormatString(0,0,GetColor(255,0,0),"%d is cleard. time = %d",stage_id,remain_time);
+	
+
 }
 void StageClearLayer:: main(){
 	if(remain_time--<=0){
@@ -163,8 +166,54 @@ void StageClearLayer:: main(){
 		parentScene->rmLayer(thisLayerID);
 
 	}
-	
 }
+
+
+GameClearLayer::GameClearLayer(){
+		default_time=150;
+		remain_time=default_time;
+}
+void GameClearLayer::draw(){
+	DrawFormatString(0,0,GetColor(0,255,0),"Game is cleard. time = %d",remain_time);
+	
+
+}
+void GameClearLayer::called(){
+		Images::playBGM("");
+		Images::playSE("sound/エンディング.mp3");
+}
+void GameClearLayer:: main(){
+	if(remain_time--<=0){
+		parentScene->rmLayer(thisLayerID);
+
+	}
+}
+
+
+
+GameOverLayer::GameOverLayer(){
+		default_time=390;
+		remain_time=default_time;
+}
+void GameOverLayer::draw(){
+	DrawFormatString(0,0,GetColor(0,255,0),"Game is overd. time = %d",remain_time);
+	
+
+}
+void GameOverLayer::called(){
+		Images::playBGM("");
+		Images::playSE("sound/ゲームオーバー.mp3");
+}
+void GameOverLayer:: main(){
+	if(remain_time--<=0){
+		parentScene->buttonPushed("exit");
+		//parentScene->rmLayer(thisLayerID);
+
+	}
+}
+
+
+
 
 MenuLayer::MenuLayer(shared_ptr<Game> g){
 	for(int i=0;i<3;i++){
@@ -371,7 +420,6 @@ void FactoryLayer:: main(){
 					ParamType hoge=static_cast<ParamType>(j*4+i);
 					if(testBox(xx,yy,xx+ww,yy+hh)){
 						game->incParamLevel(select+1,hoge,50);
-						printfDx("%d\n",j*4+i);
 					}
 				}
 			}

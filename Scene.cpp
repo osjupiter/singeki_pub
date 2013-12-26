@@ -39,7 +39,7 @@ GameScene::GameScene(){
 	//addLayer(5,std::make_shared<MapLayer>(game));
 	addLayer(2,std::make_shared<MenuLayer>(game));
 	//addLayer(10,std::make_shared<MapLayer>(game));
-
+	notEnd=true;
 	old_stage=1;
 	
 }
@@ -67,6 +67,15 @@ void GameScene::aftermain(){
 		LAY_Ptr q=std::make_shared<StageClearLayer>(old_stage,100);//((new ButtonLayer(0,0,0,0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
 		addLayer(5,q);
 	}
+	if(notEnd&&game->isClear()){
+		notEnd=false;
+		addLayer(100,std::make_shared<GameClearLayer>());
+	}
+	if(notEnd&&game->isGameover()){
+		notEnd=false;
+		addLayer(100,std::make_shared<GameOverLayer>());
+	}
+
 	old_stage=game->getNowStage();
 }
 
