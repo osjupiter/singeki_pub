@@ -18,7 +18,7 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	atk_type = RAND;
 	cost = COST_COPTER;
 	atk_freq = A_FREQ_COPTER;
-	
+	stopper = false;
 	speed = SPEED_COPTER;
 }
 void copter::init(){
@@ -33,16 +33,16 @@ void copter::main(int front){
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		break;
 	case ATK:
-		
+		atk = false;
 		if ((ani_count / ANIM_SPEED)== ANI_COPTER - 1 ){
-			if (!atk){
-				atk = true;
+			if (!stopper){
+				stopper = true;
 				Game::getIns()->effect_create(x + width / 2, y + 155, MISSILE, dir,power);
 				Images::playSE("sound/misairu.mp3");
 			}
 		}
 		else{
-			atk = false;
+			stopper = false;
 		}
 	
 		if (((ani_count / ANIM_SPEED) == ANI_COPTER)){ 

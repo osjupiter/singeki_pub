@@ -12,6 +12,7 @@ protected:
 	Position atk_type;
 	int clk;
 	int cost;
+	Position atk_position;
 	bool atk;
 public:
 	enemy(int,int,int,int);
@@ -22,4 +23,5 @@ public:
 	Position getAtkType();
 	void damage(int, Position);
 	void changeState(UnitState);
+	Position decideTargetPos(int target_x_rand, int target_x_sky);
 };

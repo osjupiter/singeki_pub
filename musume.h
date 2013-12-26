@@ -8,6 +8,7 @@ class musume :public unit{
 protected:
 	int vx;
 	int vy;
+	Position atk_position;
 	shared_ptr<Parameter> param;
 	bool atk;
 public:
@@ -19,5 +20,6 @@ public:
 	Position getAtkType();
 	void changeState(UnitState);
 
+	Position decideTargetPos(int target_x_rand, int target_x_sky);
 	void del();
 };

@@ -5,8 +5,7 @@
 
 class kamikaze : public musume{
 private:
-
-	bool atk;
+	bool stopper;
 	int gap_y;
 	int gap_vy;//縦揺れアニメーション用
 	static int num;
