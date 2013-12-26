@@ -13,6 +13,7 @@ void Images::load(){
 
 	LoadDivGraph("dat/img/敵戦車w.png", ANI_TANK, ANI_TANK, 1, WID_TANK, HEI_TANK, g_tank);
 	LoadDivGraph("dat/img/敵戦車a.png", ANI_TANK_ATK, ANI_TANK_ATK, 1, WID_TANK ,HEI_TANK, g_tank_atk);
+	LoadDivGraph("dat/img/戦車死亡.png", ANI_TANK_DEL,1, ANI_TANK_DEL, WID_TANK_DEL, HEI_TANK_DEL, g_tank_dei);
 
 	LoadDivGraph("dat/img/風船兵w.png", ANI_BALLOON, ANI_BALLOON, 1, WID_BALLOON, HEI_BALLOON, g_balloon);
 	LoadDivGraph("dat/img/風船兵a.png", ANI_BALLOON_ATK, ANI_BALLOON_ATK, 1, WID_BALLOON, HEI_BALLOON, g_balloon_atk);
@@ -30,12 +31,20 @@ void Images::load(){
 	LoadDivGraph("dat/img/セグウェイ兵爆走直前.png", ANI_SEGWAY_WAIT, ANI_SEGWAY_WAIT, 1, WID_SEGWAY_WAIT, HEI_SEGWAY, g_segway_wait);
 	LoadDivGraph("dat/img/セグウェイ兵爆走中.png", ANI_SEGWAY, ANI_SEGWAY, 1, WID_SEGWAY_RUN, HEI_SEGWAY, g_segway_run);
 
+	LoadDivGraph("dat/img/ゲッコーw.png", ANI_GEKKO, ANI_GEKKO, 1, WID_GEKKO, HEI_GEKKO, g_gekko);
+	LoadDivGraph("dat/img/ゲッコー上a.png", ANI_GEKKO_UP, ANI_GEKKO, 1, WID_GEKKO, HEI_GEKKO, g_gekko_up);
+	LoadDivGraph("dat/img/ゲッコー下a.png", ANI_GEKKO_DOWN, ANI_GEKKO_DOWN, 1, WID_GEKKO, HEI_GEKKO, g_gekko_down);
+
+	LoadDivGraph("dat/img/レールガンさんw.png", ANI_RAILGUN, 1, ANI_RAILGUN, WID_RAILGUN, HEI_RAILGUN, g_rail);
+
 
 	LoadDivGraph("dat/img/爆弾.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
 	LoadDivGraph("dat/img/爆発E.png", ANI_EXP, 6, 2, WID_EXP, HEI_EXP, g_exp);
 	LoadDivGraph("dat/img/衝撃波.png", ANI_SHOCK, ANI_SHOCK, 1, WID_SHOCK, HEI_SHOCK, g_shock);
 	LoadDivGraph("dat/img/ミサイル.png", ANI_MISSILE, ANI_MISSILE, 1, WID_MISSILE, HEI_MISSILE, g_missile);
 	LoadDivGraph("dat/img/テポドン.png", ANI_TEPODON, ANI_TEPODON, 1, WID_TEPODON, HEI_TEPODON, g_tepodon);
+	LoadDivGraph("dat/img/ビーム発射中.png", ANI_BEAM, 1,ANI_BEAM, WID_BEAM, HEI_BEAM, g_beam);
+	LoadDivGraph("dat/img/ビームチャージ中.png", ANI_BEAM_C, ANI_BEAM_C, 1, WID_BEAM_C, HEI_BEAM_C, g_beam_c);
 
 	LoadDivGraph("dat/img/ヘリw.png", ANI_COPTER, ANI_COPTER, 1, WID_COPTER, HEI_COPTER, g_copter);
 

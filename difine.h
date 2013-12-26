@@ -46,8 +46,12 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 /*戦車*/
 #define ANI_TANK 8
 #define ANI_TANK_ATK 5
+#define ANI_TANK_DEL 6
 #define WID_TANK 150
+#define WID_TANK_DEL 220
+
 #define HEI_TANK 120
+#define HEI_TANK_DEL 120
 
 #define POWER_TANK 1
 #define MAXHP_TANK 50
@@ -58,13 +62,45 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define CLK_TANK 120
 #define A_FREQ_TANK 1000
 
+/*ゲッコー*/
+#define ANI_GEKKO 4
+#define ANI_GEKKO_UP 3
+#define ANI_GEKKO_DOWN 4
+
+#define WID_GEKKO 200
+#define HEI_GEKKO 200
+
+#define POWER_GEKKO 10
+#define MAXHP_GEKKO 50
+#define DEFENSE_GEKKO 1
+#define SPEED_GEKKO 5
+#define A_TYPE_GEKKO ALL
+#define COST_GEKKO 50
+#define CLK_GEKKO 120
+#define A_FREQ_GEKKO 0
+
+/*レールガン*/
+#define ANI_RAILGUN 3
+
+#define WID_RAILGUN 370
+#define HEI_RAILGUN 200
+
+#define POWER_RAILGUN 200
+#define MAXHP_RAILGUN 500
+#define DEFENSE_RAILGUN 1
+#define SPEED_RAILGUN 5
+#define A_TYPE_RAILGUN NOATK
+#define COST_RAILGUN 50
+#define CLK_RAILGUN 120
+#define A_FREQ_RAILGUN 200
+
 /*風船兵*/
 #define ANI_BALLOON 8
 #define ANI_BALLOON_ATK 10
 #define WID_BALLOON 90
 #define HEI_BALLOON 180
 
-#define POWER_BALLOON 400
+#define POWER_BALLOON 40
 #define MAXHP_BALLOON 500
 #define DEFENSE_BALLOON 1
 #define SPEED_BALLOON 5
@@ -177,6 +213,16 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define WID_TEPODON 140
 #define HEI_TEPODON 70
 
+#define ANI_BEAM 9
+#define WID_BEAM 1000
+#define HEI_BEAM 200
+
+#define ANI_BEAM_C 5
+#define WID_BEAM_C 140
+#define HEI_BEAM_C 200
+
+
+
 #define MUSUME 0
 #define ENEMY 1
 
@@ -196,13 +242,16 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 
 #define TANK 10
 #define COPTER 11
-
+#define GEKKO 12
+#define RAILGUN 13
 
 #define BOMB 20
 #define EXP 21
 #define SHOCK 22
 #define MISSILE 23
 #define TEPODON 24
+#define BEAM 25
+
 #define STAGE_NUM 8
 
 

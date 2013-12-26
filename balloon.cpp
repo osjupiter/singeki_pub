@@ -2,7 +2,7 @@
 #include "Images.h"
 #include "Game.h"
 
-#define ANIM_SPEED 5
+#define ANIM_SPEED 3
 int balloon::num = 0;
 
 

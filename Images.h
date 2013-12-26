@@ -26,6 +26,7 @@ public:
 	int g_hohei_atk[ANI_HOHEI_ATK];
 	int g_tank[8];
 	int g_tank_atk[5];
+	int g_tank_dei[6];
 	int g_balloon[8];
 	int g_balloon_atk[10];
 	int g_bomb[2];
@@ -43,6 +44,12 @@ public:
 	int g_segway[3];
 	int g_segway_wait[2];
 	int g_segway_run[3];
+	int g_gekko[4];
+	int g_gekko_up[3];
+	int g_gekko_down[4];
+	int g_rail[4];
+	int g_beam[9];
+	int g_beam_c[5];
 
 	int g_castle[9][3];
 	int back[8][5];

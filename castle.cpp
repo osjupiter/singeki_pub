@@ -33,7 +33,7 @@ std::size_t array_length(const TYPE (&)[SIZE])
 castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	hp = castle_hp[st];
 	width = WID_CASTLE;
-	if (st == 0)x = 0;
+	if (st == 0) x = 0;
 	else x = fx - width / 2;
 
 	height = HEI_CASTLE;
@@ -48,7 +48,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	now_clk=0;
 	exist_clk=0;
 
-	ii one[]={ii(100,10)};
+	ii one[] = { ii(100, 10) };
 	ii two[]={ii(30,10)};
 	ii three[]={ii(30,10)};
 	ii four[]={ii(30,10)};
@@ -58,7 +58,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	ii eight[]={ii(30,10)};
 	ii nine[]={ii(30,10)};
 
-	ii oneEvent[]={ii(100,11)};
+	ii oneEvent[]={ii(100,10)};
 	ii twoEvent[]={ii(30,11)};
 	ii threeEvent[]={ii(30,11)};
 	ii fourEvent[]={ii(30,11)};
@@ -185,7 +185,8 @@ void castle::draw(int cx){
 		break;
 	case CastleState::OCCUPY:
 		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_castle[stage][2], true);
-	
+		DrawFormatString(FIELD_W - 50, 200, GetColor(0, 0, 0), "%d", hp);
+
 		break;
 	case CastleState::MEKA_DIE:
 		break;
