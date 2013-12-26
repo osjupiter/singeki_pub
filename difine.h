@@ -70,6 +70,21 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 #define CLK_GEKKO 120
 #define A_FREQ_GEKKO 0
 
+/*ÉåÅ[ÉãÉKÉì*/
+#define ANI_RAILGUN 3
+
+#define WID_RAILGUN 370
+#define HEI_RAILGUN 200
+
+#define POWER_RAILGUN 10
+#define MAXHP_RAILGUN 50
+#define DEFENSE_RAILGUN 1
+#define SPEED_RAILGUN 5
+#define A_TYPE_RAILGUN NOATK
+#define COST_RAILGUN 50
+#define CLK_RAILGUN 120
+#define A_FREQ_RAILGUN 50
+
 /*ïóëDï∫*/
 #define ANI_BALLOON 8
 #define ANI_BALLOON_ATK 10
@@ -209,12 +224,15 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 #define TANK 10
 #define COPTER 11
 #define GEKKO 12
+#define RAILGUN 13
 
 #define BOMB 20
 #define EXP 21
 #define SHOCK 22
 #define MISSILE 23
 #define TEPODON 24
+
+
 #define STAGE_NUM 8
 
 

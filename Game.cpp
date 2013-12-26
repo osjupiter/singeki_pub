@@ -4,6 +4,7 @@
 #include "hohei.h"
 #include "bigrobo.h"
 #include "tank.h"
+#include "railgun.h"
 #include "copter.h"
 #include "segway.h"
 #include "kamikaze.h"
@@ -176,6 +177,11 @@ void Game::birth(int st,int type){
 				   shared_ptr<enemy> p(new gekko(stage_W[st], WINDOW_Y - HEI_GEKKO - line * 3, line, getNowStage()));
 					enemy_list[line].push_back(p);
 					break;
+	}
+	case RAILGUN:{
+				shared_ptr<enemy> p(new railgun(stage_W[st], WINDOW_Y - HEI_RAILGUN - line * 3, line, getNowStage()));
+				   enemy_list[line].push_back(p);
+				   break;
 	}
 	default:
 		break;
