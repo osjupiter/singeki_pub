@@ -48,7 +48,7 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 #define HEI_TANK 120
 #define HEI_TANK_DEL 120
 
-#define POWER_TANK 1
+#define POWER_TANK 5
 #define MAXHP_TANK 50
 #define DEFENSE_TANK 1
 #define SPEED_TANK 5
@@ -99,7 +99,7 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 #define MAXHP_BALLOON 500
 #define DEFENSE_BALLOON 1
 #define SPEED_BALLOON 5
-#define A_TYPE_BALLOON NOATK
+#define A_TYPE_BALLOON RAND
 #define COST_BALLOON 50
 #define CLK_BALLOON 120
 #define A_FREQ_BALLOON 100
@@ -113,7 +113,7 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 #define MAXHP_COPTER 50
 #define DEFENSE_COPTER 1
 #define SPEED_COPTER 10
-#define A_TYPE_COPTER NOATK
+#define A_TYPE_COPTER RAND
 #define COST_COPTER 200
 
 #define CLK_COPTER 120

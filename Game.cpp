@@ -393,7 +393,11 @@ void Game::main(){
 				if (k->judge(i->getX(), i->getW(),i->getType()))
 					i->damage(k->getDamage(),k->getAtkType());
 			}
+
 		}
+		int wid_nowcastle = castle_list.at(now_stage - 1)->getW();
+		if (k->judge(castle_list.at(now_stage - 1)->getX() - wid_nowcastle / 2, wid_nowcastle, Position::ALL))
+			castle_list.at(now_stage - 1)->damage(k->getDamage());
 	}
 
 	for (auto k : atkrange_musume_list){
@@ -403,6 +407,9 @@ void Game::main(){
 					i->damage(k->getDamage(), k->getAtkType());
 			}
 		}
+		int wid_nowcastle = castle_list.at(now_stage)->getW();
+		if (k->judge(castle_list.at(now_stage)->getX() - wid_nowcastle / 2, wid_nowcastle, Position::ALL))
+			castle_list.at(now_stage)->damage(k->getDamage());
 	}
 
 	delete_object();

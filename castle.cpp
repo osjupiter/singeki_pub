@@ -37,7 +37,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	else x = fx - width / 2;
 
 	height = HEI_CASTLE;
-	defense = 1;
+	defense = 0;
 	stage = st;
 	tm = 0;
 	if (st == 0)state = CastleState::OCCUPY;
@@ -49,9 +49,9 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	exist_clk=0;
 
 	ii one[] = { ii(100, 10) };
-	ii two[]={ii(30,10)};
-	ii three[]={ii(30,10)};
-	ii four[]={ii(30,10)};
+	ii two[]={ii(30,11)};
+	ii three[]={ii(30,12)};
+	ii four[]={ii(30,13)};
 	ii five[]={ii(30,10)};
 	ii six[]={ii(30,10)};
 	ii seven[]={ii(30,10)};
