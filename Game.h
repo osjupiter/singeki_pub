@@ -44,6 +44,8 @@ class Game : public Layer{
 	shared_ptr<Parameter> param_list[UNIT_M_NUM + 1];
 
 	void Test();
+	int cameraTargetSpeed;
+	int cameraMoveCount;
 public:
 	static const int stage_W[9];
 	Game();
@@ -54,6 +56,8 @@ public:
 
 	void scrollLeft(int);
 	void scrollRight(int);
+	void setCamera(int);
+
 	void birth(int,int); //ï∫émê∂ê¨
 	void enemy_birth();
 	void effect_create(int,int,int,Direction dr=NODIR,int atk_power=0,int dest=0);

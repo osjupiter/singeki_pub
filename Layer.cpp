@@ -317,6 +317,9 @@ void MenuLayer:: main(){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<OptionLayer>());
 			m->Reset();
+		}else if(testBox(lx,100,lx+lw,100+5)){
+			int targe=(m->X()-lx)/(double)lw*game->stage_W[8];
+			game->setCamera(targe);
 		}
 	}
 	/*

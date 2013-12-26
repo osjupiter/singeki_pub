@@ -40,6 +40,9 @@ Game::Game(){
 	tank::init();
 	segway::init();
 //	castle::setNowstage(1);
+
+	cameraTargetSpeed=0;
+	cameraMoveCount=0;
 	
 }
 
@@ -256,6 +259,14 @@ void Game::main(){
 	shared_ptr<musume> target_m;
 	shared_ptr<enemy> target_e_sky;
 	shared_ptr<musume> target_m_sky;
+
+	if(cameraMoveCount-->0){
+		x+=cameraTargetSpeed;
+		int r_end = stage_W[getNowStage()] + WID_CASTLE / 2 - 100;
+		if (x + FIELD_W > r_end){ x = r_end - FIELD_W;cameraMoveCount=0;}
+		if (x + FIELD_W > STAGE8_W){ x = STAGE8_W - FIELD_W ;cameraMoveCount=0;}
+
+	}
 
 	for (auto i : back_list){
 			i->main(x);
@@ -526,6 +537,10 @@ void Game::scrollRight(int sx){
 	if (!CheckHitKey(KEY_INPUT_Z))
 		if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
+}
+void Game::setCamera(int tar){
+	cameraMoveCount=10;
+	cameraTargetSpeed=(tar-x)/10;
 }
 
 
