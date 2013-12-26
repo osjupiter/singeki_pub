@@ -19,6 +19,7 @@ kamikaze::kamikaze(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx
 	type = SKY;
 	gap_y = 0;
 	gap_vy=1;
+	unit_type=UnitType::_KAMIKAZE;
 }
 void kamikaze::init(){
 	num = 0;

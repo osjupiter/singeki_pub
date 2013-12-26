@@ -43,6 +43,8 @@ Game::Game(){
 
 	cameraTargetSpeed=0;
 	cameraMoveCount=0;
+
+	musume_nuber_list.assign(10,0);
 	
 }
 
@@ -127,6 +129,7 @@ void Game::birth(int st,int type){
 		int t=getParam(type,ParamType::COST);
 		if (getResource() < t) return;
 		useResource(t);
+		musume_nuber_list.at(type)++;
 	}
 	switch (type){
 	case HOHEI:
@@ -177,6 +180,7 @@ void Game::birth(int st,int type){
 	default:
 		break;
 	}
+	
 }
 
 void Game::setProduct(int tw_num, int m_type){
@@ -228,6 +232,7 @@ void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, 
 }
 
 void Game::push_del_musume(shared_ptr<musume> p){
+	musume_nuber_list.at((int)p->getUnitType())--;
 	delete_musumelist.push_back(p);
 }
 void Game::push_del_enemy(shared_ptr<enemy> p){
@@ -578,4 +583,9 @@ bool Game::isGameover(){
 
 pair<list<shared_ptr<enemy>>*,list<shared_ptr<musume>>*> Game::getDarkness(){
 	return std::make_pair(enemy_list,musume_list);
+}
+
+
+vector<int> Game::getMusumeNumber(){
+	return musume_nuber_list;
 }

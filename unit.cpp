@@ -44,3 +44,4 @@ void unit::switchDirection(){
 		dir = LEFT;
 }
 
+UnitType unit::getUnitType(){return unit_type;}

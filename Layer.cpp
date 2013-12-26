@@ -294,6 +294,13 @@ void MenuLayer::draw(){
 	DrawRotaGraph(13,13,0.5,0,Images::get("pic/Ž‘Œ¹.png"),TRUE);
 	DrawFormatString(25,0,GetColor(0,0,255),"%d",game->getResource());
 
+	auto numberlist=game->getMusumeNumber();
+	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::END_MUSUME);i++){
+			DrawRotaGraph(5+40*((i-1)%3),20+((i-1)/3)*20,0.5,0,Images::getMusumeIcon(i),TRUE);
+			DrawFormatString(15+40*((i-1)%3)+10,20+((i-1)/3)*20,GetColor(0,255,0),"%d",numberlist.at(i));
+		
+	}
+
 	
 	
 }

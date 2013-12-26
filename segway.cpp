@@ -14,7 +14,7 @@ segway::segway(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy
 	height = HEI_SEGWAY;
 	num++;
 	type = RAND;
-
+	unit_type=UnitType::_SEGWAY;
 }
 void segway::init(){
 	num = 0;

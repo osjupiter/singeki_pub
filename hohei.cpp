@@ -11,7 +11,7 @@ hohei::hohei(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, 
 	height = HEI_HOHEI;
 	num++;
 	type = RAND;
-		
+	unit_type=UnitType::_HOHEI;
 }
 
 void hohei::init(){

@@ -32,6 +32,8 @@ class Game : public Layer{
 	list<shared_ptr<musume>> delete_musumelist;
 
 	vector<shared_ptr<object>> memfree_list;
+
+	vector<int> musume_nuber_list;
 	
 	
 
@@ -94,5 +96,5 @@ public:
 
 	pair<list<shared_ptr<enemy>>*,list<shared_ptr<musume>>*> getDarkness();
 
-
+	vector<int> getMusumeNumber();
 };
