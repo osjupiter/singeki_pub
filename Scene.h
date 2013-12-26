@@ -18,6 +18,7 @@ public:
 class GameScene : public SceneNode{
 	std::shared_ptr<Game> game;
 	int old_stage;
+	boolean notEnd;
 public:
 	GameScene();
 	void enterScene();

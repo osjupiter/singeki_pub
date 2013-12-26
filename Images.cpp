@@ -171,6 +171,8 @@ void Images::load(){
 	soundlist.push_back("sound/都市.mp3");
 	soundlist.push_back("sound/洞窟.mp3");
 	soundlist.push_back("sound/夜戦.mp3");
+	soundlist.push_back("sound/エンディング.mp3");
+	soundlist.push_back("sound/ゲームオーバー.mp3");
 
 	
 	for(auto s:filelist){
@@ -275,7 +277,6 @@ void Images::load(){
 	}
 
 	void Images::playBGM(string name){
-		printfDx(name.c_str());
 		if(ins._nowBGM!="")
 			StopSoundMem(getSound(ins._nowBGM.c_str()));
 		if(name!="")
