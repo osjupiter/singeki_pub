@@ -141,7 +141,7 @@ void castle::main(){
 			}
 		}
 		if(exist_ID<eventlist.size()){
-			exist_clk++;printfDx("%d %d %d",stage,exist_clk,eventlist.at(exist_ID).first);
+			exist_clk++;
 			if(exist_clk>=eventlist.at( exist_ID).first){
 				Game::getIns()->birth(stage,eventlist.at(exist_ID).second );
 				exist_ID++;
