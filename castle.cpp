@@ -14,11 +14,21 @@ const int draw_gap[9][3] = {
 	{0,0,0}, // 
 	{0,0,0}, // 2‚Ì‚Ý–¢Œˆ’è
 	{0,0,0}, //–¢Œˆ’è
-
-
 };
+
+
+
 //int castle::nowstage=1;
 
+template<typename TYPE,std::size_t SIZE>
+std::size_t array_length(const TYPE (&)[SIZE])
+{
+    return SIZE;
+}
+
+#define HELPassign(x) spownlist.assign(x,x+array_length(x))
+
+#define Eventassign(x) eventlist.assign(x,x+array_length(x))
 
 castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	hp = castle_hp[st];
@@ -36,6 +46,73 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	dir = NODIR;
 	product_type = NONE;
 	now_clk=0;
+	exist_clk=0;
+
+	ii one[]={ii(100,10)};
+	ii two[]={ii(30,10)};
+	ii three[]={ii(30,10)};
+	ii four[]={ii(30,10)};
+	ii five[]={ii(30,10)};
+	ii six[]={ii(30,10)};
+	ii seven[]={ii(30,10)};
+	ii eight[]={ii(30,10)};
+	ii nine[]={ii(30,10)};
+
+	ii oneEvent[]={ii(100,11)};
+	ii twoEvent[]={ii(30,11)};
+	ii threeEvent[]={ii(30,11)};
+	ii fourEvent[]={ii(30,11)};
+	ii fiveEvent[]={ii(30,11)};
+	ii sixEvent[]={ii(30,11)};
+	ii sevenEvent[]={ii(30,11)};
+	ii eightEvent[]={ii(30,11)};
+	ii nineEvent[]={ii(30,11)};
+
+
+
+	
+	switch(st){
+	case 1:
+		HELPassign(one);
+		Eventassign(oneEvent);
+		break;
+	case 2:
+		HELPassign(two);
+		Eventassign(twoEvent);
+		break;
+	case 3:
+		HELPassign(three);
+		Eventassign(threeEvent);
+		break;
+	case 4:
+		HELPassign(four);
+		Eventassign(fourEvent);
+		break;
+	case 5:
+		HELPassign(five);
+		Eventassign(fiveEvent);
+		break;
+	case 6:
+		HELPassign(six);
+		Eventassign(sixEvent);
+		break;
+	case 7:
+		HELPassign(seven);
+		Eventassign(sevenEvent);
+		break;
+	case 8:
+		HELPassign(eight);
+		Eventassign(eightEvent);
+		break;
+	case 9:
+		HELPassign(nine);
+		Eventassign(nineEvent);
+		break;
+
+	}
+
+	spownID=0;
+	exist_ID=0;
 
 }
 
@@ -47,10 +124,28 @@ void castle::main(){
 */
 	case ACTIVE:
 		//if (getClock(1000)){
-		if(now_clk++>30){
+		/*if(now_clk++>30){
 			now_clk=0;
 			Game::getIns()->birth(stage, TANK);
-		//	Game::getIns()->birth(stage, COPTER);
+			Game::getIns()->birth(stage, COPTER);
+		}*/
+		now_clk++;
+		
+		
+		if(now_clk>=spownlist.at(spownID).first){
+			Game::getIns()->birth(stage,spownlist.at(spownID).second );
+			spownID++;
+			if(spownID>=spownlist.size()){
+				spownID=0;
+				now_clk=0;
+			}
+		}
+		if(exist_ID<eventlist.size()){
+			exist_clk++;printfDx("%d %d %d",stage,exist_clk,eventlist.at(exist_ID).first);
+			if(exist_clk>=eventlist.at( exist_ID).first){
+				Game::getIns()->birth(stage,eventlist.at(exist_ID).second );
+				exist_ID++;
+			}
 		}
 		break;
 	case CastleState::STAY:
