@@ -16,7 +16,7 @@ tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	defense = DEFENSE_TANK*lv;
 	num++;
 	type = RAND;
-	atk_type = RAND;
+	atk_type = A_TYPE_TANK;
 	cost = COST_TANK;
 	atk_freq = A_FREQ_TANK;
 }
@@ -37,6 +37,7 @@ void tank::main(int front){
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED%ANI_TANK_ATK == 2){
 			Images::playSE("sound/taihou03.mp3");
+			atk = true;
 		}
 		break;
 	case UnitState::DIE:

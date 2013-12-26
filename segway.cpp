@@ -28,9 +28,11 @@ void segway::main(int front){
 	case UnitState::ATK:
 		x += param->getParam(SPEED)*3;
 
+		if (atk){
+			changeState(WAIT);
+		}
 
 		if (x+width/2 > front){
-			changeState(WAIT);
 			atk = true;
 			ani_count = 0;
 		}

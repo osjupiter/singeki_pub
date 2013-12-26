@@ -37,7 +37,7 @@ void copter::main(int front){
 		if ((ani_count / ANIM_SPEED)== ANI_COPTER - 1 ){
 			if (!stopper){
 				stopper = true;
-				Game::getIns()->effect_create(x + width / 2, y + 155, MISSILE, dir,power);
+				Game::getIns()->effect_create(x + width / 2, y + 155, MISSILE, dir,power,front);
 				Images::playSE("sound/misairu.mp3");
 			}
 		}

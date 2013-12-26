@@ -53,14 +53,31 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 #define CLK_TANK 120
 #define A_FREQ_TANK 1000
 
+/*ゲッコー*/
+#define ANI_GEKKO 4
+#define ANI_GEKKO_UP 3
+#define ANI_GEKKO_DOWN 4
+
+#define WID_GEKKO 200
+#define HEI_GEKKO 200
+
+#define POWER_GEKKO 10
+#define MAXHP_GEKKO 50
+#define DEFENSE_GEKKO 1
+#define SPEED_GEKKO 5
+#define A_TYPE_GEKKO ALL
+#define COST_GEKKO 50
+#define CLK_GEKKO 120
+#define A_FREQ_GEKKO 0
+
 /*風船兵*/
 #define ANI_BALLOON 8
 #define ANI_BALLOON_ATK 10
 #define WID_BALLOON 90
 #define HEI_BALLOON 180
 
-#define POWER_BALLOON 400
-#define MAXHP_BALLOON 500
+#define POWER_BALLOON 40
+#define MAXHP_BALLOON 50
 #define DEFENSE_BALLOON 1
 #define SPEED_BALLOON 5
 #define A_TYPE_BALLOON NOATK
@@ -191,7 +208,7 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 
 #define TANK 10
 #define COPTER 11
-
+#define GEKKO 12
 
 #define BOMB 20
 #define EXP 21

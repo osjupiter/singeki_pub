@@ -7,6 +7,7 @@
 #include "copter.h"
 #include "segway.h"
 #include "kamikaze.h"
+#include "gekko.h"
 #include "bazooka.h"
 #include "tepodon.h"
 #include "balloon.h"
@@ -171,6 +172,11 @@ void Game::birth(int st,int type){
 		enemy_list[line].push_back(p);
 		 break;
 	}
+	case GEKKO:{
+				   shared_ptr<enemy> p(new gekko(stage_W[st], WINDOW_Y - HEI_GEKKO - line * 3, line, getNowStage()));
+					enemy_list[line].push_back(p);
+					break;
+	}
 	default:
 		break;
 	}
@@ -308,7 +314,7 @@ void Game::main(){
 				target_X_S = i->getX();
 			}
 
-		//	if (i->getState() == ATK){
+			if (i->getState() == ATK){
 			if (front_type == RAND){
 				if (target_e != NULL)
 					target_e->damage(i->getPower(), i->getAtkType());
@@ -319,7 +325,7 @@ void Game::main(){
 					target_e_sky->damage(i->getPower(), i->getAtkType());
 				else castle_list.at(now_stage)->damage(i->getPower());
 			}
-			//}
+			}
 
 			
 		}
@@ -345,18 +351,18 @@ void Game::main(){
 				front = front_S_tmp;
 			}
 			i->main(front);
-		//	if (i->getState() == ATK){
+			if (i->getState() == ATK){
 			if (front_type == RAND){
 				if (target_m != NULL)
 					target_m->damage(i->getPower(), i->getAtkType());
 				else castle_list.at(now_stage - 1)->damage(i->getPower());
 			}
-			else if (front_type == RAND){
+			else if (front_type == SKY){
 				if (target_m_sky != NULL)
 					target_m_sky->damage(i->getPower(), i->getAtkType());
 				else castle_list.at(now_stage - 1)->damage(i->getPower());
 			}
-		//	}
+			}
 
 		}
 	}
@@ -501,8 +507,6 @@ void Game::Test(){
 
 	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(1, COPTER);
 
-/*	if (!delete_musumelist.empty()){
-		printfDx("del%dused ", musume_list[0].front().use_count());*/
 }
 
 
@@ -529,10 +533,7 @@ int Game::getParam(int u_type, ParamType p_type){
 int Game::getParamLevel(int u_type, ParamType p_type){
 	return param_list[u_type]->getParamLevel(p_type);
 }
-/*
-int Game::getParamCost(int u_type, ParamType p_type){
-	return param_list[u_type]->getCost(p_type);
-}*/
+
 
 bool Game::incParamLevel(int u_type, ParamType p_type,int lvcost){
 	if (getResource() <= lvcost) return false;

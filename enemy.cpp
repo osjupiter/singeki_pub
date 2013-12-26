@@ -135,7 +135,14 @@ void enemy::changeState(UnitState next_state){
 			//	wait_time = param->getParam(A_FREQ);
 			wait_time = atk_freq;
 			atk = false;
-			state = WAIT;
+			ani_count = 0;
+			if (wait_time == 0){
+				
+				state = ATK;
+			}
+			else{
+				state = WAIT;
+			}
 			break;
 		}
 		break;
@@ -151,11 +158,11 @@ Position enemy::decideTargetPos(int target_x_rand, int target_x_sky){
 	switch (atk_type){
 	case ALL:
 		if (dir == RIGHT){
-			if (target_x_rand < target_x_sky) ret = RAND;
+			if (target_x_rand <= target_x_sky) ret = RAND;
 			else ret = SKY;
 		}
 		else {
-			if (target_x_rand > target_x_sky) ret = RAND;
+			if (target_x_rand >= target_x_sky) ret = RAND;
 			else ret = SKY;
 		}
 		break;

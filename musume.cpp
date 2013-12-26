@@ -85,8 +85,13 @@ void musume::changeState(UnitState next_state){
 			state = WAIT;
 			break;
 		case ATK:
-			wait_time = param->getParam(A_FREQ);
-			state = WAIT;
+			wait_time = param->getParam(A_FREQ);	
+			ani_count = 0;
+			if (wait_time == 0)
+				state = ATK;
+			else 
+				state = WAIT;
+
 			atk = false;
 			break;
 		}
