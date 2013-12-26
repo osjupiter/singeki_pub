@@ -147,7 +147,7 @@ void Images::load(){
 	filelist.push_back("pic/メカ洞窟城a.png");
 	filelist.push_back("pic/メカ夜戦城a.png");
 	filelist.push_back("pic/最初の拠点a.png");
-	filelist.push_back("pic/草原城a.png");
+	filelist.push_back("pic/メカ草原城a.png");
 
 
 	soundlist.push_back("sound/kuma.mp3");
@@ -253,7 +253,7 @@ void Images::load(){
 				s="pic/メカ海城a.png";
 				break;
 			case 5:
-				s="pic/草原城a.png";
+				s="pic/メカ草原城a.png";
 				break;
 			case 6:
 				s="pic/メカ洞窟城a.png";
