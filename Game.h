@@ -58,6 +58,7 @@ public:
 	void stageInc(int);
 	void setProduct(int,int); //©“®¶¬ƒZƒbƒg
 	int getProduct(int);
+	double getProductCLKPAR(int);
 	int getResource();
 	int getNowStage();
 	void useResource(int);

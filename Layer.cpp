@@ -59,42 +59,6 @@ ButtonLayer* ButtonLayer::setClickSE(string s){
 }
 
 
-MapLayer::MapLayer(std::shared_ptr<Game> g){
-	lx=275;ly=50;lw=500;lh=10;
-	for(int i=0;i<9;i++)
-		xlist[i]=g->stage_W[i]/(double)g->stage_W[8]*lw+lx;
-}
-void MapLayer::main(){
-	mouse_in* m=mouse_in::getIns();
-	for(int i=0;i<9;i++)ratelist[i]=1.0;
-	for(int i=0;i<9;i++){
-		int _x=xlist[i];
-		int _y=ly;
-		int _w=25;
-		ratelist[i]=1.0;
-		if(_x-_w<m->X()&&_y-_w<m->Y()&&m->X()<_x+_w&&m->Y()<_y+_w){
-			ratelist[i]=2.0;
-			if(m->LeftClick()){
-				m->Reset();
-				parentScene->addLayer(11,make_shared<SelectLayer>(_x,_y+150,i));
-			}
-		}
-	}
-	
-	
-}
-void MapLayer::draw(){
-		DrawBox(lx,ly-lh/2,lx+lw,ly+lh/2,GetColor(255,0,255),TRUE);
-		for(int i=0;i<9;i++){
-			int _x=xlist[i];
-			int _y=ly;
-			int _w=25;
-			double _rate=ratelist[i];
-			DrawRotaGraph(_x,_y,_rate,0,Images::get("pic/tou.png"),TRUE);
-		}	
-    
-
-}
 
 
 SelectLayer::SelectLayer(int _x,int _y,int _id){
@@ -152,37 +116,8 @@ void SelectLayer::draw(){
 			if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
 				DrawBox(x-75+50*i+5,y-75+50*j+5,x-75+50*i+50-5,y-75+50*j+50-5,GetColor(0,255,0),TRUE);
 			}
-			string s;
-			switch (i+j*3){
-				case 0:
-					s="pic/null.png";
-					break;
-				case 1:
-					s="pic/na.png";
-					break;
-				case 2:
-					s="pic/ha.png";
-					break;
-				case 3:
-					s="pic/ra.png";
-					break;
-				case 4:
-					s="pic/ka.png";
-					break;
-				case 5:
-					s="pic/ba.png";
-					break;
-				case 6:
-					break;
-				case 7:
-					break;
-				case 8:
-					break;
-				case 9:
-					break;
-			}
-			DrawGraph(x-75+50*i+5,y-75+50*j+5,Images::get(s.c_str()),TRUE);
-			DrawString(x-75+50*i+5,y-75+50*j+5,s.c_str(),GetColor(0,0,0));
+			int hoge=i+j*3;
+			DrawGraph(x-75+50*i+5,y-75+50*j+5,Images::getMusumeIcon(hoge),TRUE);
 			
 		
 		}
@@ -199,8 +134,35 @@ void StageClearLayer::draw(){
 	DrawFormatString(0,0,GetColor(255,0,0),"%d is cleard. time = %d",stage_id,remain_time);
 }
 void StageClearLayer:: main(){
-	if(remain_time--<=0)
+	if(remain_time--<=0){
+		string s;
+		switch(stage_id){
+		case 1:
+			s="sound/X.mp3";
+			break;
+		case 2:
+			s="sound/–éí.mp3";
+			break;
+		case 3:
+			s="sound/‹´.mp3";
+			break;
+		case 4:
+			s="sound/‘Œ´.mp3";
+			break;
+		case 5:
+			s="sound/“´ŒA.mp3";
+			break;
+		case 6:
+			s="sound/“sŽs.mp3";
+			break;
+		case 7:
+			s="sound/‹´.mp3";
+			break;
+		}
+		Images::playBGM(s.c_str());
 		parentScene->rmLayer(thisLayerID);
+
+	}
 	
 }
 
@@ -214,6 +176,7 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 		xlist[i]=g->stage_W[i]/(double)g->stage_W[8]*lw+lx;
 		ratelist[i]=1.0;
 	}
+	martop=15;
 
 }
 void MenuLayer::draw(){
@@ -230,15 +193,27 @@ void MenuLayer::draw(){
 	}*/
 	//map
 	//DrawBox(250,20,550,40,GetColor(255,0,0),TRUE);
-	DrawBox(lx,ly-lh/2,lx+lw,ly+lh/2,GetColor(255,0,255),TRUE);
+	DrawBox(lx,ly+martop,lx+lw,ly+lh+martop,GetColor(255,0,255),TRUE);
 	for(int i=0;i<9;i++){
 		int _x=xlist[i];
 		int _y=ly;
 		int _w=25;
 		double _rate=ratelist[i];
-		DrawRotaGraph(_x,_y,_rate,0,Images::get("pic/tou.png"),TRUE);
-		int hoge=Images::getMusumeIcon(game->getProduct(i));
-		DrawRotaGraph(_x,_y+30,1.0,0,Images::getMusumeIcon(game->getProduct(i)),TRUE);
+		if(game->getNowStage()>i){
+			int tmp=Images::getSiroIcon(i);
+			DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
+			DrawRotaGraph(_x,_y+30,1.0,0,Images::getMusumeIcon(game->getProduct(i)),TRUE);
+			//ƒ[ƒ^[
+			double f=game->getProductCLKPAR(i);
+			if(f!=0){
+				DrawBox(_x-25,_y+55,_x-25+50,_y+60,GetColor(255,0,0),TRUE);
+				DrawBox(_x-25,_y+55,_x-25+50*f,_y+60,GetColor(0,255,0),TRUE);
+			}
+		}else{
+			int tmp=Images::get("pic/tou.png");
+			DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
+		}
+		
 	}
 
 	//factory
@@ -259,7 +234,7 @@ void MenuLayer:: main(){
 		int _y=ly;
 		int _w=25;
 		ratelist[i]=1.0;
-		if(_x-_w<m->X()&&_y-_w<m->Y()&&m->X()<_x+_w&&m->Y()<_y+_w){
+		if((game->getNowStage()>i)&&_x-_w<m->X()&&_y-_w<m->Y()&&m->X()<_x+_w&&m->Y()<_y+_w){
 			ratelist[i]=2.0;
 			if(m->LeftClick()){
 				m->Reset();

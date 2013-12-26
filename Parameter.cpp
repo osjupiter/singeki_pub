@@ -34,7 +34,34 @@ int Parameter::getParamLevel(ParamType p_type){
 }
 
 int Parameter::getParam(ParamType p_type){
-	return base[p_type]*(1+0.5*level[p_type]);
+	int ret=0,_base=base[p_type],_level=level[p_type];
+	switch(p_type){
+		case ParamType::POWER:
+			ret=_base*(1+0.5*_level);
+			break;
+		case ParamType::MAXHP:
+			ret=_base*(1+0.5*_level);
+			break;
+		case ParamType::SPEED:
+			ret=_base*(1+0.5*_level);
+			break;
+		case ParamType::DEFENSE:
+			ret=_base*(1+0.5*_level);
+			break;
+		case ParamType::A_TYPE:
+			ret=Position::ALL;
+			break;
+		case ParamType::CLK:
+			ret=_base*(1-0.1*_level);
+			break;
+		case ParamType::COST:
+			ret=_base*(1-0.1*_level);
+			break;
+		case ParamType::A_FREQ:
+			ret=_base*(1-0.1*_level);
+			break;
+	}
+	return ret;
 }
 /*
 int Parameter::getCost(ParamType p_type){

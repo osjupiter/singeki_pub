@@ -35,14 +35,20 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	else state = CastleState::STAY;
 	dir = NODIR;
 	product_type = NONE;
-	product_clk = NONE;
+	now_clk=0;
 
 }
 
 void castle::main(){
 	switch (state){
+/*
 	case CastleState::ACTIVE:
 		if (getClock(1000)){
+*/
+	case ACTIVE:
+		//if (getClock(1000)){
+		if(now_clk++>30){
+			now_clk=0;
 			Game::getIns()->birth(stage, TANK);
 		//	Game::getIns()->birth(stage, COPTER);
 		}
@@ -53,11 +59,17 @@ void castle::main(){
 	case CastleState::EN_DIE:
 		state = OCCUPY;
 		nowstage++;
+		now_clk=0;
 		Game::getIns()->stageInc(nowstage);
 		hp = meka_castle_hp[stage];
 		break;
+/*
 	case CastleState::OCCUPY:
 		if (getClock(product_clk))
+*/
+	case OCCUPY:
+		//if (getClock(product_clk))
+		if(isProductTime())
 			Game::getIns()->birth(stage, product_type);
 		break;
 	}
@@ -111,6 +123,12 @@ void castle::damage(int d){
 	}
 }
 
+bool castle::isProductTime(){
+	int p=Game::getIns()->getParam(product_type,ParamType::CLK);
+	if(now_clk++>=p){now_clk=0;return true;}
+	return false;
+}
+
 bool castle::getClock(unsigned int clk){
 	
 	unsigned int nowt;
@@ -130,11 +148,15 @@ void castle::setNowstage(int st){
 void castle::setProduct(int p_type){
 	
 	product_type = p_type;
-	//product_clk = unit_clk[p_type];
-	product_clk =Game::getIns()->getParam(p_type,ParamType::CLK);
 }
 int castle::getProduct(){
 	return product_type;
+	
+}
+double castle::getProductCLKPAR(){
+	int product_clk=Game::getIns()->getParam(product_type,ParamType::CLK);
+	if(product_clk==0)return 0;
+	return now_clk/(double)product_clk;
 	
 }
 

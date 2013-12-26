@@ -5,6 +5,7 @@
 Images Images::ins;
 
 void Images::load(){
+	_nowBGM="";
 
 //	gs[0]=LoadGraph("pic/test.jpg");
 	LoadDivGraph("dat/img/•à•ºw.png", ANI_HOHEI, ANI_HOHEI, 1, WID_HOHEI, HEI_HOHEI, g_hohei);
@@ -137,6 +138,17 @@ void Images::load(){
 	filelist.push_back("pic/ka.png");
 	filelist.push_back("pic/na.png");
 	filelist.push_back("pic/ra.png");
+	filelist.push_back("pic/sa.png");
+
+	filelist.push_back("pic/ƒƒJŠCéa.png");
+	filelist.push_back("pic/ƒƒJRéa.png");
+	filelist.push_back("pic/ƒƒJXéa.png");
+	filelist.push_back("pic/ƒƒJ“sséa.png");
+	filelist.push_back("pic/ƒƒJ“´ŒAéa.png");
+	filelist.push_back("pic/ƒƒJ–éíéa.png");
+	filelist.push_back("pic/Å‰‚Ì‹’“_a.png");
+	filelist.push_back("pic/‘Œ´éa.png");
+
 
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
@@ -145,6 +157,15 @@ void Images::load(){
 	soundlist.push_back("sound/misairu.mp3");
 	soundlist.push_back("sound/shot002.wav");
 	soundlist.push_back("sound/gun04.mp3");
+
+
+	soundlist.push_back("sound/‹´.mp3");
+	soundlist.push_back("sound/R.mp3");
+	soundlist.push_back("sound/X.mp3");
+	soundlist.push_back("sound/‘Œ´.mp3");
+	soundlist.push_back("sound/“ss.mp3");
+	soundlist.push_back("sound/“´ŒA.mp3");
+	soundlist.push_back("sound/–éí.mp3");
 
 	
 	for(auto s:filelist){
@@ -202,6 +223,7 @@ void Images::load(){
 				s="pic/ba.png";
 				break;
 			case 6:
+				s="pic/sa.png";
 				break;
 			case 7:
 				break;
@@ -211,4 +233,47 @@ void Images::load(){
 				break;
 		}
 		return ins.get(s.c_str());
+	}
+	int Images::getSiroIcon(int id){
+		string s;
+		switch (id){
+			case 0:
+				s="pic/Å‰‚Ì‹’“_a.png";
+				break;
+			case 1:
+				s="pic/ƒƒJRéa.png";
+				break;
+			case 2:
+				s="pic/ƒƒJXéa.png";
+				break;
+			case 3:
+				s="pic/ƒƒJ–éíéa.png";
+				break;
+			case 4:
+				s="pic/ƒƒJŠCéa.png";
+				break;
+			case 5:
+				s="pic/‘Œ´éa.png";
+				break;
+			case 6:
+				s="pic/ƒƒJ“´ŒAéa.png";
+				break;
+			case 7:
+				s="pic/ƒƒJ“sséa.png";
+				break;
+			case 8:
+				break;
+			case 9:
+				break;
+		}
+		return ins.get(s.c_str());
+	}
+
+	void Images::playBGM(string name){
+		printfDx(name.c_str());
+		if(ins._nowBGM!="")
+			StopSoundMem(getSound(ins._nowBGM.c_str()));
+		if(name!="")
+			PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_LOOP);
+		ins._nowBGM=name;
 	}

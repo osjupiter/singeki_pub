@@ -174,6 +174,11 @@ int Game::getProduct(int tw_num){
 	return castle_list.at(tw_num)->getProduct();
 }
 
+double Game::getProductCLKPAR(int tw_num){
+	if (castle::getNowstage() <= tw_num)return 0;
+	return castle_list.at(tw_num)->getProductCLKPAR();
+}
+
 void Game::enemy_birth(){
 	if (getClock(STAGE1_W-front_line)) birth(STAGE1_W, TANK);
 }
