@@ -76,14 +76,14 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 #define WID_RAILGUN 370
 #define HEI_RAILGUN 200
 
-#define POWER_RAILGUN 10
-#define MAXHP_RAILGUN 50
+#define POWER_RAILGUN 200
+#define MAXHP_RAILGUN 500
 #define DEFENSE_RAILGUN 1
 #define SPEED_RAILGUN 5
 #define A_TYPE_RAILGUN NOATK
 #define COST_RAILGUN 50
 #define CLK_RAILGUN 120
-#define A_FREQ_RAILGUN 50
+#define A_FREQ_RAILGUN 200
 
 /*•—‘D•º*/
 #define ANI_BALLOON 8
@@ -204,6 +204,16 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 #define WID_TEPODON 140
 #define HEI_TEPODON 70
 
+#define ANI_BEAM 9
+#define WID_BEAM 1000
+#define HEI_BEAM 200
+
+#define ANI_BEAM_C 5
+#define WID_BEAM_C 140
+#define HEI_BEAM_C 200
+
+
+
 #define MUSUME 0
 #define ENEMY 1
 
@@ -231,7 +241,7 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 #define SHOCK 22
 #define MISSILE 23
 #define TEPODON 24
-
+#define BEAM 25
 
 #define STAGE_NUM 8
 

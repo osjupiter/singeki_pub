@@ -48,7 +48,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	now_clk=0;
 	exist_clk=0;
 
-	ii one[] = { ii(100, 13), ii(100, 12) };
+	ii one[] = { ii(100, 13), ii(170, 13) };
 	ii two[]={ii(30,10)};
 	ii three[]={ii(30,10)};
 	ii four[]={ii(30,10)};
@@ -58,7 +58,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	ii eight[]={ii(30,10)};
 	ii nine[]={ii(30,10)};
 
-	ii oneEvent[]={ii(100,11)};
+	ii oneEvent[]={ii(100,10)};
 	ii twoEvent[]={ii(30,11)};
 	ii threeEvent[]={ii(30,11)};
 	ii fourEvent[]={ii(30,11)};

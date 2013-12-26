@@ -47,6 +47,8 @@ public:
 	int g_gekko_up[3];
 	int g_gekko_down[4];
 	int g_rail[4];
+	int g_beam[9];
+	int g_beam_c[5];
 
 	int g_castle[9][3];
 	int back[8][5];

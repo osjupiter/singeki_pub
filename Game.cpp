@@ -7,6 +7,7 @@
 #include "railgun.h"
 #include "copter.h"
 #include "segway.h"
+#include "beam.h"
 #include "kamikaze.h"
 #include "gekko.h"
 #include "bazooka.h"
@@ -233,6 +234,11 @@ void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, 
 					 effect_list.push_back(p);
 					 break;
 	}
+/*	case BEAM:{
+					 shared_ptr<effect> p(new beam(fx, fy, atk_power));
+					 effect_list.push_back(p);
+					 break;
+	}*/
 	}
 }
 
