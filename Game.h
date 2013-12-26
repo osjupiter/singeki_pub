@@ -30,6 +30,8 @@ class Game : public Layer{
 	list<shared_ptr<enemy>>  delete_enemylist;
 	list<shared_ptr<musume>> musume_list[3];
 	list<shared_ptr<musume>> delete_musumelist;
+	vector<shared_ptr<object>> memfree_list;
+
 	vector<shared_ptr<castle>> castle_list;
 	list<shared_ptr<background>> back_list;
 

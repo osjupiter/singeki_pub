@@ -440,16 +440,19 @@ void Game::delete_object(){
 			for (int j = 0; j < 3; j++){
 				musume_list[j].remove(i);
 			}
+			memfree_list.push_back(i);
 		}
 		
 		delete_musumelist.clear();
+		
+		
 	}
 	if (!delete_enemylist.empty()){
 		for (auto i : delete_enemylist){
 			for (int j = 0; j < 3; j++){
 				enemy_list[j].remove(i);
-				
 			}
+			memfree_list.push_back(i);
 			
 		}
 		delete_enemylist.clear();
@@ -458,11 +461,16 @@ void Game::delete_object(){
 	if (!delete_effectlist.empty()){
 		for (auto i : delete_effectlist){		
 			effect_list.remove(i);
-
+			memfree_list.push_back(i);
 		}
-
 		delete_effectlist.clear();
 	}
+	
+
+	if(memfree_list.size()<10)
+		memfree_list.clear();
+	else
+		memfree_list.erase(memfree_list.begin(),memfree_list.begin()+10);
 
 
 }
