@@ -255,11 +255,16 @@ void MenuLayer::draw(){
 	}
 
 	DrawBox(lx,100,lx+lw,100+5,GetColor(255,0,255),TRUE);
+	for(int i=0;i<=game->getNowStage();i++){
+		int tmp=(i!=game->getNowStage())?Images::getSiroIcon(i):Images::get("pic/tou.png");
+		int tmpx=game->stage_W[i]/(double)game->stage_W[game->getNowStage()]*lw+lx;
+		DrawRotaGraph(tmpx,100,0.5,0,tmp,TRUE);
+	}
 	auto hoge=game->getDarkness();
 	for(int i=0;i<3;i++){
 		for(auto d:hoge.first[i]){
 			//int dndn=(d->getX()*lw/(double)STAGE8_W)+lx;
-			int tmpx=d->getX()/(double)game->stage_W[8]*lw+lx;
+			int tmpx=d->getX()/(double)game->stage_W[game->getNowStage()]*lw+lx;
 			DrawBox(tmpx-2,100,tmpx+2,104,GetColor(255,0,0),TRUE);
 			//printfDx("ene->X=%d ans %lf  stage5 %d ans %lf\n",d->getX(),d->getX()/(double)game->stage_W[8]*lw+lx,game->stage_W[5],game->stage_W[5]/(double)game->stage_W[8]*lw+lx);
 		}
@@ -268,7 +273,7 @@ void MenuLayer::draw(){
 	for(int i=0;i<3;i++){
 		for(auto d:hoge.second[i]){
 			//int dndn=(d->getX()*lw/(double)STAGE8_W)+lx;
-			int tmpx=d->getX()/(double)game->stage_W[8]*lw+lx;
+			int tmpx=d->getX()/(double)game->stage_W[game->getNowStage()]*lw+lx;
 			DrawBox(tmpx-2,100,tmpx+2,104,GetColor(255,255,255),TRUE);
 			//printfDx("ene->X=%d ans %lf  stage5 %d ans %lf\n",d->getX(),d->getX()/(double)game->stage_W[8]*lw+lx,game->stage_W[5],game->stage_W[5]/(double)game->stage_W[8]*lw+lx);
 		}
@@ -318,7 +323,7 @@ void MenuLayer:: main(){
 			if( p != NULL )	p->addLayer(15,std::make_shared<OptionLayer>());
 			m->Reset();
 		}else if(testBox(lx,100,lx+lw,100+5)){
-			int targe=(m->X()-lx)/(double)lw*game->stage_W[8];
+			int targe=(m->X()-lx)/(double)lw*game->stage_W[game->getNowStage()];
 			game->setCamera(targe);
 		}
 	}
