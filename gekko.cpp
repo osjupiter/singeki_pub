@@ -62,7 +62,12 @@ void gekko::draw(int cx){
 
 	switch (state){
 	case UnitState::MOV:
-		DrawGraph(x - cx, y, Images::getIns()->g_gekko[ani_count / ANIM_SPEED%ANI_GEKKO], true);
+		if (dir == LEFT){
+			DrawGraph(x - cx, y, Images::getIns()->g_gekko[ani_count / ANIM_SPEED%ANI_GEKKO], true);
+		}
+		else{
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_gekko[ani_count / ANIM_SPEED%ANI_GEKKO], true);
+		}
 		break;
 	case UnitState::ATK:
 		if (atk_position == RAND){
@@ -73,10 +78,20 @@ void gekko::draw(int cx){
 			graph = Images::getIns()->g_gekko_up;
 			anime = ANI_GEKKO_UP;
 		}
+		if (dir == LEFT){
 			DrawGraph(x - cx, y, graph[ani_count / ANIM_SPEED%anime], true);
-			break;
+		}
+		else{
+			DrawTurnGraph(x - cx, y, graph[ani_count / ANIM_SPEED%anime], true);
+		}
+		break;
 	case UnitState::WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->g_gekko[ani_count / ANIM_SPEED%ANI_GEKKO], true);
+		if (dir == LEFT){
+			DrawGraph(x - cx, y, Images::getIns()->g_gekko[ani_count / ANIM_SPEED%ANI_GEKKO], true);
+		}
+		else{
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_gekko[ani_count / ANIM_SPEED%ANI_GEKKO], true);
+		}
 		break;
 	}
 
