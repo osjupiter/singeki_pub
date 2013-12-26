@@ -248,7 +248,9 @@ void Game::push_attack_list(shared_ptr<AttackRange> p, int unittype){
 
 void Game::main(){
 	int now_stage = getNowStage();
-	int frontE = INT_MAX, frontM = 0;
+	int front=-1;
+	int front_tmp, front_S_tmp;
+	Position front_type;
 	int target_X=INT_MAX,target_X_S=INT_MAX;
 	shared_ptr<enemy> target_e;
 	shared_ptr<musume> target_m;
@@ -271,33 +273,52 @@ void Game::main(){
 			}
 		}
 	}
-//	if (target_e == NULL) target_X = castle_list.at(now_stage)->getX();
-	target_X = min(castle_list.at(now_stage)->getX(),target_X);
-	
 
-	frontE = target_X;
+	target_X = min(castle_list.at(now_stage)->getX(),target_X);
+	target_X_S = min(castle_list.at(now_stage)->getX(), target_X_S);
+
+	front_tmp = target_X;
+	front_S_tmp = target_X_S;
 
 	/*–¡•ûƒƒCƒ“*/
-	target_X = stage_W[now_stage - 1] -1; target_X_S = stage_W[now_stage - 1] -1;
+	target_X = stage_W[now_stage - 1] - 1;
+	target_X_S = stage_W[now_stage - 1] - 1;
 
 	for (int j = 0; j < 3; j++){
-		for (auto i : musume_list[j]){
-			i->main(frontE);
+		for (auto i : musume_list[j]){			
+			
+			
+			front_type = i->decideTargetPos(front_tmp, front_S_tmp);
+
+			if (front_type == RAND){
+				front = front_tmp;
+			}
+			else if(front_type == SKY){
+				front = front_S_tmp;
+			}
+
+			i->main(front);
 			if (i->getType() == RAND && target_X < i->getX()){
 				target_m = i;
 				target_X = i->getX();
 			}
+
 			if (i->getType()==SKY && target_X_S < i->getX()){
 				target_m_sky = i;
 				target_X_S = i->getX();
 			}
 
 		//	if (i->getState() == ATK){
+			if (front_type == RAND){
 				if (target_e != NULL)
 					target_e->damage(i->getPower(), i->getAtkType());
 				else castle_list.at(now_stage)->damage(i->getPower());
+			}
+			else if (front_type == SKY){
 				if (target_e_sky != NULL)
-					target_e_sky->damage(i->getPower(),i->getAtkType());
+					target_e_sky->damage(i->getPower(), i->getAtkType());
+				else castle_list.at(now_stage)->damage(i->getPower());
+			}
 			//}
 
 			
@@ -309,23 +330,38 @@ void Game::main(){
 		
 	}
 
-	frontM = target_X;
+	front_tmp = target_X;
+	front_S_tmp = target_X_S;
+
 	/*“GƒƒCƒ“*/
 	for (int j = 0; j < 3; j++){
 		for (auto i : enemy_list[j]){
-			i->main(frontM);
-			if (i->getState() == ATK){
-				if (target_m != NULL)	
+			front_type = i->decideTargetPos(front_tmp, front_S_tmp);
+
+			if (front_type == RAND){
+				front = front_tmp;
+			}
+			else if (front_type == SKY){
+				front = front_S_tmp;
+			}
+			i->main(front);
+		//	if (i->getState() == ATK){
+			if (front_type == RAND){
+				if (target_m != NULL)
 					target_m->damage(i->getPower(), i->getAtkType());
-				else castle_list.at(now_stage-1)->damage(i->getPower());
+				else castle_list.at(now_stage - 1)->damage(i->getPower());
+			}
+			else if (front_type == RAND){
 				if (target_m_sky != NULL)
 					target_m_sky->damage(i->getPower(), i->getAtkType());
+				else castle_list.at(now_stage - 1)->damage(i->getPower());
 			}
+		//	}
 
 		}
 	}
 
-	front_line = frontM;
+	front_line = front;
 	
 	for (auto i : castle_list){
 		i->main();

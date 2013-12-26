@@ -33,4 +33,5 @@ public:
 	Position getType();
 	//int getAtkType();
 	void switchDirection();
+
 };

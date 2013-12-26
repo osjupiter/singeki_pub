@@ -15,6 +15,7 @@ kamikaze::kamikaze(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx
 	height = HEI_KAMIKAZE;
 	num++;
 	atk = false;
+	stopper = false;
 	type = SKY;
 	gap_y = 0;
 	gap_vy=1;
@@ -36,19 +37,12 @@ void kamikaze::main(int front){
 		gap_y += gap_vy;
 		*/
 	
-		if ((ani_count / ANIM_SPEED % ANI_KAMIKAZE_ATK) == ANI_KAMIKAZE_ATK-1){
-
-		}
-		else {
-			//atk = false;
-		}
+		atk = false;
+		
 		if ((ani_count / ANIM_SPEED == ANI_KAMIKAZE_ATK)){
-			if (!atk){
-				Game::getIns()->effect_create(x, y + 75, TEPODON, dir, param->getParam(POWER), front - 200);
-				atk = true;
-			}
+			Game::getIns()->effect_create(x, y + 75, TEPODON, dir, param->getParam(POWER), front - 200);			
 			changeState(DIE);
-		//	atk = false;
+
 		}
 
 		break;

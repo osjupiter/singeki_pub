@@ -43,3 +43,4 @@ void unit::switchDirection(){
 	else if (dir == RIGHT)
 		dir = LEFT;
 }
+

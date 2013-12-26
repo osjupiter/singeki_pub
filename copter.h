@@ -6,7 +6,7 @@
 
 class copter : public enemy{
 private:
-	
+	bool stopper;
 	static int num;
 	
 public:

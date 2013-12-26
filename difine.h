@@ -20,7 +20,7 @@ enum UnitState{ MOV, WAIT,ATK, DIE};
 enum CastleState{ACTIVE,STAY,OCCUPY,EN_DIE,MEKA_DIE};
 enum Direction { LEFT = -1, NODIR = 0, RIGHT = 1 };
 enum ParamType{ POWER, MAXHP, SPEED, DEFENSE, A_TYPE, CLK, COST, A_FREQ, PARAM_NUM };
-enum Position{ ALL, RAND, SKY ,NOATK};
+enum Position{ RAND, SKY ,ALL,NOATK};
 /*•à•º*/
 #define ANI_HOHEI 6
 #define ANI_HOHEI_ATK 2
@@ -32,7 +32,7 @@ enum Position{ ALL, RAND, SKY ,NOATK};
 #define MAXHP_HOHEI 500
 #define DEFENSE_HOHEI 1
 #define SPEED_HOHEI 5
-#define A_TYPE_HOHEI RAND
+#define A_TYPE_HOHEI ALL
 #define COST_HOHEI 50
 
 #define CLK_HOHEI 120
@@ -111,7 +111,7 @@ enum Position{ ALL, RAND, SKY ,NOATK};
 #define MAXHP_KAMIKAZE 500
 #define DEFENSE_KAMIKAZE 1
 #define SPEED_KAMIKAZE 10
-#define A_TYPE_KAMIKAZE NOATK
+#define A_TYPE_KAMIKAZE SKY
 #define COST_KAMIKAZE 50
 #define CLK_KAMIKAZE 120
 #define A_FREQ_KAMIKAZE 10

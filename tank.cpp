@@ -55,6 +55,7 @@ void tank::draw(int cx){
 	case UnitState::ATK:
 		DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
 		break;
+
 	}
 
 	unit::draw(cx);

@@ -41,7 +41,7 @@ void enemy::main(int front){
 		}
 	}
 	else if (dir == RIGHT){
-		if (x > front + dist)
+		if (x > front )
 			switchDirection();
 		
 		switch (state){
@@ -143,6 +143,34 @@ void enemy::changeState(UnitState next_state){
 		state = next_state;
 		break;
 	}
+}
+
+
+Position enemy::decideTargetPos(int target_x_rand, int target_x_sky){
+	Position ret;
+	switch (atk_type){
+	case ALL:
+		if (dir == RIGHT){
+			if (target_x_rand < target_x_sky) ret = RAND;
+			else ret = SKY;
+		}
+		else {
+			if (target_x_rand > target_x_sky) ret = RAND;
+			else ret = SKY;
+		}
+		break;
+	case RAND:
+		ret = RAND;
+		break;
+	case SKY:
+		ret = SKY;
+		break;
+	case NOATK:
+		ret = RAND;
+		break;
+	}
+	atk_position = ret;
+	return ret;
 }
 
 
