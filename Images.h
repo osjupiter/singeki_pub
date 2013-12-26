@@ -59,4 +59,5 @@ public:
 	static void playBGM(string name);
 	static int getMusumeIcon(int);
 	static int getSiroIcon(int);
+	static int getParamTypeIcon(ParamType);
 };

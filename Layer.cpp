@@ -409,6 +409,7 @@ void FactoryLayer::draw(){
 			yy=tmpy+70+90*j;
 			hh=80;
 			DrawBox(xx,yy,xx+ww,yy+hh,GetColor(0,0,0),TRUE);
+			DrawGraph(xx,yy,Images::getParamTypeIcon((ParamType)(i+j*4)),TRUE);
 			
 		
 		}

@@ -146,6 +146,15 @@ void Images::load(){
 	filelist.push_back("pic/sa.png");
 	filelist.push_back("pic/資源.png");
 
+	
+	filelist.push_back("pic/HP.png");
+	filelist.push_back("pic/攻撃速度.png");
+	filelist.push_back("pic/資源ダウン.png");
+	filelist.push_back("pic/生産速度.png");
+	filelist.push_back("pic/速さ.png");
+	filelist.push_back("pic/防御.png");
+	filelist.push_back("pic/力.png");
+
 
 	filelist.push_back("pic/メカ海城a.png");
 	filelist.push_back("pic/メカ山城a.png");
@@ -277,6 +286,21 @@ void Images::load(){
 				break;
 		}
 		return ins.get(s.c_str());
+	}
+
+	int Images::getParamTypeIcon(ParamType i){
+		string hoge[]={
+			"pic/力.png",
+			"pic/HP.png",
+			"pic/速さ.png",
+			"pic/防御.png",
+			"",
+			"pic/生産速度.png",
+			"pic/資源ダウン.png",
+			"pic/攻撃速度.png",
+		};
+		return ins.get(hoge[i].c_str());
+
 	}
 
 	void Images::playBGM(string name){
