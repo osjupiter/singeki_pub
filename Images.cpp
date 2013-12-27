@@ -174,18 +174,19 @@ void Images::load(){
 	filelist.push_back("pic/メカ都市城a.png");
 	filelist.push_back("pic/メカ都市城a2.png");
 	filelist.push_back("pic/メカ洞窟城a.png");
-	filelist.push_back("pic/メカ洞窟城2a.png");
+	filelist.push_back("pic/メカ洞窟城a2.png");
 	filelist.push_back("pic/メカ夜戦城a.png");
 	filelist.push_back("pic/メカ夜戦城a2.png");
 	filelist.push_back("pic/最初の拠点a.png");
 	filelist.push_back("pic/最初の拠点a2.png");
 	filelist.push_back("pic/メカ草原城a.png");
-	filelist.push_back("pic/メカ草原城2.png");
+	filelist.push_back("pic/メカ草原城a2.png");
 	filelist.push_back("pic/生産中止a.png");
 	filelist.push_back("pic/MUI.png");
 	filelist.push_back("pic/SUI、オプション.png");//
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
 	filelist.push_back("pic/まるなしMUI.png");
+	filelist.push_back("pic/MUIのステージのまる.png");
 
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");

@@ -223,7 +223,7 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 		onMouseTime[i]=0;
 	}
 	game=g;
-	lx=306;ly=33;lw=440;lh=10;
+	lx=306;ly=25;lw=440;lh=10;
 	for(int i=0;i<8;i++){
 		xlist[i]=g->stage_W[i]/(double)g->stage_W[7]*lw+lx;
 		ratelist[i]=1.0;
@@ -272,6 +272,7 @@ void MenuLayer::draw(){
 		double _rate=ratelist[i];
 		if(game->getNowStage()>i){
 			int tmp=( testBox(_x-_w,_y-_w,_x+_w,_y+_w))?Images::getSiroIcon(i,true):Images::getSiroIcon(i);
+			//DrawRotaGraph(_x,_y,1,0,Images::get(("pic/MUIのステージのまる.png")),TRUE);
 			DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
 			DrawRotaGraph(_x,_y+30,1.0,0,Images::getMusumeIcon(game->getProduct(i)),TRUE);
 			//メーター
@@ -350,7 +351,7 @@ void MenuLayer:: main(){
 			if( p != NULL )	p->addLayer(15,std::make_shared<OptionLayer>());
 			m->Reset();
 		}else if(testBox(mx,my-mh,mx+mw,my+mh)){
-			int targe=(m->X()-lx)/(double)lw*game->stage_W[game->getNowStage()];
+			int targe=(m->X()-mx)/(double)mw*game->stage_W[game->getNowStage()];
 			game->setCamera(targe-WINDOW_X/2);
 		}
 	}
