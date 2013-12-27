@@ -24,6 +24,8 @@ class Game : public Layer{
 	static Game* ins;
 	int nowstage;
 
+	int birth_limit;
+
 	list<shared_ptr<effect>>  delete_effectlist;
 	list<shared_ptr<effect>>  effect_list;
 	list<shared_ptr<enemy>>  enemy_list[3];
@@ -97,4 +99,10 @@ public:
 	pair<list<shared_ptr<enemy>>*,list<shared_ptr<musume>>*> getDarkness();
 
 	vector<int> getMusumeNumber();
+
+	
+	void setBirthLimit(int i);
+	int getBirthLimit();
+	int getMusumeSum();
+
 };
