@@ -2,7 +2,7 @@
 #include "Images.h"
 #include "Game.h"
 
-#define ANIM_SPEED 3
+#define ANIM_SPEED 2
 
 int gekko::num;
 

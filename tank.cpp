@@ -3,6 +3,7 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
+#define ANIM_SPEED_DIE 1
 
 int tank::num;
 
@@ -37,12 +38,18 @@ void tank::main(int front){
 		break;
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED%ANI_TANK_ATK == 2){
-			Images::playSE("sound/taihou03.mp3");
-			atk = true;
+			if (!atk){
+				Images::playSE("sound/taihou03.mp3");
+				atk = true;
+			}
+			else{ atk = false; }
 		}
 		break;
+	case UnitState::WAIT:
+		atk = false;
+		break;
 	case UnitState::DIE:
-		if (ani_count / ANIM_SPEED >= ANI_TANK_DEL){
+		if (ani_count / ANIM_SPEED_DIE >= ANI_TANK_DEL){
 			del();
 		}
 		break;
@@ -63,7 +70,7 @@ void tank::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
 		break;
 	case UnitState::DIE:
-		DrawGraph(x - cx, y, Images::getIns()->g_tank_dei[ani_count / ANIM_SPEED%ANI_TANK_DEL], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_tank_dei[ani_count / ANIM_SPEED_DIE%ANI_TANK_DEL], true);
 		break;
 	}
 
