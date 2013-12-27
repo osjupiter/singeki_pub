@@ -303,6 +303,7 @@ void Game::main(){
 		int r_end = stage_W[getNowStage()] + WID_CASTLE / 2 - 100;
 		if (x + FIELD_W > r_end){ x = r_end - FIELD_W;cameraMoveCount=0;}
 		if (x + FIELD_W > STAGE8_W){ x = STAGE8_W - FIELD_W ;cameraMoveCount=0;}
+		if (x < 0){x = 0;cameraMoveCount=0;}
 
 	}
 

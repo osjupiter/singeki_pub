@@ -168,15 +168,27 @@ void Images::load(){
 
 
 	filelist.push_back("pic/メカ海城a.png");
+	filelist.push_back("pic/メカ海城a2.png");
 	filelist.push_back("pic/メカ山城a.png");
+	filelist.push_back("pic/メカ山城a2.png");
 	filelist.push_back("pic/メカ森城a.png");
+	filelist.push_back("pic/メカ森城a2.png");
 	filelist.push_back("pic/メカ都市城a.png");
+	filelist.push_back("pic/メカ都市城a2.png");
 	filelist.push_back("pic/メカ洞窟城a.png");
+	filelist.push_back("pic/メカ洞窟城a2.png");
 	filelist.push_back("pic/メカ夜戦城a.png");
+	filelist.push_back("pic/メカ夜戦城a2.png");
 	filelist.push_back("pic/最初の拠点a.png");
+	filelist.push_back("pic/最初の拠点a2.png");
 	filelist.push_back("pic/メカ草原城a.png");
+	filelist.push_back("pic/メカ草原城a2.png");
 	filelist.push_back("pic/生産中止a.png");
-
+	filelist.push_back("pic/MUI.png");
+	filelist.push_back("pic/SUI、オプション.png");//
+	filelist.push_back("pic/ユニット選択ウインドウ.png");
+	filelist.push_back("pic/まるなしMUI.png");
+	filelist.push_back("pic/MUIのステージのまる.png");
 
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
@@ -264,39 +276,41 @@ void Images::load(){
 		}
 		return ins.get(s.c_str());
 	}
-	int Images::getSiroIcon(int id){
+	int Images::getSiroIcon(int id,boolean defalt_false){
 		string s;
 		switch (id){
 			case 0:
-				s="pic/最初の拠点a.png";
+				s="pic/最初の拠点a";
 				break;
 			case 1:
-				s="pic/メカ山城a.png";
+				s="pic/メカ山城a";
 				break;
 			case 2:
-				s="pic/メカ森城a.png";
+				s="pic/メカ森城a";
 				break;
 			case 3:
-				s="pic/メカ夜戦城a.png";
+				s="pic/メカ夜戦城a";
 				break;
 			case 4:
-				s="pic/メカ海城a.png";
+				s="pic/メカ海城a";
 				break;
 			case 5:
-				s="pic/メカ草原城a.png";
+				s="pic/メカ草原城a";
 				break;
 			case 6:
-				s="pic/メカ洞窟城a.png";
+				s="pic/メカ洞窟城a";
 				break;
 			case 7:
-				s="pic/メカ都市城a.png";
+				s="pic/メカ都市城a";
 				break;
 			case 8:
 				break;
 			case 9:
 				break;
 		}
-		return ins.get(s.c_str());
+		if(defalt_false)
+			s+="2";
+		return ins.get((s+".png").c_str());
 	}
 
 	int Images::getParamTypeIcon(ParamType i){

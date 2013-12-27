@@ -130,6 +130,7 @@ private:
 	int xlist[9];
 	double ratelist[9];
 	int lx,ly,lw,lh,martop;
+	int mx,my,mw,mh;
 public:
 	MenuLayer(shared_ptr<Game>);
 	void draw();

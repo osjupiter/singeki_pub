@@ -67,6 +67,6 @@ public:
 	static void stopSE(string name);
 	static void playBGM(string name);
 	static int getMusumeIcon(int);
-	static int getSiroIcon(int);
+	static int getSiroIcon(int,boolean=false);
 	static int getParamTypeIcon(ParamType);
 };
