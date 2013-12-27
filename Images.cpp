@@ -11,9 +11,17 @@ void Images::load(){
 	LoadDivGraph("dat/img/ï‡ï∫w.png", ANI_HOHEI, ANI_HOHEI, 1, WID_HOHEI, HEI_HOHEI, g_hohei);
 	LoadDivGraph("dat/img/ï‡ï∫a.png", ANI_HOHEI_ATK, ANI_HOHEI_ATK, 1, WID_HOHEI, HEI_HOHEI, g_hohei_atk);
 
-	LoadDivGraph("dat/img/ìGêÌé‘w.png", ANI_TANK, ANI_TANK, 1, WID_TANK, HEI_TANK, g_tank);
-	LoadDivGraph("dat/img/ìGêÌé‘a.png", ANI_TANK_ATK, ANI_TANK_ATK, 1, WID_TANK ,HEI_TANK, g_tank_atk);
-	LoadDivGraph("dat/img/êÌé‘éÄñS.png", ANI_TANK_DEL,1, ANI_TANK_DEL, WID_TANK_DEL, HEI_TANK_DEL, g_tank_dei);
+	LoadDivGraph("dat/img/ìGêÌé‘w.png", ANI_TANK, ANI_TANK, 1, WID_TANK, HEI_TANK, g_tank[0]);
+	LoadDivGraph("dat/img/ìGêÌé‘a.png", ANI_TANK_ATK, ANI_TANK_ATK, 1, WID_TANK ,HEI_TANK, g_tank_atk[0]);
+	LoadDivGraph("dat/img/êÌé‘éÄñS.png", ANI_TANK_DEL,1, ANI_TANK_DEL, WID_TANK_DEL, HEI_TANK_DEL, g_tank_dei[0]);
+	
+	LoadDivGraph("dat/img/ìGêÌé‘2w.png", ANI_TANK, ANI_TANK, 1, WID_TANK, HEI_TANK, g_tank[1]);
+	LoadDivGraph("dat/img/ìGêÌé‘2a.png", ANI_TANK_ATK, ANI_TANK_ATK, 1, WID_TANK, HEI_TANK, g_tank_atk[1]);
+	LoadDivGraph("dat/img/êÌé‘éÄñS2.png", ANI_TANK_DEL, 1, ANI_TANK_DEL, WID_TANK_DEL, HEI_TANK_DEL, g_tank_dei[1]);
+
+	LoadDivGraph("dat/img/ìGêÌé‘3w.png", ANI_TANK, ANI_TANK, 1, WID_TANK, HEI_TANK, g_tank[2]);
+	LoadDivGraph("dat/img/ìGêÌé‘3a.png", ANI_TANK_ATK, ANI_TANK_ATK, 1, WID_TANK, HEI_TANK, g_tank_atk[2]);
+	LoadDivGraph("dat/img/êÌé‘éÄñS3.png", ANI_TANK_DEL, 1, ANI_TANK_DEL, WID_TANK_DEL, HEI_TANK_DEL, g_tank_dei[2]);
 
 	LoadDivGraph("dat/img/ÉwÉäw.png", ANI_COPTER, ANI_COPTER, 1, WID_COPTER, HEI_COPTER, g_copter);
 	LoadDivGraph("dat/img/ÉwÉäéÄñS.png", ANI_COPTER_DIE, ANI_COPTER_DIE, 1, WID_COPTER_DIE, HEI_COPTER_DIE, g_copter_die);

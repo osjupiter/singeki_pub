@@ -24,9 +24,9 @@ public:
 
 	int g_hohei[ANI_HOHEI];//•à•º
 	int g_hohei_atk[ANI_HOHEI_ATK];
-	int g_tank[8];
-	int g_tank_atk[5];
-	int g_tank_dei[6];
+	int g_tank[3][8];
+	int g_tank_atk[3][5];
+	int g_tank_dei[3][6];
 	int g_balloon[8];
 	int g_balloon_atk[10];
 	int g_bomb[2];
