@@ -3,6 +3,7 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
+#define ANIM_SPEED_DIE 3
 int copter::num = 0;
 
 copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
@@ -52,7 +53,9 @@ void copter::main(int front){
 		}
 		break;
 	case UnitState::DIE:
-		del();
+		if (ani_count / ANIM_SPEED_DIE == ANI_COPTER_DIE ){
+			del();
+		}
 		break;
 	}
 }
@@ -78,6 +81,10 @@ void copter::draw(int cx){
 			DrawTurnGraph(x - cx, y, Images::getIns()->g_copter[ani_count / ANIM_SPEED%ANI_COPTER], true);
 		break;
 	case UnitState::DIE:
+		if (dir == LEFT)
+			DrawGraph(x - cx, 0, Images::getIns()->g_copter_die[ani_count / ANIM_SPEED%ANI_COPTER_DIE], true);
+		else
+			DrawTurnGraph(x - cx, 0, Images::getIns()->g_copter_die[ani_count / ANIM_SPEED%ANI_COPTER_DIE], true);
 		break;
 
 	}

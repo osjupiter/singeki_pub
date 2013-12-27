@@ -40,6 +40,10 @@ void tank::main(int front){
 		if (ani_count / ANIM_SPEED%ANI_TANK_ATK == 2){
 			if (!atk){
 				Images::playSE("sound/taihou03.mp3");
+				if (rand() % 3 == 0){
+					int rand_x = rand() % 100, rand_y = rand() % 20;
+					Game::getIns()->effect_create(front - rand_x, y + rand_y, CANNONSHOT);
+				}
 				atk = true;
 			}
 			else{ atk = false; }
@@ -61,16 +65,28 @@ void tank::main(int front){
 void tank::draw(int cx){
 	switch (state){
 	case UnitState::MOV:
-		DrawGraph(x - cx, y, Images::getIns()->g_tank[ani_count / ANIM_SPEED%ANI_TANK], true);
+		if (dir==LEFT)
+			DrawGraph(x - cx, y, Images::getIns()->g_tank[level/3][ani_count / ANIM_SPEED%ANI_TANK], true);
+		else
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_tank[level / 3][ani_count / ANIM_SPEED%ANI_TANK], true);
 		break;
 	case UnitState::ATK:
-		DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
+		if (dir == LEFT)
+			DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[level / 3][ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
+		else 
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_tank_atk[level / 3][ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
 		break;
 	case UnitState::WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
+		if (dir==LEFT)
+			DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[level / 3][ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
+		else 
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_tank_atk[level / 3][ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
 		break;
 	case UnitState::DIE:
-		DrawGraph(x - cx, y, Images::getIns()->g_tank_dei[ani_count / ANIM_SPEED_DIE%ANI_TANK_DEL], true);
+		if (dir==LEFT)
+			DrawGraph(x - cx, y, Images::getIns()->g_tank_dei[level / 3][ani_count / ANIM_SPEED_DIE%ANI_TANK_DEL], true);
+		else 
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_tank_dei[level / 3][ani_count / ANIM_SPEED_DIE%ANI_TANK_DEL], true);
 		break;
 	}
 

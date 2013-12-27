@@ -26,6 +26,9 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 
 enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUSUME,_TANK=10,_COPTER};
 
+enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP ,GUNSHOT,CANNONSHOT};
+
+
 /*ï‡ï∫*/
 #define ANI_HOHEI 6
 #define ANI_HOHEI_ATK 2
@@ -92,7 +95,7 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define A_TYPE_RAILGUN NOATK
 #define COST_RAILGUN 50
 #define CLK_RAILGUN 120
-#define A_FREQ_RAILGUN 500
+#define A_FREQ_RAILGUN 2000
 
 /*ïóëDï∫*/
 #define ANI_BALLOON 8
@@ -100,7 +103,7 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define WID_BALLOON 90
 #define HEI_BALLOON 180
 
-#define POWER_BALLOON 40
+#define POWER_BALLOON 500
 #define MAXHP_BALLOON 500
 #define DEFENSE_BALLOON 1
 #define SPEED_BALLOON 5
@@ -113,6 +116,10 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define ANI_COPTER 6
 #define WID_COPTER 280
 #define HEI_COPTER 150
+
+#define ANI_COPTER_DIE 9
+#define WID_COPTER_DIE 280
+#define HEI_COPTER_DIE 450
 
 #define POWER_COPTER 100
 #define MAXHP_COPTER 50
@@ -194,10 +201,20 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define WID_BOMB 30
 #define HEI_BOMB 40
 
-/*îöî≠*/
+/*êØîöî≠*/
 #define ANI_EXP 12
 #define WID_EXP 200
 #define HEI_EXP 250
+
+/*èÈîöî≠*/
+#define ANI_BIGEXP 15
+#define WID_BIGEXP 600
+#define HEI_BIGEXP 450
+
+/*îöî≠*/
+#define ANI_NOMALEXP 7
+#define WID_NOMALEXP 250
+#define HEI_NOMALEXP 200
 
 /*è’åÇîg*/
 #define ANI_SHOCK 7
@@ -221,6 +238,14 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define WID_BEAM_C 140
 #define HEI_BEAM_C 200
 
+#define ANI_GUNSHOT 3
+#define WID_GUNSHOT 74
+#define HEI_GUNSHOT 90
+
+
+#define ANI_CANNONSHOT 4
+#define WID_CANNONSHOT 90
+#define HEI_CANNONSHOT 120
 
 #define ANI_MEKANEMU 3
 #define WID_MEKANEMU 400
@@ -246,16 +271,16 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define COPTER 11
 #define GEKKO 12
 #define RAILGUN 13
-
+/*
 #define BOMB 20
 #define EXP 21
 #define SHOCK 22
 #define MISSILE 23
 #define TEPODON 24
 #define BEAM 25
-
+#define BIGEXP 26
+*/
 #define STAGE_NUM 8
-
 
 
 #define FIELD_W 800

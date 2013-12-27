@@ -9,6 +9,8 @@
 #include "segway.h"
 #include "beam.h"
 #include "kamikaze.h"
+#include "gunshot.h"
+#include "cannonshot.h"
 #include "gekko.h"
 #include "bazooka.h"
 #include "tepodon.h"
@@ -18,6 +20,8 @@
 #include "missile.h"
 #include "shock.h"
 #include "explode.h"
+#include "bigExplode.h"
+#include "nomalExp.h"
 #include <time.h>
 #include <algorithm>
 
@@ -255,6 +259,26 @@ void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, 
 					 effect_list.push_back(p);
 					 break;
 	}
+	case BIGEXP:{
+				 shared_ptr<effect> p(new bigExp(fx, fy));
+				 effect_list.push_back(p);
+				 break;
+	}
+	case NOMALEXP:{
+					shared_ptr<effect> p(new nomalExp(fx, fy));
+					effect_list.push_back(p);
+					break;
+	}
+	case GUNSHOT:{
+					  shared_ptr<effect> p(new gunshot(fx, fy));
+					  effect_list.push_back(p);
+					  break;
+	}
+	case CANNONSHOT:{
+					 shared_ptr<effect> p(new cannonshot(fx, fy));
+					 effect_list.push_back(p);
+					 break;
+	}
 	}
 }
 
@@ -307,16 +331,18 @@ void Game::main(){
 
 	for (int j=0; j < 3; j++){
 		for (auto i : enemy_list[j]){
-			if (i->getType() == RAND && target_X > i->getX()){
+			if (i->getState() != UnitState::DIE){
 				if (castle_list.at(now_stage)->getX() > i->getX()){
-					target_e = i;
-					target_X = i->getX();
-				}
-			}
-			if (i->getType()==SKY && target_X_S > i->getX()){
-				if (castle_list.at(now_stage)->getX() > i->getX()){
-					target_e_sky = i;
-					target_X_S = i->getX();
+
+					if (i->getType() == RAND && target_X > i->getX()){
+						target_e = i;
+						target_X = i->getX();
+					}
+				
+					if (i->getType() == SKY && target_X_S > i->getX()){
+						target_e_sky = i;
+						target_X_S = i->getX();
+					}
 				}
 			}
 		}
@@ -348,20 +374,21 @@ void Game::main(){
 			}
 
 			i->main(front);
-			if (i->getType() == RAND && target_X < i->getX()){
-				if (castle_list.at(now_stage - 1)->getX() + WID_CASTLE  < i->getX()){
-					target_m = i;
-					target_X = i->getX();
+			if (i->getState() != UnitState::DIE){
+				if (castle_list.at(now_stage - 1)->getX() + WID_CASTLE < i->getX()){
+					if (i->getType() == RAND && target_X < i->getX()){
+
+						target_m = i;
+						target_X = i->getX();
+					}
+
+
+					if (i->getType() == SKY && target_X_S < i->getX()){
+						target_m_sky = i;
+						target_X_S = i->getX();
+					}
 				}
 			}
-
-			if (i->getType()==SKY && target_X_S < i->getX()){
-				if (castle_list.at(now_stage - 1)->getX()+WID_CASTLE < i->getX()){
-					target_m_sky = i;
-					target_X_S = i->getX();
-				}
-			}
-
 			if (i->getState() == ATK){
 			if (front_type == RAND){
 				if (target_e != NULL)
@@ -568,7 +595,7 @@ void Game::Test(){
 	if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
 	if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
 
-	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(1, COPTER);
+	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(getNowStage() , COPTER);
 
 }
 

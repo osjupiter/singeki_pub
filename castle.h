@@ -9,7 +9,7 @@ class castle : public unit{
 protected:
 	int stage;
 	int tm;
-
+	int loop_count;
 	int hp;
 	int defense;
 	int cost;

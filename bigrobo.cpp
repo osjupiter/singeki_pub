@@ -16,6 +16,7 @@ bigrobo::bigrobo(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, 
 	atk = false;
 	dist = width;
 	unit_type=UnitType::_BIG;
+	stopper = false;
 }
 
 void bigrobo::init(){
@@ -32,17 +33,19 @@ void bigrobo::main(int front){
 		break;
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED % ANI_BIG_ATK == ANI_BIG_ATK - 1 ){
-			if (!atk){
+			if (!stopper){
 				Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
-				atk = true;
+				shared_ptr<AttackRange> p(new AttackRange(x + 95, WID_SHOCK, param->getParam(POWER), RAND));
+				Game::getIns()->push_attack_list(p, MUSUME);
+				stopper=true;
 			}
 		}
 		else {
-			atk = false;
+			stopper = false;
 		}
 		if ((ani_count / ANIM_SPEED == ANI_BIG_ATK )){
 			changeState(WAIT);
-			atk = false;
+			stopper = false;
 		}
 		break;
 	case UnitState::DIE:
@@ -64,7 +67,7 @@ void bigrobo::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_robo_atk[0], true);
 		break;
 	case UnitState::WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->g_robo_atk[0], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_robo[0], true);
 		break;
 	}
 

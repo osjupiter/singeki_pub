@@ -1,6 +1,7 @@
 #include "castle.h"
 #include "Images.h"
 #include "Game.h"
+#include "bigExplode.h"
 const int castle_hp[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000,5000};
 const int meka_castle_hp[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000 };
 //const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
@@ -35,7 +36,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	width = WID_CASTLE;
 	if (st == 0) x = 0;
 	else x = fx - width / 2;
-
+	loop_count = 0;
 	height = HEI_CASTLE;
 	defense = 0;
 	stage = st;
@@ -50,9 +51,9 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 
 
 	ii one[] = { ii(100, 10) };
-	ii two[]={ii(30,12)};
-	ii three[]={ii(30,12)};
-	ii four[]={ii(30,13)};
+	ii two[]={ii(30,10)};
+	ii three[]={ii(30,10)};
+	ii four[]={ii(30,10)};
 	ii five[]={ii(30,10)};
 	ii six[]={ii(30,10)};
 	ii seven[]={ii(30,10)};
@@ -119,10 +120,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 
 void castle::main(int front){
 	switch (state){
-/*
-	case CastleState::ACTIVE:
-		if (getClock(1000)){
-*/
+
 	case ACTIVE:
 		//if (getClock(1000)){
 		/*if(now_clk++>30){
@@ -153,21 +151,29 @@ void castle::main(int front){
 
 		break;
 	case CastleState::EN_DIE:
-		state = OCCUPY;
-	//	nowstage++;
-		now_clk=0;
-		Game::getIns()->stageInc();
-		hp = meka_castle_hp[stage];
+		loop_count ++ ;
+		if (loop_count / ANIM_SPEED_BIGEXP >= 8){
+			state = OCCUPY;
+			now_clk = 0;
+			loop_count = 0;
+			Game::getIns()->stageInc();
+			hp = meka_castle_hp[stage];
+		}
 		break;
-/*
-	case CastleState::OCCUPY:
-		if (getClock(product_clk))
-*/
+	case CastleState::MEKA_DIE:
+
+		break;
 	case OCCUPY:
 		//if (getClock(product_clk))
 		if(isProductTime())
 			Game::getIns()->birth(stage, product_type);
 		break;
+		if (hp < 0){
+			loop_count++;
+			if (loop_count / ANIM_SPEED_BIGEXP >= 8){
+				state = CastleState::MEKA_DIE;
+			}
+		}
 	}
 }
 
@@ -183,10 +189,11 @@ void castle::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_castle[stage][0], true);
 		break;
 	case CastleState::EN_DIE:
+
 		break;
 	case CastleState::OCCUPY:
 		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_castle[stage][2], true);
-		DrawFormatString(FIELD_W - 50, 200, GetColor(0, 0, 0), "%d", hp);
+		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 
 		break;
 	case CastleState::MEKA_DIE:
@@ -200,18 +207,27 @@ void castle::damage(int d){
 	case CastleState::ACTIVE:
 		hp -= max(d - defense, 0);
 		if (hp < 0){
+		//	for (int i = x; i+WID_BIGEXP < x+width; i+=WID_BIGEXP/2){
+				Game::getIns()->effect_create(x, 0, BIGEXP);
+			/*	shared_ptr<AttackRange> p(new AttackRange(x, width, 1000, RAND));
+				Game::getIns()->push_attack_list(p, MUSUME);
+				Game::getIns()->push_attack_list(p, ENEMY);*/
+		//	}
+			loop_count = 0;
 			state = CastleState::EN_DIE;
 		}
 		break;
 	case CastleState::STAY:
 
 		break;
-	case DIE:
+	case CastleState::EN_DIE:
 
 		break;
 	case CastleState::OCCUPY:
 		hp -= max(d - defense, 0);
 		if (hp < 0){
+			Game::getIns()->effect_create(x, 0, BIGEXP);
+			loop_count = 0;
 			state = CastleState::MEKA_DIE;
 		}
 		break;
