@@ -309,7 +309,10 @@ void MenuLayer::draw(){
 			DrawBox(tmpx-2,my-2,tmpx+2,my+2,GetColor(255,255,255),TRUE);
 		}
 		
-	}
+	} 
+	int tmpman=game->getX()/(double)game->stage_W[game->getNowStage()]*mw+mx;
+	int tmpman2=(game->getX()+WINDOW_X)/(double)game->stage_W[game->getNowStage()]*mw+mx;
+	DrawBox(tmpman,my-mh,tmpman2,my+mh,GetColor(255,255,255),FALSE);
 
 
 	//factory
@@ -348,7 +351,7 @@ void MenuLayer:: main(){
 			m->Reset();
 		}else if(testBox(mx,my-mh,mx+mw,my+mh)){
 			int targe=(m->X()-lx)/(double)lw*game->stage_W[game->getNowStage()];
-			game->setCamera(targe);
+			game->setCamera(targe-WINDOW_X/2);
 		}
 	}
 
