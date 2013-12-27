@@ -47,7 +47,7 @@ Game::Game(){
 
 	cameraTargetSpeed=0;
 	cameraMoveCount=0;
-	birth_limit=50;
+	birth_limit=300;
 	musume_nuber_list.assign(10,0);
 	
 	//for DEBUG
