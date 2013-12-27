@@ -43,6 +43,8 @@ void Images::load(){
 
 	LoadDivGraph("dat/img/爆弾.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
 	LoadDivGraph("dat/img/爆発E.png", ANI_EXP, 6, 2, WID_EXP, HEI_EXP, g_exp);
+	LoadDivGraph("dat/img/死亡時爆発.png", ANI_NOMALEXP, ANI_NOMALEXP, 1, WID_NOMALEXP, HEI_NOMALEXP, g_nomalExp);
+
 	LoadDivGraph("dat/img/特大爆発エフェクト.png", ANI_BIGEXP, 5, 3, WID_BIGEXP, HEI_BIGEXP, g_bigexp);
 
 	LoadDivGraph("dat/img/衝撃波.png", ANI_SHOCK, ANI_SHOCK, 1, WID_SHOCK, HEI_SHOCK, g_shock);
@@ -50,6 +52,8 @@ void Images::load(){
 	LoadDivGraph("dat/img/テポドン.png", ANI_TEPODON, ANI_TEPODON, 1, WID_TEPODON, HEI_TEPODON, g_tepodon);
 	LoadDivGraph("dat/img/ビーム発射中.png", ANI_BEAM, 1,ANI_BEAM, WID_BEAM, HEI_BEAM, g_beam);
 	LoadDivGraph("dat/img/ビームチャージ中.png", ANI_BEAM_C, ANI_BEAM_C, 1, WID_BEAM_C, HEI_BEAM_C, g_beam_c);
+
+	LoadDivGraph("dat/img/銃被弾時e.png", ANI_GUNSHOT, ANI_GUNSHOT, 1, WID_GUNSHOT, HEI_GUNSHOT, g_gunshot);
 
 	back[0][0] = LoadGraph("dat/img/山/背景１－１.png");
 	back[0][1] = LoadGraph("dat/img/山/背景１－５.png");

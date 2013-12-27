@@ -6,8 +6,8 @@
 #define ANI_MEKANEMU 3
 #define WID_MEKANEMU 400
 
-#define ANIM_SPEED 3
-#define ANIM_SPEED_THUNDER 4
+#define ANIM_SPEED 5
+#define ANIM_SPEED_THUNDER 5
 
 #define ANI_THUNDER 3
 #define WID_TUNDER 324
@@ -37,9 +37,10 @@ void mekaNemu::main(int front){
 				ani_count = 0;
 				atk_flag = true;
 				wait_time =MEKANEMU_FREQ;
-		}
+		}	
+		else{ 
 		
-		else{  }
+		}
 		if (atk_flag){
 			if(ani_count/ANIM_SPEED_THUNDER > ANI_THUNDER*2)
 				atk_flag=false;

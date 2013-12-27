@@ -209,7 +209,9 @@ void castle::damage(int d){
 		if (hp < 0){
 		//	for (int i = x; i+WID_BIGEXP < x+width; i+=WID_BIGEXP/2){
 				Game::getIns()->effect_create(x, 0, BIGEXP);
-				
+			/*	shared_ptr<AttackRange> p(new AttackRange(x, width, 1000, RAND));
+				Game::getIns()->push_attack_list(p, MUSUME);
+				Game::getIns()->push_attack_list(p, ENEMY);*/
 		//	}
 			loop_count = 0;
 			state = CastleState::EN_DIE;

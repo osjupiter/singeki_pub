@@ -23,15 +23,18 @@ void hohei::main(int front){
 	switch (state){
 
 	case UnitState::ATK:
-
-
 		if (ani_count / ANIM_SPEED % ANI_HOHEI_ATK == 0){
 			if (!atk){
-				Images::playSE("sound/gun03.mp3", true);
+	//			Images::playSE("sound/shot002.wav",true);
+				if (rand()%4==0){
+					int rand_x = rand() % 100, rand_y = rand() % 70;
+					Game::getIns()->effect_create(front + 100 + rand_x, y + rand_y, GUNSHOT);
+				}
 				atk = true;
 			}
 		}
 		else {
+			
 			atk = false;
 		}
 		if ((ani_count / ANIM_SPEED == ANI_HOHEI_ATK)){

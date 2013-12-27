@@ -3,7 +3,7 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
-#define ANIM_SPEED_DIE 2
+#define ANIM_SPEED_DIE 3
 int copter::num = 0;
 
 copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){

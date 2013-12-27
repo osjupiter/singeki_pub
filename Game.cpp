@@ -9,6 +9,7 @@
 #include "segway.h"
 #include "beam.h"
 #include "kamikaze.h"
+#include "gunshot.h"
 #include "gekko.h"
 #include "bazooka.h"
 #include "tepodon.h"
@@ -19,6 +20,7 @@
 #include "shock.h"
 #include "explode.h"
 #include "bigExplode.h"
+#include "nomalExp.h"
 #include <time.h>
 #include <algorithm>
 
@@ -260,6 +262,16 @@ void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, 
 				 shared_ptr<effect> p(new bigExp(fx, fy));
 				 effect_list.push_back(p);
 				 break;
+	}
+	case NOMALEXP:{
+					shared_ptr<effect> p(new nomalExp(fx, fy));
+					effect_list.push_back(p);
+					break;
+	}
+	case GUNSHOT:{
+					  shared_ptr<effect> p(new gunshot(fx, fy));
+					  effect_list.push_back(p);
+					  break;
 	}
 	}
 }

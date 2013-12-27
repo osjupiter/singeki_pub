@@ -15,9 +15,10 @@ void missile::main(){
 	y += 7;
 	if (y > FIELD_H - HEI_MISSILE) {
 		del();
-		Game::getIns()->effect_create(x - 50, WINDOW_Y-HEI_EXP, EXP);
+		//Game::getIns()->effect_create(x - 50, WINDOW_Y-HEI_EXP, EXP);
+		Game::getIns()->effect_create(x +width/2-WID_NOMALEXP/2, WINDOW_Y-HEI_NOMALEXP, NOMALEXP);
 		int center = (x + x + width) / 2;
-		shared_ptr<AttackRange> p(new AttackRange(center - WID_EXP / 2, center + WID_EXP / 2, power, RAND));
+		shared_ptr<AttackRange> p(new AttackRange(center - WID_NOMALEXP / 2, center + WID_NOMALEXP / 2, power, RAND));
 		Game::getIns()->push_attack_list(p, ENEMY);
 	}
 }

@@ -26,6 +26,9 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 
 enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUSUME,_TANK=10,_COPTER};
 
+enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP ,GUNSHOT};
+
+
 /*ï‡ï∫*/
 #define ANI_HOHEI 6
 #define ANI_HOHEI_ATK 2
@@ -92,7 +95,7 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define A_TYPE_RAILGUN NOATK
 #define COST_RAILGUN 50
 #define CLK_RAILGUN 120
-#define A_FREQ_RAILGUN 1000
+#define A_FREQ_RAILGUN 2000
 
 /*ïóëDï∫*/
 #define ANI_BALLOON 8
@@ -198,7 +201,7 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define WID_BOMB 30
 #define HEI_BOMB 40
 
-/*îöî≠*/
+/*êØîöî≠*/
 #define ANI_EXP 12
 #define WID_EXP 200
 #define HEI_EXP 250
@@ -207,6 +210,11 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define ANI_BIGEXP 15
 #define WID_BIGEXP 600
 #define HEI_BIGEXP 450
+
+/*îöî≠*/
+#define ANI_NOMALEXP 7
+#define WID_NOMALEXP 250
+#define HEI_NOMALEXP 200
 
 /*è’åÇîg*/
 #define ANI_SHOCK 7
@@ -229,6 +237,10 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define ANI_BEAM_C 5
 #define WID_BEAM_C 140
 #define HEI_BEAM_C 200
+
+#define ANI_GUNSHOT 3
+#define WID_GUNSHOT 74
+#define HEI_GUNSHOT 90
 
 
 #define ANI_MEKANEMU 3
@@ -255,7 +267,7 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define COPTER 11
 #define GEKKO 12
 #define RAILGUN 13
-
+/*
 #define BOMB 20
 #define EXP 21
 #define SHOCK 22
@@ -263,9 +275,8 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define TEPODON 24
 #define BEAM 25
 #define BIGEXP 26
-
+*/
 #define STAGE_NUM 8
-
 
 
 #define FIELD_W 800

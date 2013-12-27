@@ -2,7 +2,8 @@
 #include "Images.h"
 #include "Game.h"
 
-#define ANIM_SPEED 2
+#define ANIM_SPEED 10
+#define ANIM_SPEED_ATK 1
 
 int gekko::num;
 
@@ -36,11 +37,12 @@ void gekko::main(int front){
 		break;
 	case UnitState::ATK:
 		atk = false;
-		if (ani_count / ANIM_SPEED % ANI_GEKKO == 2){			
+		if (ani_count / ANIM_SPEED_ATK % ANI_GEKKO == 2){
 			atk=true;
+	//		Images::playSE("sound/shot002.wav", true);
 		}
 		else{ atk = false; }
-		if (ani_count / ANIM_SPEED == ANI_GEKKO ){
+		if (ani_count / ANIM_SPEED_ATK == ANI_GEKKO){
 			changeState(WAIT);
 		}
 		break;
@@ -79,10 +81,10 @@ void gekko::draw(int cx){
 			anime = ANI_GEKKO_UP;
 		}
 		if (dir == LEFT){
-			DrawGraph(x - cx, y, graph[ani_count / ANIM_SPEED%anime], true);
+			DrawGraph(x - cx, y, graph[ani_count / ANIM_SPEED_ATK%anime], true);
 		}
 		else{
-			DrawTurnGraph(x - cx, y, graph[ani_count / ANIM_SPEED%anime], true);
+			DrawTurnGraph(x - cx, y, graph[ani_count / ANIM_SPEED_ATK%anime], true);
 		}
 		break;
 	case UnitState::WAIT:
