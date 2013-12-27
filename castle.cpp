@@ -49,7 +49,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	exist_clk=0;
 
 	ii one[] = { ii(100, 10) };
-	ii two[]={ii(30,11)};
+	ii two[]={ii(30,12)};
 	ii three[]={ii(30,12)};
 	ii four[]={ii(30,13)};
 	ii five[]={ii(30,10)};
@@ -116,7 +116,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 
 }
 
-void castle::main(){
+void castle::main(int front){
 	switch (state){
 /*
 	case CastleState::ACTIVE:
@@ -176,7 +176,7 @@ void castle::draw(int cx){
 	switch (state){
 	case CastleState::ACTIVE:
 		DrawGraph(x - draw_gap[stage][koma] - cx, y, Images::getIns()->g_castle[stage][koma], true);
-		DrawFormatString(FIELD_W - 50, 200, GetColor(0, 0, 0), "%d", hp);
+		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 		break;
 	case CastleState::STAY:
 		DrawGraph(x - cx, y, Images::getIns()->g_castle[stage][0], true);

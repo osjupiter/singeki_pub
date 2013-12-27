@@ -12,6 +12,7 @@
 #include "gekko.h"
 #include "bazooka.h"
 #include "tepodon.h"
+#include "mekaNemu.h"
 #include "balloon.h"
 #include "bomb.h"
 #include "missile.h"
@@ -49,6 +50,11 @@ Game::Game(){
 
 	musume_nuber_list.assign(10,0);
 	
+	//for DEBUG
+	/*for (int i = 0; i < 7; i++){
+		stageInc();
+	}
+	*/
 }
 
 void Game::param_init(){
@@ -90,11 +96,13 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
-	for (int i = 0; i < 9; i++){
+	for (int i = 0; i < 8; i++){
 		shared_ptr<castle> p(new castle(stage_W[i], 0, i));
 		castle_list.push_back(p);
 	
 	}
+	shared_ptr<castle> p(new mekaNemu(stage_W[8], 0, 8));
+	castle_list.push_back(p);
 
 }
 
@@ -298,12 +306,16 @@ void Game::main(){
 	for (int j=0; j < 3; j++){
 		for (auto i : enemy_list[j]){
 			if (i->getType() == RAND && target_X > i->getX()){
-				target_e = i;
-				target_X = i->getX();
+				if (castle_list.at(now_stage)->getX() > i->getX()){
+					target_e = i;
+					target_X = i->getX();
+				}
 			}
 			if (i->getType()==SKY && target_X_S > i->getX()){
-				target_e_sky = i;
-				target_X_S = i->getX();
+				if (castle_list.at(now_stage)->getX() > i->getX()){
+					target_e_sky = i;
+					target_X_S = i->getX();
+				}
 			}
 		}
 	}
@@ -335,13 +347,17 @@ void Game::main(){
 
 			i->main(front);
 			if (i->getType() == RAND && target_X < i->getX()){
-				target_m = i;
-				target_X = i->getX();
+				if (castle_list.at(now_stage - 1)->getX() + WID_CASTLE  < i->getX()){
+					target_m = i;
+					target_X = i->getX();
+				}
 			}
 
 			if (i->getType()==SKY && target_X_S < i->getX()){
-				target_m_sky = i;
-				target_X_S = i->getX();
+				if (castle_list.at(now_stage - 1)->getX()+WID_CASTLE < i->getX()){
+					target_m_sky = i;
+					target_X_S = i->getX();
+				}
 			}
 
 			if (i->getState() == ATK){
@@ -360,7 +376,6 @@ void Game::main(){
 			
 		}
 	}
-
 	for (auto i : effect_list){
 		i->main();
 		
@@ -396,11 +411,12 @@ void Game::main(){
 
 		}
 	}
+	front_line = front_tmp;
 
-	front_line = front;
+	
 	
 	for (auto i : castle_list){
-		i->main();
+		i->main(front_line);
 	}
 
 	for (auto k : atkrange_enemy_list){
@@ -547,7 +563,7 @@ void Game::Test(){
 		param_list[i]->draw(0, 200+30*i);
 	}
 
-	//if (mouse_in::getIns()->LeftClick())  birth(castle::getNowstage(), HOHEI);
+	if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
 	if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
 
 	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(1, COPTER);

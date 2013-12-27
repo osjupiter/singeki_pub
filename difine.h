@@ -222,6 +222,8 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define HEI_BEAM_C 200
 
 
+#define ANI_MEKANEMU 3
+#define WID_MEKANEMU 400
 
 #define MUSUME 0
 #define ENEMY 1

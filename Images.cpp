@@ -130,9 +130,9 @@ void Images::load(){
 	g_castle[7][1] = LoadGraph("dat/img/“ss/“ssé”¼‰ó.png");
 	g_castle[7][2] = LoadGraph("dat/img/“ss/ƒƒJ“ssé.png");
 	
-	g_castle[8][0] = LoadGraph("dat/img/sirodummy.png");
-	g_castle[8][1] = LoadGraph("dat/img/sirodummy.png");
-	g_castle[8][2] = LoadGraph("dat/img/sirodummy.png");
+	LoadDivGraph("dat/img/ƒƒJ‚Ë‚Ş–º.png", ANI_MEKANEMU, ANI_MEKANEMU, 1, WID_MEKANEMU, HEI_CASTLE, g_castle[8]);
+	LoadDivGraph("dat/img/ƒ‰ƒXƒ{ƒX—‹.png", 3, 3, 1, 324, 364, g_thunder_mekanemu);
+
 
 
 	//sound[0]=LoadSoundMem("sound/kuma.mp3");

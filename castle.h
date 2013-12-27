@@ -6,6 +6,7 @@
 
 typedef pair<int, int> ii;
 class castle : public unit{
+protected:
 	int stage;
 	int tm;
 
@@ -29,8 +30,8 @@ class castle : public unit{
 	vector<int> enemy_table;
 public:
 	castle(int,int,int);
-	void main();
-	void draw(int);
+	virtual void main(int);
+	virtual void draw(int);
 	void damage(int);
 	bool getClock(unsigned int);
 	bool isProductTime();
