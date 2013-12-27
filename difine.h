@@ -100,7 +100,7 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define WID_BALLOON 90
 #define HEI_BALLOON 180
 
-#define POWER_BALLOON 40
+#define POWER_BALLOON 500
 #define MAXHP_BALLOON 500
 #define DEFENSE_BALLOON 1
 #define SPEED_BALLOON 5
@@ -199,6 +199,11 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define WID_EXP 200
 #define HEI_EXP 250
 
+/*èÈîöî≠*/
+#define ANI_BIGEXP 15
+#define WID_BIGEXP 600
+#define HEI_BIGEXP 450
+
 /*è’åÇîg*/
 #define ANI_SHOCK 7
 #define WID_SHOCK 200
@@ -253,6 +258,7 @@ enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUS
 #define MISSILE 23
 #define TEPODON 24
 #define BEAM 25
+#define BIGEXP 26
 
 #define STAGE_NUM 8
 

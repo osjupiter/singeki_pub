@@ -18,6 +18,7 @@
 #include "missile.h"
 #include "shock.h"
 #include "explode.h"
+#include "bigExplode.h"
 #include <time.h>
 #include <algorithm>
 
@@ -254,6 +255,11 @@ void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, 
 					 shared_ptr<effect> p(new beam(fx, fy, atk_power));
 					 effect_list.push_back(p);
 					 break;
+	}
+	case BIGEXP:{
+				 shared_ptr<effect> p(new bigExp(fx, fy));
+				 effect_list.push_back(p);
+				 break;
 	}
 	}
 }
