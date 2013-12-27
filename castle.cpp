@@ -152,22 +152,28 @@ void castle::main(int front){
 		break;
 	case CastleState::EN_DIE:
 		loop_count ++ ;
-		if (loop_count / ANIM_SPEED_BIGEXP == 5)
-		state = OCCUPY;
-		now_clk=0;
-		loop_count = 0;
-		Game::getIns()->stageInc();
-		hp = meka_castle_hp[stage];
+		if (loop_count / ANIM_SPEED_BIGEXP >= 8){
+			state = OCCUPY;
+			now_clk = 0;
+			loop_count = 0;
+			Game::getIns()->stageInc();
+			hp = meka_castle_hp[stage];
+		}
 		break;
-/*
-	case CastleState::OCCUPY:
-		if (getClock(product_clk))
-*/
+	case CastleState::MEKA_DIE:
+
+		break;
 	case OCCUPY:
 		//if (getClock(product_clk))
 		if(isProductTime())
 			Game::getIns()->birth(stage, product_type);
 		break;
+		if (hp < 0){
+			loop_count++;
+			if (loop_count / ANIM_SPEED_BIGEXP >= 8){
+				state = CastleState::MEKA_DIE;
+			}
+		}
 	}
 }
 
@@ -187,7 +193,7 @@ void castle::draw(int cx){
 		break;
 	case CastleState::OCCUPY:
 		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_castle[stage][2], true);
-		DrawFormatString(FIELD_W - 50, 200, GetColor(0, 0, 0), "%d", hp);
+		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 
 		break;
 	case CastleState::MEKA_DIE:
@@ -218,6 +224,8 @@ void castle::damage(int d){
 	case CastleState::OCCUPY:
 		hp -= max(d - defense, 0);
 		if (hp < 0){
+			Game::getIns()->effect_create(x, 0, BIGEXP);
+			loop_count = 0;
 			state = CastleState::MEKA_DIE;
 		}
 		break;
