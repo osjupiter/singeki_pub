@@ -203,6 +203,9 @@ void GameOverLayer::draw(){
 void GameOverLayer::called(){
 		Images::playBGM("");
 		Images::playSE("sound/ゲームオーバー.mp3");
+		auto g=Game::getIns();
+		
+		g->setCamera(g->stage_W[g->getNowStage()-1]-WINDOW_X/2);
 }
 void GameOverLayer:: main(){
 	if(remain_time--<=0){
@@ -284,6 +287,9 @@ void MenuLayer::draw(){
 		
 	}
 
+
+
+	//map
 	for(int i=0;i<=game->getNowStage();i++){
 		int tmp=(i!=game->getNowStage())?Images::getSiroIcon(i):Images::get("pic/tou.png");
 		int tmpx=game->stage_W[i]/(double)game->stage_W[game->getNowStage()]*mw+mx;
