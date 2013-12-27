@@ -313,16 +313,18 @@ void Game::main(){
 
 	for (int j=0; j < 3; j++){
 		for (auto i : enemy_list[j]){
-			if (i->getType() == RAND && target_X > i->getX()){
+			if (i->getState() != UnitState::DIE){
 				if (castle_list.at(now_stage)->getX() > i->getX()){
-					target_e = i;
-					target_X = i->getX();
-				}
-			}
-			if (i->getType()==SKY && target_X_S > i->getX()){
-				if (castle_list.at(now_stage)->getX() > i->getX()){
-					target_e_sky = i;
-					target_X_S = i->getX();
+
+					if (i->getType() == RAND && target_X > i->getX()){
+						target_e = i;
+						target_X = i->getX();
+					}
+				
+					if (i->getType() == SKY && target_X_S > i->getX()){
+						target_e_sky = i;
+						target_X_S = i->getX();
+					}
 				}
 			}
 		}
@@ -354,20 +356,21 @@ void Game::main(){
 			}
 
 			i->main(front);
-			if (i->getType() == RAND && target_X < i->getX()){
-				if (castle_list.at(now_stage - 1)->getX() + WID_CASTLE  < i->getX()){
-					target_m = i;
-					target_X = i->getX();
+			if (i->getState() != UnitState::DIE){
+				if (castle_list.at(now_stage - 1)->getX() + WID_CASTLE < i->getX()){
+					if (i->getType() == RAND && target_X < i->getX()){
+
+						target_m = i;
+						target_X = i->getX();
+					}
+
+
+					if (i->getType() == SKY && target_X_S < i->getX()){
+						target_m_sky = i;
+						target_X_S = i->getX();
+					}
 				}
 			}
-
-			if (i->getType()==SKY && target_X_S < i->getX()){
-				if (castle_list.at(now_stage - 1)->getX()+WID_CASTLE < i->getX()){
-					target_m_sky = i;
-					target_X_S = i->getX();
-				}
-			}
-
 			if (i->getState() == ATK){
 			if (front_type == RAND){
 				if (target_e != NULL)

@@ -15,6 +15,9 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵戦車a.png", ANI_TANK_ATK, ANI_TANK_ATK, 1, WID_TANK ,HEI_TANK, g_tank_atk);
 	LoadDivGraph("dat/img/戦車死亡.png", ANI_TANK_DEL,1, ANI_TANK_DEL, WID_TANK_DEL, HEI_TANK_DEL, g_tank_dei);
 
+	LoadDivGraph("dat/img/ヘリw.png", ANI_COPTER, ANI_COPTER, 1, WID_COPTER, HEI_COPTER, g_copter);
+	LoadDivGraph("dat/img/ヘリ死亡.png", ANI_COPTER_DIE, ANI_COPTER_DIE, 1, WID_COPTER_DIE, HEI_COPTER_DIE, g_copter_die);
+
 	LoadDivGraph("dat/img/風船兵w.png", ANI_BALLOON, ANI_BALLOON, 1, WID_BALLOON, HEI_BALLOON, g_balloon);
 	LoadDivGraph("dat/img/風船兵a.png", ANI_BALLOON_ATK, ANI_BALLOON_ATK, 1, WID_BALLOON, HEI_BALLOON, g_balloon_atk);
 
@@ -47,9 +50,6 @@ void Images::load(){
 	LoadDivGraph("dat/img/テポドン.png", ANI_TEPODON, ANI_TEPODON, 1, WID_TEPODON, HEI_TEPODON, g_tepodon);
 	LoadDivGraph("dat/img/ビーム発射中.png", ANI_BEAM, 1,ANI_BEAM, WID_BEAM, HEI_BEAM, g_beam);
 	LoadDivGraph("dat/img/ビームチャージ中.png", ANI_BEAM_C, ANI_BEAM_C, 1, WID_BEAM_C, HEI_BEAM_C, g_beam_c);
-
-	LoadDivGraph("dat/img/ヘリw.png", ANI_COPTER, ANI_COPTER, 1, WID_COPTER, HEI_COPTER, g_copter);
-
 
 	back[0][0] = LoadGraph("dat/img/山/背景１－１.png");
 	back[0][1] = LoadGraph("dat/img/山/背景１－５.png");
