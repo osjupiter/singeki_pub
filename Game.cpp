@@ -10,6 +10,7 @@
 #include "beam.h"
 #include "kamikaze.h"
 #include "gunshot.h"
+#include "cannonshot.h"
 #include "gekko.h"
 #include "bazooka.h"
 #include "tepodon.h"
@@ -272,6 +273,11 @@ void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, 
 					  shared_ptr<effect> p(new gunshot(fx, fy));
 					  effect_list.push_back(p);
 					  break;
+	}
+	case CANNONSHOT:{
+					 shared_ptr<effect> p(new cannonshot(fx, fy));
+					 effect_list.push_back(p);
+					 break;
 	}
 	}
 }
@@ -589,7 +595,7 @@ void Game::Test(){
 	if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
 	if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
 
-	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(1, COPTER);
+	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(getNowStage() - 1, COPTER);
 
 }
 

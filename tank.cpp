@@ -40,6 +40,10 @@ void tank::main(int front){
 		if (ani_count / ANIM_SPEED%ANI_TANK_ATK == 2){
 			if (!atk){
 				Images::playSE("sound/taihou03.mp3");
+				if (rand() % 3 == 0){
+					int rand_x = rand() % 100, rand_y = rand() % 20;
+					Game::getIns()->effect_create(front - rand_x, y + rand_y, CANNONSHOT);
+				}
 				atk = true;
 			}
 			else{ atk = false; }

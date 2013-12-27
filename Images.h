@@ -57,6 +57,7 @@ public:
 	int g_thunder_mekanemu[3];
 	int g_nomalExp[7];
 	int g_gunshot[3];
+	int g_cannonshot[4];
 	
 	int back[8][5];
 	Images(void){}

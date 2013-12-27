@@ -54,6 +54,7 @@ void Images::load(){
 	LoadDivGraph("dat/img/ƒr[ƒ€ƒ`ƒƒ[ƒW’†.png", ANI_BEAM_C, ANI_BEAM_C, 1, WID_BEAM_C, HEI_BEAM_C, g_beam_c);
 
 	LoadDivGraph("dat/img/e”í’ee.png", ANI_GUNSHOT, ANI_GUNSHOT, 1, WID_GUNSHOT, HEI_GUNSHOT, g_gunshot);
+	LoadDivGraph("dat/img/–C’e”í’ee.png", ANI_CANNONSHOT, ANI_CANNONSHOT, 1, WID_CANNONSHOT, HEI_CANNONSHOT, g_cannonshot);
 
 	back[0][0] = LoadGraph("dat/img/R/”wŒi‚P|‚P.png");
 	back[0][1] = LoadGraph("dat/img/R/”wŒi‚P|‚T.png");
