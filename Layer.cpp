@@ -66,43 +66,48 @@ SelectLayer::SelectLayer(int _x,int _y,int _id){
 	y=_y;
 	w=75;h=75;
 	id=_id;
+	time=0;
+	px=142;
+	py=33;
+	 tate=70,yoko=60;
 }
 void SelectLayer::main(){
+	
 	mouse_in* m=mouse_in::getIns();
-	if(x-w<m->X()&&y-w<m->Y()&&m->X()<x+w&&m->Y()<y+w){
-		if(m->LeftClick()){
-			m->Reset();
-			for(int i=0;i<3;i++)
-				for(int j=0;j<3;j++){
-					int x1,x2,y1,y2;
-					x1=x-75+50*i+5;
-					x2=x-75+50*i+50-5;
-					y1=y-75+50*j+5;
-					y2=y-75+50*j+50-5;
-					if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
-							int number=i+j*3;
-							
-							GameScene* p = dynamic_cast<GameScene*>( parentScene );
-							if( p != NULL )
-							{
-								p->getGame()->setProduct(id,number);
 
-							}
-							
-					}
+	int zahyoux[7]={0,0,yoko,yoko,0,-yoko,-yoko};
+	int zahyouy[7]={-tate,0,-tate/2,tate/2,tate,tate/2,-tate/2};clsDx();
+	for(int i=0;i<7;i++){
+		if(i==1)continue;
+		int tmpx=x+73-px+zahyoux[i]*0.2*time;
+		int tmpy=y+196-py+zahyouy[i]*0.2*time;
+		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)&&m->LeftClick()){
+			
+			GameScene* p = dynamic_cast<GameScene*>( parentScene );
+			if( p != NULL )
+			{
+				p->getGame()->setProduct(id,i);
 
-		
-				}
+			}
+			parentScene->rmLayer(thisLayerID);
 		}
+	}
 
+
+	
+	int _tx=x+73-px,_ty=y+196-py;
+	if(testBox(_tx-100,_ty-100,_tx+100,_ty+100)){
+		if(m->LeftClick())
+			m->Reset();
 	}else{
-		if(m->LeftClick()||m->RightClick()||m->isUsed())
+		if(m->LeftClick()||m->isUsed())
 			parentScene->rmLayer(thisLayerID);
 	}
 	
 	
 }
 void SelectLayer::draw(){
+	/*
 	mouse_in* m=mouse_in::getIns();
 	DrawBox(x-75,y-75,x+75,y+75,GetColor(255,0,0),TRUE);
 	for(int i=0;i<3;i++)
@@ -121,6 +126,29 @@ void SelectLayer::draw(){
 			
 		
 		}
+		*/
+	
+
+	DrawRotaGraph(x+73-px,y+196-py,time*0.2,0,Images::get("pic/ユニット選択ウインドウ２.png"),TRUE);
+	
+	DrawGraph(x-px,y-py,Images::get("pic/ユニット選択ウインドウ.png"),TRUE);
+
+	int zahyoux[7]={0,0,yoko,yoko,0,-yoko,-yoko};
+	int zahyouy[7]={-tate,0,-tate/2,tate/2,tate,tate/2,-tate/2};
+	for(int i=0;i<7;i++){
+		if(i==1)continue;
+		int tmpx=x+73-px+zahyoux[i]*0.2*time;
+		int tmpy=y+196-py+zahyouy[i]*0.2*time;
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i),TRUE);
+		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
+			;
+		}
+	}
+
+
+
+
+	if(++time>=5)time=5;
     
 
 }
@@ -337,7 +365,7 @@ void MenuLayer:: main(){
 		if((game->getNowStage()>i)&& testBox(_x-_w,_y-_w,_x+_w,_y+_w)){
 			if(m->LeftClick()){
 				m->Reset();
-				parentScene->addLayer(11,make_shared<SelectLayer>(_x,_y+150,i));
+				parentScene->addLayer(3,make_shared<SelectLayer>(_x,_y+35,i));
 			}
 		}
 	}
@@ -353,6 +381,7 @@ void MenuLayer:: main(){
 		}else if(testBox(mx,my-mh,mx+mw,my+mh)){
 			int targe=(m->X()-mx)/(double)mw*game->stage_W[game->getNowStage()];
 			game->setCamera(targe-WINDOW_X/2);
+			m->Reset();
 		}
 	}
 
@@ -475,5 +504,21 @@ void OptionLayer:: main(){
 			if(m->LeftClick())
 				parentScene->rmLayer(thisLayerID);
 		}
+	
+}
+
+PopFactoryLayer::PopFactoryLayer(shared_ptr<Game> g){
+
+
+
+}
+void PopFactoryLayer::draw(){
+
+
+	
+}
+void PopFactoryLayer:: main(){
+	
+
 	
 }

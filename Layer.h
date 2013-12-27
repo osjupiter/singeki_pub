@@ -9,11 +9,12 @@ class Game;
 /*
 	0 Game
 	1 right left
-	2 Menu
+	3 Select
+	4 Menu
 	5 Clear
 	9 MapClose
 	10 MapLay
-	11 Select
+	
 	15 Factory
 	20 OptionLayer
 */
@@ -81,7 +82,9 @@ public:
 
 class SelectLayer:public Layer{
 private:
-	int x,y,id,w,h;
+	int x,y,id,w,h,time,px,py;
+	int tate,yoko;
+
 public:
 	SelectLayer(int,int,int);
 	void draw();
@@ -170,4 +173,15 @@ public:
 };
 
 
+class PopFactoryLayer:public Layer{
+private:
+	int x,y,w,h,lh,lxmar,lw;
+	int select,lmartop;
+	int time;
+	shared_ptr<Game> game;
+public:
+	PopFactoryLayer(shared_ptr<Game>);
+	void draw();
+	void main();
+};
 
