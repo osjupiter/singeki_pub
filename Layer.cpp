@@ -220,76 +220,23 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 		onMouseTime[i]=0;
 	}
 	game=g;
-	lx=275;ly=30;lw=500;lh=10;
-	for(int i=0;i<9;i++){
-		xlist[i]=g->stage_W[i]/(double)g->stage_W[8]*lw+lx;
+	lx=306;ly=33;lw=440;lh=10;
+	for(int i=0;i<8;i++){
+		xlist[i]=g->stage_W[i]/(double)g->stage_W[7]*lw+lx;
 		ratelist[i]=1.0;
 	}
 	martop=15;
 
+	mx=338;
+	my=85;
+	mw=375;
+	mh=16;
+
 }
 void MenuLayer::draw(){
-	//Menu
-
-	DrawBox(lx,ly+martop,lx+lw,ly+lh+martop,GetColor(255,0,255),TRUE);
-	for(int i=0;i<9;i++){
-		int _x=xlist[i];
-		int _y=ly;
-		int _w=25;
-		double _rate=ratelist[i];
-		if(game->getNowStage()>i){
-			int tmp=Images::getSiroIcon(i);
-			DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
-			DrawRotaGraph(_x,_y+30,1.0,0,Images::getMusumeIcon(game->getProduct(i)),TRUE);
-			//メーター
-			double f=game->getProductCLKPAR(i);
-			if(f!=0){
-				DrawBox(_x-25,_y+55,_x-25+50,_y+60,GetColor(255,0,0),TRUE);
-				DrawBox(_x-25,_y+55,_x-25+50*f,_y+60,GetColor(0,255,0),TRUE);
-			}
-		}else{
-			int tmp=Images::get("pic/tou.png");
-			DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
-		}
-		
-	}
-
-	DrawBox(lx,100,lx+lw,100+5,GetColor(255,0,255),TRUE);
-	for(int i=0;i<=game->getNowStage();i++){
-		int tmp=(i!=game->getNowStage())?Images::getSiroIcon(i):Images::get("pic/tou.png");
-		int tmpx=game->stage_W[i]/(double)game->stage_W[game->getNowStage()]*lw+lx;
-		DrawRotaGraph(tmpx,100,0.5,0,tmp,TRUE);
-	}
-	auto hoge=game->getDarkness();
-	for(int i=0;i<3;i++){
-		for(auto d:hoge.first[i]){
-			//int dndn=(d->getX()*lw/(double)STAGE8_W)+lx;
-			int tmpx=d->getX()/(double)game->stage_W[game->getNowStage()]*lw+lx;
-			DrawBox(tmpx-2,100,tmpx+2,104,GetColor(255,0,0),TRUE);
-			//printfDx("ene->X=%d ans %lf  stage5 %d ans %lf\n",d->getX(),d->getX()/(double)game->stage_W[8]*lw+lx,game->stage_W[5],game->stage_W[5]/(double)game->stage_W[8]*lw+lx);
-		}
-		
-	}
-	for(int i=0;i<3;i++){
-		for(auto d:hoge.second[i]){
-			//int dndn=(d->getX()*lw/(double)STAGE8_W)+lx;
-			int tmpx=d->getX()/(double)game->stage_W[game->getNowStage()]*lw+lx;
-			DrawBox(tmpx-2,100,tmpx+2,104,GetColor(255,255,255),TRUE);
-			//printfDx("ene->X=%d ans %lf  stage5 %d ans %lf\n",d->getX(),d->getX()/(double)game->stage_W[8]*lw+lx,game->stage_W[5],game->stage_W[5]/(double)game->stage_W[8]*lw+lx);
-		}
-		
-	}
-
-
-	//factory
-	DrawBox(200,10,200+50,10+50,GetColor(0,255,0),TRUE);
-
-	
-	//option
-	DrawBox(700,0,750,50,GetColor(0,255,0),TRUE);
-
 	//status
-	DrawBox(0,0,150,50,GetColor(255,0,0),TRUE);
+	//DrawBox(0,0,150,50,GetColor(255,0,0),TRUE);
+	DrawGraph(0,0,Images::get("pic/SUI、オプション.png"),TRUE);
 
 	DrawRotaGraph(13,13,0.5,0,Images::get("pic/資源.png"),TRUE);
 	DrawFormatString(25,0,GetColor(0,0,255),"%d",game->getResource());
@@ -305,18 +252,79 @@ void MenuLayer::draw(){
 	DrawRotaGraph(margin+40,13,0.5,0,Images::getMusumeIcon(1),TRUE);
 	DrawFormatString(margin+55,0,GetColor(0,0,255),"%d/%d",game->getMusumeSum(),game->getBirthLimit());
 
+
+
+
+
+	//Menu
+
+	DrawGraph(0,0,Images::get("pic/まるなしMUI.png"),TRUE);
+
+
+
+	for(int i=0;i<8;i++){
+		int _x=xlist[i];
+		int _y=ly;
+		int _w=25;
+		double _rate=ratelist[i];
+		if(game->getNowStage()>i){
+			int tmp=( testBox(_x-_w,_y-_w,_x+_w,_y+_w))?Images::getSiroIcon(i,true):Images::getSiroIcon(i);
+			DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
+			DrawRotaGraph(_x,_y+30,1.0,0,Images::getMusumeIcon(game->getProduct(i)),TRUE);
+			//メーター
+			double f=game->getProductCLKPAR(i);
+			if(f!=0){
+				DrawBox(_x-25,_y+55,_x-25+50,_y+60,GetColor(255,0,0),TRUE);
+				DrawBox(_x-25,_y+55,_x-25+50*f,_y+60,GetColor(0,255,0),TRUE);
+			}
+		}else{
+			int tmp=Images::get("pic/tou.png");
+			//DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
+		}
+		
+	}
+
+	for(int i=0;i<=game->getNowStage();i++){
+		int tmp=(i!=game->getNowStage())?Images::getSiroIcon(i):Images::get("pic/tou.png");
+		int tmpx=game->stage_W[i]/(double)game->stage_W[game->getNowStage()]*mw+mx;
+		DrawRotaGraph(tmpx,my,0.5,0,tmp,TRUE);
+	}
+	auto hoge=game->getDarkness();
+	for(int i=0;i<3;i++){
+		for(auto d:hoge.first[i]){
+			int tmpx=d->getX()/(double)game->stage_W[game->getNowStage()]*mw+mx;
+			DrawBox(tmpx-2,my-2,tmpx+2,my+2,GetColor(255,0,0),TRUE);
+		}
+		
+	}
+	for(int i=0;i<3;i++){
+		for(auto d:hoge.second[i]){
+			int tmpx=d->getX()/(double)game->stage_W[game->getNowStage()]*mw+mx;
+			DrawBox(tmpx-2,my-2,tmpx+2,my+2,GetColor(255,255,255),TRUE);
+		}
+		
+	}
+
+
+	//factory
+	DrawBox(200,10,200+50,10+50,GetColor(0,255,0),TRUE);
+
+	
+	//option
+	DrawBox(130,50,130+60,50+20,GetColor(0,255,0),TRUE);
+
+
 	
 }
 void MenuLayer:: main(){
 	auto m= mouse_in::getIns();
-	for(int i=0;i<9;i++)ratelist[i]=1.0;
-	for(int i=0;i<9;i++){
+	for(int i=0;i<8;i++)ratelist[i]=1.0;
+	for(int i=0;i<8;i++){
 		int _x=xlist[i];
 		int _y=ly;
 		int _w=25;
 		ratelist[i]=1.0;
-		if((game->getNowStage()>i)&&_x-_w<m->X()&&_y-_w<m->Y()&&m->X()<_x+_w&&m->Y()<_y+_w){
-			ratelist[i]=2.0;
+		if((game->getNowStage()>i)&& testBox(_x-_w,_y-_w,_x+_w,_y+_w)){
 			if(m->LeftClick()){
 				m->Reset();
 				parentScene->addLayer(11,make_shared<SelectLayer>(_x,_y+150,i));
@@ -328,46 +336,16 @@ void MenuLayer:: main(){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<FactoryLayer>(game));
 			m->Reset();
-		}else	if(testBox(700,0,750,50)){
+		}else	if(testBox(130,50,130+60,50+20)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<OptionLayer>());
 			m->Reset();
-		}else if(testBox(lx,100,lx+lw,100+5)){
+		}else if(testBox(mx,my-mh,mx+mw,my+mh)){
 			int targe=(m->X()-lx)/(double)lw*game->stage_W[game->getNowStage()];
 			game->setCamera(targe);
 		}
 	}
-	/*
-	for(int i=0;i<3;i++){
-		int x1=650,x2=800,y1=5+i*30,y2=35+i*30;
-		if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2){
-			onMouseTime[i]+=10;
-			if(onMouseTime[i]>50)onMouseTime[i]=50;
-			if(m->LeftClick()){
-				GameScene* p = dynamic_cast<GameScene*>( parentScene );
-				if( p != NULL ){
-					switch (i){
-					case 0:
-						p->addLayer(10,std::make_shared<MapLayer>(game));
-						//p->addLayer(9,std::make_shared<MapCloseLayer>());
-						break;
-					case 1:
-						p->addLayer(15,std::make_shared<FactoryLayer>());
-						break;
-					case 2:
-						p->addLayer(20,std::make_shared<OptionLayer>());
-						break;
-						
-					}
-				}
 
-			}
-		}else{
-			onMouseTime[i]-=10;
-			if(onMouseTime[i]<0)onMouseTime[i]=0;
-		}
-	}
-	*/
 }
 
 //MapCloseLayer
