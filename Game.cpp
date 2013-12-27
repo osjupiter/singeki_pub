@@ -47,7 +47,7 @@ Game::Game(){
 
 	cameraTargetSpeed=0;
 	cameraMoveCount=0;
-
+	birth_limit=50;
 	musume_nuber_list.assign(10,0);
 	
 	//for DEBUG
@@ -139,6 +139,7 @@ void Game::birth(int st,int type){
 	if(type<10){
 		int t=getParam(type,ParamType::COST);
 		if (getResource() < t) return;
+		if(getMusumeSum()>=getBirthLimit())return;
 		useResource(t);
 		musume_nuber_list.at(type)++;
 	}
@@ -626,4 +627,19 @@ pair<list<shared_ptr<enemy>>*,list<shared_ptr<musume>>*> Game::getDarkness(){
 
 vector<int> Game::getMusumeNumber(){
 	return musume_nuber_list;
+}
+
+void Game::setBirthLimit(int i){
+	birth_limit=i;
+}
+int Game::getBirthLimit(){
+	return birth_limit;
+}
+
+int Game::getMusumeSum(){
+	int sum=0;
+	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::END_MUSUME);i++){
+		sum+=musume_nuber_list.at(i);
+	}
+	return sum;
 }
