@@ -672,6 +672,6 @@ int Game::getMusumeSum(){
 	return sum;
 }
 
-int* Game::getRainForce(int id){
+ParamType* Game::getRainForce(int id){
 	return param_list[id]->getRainForce();
 }
