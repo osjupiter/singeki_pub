@@ -7,7 +7,7 @@ int bazooka::num = 0;
 
 
 bazooka::bazooka(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-
+	dist = dist + 50;
 	width = WID_BAZOOKA;
 	height = HEI_BAZOOKA;
 	num++;

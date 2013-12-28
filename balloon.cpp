@@ -7,7 +7,7 @@ int balloon::num = 0;
 
 
 balloon::balloon(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-	dist = -dist+50;
+	dist = -dist;
 	//hp = param->getParam(MAXHP);
 	width = WID_BALLOON;
 	height = HEI_BALLOON;
