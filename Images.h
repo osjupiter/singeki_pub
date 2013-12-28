@@ -63,6 +63,8 @@ public:
 	int g_e_wisp[3][7];
 
 	int houdai_yama;
+
+	int font;
 	
 	int back[8][5];
 	Images(void){}
