@@ -167,13 +167,14 @@ void castle::main(int front){
 		//if (getClock(product_clk))
 		if(isProductTime())
 			Game::getIns()->birth(stage, product_type);
-		break;
 		if (hp < 0){
 			loop_count++;
 			if (loop_count / ANIM_SPEED_BIGEXP >= 8){
 				state = CastleState::MEKA_DIE;
 			}
 		}
+		break;
+
 	}
 }
 
@@ -199,7 +200,8 @@ void castle::draw(int cx){
 
 		break;
 	case CastleState::MEKA_DIE:
-		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_mekahaikyo, true);
+		if (stage!=0)
+			DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_mekahaikyo, true);
 		break;
 	}
 	
@@ -212,9 +214,9 @@ void castle::damage(int d){
 		if (hp < 0){
 		//	for (int i = x; i+WID_BIGEXP < x+width; i+=WID_BIGEXP/2){
 				Game::getIns()->effect_create(x, 0, BIGEXP);
-			/*	shared_ptr<AttackRange> p(new AttackRange(x, width, 1000, RAND));
+				shared_ptr<AttackRange> p(new AttackRange(0, x+width, 1000, ALL));
 				Game::getIns()->push_attack_list(p, MUSUME);
-				Game::getIns()->push_attack_list(p, ENEMY);*/
+			//	Game::getIns()->push_attack_list(p, ENEMY);
 		//	}
 			loop_count = 0;
 			state = CastleState::EN_DIE;
