@@ -2,7 +2,7 @@
 #include "DxLib.h"
 #define MAXLEVEL 5
 
-Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock, int cos, int a_freq){
+Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock, int cos, int a_freq,int p1,int p2,int p3){
 	base[POWER] = pw;
 	base[MAXHP] = mh;
 	base[SPEED] = sp;
@@ -20,6 +20,12 @@ Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock
 	level[CLK] = 0;
 	level[COST] = 0;
 	level[A_FREQ] = 0;
+
+	canRainForce[0]=p1;
+	canRainForce[1]=p2;
+	canRainForce[2]=p3;
+
+
 
 };
 
