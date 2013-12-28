@@ -100,6 +100,7 @@ void SelectLayer::main(){
 	
 	int _tx=x+73-px,_ty=y+196-py;
 	if(testBox(_tx-100,_ty-100,_tx+100,_ty+100)){
+		m->recieveOver();
 		if(m->LeftClick())
 			m->Reset();
 	}else{
@@ -566,7 +567,7 @@ void PopFactoryLayer:: main(){
 	for(int i=1;i<7;i++){
 		int tmpx=x+160-px+zahyoux[i]*0.2*time;
 		int tmpy=y+180-py+zahyouy[i]*0.2*time;
-		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)&&!livelist[i]){
+		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)&&!livelist[i]&&m->isntOver()){
 			
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )
@@ -629,6 +630,7 @@ void ChipFactoryLayer:: main(){
 	auto m=mouse_in::getIns();
 	if(testBox(x-25,y-25,x-25+w,y-25+h)){
 		timer++;
+		m->recieveOver();
 	}else{
 		timer--;
 	}
