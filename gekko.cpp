@@ -1,6 +1,7 @@
 #include "gekko.h"
 #include "Images.h"
 #include "Game.h"
+#include "Status.h"
 
 #define ANIM_SPEED 6
 #define ANIM_SPEED_ATK 1

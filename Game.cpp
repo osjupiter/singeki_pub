@@ -9,6 +9,7 @@
 #include "segway.h"
 #include "beam.h"
 #include "kamikaze.h"
+#include "Status.h"
 #include "gunshot.h"
 #include "cannonshot.h"
 #include "gekko.h"
@@ -25,7 +26,8 @@
 #include <time.h>
 #include <algorithm>
 
-#define RESOURCE_INIT 200000
+
+
 const int Game::stage_W[9] = {0,STAGE1_W, STAGE2_W, STAGE3_W, STAGE4_W, STAGE5_W, STAGE6_W, STAGE7_W, STAGE8_W };
 Game* Game::ins;
 

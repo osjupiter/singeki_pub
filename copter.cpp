@@ -1,6 +1,7 @@
 #include "copter.h"
 #include "Images.h"
 #include "Game.h"
+#include "Status.h"
 
 #define ANIM_SPEED 3
 #define ANIM_SPEED_DIE 3

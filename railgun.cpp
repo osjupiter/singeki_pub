@@ -1,6 +1,7 @@
 #include "railgun.h"
 #include "Images.h"
 #include "Game.h"
+#include "Status.h"
 
 #define ANIM_SPEED 1
 #define ANIM_SPEED_C 1
