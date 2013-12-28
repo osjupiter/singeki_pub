@@ -37,7 +37,7 @@ GameScene::GameScene(){
 
 	//addLayer(5,std::make_shared<MapLayer>(game));
 	addLayer(4,std::make_shared<MenuLayer>(game));
-	addLayer(4,std::make_shared<HOHEILayer>(game,164,4));
+	addLayer(4,std::make_shared<HOHEILayer>(game,164,7));
 	//addLayer(10,std::make_shared<MapLayer>(game));
 	notEnd=true;
 	old_stage=1;
