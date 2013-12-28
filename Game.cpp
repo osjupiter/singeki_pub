@@ -87,11 +87,11 @@ void Game::background_init(){
 	for (int i = 0; i < STAGE_NUM; i++){
 		for (int j = 0; j < 5; j++){
 			if (j == 2){
-				shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3, true));
+				shared_ptr<background> p(new background(stage_W[i], i, j, stage_W[i+1]-stage_W[i], true));
 				back_list.push_back(p);
 			}
 			else{
-				shared_ptr<background> p(new background(stage_W[i], i, j, FIELD_W * 3, false));
+				shared_ptr<background> p(new background(stage_W[i], i, j, stage_W[i+1] - stage_W[i], false));
 				back_list.push_back(p);
 			}
 		}
@@ -548,6 +548,12 @@ void Game::draw(){
 }
 
 void Game::stageInc(){
+	for (int j = 0; j < 3; j++){
+		for (auto i:enemy_list[j]){
+			i->changeState(UnitState::DIE);
+		}
+	}
+
 	if (nowstage+1 == STAGE_NUM + 1)return;
 	nowstage++;
 	castle_list.at(nowstage-1)->setState(OCCUPY);
@@ -704,3 +710,5 @@ int Game::getMusumeSum(){
 	}
 	return sum;
 }
+
+

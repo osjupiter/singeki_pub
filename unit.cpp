@@ -37,6 +37,7 @@ bool unit::getLife(){
 }
 
 
+
 void unit::switchDirection(){
 	if (dir == LEFT)
 		dir = RIGHT;
