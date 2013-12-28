@@ -190,7 +190,7 @@ void StageClearLayer:: main(){
 			s="sound/都市.mp3";
 			break;
 		case 7:
-			s="sound/橋.mp3";
+			s="sound/闇の世界.mp3";
 			break;
 		}
 		Images::playBGM(s.c_str());
@@ -211,12 +211,12 @@ void GameClearLayer::draw(){
 }
 void GameClearLayer::called(){
 		Images::playBGM("");
-		Images::playSE("sound/エンディング.mp3");
+		
 }
 void GameClearLayer:: main(){
 	if(remain_time--<=0){
 		parentScene->rmLayer(thisLayerID);
-
+		parentScene->buttonPushed("gotoEnd");
 	}
 }
 
@@ -227,9 +227,11 @@ GameOverLayer::GameOverLayer(){
 		remain_time=default_time;
 }
 void GameOverLayer::draw(){
-	DrawFormatString(0,0,GetColor(0,255,0),"Game is overd. time = %d",remain_time);
-	
-
+	//DrawFormatString(0,0,GetColor(0,255,0),"Game is overd. time = %d",remain_time);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA,128);
+	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(0,0,0),TRUE);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
+	DrawGraph(0,0,Images::get("pic/GAMEOVER.png"),TRUE);
 }
 void GameOverLayer::called(){
 		Images::playBGM("");
@@ -256,7 +258,8 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 	game=g;
 	lx=306;ly=25;lw=440;lh=10;
 	for(int i=0;i<8;i++){
-		xlist[i]=g->stage_W[i]/(double)g->stage_W[7]*lw+lx;
+		//xlist[i]=g->stage_W[i]/(double)g->stage_W[7]*lw+lx;
+		xlist[i]=i/(double)8*lw+lx;
 		ratelist[i]=1.0;
 	}
 	martop=15;
@@ -651,24 +654,32 @@ HOHEILayer::HOHEILayer(shared_ptr<Game> g,int _x,int _y){
 	y=_y;
 	timer=0;
 	game=g;
+	flag=0;
 }
 void HOHEILayer::draw(){
 	//歩兵ボタン
 	int need=game->getParam(static_cast<int>(UnitType::_HOHEI),ParamType::CLK);
 	int tmph=56*(timer/(double)need);
 
+	int bright=0;
+
 	DrawRectGraph(x,y+69-tmph,0,69-tmph,80,tmph,Images::get("pic/歩兵ボタン2.png"),TRUE,FALSE);
-	
-	DrawGraph(x,y,Images::get("pic/歩兵ボタン1.png"),TRUE);
+	if(flag>20){
+		DrawGraph(x,y,Images::get("pic/歩兵ボタン1m.png"),TRUE);
+	}else{
+		DrawGraph(x,y,Images::get("pic/歩兵ボタン1.png"),TRUE);	
+	}
+
 
 }
 void HOHEILayer::main(){
 	auto m=mouse_in::getIns();
 	int need=game->getParam(static_cast<int>(UnitType::_HOHEI),ParamType::CLK);
-	if(++timer>=need)timer=need;
+	if(++timer>=need){timer=need;if(++flag>40)flag=0;}
 	if(testBox(x+5,y+5,x+75,y+75)&&m->LeftClick()&&(timer==need)){
 		m->Reset();
 		game->birth(game->getNowStage()-1, HOHEI);
 		timer=0;
+		flag=0;
 	}
 }

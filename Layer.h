@@ -209,6 +209,7 @@ private:
 	shared_ptr<Game> game;
 	int x,y;
 	int timer;
+	int flag;
 
 public:
 	HOHEILayer(shared_ptr<Game>,int,int);

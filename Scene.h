@@ -27,3 +27,13 @@ public:
 	void buttonPushed(string);
 	std::shared_ptr<Game> getGame();
 };
+
+class EndScene : public SceneNode{
+	int count,endc;
+public:
+	EndScene();
+	void draw();
+	void main();
+	void enterScene();
+
+};

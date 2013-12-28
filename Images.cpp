@@ -218,11 +218,12 @@ void Images::load(){
 	filelist.push_back("pic/カスタム用大ウインドウ.png");
 	filelist.push_back("pic/カスタム用小さな歯車.png");
 	filelist.push_back("pic/カスタム用小ウインドウ.png");
-
+	filelist.push_back("pic/GAMEOVER.png");
 	filelist.push_back("pic/歩兵ボタン1.png");
 	filelist.push_back("pic/歩兵ボタン2.png");
 	filelist.push_back("pic/歩兵ボタン1m.png");
 	filelist.push_back("pic/歩兵ボタン3.png");
+	filelist.push_back("pic/エンディング.png");
 
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
@@ -242,6 +243,8 @@ void Images::load(){
 	soundlist.push_back("sound/夜戦.mp3");
 	soundlist.push_back("sound/エンディング.mp3");
 	soundlist.push_back("sound/ゲームオーバー.mp3");
+	soundlist.push_back("sound/タイトル.mp3");
+	soundlist.push_back("sound/闇の世界.mp3");
 
 	
 	for(auto s:filelist){
@@ -362,10 +365,14 @@ void Images::load(){
 
 	}
 
-	void Images::playBGM(string name){
+	void Images::playBGM(string name,boolean defaulttrue){
 		if(ins._nowBGM!="")
 			StopSoundMem(getSound(ins._nowBGM.c_str()));
 		if(name!="")
-			PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_LOOP);
-		ins._nowBGM=name;
+			if(defaulttrue){
+				PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_LOOP);
+			}else{
+				PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_BACK);
+			}
+			ins._nowBGM=name;
 	}
