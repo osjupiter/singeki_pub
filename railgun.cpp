@@ -22,6 +22,7 @@ railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	atk_freq = A_FREQ_RAILGUN;
 	stopper = false;
 	speed = SPEED_RAILGUN;
+	unit_type = UnitType::_RAILGUN;
 }
 void railgun::init(){
 	num = 0;

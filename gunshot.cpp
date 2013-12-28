@@ -2,10 +2,11 @@
 #include "Images.h"
 #include "Game.h"
 #define ANIM_SPEED 3
-gunshot::gunshot(int fx, int fy) :effect(fx, fy){
+gunshot::gunshot(int fx, int fy,bool turn) :effect(fx, fy){
 	type = GUNSHOT;
 	width = WID_GUNSHOT;
 	height = HEI_GUNSHOT;
+	turnflag = turn;
 }
 void gunshot::main(){
 	effect::main();
@@ -15,6 +16,9 @@ void gunshot::main(){
 }
 
 void gunshot::draw(int cx){
-	DrawGraph(x - cx, y, Images::getIns()->g_gunshot[ani_count / ANIM_SPEED % ANI_GUNSHOT], true);
+	if (turnflag)
+		DrawTurnGraph(x - cx, y, Images::getIns()->g_gunshot[ani_count / ANIM_SPEED % ANI_GUNSHOT], true);
+
+	else DrawGraph(x - cx, y, Images::getIns()->g_gunshot[ani_count / ANIM_SPEED % ANI_GUNSHOT], true);
 	effect::draw(cx);
 }

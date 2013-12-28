@@ -110,9 +110,20 @@ void musume::del(){
 	Game::getIns()->push_del_musume(shared_from_this());
 }
 
-void musume::damage(int d, Position op_a_type){
+void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type){
+		if (rand() % 8==0){
+			int rand_x = rand() % width/2, rand_y = rand() % height/2;
+			switch (op_unit_type){
+			case UnitType::_TANK:
+				Game::getIns()->damage_effect_create(x-WID_CANNONSHOT/2+rand_x, y + height - HEI_CANNONSHOT +35-rand_y, CANNONSHOT);
+				break;
+			case UnitType::_GEKKO:
+				Game::getIns()->damage_effect_create(x - WID_GUNSHOT / 2+rand_x, y + height - HEI_GUNSHOT+25 -rand_y, GUNSHOT, true);
+				break;
+			}
+		}
 		hp -= max(d - param->getParam(DEFENSE), 0);
 		if (hp < 0){
 			changeState(DIE);

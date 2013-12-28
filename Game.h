@@ -65,6 +65,7 @@ public:
 	void birth(int,int); //ï∫émê∂ê¨
 	void enemy_birth();
 	void effect_create(int,int,int,Direction dr=NODIR,int atk_power=0,int dest=0);
+	void damage_effect_create(int, int, int, bool TurnFlag=false);
 	void main();
 	void draw();
 	bool getClock(unsigned int);

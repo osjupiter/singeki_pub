@@ -3,7 +3,7 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
-#define DIST_BAZOOKA 150
+#define DIST_BAZOOKA 250
 int bazooka::num = 0;
 
 

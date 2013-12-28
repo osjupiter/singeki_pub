@@ -21,7 +21,7 @@ public:
 	void del();
 	int getPower();
 	Position getAtkType();
-	void damage(int, Position);
+	void damage(int, Position, UnitType);
 	void changeState(UnitState);
 	Position decideTargetPos(int target_x_rand, int target_x_sky);
 };

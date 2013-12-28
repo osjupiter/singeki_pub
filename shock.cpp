@@ -16,8 +16,6 @@ void shock::main(){
 }
 
 void shock::draw(int cx){
-	//SetDrawBlendMode(DX_BLENDMODE_ALPHA,180);
-	DrawGraph(x - cx, y, Images::getIns()->g_shock[ani_count / ANIM_SPEED % ANI_SHOCK], true);
-	//SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+	DrawGraph(x - cx, y+15, Images::getIns()->g_shock[ani_count / ANIM_SPEED % ANI_SHOCK], true);
 	effect::draw(cx);
 }

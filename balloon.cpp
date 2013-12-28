@@ -60,6 +60,7 @@ void balloon::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_balloon[ani_count / ANIM_SPEED%ANI_BALLOON], true);
 		break;
 	case UnitState::DIE:
+		DrawGraph(x - cx, y, Images::getIns()->g_balloon[ani_count / ANIM_SPEED%ANI_BALLOON], true);
 		break;
 
 	}

@@ -33,7 +33,7 @@ public:
 	castle(int,int,int);
 	virtual void main(int);
 	virtual void draw(int);
-	void damage(int);
+	void damage(int,UnitType op_unit_type);
 	bool getClock(unsigned int);
 	bool isProductTime();
 	void setState(int);

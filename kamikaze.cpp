@@ -66,6 +66,7 @@ void kamikaze::draw(int cx){
 		DrawGraph(x - cx, y + gap_y, Images::getIns()->g_kamikaze_atk[ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK], true);
 		break;
 	case UnitState::DIE:
+		DrawGraph(x - cx, y + gap_y, Images::getIns()->g_kamikaze[ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK], true);
 		break;
 
 	}

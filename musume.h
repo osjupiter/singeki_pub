@@ -15,7 +15,7 @@ public:
 	musume(int, int, int, shared_ptr<Parameter>);
 	virtual void main(int);
 	virtual void draw(int);
-	void damage(int, Position);
+	void damage(int, Position, UnitType);
 	int getPower();
 	Position getAtkType();
 	void changeState(UnitState);

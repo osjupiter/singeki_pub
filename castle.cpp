@@ -34,11 +34,12 @@ std::size_t array_length(const TYPE (&)[SIZE])
 castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	hp = castle_hp[st];
 	width = (st==0) ? 300:WID_CASTLE;
+	height = (st == 0) ? 180 : HEI_CASTLE;
 	//width = 300;
 	if (st == 0) x = 0;
 	else x = fx - width / 2;
 	loop_count = 0;
-	height = HEI_CASTLE;
+	
 	defense = 0;
 	stage = st;
 	tm = 0;
@@ -206,17 +207,28 @@ void castle::draw(int cx){
 	
 }
 
-void castle::damage(int d){
+void castle::damage(int d, UnitType op_unit_type){
+	int rand_x = rand() % 100, rand_y = rand() % 90;
 	switch (state){
 	case CastleState::ACTIVE:
+		if (rand() % 5 == 0){
+			switch (op_unit_type){
+				case UnitType::_BAZOOKA:
+				Game::getIns()->damage_effect_create(x + 100 +rand_x, y + height - HEI_CANNONSHOT + 35-rand_y, CANNONSHOT, true);
+				break;
+			case UnitType::_HOHEI:
+				Game::getIns()->damage_effect_create(x +100+rand_x, y + height - HEI_GUNSHOT + 25-rand_y, GUNSHOT);
+				break;
+			}
+		}
+		
+	
 		hp -= max(d - defense, 0);
 		if (hp < 0){
-		//	for (int i = x; i+WID_BIGEXP < x+width; i+=WID_BIGEXP/2){
 				Game::getIns()->effect_create(x, 0, BIGEXP);
 				shared_ptr<AttackRange> p(new AttackRange(0, x+width, INT_MAX, ALL));
 				Game::getIns()->push_attack_list(p, MUSUME);
-			//	Game::getIns()->push_attack_list(p, ENEMY);
-		//	}
+	
 			loop_count = 0;
 			state = CastleState::EN_DIE;
 		}
@@ -228,10 +240,24 @@ void castle::damage(int d){
 
 		break;
 	case CastleState::OCCUPY:
+		if (rand() % 10 == 0){
+			switch (op_unit_type){
+			case UnitType::_TANK:
+				Game::getIns()->damage_effect_create(x + width - WID_CANNONSHOT*2-rand_x, y + HEI_CASTLE - HEI_CANNONSHOT -rand_y, CANNONSHOT);
+				break;
+			case UnitType::_GEKKO:
+				Game::getIns()->damage_effect_create(x + width - WID_GUNSHOT * 2 - rand_x, y + HEI_CASTLE - HEI_GUNSHOT - rand_y, GUNSHOT, true);
+				break;
+		
+			}
+		}
 		hp -= max(d - defense, 0);
 		if (hp < 0){
 			Game::getIns()->effect_create(x, 0, BIGEXP);
 			loop_count = 0;
+			shared_ptr<AttackRange> p(new AttackRange(x, x + width, INT_MAX, ALL));
+			Game::getIns()->push_attack_list(p, ENEMY);
+
 			state = CastleState::MEKA_DIE;
 		}
 		break;
