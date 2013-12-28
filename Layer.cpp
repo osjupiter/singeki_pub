@@ -643,7 +643,7 @@ void ChipFactoryLayer:: main(){
 		int hogex=x+rectw-iconsx-iconmarx*i;
 		if(hogex<x)continue;
 		if(testBox(hogex-25,y-25,hogex+25,y+25)&&m->LeftClick()){
-			game->incParamLevel(id,game->getRainForce(id)[i],50);
+			game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]));
 			m->Reset();
 		}
 
