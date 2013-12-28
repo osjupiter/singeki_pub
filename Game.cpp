@@ -56,9 +56,9 @@ Game::Game(){
 	musume_nuber_list.assign(10,0);
 	
 	//for DEBUG
-	for (int i = 0; i < 7; i++){
+/*	for (int i = 0; i < 7; i++){
 		stageInc();
-	}
+	}*/
 	
 }
 
