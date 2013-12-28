@@ -11,7 +11,7 @@ void enemy::main(int front){
 	if (wait_time>0)
 		wait_time--;
 	if (dir == LEFT){
-		if (x <= front - dist)
+		if (x+width <= front - dist)
 			switchDirection();
 		switch (state){
 		case UnitState::MOV:
@@ -41,7 +41,7 @@ void enemy::main(int front){
 		}
 	}
 	else if (dir == RIGHT){
-		if (x > front )
+		if (x+width > front )
 			switchDirection();
 		
 		switch (state){

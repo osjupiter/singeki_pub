@@ -100,12 +100,31 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
-	for (int i = 0; i < 8; i++){
-		shared_ptr<castle> p(new castle(stage_W[i], 0, i));
-		castle_list.push_back(p);
+	shared_ptr<castle> p(new castle(stage_W[0], 0, 0));
+	castle_list.push_back(p);
 	
-	}
-	shared_ptr<castle> p(new mekaNemu(stage_W[8], 0, 8));
+	p = shared_ptr<castle>(new shiro_yama(stage_W[1], 0, 1));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[2], 0, 2));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[3], 0, 3));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[4], 0, 4));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[5], 0, 5));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[6], 0, 6));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[7], 0, 7));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new mekaNemu(stage_W[8], 0, 8));
 	castle_list.push_back(p);
 
 }
@@ -375,17 +394,17 @@ void Game::main(){
 
 			i->main(front);
 			if (i->getState() != UnitState::DIE){
-				if (castle_list.at(now_stage - 1)->getX() + WID_CASTLE < i->getX()){
+				if (castle_list.at(now_stage - 1)->getX() + castle_list.at(now_stage - 1)->getW() < i->getX()){
 					if (i->getType() == RAND && target_X < i->getX()){
 
 						target_m = i;
-						target_X = i->getX();
+						target_X = i->getX()+i->getW();
 					}
 
 
 					if (i->getType() == SKY && target_X_S < i->getX()){
 						target_m_sky = i;
-						target_X_S = i->getX();
+						target_X_S = i->getX() + i->getW();
 					}
 				}
 			}
@@ -419,10 +438,13 @@ void Game::main(){
 			front_type = i->decideTargetPos(front_tmp, front_S_tmp);
 
 			if (front_type == RAND){
-				front = front_tmp;
+//				front = front_tmp;
+				front = max(castle_list.at(now_stage-1)->getX() + castle_list.at(now_stage-1)->getW(), front_tmp);
 			}
 			else if (front_type == SKY){
-				front = front_S_tmp;
+//				front = front_S_tmp;
+				front = max(castle_list.at(now_stage-1)->getX() + castle_list.at(now_stage-1)->getW(), front_S_tmp);
+
 			}
 			i->main(front);
 			if (i->getState() == ATK){
@@ -509,6 +531,8 @@ void Game::draw(){
 	}
 
 	Test();
+	//if (mouse_in::getIns()->LeftClick())  birth(getNowStage() - 1, HOHEI);
+
 	atkrange_musume_list.clear();
 	atkrange_enemy_list.clear();
 
@@ -593,7 +617,7 @@ void Game::Test(){
 	}
 
 	if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
-	if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
+	//if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
 
 	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(getNowStage() , COPTER);
 

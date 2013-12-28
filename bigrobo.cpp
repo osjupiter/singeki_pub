@@ -3,12 +3,13 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
+#define DIST_BIG 0
 int bigrobo::num = 0;
 
 
 
 bigrobo::bigrobo(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-
+	dist = WID_BIG;
 	width = WID_BIG;
 	height = HEI_BIG;
 	num++;

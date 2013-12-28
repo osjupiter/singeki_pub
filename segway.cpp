@@ -5,11 +5,13 @@
 #include "Game.h"
 
 #define ANIM_SPEED 10
+#define DIST_SEGWAY 120
+#define BACK_SEGWAY 15
 int segway::num = 0;
 
 
 segway::segway(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-	dist =  400;
+	dist = dist + DIST_SEGWAY;
 	width = WID_SEGWAY;
 	height = HEI_SEGWAY;
 	num++;
@@ -41,8 +43,7 @@ void segway::main(int front){
 	case UnitState::WAIT:
 		atk=false;
 		if (ani_count < 10){
-			x -= 15;
-			if (ani_count >= 10) ani_count = 0;
+			x -= BACK_SEGWAY;			
 		}
 		break;
 	case UnitState::DIE:

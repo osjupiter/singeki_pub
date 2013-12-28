@@ -4,10 +4,11 @@
 
 #define ANIM_SPEED 1
 #define ANIM_SPEED_C 1
+#define DIST_RAILGUN 200
 int railgun::num = 0;
 
 railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
-
+	dist = dist + DIST_RAILGUN;
 	power = POWER_RAILGUN*lv;
 	hp = MAXHP_RAILGUN*lv;
 	width = WID_RAILGUN;
@@ -17,7 +18,7 @@ railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	defense = DEFENSE_RAILGUN*lv;
 	type = RAND;
 	atk_type = RAND;
-	cost = COST_RAILGUN;
+	cost = COST_RAILGUN+500*lv;
 	atk_freq = A_FREQ_RAILGUN;
 	stopper = false;
 	speed = SPEED_RAILGUN;

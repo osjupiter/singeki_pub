@@ -3,12 +3,13 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
+#define DIST_KAMIKAZE 500
 int kamikaze::num = 0;
 
 
 
 kamikaze::kamikaze(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-	dist = dist + 1000;
+	dist = dist + DIST_KAMIKAZE;
 	
 	//hp = param->getParam(MAXHP);
 	width = WID_KAMIKAZE;

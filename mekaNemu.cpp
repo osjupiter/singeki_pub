@@ -6,7 +6,7 @@
 #define ANI_MEKANEMU 3
 #define WID_MEKANEMU 400
 
-#define ANIM_SPEED 5
+#define ANIM_SPEED 8
 #define ANIM_SPEED_THUNDER 5
 
 #define ANI_THUNDER 3
@@ -36,7 +36,7 @@ void mekaNemu::main(int front){
 				Game::getIns()->effect_create(THUNDER_POINT(x) - RANGE_TUNDER, FIELD_H - HEI_SHOCK, SHOCK);
 				ani_count = 0;
 				atk_flag = true;
-				wait_time =MEKANEMU_FREQ;
+				
 		}	
 		else{ 
 		
@@ -44,6 +44,7 @@ void mekaNemu::main(int front){
 		if (atk_flag){
 			if(ani_count/ANIM_SPEED_THUNDER > ANI_THUNDER*2)
 				atk_flag=false;
+				wait_time = MEKANEMU_FREQ;
 		}
 		else{ wait_time--; }
 

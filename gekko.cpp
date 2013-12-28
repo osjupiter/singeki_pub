@@ -2,15 +2,17 @@
 #include "Images.h"
 #include "Game.h"
 
-#define ANIM_SPEED 10
+#define ANIM_SPEED 6
 #define ANIM_SPEED_ATK 1
-
+#define DIST_GEKKO 100
 int gekko::num;
 
 
 gekko::gekko(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
+	dist = dist + DIST_GEKKO;
+	
 	power = POWER_GEKKO;
-	hp = MAXHP_GEKKO*lv;
+	hp = MAXHP_GEKKO+120*lv;
 	width = WID_GEKKO;
 	height = HEI_GEKKO;
 	speed = SPEED_GEKKO;

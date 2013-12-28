@@ -18,7 +18,7 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	defense = DEFENSE_COPTER*lv;
 	type = SKY;
 	atk_type = RAND;
-	cost = COST_COPTER;
+	cost = COST_COPTER + 150 * lv;
 	atk_freq = A_FREQ_COPTER;
 	stopper = false;
 	speed = SPEED_COPTER;

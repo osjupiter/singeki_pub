@@ -4,11 +4,12 @@
 
 #define ANIM_SPEED 3
 #define ANIM_SPEED_DIE 1
-
+#define DIST_TANK 150
 int tank::num;
 
 
 tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
+	dist = dist + DIST_TANK;
 	power = POWER_TANK;
 	hp = MAXHP_TANK*lv;
 	width = WID_TANK;
@@ -18,7 +19,7 @@ tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	num++;
 	type = RAND;
 	atk_type = A_TYPE_TANK;
-	cost = COST_TANK;
+	cost = COST_TANK+40*lv;
 	atk_freq = A_FREQ_TANK;
 	unit_type=UnitType::_TANK;
 }
