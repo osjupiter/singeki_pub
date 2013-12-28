@@ -211,12 +211,12 @@ void GameClearLayer::draw(){
 }
 void GameClearLayer::called(){
 		Images::playBGM("");
-		Images::playBGM("sound/エンディング.mp3");
+		
 }
 void GameClearLayer:: main(){
 	if(remain_time--<=0){
 		parentScene->rmLayer(thisLayerID);
-
+		parentScene->buttonPushed("gotoEnd");
 	}
 }
 
