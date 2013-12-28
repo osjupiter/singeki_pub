@@ -10,13 +10,13 @@ int railgun::num = 0;
 
 railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	dist = dist + DIST_RAILGUN;
-	power = POWER_RAILGUN*lv;
-	hp = MAXHP_RAILGUN*lv;
+	power = POWER_RAILGUN+POWER_RAILGUN*0.5*lv;
+	hp = MAXHP_RAILGUN+MAXHP_RAILGUN*0.5*lv;
 	width = WID_RAILGUN;
 	height = HEI_RAILGUN;
 	num++;
 	atk = false;
-	defense = DEFENSE_RAILGUN*lv;
+	defense = DEFENSE_RAILGUN+DEFENSE_RAILGUN*0.5*lv;
 	type = RAND;
 	atk_type = RAND;
 	cost = COST_RAILGUN+500*lv;

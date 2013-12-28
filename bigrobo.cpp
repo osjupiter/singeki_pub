@@ -62,10 +62,10 @@ void bigrobo::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_robo[ani_count / ANIM_SPEED%ANI_BIG], true);
 		break;
 	case UnitState::ATK:
-		DrawGraph(x - cx, y, Images::getIns()->g_robo_atk[ani_count / ANIM_SPEED%ANI_BIG_ATK], true);
+		DrawGraph(x - cx-26, y, Images::getIns()->g_robo_atk[ani_count / ANIM_SPEED%ANI_BIG_ATK], true);
 		break;
 	case UnitState::DIE:
-		DrawGraph(x - cx, y, Images::getIns()->g_robo_atk[0], true);
+		DrawGraph(x - cx-26, y, Images::getIns()->g_robo_atk[0], true);
 		break;
 	case UnitState::WAIT:
 		DrawGraph(x - cx, y, Images::getIns()->g_robo[0], true);

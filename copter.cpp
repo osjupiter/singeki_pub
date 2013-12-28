@@ -22,7 +22,7 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	cost = COST_COPTER + 150 * lv;
 	atk_freq = A_FREQ_COPTER;
 	stopper = false;
-	speed = SPEED_COPTER;
+	speed = SPEED_COPTER + 0.5*SPEED_COPTER*lv;
 	unit_type=UnitType::_COPTER;
 }
 void copter::init(){
