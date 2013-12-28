@@ -275,8 +275,6 @@ void MenuLayer::draw(){
 	DrawRotaGraph(13,13,0.5,0,Images::get("pic/資源.png"),TRUE);
 	DrawFormatString(25,0,GetColor(0,0,255),"%d",game->getResource());
 
-
-
 	auto numberlist=game->getMusumeNumber();
 	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::END_MUSUME);i++){
 			DrawRotaGraph(5+60*((i-1)%3),20+((i-1)/3)*20,0.5,0,Images::getMusumeIcon(i),TRUE);
@@ -321,6 +319,8 @@ void MenuLayer::draw(){
 
 
 
+
+
 	//map
 	for(int i=0;i<=game->getNowStage();i++){
 		int tmp=(i!=game->getNowStage())?Images::getSiroIcon(i):Images::get("pic/tou.png");
@@ -348,9 +348,8 @@ void MenuLayer::draw(){
 
 
 	//factory
-	DrawBox(200,10,200+50,10+50,GetColor(0,255,0),TRUE);
+	DrawBox(200,80,200+50,80+50,GetColor(0,255,0),TRUE);
 
-	
 	//option
 	DrawBox(130,50,130+60,50+20,GetColor(0,255,0),TRUE);
 
@@ -373,7 +372,7 @@ void MenuLayer:: main(){
 		}
 	}
 	if(m->LeftClick()){
-		if(testBox(200,10,250,60)){
+		if(testBox(200,80,250,130)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<PopFactoryLayer>(game));
 			m->Reset();
@@ -645,4 +644,31 @@ void ChipFactoryLayer:: main(){
 
 
 	
+}
+
+HOHEILayer::HOHEILayer(shared_ptr<Game> g,int _x,int _y){
+	x=_x;
+	y=_y;
+	timer=0;
+	game=g;
+}
+void HOHEILayer::draw(){
+	//歩兵ボタン
+	int need=game->getParam(static_cast<int>(UnitType::_HOHEI),ParamType::CLK);
+	int tmph=56*(timer/(double)need);
+
+	DrawRectGraph(x,y+69-tmph,0,69-tmph,80,tmph,Images::get("pic/歩兵ボタン2.png"),TRUE,FALSE);
+	
+	DrawGraph(x,y,Images::get("pic/歩兵ボタン1.png"),TRUE);
+
+}
+void HOHEILayer::main(){
+	auto m=mouse_in::getIns();
+	int need=game->getParam(static_cast<int>(UnitType::_HOHEI),ParamType::CLK);
+	if(++timer>=need)timer=need;
+	if(testBox(x+5,y+5,x+75,y+75)&&m->LeftClick()&&(timer==need)){
+		m->Reset();
+		game->birth(game->getNowStage()-1, HOHEI);
+		timer=0;
+	}
 }

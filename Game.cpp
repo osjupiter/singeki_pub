@@ -625,7 +625,7 @@ void Game::Test(){
 		param_list[i]->draw(0, 200+30*i);
 	}
 
-	if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
+	//if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
 	//if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
 
 	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(getNowStage() , COPTER);

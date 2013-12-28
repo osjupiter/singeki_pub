@@ -10,7 +10,7 @@ class Game;
 	0 Game
 	1 right left
 	3 Select
-	4 Menu
+	4 Menu HOHEI
 	5 Clear
 	9 MapClose
 	10 MapLay
@@ -198,6 +198,20 @@ private:
 	int timer;
 public:
 	ChipFactoryLayer(shared_ptr<Game>,int,int,int,boolean*);
+	void draw();
+	void main();
+};
+
+
+class HOHEILayer:public Layer{
+private:
+
+	shared_ptr<Game> game;
+	int x,y;
+	int timer;
+
+public:
+	HOHEILayer(shared_ptr<Game>,int,int);
 	void draw();
 	void main();
 };
