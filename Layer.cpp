@@ -11,6 +11,9 @@ boolean Layer::testBox(int x1,int y1,int x2,int y2){
 		return false;
 
 }
+void Layer::removeThis(){
+	parentScene->rmLayer(shared_from_this());
+}
 
 GraphicLayer::GraphicLayer(int tx,int ty,int th){
 	x=tx;y=ty;
@@ -372,7 +375,7 @@ void MenuLayer:: main(){
 	if(m->LeftClick()){
 		if(testBox(200,10,250,60)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
-			if( p != NULL )	p->addLayer(15,std::make_shared<FactoryLayer>(game));
+			if( p != NULL )	p->addLayer(15,std::make_shared<PopFactoryLayer>(game));
 			m->Reset();
 		}else	if(testBox(130,50,130+60,50+20)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
@@ -508,17 +511,138 @@ void OptionLayer:: main(){
 }
 
 PopFactoryLayer::PopFactoryLayer(shared_ptr<Game> g){
+	x=100;
+	y=100;
+	time=0;
+	px=28;
+	py=49;
+	tate=70,yoko=60;
+	for(int i=0;i<10;i++)
+		livelist[i]=false;
+	game=g;
 
 
 
 }
 void PopFactoryLayer::draw(){
+		
 
+	//DrawRotaGraph(x+73-px,y+196-py,time*0.2,0,Images::get("pic/カスタム用大ウインドウ.png"),TRUE);
+	
+	DrawGraph(x-px,y-py,Images::get("pic/カスタム用大ウインドウ.png"),TRUE);
+
+	int zahyoux[7]={0,0,yoko,yoko,0,-yoko,-yoko};
+	int zahyouy[7]={-tate,-tate,-tate/2,tate/2,tate,tate/2,-tate/2};
+	for(int i=1;i<7;i++){
+		int tmpx=x+160-px+zahyoux[i]*0.2*time;
+		int tmpy=y+180-py+zahyouy[i]*0.2*time;
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::get("pic/カスタム用小さな歯車.png"),TRUE);
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i),TRUE);
+		
+		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
+			;
+
+		}
+	}
+
+
+
+
+	if(++time>=5)time=5;
+    
 
 	
 }
 void PopFactoryLayer:: main(){
+		
+	mouse_in* m=mouse_in::getIns();
+
+	int zahyoux[7]={0,0,yoko,yoko,0,-yoko,-yoko};
+	int zahyouy[7]={-tate,-tate,-tate/2,tate/2,tate,tate/2,-tate/2};
+	for(int i=1;i<7;i++){
+		int tmpx=x+160-px+zahyoux[i]*0.2*time;
+		int tmpy=y+180-py+zahyouy[i]*0.2*time;
+		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)&&!livelist[i]){
+			
+			GameScene* p = dynamic_cast<GameScene*>( parentScene );
+			if( p != NULL )
+			{
+				//p->getGame()->setProduct(id,i);
+				p->addLayer(16,std::make_shared<ChipFactoryLayer>(game,tmpx,tmpy,i,&livelist[i]));
+			}
+		}
+	}
+
+
 	
+	int _tx=x+160-px,_ty=y+180-py;
+	if(testBox(_tx-100,_ty-100,_tx+100,_ty+100)){
+		if(m->LeftClick())
+			m->Reset();
+	}else{
+		if(m->LeftClick()){
+			parentScene->rmLayer(16);
+			removeThis();
+		}
+			
+	}
+	
+
+	
+}
+
+
+
+
+
+ChipFactoryLayer::ChipFactoryLayer(shared_ptr<Game> g,int _x,int _y,int _id,boolean* _live){
+	x=_x;
+	y=_y;
+	id=_id;
+	live=_live;
+	*live=true;
+	game=g;
+
+	iconmarx=50;
+	iconsx=30;
+	timer=0;
+	w=200;
+	h=50;
+
+}
+void ChipFactoryLayer::draw(){
+	int rectw=200*timer/5;
+	DrawRectGraph(x+10,y-30,200-rectw,0,rectw,60,Images::get("pic/カスタム用小ウインドウ.png"),TRUE,FALSE);
+	for(int i=0;i<3;i++){
+		int hogex=x+rectw-iconsx-iconmarx*i;
+		if(hogex<x)continue;
+		DrawRotaGraph(hogex,y,1,0,Images::getParamTypeIcon( game->getRainForce(id)[i]),TRUE);
+	}
+
+	
+}
+void ChipFactoryLayer:: main(){
+	auto m=mouse_in::getIns();
+	if(testBox(x-25,y-25,x-25+w,y-25+h)){
+		timer++;
+	}else{
+		timer--;
+	}
+	if(timer>=5)timer=5;
+	if(timer<=0){removeThis();*live=false;}
+
+	int rectw=200*timer/5;
+	for(int i=0;i<3;i++){
+		int hogex=x+rectw-iconsx-iconmarx*i;
+		if(hogex<x)continue;
+		if(testBox(hogex-25,y-25,hogex+25,y+25)&&m->LeftClick()){
+			game->incParamLevel(id,game->getRainForce(id)[i],50);
+			m->Reset();
+		}
+
+
+	}
+
 
 	
 }
