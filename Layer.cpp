@@ -258,7 +258,8 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 	game=g;
 	lx=306;ly=25;lw=440;lh=10;
 	for(int i=0;i<8;i++){
-		xlist[i]=g->stage_W[i]/(double)g->stage_W[7]*lw+lx;
+		//xlist[i]=g->stage_W[i]/(double)g->stage_W[7]*lw+lx;
+		xlist[i]=i/(double)8*lw+lx;
 		ratelist[i]=1.0;
 	}
 	martop=15;
