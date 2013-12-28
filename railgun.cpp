@@ -24,6 +24,8 @@ railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	stopper = false;
 	speed = SPEED_RAILGUN;
 	unit_type = UnitType::_RAILGUN;
+	maxhp = hp;
+
 }
 void railgun::init(){
 	num = 0;

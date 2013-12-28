@@ -1,7 +1,7 @@
 #define RESOURCE_INIT 0
 
 /*ï‡ï∫*/
-#define POWER_HOHEI 20
+#define POWER_HOHEI 10
 #define MAXHP_HOHEI 1000
 #define DEFENSE_HOHEI 1
 #define SPEED_HOHEI 2
@@ -59,17 +59,17 @@
 #define A_FREQ_SEGWAY 40
 
 /*êÌé‘*/
-#define POWER_TANK 30
+#define POWER_TANK 25
 #define MAXHP_TANK 1500
 #define DEFENSE_TANK 1
 #define SPEED_TANK 2
 #define A_TYPE_TANK RAND
 #define COST_TANK 10
 #define CLK_TANK 120
-#define A_FREQ_TANK 1000
+#define A_FREQ_TANK 700
 
 /*ÉQÉbÉRÅ[*/
-#define POWER_GEKKO 10
+#define POWER_GEKKO 15
 #define MAXHP_GEKKO 1800
 #define DEFENSE_GEKKO 1
 #define SPEED_GEKKO 2
@@ -92,7 +92,7 @@
 #define POWER_COPTER 100
 #define MAXHP_COPTER 500
 #define DEFENSE_COPTER 1
-#define SPEED_COPTER 3
+#define SPEED_COPTER 2
 #define A_TYPE_COPTER RAND
 #define COST_COPTER 50
 #define CLK_COPTER 120

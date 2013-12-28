@@ -10,6 +10,7 @@ protected:
 	int line;
 	int dist;
 	int hp;
+	int maxhp;
 	int wait_time;
 	UnitType unit_type;
 

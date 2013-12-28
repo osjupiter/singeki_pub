@@ -5,6 +5,7 @@ musume::musume(int fx, int fy, int ln, shared_ptr<Parameter> pm) :unit(fx, fy, l
 	param = pm;
 	dir = Direction::RIGHT;
 	hp = param->getParam(MAXHP);
+	maxhp = hp;
 	atk = false;
 }
 

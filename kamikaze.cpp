@@ -3,7 +3,7 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
-#define DIST_KAMIKAZE 500
+#define DIST_KAMIKAZE 250
 int kamikaze::num = 0;
 
 

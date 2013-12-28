@@ -26,6 +26,8 @@ tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	cost = COST_TANK+40*lv;
 	atk_freq = A_FREQ_TANK-0.05*A_FREQ_TANK*lv;
 	unit_type=UnitType::_TANK;
+	maxhp = hp;
+
 }
 
 
@@ -52,7 +54,7 @@ void tank::main(int front){
 		}
 		else{ atk = false; }
 
-		if (((ani_count / ANIM_SPEED) == ANI_TANK)){
+		if (((ani_count / ANIM_SPEED) == ANI_TANK_ATK)){
 			changeState(WAIT);
 
 		}
@@ -86,9 +88,9 @@ void tank::draw(int cx){
 		break;
 	case UnitState::WAIT:
 		if (dir==LEFT)
-			DrawGraph(x - cx, y, Images::getIns()->g_tank_atk[level / 3][ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
+			DrawGraph(x - cx, y, Images::getIns()->g_tank[level / 3][0], true);
 		else 
-			DrawTurnGraph(x - cx, y, Images::getIns()->g_tank_atk[level / 3][ani_count / ANIM_SPEED%ANI_TANK_ATK], true);
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_tank[level / 3][0], true);
 		break;
 	case UnitState::DIE:
 		if (dir==LEFT)

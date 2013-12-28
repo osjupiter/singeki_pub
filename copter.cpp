@@ -11,7 +11,7 @@ int copter::num = 0;
 copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	dist = dist + DIST_COPTER;
 	power = POWER_COPTER*lv;
-	hp = MAXHP_COPTER*lv;
+	hp = MAXHP_COPTER+0.5*MAXHP_COPTER*lv;
 	width = WID_COPTER;
 	height = HEI_COPTER;
 	num++;
@@ -24,6 +24,8 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	stopper = false;
 	speed = SPEED_COPTER + 0.5*SPEED_COPTER*lv;
 	unit_type=UnitType::_COPTER;
+	maxhp = hp;
+
 }
 void copter::init(){
 	num = 0;
