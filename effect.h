@@ -14,3 +14,21 @@ public:
 	void del();
 	~effect();
 };
+
+class wisp : public effect{
+	int col;
+public:
+	wisp(int, int);
+	void main();
+	void draw(int);
+
+};
+
+class drop : public effect{
+	int col;
+public:
+	drop(int, int);
+	void main();
+	void draw(int);
+
+};

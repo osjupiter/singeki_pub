@@ -59,6 +59,8 @@ public:
 	int g_nomalExp[7];
 	int g_gunshot[3];
 	int g_cannonshot[4];
+	int g_e_yamidrop[3][8];
+	int g_e_wisp[3][7];
 
 	int houdai_yama;
 	

@@ -2,8 +2,9 @@
 #include "Images.h"
 #include "Game.h"
 #include "bigExplode.h"
-const int castle::castle_hp[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000,5000};
-const int meka_castle_hp[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000 };
+const int castle::castle_hp[9] = { 5000, 10000, 12000, 15000, 18000, 20000, 20000, 20000,22000};
+const int meka_castle_hp[9] = { 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000 };
+const int castle_resouce[9] = { 500, 500, 5000, 5000, 5000, 5000, 5000, 5000, 5000 };
 //const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
 const int castle::draw_gap[9][3] = {
 	{0,0,20},
@@ -52,20 +53,20 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	exist_clk=0;
 
 
-	ii one[] = { ii(200, 10) };
-	ii two[] = { ii(300, 11), ii(30, 10) };
-	ii three[]={ii(100,12)};
-	ii four[]={ii(30,10)};
+	ii one[] = { ii(100, 10) };
+	ii two[] = { ii(70, 10), ii(200, 12) };
+	ii three[] = { ii(100, 12), ii(300, 11),ii(50,10) };
+	ii four[] = { ii(40, 10), ii(80, 11) };
 	ii five[]={ii(30,10)};
 	ii six[]={ii(30,10)};
-	ii seven[]={ii(30,10)};
+	ii seven[]={ii(400,13)};
 	ii eight[]={ii(30,10)};
 	ii nine[]={ii(30,10)};
 
-	ii oneEvent[]={ii(0,13)};
-	ii twoEvent[]={ii(30,11)};
+	ii oneEvent[]={ii(0,10)};
+	ii twoEvent[]={ii(300,11)};
 	ii threeEvent[]={ii(30,11)};
-	ii fourEvent[]={ii(30,11)};
+	ii fourEvent[]={ii(1000,13)};
 	ii fiveEvent[]={ii(30,11)};
 	ii sixEvent[]={ii(30,11)};
 	ii sevenEvent[]={ii(30,11)};

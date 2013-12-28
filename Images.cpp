@@ -64,6 +64,15 @@ void Images::load(){
 	LoadDivGraph("dat/img/e”í’ee.png", ANI_GUNSHOT, ANI_GUNSHOT, 1, WID_GUNSHOT, HEI_GUNSHOT, g_gunshot);
 	LoadDivGraph("dat/img/–C’e”í’ee.png", ANI_CANNONSHOT, ANI_CANNONSHOT, 1, WID_CANNONSHOT, HEI_CANNONSHOT, g_cannonshot);
 
+	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/e2a1.png", 8, 8, 1, 96, 450, g_e_yamidrop[0]);
+	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/e2a2.png", 8, 8, 1, 96, 450, g_e_yamidrop[1]);
+	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/e2a3.png", 8, 8, 1, 96, 450, g_e_yamidrop[2]);
+
+	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea1.png", 7, 7, 1, 155, 168, g_e_wisp[0]);
+	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea2.png", 7, 7, 1, 155, 168, g_e_wisp[1]);
+	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea3.png", 7, 7, 1, 155, 168, g_e_wisp[2]);
+
+
 	back[0][0] = LoadGraph("dat/img/R/”wŒi‚P|‚P.png");
 	back[0][1] = LoadGraph("dat/img/R/”wŒi‚P|‚T.png");
 	back[0][2] = LoadGraph("dat/img/R/”wŒi‚P|‚S.png");

@@ -26,8 +26,7 @@
 #include <time.h>
 #include <algorithm>
 
-
-
+const int castle_resouce[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000 };
 const int Game::stage_W[9] = {0,STAGE1_W, STAGE2_W, STAGE3_W, STAGE4_W, STAGE5_W, STAGE6_W, STAGE7_W, STAGE8_W };
 Game* Game::ins;
 
@@ -57,10 +56,10 @@ Game::Game(){
 	musume_nuber_list.assign(10,0);
 	
 	//for DEBUG
-	/*for (int i = 0; i < 7; i++){
+	for (int i = 0; i < 7; i++){
 		stageInc();
 	}
-	*/
+	
 }
 
 void Game::param_init(){
@@ -215,7 +214,7 @@ void Game::birth(int st,int type){
 		 break;
 	}
 	case GEKKO:{
-				   shared_ptr<enemy> p(new gekko(stage_W[st], WINDOW_Y - HEI_GEKKO -40 - line * 3, line, getNowStage()));
+				   shared_ptr<enemy> p(new gekko(stage_W[st], WINDOW_Y - HEI_GEKKO  - line * 3, line, getNowStage()));
 					enemy_list[line].push_back(p);
 					break;
 	}
@@ -290,7 +289,16 @@ void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, 
 					effect_list.push_back(p);
 					break;
 	}
-
+	case WISP:{
+					  shared_ptr<effect> p(new wisp(fx, fy));
+					  effect_list.push_back(p);
+					  break;
+	}	
+	case DROP:{
+					  shared_ptr<effect> p(new drop(fx, fy));
+					  effect_list.push_back(p);
+					  break;
+	}
 	}
 }
 
@@ -555,7 +563,7 @@ void Game::stageInc(){
 			i->changeState(UnitState::DIE);
 		}
 	}
-
+	gainResource(castle_resouce[nowstage]);
 	if (nowstage+1 == STAGE_NUM + 1)return;
 	nowstage++;
 	castle_list.at(nowstage-1)->setState(OCCUPY);

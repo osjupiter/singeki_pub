@@ -4,7 +4,7 @@
 #include "Images.h"
 #include "Game.h"
 
-#define ANIM_SPEED 10
+#define ANIM_SPEED 5
 #define DIST_SEGWAY 120
 #define BACK_SEGWAY 15
 int segway::num = 0;

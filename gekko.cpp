@@ -8,7 +8,7 @@
 #define DIST_GEKKO 100
 int gekko::num;
 
-
+	
 gekko::gekko(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	dist = dist + DIST_GEKKO;
 	
@@ -16,7 +16,7 @@ gekko::gekko(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	hp = MAXHP_GEKKO+120*lv;
 	width = WID_GEKKO;
 	height = HEI_GEKKO;
-	speed = SPEED_GEKKO;
+	speed = SPEED_GEKKO + 0.5*SPEED_GEKKO;
 	defense = DEFENSE_GEKKO*lv;
 	num++;
 	type = RAND;
