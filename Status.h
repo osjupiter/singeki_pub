@@ -1,7 +1,7 @@
 #define RESOURCE_INIT 0
 
 /*歩兵*/
-#define POWER_HOHEI 15
+#define POWER_HOHEI 20
 #define MAXHP_HOHEI 1000
 #define DEFENSE_HOHEI 1
 #define SPEED_HOHEI 2
@@ -9,13 +9,13 @@
 #define COST_HOHEI 0
 
 #define CLK_HOHEI 40
-#define A_FREQ_HOHEI 10
+#define A_FREQ_HOHEI 2
 
 /*風船兵*/
-#define POWER_BALLOON 500
+#define POWER_BALLOON 100
 #define MAXHP_BALLOON 800
 #define DEFENSE_BALLOON 1
-#define SPEED_BALLOON 3
+#define SPEED_BALLOON 2
 #define A_TYPE_BALLOON RAND
 #define COST_BALLOON 80
 #define CLK_BALLOON 120
@@ -29,7 +29,7 @@
 #define A_TYPE_BIG RAND
 #define COST_BIG 300
 #define CLK_BIG 120
-#define A_FREQ_BIG 100
+#define A_FREQ_BIG 200
 /*神風兵*/
 #define POWER_KAMIKAZE 500
 #define MAXHP_KAMIKAZE 500
@@ -50,7 +50,7 @@
 #define A_FREQ_BAZOOKA 20
 /*セグウェイ兵*/
 #define POWER_SEGWAY 100
-#define MAXHP_SEGWAY 1000
+#define MAXHP_SEGWAY 1200
 #define DEFENSE_SEGWAY 1
 #define SPEED_SEGWAY 4
 #define A_TYPE_SEGWAY RAND
@@ -59,8 +59,8 @@
 #define A_FREQ_SEGWAY 40
 
 /*戦車*/
-#define POWER_TANK 50
-#define MAXHP_TANK 1000
+#define POWER_TANK 30
+#define MAXHP_TANK 1500
 #define DEFENSE_TANK 1
 #define SPEED_TANK 2
 #define A_TYPE_TANK RAND
@@ -70,9 +70,9 @@
 
 /*ゲッコー*/
 #define POWER_GEKKO 10
-#define MAXHP_GEKKO 1500
+#define MAXHP_GEKKO 1800
 #define DEFENSE_GEKKO 1
-#define SPEED_GEKKO 3
+#define SPEED_GEKKO 2
 #define A_TYPE_GEKKO ALL
 #define COST_GEKKO 30
 #define CLK_GEKKO 120
@@ -80,7 +80,7 @@
 
 /*レールガン*/
 #define POWER_RAILGUN 1000
-#define MAXHP_RAILGUN 2500
+#define MAXHP_RAILGUN 5000
 #define DEFENSE_RAILGUN 2
 #define SPEED_RAILGUN 1
 #define A_TYPE_RAILGUN NOATK
@@ -96,7 +96,7 @@
 #define A_TYPE_COPTER RAND
 #define COST_COPTER 50
 #define CLK_COPTER 120
-#define A_FREQ_COPTER 100
+#define A_FREQ_COPTER 1000
 
 
 

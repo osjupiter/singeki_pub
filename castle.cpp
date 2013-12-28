@@ -54,19 +54,19 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 
 
 	ii one[] = { ii(100, 10) };
-	ii two[] = { ii(70, 10), ii(200, 12) };
-	ii three[] = { ii(100, 12), ii(300, 11),ii(50,10) };
+	ii two[] = { ii(70, 10), ii(100, 12) };
+	ii three[] = { ii(100, 12), ii(150, 11),ii(50,10) };
 	ii four[] = { ii(40, 10), ii(80, 11) };
 	ii five[]={ii(30,10)};
 	ii six[]={ii(30,10)};
-	ii seven[]={ii(400,13)};
+	ii seven[]={ii(200,13)};
 	ii eight[]={ii(30,10)};
 	ii nine[]={ii(30,10)};
 
 	ii oneEvent[]={ii(0,10)};
 	ii twoEvent[]={ii(300,11)};
 	ii threeEvent[]={ii(30,11)};
-	ii fourEvent[]={ii(1000,13)};
+	ii fourEvent[]={ii(0,13)};
 	ii fiveEvent[]={ii(30,11)};
 	ii sixEvent[]={ii(30,11)};
 	ii sevenEvent[]={ii(30,11)};

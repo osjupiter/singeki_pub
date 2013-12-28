@@ -5,7 +5,7 @@
 
 #define ANIM_SPEED 3
 #define ANIM_SPEED_DIE 2
-#define DIST_TANK 200
+#define DIST_TANK 150
 
 int tank::num;
 
@@ -16,15 +16,15 @@ tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 
 
 	dist = dist + DIST_TANK;
-	power = POWER_TANK + 0.5*POWER_TANK*lv;
-	hp = MAXHP_TANK+MAXHP_TANK*0.5*lv;
+	power = POWER_TANK +POWER_TANK*lv;
+	hp = MAXHP_TANK+MAXHP_TANK*lv;
 	speed = SPEED_TANK + 0.5*SPEED_TANK*lv;
 	defense = DEFENSE_TANK*lv;
 	num++;
 	type = RAND;
 	atk_type = A_TYPE_TANK;
 	cost = COST_TANK+40*lv;
-	atk_freq = A_FREQ_TANK-0.2*A_FREQ_TANK*lv;
+	atk_freq = A_FREQ_TANK-0.05*A_FREQ_TANK*lv;
 	unit_type=UnitType::_TANK;
 }
 
@@ -48,7 +48,13 @@ void tank::main(int front){
 		
 				atk = true;
 			}
-			else{ atk = false; }
+			
+		}
+		else{ atk = false; }
+
+		if (((ani_count / ANIM_SPEED) == ANI_TANK)){
+			changeState(WAIT);
+
 		}
 		break;
 	case UnitState::WAIT:
