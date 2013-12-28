@@ -21,6 +21,7 @@ class GameScene : public SceneNode{
 	boolean notEnd;
 public:
 	GameScene();
+	void beforemain();
 	void enterScene();
 	void leaveScene();
 	void aftermain();

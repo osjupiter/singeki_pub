@@ -3,9 +3,10 @@
 
 mouse_in* mouse_in::getIns(){return &ins;}
 	mouse_in::mouse_in(){
-		x=0,y=0,l=0,r=0;
+		x=0,y=0,l=0,r=0,over=false;
 	}
 	void mouse_in::input(){
+		over=false;
 		GetMousePoint(&x,&y);
 		if( ( GetMouseInput() & MOUSE_INPUT_LEFT ) != 0 ){
 			if(l==2||l==0)l=3;
@@ -31,6 +32,8 @@ mouse_in* mouse_in::getIns(){return &ins;}
 	int mouse_in::X(){return x;}
 	int mouse_in::Y(){return y;}
 
+	void mouse_in::recieveOver(){over=true;}
+
 	
 	boolean mouse_in::isUsed(){return (l==4||r==4);}
 	boolean mouse_in::LeftPush(){return (l==3||l==1);}
@@ -40,6 +43,10 @@ mouse_in* mouse_in::getIns(){return &ins;}
 	boolean mouse_in::RightPush(){return (r==3||r==1);}
 	boolean mouse_in::RightClick(){return r==3;}
 	boolean mouse_in::RightLeave(){return r==2;}
+	
+	boolean mouse_in::isntOver(){return !over;}
+
+	
 
 
 mouse_in mouse_in::ins;

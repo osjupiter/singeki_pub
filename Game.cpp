@@ -725,3 +725,8 @@ int Game::getMusumeSum(){
 ParamType* Game::getRainForce(int id){
 	return param_list[id]->getRainForce();
 }
+
+shared_ptr<Parameter> Game::getParam(int id){
+		if(id==0)throw "”z—ñ”ÍˆÍŠO";  
+		return param_list[id];
+	}

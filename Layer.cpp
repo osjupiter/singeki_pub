@@ -100,6 +100,7 @@ void SelectLayer::main(){
 	
 	int _tx=x+73-px,_ty=y+196-py;
 	if(testBox(_tx-100,_ty-100,_tx+100,_ty+100)){
+		m->recieveOver();
 		if(m->LeftClick())
 			m->Reset();
 	}else{
@@ -265,7 +266,7 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 	martop=15;
 
 	mx=338;
-	my=85;
+	my=100;
 	mw=375;
 	mh=16;
 
@@ -273,15 +274,23 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 void MenuLayer::draw(){
 	//status
 	//DrawBox(0,0,150,50,GetColor(255,0,0),TRUE);
-	DrawGraph(0,0,Images::get("pic/SUI、オプション.png"),TRUE);
+	//DrawGraph(0,0,Images::get("pic/SUI、オプション.png"),TRUE);
+
+
+
+	//Menu
+
+	DrawGraph(0,0,Images::get("pic/MUI.png"),TRUE);
+
 
 	DrawRotaGraph(13,13,0.5,0,Images::get("pic/資源.png"),TRUE);
-	DrawFormatString(25,0,GetColor(0,0,255),"%d",game->getResource());
+	//DrawFormatString(25,0,GetColor(0,0,255),"%d",game->getResource());
+	DrawFormatStringToHandle(25,0,GetColor(0,0,255),Images::getIns()->font,"%d",game->getResource());
 
 	auto numberlist=game->getMusumeNumber();
 	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::END_MUSUME);i++){
-			DrawRotaGraph(5+60*((i-1)%3),20+((i-1)/3)*20,0.5,0,Images::getMusumeIcon(i),TRUE);
-			DrawFormatString(15+60*((i-1)%3)+10,20+((i-1)/3)*20,GetColor(0,255,0),"%d",numberlist.at(i));
+			DrawRotaGraph(5+60*((i-1)%3),30+((i-1)/3)*20,0.5,0,Images::getMusumeIcon(i),TRUE);
+			DrawFormatString(15+60*((i-1)%3)+10,30+((i-1)/3)*20,GetColor(0,255,0),"%d",numberlist.at(i));
 	}
 	int margin=100;
 	DrawRotaGraph(margin+40,13,0.5,0,Images::getMusumeIcon(1),TRUE);
@@ -289,11 +298,6 @@ void MenuLayer::draw(){
 
 
 
-
-
-	//Menu
-
-	DrawGraph(0,0,Images::get("pic/まるなしMUI.png"),TRUE);
 
 
 
@@ -564,7 +568,7 @@ void PopFactoryLayer:: main(){
 	for(int i=1;i<7;i++){
 		int tmpx=x+160-px+zahyoux[i]*0.2*time;
 		int tmpy=y+180-py+zahyouy[i]*0.2*time;
-		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)&&!livelist[i]){
+		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)&&!livelist[i]&&m->isntOver()){
 			
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )
@@ -619,6 +623,7 @@ void ChipFactoryLayer::draw(){
 		int hogex=x+rectw-iconsx-iconmarx*i;
 		if(hogex<x)continue;
 		DrawRotaGraph(hogex,y,1,0,Images::getParamTypeIcon( game->getRainForce(id)[i]),TRUE);
+		DrawRectGraph(hogex,y-40,420/9*game->getParam(id)->getLevel(game->getRainForce(id)[i]),0,420/9,35,Images::get("pic/Lv.png"),TRUE,FALSE);
 	}
 
 	
@@ -627,6 +632,7 @@ void ChipFactoryLayer:: main(){
 	auto m=mouse_in::getIns();
 	if(testBox(x-25,y-25,x-25+w,y-25+h)){
 		timer++;
+		m->recieveOver();
 	}else{
 		timer--;
 	}
@@ -638,7 +644,7 @@ void ChipFactoryLayer:: main(){
 		int hogex=x+rectw-iconsx-iconmarx*i;
 		if(hogex<x)continue;
 		if(testBox(hogex-25,y-25,hogex+25,y+25)&&m->LeftClick()){
-			game->incParamLevel(id,game->getRainForce(id)[i],50);
+			game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]));
 			m->Reset();
 		}
 

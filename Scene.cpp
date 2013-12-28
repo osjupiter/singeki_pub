@@ -4,10 +4,9 @@
 TitleScene::TitleScene(){
 	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/title.png")));
 	addLayer(0,p);
-	LAY_Ptr q((new ButtonLayer(300,200,Images::get("pic/start.png"),0,0,200,100))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+	LAY_Ptr q((new ButtonLayer(267,336,Images::get(""),0,0,233,98))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
 	addLayer(1,q);
-	LAY_Ptr r(new ButtonLayer(300,350,Images::get("pic/exit.png"),0,0,200,100));
-	addLayer(1,r);
+
 	
 }
 void TitleScene::buttonPushed(string id){
@@ -37,7 +36,7 @@ GameScene::GameScene(){
 
 	//addLayer(5,std::make_shared<MapLayer>(game));
 	addLayer(4,std::make_shared<MenuLayer>(game));
-	addLayer(4,std::make_shared<HOHEILayer>(game,164,4));
+	addLayer(4,std::make_shared<HOHEILayer>(game,164,7));
 	//addLayer(10,std::make_shared<MapLayer>(game));
 	notEnd=true;
 	old_stage=1;
@@ -50,6 +49,21 @@ void GameScene::enterScene(){
 void GameScene::leaveScene(){
 	//StopSoundMem( Images::getSound("sound/kuma.mp3")) ;
 	Images::playBGM("");
+}
+void GameScene::beforemain(){
+	char Buf[ 256 ] ;
+
+	GetHitKeyStateAll( Buf ) ;
+
+	if( Buf[ KEY_INPUT_LEFT ] == 1 ||	 Buf[ KEY_INPUT_A ] == 1 )
+	{
+		game->scrollLeft(15);
+	}
+
+	if( Buf[ KEY_INPUT_RIGHT ] == 1||  Buf[ KEY_INPUT_D ] == 1 )
+	{
+		game->scrollRight(15);
+	}
 }
 void GameScene::buttonPushed(string id){
 	if(id=="left"){

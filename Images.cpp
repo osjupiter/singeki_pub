@@ -211,7 +211,6 @@ void Images::load(){
 	filelist.push_back("pic/MUI.png");
 	filelist.push_back("pic/SUI、オプション.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
-	filelist.push_back("pic/まるなしMUI.png");
 	filelist.push_back("pic/MUIのステージのまる.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
 	filelist.push_back("pic/ユニット選択ウインドウ２.png");
@@ -224,6 +223,7 @@ void Images::load(){
 	filelist.push_back("pic/歩兵ボタン1m.png");
 	filelist.push_back("pic/歩兵ボタン3.png");
 	filelist.push_back("pic/エンディング.png");
+	filelist.push_back("pic/Lv.png");
 
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
@@ -258,6 +258,8 @@ void Images::load(){
 	}
 	
 	blend=LoadBlendGraph("pic/blend.jpg");
+
+	font=CreateFontToHandle( "メイリオ" , 25 , 3 ,DX_FONTTYPE_ANTIALIASING_EDGE_8X8) ;
 
 
 }

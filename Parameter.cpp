@@ -1,6 +1,6 @@
 #include "Parameter.h"
 #include "DxLib.h"
-#define MAXLEVEL 5
+#define MAXLEVEL 8
 
 Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock, int cos, int a_freq,ParamType p1,ParamType p2,ParamType p3){
 	base[POWER] = pw;
@@ -82,3 +82,21 @@ bool Parameter::LevelUp(ParamType p_type){
 	return true;
 }
 
+int Parameter::getLevel(ParamType p){
+	return level[p];
+}
+
+
+int Parameter::getCostForLevelUp(ParamType p){
+	int tmp[][9]={
+		{50,100,150,200,250,300,350,400,450},
+		{50,100,150,200,250,300,350,400,450},
+		{50,100,150,200,250,300,350,400,450},
+		{50,100,150,200,250,300,350,400,450},
+		{50,100,150,200,250,300,350,400,450},
+		{50,100,150,200,250,300,350,400,450},
+		{50,100,150,200,250,300,350,400,450},
+		{50,100,150,200,250,300,350,400,450}
+	};
+	return tmp[p][level[p]];
+}

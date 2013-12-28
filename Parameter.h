@@ -19,7 +19,8 @@ public:
 //	int getCost(ParamType p_type);
 	bool LevelUp(ParamType p_type);
 	ParamType* getRainForce(){return canRainForce;}
-
+	int getLevel(ParamType p);
+	int getCostForLevelUp(ParamType p);
 };
 
 
