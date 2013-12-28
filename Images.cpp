@@ -200,10 +200,13 @@ void Images::load(){
 	filelist.push_back("pic/メカ草原城a2.png");
 	filelist.push_back("pic/生産中止a.png");
 	filelist.push_back("pic/MUI.png");
-	filelist.push_back("pic/SUI、オプション.png");//
+	filelist.push_back("pic/SUI、オプション.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
 	filelist.push_back("pic/まるなしMUI.png");
 	filelist.push_back("pic/MUIのステージのまる.png");
+	filelist.push_back("pic/ユニット選択ウインドウ.png");
+	filelist.push_back("pic/ユニット選択ウインドウ２.png");
+	
 
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
