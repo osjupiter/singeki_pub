@@ -211,7 +211,7 @@ void GameClearLayer::draw(){
 }
 void GameClearLayer::called(){
 		Images::playBGM("");
-		Images::playSE("sound/エンディング.mp3");
+		Images::playBGM("sound/エンディング.mp3");
 }
 void GameClearLayer:: main(){
 	if(remain_time--<=0){
@@ -227,9 +227,11 @@ GameOverLayer::GameOverLayer(){
 		remain_time=default_time;
 }
 void GameOverLayer::draw(){
-	DrawFormatString(0,0,GetColor(0,255,0),"Game is overd. time = %d",remain_time);
-	
-
+	//DrawFormatString(0,0,GetColor(0,255,0),"Game is overd. time = %d",remain_time);
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA,128);
+	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(0,0,0),TRUE);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND,0);
+	DrawGraph(0,0,Images::get("pic/GAMEOVER.png"),TRUE);
 }
 void GameOverLayer::called(){
 		Images::playBGM("");
