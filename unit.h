@@ -31,6 +31,7 @@ public:
 //	virtual void damage(int,int);
 	//int getPower();
 	int getState(); 
+	
 	Position getType();
 	//int getAtkType();
 	void switchDirection();

@@ -52,7 +52,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	exist_clk=0;
 
 
-	ii one[] = { ii(100, 10) };
+	ii one[] = { ii(200, 10) };
 	ii two[] = { ii(300, 11), ii(30, 10) };
 	ii three[]={ii(100,12)};
 	ii four[]={ii(30,10)};
@@ -62,7 +62,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	ii eight[]={ii(30,10)};
 	ii nine[]={ii(30,10)};
 
-	ii oneEvent[]={ii(0,12),ii(0,12)};
+	ii oneEvent[]={ii(0,13)};
 	ii twoEvent[]={ii(30,11)};
 	ii threeEvent[]={ii(30,11)};
 	ii fourEvent[]={ii(30,11)};
@@ -226,9 +226,9 @@ void castle::damage(int d, UnitType op_unit_type){
 		hp -= max(d - defense, 0);
 		if (hp < 0){
 				Game::getIns()->effect_create(x, 0, BIGEXP);
-				shared_ptr<AttackRange> p(new AttackRange(0, x+width, INT_MAX, ALL));
+/*				shared_ptr<AttackRange> p(new AttackRange(0, x+width, INT_MAX, ALL));
 				Game::getIns()->push_attack_list(p, MUSUME);
-	
+	*/
 			loop_count = 0;
 			state = CastleState::EN_DIE;
 		}
@@ -255,7 +255,7 @@ void castle::damage(int d, UnitType op_unit_type){
 		if (hp < 0){
 			Game::getIns()->effect_create(x, 0, BIGEXP);
 			loop_count = 0;
-			shared_ptr<AttackRange> p(new AttackRange(x, x + width, INT_MAX, ALL));
+			shared_ptr<AttackRange> p(new AttackRange(x, x + width, 100000, ALL));
 			Game::getIns()->push_attack_list(p, ENEMY);
 
 			state = CastleState::MEKA_DIE;

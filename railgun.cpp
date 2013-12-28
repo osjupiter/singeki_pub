@@ -1,6 +1,7 @@
 #include "railgun.h"
 #include "Images.h"
 #include "Game.h"
+#include "Status.h"
 
 #define ANIM_SPEED 1
 #define ANIM_SPEED_C 1
@@ -59,7 +60,17 @@ void railgun::main(int front){
 
 		break;
 	case UnitState::DIE:
-		del();
+		if (ani_count / 3 == 0 || ani_count / 3 == 8) {
+			for (int i = x -WID_NOMALEXP / 4; i + WID_NOMALEXP / 2< x + width; i += WID_NOMALEXP / 3)
+				Game::getIns()->effect_create(i , y + height / 2 - HEI_NOMALEXP / 2, NOMALEXP);
+		}
+		if (ani_count / 3 == 4 || ani_count / 3 == 8) {
+			for (int i = x ; i + WID_NOMALEXP/2 < x+ width; i += WID_NOMALEXP/4)
+				Game::getIns()->effect_create(i, y + height / 2 - HEI_NOMALEXP / 2, NOMALEXP);
+		}
+		if (ani_count / 3 > 10){
+			del();
+		}
 		break;
 	}
 }
@@ -93,6 +104,10 @@ void railgun::draw(int cx){
 		}
 		break;
 	case UnitState::DIE:
+		if (dir == LEFT)
+			DrawGraph(x - cx, y, Images::getIns()->g_rail[0], true);
+		else
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_rail[0], true);
 		break;
 
 	}

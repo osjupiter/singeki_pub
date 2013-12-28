@@ -68,6 +68,7 @@ void enemy::main(int front){
 			break;
 		case UnitState::DIE:
 			atk = false;
+
 			break;
 		}
 	}

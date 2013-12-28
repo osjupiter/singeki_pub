@@ -1,0 +1,109 @@
+/*歩兵*/
+#define POWER_HOHEI 4
+#define MAXHP_HOHEI 500
+#define DEFENSE_HOHEI 1
+#define SPEED_HOHEI 5
+#define A_TYPE_HOHEI RAND
+#define COST_HOHEI 0
+
+#define CLK_HOHEI 120
+#define A_FREQ_HOHEI 1
+
+/*風船兵*/
+#define POWER_BALLOON 500
+#define MAXHP_BALLOON 500
+#define DEFENSE_BALLOON 1
+#define SPEED_BALLOON 5
+#define A_TYPE_BALLOON RAND
+#define COST_BALLOON 80
+#define CLK_BALLOON 120
+#define A_FREQ_BALLOON 100
+
+/*ロボ兵*/
+#define POWER_BIG 50
+#define MAXHP_BIG 5000
+#define DEFENSE_BIG 1
+#define SPEED_BIG 2
+#define A_TYPE_BIG RAND
+#define COST_BIG 300
+#define CLK_BIG 120
+#define A_FREQ_BIG 50
+/*神風兵*/
+#define POWER_KAMIKAZE 100
+#define MAXHP_KAMIKAZE 500
+#define DEFENSE_KAMIKAZE 1
+#define SPEED_KAMIKAZE 10
+#define A_TYPE_KAMIKAZE SKY
+#define COST_KAMIKAZE 800
+#define CLK_KAMIKAZE 120
+#define A_FREQ_KAMIKAZE 10
+/*バズーカ兵*/
+#define POWER_BAZOOKA 5
+#define MAXHP_BAZOOKA 500
+#define DEFENSE_BAZOOKA 1
+#define SPEED_BAZOOKA 5
+#define A_TYPE_BAZOOKA ALL
+#define COST_BAZOOKA 50
+#define CLK_BAZOOKA 120
+#define A_FREQ_BAZOOKA 20
+/*セグウェイ兵*/
+#define POWER_SEGWAY 100
+#define MAXHP_SEGWAY 500
+#define DEFENSE_SEGWAY 1
+#define SPEED_SEGWAY 5
+#define A_TYPE_SEGWAY RAND
+#define COST_SEGWAY 30
+#define CLK_SEGWAY 120
+#define A_FREQ_SEGWAY 40
+
+/*戦車*/
+#define POWER_TANK 5
+#define MAXHP_TANK 500
+#define DEFENSE_TANK 1
+#define SPEED_TANK 5
+#define A_TYPE_TANK RAND
+#define COST_TANK 10
+#define CLK_TANK 120
+#define A_FREQ_TANK 1000
+
+/*ゲッコー*/
+#define POWER_GEKKO 2
+#define MAXHP_GEKKO 200
+#define DEFENSE_GEKKO 1
+#define SPEED_GEKKO 5
+#define A_TYPE_GEKKO ALL
+#define COST_GEKKO 30
+#define CLK_GEKKO 120
+#define A_FREQ_GEKKO 0
+
+/*レールガン*/
+#define POWER_RAILGUN 100
+#define MAXHP_RAILGUN 1000
+#define DEFENSE_RAILGUN 1
+#define SPEED_RAILGUN 5
+#define A_TYPE_RAILGUN NOATK
+#define COST_RAILGUN 0
+#define CLK_RAILGUN 120
+#define A_FREQ_RAILGUN 2000
+
+/*ヘリ*/
+#define POWER_COPTER 100
+#define MAXHP_COPTER 50
+#define DEFENSE_COPTER 1
+#define SPEED_COPTER 10
+#define A_TYPE_COPTER RAND
+#define COST_COPTER 50
+#define CLK_COPTER 120
+#define A_FREQ_COPTER 50
+
+#define RESOURCE_INIT 200000
+
+
+#define STAGE1_W 1950
+#define STAGE2_W STAGE1_W+2200
+#define STAGE3_W STAGE2_W+2500
+#define STAGE4_W STAGE3_W+3000
+#define STAGE5_W STAGE4_W+3200
+#define STAGE6_W STAGE5_W+3500
+#define STAGE7_W STAGE6_W+4000
+#define STAGE8_W STAGE7_W+4700
