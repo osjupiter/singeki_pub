@@ -182,6 +182,8 @@ void castle::draw(int cx){
 	int koma = (castle_hp[stage] - hp > castle_hp[stage] / 2) ? 1 : 0;
 	switch (state){
 	case CastleState::ACTIVE:
+		if (stage == 1)
+			DrawGraph(x - draw_gap[stage][koma] - cx, y, Images::getIns()->houdai_yama, true);
 		DrawGraph(x - draw_gap[stage][koma] - cx, y, Images::getIns()->g_castle[stage][koma], true);
 		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 		break;
@@ -197,6 +199,7 @@ void castle::draw(int cx){
 
 		break;
 	case CastleState::MEKA_DIE:
+		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_mekahaikyo, true);
 		break;
 	}
 	
