@@ -2,15 +2,17 @@
 #include "Images.h"
 #include "Game.h"
 
-#define ANIM_SPEED 10
+#define ANIM_SPEED 6
 #define ANIM_SPEED_ATK 1
-
+#define DIST_GEKKO 100
 int gekko::num;
 
 
 gekko::gekko(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
+	dist = dist + DIST_GEKKO;
+	
 	power = POWER_GEKKO;
-	hp = MAXHP_GEKKO*lv;
+	hp = MAXHP_GEKKO+120*lv;
 	width = WID_GEKKO;
 	height = HEI_GEKKO;
 	speed = SPEED_GEKKO;
@@ -20,6 +22,7 @@ gekko::gekko(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	atk_type = A_TYPE_GEKKO;
 	cost = COST_GEKKO;
 	atk_freq = A_FREQ_GEKKO;
+	unit_type = UnitType::_GEKKO;
 }
 
 
@@ -50,7 +53,16 @@ void gekko::main(int front){
 
 		break;
 	case UnitState::DIE:
-		del();
+		
+		if (ani_count == 1){
+			Game::getIns()->effect_create(x + width / 2 - WID_NOMALEXP / 2, y + height / 2 - HEI_NOMALEXP / 2, NOMALEXP);
+		}
+		if (ani_count==4)
+			Game::getIns()->effect_create(x + width / 2 - WID_NOMALEXP / 2+10, y + height / 2 - HEI_NOMALEXP / 2, NOMALEXP);
+
+		if (ani_count / 3 == 2){
+			del();
+		}
 		break;
 
 	}
@@ -94,6 +106,15 @@ void gekko::draw(int cx){
 		else{
 			DrawTurnGraph(x - cx, y, Images::getIns()->g_gekko[ani_count / ANIM_SPEED%ANI_GEKKO], true);
 		}
+		break;
+	case UnitState::DIE:
+		if (dir == LEFT){
+			DrawGraph(x - cx, y, Images::getIns()->g_gekko[ani_count / ANIM_SPEED%ANI_GEKKO], true);
+		}
+		else{
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_gekko[ani_count / ANIM_SPEED%ANI_GEKKO], true);
+		}
+	
 		break;
 	}
 

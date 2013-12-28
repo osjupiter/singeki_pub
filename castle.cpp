@@ -2,10 +2,10 @@
 #include "Images.h"
 #include "Game.h"
 #include "bigExplode.h"
-const int castle_hp[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000,5000};
+const int castle::castle_hp[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000,5000};
 const int meka_castle_hp[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000 };
 //const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
-const int draw_gap[9][3] = {
+const int castle::draw_gap[9][3] = {
 	{0,0,20},
 	{62,-16,-16}, 
 	{25,30,-70}, 
@@ -33,11 +33,13 @@ std::size_t array_length(const TYPE (&)[SIZE])
 
 castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	hp = castle_hp[st];
-	width = WID_CASTLE;
+	width = (st==0) ? 300:WID_CASTLE;
+	height = (st == 0) ? 180 : HEI_CASTLE;
+	//width = 300;
 	if (st == 0) x = 0;
 	else x = fx - width / 2;
 	loop_count = 0;
-	height = HEI_CASTLE;
+	
 	defense = 0;
 	stage = st;
 	tm = 0;
@@ -51,8 +53,8 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 
 
 	ii one[] = { ii(100, 10) };
-	ii two[]={ii(30,10)};
-	ii three[]={ii(30,10)};
+	ii two[] = { ii(300, 11), ii(30, 10) };
+	ii three[]={ii(100,12)};
 	ii four[]={ii(30,10)};
 	ii five[]={ii(30,10)};
 	ii six[]={ii(30,10)};
@@ -167,23 +169,24 @@ void castle::main(int front){
 		//if (getClock(product_clk))
 		if(isProductTime())
 			Game::getIns()->birth(stage, product_type);
-		break;
 		if (hp < 0){
 			loop_count++;
 			if (loop_count / ANIM_SPEED_BIGEXP >= 8){
 				state = CastleState::MEKA_DIE;
 			}
 		}
+		break;
+
 	}
 }
 
 
 void castle::draw(int cx){
-	int koma = (castle_hp[stage] - hp > castle_hp[stage] / 2) ? 1 : 0;
+	int koma = (hp < castle_hp[stage] / 2) ? 1 : 0;
 	switch (state){
 	case CastleState::ACTIVE:
 		DrawGraph(x - draw_gap[stage][koma] - cx, y, Images::getIns()->g_castle[stage][koma], true);
-		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
+//		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 		break;
 	case CastleState::STAY:
 		DrawGraph(x - cx, y, Images::getIns()->g_castle[stage][0], true);
@@ -193,26 +196,39 @@ void castle::draw(int cx){
 		break;
 	case CastleState::OCCUPY:
 		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_castle[stage][2], true);
-		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
+//		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 
 		break;
 	case CastleState::MEKA_DIE:
+		if (stage!=0)
+			DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_mekahaikyo, true);
 		break;
 	}
 	
 }
 
-void castle::damage(int d){
+void castle::damage(int d, UnitType op_unit_type){
+	int rand_x = rand() % 100, rand_y = rand() % 90;
 	switch (state){
 	case CastleState::ACTIVE:
+		if (rand() % 5 == 0){
+			switch (op_unit_type){
+				case UnitType::_BAZOOKA:
+				Game::getIns()->damage_effect_create(x + 100 +rand_x, y + height - HEI_CANNONSHOT + 35-rand_y, CANNONSHOT, true);
+				break;
+			case UnitType::_HOHEI:
+				Game::getIns()->damage_effect_create(x +100+rand_x, y + height - HEI_GUNSHOT + 25-rand_y, GUNSHOT);
+				break;
+			}
+		}
+		
+	
 		hp -= max(d - defense, 0);
 		if (hp < 0){
-		//	for (int i = x; i+WID_BIGEXP < x+width; i+=WID_BIGEXP/2){
 				Game::getIns()->effect_create(x, 0, BIGEXP);
-			/*	shared_ptr<AttackRange> p(new AttackRange(x, width, 1000, RAND));
+				shared_ptr<AttackRange> p(new AttackRange(0, x+width, INT_MAX, ALL));
 				Game::getIns()->push_attack_list(p, MUSUME);
-				Game::getIns()->push_attack_list(p, ENEMY);*/
-		//	}
+	
 			loop_count = 0;
 			state = CastleState::EN_DIE;
 		}
@@ -224,10 +240,24 @@ void castle::damage(int d){
 
 		break;
 	case CastleState::OCCUPY:
+		if (rand() % 10 == 0){
+			switch (op_unit_type){
+			case UnitType::_TANK:
+				Game::getIns()->damage_effect_create(x + width - WID_CANNONSHOT*2-rand_x, y + HEI_CASTLE - HEI_CANNONSHOT -rand_y, CANNONSHOT);
+				break;
+			case UnitType::_GEKKO:
+				Game::getIns()->damage_effect_create(x + width - WID_GUNSHOT * 2 - rand_x, y + HEI_CASTLE - HEI_GUNSHOT - rand_y, GUNSHOT, true);
+				break;
+		
+			}
+		}
 		hp -= max(d - defense, 0);
 		if (hp < 0){
 			Game::getIns()->effect_create(x, 0, BIGEXP);
 			loop_count = 0;
+			shared_ptr<AttackRange> p(new AttackRange(x, x + width, INT_MAX, ALL));
+			Game::getIns()->push_attack_list(p, ENEMY);
+
 			state = CastleState::MEKA_DIE;
 		}
 		break;

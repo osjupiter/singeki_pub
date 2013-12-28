@@ -3,12 +3,13 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
-#define ANIM_SPEED_DIE 1
-
+#define ANIM_SPEED_DIE 2
+#define DIST_TANK 200
 int tank::num;
 
 
 tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
+	dist = dist + DIST_TANK;
 	power = POWER_TANK;
 	hp = MAXHP_TANK*lv;
 	width = WID_TANK;
@@ -18,7 +19,7 @@ tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	num++;
 	type = RAND;
 	atk_type = A_TYPE_TANK;
-	cost = COST_TANK;
+	cost = COST_TANK+40*lv;
 	atk_freq = A_FREQ_TANK;
 	unit_type=UnitType::_TANK;
 }
@@ -40,10 +41,7 @@ void tank::main(int front){
 		if (ani_count / ANIM_SPEED%ANI_TANK_ATK == 2){
 			if (!atk){
 				Images::playSE("sound/taihou03.mp3");
-				if (rand() % 3 == 0){
-					int rand_x = rand() % 100, rand_y = rand() % 20;
-					Game::getIns()->effect_create(front - rand_x, y + rand_y, CANNONSHOT);
-				}
+		
 				atk = true;
 			}
 			else{ atk = false; }

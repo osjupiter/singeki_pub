@@ -100,12 +100,31 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
-	for (int i = 0; i < 8; i++){
-		shared_ptr<castle> p(new castle(stage_W[i], 0, i));
-		castle_list.push_back(p);
+	shared_ptr<castle> p(new castle(stage_W[0], 0, 0));
+	castle_list.push_back(p);
 	
-	}
-	shared_ptr<castle> p(new mekaNemu(stage_W[8], 0, 8));
+	p = shared_ptr<castle>(new shiro_yama(stage_W[1], 0, 1));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[2], 0, 2));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[3], 0, 3));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[4], 0, 4));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[5], 0, 5));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[6], 0, 6));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new castle(stage_W[7], 0, 7));
+	castle_list.push_back(p);
+
+	p = shared_ptr<castle>(new mekaNemu(stage_W[8], 0, 8));
 	castle_list.push_back(p);
 
 }
@@ -194,7 +213,7 @@ void Game::birth(int st,int type){
 		 break;
 	}
 	case GEKKO:{
-				   shared_ptr<enemy> p(new gekko(stage_W[st], WINDOW_Y - HEI_GEKKO - line * 3, line, getNowStage()));
+				   shared_ptr<enemy> p(new gekko(stage_W[st], WINDOW_Y - HEI_GEKKO -40 - line * 3, line, getNowStage()));
 					enemy_list[line].push_back(p);
 					break;
 	}
@@ -269,15 +288,21 @@ void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, 
 					effect_list.push_back(p);
 					break;
 	}
-	case GUNSHOT:{
-					  shared_ptr<effect> p(new gunshot(fx, fy));
-					  effect_list.push_back(p);
-					  break;
+
 	}
-	case CANNONSHOT:{
-					 shared_ptr<effect> p(new cannonshot(fx, fy));
+}
+
+void Game::damage_effect_create(int fx,int fy,int e_type,bool TurnFlag){
+	switch (e_type) {
+	case GUNSHOT:{
+					 shared_ptr<effect> p(new gunshot(fx, fy, TurnFlag));
 					 effect_list.push_back(p);
 					 break;
+	}
+	case CANNONSHOT:{
+						shared_ptr<effect> p(new cannonshot(fx, fy, TurnFlag));
+						effect_list.push_back(p);
+						break;
 	}
 	}
 }
@@ -375,30 +400,32 @@ void Game::main(){
 
 			i->main(front);
 			if (i->getState() != UnitState::DIE){
-				if (castle_list.at(now_stage - 1)->getX() + WID_CASTLE < i->getX()){
+				if (castle_list.at(now_stage - 1)->getX() + castle_list.at(now_stage - 1)->getW() < i->getX()){
 					if (i->getType() == RAND && target_X < i->getX()){
 
 						target_m = i;
-						target_X = i->getX();
+						target_X = i->getX()+i->getW();
 					}
 
 
 					if (i->getType() == SKY && target_X_S < i->getX()){
 						target_m_sky = i;
-						target_X_S = i->getX();
+						target_X_S = i->getX() + i->getW();
 					}
 				}
 			}
+
+			/*ダメージ*/
 			if (i->getState() == ATK){
 			if (front_type == RAND){
 				if (target_e != NULL)
-					target_e->damage(i->getPower(), i->getAtkType());
-				else castle_list.at(now_stage)->damage(i->getPower());
+					target_e->damage(i->getPower(), i->getAtkType(),i->getUnitType());
+				else castle_list.at(now_stage)->damage(i->getPower(),i->getUnitType());
 			}
 			else if (front_type == SKY){
 				if (target_e_sky != NULL)
-					target_e_sky->damage(i->getPower(), i->getAtkType());
-				else castle_list.at(now_stage)->damage(i->getPower());
+					target_e_sky->damage(i->getPower(), i->getAtkType(), i->getUnitType());
+				else castle_list.at(now_stage)->damage(i->getPower(),i->getUnitType());
 			}
 			}
 
@@ -419,22 +446,26 @@ void Game::main(){
 			front_type = i->decideTargetPos(front_tmp, front_S_tmp);
 
 			if (front_type == RAND){
-				front = front_tmp;
+//				front = front_tmp;
+				front = max(castle_list.at(now_stage-1)->getX() + castle_list.at(now_stage-1)->getW(), front_tmp);
 			}
 			else if (front_type == SKY){
-				front = front_S_tmp;
+//				front = front_S_tmp;
+				front = max(castle_list.at(now_stage-1)->getX() + castle_list.at(now_stage-1)->getW(), front_S_tmp);
+
 			}
 			i->main(front);
+			/*ダメージ*/
 			if (i->getState() == ATK){
 			if (front_type == RAND){
 				if (target_m != NULL)
-					target_m->damage(i->getPower(), i->getAtkType());
-				else castle_list.at(now_stage - 1)->damage(i->getPower());
+					target_m->damage(i->getPower(), i->getAtkType(), i->getUnitType());
+				else castle_list.at(now_stage - 1)->damage(i->getPower(), i->getUnitType());
 			}
 			else if (front_type == SKY){
 				if (target_m_sky != NULL)
-					target_m_sky->damage(i->getPower(), i->getAtkType());
-				else castle_list.at(now_stage - 1)->damage(i->getPower());
+					target_m_sky->damage(i->getPower(), i->getAtkType(), i->getUnitType());
+				else castle_list.at(now_stage - 1)->damage(i->getPower(), i->getUnitType());
 			}
 			}
 
@@ -452,25 +483,25 @@ void Game::main(){
 		for (int j = 0; j < 3; j++){
 			for (auto i : musume_list[j]){
 				if (k->judge(i->getX(), i->getW(),i->getType()))
-					i->damage(k->getDamage(),k->getAtkType());
+					i->damage(k->getDamage(),k->getAtkType(),UnitType::_NONE);
 			}
 
 		}
 		int wid_nowcastle = castle_list.at(now_stage - 1)->getW();
 		if (k->judge(castle_list.at(now_stage - 1)->getX() - wid_nowcastle / 2, wid_nowcastle, Position::ALL))
-			castle_list.at(now_stage - 1)->damage(k->getDamage());
+			castle_list.at(now_stage - 1)->damage(k->getDamage(), UnitType::_NONE);
 	}
 
 	for (auto k : atkrange_musume_list){
 		for (int j = 0; j < 3; j++){
 			for (auto i : enemy_list[j]){
 				if (k->judge(i->getX(), i->getW(), i->getType()))
-					i->damage(k->getDamage(), k->getAtkType());
+					i->damage(k->getDamage(), k->getAtkType(),UnitType::_NONE);
 			}
 		}
 		int wid_nowcastle = castle_list.at(now_stage)->getW();
 		if (k->judge(castle_list.at(now_stage)->getX() - wid_nowcastle / 2, wid_nowcastle, Position::ALL))
-			castle_list.at(now_stage)->damage(k->getDamage());
+			castle_list.at(now_stage)->damage(k->getDamage(), UnitType::_NONE);
 	}
 
 	delete_object();
@@ -509,6 +540,8 @@ void Game::draw(){
 	}
 
 	Test();
+	//if (mouse_in::getIns()->LeftClick())  birth(getNowStage() - 1, HOHEI);
+
 	atkrange_musume_list.clear();
 	atkrange_enemy_list.clear();
 
@@ -593,7 +626,7 @@ void Game::Test(){
 	}
 
 	if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
-	if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
+	//if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
 
 	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(getNowStage() , COPTER);
 

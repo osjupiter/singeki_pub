@@ -11,7 +11,7 @@ void enemy::main(int front){
 	if (wait_time>0)
 		wait_time--;
 	if (dir == LEFT){
-		if (x <= front - dist)
+		if (x+width <= front - dist)
 			switchDirection();
 		switch (state){
 		case UnitState::MOV:
@@ -41,7 +41,7 @@ void enemy::main(int front){
 		}
 	}
 	else if (dir == RIGHT){
-		if (x > front )
+		if (x+width > front )
 			switchDirection();
 		
 		switch (state){
@@ -89,9 +89,20 @@ int enemy::getPower(){
 Position enemy::getAtkType(){
 	return atk_type;
 }
-void enemy::damage(int d, Position op_a_type){
+void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type){
+		if (rand() % 8 == 0){
+			int rand_x = rand() % width / 2, rand_y = rand() % height / 2;
+			switch (op_unit_type){
+			case UnitType::_BAZOOKA:
+				Game::getIns()->damage_effect_create(x + width /3+rand_x, y + height - HEI_CANNONSHOT+35-rand_y, CANNONSHOT, true);
+				break;
+			case UnitType::_HOHEI:
+				Game::getIns()->damage_effect_create(x + width / 3+rand_x, y + height - HEI_GUNSHOT+25-rand_y, GUNSHOT);
+				break;
+			}
+		}
 		hp -= max(d - defense, 0);
 		if (state!=DIE && hp < 0){
 			changeState(DIE);

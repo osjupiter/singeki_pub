@@ -3,12 +3,13 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
+#define DIST_BIG 0
 int bigrobo::num = 0;
 
 
 
 bigrobo::bigrobo(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-
+	dist = WID_BIG;
 	width = WID_BIG;
 	height = HEI_BIG;
 	num++;
@@ -35,7 +36,7 @@ void bigrobo::main(int front){
 		if (ani_count / ANIM_SPEED % ANI_BIG_ATK == ANI_BIG_ATK - 1 ){
 			if (!stopper){
 				Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
-				shared_ptr<AttackRange> p(new AttackRange(x + 95, WID_SHOCK, param->getParam(POWER), RAND));
+				shared_ptr<AttackRange> p(new AttackRange(x + 95, x + 95+ WID_SHOCK, param->getParam(POWER), RAND));
 				Game::getIns()->push_attack_list(p, MUSUME);
 				stopper=true;
 			}

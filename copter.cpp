@@ -4,10 +4,11 @@
 
 #define ANIM_SPEED 3
 #define ANIM_SPEED_DIE 3
+#define DIST_COPTER 100;
 int copter::num = 0;
 
 copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
-	
+	dist = dist + DIST_COPTER;
 	power = POWER_COPTER*lv;
 	hp = MAXHP_COPTER*lv;
 	width = WID_COPTER;
@@ -17,7 +18,7 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	defense = DEFENSE_COPTER*lv;
 	type = SKY;
 	atk_type = RAND;
-	cost = COST_COPTER;
+	cost = COST_COPTER + 150 * lv;
 	atk_freq = A_FREQ_COPTER;
 	stopper = false;
 	speed = SPEED_COPTER;
@@ -39,7 +40,7 @@ void copter::main(int front){
 		if ((ani_count / ANIM_SPEED)== ANI_COPTER - 1 ){
 			if (!stopper){
 				stopper = true;
-				Game::getIns()->effect_create(x + width / 2, y + 155, MISSILE, dir,power,front);
+				Game::getIns()->effect_create(x + width / 2-WID_MISSILE/2+10*dir, y + 140, MISSILE, dir,power,front);
 				Images::playSE("sound/misairu.mp3");
 			}
 		}

@@ -32,7 +32,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	ChangeWindowMode( FALSE ) ;
 	SetMouseDispFlag( FALSE );
 	SetOutApplicationLogValidFlag( false ) ; 
-	SetMainWindowText("くっきー") ;
+	//SetMainWindowText("くっきー") ;
+	SetMainWindowText("侵略どうですか") ;
+
 	// ＤＸライブラリ初期化処理
 	if( DxLib_Init() == -1 ) return -1;
 	// グラフィックの描画先を裏画面にセット

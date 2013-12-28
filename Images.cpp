@@ -69,6 +69,7 @@ void Images::load(){
 	back[0][2] = LoadGraph("dat/img/R/”wŒi‚P|‚S.png");
 	back[0][3] = LoadGraph("dat/img/R/”wŒi‚P|‚Q.png");
 	back[0][4] = LoadGraph("dat/img/R/”wŒi‚P|‚R.png");
+	houdai_yama = LoadGraph("dat/img/R/Ré–C‘ä.png");
 
 	back[1][0] = 0;
 	back[1][1] = 0;
@@ -112,6 +113,7 @@ void Images::load(){
 	back[7][3] = LoadGraph("dat/img/ˆÅ‚Ì¢ŠE/”wŒi‚W|‚Q.png");
 	back[7][4] = LoadGraph("dat/img/ˆÅ‚Ì¢ŠE/”wŒi‚W|‚R.png");
 
+	g_mekahaikyo=LoadGraph("dat/img/ƒƒJ”pšĞ.png");
 
 	g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
 	g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");

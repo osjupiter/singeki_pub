@@ -14,7 +14,7 @@ void tepodon::main(){
 	x += 40;
 	if (x>dest+width) {
 		del();
-		Game::getIns()->effect_create(x,y, NOMALEXP);
+		Game::getIns()->effect_create(x+width/2-WID_NOMALEXP/2,y+height/2-HEI_NOMALEXP/2, NOMALEXP);
 		shared_ptr<AttackRange> p(new AttackRange(x - 50, x + width + 50, power, SKY));
 		Game::getIns()->push_attack_list(p, MUSUME);
 	}

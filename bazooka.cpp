@@ -3,11 +3,12 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
+#define DIST_BAZOOKA 250
 int bazooka::num = 0;
 
 
 bazooka::bazooka(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-
+	dist = dist + DIST_BAZOOKA;
 	width = WID_BAZOOKA;
 	height = HEI_BAZOOKA;
 	num++;
@@ -26,7 +27,7 @@ void bazooka::main(int front){
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED % ANI_BAZOOKA_ATK == 9){
 			if (!atk){
-
+				Images::playSE("sound/taihou03.mp3");
 				atk = true;
 			}
 		}

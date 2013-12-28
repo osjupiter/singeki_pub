@@ -3,9 +3,10 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
+#define DIST_HOHEI 200
 int hohei::num = 0;
 hohei::hohei(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-	
+	dist = dist + DIST_HOHEI;
 	//hp = param->getParam(MAXHP);
 	width = WID_HOHEI;
 	height = HEI_HOHEI;
@@ -26,10 +27,7 @@ void hohei::main(int front){
 		if (ani_count / ANIM_SPEED % ANI_HOHEI_ATK == 0){
 			if (!atk){
 	//			Images::playSE("sound/shot002.wav",true);
-				if (rand()%4==0){
-					int rand_x = rand() % 100, rand_y = rand() % 70;
-					Game::getIns()->effect_create(front + 100 + rand_x, y + rand_y, GUNSHOT);
-				}
+				
 				atk = true;
 			}
 		}

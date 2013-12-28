@@ -1,11 +1,12 @@
 #include "cannonshot.h"
 #include "Images.h"
 #include "Game.h"
-#define ANIM_SPEED 3
-cannonshot::cannonshot(int fx, int fy) :effect(fx, fy){
+#define ANIM_SPEED 2
+cannonshot::cannonshot(int fx, int fy, bool turn) :effect(fx, fy){
 	type = CANNONSHOT;
 	width = WID_CANNONSHOT;
 	height = HEI_CANNONSHOT;
+	turnflag = turn;
 }
 void cannonshot::main(){
 	effect::main();
@@ -15,6 +16,9 @@ void cannonshot::main(){
 }
 
 void cannonshot::draw(int cx){
-	DrawGraph(x - cx, y, Images::getIns()->g_cannonshot[ani_count / ANIM_SPEED % ANI_CANNONSHOT], true);
+	if (turnflag)
+		DrawTurnGraph(x - cx, y, Images::getIns()->g_cannonshot[ani_count / ANIM_SPEED % ANI_CANNONSHOT], true);
+
+	else DrawGraph(x - cx, y, Images::getIns()->g_cannonshot[ani_count / ANIM_SPEED % ANI_CANNONSHOT], true);
 	effect::draw(cx);
 }

@@ -5,7 +5,7 @@ unit::unit(int fx,int fy,int ln) : object(fx,fy){
 	line = ln;
 	state = MOV;
 	wait_time = 2;
-	dist = 130+(rand() / (RAND_MAX + 1.0)*180);
+	dist = (rand() / (RAND_MAX + 1.0)*180);
 	ani_count = 0;
 }
 
@@ -15,7 +15,7 @@ void unit::main(){
 }
 void unit::draw(int cx){
 
-	DrawBox(x - cx, y , x+width-cx,y+height ,GetColor(255, 0, 0), false);
+	//DrawBox(x - cx, y , x+width-cx,y+height ,GetColor(255, 0, 0), false);
 }
 
 int unit::getLine(){
