@@ -20,7 +20,7 @@ void TitleScene::buttonPushed(string id){
 	}
 }
 void TitleScene::enterScene(){
-	Images::playBGM("sound/山.mp3");
+	Images::playBGM("sound/タイトル.mp3");
 }
 void TitleScene::leaveScene(){
 	Images::playBGM("");

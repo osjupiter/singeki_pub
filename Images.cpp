@@ -233,6 +233,8 @@ void Images::load(){
 	soundlist.push_back("sound/夜戦.mp3");
 	soundlist.push_back("sound/エンディング.mp3");
 	soundlist.push_back("sound/ゲームオーバー.mp3");
+	soundlist.push_back("sound/タイトル.mp3");
+	soundlist.push_back("sound/闇の世界.mp3");
 
 	
 	for(auto s:filelist){
