@@ -265,7 +265,7 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 	martop=15;
 
 	mx=338;
-	my=85;
+	my=100;
 	mw=375;
 	mh=16;
 
@@ -273,7 +273,14 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 void MenuLayer::draw(){
 	//status
 	//DrawBox(0,0,150,50,GetColor(255,0,0),TRUE);
-	DrawGraph(0,0,Images::get("pic/SUI、オプション.png"),TRUE);
+	//DrawGraph(0,0,Images::get("pic/SUI、オプション.png"),TRUE);
+
+
+
+	//Menu
+
+	DrawGraph(0,0,Images::get("pic/MUI.png"),TRUE);
+
 
 	DrawRotaGraph(13,13,0.5,0,Images::get("pic/資源.png"),TRUE);
 	DrawFormatString(25,0,GetColor(0,0,255),"%d",game->getResource());
@@ -289,11 +296,6 @@ void MenuLayer::draw(){
 
 
 
-
-
-	//Menu
-
-	DrawGraph(0,0,Images::get("pic/まるなしMUI.png"),TRUE);
 
 
 

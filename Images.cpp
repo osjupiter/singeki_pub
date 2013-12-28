@@ -202,7 +202,6 @@ void Images::load(){
 	filelist.push_back("pic/MUI.png");
 	filelist.push_back("pic/SUI、オプション.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
-	filelist.push_back("pic/まるなしMUI.png");
 	filelist.push_back("pic/MUIのステージのまる.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
 	filelist.push_back("pic/ユニット選択ウインドウ２.png");
