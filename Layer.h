@@ -10,18 +10,19 @@ class Game;
 	0 Game
 	1 right left
 	3 Select
-	4 Menu
+	4 Menu HOHEI
 	5 Clear
 	9 MapClose
 	10 MapLay
 	
 	15 Factory
+	16 ChipFActory
 	20 OptionLayer
 */
 
 
 
-class Layer
+class Layer :public enable_shared_from_this<Layer>
 {
 protected:
 	SceneNode* parentScene;
@@ -33,7 +34,9 @@ public:
 	virtual void draw(){}
 	virtual void main(){}
 	virtual void called(){}
+	int getLayerID(){return thisLayerID;}
 	boolean testBox(int,int,int,int);
+	void removeThis();
 };
 
 
@@ -175,13 +178,40 @@ public:
 
 class PopFactoryLayer:public Layer{
 private:
-	int x,y,w,h,lh,lxmar,lw;
-	int select,lmartop;
-	int time;
+
 	shared_ptr<Game> game;
+	int x,y,id,w,h,time,px,py;
+	int tate,yoko;
+	boolean livelist[10];
 public:
 	PopFactoryLayer(shared_ptr<Game>);
 	void draw();
 	void main();
 };
 
+class ChipFactoryLayer:public Layer{
+private:
+
+	shared_ptr<Game> game;
+	int x,y,id,iconmarx,iconsx,w,h;
+	boolean* live;
+	int timer;
+public:
+	ChipFactoryLayer(shared_ptr<Game>,int,int,int,boolean*);
+	void draw();
+	void main();
+};
+
+
+class HOHEILayer:public Layer{
+private:
+
+	shared_ptr<Game> game;
+	int x,y;
+	int timer;
+
+public:
+	HOHEILayer(shared_ptr<Game>,int,int);
+	void draw();
+	void main();
+};

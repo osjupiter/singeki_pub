@@ -105,5 +105,7 @@ public:
 	void setBirthLimit(int i);
 	int getBirthLimit();
 	int getMusumeSum();
+	
+	ParamType* Game::getRainForce(int);
 
 };

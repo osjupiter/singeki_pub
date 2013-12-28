@@ -66,6 +66,11 @@ public:
 		std::shared_ptr<LayerPushPop> p(new LayerPushPop(true,i,nullptr));
 		pushPop.push_back(p);
 	}
+	void rmLayer(std::shared_ptr<Layer> l){
+		std::shared_ptr<LayerPushPop> p(new LayerPushPop(true,l->getLayerID(),l));
+		pushPop.push_back(p);
+	}
+
 	void addLayer(int i,LAY_Ptr m){
 		std::shared_ptr<LayerPushPop> p(new LayerPushPop(false,i,m));
 		pushPop.push_back(p);
@@ -73,7 +78,17 @@ public:
 	void listpushpop(){
 		for(auto p:pushPop){
 			if(p->isPop){
-				layers.erase(p->key);
+				if(p->pointer!=nullptr){
+					auto ppair=layers.equal_range(p->key);
+					for(auto pa=ppair.first;pa!=ppair.second;pa++){
+						if (pa->second==p->pointer){
+							layers.erase(pa);
+							break;
+						}
+					}
+				}else{
+					layers.erase(p->key);
+				}
 				//p->pointer->setParent(nullptr);
 			}else{
 				layers.insert(make_pair(p->key,p->pointer));
@@ -83,7 +98,8 @@ public:
 			
 			
 		}
-		pushPop.clear();
+		if(!pushPop.empty())
+			pushPop.clear();
 	}
 	virtual void buttonPushed(string){}
 };

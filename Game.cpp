@@ -64,22 +64,22 @@ Game::Game(){
 void Game::param_init(){
 	param_list[HOHEI] = shared_ptr<Parameter>(
 		new Parameter(POWER_HOHEI, MAXHP_HOHEI
-		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI));
+		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI,ParamType::MAXHP,ParamType::CLK,ParamType::SPEED));
 	param_list[BALLOON] = shared_ptr<Parameter>(
 		new Parameter(POWER_BALLOON, MAXHP_BALLOON
-		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON));
+		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON,ParamType::POWER,ParamType::MAXHP,ParamType::SPEED));
 	param_list[BAZOOKA] = shared_ptr<Parameter>(
 		new Parameter(POWER_BAZOOKA, MAXHP_BAZOOKA
-		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA));
+		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA,ParamType::POWER,ParamType::COST,ParamType::CLK));
 	param_list[BIG] = shared_ptr<Parameter>(
 		new Parameter(POWER_BIG, MAXHP_BIG
-		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG));
+		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG,ParamType::DEFENSE,ParamType::SPEED,ParamType::POWER));
 	param_list[KAMIKAZE] = shared_ptr<Parameter>(
 		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
-		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE));
+		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE,ParamType::POWER,ParamType::SPEED,ParamType::CLK));
 	param_list[SEGWAY] = shared_ptr<Parameter>(
 		new Parameter(POWER_SEGWAY, MAXHP_SEGWAY
-		, SPEED_SEGWAY, DEFENSE_SEGWAY, A_TYPE_SEGWAY, CLK_SEGWAY, COST_SEGWAY, A_FREQ_SEGWAY));
+		, SPEED_SEGWAY, DEFENSE_SEGWAY, A_TYPE_SEGWAY, CLK_SEGWAY, COST_SEGWAY, A_FREQ_SEGWAY,ParamType::SPEED,ParamType::A_FREQ,ParamType::POWER));
 
 }
 
@@ -631,7 +631,7 @@ void Game::Test(){
 		param_list[i]->draw(0, 200+30*i);
 	}
 
-	if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
+	//if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
 	//if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
 
 	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(getNowStage() , COPTER);
@@ -712,3 +712,6 @@ int Game::getMusumeSum(){
 }
 
 
+ParamType* Game::getRainForce(int id){
+	return param_list[id]->getRainForce();
+}

@@ -52,7 +52,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	exist_clk=0;
 
 
-	ii one[] = { ii(10000, 10) };
+	ii one[] = { ii(200, 10) };
 	ii two[] = { ii(300, 11), ii(30, 10) };
 	ii three[]={ii(100,12)};
 	ii four[]={ii(30,10)};

@@ -206,7 +206,14 @@ void Images::load(){
 	filelist.push_back("pic/MUIのステージのまる.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
 	filelist.push_back("pic/ユニット選択ウインドウ２.png");
-	
+	filelist.push_back("pic/カスタム用大ウインドウ.png");
+	filelist.push_back("pic/カスタム用小さな歯車.png");
+	filelist.push_back("pic/カスタム用小ウインドウ.png");
+
+	filelist.push_back("pic/歩兵ボタン1.png");
+	filelist.push_back("pic/歩兵ボタン2.png");
+	filelist.push_back("pic/歩兵ボタン1m.png");
+	filelist.push_back("pic/歩兵ボタン3.png");
 
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
