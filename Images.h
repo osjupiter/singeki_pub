@@ -73,7 +73,7 @@ public:
 	static void playSE(string name,boolean);
 	static void playSE(string name);
 	static void stopSE(string name);
-	static void playBGM(string name);
+	static void playBGM(string name,boolean defaulttrue=true);
 	static int getMusumeIcon(int);
 	static int getSiroIcon(int,boolean=false);
 	static int getParamTypeIcon(ParamType);

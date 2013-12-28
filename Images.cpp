@@ -214,6 +214,7 @@ void Images::load(){
 	filelist.push_back("pic/歩兵ボタン2.png");
 	filelist.push_back("pic/歩兵ボタン1m.png");
 	filelist.push_back("pic/歩兵ボタン3.png");
+	filelist.push_back("pic/エンディング.png");
 
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
@@ -355,10 +356,14 @@ void Images::load(){
 
 	}
 
-	void Images::playBGM(string name){
+	void Images::playBGM(string name,boolean defaulttrue){
 		if(ins._nowBGM!="")
 			StopSoundMem(getSound(ins._nowBGM.c_str()));
 		if(name!="")
-			PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_LOOP);
-		ins._nowBGM=name;
+			if(defaulttrue){
+				PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_LOOP);
+			}else{
+				PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_BACK);
+			}
+			ins._nowBGM=name;
 	}
