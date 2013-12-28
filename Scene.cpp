@@ -51,6 +51,21 @@ void GameScene::leaveScene(){
 	//StopSoundMem( Images::getSound("sound/kuma.mp3")) ;
 	Images::playBGM("");
 }
+void GameScene::beforemain(){
+	char Buf[ 256 ] ;
+
+	GetHitKeyStateAll( Buf ) ;
+
+	if( Buf[ KEY_INPUT_LEFT ] == 1 ||	 Buf[ KEY_INPUT_A ] == 1 )
+	{
+		game->scrollLeft(15);
+	}
+
+	if( Buf[ KEY_INPUT_RIGHT ] == 1||  Buf[ KEY_INPUT_D ] == 1 )
+	{
+		game->scrollRight(15);
+	}
+}
 void GameScene::buttonPushed(string id){
 	if(id=="left"){
 		game->scrollLeft(15);
