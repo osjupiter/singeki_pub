@@ -1,4 +1,5 @@
 #include"Images.h"
+#include "DxLib.h"
 #include<map>
 #include <string>
 #include <iostream>
@@ -259,9 +260,9 @@ void Images::load(){
 	
 	blend=LoadBlendGraph("pic/blend.jpg");
 
-	font=CreateFontToHandle( "メイリオ" , 25 , 3 ,DX_FONTTYPE_ANTIALIASING_EDGE_8X8) ;
+	//	font=CreateFontToHandle( "メイリオ" , 25 , 3 ,DX_FONTTYPE_ANTIALIASING_EDGE_8X8) ;
 
-
+	
 }
 
 	void Images::init(){ins.load();}
