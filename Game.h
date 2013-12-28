@@ -107,5 +107,6 @@ public:
 	int getMusumeSum();
 	
 	ParamType* Game::getRainForce(int);
+	shared_ptr<Parameter> getParam(int id);
 
 };

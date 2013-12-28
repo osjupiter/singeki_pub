@@ -214,6 +214,7 @@ void Images::load(){
 	filelist.push_back("pic/歩兵ボタン1m.png");
 	filelist.push_back("pic/歩兵ボタン3.png");
 	filelist.push_back("pic/エンディング.png");
+	filelist.push_back("pic/Lv.png");
 
 	soundlist.push_back("sound/kuma.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");

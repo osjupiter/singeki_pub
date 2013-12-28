@@ -82,3 +82,6 @@ bool Parameter::LevelUp(ParamType p_type){
 	return true;
 }
 
+int Parameter::getLevel(ParamType p){
+	return level[p];
+}
