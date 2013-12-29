@@ -2,7 +2,7 @@
 #include "Images.h"
 #include "Game.h"
 #include "bigExplode.h"
-const int castle::castle_hp[9] = { 5000, 10000, 12000, 15000, 18000, 20000, 24000, 28000,30000};
+const int castle::castle_hp[9] = { 5000, 12000, 16000, 20000, 24000, 28000, 32000, 36000,40000};
 const int meka_castle_hp[9] = { 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000 };
 const int castle_resouce[9] = { 500, 700, 800, 800, 900, 900, 1000, 1000, 1000 };
 //const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
@@ -60,9 +60,9 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	ii four[] = { ii(50, 12), ii(300, 11) };
 	ii five[] = { ii(40, 10), ii(50, 12) };
 	ii six[] = { ii(30, 10), ii(400, 11), ii(70, 12)};
-	ii seven[]={ii(1000,13)};
-	ii eight[]={ii(30,10)};
-	ii nine[]={ii(30,10)};
+	ii seven[] = { ii(1000, 13), ii(100, 11), ii(50, 10) };
+	ii eight[] = { ii(50, 12), ii(30, 11) };
+	ii nine[] = { ii(30, 10), ii(50, 12) ,ii(100, 11) ,ii(500, 13) };
 
 	ii oneEvent[]={ii(0,10)};
 	ii twoEvent[]={ii(300,11)};
@@ -70,8 +70,8 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	ii fourEvent[]={ii(0,13)};
 	ii fiveEvent[]={ii(30,11)};
 	ii sixEvent[]={ii(30,11)};
-	ii sevenEvent[]={ii(30,11)};
-	ii eightEvent[]={ii(30,11)};
+	ii sevenEvent[]={ii(0,13)};
+	ii eightEvent[] = { ii(0, 13), ii(500, 13) };
 	ii nineEvent[]={ii(30,11)};
 
 

@@ -32,7 +32,7 @@ void mekaNemu::main(int front){
 
 	switch (state){
 	case CastleState::ACTIVE:
-		if (rand() % 15 == 0){
+		if (rand() % 12 == 0){
 		//	if (rand() % 2 == 0){
 				int rand_x = rand() % (Game::stage_W[8] - Game::stage_W[7]);
 				

@@ -4,8 +4,8 @@
 #include "Game.h"
 #define YAMA_CANNON_FREQ 100
 
-#define POWER_YAMASHIRO 1000
-#define P_ATTACK 2
+#define POWER_YAMASHIRO 500
+#define P_ATTACK 3
 #define ATK_RANGE 300
 shiro_yama::shiro_yama(int fx, int fy, int st) :castle(fx, fy, st){
 	wait_time = YAMA_CANNON_FREQ;
