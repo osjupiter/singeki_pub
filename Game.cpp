@@ -769,3 +769,31 @@ string Game::getParamName(ParamType p){
 	};
 	return s[p];
 }
+
+string Game::getUnitName(UnitType p){
+	int i=static_cast<int>(p);
+	string s[]={
+		"生産中止",
+		"歩兵",
+		"風船兵",
+		"ロボ兵",
+		"ミサイル兵",
+		"バズーカ兵",
+		"セグウェイ兵"
+	};
+	return s[i];
+}
+
+string Game::getUnitSummary(UnitType p){
+	int i=static_cast<int>(p);
+	string s[]={
+		"節約しよう",
+		"一般兵、数が多い",
+		"空から爆弾を落とす",
+		"特徴は硬くて重い",
+		"ミサイルを一発撃つと家にかえってしまう",
+		"滞空攻撃ができる。",
+		"わりとメンヘラ"
+	};
+	return s[i];
+}
