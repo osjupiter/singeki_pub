@@ -49,9 +49,11 @@ void copter::main(int front){
 		}
 		else{
 			stopper = false;
+			state_change_flag = false;
 		}
 	
-		if (((ani_count / ANIM_SPEED) == ANI_COPTER)){ 
+		if (((ani_count / ANIM_SPEED) == ANI_COPTER)){
+			state_change_flag = true;
 			changeState(WAIT);
 			
 		}

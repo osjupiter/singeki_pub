@@ -34,9 +34,13 @@ void balloon::main(int front){
 				atk = true;
 			}
 		}
-		else{ atk = false; }
+		else{ atk = false;
+			state_change_flag = false;
+		}
 		
 		if ((ani_count / ANIM_SPEED == ANI_BALLOON_ATK)){
+			state_change_flag = true;
+
 			changeState(WAIT);
 //			atk = false;
 		}

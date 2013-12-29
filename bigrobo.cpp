@@ -33,6 +33,7 @@ void bigrobo::main(int front){
 
 		break;
 	case UnitState::ATK:
+		
 		if (ani_count / ANIM_SPEED % ANI_BIG_ATK == ANI_BIG_ATK - 1 ){
 			if (!stopper){
 				Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
@@ -47,8 +48,12 @@ void bigrobo::main(int front){
 			stopper = false;
 		}
 		if ((ani_count / ANIM_SPEED == ANI_BIG_ATK )){
+			state_change_flag = true;
 			changeState(WAIT);
 			stopper = false;
+		}
+		else{
+			state_change_flag = false;
 		}
 		break;
 	case UnitState::DIE:

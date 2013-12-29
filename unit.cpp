@@ -7,6 +7,7 @@ unit::unit(int fx,int fy,int ln) : object(fx,fy){
 	wait_time = 0;
 	dist = (rand() / (RAND_MAX + 1.0)*180);
 	ani_count = 0;
+	state_change_flag = true;
 }
 
 void unit::main(){

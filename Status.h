@@ -76,7 +76,7 @@
 #define A_TYPE_GEKKO ALL
 #define COST_GEKKO 30
 #define CLK_GEKKO 120
-#define A_FREQ_GEKKO 1
+#define A_FREQ_GEKKO 0
 
 /*ƒŒ[ƒ‹ƒKƒ“*/
 #define POWER_RAILGUN 1000
