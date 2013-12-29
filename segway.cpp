@@ -34,7 +34,7 @@ void segway::main(int front){
 			changeState(WAIT);
 		}
 
-		if (x+width > front){
+		if (x-width > front){
 			atk = true;
 			ani_count = 0;
 		}

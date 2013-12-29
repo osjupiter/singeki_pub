@@ -249,9 +249,15 @@ void Images::load(){
 	soundlist.push_back("sound/misairu.mp3");
 	soundlist.push_back("sound/shot002.wav");
 	soundlist.push_back("sound/gun04.mp3");
-
-
-	soundlist.push_back("sound/‹´.mp3");
+	soundlist.push_back("sound/sen_ge_taihou08.mp3");
+	//soundlist.push_back("sound/sen_ge_taihou06.mp3");
+	soundlist.push_back("sound/sen_mi_lasergun01.mp3");
+	soundlist.push_back("sound/sen_ka_heirappa01.mp3");
+	soundlist.push_back("sound/sen_ge_bom17.mp3");
+	//soundlist.push_back("sound/sen_mi_robo_bato01.mp3");
+	soundlist.push_back("sound/sen_ge_hasai02.mp3");
+	
+	soundlist.push_back("sound/‹´.mp3"); 
 	soundlist.push_back("sound/R.mp3");
 	soundlist.push_back("sound/X.mp3");
 	soundlist.push_back("sound/‘Œ´.mp3");
@@ -273,7 +279,9 @@ void Images::load(){
 		ss[s]=LoadSoundMem(s.c_str());
 
 	}
-	
+
+	ChangeVolumeSoundMem(255*70/100, ss["sound/shot002.wav"]);
+
 	blend=LoadBlendGraph("pic/blend.jpg");
 
 

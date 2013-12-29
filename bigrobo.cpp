@@ -38,6 +38,8 @@ void bigrobo::main(int front){
 				Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
 				shared_ptr<AttackRange> p(new AttackRange(x + 95, x + 95+ WID_SHOCK, param->getParam(POWER), RAND));
 				Game::getIns()->push_attack_list(p, MUSUME);
+				Images::getIns()->playSE("sound/sen_ge_hasai02.mp3");
+
 				stopper=true;
 			}
 		}

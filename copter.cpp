@@ -11,7 +11,7 @@ int copter::num = 0;
 copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	dist = dist + DIST_COPTER;
 	power = POWER_COPTER*(1+0.6)*lv;
-	hp = MAXHP_COPTER+0.5*MAXHP_COPTER*lv;
+	hp = MAXHP_COPTER+0.7*MAXHP_COPTER*lv;
 	width = WID_COPTER;
 	height = HEI_COPTER;
 	num++;
@@ -20,7 +20,7 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	type = SKY;
 	atk_type = RAND;
 	cost = COST_COPTER + 150 * lv;
-	atk_freq = A_FREQ_COPTER;
+	atk_freq = A_FREQ_COPTER*(1-0.05*lv);
 	stopper = false;
 	speed = SPEED_COPTER + 0.5*SPEED_COPTER*lv;
 	unit_type=UnitType::_COPTER;
@@ -57,6 +57,10 @@ void copter::main(int front){
 		}
 		break;
 	case UnitState::DIE:
+
+		if (ani_count==1)
+			Images::getIns()->playSE("sound/sen_ge_hasai02.mp3");
+
 		if (ani_count / ANIM_SPEED_DIE == ANI_COPTER_DIE ){
 			del();
 		}

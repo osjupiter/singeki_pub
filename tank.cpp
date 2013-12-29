@@ -16,10 +16,10 @@ tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 
 
 	dist = dist + DIST_TANK;
-	power = POWER_TANK +POWER_TANK*0.3*lv;
+	power = POWER_TANK *(1*lv);
 	hp = MAXHP_TANK+MAXHP_TANK*lv;
 	speed = SPEED_TANK + 0.5*SPEED_TANK*lv;
-	defense = DEFENSE_TANK*lv;
+	defense = DEFENSE_TANK*(1+0.8*lv);
 	num++;
 	type = RAND;
 	atk_type = A_TYPE_TANK;
@@ -63,6 +63,10 @@ void tank::main(int front){
 		atk = false;
 		break;
 	case UnitState::DIE:
+
+		if (ani_count == 1)
+			Images::getIns()->playSE("sound/sen_ge_hasai02.mp3");
+
 		if (ani_count / ANIM_SPEED_DIE >= ANI_TANK_DEL){
 			del();
 		}

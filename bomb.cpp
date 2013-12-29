@@ -16,6 +16,7 @@ void bomb::main(){
 		Game::getIns()->effect_create(x-110,WINDOW_Y-HEI_NOMALEXP+25,NOMALEXP);
 		shared_ptr<AttackRange> p(new AttackRange(x-50,x+width+50,power,RAND));
 		Game::getIns()->push_attack_list(p,MUSUME);
+		
 	}
 }
 
