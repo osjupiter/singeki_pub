@@ -590,7 +590,7 @@ void PopFactoryLayer:: main(){
 		if(m->LeftClick())
 			m->Reset();
 	}else{
-		if(m->LeftClick()){
+		if(m->LeftClick()&&m->isntOver()){
 			parentScene->rmLayer(16);
 			removeThis();
 		}
@@ -657,7 +657,6 @@ void ChipFactoryLayer:: main(){
 	if(testBox(x-25,y-25,x+10+w,y-25+h)){
 		timer++;
 		m->recieveOver();
-		m->Reset();
 	}else{
 		timer--;
 	}
@@ -720,7 +719,7 @@ HoverLayer::HoverLayer(int _x,int _y,string _m1,string _m2,string _m3){
 
 }
 void HoverLayer::draw(){
-	DrawBox(x-25,y-25,x+25,y+25,GetColor(255,0,0),TRUE);
+	//DrawBox(x-25,y-25,x+25,y+25,GetColor(255,0,0),TRUE);
 	int hogey=y-25-h;
 	if(flag==1)hogey+=h+50;
 	int hogex=x-25;
