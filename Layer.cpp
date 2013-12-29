@@ -143,7 +143,7 @@ void SelectLayer::draw(){
 		if(i==1)continue;
 		int tmpx=x+73-px+zahyoux[i]*0.2*time;
 		int tmpy=y+196-py+zahyouy[i]*0.2*time;
-		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i),TRUE);
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)),TRUE);
 		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
 			;
 		}
@@ -212,7 +212,8 @@ void GameClearLayer::draw(){
 }
 void GameClearLayer::called(){
 		Images::playBGM("");
-		
+		auto g=Game::getIns();
+		g->setCamera(g->stage_W[g->getNowStage()]-WINDOW_X/2);
 }
 void GameClearLayer:: main(){
 	if(remain_time--<=0){
@@ -290,11 +291,13 @@ void MenuLayer::draw(){
 	auto numberlist=game->getMusumeNumber();
 	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::END_MUSUME);i++){
 			DrawRotaGraph(5+60*((i-1)%3),30+((i-1)/3)*20,0.5,0,Images::getMusumeIcon(i),TRUE);
-			DrawFormatString(15+60*((i-1)%3)+10,30+((i-1)/3)*20,GetColor(0,255,0),"%d",numberlist.at(i));
+			//DrawFormatString(15+60*((i-1)%3)+10,30+((i-1)/3)*20,GetColor(0,255,0),"%d",numberlist.at(i));
+			DrawFormatStringToHandle(15+60*((i-1)%3)+10,30+((i-1)/3)*20,GetColor(0,255,0),Images::getIns()->font,"%d",numberlist.at(i));
 	}
 	int margin=100;
 	DrawRotaGraph(margin+40,13,0.5,0,Images::getMusumeIcon(1),TRUE);
 	DrawFormatString(margin+55,0,GetColor(0,0,255),"%d/%d",game->getMusumeSum(),game->getBirthLimit());
+	DrawFormatStringToHandle(margin+55,0,GetColor(0,0,255),Images::getIns()->font,"%d/%d",game->getMusumeSum(),game->getBirthLimit());
 
 
 
@@ -355,7 +358,7 @@ void MenuLayer::draw(){
 
 
 	//factory
-	DrawBox(200,80,200+50,80+50,GetColor(0,255,0),TRUE);
+	DrawBox(221,62,221+66,62+60,GetColor(0,255,0),TRUE);
 
 	//option
 	DrawBox(130,50,130+60,50+20,GetColor(0,255,0),TRUE);
@@ -378,8 +381,8 @@ void MenuLayer:: main(){
 			}
 		}
 	}
-	if(m->LeftClick()){
-		if(testBox(200,80,250,130)){
+	if(m->LeftClick()&&m->isntOver()){
+		if(testBox(221,62,221+66,62+60)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<PopFactoryLayer>(game));
 			m->Reset();
@@ -543,7 +546,7 @@ void PopFactoryLayer::draw(){
 		int tmpx=x+160-px+zahyoux[i]*0.2*time;
 		int tmpy=y+180-py+zahyouy[i]*0.2*time;
 		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::get("pic/カスタム用小さな歯車.png"),TRUE);
-		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i),TRUE);
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)),TRUE);
 		
 		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
 			;
@@ -622,7 +625,7 @@ void ChipFactoryLayer::draw(){
 	for(int i=0;i<3;i++){
 		int hogex=x+rectw-iconsx-iconmarx*i;
 		if(hogex<x)continue;
-		DrawRotaGraph(hogex,y,1,0,Images::getParamTypeIcon( game->getRainForce(id)[i]),TRUE);
+		DrawRotaGraph(hogex,y,1,0,Images::getParamTypeIcon( game->getRainForce(id)[i],testBox(hogex-25,y-25,hogex+25,y+25)),TRUE);
 		DrawRectGraph(hogex,y-40,420/9*game->getParam(id)->getLevel(game->getRainForce(id)[i]),0,420/9,35,Images::get("pic/Lv.png"),TRUE,FALSE);
 	}
 
@@ -682,10 +685,13 @@ void HOHEILayer::main(){
 	auto m=mouse_in::getIns();
 	int need=game->getParam(static_cast<int>(UnitType::_HOHEI),ParamType::CLK);
 	if(++timer>=need){timer=need;if(++flag>40)flag=0;}
-	if(testBox(x+5,y+5,x+75,y+75)&&m->LeftClick()&&(timer==need)){
-		m->Reset();
-		game->birth(game->getNowStage()-1, HOHEI);
-		timer=0;
-		flag=0;
+	if(testBox(x+5,y+5,x+75,y+75)){
+		m->recieveOver();
+		if(m->LeftClick()&&(timer==need)){
+			m->Reset();
+			game->birth(game->getNowStage()-1, HOHEI);
+			timer=0;
+			flag=0;
+		}
 	}
 }

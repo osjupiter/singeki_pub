@@ -180,6 +180,12 @@ void Images::load(){
 	filelist.push_back("pic/na.png");
 	filelist.push_back("pic/ra.png");
 	filelist.push_back("pic/sa.png");
+	filelist.push_back("pic/ba2.png");
+	filelist.push_back("pic/ha2.png");
+	filelist.push_back("pic/ka2.png");
+	filelist.push_back("pic/na2.png");
+	filelist.push_back("pic/ra2.png");
+	filelist.push_back("pic/sa2.png");
 	filelist.push_back("pic/資源.png");
 
 	
@@ -190,6 +196,15 @@ void Images::load(){
 	filelist.push_back("pic/速さ.png");
 	filelist.push_back("pic/防御.png");
 	filelist.push_back("pic/力.png");
+
+	filelist.push_back("pic/HP2.png");
+	filelist.push_back("pic/攻撃速度2.png");
+	filelist.push_back("pic/資源ダウン2.png");
+	filelist.push_back("pic/生産速度2.png");
+	filelist.push_back("pic/速さ2.png");
+	filelist.push_back("pic/防御2.png");
+	filelist.push_back("pic/力2.png");
+
 
 
 	filelist.push_back("pic/メカ海城a.png");
@@ -209,6 +224,7 @@ void Images::load(){
 	filelist.push_back("pic/メカ草原城a.png");
 	filelist.push_back("pic/メカ草原城a2.png");
 	filelist.push_back("pic/生産中止a.png");
+	filelist.push_back("pic/生産中止a2.png");
 	filelist.push_back("pic/MUI.png");
 	filelist.push_back("pic/SUI、オプション.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
@@ -260,7 +276,9 @@ void Images::load(){
 	
 	blend=LoadBlendGraph("pic/blend.jpg");
 
-	font=CreateFontToHandle( NULL , 25 , 3 ,DX_FONTTYPE_ANTIALIASING_EDGE_8X8) ;
+
+	font=CreateFontToHandle( "メイリオ" , 13 , 3 ,DX_FONTTYPE_ANTIALIASING_EDGE_8X8) ;
+
 
 	
 }
@@ -283,29 +301,29 @@ void Images::load(){
 
 	void Images::stopSE(string name){StopSoundMem(ins.ss[name] );}
 
-	int Images::getMusumeIcon(int id){
+	int Images::getMusumeIcon(int id,boolean dfalse){
 		string s;
 		switch (id){
 			case 0:
-				s="pic/生産中止a.png";
+				s="pic/生産中止a";
 				break;
 			case 1:
-				s="pic/na.png";
+				s="pic/na";
 				break;
 			case 2:
-				s="pic/ha.png";
+				s="pic/ha";
 				break;
 			case 3:
-				s="pic/ra.png";
+				s="pic/ra";
 				break;
 			case 4:
-				s="pic/ka.png";
+				s="pic/ka";
 				break;
 			case 5:
-				s="pic/ba.png";
+				s="pic/ba";
 				break;
 			case 6:
-				s="pic/sa.png";
+				s="pic/sa";
 				break;
 			case 7:
 				break;
@@ -314,7 +332,8 @@ void Images::load(){
 			case 9:
 				break;
 		}
-		return ins.get(s.c_str());
+		if(dfalse)s+="2";
+		return ins.get((s+".png").c_str());
 	}
 	int Images::getSiroIcon(int id,boolean defalt_false){
 		string s;
@@ -353,18 +372,19 @@ void Images::load(){
 		return ins.get((s+".png").c_str());
 	}
 
-	int Images::getParamTypeIcon(ParamType i){
+	int Images::getParamTypeIcon(ParamType i,boolean dfalse){
 		string hoge[]={
-			"pic/力.png",
-			"pic/HP.png",
-			"pic/速さ.png",
-			"pic/防御.png",
+			"pic/力",
+			"pic/HP",
+			"pic/速さ",
+			"pic/防御",
 			"",
-			"pic/生産速度.png",
-			"pic/資源ダウン.png",
-			"pic/攻撃速度.png",
+			"pic/生産速度",
+			"pic/資源ダウン",
+			"pic/攻撃速度",
 		};
-		return ins.get(hoge[i].c_str());
+		
+		return ins.get((hoge[i]+(dfalse?"2":"")+".png").c_str());
 
 	}
 
