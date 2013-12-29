@@ -691,8 +691,9 @@ void HOHEILayer::draw(){
 
 	int bright=0;
 
+	DrawBox(185,20,180+45,20+55,GetColor(0,127,127),TRUE);
 	DrawRectGraph(x,y+69-tmph,0,69-tmph,80,tmph,Images::get("pic/歩兵ボタン2.png"),TRUE,FALSE);
-	if(flag>20){
+	if(flag>0&&flag<21){
 		DrawGraph(x,y,Images::get("pic/歩兵ボタン1m.png"),TRUE);
 	}else{
 		DrawGraph(x,y,Images::get("pic/歩兵ボタン1.png"),TRUE);	
