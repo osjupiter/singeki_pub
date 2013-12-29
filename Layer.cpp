@@ -143,7 +143,7 @@ void SelectLayer::draw(){
 		if(i==1)continue;
 		int tmpx=x+73-px+zahyoux[i]*0.2*time;
 		int tmpy=y+196-py+zahyouy[i]*0.2*time;
-		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i),TRUE);
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)),TRUE);
 		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
 			;
 		}
@@ -546,7 +546,7 @@ void PopFactoryLayer::draw(){
 		int tmpx=x+160-px+zahyoux[i]*0.2*time;
 		int tmpy=y+180-py+zahyouy[i]*0.2*time;
 		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::get("pic/カスタム用小さな歯車.png"),TRUE);
-		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i),TRUE);
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)),TRUE);
 		
 		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
 			;
