@@ -1,4 +1,4 @@
-#define RESOURCE_INIT 10000
+#define RESOURCE_INIT 500
 
 /*•à•º*/
 #define POWER_HOHEI 10
