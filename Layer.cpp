@@ -286,7 +286,7 @@ void MenuLayer::draw(){
 
 	DrawRotaGraph(13,13,0.5,0,Images::get("pic/資源.png"),TRUE);
 	//DrawFormatString(25,0,GetColor(0,0,255),"%d",game->getResource());
-	DrawFormatStringToHandle(25,0,GetColor(0,0,255),Images::getIns()->font,"%d",game->getResource());
+	DrawFormatStringToHandle(20,0,GetColor(0,0,255),Images::getIns()->font,"%d",game->getResource());
 
 	auto numberlist=game->getMusumeNumber();
 	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::END_MUSUME);i++){
@@ -546,7 +546,7 @@ void PopFactoryLayer::draw(){
 		int tmpx=x+160-px+zahyoux[i]*0.2*time;
 		int tmpy=y+180-py+zahyouy[i]*0.2*time;
 		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::get("pic/カスタム用小さな歯車.png"),TRUE);
-		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)),TRUE);
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)),TRUE);
 		
 		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
 			;
@@ -618,6 +618,7 @@ ChipFactoryLayer::ChipFactoryLayer(shared_ptr<Game> g,int _x,int _y,int _id,bool
 	w=200;
 	h=50;
 
+
 }
 void ChipFactoryLayer::draw(){
 	int rectw=200*timer/5;
@@ -633,7 +634,23 @@ void ChipFactoryLayer::draw(){
 }
 void ChipFactoryLayer:: main(){
 	auto m=mouse_in::getIns();
-	if(testBox(x-25,y-25,x-25+w,y-25+h)){
+
+
+	int rectw=200*timer/5;
+	for(int i=0;i<3;i++){
+		int hogex=x+rectw-iconsx-iconmarx*i;
+		if(hogex<x)continue;
+		if(testBox(hogex-25,y-25,hogex+25,y+25)){
+
+			if(timer>=5&&m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,"てすと","てすとだよ"));}
+			if(m->LeftClick()){
+				game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]));
+				m->Reset();
+			}
+		}
+
+	}
+	if(testBox(x-25,y-25,x+10+w,y-25+h)){
 		timer++;
 		m->recieveOver();
 	}else{
@@ -641,18 +658,6 @@ void ChipFactoryLayer:: main(){
 	}
 	if(timer>=5)timer=5;
 	if(timer<=0){removeThis();*live=false;}
-
-	int rectw=200*timer/5;
-	for(int i=0;i<3;i++){
-		int hogex=x+rectw-iconsx-iconmarx*i;
-		if(hogex<x)continue;
-		if(testBox(hogex-25,y-25,hogex+25,y+25)&&m->LeftClick()){
-			game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]));
-			m->Reset();
-		}
-
-
-	}
 
 
 	
@@ -693,5 +698,38 @@ void HOHEILayer::main(){
 			timer=0;
 			flag=0;
 		}
+	}
+}
+
+
+HoverLayer::HoverLayer(int _x,int _y,string _m1,string _m2){
+	x=_x;
+	y=_y;
+	w=100,h=60;
+	mes1=_m1;
+	mes2=_m2;
+	//if(y<WINDOW_Y/2)flag=1;
+	//else flag=0;
+	flag=0;
+
+}
+void HoverLayer::draw(){
+	DrawBox(x-25,y-25,x+25,y+25,GetColor(255,0,0),TRUE);
+	int hogey=y-25-h;
+	if(flag==1)hogey+=h+50;
+	int hogex=x-25;
+	DrawBox(x-25,hogey,x+200,hogey+h,GetColor(0,255,0),TRUE);
+	DrawFormatStringToHandle(hogex,hogey,GetColor(0,0,255),Images::getIns()->font,"%s",mes1.c_str());
+	
+	DrawFormatStringToHandle(hogex,hogey+10,GetColor(0,0,255),Images::getIns()->font,"%s",mes2.c_str());
+
+
+
+}
+void HoverLayer::main(){
+	if(testBox(x-25,y-25,x+25,y+25)){
+		mouse_in::getIns()->recieveOver();
+	}else{
+		removeThis();
 	}
 }
