@@ -4,7 +4,9 @@
 TitleScene::TitleScene(){
 	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/title.png")));
 	addLayer(0,p);
-	LAY_Ptr q((new ButtonLayer(267,336,Images::get(""),0,0,233,98))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+	//LAY_Ptr q((new ButtonLayer(267,336,Images::get(""),0,0,233,98))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+	LAY_Ptr q((new ButtonLayer(0,0,Images::get(""),0,0,WINDOW_X,WINDOW_Y))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+	
 	addLayer(1,q);
 
 	
