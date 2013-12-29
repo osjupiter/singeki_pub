@@ -181,7 +181,7 @@ void Game::birth(int st,int type){
 	}
 	case BIG:{
 		line = 2;
-		shared_ptr<musume> p(new bigrobo(stage_W[st], WINDOW_Y - HEI_BIG - line * 3, line, param_list[BIG]));
+		shared_ptr<musume> p(new bigrobo(stage_W[st], WINDOW_Y - HEI_BIG + line * 3, line, param_list[BIG]));
 		musume_list[line].push_back(p);
 
 		break;
@@ -679,7 +679,7 @@ int Game::getParamLevel(int u_type, ParamType p_type){
 
 
 bool Game::incParamLevel(int u_type, ParamType p_type,int lvcost){
-	if (getResource() <= lvcost) return false;
+	if (getResource() < lvcost) return false;
 	
 	if (param_list[u_type]->LevelUp(p_type)){
 		useResource(lvcost);

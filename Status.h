@@ -86,7 +86,7 @@
 #define A_TYPE_RAILGUN NOATK
 #define COST_RAILGUN 0
 #define CLK_RAILGUN 120
-#define A_FREQ_RAILGUN 1000
+#define A_FREQ_RAILGUN 600
 
 /*ƒwƒŠ*/
 #define POWER_COPTER 200
