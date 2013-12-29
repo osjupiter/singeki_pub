@@ -625,7 +625,7 @@ void ChipFactoryLayer::draw(){
 	for(int i=0;i<3;i++){
 		int hogex=x+rectw-iconsx-iconmarx*i;
 		if(hogex<x)continue;
-		DrawRotaGraph(hogex,y,1,0,Images::getParamTypeIcon( game->getRainForce(id)[i]),TRUE);
+		DrawRotaGraph(hogex,y,1,0,Images::getParamTypeIcon( game->getRainForce(id)[i],testBox(hogex-25,y-25,hogex+25,y+25)),TRUE);
 		DrawRectGraph(hogex,y-40,420/9*game->getParam(id)->getLevel(game->getRainForce(id)[i]),0,420/9,35,Images::get("pic/Lv.png"),TRUE,FALSE);
 	}
 

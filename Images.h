@@ -80,5 +80,5 @@ public:
 	static void playBGM(string name,boolean defaulttrue=true);
 	static int getMusumeIcon(int,boolean=false);
 	static int getSiroIcon(int,boolean=false);
-	static int getParamTypeIcon(ParamType);
+	static int getParamTypeIcon(ParamType,boolean=false);
 };

@@ -196,6 +196,15 @@ void Images::load(){
 	filelist.push_back("pic/–hŒä.png");
 	filelist.push_back("pic/—Í.png");
 
+	filelist.push_back("pic/HP2.png");
+	filelist.push_back("pic/UŒ‚‘¬“x2.png");
+	filelist.push_back("pic/‘Œ¹ƒ_ƒEƒ“2.png");
+	filelist.push_back("pic/¶Y‘¬“x2.png");
+	filelist.push_back("pic/‘¬‚³2.png");
+	filelist.push_back("pic/–hŒä2.png");
+	filelist.push_back("pic/—Í2.png");
+
+
 
 	filelist.push_back("pic/ƒƒJŠCéa.png");
 	filelist.push_back("pic/ƒƒJŠCéa2.png");
@@ -360,18 +369,19 @@ void Images::load(){
 		return ins.get((s+".png").c_str());
 	}
 
-	int Images::getParamTypeIcon(ParamType i){
+	int Images::getParamTypeIcon(ParamType i,boolean dfalse){
 		string hoge[]={
-			"pic/—Í.png",
-			"pic/HP.png",
-			"pic/‘¬‚³.png",
-			"pic/–hŒä.png",
+			"pic/—Í",
+			"pic/HP",
+			"pic/‘¬‚³",
+			"pic/–hŒä",
 			"",
-			"pic/¶Y‘¬“x.png",
-			"pic/‘Œ¹ƒ_ƒEƒ“.png",
-			"pic/UŒ‚‘¬“x.png",
+			"pic/¶Y‘¬“x",
+			"pic/‘Œ¹ƒ_ƒEƒ“",
+			"pic/UŒ‚‘¬“x",
 		};
-		return ins.get(hoge[i].c_str());
+		
+		return ins.get((hoge[i]+(dfalse?"2":"")+".png").c_str());
 
 	}
 
