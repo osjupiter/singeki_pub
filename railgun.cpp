@@ -10,7 +10,7 @@ int railgun::num = 0;
 
 railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	dist = dist + DIST_RAILGUN;
-	power = POWER_RAILGUN+POWER_RAILGUN*0.5*lv;
+	power = POWER_RAILGUN+POWER_RAILGUN*0.3*lv;
 	hp = MAXHP_RAILGUN+MAXHP_RAILGUN*0.5*lv;
 	width = WID_RAILGUN;
 	height = HEI_RAILGUN;

@@ -3,7 +3,7 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
-#define DIST_HOHEI 200
+#define DIST_HOHEI 150
 int hohei::num = 0;
 hohei::hohei(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
 	dist = dist + DIST_HOHEI;

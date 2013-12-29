@@ -42,7 +42,7 @@ void segway::main(int front){
 		break;
 	case UnitState::WAIT:
 		atk=false;
-		if (ani_count < 10){
+		if (ani_count < 15){
 			x -= BACK_SEGWAY;			
 		}
 		break;

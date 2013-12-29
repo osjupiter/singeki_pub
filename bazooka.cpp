@@ -34,7 +34,7 @@ void bazooka::main(int front){
 		else {
 			atk = false;
 		}
-		if ((ani_count / ANIM_SPEED == ANI_BAZOOKA_ATK)){
+		if ((ani_count / ANIM_SPEED == ANI_BAZOOKA_ATK+1)){
 			changeState(WAIT);
 			atk = false;
 		}
@@ -53,7 +53,10 @@ void bazooka::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_bazooka[ani_count / ANIM_SPEED%ANI_BAZOOKA], true);
 		break;
 	case UnitState::ATK:
-		DrawGraph(x - cx, y, Images::getIns()->g_bazooka_atk[ani_count / ANIM_SPEED%ANI_BAZOOKA_ATK], true);
+		if (atk_position == RAND)
+			DrawGraph(x - cx, y, Images::getIns()->g_bazooka_atk[ani_count / ANIM_SPEED%ANI_BAZOOKA_ATK], true);
+		else
+			DrawRotaGraph2(x+2 - cx, y+102, 58,105,1.0, 3.1415926535*(345 / 180.0), Images::getIns()->g_bazooka_atk[ani_count / ANIM_SPEED%ANI_BAZOOKA_ATK], true);
 		break;
 	case UnitState::WAIT:
 		DrawGraph(x - cx, y, Images::getIns()->g_bazooka[0], true);
