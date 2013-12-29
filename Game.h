@@ -110,4 +110,6 @@ public:
 	shared_ptr<Parameter> getParam(int id);
 	string getParamSummary(ParamType);
 	string getParamName(ParamType p);
+	string getUnitName(UnitType p);
+	string getUnitSummary(UnitType p);
 };

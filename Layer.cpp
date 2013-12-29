@@ -80,20 +80,27 @@ void SelectLayer::main(){
 	mouse_in* m=mouse_in::getIns();
 
 	int zahyoux[7]={0,0,yoko,yoko,0,-yoko,-yoko};
-	int zahyouy[7]={-tate,0,-tate/2,tate/2,tate,tate/2,-tate/2};clsDx();
+	int zahyouy[7]={-tate,0,-tate/2,tate/2,tate,tate/2,-tate/2};
 	for(int i=0;i<7;i++){
 		if(i==1)continue;
 		int tmpx=x+73-px+zahyoux[i]*0.2*time;
 		int tmpy=y+196-py+zahyouy[i]*0.2*time;
-		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)&&m->LeftClick()){
-			
+		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
-			if( p != NULL )
-			{
-				p->getGame()->setProduct(id,i);
-
+			if(p==NULL)break;
+			auto game=p->getGame();
+			string costman="";
+			
+			if(i!=0){
+				stringstream ss;
+				ss << "¶ŽYƒRƒXƒg:"<< game->getParam(i)->getParam(ParamType::COST);
+				costman=ss.str();
 			}
-			parentScene->rmLayer(thisLayerID);
+			if(m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(tmpx,tmpy,game->getUnitName(UnitType(i)),costman,game->getUnitSummary(UnitType(i))));}
+			if(m->LeftClick()){
+				p->getGame()->setProduct(id,i);
+				parentScene->rmLayer(thisLayerID);
+			}
 		}
 	}
 
@@ -649,6 +656,7 @@ void ChipFactoryLayer:: main(){
 				if(game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]))){
 					m->Reset();
 					parentScene->rmLayer(18);
+					parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss.str()));
 				}
 			}
 		}
