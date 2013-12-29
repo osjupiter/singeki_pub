@@ -9,7 +9,9 @@ bigExp::bigExp(int fx, int fy) :effect(fx, fy){
 }
 void bigExp::main(){
 	effect::main();
-
+	if (ani_count==1)
+		Images::getIns()->playSE("sound/sen_ge_bom17.mp3");
+	
 	if (ani_count / ANIM_SPEED_BIGEXP % ANI_BIGEXP == ANI_BIGEXP - 1)
 		del();
 }

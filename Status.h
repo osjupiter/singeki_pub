@@ -8,7 +8,7 @@
 #define A_TYPE_HOHEI RAND
 #define COST_HOHEI 0
 
-#define CLK_HOHEI 40
+#define CLK_HOHEI 50
 #define A_FREQ_HOHEI 2
 
 /*風船兵*/
@@ -32,30 +32,30 @@
 #define A_FREQ_BIG 200
 /*神風兵*/
 #define POWER_KAMIKAZE 500
-#define MAXHP_KAMIKAZE 500
+#define MAXHP_KAMIKAZE 700
 #define DEFENSE_KAMIKAZE 1
 #define SPEED_KAMIKAZE 5
 #define A_TYPE_KAMIKAZE SKY
-#define COST_KAMIKAZE 800
+#define COST_KAMIKAZE 500
 #define CLK_KAMIKAZE 150
 #define A_FREQ_KAMIKAZE 10
 /*バズーカ兵*/
-#define POWER_BAZOOKA 70
-#define MAXHP_BAZOOKA 1500
+#define POWER_BAZOOKA 80
+#define MAXHP_BAZOOKA 2000
 #define DEFENSE_BAZOOKA 1
 #define SPEED_BAZOOKA 2
 #define A_TYPE_BAZOOKA ALL
 #define COST_BAZOOKA 50
-#define CLK_BAZOOKA 100
-#define A_FREQ_BAZOOKA 15
+#define CLK_BAZOOKA 120
+#define A_FREQ_BAZOOKA 13
 /*セグウェイ兵*/
 #define POWER_SEGWAY 90
-#define MAXHP_SEGWAY 1200
+#define MAXHP_SEGWAY 1500
 #define DEFENSE_SEGWAY 1
 #define SPEED_SEGWAY 3
 #define A_TYPE_SEGWAY RAND
 #define COST_SEGWAY 30
-#define CLK_SEGWAY 180
+#define CLK_SEGWAY 90
 #define A_FREQ_SEGWAY 50
 
 /*戦車*/
@@ -69,14 +69,14 @@
 #define A_FREQ_TANK 100
 
 /*ゲッコー*/
-#define POWER_GEKKO 15
+#define POWER_GEKKO 7
 #define MAXHP_GEKKO 1800
 #define DEFENSE_GEKKO 1
 #define SPEED_GEKKO 2
 #define A_TYPE_GEKKO ALL
 #define COST_GEKKO 30
 #define CLK_GEKKO 120
-#define A_FREQ_GEKKO 0
+#define A_FREQ_GEKKO 1
 
 /*レールガン*/
 #define POWER_RAILGUN 1000

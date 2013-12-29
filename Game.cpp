@@ -26,7 +26,7 @@
 #include <time.h>
 #include <algorithm>
 
-const int castle_resouce[9] = { 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000, 5000 };
+const int castle_resouce[9] = { 4000, 4000, 4500, 5000, 5000, 5500, 6000, 6500, 7000 };
 const int Game::stage_W[9] = {0,STAGE1_W, STAGE2_W, STAGE3_W, STAGE4_W, STAGE5_W, STAGE6_W, STAGE7_W, STAGE8_W };
 Game* Game::ins;
 

@@ -37,10 +37,14 @@ void railgun::main(int front){
 	switch (state){
 	case UnitState::MOV:
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-		wait_time = atk_freq;
+		//wait_time = atk_freq;
 		break;
 	case ATK:
 		atk = false;
+
+		if (ani_count == 1){
+			Images::getIns()->playSE("sound/sen_mi_lasergun01.mp3");
+		}
 		if ((ani_count / ANIM_SPEED) == ANI_BEAM - 1){
 			if (!stopper){
 				stopper = true;
@@ -48,6 +52,7 @@ void railgun::main(int front){
 					Game::getIns()->effect_create(i, WINDOW_Y - 240, EXP);
 				shared_ptr<AttackRange> p(new AttackRange(x - WID_BEAM+80, x, power, RAND));
 				Game::getIns()->push_attack_list(p, ENEMY);
+				Images::getIns()->playSE("sound/sen_ge_taihou08.mp3");
 			}
 		}
 		else{

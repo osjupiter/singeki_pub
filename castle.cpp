@@ -4,7 +4,7 @@
 #include "bigExplode.h"
 const int castle::castle_hp[9] = { 5000, 12000, 16000, 20000, 24000, 28000, 32000, 36000,40000};
 const int meka_castle_hp[9] = { 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000 };
-const int castle_resouce[9] = { 500, 700, 800, 800, 900, 900, 1000, 1000, 1000 };
+
 //const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
 const int castle::draw_gap[9][3] = {
 	{0,0,20},
@@ -53,25 +53,25 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	now_clk=0;
 	exist_clk=0;
 
-
+	
 	ii one[] = { ii(100, 10) };
-	ii two[] = { ii(70, 10), ii(100, 12) };
-	ii three[] = { ii(100, 12), ii(150, 11),ii(50,10) };
-	ii four[] = { ii(50, 12), ii(300, 11) };
-	ii five[] = { ii(40, 10), ii(50, 12) };
+	ii two[] = { ii(80, 10), ii(150, 12) };
+	ii three[] = { ii(150, 11),ii(50,10) };
+	ii four[] = { ii(99, 12), ii(300, 11) };
+	ii five[] = { ii(60, 10), ii(70, 12) };
 	ii six[] = { ii(30, 10), ii(400, 11), ii(70, 12)};
 	ii seven[] = { ii(1000, 13), ii(100, 11), ii(50, 10) };
 	ii eight[] = { ii(50, 12), ii(30, 11) };
-	ii nine[] = { ii(30, 10), ii(50, 12) ,ii(100, 11) ,ii(500, 13) };
+	ii nine[] = { ii(30, 10), ii(50, 12) ,ii(100, 11) ,ii(1000, 13) };
 
-	ii oneEvent[]={ii(0,10)};
-	ii twoEvent[]={ii(300,11)};
+	ii oneEvent[]={ii(0,12)};
+	ii twoEvent[]={ii(0,10)};
 	ii threeEvent[]={ii(30,11)};
 	ii fourEvent[]={ii(0,13)};
-	ii fiveEvent[]={ii(30,11)};
+	ii fiveEvent[]={ii(1000,13)};
 	ii sixEvent[]={ii(30,11)};
 	ii sevenEvent[]={ii(0,13)};
-	ii eightEvent[] = { ii(0, 13), ii(500, 13) };
+	ii eightEvent[] = { ii(0, 13), ii(1000, 13) };
 	ii nineEvent[]={ii(30,11)};
 
 
@@ -162,6 +162,8 @@ void castle::main(int front){
 			loop_count = 0;
 			Game::getIns()->stageInc();
 			hp = meka_castle_hp[stage];
+			Images::getIns()->playSE("sound/sen_ka_heirappa01.mp3");
+
 		}
 		break;
 	case CastleState::MEKA_DIE:

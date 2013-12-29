@@ -12,7 +12,7 @@ int gekko::num;
 gekko::gekko(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	dist = dist + DIST_GEKKO;
 	
-	power = POWER_GEKKO;
+	power = POWER_GEKKO*(1+0.2*lv);
 	hp = MAXHP_GEKKO + MAXHP_GEKKO*0.5*lv;
 	width = WID_GEKKO;
 	height = HEI_GEKKO;
