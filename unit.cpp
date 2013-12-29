@@ -14,7 +14,8 @@ void unit::main(){
 	ani_count++;
 }
 void unit::draw(int cx){
-
+	DrawLine(x-cx,y,x+width-cx,y,GetColor(255,0,0),5);
+	DrawLine(x-cx, y, x+(width)*hp/(maxhp*1.0)-cx, y, GetColor(0, 255, 0), 5);
 	//DrawBox(x - cx, y , x+width-cx,y+height ,GetColor(255, 0, 0), false);
 }
 

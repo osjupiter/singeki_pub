@@ -5,7 +5,7 @@
 
 #define ANIM_SPEED 6
 #define ANIM_SPEED_ATK 1
-#define DIST_GEKKO 100
+#define DIST_GEKKO 150
 int gekko::num;
 
 	
@@ -13,7 +13,7 @@ gekko::gekko(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	dist = dist + DIST_GEKKO;
 	
 	power = POWER_GEKKO;
-	hp = MAXHP_GEKKO+120*lv;
+	hp = MAXHP_GEKKO + MAXHP_GEKKO*0.5*lv;
 	width = WID_GEKKO;
 	height = HEI_GEKKO;
 	speed = SPEED_GEKKO + 0.5*SPEED_GEKKO;
@@ -21,9 +21,11 @@ gekko::gekko(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	num++;
 	type = RAND;
 	atk_type = A_TYPE_GEKKO;
-	cost = COST_GEKKO;
-	atk_freq = A_FREQ_GEKKO;
+	cost = COST_GEKKO+120*lv;
+	atk_freq = A_FREQ_GEKKO ;
 	unit_type = UnitType::_GEKKO;
+	maxhp = hp;
+
 }
 
 

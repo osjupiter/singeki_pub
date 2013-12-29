@@ -481,7 +481,7 @@ void Game::main(){
 
 		}
 	}
-	front_line = front_tmp;
+	front_line = max(front_tmp,front_S_tmp);
 
 	
 	

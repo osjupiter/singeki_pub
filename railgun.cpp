@@ -22,8 +22,10 @@ railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	cost = COST_RAILGUN+500*lv;
 	atk_freq = A_FREQ_RAILGUN;
 	stopper = false;
-	speed = SPEED_RAILGUN;
+	speed = SPEED_RAILGUN*(1+0.3*lv);
 	unit_type = UnitType::_RAILGUN;
+	maxhp = hp;
+
 }
 void railgun::init(){
 	num = 0;
@@ -35,6 +37,7 @@ void railgun::main(int front){
 	switch (state){
 	case UnitState::MOV:
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		wait_time = atk_freq;
 		break;
 	case ATK:
 		atk = false;

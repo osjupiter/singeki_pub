@@ -2,9 +2,9 @@
 #include "Images.h"
 #include "Game.h"
 #include "bigExplode.h"
-const int castle::castle_hp[9] = { 5000, 10000, 12000, 15000, 18000, 20000, 20000, 20000,22000};
+const int castle::castle_hp[9] = { 5000, 10000, 12000, 15000, 18000, 20000, 24000, 28000,30000};
 const int meka_castle_hp[9] = { 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000 };
-const int castle_resouce[9] = { 500, 500, 5000, 5000, 5000, 5000, 5000, 5000, 5000 };
+const int castle_resouce[9] = { 500, 700, 800, 800, 900, 900, 1000, 1000, 1000 };
 //const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
 const int castle::draw_gap[9][3] = {
 	{0,0,20},
@@ -40,7 +40,8 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	if (st == 0) x = 0;
 	else x = fx - width / 2;
 	loop_count = 0;
-	
+	maxhp = hp;
+
 	defense = 0;
 	stage = st;
 	tm = 0;
@@ -56,10 +57,10 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	ii one[] = { ii(100, 10) };
 	ii two[] = { ii(70, 10), ii(100, 12) };
 	ii three[] = { ii(100, 12), ii(150, 11),ii(50,10) };
-	ii four[] = { ii(40, 10), ii(80, 11) };
-	ii five[]={ii(30,10)};
-	ii six[]={ii(30,10)};
-	ii seven[]={ii(200,13)};
+	ii four[] = { ii(50, 12), ii(300, 11) };
+	ii five[] = { ii(40, 10), ii(50, 12) };
+	ii six[] = { ii(30, 10), ii(400, 11), ii(70, 12)};
+	ii seven[]={ii(1000,13)};
 	ii eight[]={ii(30,10)};
 	ii nine[]={ii(30,10)};
 
@@ -187,7 +188,7 @@ void castle::draw(int cx){
 	switch (state){
 	case CastleState::ACTIVE:
 		DrawGraph(x - draw_gap[stage][koma] - cx, y, Images::getIns()->g_castle[stage][koma], true);
-//		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
+		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 		break;
 	case CastleState::STAY:
 		DrawGraph(x - cx, y, Images::getIns()->g_castle[stage][0], true);
@@ -197,7 +198,7 @@ void castle::draw(int cx){
 		break;
 	case CastleState::OCCUPY:
 		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_castle[stage][2], true);
-//		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
+		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 
 		break;
 	case CastleState::MEKA_DIE:
@@ -212,7 +213,7 @@ void castle::damage(int d, UnitType op_unit_type){
 	int rand_x = rand() % 100, rand_y = rand() % 90;
 	switch (state){
 	case CastleState::ACTIVE:
-		if (rand() % 5 == 0){
+		if (rand() % 30 == 0){
 			switch (op_unit_type){
 				case UnitType::_BAZOOKA:
 				Game::getIns()->damage_effect_create(x + 100 +rand_x, y + height - HEI_CANNONSHOT + 35-rand_y, CANNONSHOT, true);
@@ -252,14 +253,16 @@ void castle::damage(int d, UnitType op_unit_type){
 		
 			}
 		}
-		hp -= max(d - defense, 0);
-		if (hp < 0){
-			Game::getIns()->effect_create(x, 0, BIGEXP);
-			loop_count = 0;
-			shared_ptr<AttackRange> p(new AttackRange(x, x + width, 100000, ALL));
-			Game::getIns()->push_attack_list(p, ENEMY);
+		if (stage != 8){
+			hp -= max(d - defense, 0);
+			if (hp < 0){
+				Game::getIns()->effect_create(x, 0, BIGEXP);
+				loop_count = 0;
+				shared_ptr<AttackRange> p(new AttackRange(x, x + width, 100000, ALL));
+				Game::getIns()->push_attack_list(p, ENEMY);
 
-			state = CastleState::MEKA_DIE;
+				state = CastleState::MEKA_DIE;
+			}
 		}
 		break;
 	case CastleState::MEKA_DIE:

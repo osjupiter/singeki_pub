@@ -6,7 +6,7 @@
 
 #define ANIM_SPEED 5
 #define DIST_SEGWAY 120
-#define BACK_SEGWAY 15
+#define BACK_SEGWAY 20
 int segway::num = 0;
 
 
@@ -62,7 +62,7 @@ void segway::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_segway_run[ani_count / ANIM_SPEED%ANI_SEGWAY], true);
 		break;
 	case UnitState::WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->g_segway_wait[min(ani_count / ANIM_SPEED,1)], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_segway_wait[1], true);
 		break;
 	case UnitState::DIE:
 		DrawGraph(x - cx, y, Images::getIns()->g_segway[0], true);
