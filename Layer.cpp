@@ -366,10 +366,10 @@ void MenuLayer::draw(){
 
 
 	//factory
-	DrawBox(221,62,221+66,62+60,GetColor(0,255,0),TRUE);
+	//DrawBox(221,62,221+66,62+60,GetColor(0,255,0),TRUE);
 
 	//option
-	DrawBox(130,50,130+60,50+20,GetColor(0,255,0),TRUE);
+	//DrawBox(130,50,130+60,50+20,GetColor(0,255,0),TRUE);
 
 
 	
@@ -394,11 +394,11 @@ void MenuLayer:: main(){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<PopFactoryLayer>(game));
 			m->Reset();
-		}else	if(testBox(130,50,130+60,50+20)){
+		}/*else	if(testBox(130,50,130+60,50+20)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<OptionLayer>());
 			m->Reset();
-		}else if(testBox(mx,my-mh,mx+mw,my+mh)){
+		}*/else if(testBox(mx,my-mh,mx+mw,my+mh)){
 			int targe=(m->X()-mx)/(double)mw*game->stage_W[game->getNowStage()];
 			game->setCamera(targe-WINDOW_X/2);
 			m->Reset();
