@@ -3,6 +3,7 @@
 #include "SceneNode.h"
 #include"Game.h"
 #include"Scene.h"
+#include <sstream>
 
 boolean Layer::testBox(int x1,int y1,int x2,int y2){
 		mouse_in* m=mouse_in::getIns();
@@ -296,7 +297,7 @@ void MenuLayer::draw(){
 	}
 	int margin=100;
 	DrawRotaGraph(margin+40,13,0.5,0,Images::getMusumeIcon(1),TRUE);
-	DrawFormatString(margin+55,0,GetColor(0,0,255),"%d/%d",game->getMusumeSum(),game->getBirthLimit());
+	//DrawFormatString(margin+55,0,GetColor(0,0,255),"%d/%d",game->getMusumeSum(),game->getBirthLimit());
 	DrawFormatStringToHandle(margin+55,0,GetColor(0,0,255),Images::getIns()->font,"%d/%d",game->getMusumeSum(),game->getBirthLimit());
 
 
@@ -641,11 +642,14 @@ void ChipFactoryLayer:: main(){
 		int hogex=x+rectw-iconsx-iconmarx*i;
 		if(hogex<x)continue;
 		if(testBox(hogex-25,y-25,hogex+25,y+25)){
-
-			if(timer>=5&&m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,"てすと","てすとだよ"));}
+			stringstream ss;
+			ss << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
+			if(timer>=5&&m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss.str()));}
 			if(m->LeftClick()){
-				game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]));
-				m->Reset();
+				if(game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]))){
+					m->Reset();
+					parentScene->rmLayer(18);
+				}
 			}
 		}
 
@@ -653,6 +657,7 @@ void ChipFactoryLayer:: main(){
 	if(testBox(x-25,y-25,x+10+w,y-25+h)){
 		timer++;
 		m->recieveOver();
+		m->Reset();
 	}else{
 		timer--;
 	}
@@ -702,12 +707,13 @@ void HOHEILayer::main(){
 }
 
 
-HoverLayer::HoverLayer(int _x,int _y,string _m1,string _m2){
+HoverLayer::HoverLayer(int _x,int _y,string _m1,string _m2,string _m3){
 	x=_x;
 	y=_y;
 	w=100,h=60;
 	mes1=_m1;
 	mes2=_m2;
+	mes3=_m3;
 	//if(y<WINDOW_Y/2)flag=1;
 	//else flag=0;
 	flag=0;
@@ -721,7 +727,9 @@ void HoverLayer::draw(){
 	DrawBox(x-25,hogey,x+200,hogey+h,GetColor(0,255,0),TRUE);
 	DrawFormatStringToHandle(hogex,hogey,GetColor(0,0,255),Images::getIns()->font,"%s",mes1.c_str());
 	
-	DrawFormatStringToHandle(hogex,hogey+10,GetColor(0,0,255),Images::getIns()->font,"%s",mes2.c_str());
+	DrawFormatStringToHandle(hogex+10,hogey+15,GetColor(0,0,255),Images::getIns()->font,"%s",mes2.c_str());
+
+	DrawFormatStringToHandle(hogex+10,hogey+30,GetColor(0,0,255),Images::getIns()->font,"%s",mes3.c_str());
 
 
 

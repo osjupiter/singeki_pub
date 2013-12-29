@@ -222,11 +222,11 @@ public:
 class HoverLayer:public Layer{
 private:
 	int x,y,w,h;
-	string mes1,mes2,id;
+	string mes1,mes2,id,mes3;
 	int flag;
 	
 public:
-	HoverLayer(int,int,string,string);
+	HoverLayer(int,int,string,string,string);
 	void draw();
 	void main();
 
