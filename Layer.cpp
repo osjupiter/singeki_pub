@@ -649,6 +649,7 @@ void ChipFactoryLayer:: main(){
 				if(game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]))){
 					m->Reset();
 					parentScene->rmLayer(18);
+					parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss.str()));
 				}
 			}
 		}
