@@ -56,7 +56,7 @@ Game::Game(){
 	musume_nuber_list.assign(10,0);
 	
 	//for DEBUG
-/*	for (int i = 0; i < 7; i++){
+	/*for (int i = 0; i < 7; i++){
 		stageInc();
 	}*/
 	
@@ -87,7 +87,7 @@ void Game::param_init(){
 void Game::background_init(){
 	for (int i = 0; i < STAGE_NUM; i++){
 		for (int j = 0; j < 5; j++){
-			if (j == 2){
+			if (j == 2 && (i!=5 && i!=6)){
 				shared_ptr<background> p(new background(stage_W[i], i, j, stage_W[i+1]-stage_W[i], true));
 				back_list.push_back(p);
 			}
@@ -550,7 +550,6 @@ void Game::draw(){
 	}
 
 	Test();
-	//if (mouse_in::getIns()->LeftClick())  birth(getNowStage() - 1, HOHEI);
 
 	atkrange_musume_list.clear();
 	atkrange_enemy_list.clear();

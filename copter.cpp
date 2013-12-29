@@ -16,7 +16,7 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	height = HEI_COPTER;
 	num++;
 	atk = false;
-	defense = DEFENSE_COPTER*lv;
+	defense = DEFENSE_COPTER*(1+0.9*lv);
 	type = SKY;
 	atk_type = RAND;
 	cost = COST_COPTER + 150 * lv;

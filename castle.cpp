@@ -208,7 +208,19 @@ void castle::draw(int cx){
 			DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_mekahaikyo, true);
 		break;
 	}
-	
+
+
+	int dx = x + width / 2 - 60 / 2;
+	int dy = 250;
+	DrawLine(dx - cx, dy + 3, dx + 60 - cx, dy + 3, GetColor(255, 0, 0), 5);
+	int i = hp;
+	for (int j = dx; i >5000; i -= 5000, j += 7){
+		DrawLine(j - cx, dy + 9, j - cx, dy + 15, GetColor(0, 255, 0), 3);
+
+	}
+
+	DrawLine(dx - cx, dy + 3, dx + 60 * max(i,0) / (5000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
+
 }
 
 void castle::damage(int d, UnitType op_unit_type){

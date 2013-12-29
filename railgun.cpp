@@ -67,7 +67,7 @@ void railgun::main(int front){
 		break;
 	case UnitState::WAIT:
 		if (wait_time>0)
-			state_change_flag = false;
+		state_change_flag = false;
 		else {
 			state_change_flag = true;
 			changeState(ATK);

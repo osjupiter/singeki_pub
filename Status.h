@@ -22,7 +22,7 @@
 #define A_FREQ_BALLOON 100
 
 /*ロボ兵*/
-#define POWER_BIG 300
+#define POWER_BIG 550
 #define MAXHP_BIG 4000
 #define DEFENSE_BIG 2
 #define SPEED_BIG 1
@@ -66,7 +66,7 @@
 #define A_TYPE_TANK RAND
 #define COST_TANK 10
 #define CLK_TANK 120
-#define A_FREQ_TANK 100
+#define A_FREQ_TANK 90
 
 /*ゲッコー*/
 #define POWER_GEKKO 7

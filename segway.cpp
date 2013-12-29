@@ -31,20 +31,24 @@ void segway::main(int front){
 		x += param->getParam(SPEED)*3;
 
 		if (atk){
+			Game::getIns()->effect_create(x - 125, WINDOW_Y - HEI_NOMALEXP + 25, NOMALEXP);
+
 			changeState(WAIT);
 		}
 
-		if (x-width > front){
+		if (x-width/2 > front){
 			atk = true;
+			
 			ani_count = 0;
 		}
 
 		break;
 	case UnitState::WAIT:
 		atk=false;
-		if (ani_count < 15){
+		if (ani_count < 18){
 			state_change_flag = false;
-			x -= BACK_SEGWAY;			
+			x -= BACK_SEGWAY;		
+
 		}
 		else{
 			state_change_flag = true;
