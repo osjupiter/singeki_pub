@@ -5,6 +5,7 @@
 #include <map>
 #include <iostream>
 #include<list>
+
 using namespace std;
 
 class LayerPushPop{
@@ -102,6 +103,7 @@ public:
 			pushPop.clear();
 	}
 	virtual void buttonPushed(string){}
+
 };
 
 

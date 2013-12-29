@@ -99,6 +99,8 @@ std::shared_ptr<Game> GameScene::getGame(){return game;}
 
 
 
+
+
 EndScene::EndScene(){
 	count=0;
 	endc=0;

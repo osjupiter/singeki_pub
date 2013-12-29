@@ -730,3 +730,42 @@ shared_ptr<Parameter> Game::getParam(int id){
 		if(id==0)throw "配列範囲外";  
 		return param_list[id];
 	}
+
+string Game::getParamSummary(ParamType p){
+	string s[]={
+		"敵に与えるダメージを強化する。",
+		"最大HPを増加させる。",
+		"足が速くなる。",
+		"ダメージを暗いにくくなる。",
+		"^o^",
+		"生産速度が増加する。",
+		"生産コストが安くなる。",
+		"攻撃後の大気時間が短くなる",
+	};
+	return s[p];
+	/*
+		base[POWER] = pw;
+	base[MAXHP] = mh;
+	base[SPEED] = sp;
+	base[DEFENSE] = def;
+	base[A_TYPE] = a_type;
+	base[CLK] = clock;
+	base[COST] = cos;
+	base[A_FREQ] = a_freq;
+	*/
+
+}
+
+string Game::getParamName(ParamType p){
+	string s[]={
+		"攻撃強化",
+		"HP増加",
+		"スピードアップ",
+		"防御アップ",
+		"^o^",
+		"高速生産",
+		"コストダウン",
+		"攻撃回数増加",
+	};
+	return s[p];
+}

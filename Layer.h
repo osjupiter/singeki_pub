@@ -17,6 +17,7 @@ class Game;
 	
 	15 Factory
 	16 ChipFActory
+	18 Hover
 	20 OptionLayer
 */
 
@@ -215,4 +216,20 @@ public:
 	HOHEILayer(shared_ptr<Game>,int,int);
 	void draw();
 	void main();
+};
+
+
+class HoverLayer:public Layer{
+private:
+	int x,y,w,h;
+	string mes1,mes2,id,mes3;
+	int flag;
+	
+public:
+	HoverLayer(int,int,string,string,string);
+	void draw();
+	void main();
+
+
+
 };
