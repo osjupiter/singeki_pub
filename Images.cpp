@@ -260,7 +260,7 @@ void Images::load(){
 	
 	blend=LoadBlendGraph("pic/blend.jpg");
 
-	//	font=CreateFontToHandle( "ÉÅÉCÉäÉI" , 25 , 3 ,DX_FONTTYPE_ANTIALIASING_EDGE_8X8) ;
+	font=CreateFontToHandle( NULL , 25 , 3 ,DX_FONTTYPE_ANTIALIASING_EDGE_8X8) ;
 
 	
 }

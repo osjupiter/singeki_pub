@@ -17,7 +17,7 @@
 #define MEKANEMU_FREQ 100
 
 #define THUNDER_POINT(x) x- MEKANEMU_DIST
-#define RANGE_TUNDER 110
+#define RANGE_TUNDER 120
 mekaNemu::mekaNemu(int fx,int fy,int st) :castle(fx,fy,st){
 	x = fx - WID_MEKANEMU;
 	width = WID_MEKANEMU;
@@ -32,7 +32,7 @@ void mekaNemu::main(int front){
 
 	switch (state){
 	case CastleState::ACTIVE:
-		if (rand() % 2 == 0){
+		if (rand() % 15 == 0){
 		//	if (rand() % 2 == 0){
 				int rand_x = rand() % (Game::stage_W[8] - Game::stage_W[7]);
 				
@@ -49,7 +49,7 @@ void mekaNemu::main(int front){
 		}
 
 
-		if ((front > THUNDER_POINT(x) - RANGE_TUNDER) && (wait_time<=0)){
+		if ((front+200> THUNDER_POINT(x) - RANGE_TUNDER) && (wait_time<=0)){
 				shared_ptr<AttackRange> p(new AttackRange(THUNDER_POINT(x) - RANGE_TUNDER, THUNDER_POINT(x) + RANGE_TUNDER, POWER_MEKANEMU, ALL));
 				Game::getIns()->push_attack_list(p, ENEMY);
 				Game::getIns()->effect_create(THUNDER_POINT(x) - RANGE_TUNDER, FIELD_H - HEI_SHOCK, SHOCK);

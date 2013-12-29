@@ -2,7 +2,7 @@
 
 /*歩兵*/
 #define POWER_HOHEI 10
-#define MAXHP_HOHEI 1000
+#define MAXHP_HOHEI 700
 #define DEFENSE_HOHEI 1
 #define SPEED_HOHEI 2
 #define A_TYPE_HOHEI RAND
@@ -18,12 +18,12 @@
 #define SPEED_BALLOON 2
 #define A_TYPE_BALLOON RAND
 #define COST_BALLOON 80
-#define CLK_BALLOON 120
+#define CLK_BALLOON 200
 #define A_FREQ_BALLOON 100
 
 /*ロボ兵*/
 #define POWER_BIG 300
-#define MAXHP_BIG 2000
+#define MAXHP_BIG 4000
 #define DEFENSE_BIG 2
 #define SPEED_BIG 1
 #define A_TYPE_BIG RAND
@@ -40,19 +40,19 @@
 #define CLK_KAMIKAZE 150
 #define A_FREQ_KAMIKAZE 10
 /*バズーカ兵*/
-#define POWER_BAZOOKA 50
+#define POWER_BAZOOKA 70
 #define MAXHP_BAZOOKA 1500
 #define DEFENSE_BAZOOKA 1
-#define SPEED_BAZOOKA 3
+#define SPEED_BAZOOKA 2
 #define A_TYPE_BAZOOKA ALL
 #define COST_BAZOOKA 50
-#define CLK_BAZOOKA 80
-#define A_FREQ_BAZOOKA 20
+#define CLK_BAZOOKA 100
+#define A_FREQ_BAZOOKA 15
 /*セグウェイ兵*/
 #define POWER_SEGWAY 100
 #define MAXHP_SEGWAY 1200
 #define DEFENSE_SEGWAY 1
-#define SPEED_SEGWAY 4
+#define SPEED_SEGWAY 3
 #define A_TYPE_SEGWAY RAND
 #define COST_SEGWAY 30
 #define CLK_SEGWAY 120
@@ -86,7 +86,7 @@
 #define A_TYPE_RAILGUN NOATK
 #define COST_RAILGUN 0
 #define CLK_RAILGUN 120
-#define A_FREQ_RAILGUN 500
+#define A_FREQ_RAILGUN 1000
 
 /*ヘリ*/
 #define POWER_COPTER 100
@@ -96,7 +96,7 @@
 #define A_TYPE_COPTER RAND
 #define COST_COPTER 50
 #define CLK_COPTER 120
-#define A_FREQ_COPTER 1000
+#define A_FREQ_COPTER 250
 
 
 

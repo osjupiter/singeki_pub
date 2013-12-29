@@ -93,7 +93,7 @@ Position enemy::getAtkType(){
 void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type){
-		if (rand() % 8 == 0){
+		if (rand() % 30 == 0){
 			int rand_x = rand() % width / 2, rand_y = rand() % height / 2;
 			switch (op_unit_type){
 			case UnitType::_BAZOOKA:

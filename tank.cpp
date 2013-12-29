@@ -5,7 +5,7 @@
 
 #define ANIM_SPEED 3
 #define ANIM_SPEED_DIE 2
-#define DIST_TANK 150
+#define DIST_TANK 200
 
 int tank::num;
 
@@ -16,7 +16,7 @@ tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 
 
 	dist = dist + DIST_TANK;
-	power = POWER_TANK +POWER_TANK*lv;
+	power = POWER_TANK +POWER_TANK*0.3*lv;
 	hp = MAXHP_TANK+MAXHP_TANK*lv;
 	speed = SPEED_TANK + 0.5*SPEED_TANK*lv;
 	defense = DEFENSE_TANK*lv;
