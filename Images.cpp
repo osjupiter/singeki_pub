@@ -194,11 +194,7 @@ void Images::load(){
 	//sound[0]=LoadSoundMem("sound/kuma.mp3");
 
 	
-	filelist.push_back("pic/game.png");
-	filelist.push_back("pic/start.png");
-	filelist.push_back("pic/exit.png");
-	filelist.push_back("pic/left.png");
-	filelist.push_back("pic/right.png");
+
 	filelist.push_back("pic/tou.png");
 
 	filelist.push_back("pic/ba.png");
@@ -253,8 +249,7 @@ void Images::load(){
 	filelist.push_back("pic/生産中止a.png");
 	filelist.push_back("pic/生産中止a2.png");
 	filelist.push_back("pic/MUI.png");
-	filelist.push_back("pic/まるなしMUI.png");
-	filelist.push_back("pic/SUI、オプション.png");
+
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
 	filelist.push_back("pic/MUIのステージのまる.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
