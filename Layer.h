@@ -183,7 +183,7 @@ class PopFactoryLayer:public Layer{
 private:
 
 	shared_ptr<Game> game;
-	int x,y,id,w,h,time,px,py;
+	int x,y,id,w,h,time,px,py,cx,cy;
 	int tate,yoko;
 	boolean livelist[10];
 public:

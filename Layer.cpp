@@ -560,11 +560,13 @@ void OptionLayer:: main(){
 }
 
 PopFactoryLayer::PopFactoryLayer(shared_ptr<Game> g){
-	x=100;
-	y=100;
+	x=257;
+	y=120;
 	time=0;
-	px=28;
-	py=49;
+	px=115;
+	py=45;
+	cx=91,cy=204;
+
 	tate=70,yoko=60;
 	for(int i=0;i<10;i++)
 		livelist[i]=false;
@@ -587,8 +589,8 @@ void PopFactoryLayer::draw(){
 	int zahyoux[7]={0,0,yoko,yoko,0,-yoko,-yoko};
 	int zahyouy[7]={-tate,-tate,-tate/2,tate/2,tate,tate/2,-tate/2};
 	for(int i=1;i<7;i++){
-		int tmpx=x+160-px+zahyoux[i]*0.2*time;
-		int tmpy=y+180-py+zahyouy[i]*0.2*time;
+		int tmpx=x+cx-px+zahyoux[i]*0.2*time;
+		int tmpy=y+cy-py+zahyouy[i]*0.2*time;
 		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::get("pic/カスタム用小さな歯車.png"),TRUE);
 		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)),TRUE);
 		
@@ -613,8 +615,8 @@ void PopFactoryLayer:: main(){
 	int zahyoux[7]={0,0,yoko,yoko,0,-yoko,-yoko};
 	int zahyouy[7]={-tate,-tate,-tate/2,tate/2,tate,tate/2,-tate/2};
 	for(int i=1;i<7;i++){
-		int tmpx=x+160-px+zahyoux[i]*0.2*time;
-		int tmpy=y+180-py+zahyouy[i]*0.2*time;
+		int tmpx=x+cx-px+zahyoux[i]*0.2*time;
+		int tmpy=y+cy-py+zahyouy[i]*0.2*time;
 		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)&&!livelist[i]&&m->isntOver()){
 			
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
@@ -628,7 +630,7 @@ void PopFactoryLayer:: main(){
 
 
 	
-	int _tx=x+160-px,_ty=y+180-py;
+	int _tx=x+cx-px,_ty=y+cy-py;
 	if(testBox(_tx-100,_ty-100,_tx+100,_ty+100)){
 		if(m->LeftClick())
 			m->Reset();
