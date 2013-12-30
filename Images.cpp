@@ -321,7 +321,6 @@ void Images::load(){
 
 	}
 
-
 	SetUseASyncLoadFlag( FALSE ); // ”ñ“¯Šú“Ç‚İ‚İƒtƒ‰ƒOOFF
 
 
