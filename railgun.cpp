@@ -20,7 +20,7 @@ railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	type = RAND;
 	atk_type = RAND;
 	cost = COST_RAILGUN+500*lv;
-	atk_freq = A_FREQ_RAILGUN*(1);
+	atk_freq = A_FREQ_RAILGUN*(1+0.2*(lv-4));
 	stopper = false;
 	speed = SPEED_RAILGUN*(1+0.3*lv);
 	unit_type = UnitType::_RAILGUN;
@@ -48,7 +48,7 @@ void railgun::main(int front){
 		if ((ani_count / ANIM_SPEED) == ANI_BEAM - 1){
 			if (!stopper){
 				stopper = true;
-				atk_freq += 200;
+				atk_freq += 300;
 				for (int i = x-WID_BEAM; i + WID_EXP < x ; i += WID_EXP-100)
 					Game::getIns()->effect_create(i, WINDOW_Y - 240, EXP);
 				shared_ptr<AttackRange> p(new AttackRange(x - WID_BEAM+80, x, power, RAND));

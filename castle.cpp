@@ -57,12 +57,12 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	ii one[] = { ii(110, 10) };
 	ii two[] = { ii(80, 10), ii(130, 12) };
 	ii three[] = { ii(150, 11),ii(49,10) };
-	ii four[] = { ii(80, 12), ii(150, 11) };
+	ii four[] = { ii(85, 12), ii(150, 11) };
 	ii five[] = { ii(60, 10), ii(70, 12) };
-	ii six[] = { ii(30, 10), ii(80, 12), ii(30, 10), ii(80, 12),  ii(150, 11), ii(30, 10), ii(80, 12) };
+	ii six[] = { ii(30, 10), ii(80, 12), ii(150, 11), ii(30, 10), ii(80, 12) };
 	ii seven[] = { ii(50, 10), ii(60, 12), ii(150, 11) };
 
-	ii eight[] = { ii(49, 12), ii(70, 11), ii(70, 11) };
+	ii eight[] = { ii(49, 12), ii(70, 10), ii(100, 11) };
 	ii nine[] = { ii(30, 10), ii(100, 12) ,ii(100, 11)  };
 
 	ii oneEvent[]={ii(0,10)};
@@ -71,7 +71,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	ii fourEvent[] = { ii(0, 13), ii(30, 10), ii(20, 11), };
 	ii fiveEvent[]={ii(1000,13)};
 	ii sixEvent[] = { ii(30, 10), ii(20, 11), ii(50, 12) };
-	ii sevenEvent[] = { ii(0, 13),ii(30, 10), ii(20, 11), ii(50, 12) };
+	ii sevenEvent[] = { ii(0, 13), ii(30, 10), ii(20, 11), ii(50, 12),ii(2000, 13) };
 	ii eightEvent[] = { ii(30, 10), ii(20, 11), ii(500, 13), ii(2500, 13), ii(3500, 13) };
 	ii nineEvent[]={ii(30,11)};
 
@@ -202,7 +202,7 @@ void castle::draw(int cx){
 		break;
 	case CastleState::OCCUPY:
 		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_castle[stage][2], true);
-		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
+		//DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 
 		break;
 	case CastleState::MEKA_DIE:
