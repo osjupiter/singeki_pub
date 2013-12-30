@@ -292,7 +292,6 @@ void Images::load(){
 	soundlist.push_back("sound/se_maoudamashii_system39.mp3");//
 	soundlist.push_back("sound/se_maoudamashii_system42.mp3");
 	
-	soundlist.push_back("sound/spawn.wav");
 	soundlist.push_back("sound/spawn.mp3");
 
 	
