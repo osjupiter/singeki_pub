@@ -4,13 +4,12 @@
 #include"mouse.h"
 
 #include "Game.h"
-
 #include"SceneManager.h"
 #include"Images.h"
 #include"Scene.h"
 //関数の持込-----------------------------------------------------
 
-
+#define MAINICON 101
 
 
 int lcheck(){
@@ -34,7 +33,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetOutApplicationLogValidFlag( false ) ; 
 	//SetMainWindowText("くっきー") ;
 	SetMainWindowText("侵略どうですか") ;
-
+	SetWindowIconID(MAINICON);
 	// ＤＸライブラリ初期化処理
 	if( DxLib_Init() == -1 ) return -1;
 	// グラフィックの描画先を裏画面にセット
