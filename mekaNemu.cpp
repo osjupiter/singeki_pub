@@ -17,7 +17,7 @@
 #define MEKANEMU_FREQ 100
 
 #define THUNDER_POINT(x) x- MEKANEMU_DIST
-#define RANGE_TUNDER 120
+#define RANGE_TUNDER 130
 mekaNemu::mekaNemu(int fx,int fy,int st) :castle(fx,fy,st){
 	x = fx - WID_MEKANEMU;
 	width = WID_MEKANEMU;

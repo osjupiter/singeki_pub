@@ -19,17 +19,17 @@
 #define A_TYPE_BALLOON RAND
 #define COST_BALLOON 80
 #define CLK_BALLOON 200
-#define A_FREQ_BALLOON 100
+#define A_FREQ_BALLOON 90
 
 /*ÉçÉ{ï∫*/
-#define POWER_BIG 550
-#define MAXHP_BIG 5500
+#define POWER_BIG 500
+#define MAXHP_BIG 5000
 #define DEFENSE_BIG 2
 #define SPEED_BIG 1
 #define A_TYPE_BIG RAND
 #define COST_BIG 300
 #define CLK_BIG 120
-#define A_FREQ_BIG 200
+#define A_FREQ_BIG 150
 /*ê_ïóï∫*/
 #define POWER_KAMIKAZE 600
 #define MAXHP_KAMIKAZE 700
@@ -86,7 +86,7 @@
 #define A_TYPE_RAILGUN NOATK
 #define COST_RAILGUN 0
 #define CLK_RAILGUN 120
-#define A_FREQ_RAILGUN 600
+#define A_FREQ_RAILGUN 300
 
 /*ÉwÉä*/
 #define POWER_COPTER 200

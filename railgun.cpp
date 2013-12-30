@@ -20,7 +20,7 @@ railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	type = RAND;
 	atk_type = RAND;
 	cost = COST_RAILGUN+500*lv;
-	atk_freq = A_FREQ_RAILGUN*(1+0.2*(lv-4));
+	atk_freq = A_FREQ_RAILGUN;
 	stopper = false;
 	speed = SPEED_RAILGUN*(1+0.3*lv);
 	unit_type = UnitType::_RAILGUN;
