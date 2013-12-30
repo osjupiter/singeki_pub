@@ -6,6 +6,35 @@
 Images Images::ins;
 
 void Images::load(){
+	SetUseASyncLoadFlag( FALSE ); // 非同期読み込みフラグOFF
+	//タイトルに使うものたちよ
+	filelist.push_back("pic/title.png");
+	filelist.push_back("pic/定刻ぼるけーの.png");
+	soundlist.push_back("sound/button03a.mp3");
+	soundlist.push_back("sound/se_maoudamashii_system49.wav");
+		
+	filelist.push_back("pic/test.jpg");
+	filelist.push_back("pic/black.jpg");
+	blend=LoadBlendGraph("pic/blend.jpg");
+	soundlist.push_back("sound/タイトル.mp3");
+
+		
+	for(auto s:filelist){
+		gs[s]=LoadGraph(s.c_str());
+
+	}	
+
+	for(auto s:soundlist){
+		ss[s]=LoadSoundMem(s.c_str());
+
+	}
+
+
+
+
+	SetUseASyncLoadFlag( TRUE ); // 非同期読み込みフラグON
+	
+
 	_nowBGM="";
 
 //	gs[0]=LoadGraph("pic/test.jpg");
@@ -163,10 +192,8 @@ void Images::load(){
 
 
 	//sound[0]=LoadSoundMem("sound/kuma.mp3");
+
 	
-	filelist.push_back("pic/test.jpg");
-	filelist.push_back("pic/black.jpg");
-	filelist.push_back("pic/title.png");
 	filelist.push_back("pic/game.png");
 	filelist.push_back("pic/start.png");
 	filelist.push_back("pic/exit.png");
@@ -243,8 +270,7 @@ void Images::load(){
 	filelist.push_back("pic/Lv.png");
 
 	soundlist.push_back("sound/kuma.mp3");
-	soundlist.push_back("sound/se_maoudamashii_system49.wav");
-	soundlist.push_back("sound/button03a.mp3");
+	
 	soundlist.push_back("sound/taihou03.mp3");
 	soundlist.push_back("sound/misairu.mp3");
 	soundlist.push_back("sound/shot002.wav");
@@ -257,32 +283,38 @@ void Images::load(){
 	//soundlist.push_back("sound/sen_mi_robo_bato01.mp3");
 	soundlist.push_back("sound/sen_ge_hasai02.mp3");
 	
-	soundlist.push_back("sound/橋.mp3"); 
+	
 	soundlist.push_back("sound/山.mp3");
 	soundlist.push_back("sound/森.mp3");
+
+	
+	soundlist.push_back("sound/ゲームオーバー.mp3");
+	/*
+	soundlist.push_back("sound/エンディング.mp3");
+	soundlist.push_back("sound/闇の世界.mp3");
+	soundlist.push_back("sound/橋.mp3"); 
 	soundlist.push_back("sound/草原.mp3");
 	soundlist.push_back("sound/都市.mp3");
 	soundlist.push_back("sound/洞窟.mp3");
 	soundlist.push_back("sound/夜戦.mp3");
-	soundlist.push_back("sound/エンディング.mp3");
-	soundlist.push_back("sound/ゲームオーバー.mp3");
-	soundlist.push_back("sound/タイトル.mp3");
-	soundlist.push_back("sound/闇の世界.mp3");
-
-	
+	*/
 	for(auto s:filelist){
-		gs[s]=LoadGraph(s.c_str());
+		if (gs.count(s) == 0)
+			gs[s]=LoadGraph(s.c_str());
 
 	}	
 
 	for(auto s:soundlist){
-		ss[s]=LoadSoundMem(s.c_str());
+		if (ss.count(s) == 0)
+			ss[s]=LoadSoundMem(s.c_str());
 
 	}
 
 	ChangeVolumeSoundMem(255*70/100, ss["sound/shot002.wav"]);
 
-	blend=LoadBlendGraph("pic/blend.jpg");
+
+	SetUseASyncLoadFlag( FALSE ); // 非同期読み込みフラグOFF
+
 
 
 	font=CreateFontToHandle( "メイリオ" , 13 , 3 ,DX_FONTTYPE_ANTIALIASING_EDGE_8X8) ;
@@ -407,3 +439,13 @@ void Images::load(){
 			}
 			ins._nowBGM=name;
 	}
+
+	void Images::LoadSound(string s){
+		SetUseASyncLoadFlag( TRUE ); // 非同期読み込みフラグOFF
+		if(ins.ss.count(s)==0)
+			ins.ss[s]=LoadSoundMem(s.c_str());
+		
+		SetUseASyncLoadFlag( FALSE ); // 非同期読み込みフラグOFF
+	}
+
+

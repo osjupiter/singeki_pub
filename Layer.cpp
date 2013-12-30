@@ -178,31 +178,39 @@ void StageClearLayer::draw(){
 }
 void StageClearLayer:: main(){
 	if(remain_time--<=0){
-		string s;
+		string s,n;
 		switch(stage_id){
 		case 1:
 			s="sound/X.mp3";
+			n="sound/–éí.mp3";
 			break;
 		case 2:
 			s="sound/–éí.mp3";
+			n="sound/‹´.mp3";
 			break;
 		case 3:
 			s="sound/‹´.mp3";
+			n="sound/‘Œ´.mp3";
 			break;
 		case 4:
 			s="sound/‘Œ´.mp3";
+			n="sound/“´ŒA.mp3";
 			break;
 		case 5:
 			s="sound/“´ŒA.mp3";
+			n="sound/“sŽs.mp3";
 			break;
 		case 6:
 			s="sound/“sŽs.mp3";
+			n="sound/ˆÅ‚Ì¢ŠE.mp3";
 			break;
 		case 7:
 			s="sound/ˆÅ‚Ì¢ŠE.mp3";
+			n="sound/ƒGƒ“ƒfƒBƒ“ƒO.mp3";
 			break;
 		}
 		Images::playBGM(s.c_str());
+		Images::LoadSound(n);
 		parentScene->rmLayer(thisLayerID);
 
 	}

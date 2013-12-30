@@ -39,3 +39,21 @@ public:
 	void enterScene();
 
 };
+
+class LogoScene : public SceneNode{
+	int count;
+public:
+	LogoScene();
+	void draw();
+	void main();
+
+};
+
+class LoadingScene : public SceneNode{
+	int count;
+public:
+	LoadingScene();
+	void draw();
+	void main();
+
+};

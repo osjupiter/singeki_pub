@@ -13,7 +13,7 @@ TitleScene::TitleScene(){
 }
 void TitleScene::buttonPushed(string id){
 	if(id=="start"){
-		SceneManager::getIns()->switchScene(std::make_shared<GameScene>());
+		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
 	}else{
 		DxLib_End() ;
 		exit(0);
@@ -25,6 +25,8 @@ void TitleScene::enterScene(){
 void TitleScene::leaveScene(){
 	Images::playBGM("");
 }
+
+
 
 GameScene::GameScene(){
 	std::shared_ptr<Game> p(new Game());
@@ -127,4 +129,30 @@ void EndScene::draw(){
 		DrawRectGraph(0,0,count-5200,450,WINDOW_X,WINDOW_Y,Images::get("pic/エンディング.png"),FALSE,FALSE);
 
 	
+}
+
+LogoScene::LogoScene(){
+	count=0;
+
+}
+void LogoScene::draw(){
+	int hage=Images::get("pic/定刻ぼるけーの.png");
+	DrawGraph(0,0,hage,FALSE);
+}
+void LogoScene::main(){
+	if(count++>60)
+		SceneManager::getIns()->switchScene(make_shared<TitleScene>());
+	DrawFormatString(0,0,GetColor(255,0,0),"%d",count);
+}
+
+
+LoadingScene::LoadingScene(){
+
+}
+void LoadingScene::main(){
+	if(GetASyncLoadNum()==0)
+		SceneManager::getIns()->switchScene(make_shared<GameScene>(),0,5);
+}
+void LoadingScene::draw(){
+	DrawString(0,0,"Now Loading...",GetColor(255,255,255));
 }
