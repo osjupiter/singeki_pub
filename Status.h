@@ -12,7 +12,7 @@
 #define A_FREQ_HOHEI 2
 
 /*風船兵*/
-#define POWER_BALLOON 100
+#define POWER_BALLOON 120
 #define MAXHP_BALLOON 800
 #define DEFENSE_BALLOON 1
 #define SPEED_BALLOON 2
@@ -23,7 +23,7 @@
 
 /*ロボ兵*/
 #define POWER_BIG 550
-#define MAXHP_BIG 4000
+#define MAXHP_BIG 5500
 #define DEFENSE_BIG 2
 #define SPEED_BIG 1
 #define A_TYPE_BIG RAND
@@ -31,7 +31,7 @@
 #define CLK_BIG 120
 #define A_FREQ_BIG 200
 /*神風兵*/
-#define POWER_KAMIKAZE 500
+#define POWER_KAMIKAZE 600
 #define MAXHP_KAMIKAZE 700
 #define DEFENSE_KAMIKAZE 1
 #define SPEED_KAMIKAZE 5
@@ -51,11 +51,11 @@
 /*セグウェイ兵*/
 #define POWER_SEGWAY 90
 #define MAXHP_SEGWAY 1500
-#define DEFENSE_SEGWAY 1
+#define DEFENSE_SEGWAY 2
 #define SPEED_SEGWAY 3
 #define A_TYPE_SEGWAY RAND
 #define COST_SEGWAY 30
-#define CLK_SEGWAY 90
+#define CLK_SEGWAY 80
 #define A_FREQ_SEGWAY 50
 
 /*戦車*/
@@ -71,7 +71,7 @@
 /*ゲッコー*/
 #define POWER_GEKKO 7
 #define MAXHP_GEKKO 1800
-#define DEFENSE_GEKKO 1
+#define DEFENSE_GEKKO 0
 #define SPEED_GEKKO 2
 #define A_TYPE_GEKKO ALL
 #define COST_GEKKO 30
@@ -79,8 +79,8 @@
 #define A_FREQ_GEKKO 0
 
 /*レールガン*/
-#define POWER_RAILGUN 1000
-#define MAXHP_RAILGUN 7000
+#define POWER_RAILGUN 1500
+#define MAXHP_RAILGUN 8000
 #define DEFENSE_RAILGUN 2
 #define SPEED_RAILGUN 1
 #define A_TYPE_RAILGUN NOATK

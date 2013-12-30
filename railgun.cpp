@@ -5,13 +5,13 @@
 
 #define ANIM_SPEED 1
 #define ANIM_SPEED_C 1
-#define DIST_RAILGUN 200
+#define DIST_RAILGUN 120
 int railgun::num = 0;
 
 railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	dist = dist + DIST_RAILGUN;
 	power = POWER_RAILGUN+POWER_RAILGUN*0.3*lv;
-	hp = MAXHP_RAILGUN+MAXHP_RAILGUN*0.5*lv;
+	hp = MAXHP_RAILGUN+MAXHP_RAILGUN*0.4*lv;
 	width = WID_RAILGUN;
 	height = HEI_RAILGUN;
 	num++;
@@ -20,12 +20,12 @@ railgun::railgun(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	type = RAND;
 	atk_type = RAND;
 	cost = COST_RAILGUN+500*lv;
-	atk_freq = A_FREQ_RAILGUN;
+	atk_freq = A_FREQ_RAILGUN*(1);
 	stopper = false;
 	speed = SPEED_RAILGUN*(1+0.3*lv);
 	unit_type = UnitType::_RAILGUN;
 	maxhp = hp;
-
+	wait_time = 0;
 }
 void railgun::init(){
 	num = 0;
@@ -48,6 +48,7 @@ void railgun::main(int front){
 		if ((ani_count / ANIM_SPEED) == ANI_BEAM - 1){
 			if (!stopper){
 				stopper = true;
+				atk_freq += 200;
 				for (int i = x-WID_BEAM; i + WID_EXP < x ; i += WID_EXP-100)
 					Game::getIns()->effect_create(i, WINDOW_Y - 240, EXP);
 				shared_ptr<AttackRange> p(new AttackRange(x - WID_BEAM+80, x, power, RAND));

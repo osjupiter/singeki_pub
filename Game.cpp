@@ -314,6 +314,11 @@ void Game::damage_effect_create(int fx,int fy,int e_type,bool TurnFlag){
 						effect_list.push_back(p);
 						break;
 	}
+	case NOMALEXP:{
+					  shared_ptr<effect> p(new nomalExp(fx, fy,true));
+					  effect_list.push_back(p);
+					  break;
+	}
 	}
 }
 
@@ -549,7 +554,7 @@ void Game::draw(){
 			i->draw(x);
 	}
 
-	Test();
+	//Test();
 
 	atkrange_musume_list.clear();
 	atkrange_enemy_list.clear();

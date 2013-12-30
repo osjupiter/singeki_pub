@@ -87,13 +87,23 @@ void mekaNemu::main(int front){
 void mekaNemu::draw(int cx){
 	DrawLine(THUNDER_POINT(x) - RANGE_TUNDER-cx,0, THUNDER_POINT(x) - RANGE_TUNDER-cx, WINDOW_Y,GetColor(255, 255, 0),5);
 	
-
+	int dx = x + width / 2 - 60 / 2;
+	int dy = 240;
+	int i = hp;
 	switch (state){
 	case CastleState::ACTIVE:
 		DrawGraph(x - cx, y, Images::getIns()->g_castle[stage][ani_count/ANIM_SPEED%ANI_MEKANEMU], true);
 		if (atk_flag)
 			DrawGraph(x - cx - WID_TUNDER+95, WINDOW_Y-HEI_TUNDER+10, Images::getIns()->g_thunder_mekanemu[ani_count / ANIM_SPEED_THUNDER%ANI_THUNDER], true);
-		DrawFormatString(FIELD_W - 50, 200, GetColor(0, 0, 0), "%d", hp);
+//		DrawFormatString(FIELD_W - 50, 200, GetColor(0, 0, 0), "%d", hp);
+	
+
+		DrawLine(dx - cx, dy + 3, dx + 60 - cx, dy + 3, GetColor(255, 0, 0), 5);
+	
+		for (int j = dx; i >10000; i -= 10000, j += 7){
+			DrawLine(j - cx, dy + 9, j - cx, dy + 15, GetColor(0, 255, 0), 3);
+
+		}
 		break;
 	case CastleState::STAY:
 	/*	DrawGraph(x - cx, y, Images::getIns()->g_castle[stage][ani_count / ANIM_SPEED%ANI_MEKANEMU], true);

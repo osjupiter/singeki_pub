@@ -31,8 +31,9 @@ void segway::main(int front){
 		x += param->getParam(SPEED)*3;
 
 		if (atk){
-			Game::getIns()->effect_create(x - 125, WINDOW_Y - HEI_NOMALEXP + 25, NOMALEXP);
-
+			//Game::getIns()->effect_create(x - 125, WINDOW_Y - HEI_NOMALEXP + 25, NOMALEXP);
+			Images::playSE("sound/sen_mi_robo_bato01.mp3");
+			Game::getIns()->damage_effect_create(x - 125 +5, WINDOW_Y - HEI_NOMALEXP + 25, NOMALEXP);
 			changeState(WAIT);
 		}
 
