@@ -10,7 +10,7 @@ int copter::num = 0;
 
 copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	dist = dist + DIST_COPTER;
-	power = POWER_COPTER*(1+0.2)*lv;
+	power = POWER_COPTER*(1+0.2*lv);
 	hp = MAXHP_COPTER+0.7*MAXHP_COPTER*lv;
 	width = WID_COPTER;
 	height = HEI_COPTER;
