@@ -757,7 +757,7 @@ void HOHEILayer::main(){
 			timer=0;
 			flag=0;
 			
-				Images::playSE("sound/se_maoudamashii_system42.mp3");
+				Images::playSE("sound/spawn.wav");
 		}
 	}
 }
