@@ -4,7 +4,7 @@
 #include"DxLib.h"
 using namespace std;
 class SceneNode;
-class Game;
+class Game;class HoverLayer;
 
 /*
 	0 Game
@@ -195,7 +195,7 @@ public:
 
 class ChipFactoryLayer:public Layer{
 private:
-
+	shared_ptr<HoverLayer> hov[3];
 	shared_ptr<Game> game;
 	int x,y,id,iconmarx,iconsx,w,h;
 	boolean* live;
