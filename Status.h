@@ -66,7 +66,7 @@
 #define A_TYPE_TANK RAND
 #define COST_TANK 10
 #define CLK_TANK 120
-#define A_FREQ_TANK 90
+#define A_FREQ_TANK 91
 
 /*ÉQÉbÉRÅ[*/
 #define POWER_GEKKO 7
@@ -96,7 +96,7 @@
 #define A_TYPE_COPTER RAND
 #define COST_COPTER 50
 #define CLK_COPTER 120
-#define A_FREQ_COPTER 350
+#define A_FREQ_COPTER 351
 
 
 

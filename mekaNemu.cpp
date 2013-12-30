@@ -85,7 +85,7 @@ void mekaNemu::main(int front){
 }
 
 void mekaNemu::draw(int cx){
-	DrawLine(THUNDER_POINT(x) - RANGE_TUNDER-cx,0, THUNDER_POINT(x) - RANGE_TUNDER-cx, WINDOW_Y,GetColor(255, 255, 0),5);
+	//DrawLine(THUNDER_POINT(x) - RANGE_TUNDER-cx,0, THUNDER_POINT(x) - RANGE_TUNDER-cx, WINDOW_Y,GetColor(255, 255, 0),5);
 	
 	int dx = x + width / 2 - 60 / 2;
 	int dy = 240;
