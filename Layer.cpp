@@ -700,7 +700,7 @@ void ChipFactoryLayer:: main(){
 				parentScene->addLayer(18,hov[i]);
 				
 			}
-			if(m->LeftClick()){
+			if(timer>=5&&m->LeftClick()){
 				if(game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]))){
 					m->Reset();
 					stringstream ss2;
