@@ -747,9 +747,8 @@ void HoverLayer::draw(){
 	if(flag==1)hogey+=h+50;
 	int hogex=x-25+10;
 
-	DrawBox(x-25,hogey,x+200,hogey+h,GetColor(0,255,0),TRUE);
-	DrawGraph(x-25-80,hogey-75,Images::get("pic/ポップアップウインドウ.png"),TRUE);
-	DrawGraph(x-25-80,hogey-75,Images::get("pic/ポップアップ歯車.png"),TRUE);
+	DrawGraph(x-25-80,hogey-85,Images::get("pic/ポップアップウインドウ.png"),TRUE);
+	DrawGraph(x-25-80,hogey-85,Images::get("pic/ポップアップ歯車.png"),TRUE);
 
 	DrawFormatStringToHandle(hogex,hogey,GetColor(255,255,255),Images::getIns()->font,"%s",mes1.c_str());
 	
