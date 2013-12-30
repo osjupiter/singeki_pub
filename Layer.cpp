@@ -178,31 +178,39 @@ void StageClearLayer::draw(){
 }
 void StageClearLayer:: main(){
 	if(remain_time--<=0){
-		string s;
+		string s,n;
 		switch(stage_id){
 		case 1:
 			s="sound/X.mp3";
+			n="sound/–éí.mp3";
 			break;
 		case 2:
 			s="sound/–éí.mp3";
+			n="sound/‹´.mp3";
 			break;
 		case 3:
 			s="sound/‹´.mp3";
+			n="sound/‘Œ´.mp3";
 			break;
 		case 4:
 			s="sound/‘Œ´.mp3";
+			n="sound/“´ŒA.mp3";
 			break;
 		case 5:
 			s="sound/“´ŒA.mp3";
+			n="sound/“sŽs.mp3";
 			break;
 		case 6:
 			s="sound/“sŽs.mp3";
+			n="sound/ˆÅ‚Ì¢ŠE.mp3";
 			break;
 		case 7:
 			s="sound/ˆÅ‚Ì¢ŠE.mp3";
+			n="sound/ƒGƒ“ƒfƒBƒ“ƒO.mp3";
 			break;
 		}
 		Images::playBGM(s.c_str());
+		Images::LoadSound(n);
 		parentScene->rmLayer(thisLayerID);
 
 	}
@@ -366,10 +374,10 @@ void MenuLayer::draw(){
 
 
 	//factory
-	DrawBox(221,62,221+66,62+60,GetColor(0,255,0),TRUE);
+	//DrawBox(221,62,221+66,62+60,GetColor(0,255,0),TRUE);
 
 	//option
-	DrawBox(130,50,130+60,50+20,GetColor(0,255,0),TRUE);
+	//DrawBox(130,50,130+60,50+20,GetColor(0,255,0),TRUE);
 
 
 	
@@ -394,11 +402,11 @@ void MenuLayer:: main(){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<PopFactoryLayer>(game));
 			m->Reset();
-		}else	if(testBox(130,50,130+60,50+20)){
+		}/*else	if(testBox(130,50,130+60,50+20)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<OptionLayer>());
 			m->Reset();
-		}else if(testBox(mx,my-mh,mx+mw,my+mh)){
+		}*/else if(testBox(mx,my-mh,mx+mw,my+mh)){
 			int targe=(m->X()-mx)/(double)mw*game->stage_W[game->getNowStage()];
 			game->setCamera(targe-WINDOW_X/2);
 			m->Reset();
@@ -656,7 +664,9 @@ void ChipFactoryLayer:: main(){
 				if(game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]))){
 					m->Reset();
 					parentScene->rmLayer(18);
-					parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss.str()));
+					stringstream ss2;
+					ss2 << "ŠJ”­ƒRƒXƒg:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
+					parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str()));
 				}
 			}
 		}
@@ -689,8 +699,9 @@ void HOHEILayer::draw(){
 
 	int bright=0;
 
+	DrawBox(185,20,180+45,20+55,GetColor(0,127,127),TRUE);
 	DrawRectGraph(x,y+69-tmph,0,69-tmph,80,tmph,Images::get("pic/•à•ºƒ{ƒ^ƒ“2.png"),TRUE,FALSE);
-	if(flag>20){
+	if(flag>0&&flag<21){
 		DrawGraph(x,y,Images::get("pic/•à•ºƒ{ƒ^ƒ“1m.png"),TRUE);
 	}else{
 		DrawGraph(x,y,Images::get("pic/•à•ºƒ{ƒ^ƒ“1.png"),TRUE);	

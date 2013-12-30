@@ -26,7 +26,7 @@ public:
 	void switchScene(SN_Ptr p);
 	void changeScene(SN_Ptr s,boolean doLeave);
 	void changeScene(SN_Ptr s);
-
+	void switchScene(SN_Ptr p,int wait,int time);
 
 
 };

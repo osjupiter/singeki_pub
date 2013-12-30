@@ -81,4 +81,5 @@ public:
 	static int getMusumeIcon(int,boolean=false);
 	static int getSiroIcon(int,boolean=false);
 	static int getParamTypeIcon(ParamType,boolean=false);
+	static void LoadSound(string);
 };
