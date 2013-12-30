@@ -136,7 +136,7 @@ class MenuLayer:public Layer{
 private:
 	int onMouseTime[3];
 	shared_ptr<Game> game;
-	int xlist[9];
+	int xlist[9],onmouse[9],customon;
 	double ratelist[9];
 	int lx,ly,lw,lh,martop;
 	int mx,my,mw,mh;

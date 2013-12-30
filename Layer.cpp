@@ -104,6 +104,7 @@ void SelectLayer::main(){
 				p->getGame()->setProduct(id,i);
 				parentScene->rmLayer(thisLayerID);
 				parentScene->rmLayer(18);
+				Images::playSE("sound/se_maoudamashii_system42.mp3");
 			}
 		}
 	}
@@ -283,6 +284,7 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 		//xlist[i]=g->stage_W[i]/(double)g->stage_W[7]*lw+lx;
 		xlist[i]=i/(double)8*lw+lx;
 		ratelist[i]=1.0;
+		onmouse[i]=0;
 	}
 	martop=15;
 
@@ -290,6 +292,7 @@ MenuLayer::MenuLayer(shared_ptr<Game> g){
 	my=100;
 	mw=375;
 	mh=16;
+	customon=0;
 
 }
 void MenuLayer::draw(){
@@ -344,7 +347,7 @@ void MenuLayer::draw(){
 				DrawBox(_x-25,_y+55,_x-25+50*f,_y+60,GetColor(0,255,0),TRUE);
 			}
 		}else{
-			int tmp=Images::get("pic/tou.png");
+			//int tmp=Images::get("pic/tou.png");
 			//DrawRotaGraph(_x,_y,_rate,0,tmp,TRUE);
 		}
 		
@@ -399,10 +402,15 @@ void MenuLayer:: main(){
 		int _w=25;
 		ratelist[i]=1.0;
 		if((game->getNowStage()>i)&& testBox(_x-_w,_y-_w,_x+_w,_y+_w)){
+			
+			if(onmouse[i]==0){Images::playSE("sound/button03a.mp3");onmouse[i]=1;}
 			if(m->LeftClick()){
+
 				m->Reset();
 				parentScene->addLayer(3,make_shared<SelectLayer>(_x,_y+35,i));
 			}
+		}else{
+			onmouse[i]=0;
 		}
 	}
 	if(m->LeftClick()&&m->isntOver()){
@@ -419,6 +427,14 @@ void MenuLayer:: main(){
 			game->setCamera(targe-WINDOW_X/2);
 			m->Reset();
 		}
+	}
+	if(testBox(221,62,221+66,62+60)){
+		if(customon==0){
+			customon=1;
+			Images::playSE("sound/button03a.mp3");
+		}
+	}else{
+			customon=0;
 	}
 
 }
@@ -681,7 +697,7 @@ void ChipFactoryLayer:: main(){
 					m->Reset();
 					//parentScene->rmLayer(18);
 					stringstream ss2;
-
+					Images::playSE("sound/se_maoudamashii_system39.mp3");
 					ss2 << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
 					hov[i]->setString(game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str());
 					//parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str()));
@@ -738,6 +754,8 @@ void HOHEILayer::main(){
 			game->birth(game->getNowStage()-1, HOHEI);
 			timer=0;
 			flag=0;
+			
+				Images::playSE("sound/se_maoudamashii_system42.mp3");
 		}
 	}
 }
