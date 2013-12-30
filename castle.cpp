@@ -2,8 +2,8 @@
 #include "Images.h"
 #include "Game.h"
 #include "bigExplode.h"
-const int castle::castle_hp[9] = { 5000, 12000, 16000, 20000, 24000, 28000, 32000, 36000,40000};
-const int meka_castle_hp[9] = { 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000 };
+const int castle::castle_hp[9] = { 10000, 10000, 30000, 40000, 60000, 80000, 100000, 200000,500000};
+const int meka_castle_hp[9] = { 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000 };
 
 //const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
 const int castle::draw_gap[9][3] = {
@@ -54,24 +54,25 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	exist_clk=0;
 
 	
-	ii one[] = { ii(100, 10) };
-	ii two[] = { ii(80, 10), ii(150, 12) };
-	ii three[] = { ii(150, 11),ii(50,10) };
-	ii four[] = { ii(99, 12), ii(300, 11) };
+	ii one[] = { ii(110, 10) };
+	ii two[] = { ii(80, 10), ii(130, 12) };
+	ii three[] = { ii(150, 11),ii(49,10) };
+	ii four[] = { ii(85, 12), ii(150, 11) };
 	ii five[] = { ii(60, 10), ii(70, 12) };
-	ii six[] = { ii(30, 10), ii(400, 11), ii(70, 12)};
-	ii seven[] = { ii(1000, 13), ii(100, 11), ii(50, 10) };
-	ii eight[] = { ii(50, 12), ii(30, 11) };
-	ii nine[] = { ii(30, 10), ii(50, 12) ,ii(100, 11) ,ii(1000, 13) };
+	ii six[] = { ii(30, 10), ii(80, 12), ii(150, 11), ii(30, 10), ii(80, 12) };
+	ii seven[] = { ii(50, 10), ii(60, 12), ii(150, 11) };
+
+	ii eight[] = { ii(49, 12), ii(70, 10), ii(100, 11) };
+	ii nine[] = { ii(30, 10), ii(100, 12) ,ii(100, 11)  };
 
 	ii oneEvent[]={ii(0,10)};
 	ii twoEvent[]={ii(0,10)};
 	ii threeEvent[]={ii(30,11)};
-	ii fourEvent[]={ii(0,13)};
+	ii fourEvent[] = { ii(0, 13), ii(30, 10), ii(20, 11), };
 	ii fiveEvent[]={ii(1000,13)};
-	ii sixEvent[]={ii(30,11)};
-	ii sevenEvent[]={ii(0,13)};
-	ii eightEvent[] = { ii(0, 13), ii(1000, 13) };
+	ii sixEvent[] = { ii(30, 10), ii(20, 11), ii(50, 12) };
+	ii sevenEvent[] = { ii(0, 13), ii(30, 10), ii(20, 11), ii(50, 12),ii(2000, 13) };
+	ii eightEvent[] = { ii(30, 10), ii(20, 11), ii(500, 13), ii(2500, 13), ii(3500, 13) };
 	ii nineEvent[]={ii(30,11)};
 
 
@@ -150,6 +151,7 @@ void castle::main(int front){
 				exist_ID++;
 			}
 		}
+	
 		break;
 	case CastleState::STAY:
 
@@ -190,7 +192,7 @@ void castle::draw(int cx){
 	switch (state){
 	case CastleState::ACTIVE:
 		DrawGraph(x - draw_gap[stage][koma] - cx, y, Images::getIns()->g_castle[stage][koma], true);
-		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
+//		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 		break;
 	case CastleState::STAY:
 		DrawGraph(x - cx, y, Images::getIns()->g_castle[stage][0], true);
@@ -200,7 +202,7 @@ void castle::draw(int cx){
 		break;
 	case CastleState::OCCUPY:
 		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_castle[stage][2], true);
-		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
+		//DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 
 		break;
 	case CastleState::MEKA_DIE:
@@ -211,15 +213,15 @@ void castle::draw(int cx){
 
 
 	int dx = x + width / 2 - 60 / 2;
-	int dy = 250;
+	int dy = 240;
 	DrawLine(dx - cx, dy + 3, dx + 60 - cx, dy + 3, GetColor(255, 0, 0), 5);
 	int i = hp;
-	for (int j = dx; i >5000; i -= 5000, j += 7){
+	for (int j = dx; i >10000; i -= 10000, j += 7){
 		DrawLine(j - cx, dy + 9, j - cx, dy + 15, GetColor(0, 255, 0), 3);
 
 	}
 
-	DrawLine(dx - cx, dy + 3, dx + 60 * max(i,0) / (5000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
+	DrawLine(dx - cx, dy + 3, dx + 60 * max(i,0) / (10000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
 
 }
 

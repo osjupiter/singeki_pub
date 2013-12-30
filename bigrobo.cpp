@@ -9,7 +9,7 @@ int bigrobo::num = 0;
 
 
 bigrobo::bigrobo(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-	dist = rand()%100;
+	dist = rand()%50-10;
 	width = WID_BIG;
 	height = HEI_BIG;
 	num++;

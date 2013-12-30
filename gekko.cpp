@@ -13,11 +13,11 @@ gekko::gekko(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
 	dist = dist + DIST_GEKKO;
 	
 	power = POWER_GEKKO*(1+0.2*lv);
-	hp = MAXHP_GEKKO + MAXHP_GEKKO*0.5*lv;
+	hp = MAXHP_GEKKO + MAXHP_GEKKO*0.4*lv;
 	width = WID_GEKKO;
 	height = HEI_GEKKO;
 	speed = SPEED_GEKKO + 0.5*SPEED_GEKKO;
-	defense = DEFENSE_GEKKO*lv;
+	defense = DEFENSE_GEKKO*(1+0.3*lv);
 	num++;
 	type = RAND;
 	atk_type = A_TYPE_GEKKO;
