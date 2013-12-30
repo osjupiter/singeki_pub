@@ -58,7 +58,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy, 0){
 	ii two[] = { ii(80, 10), ii(130, 12) };
 	ii three[] = { ii(130, 11),ii(49,10) };
 	ii four[] = { ii(85, 12), ii(150, 11) };
-	ii five[] = { ii(60, 10), ii(70, 11), ii(30, 10) };
+	ii five[] = { ii(60, 10), ii(70, 11), ii(33, 10) };
 	ii six[] = { ii(33, 10), ii(80, 12), ii(110, 11), ii(50, 10), ii(80, 12) };
 	ii seven[] = { ii(50, 10), ii(70, 10), ii(100, 11)
 		,ii(50, 10), ii(70, 10), ii(100, 11) 
