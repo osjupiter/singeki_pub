@@ -271,6 +271,9 @@ void Images::load(){
 	filelist.push_back("pic/Lv.png");
 	filelist.push_back("pic/CUSTUM.png");
 	filelist.push_back("pic/CUSTUMon.png");
+	//ポップアップウインドウ.png
+	filelist.push_back("pic/ポップアップウインドウ.png");
+	filelist.push_back("pic/ポップアップ歯車.png");
 
 	soundlist.push_back("sound/kuma.mp3");
 	
@@ -320,7 +323,7 @@ void Images::load(){
 
 
 
-	font=CreateFontToHandle( "メイリオ" , 13 , 3 ,DX_FONTTYPE_ANTIALIASING_EDGE_8X8) ;
+	font=CreateFontToHandle( "メイリオ" , 13 , 5 ,DX_FONTTYPE_ANTIALIASING_EDGE_4X4) ;
 
 
 	

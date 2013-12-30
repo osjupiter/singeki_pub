@@ -732,26 +732,17 @@ shared_ptr<Parameter> Game::getParam(int id){
 
 string Game::getParamSummary(ParamType p){
 	string s[]={
-		"敵に与えるダメージを強化する。",
+		"敵へのダメージを増加させる。",
 		"最大HPを増加させる。",
 		"足が速くなる。",
-		"ダメージを暗いにくくなる。",
+		"ダメージを食らいにくくなる。",
 		"^o^",
 		"生産速度が増加する。",
 		"生産コストが安くなる。",
-		"攻撃後の大気時間が短くなる",
+		"攻撃後の待機時間が短くなる。",
 	};
 	return s[p];
-	/*
-		base[POWER] = pw;
-	base[MAXHP] = mh;
-	base[SPEED] = sp;
-	base[DEFENSE] = def;
-	base[A_TYPE] = a_type;
-	base[CLK] = clock;
-	base[COST] = cos;
-	base[A_FREQ] = a_freq;
-	*/
+
 
 }
 
@@ -789,9 +780,9 @@ string Game::getUnitSummary(UnitType p){
 		"節約しよう",
 		"一般兵、数が多い",
 		"空から爆弾を落とす",
-		"特徴は硬くて重い",
-		"ミサイルを一発撃つと家にかえってしまう",
-		"滞空攻撃ができる。",
+		"とてもかたい",
+		"帰宅部所属",
+		"空に攻撃ができる。",
 		"わりとメンヘラ"
 	};
 	return s[i];

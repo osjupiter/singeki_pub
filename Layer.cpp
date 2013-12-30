@@ -96,7 +96,7 @@ void SelectLayer::main(){
 				ss << "生産コスト:"<< game->getParam(i)->getParam(ParamType::COST);
 				costman=ss.str();
 			}
-			if(m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(tmpx,tmpy,game->getUnitName(UnitType(i)),costman,game->getUnitSummary(UnitType(i))));}
+			if(m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(tmpx,tmpy,game->getUnitName(UnitType(i)),game->getUnitSummary(UnitType(i)),costman));}
 			if(m->LeftClick()){
 				p->getGame()->setProduct(id,i);
 				parentScene->rmLayer(thisLayerID);
@@ -745,13 +745,17 @@ void HoverLayer::draw(){
 	//DrawBox(x-25,y-25,x+25,y+25,GetColor(255,0,0),TRUE);
 	int hogey=y-25-h;
 	if(flag==1)hogey+=h+50;
-	int hogex=x-25;
-	DrawBox(x-25,hogey,x+200,hogey+h,GetColor(0,255,0),TRUE);
-	DrawFormatStringToHandle(hogex,hogey,GetColor(0,0,255),Images::getIns()->font,"%s",mes1.c_str());
-	
-	DrawFormatStringToHandle(hogex+10,hogey+15,GetColor(0,0,255),Images::getIns()->font,"%s",mes2.c_str());
+	int hogex=x-25+10;
 
-	DrawFormatStringToHandle(hogex+10,hogey+30,GetColor(0,0,255),Images::getIns()->font,"%s",mes3.c_str());
+	DrawBox(x-25,hogey,x+200,hogey+h,GetColor(0,255,0),TRUE);
+	DrawGraph(x-25-80,hogey-75,Images::get("pic/ポップアップウインドウ.png"),TRUE);
+	DrawGraph(x-25-80,hogey-75,Images::get("pic/ポップアップ歯車.png"),TRUE);
+
+	DrawFormatStringToHandle(hogex,hogey,GetColor(255,255,255),Images::getIns()->font,"%s",mes1.c_str());
+	
+	DrawFormatStringToHandle(hogex+10,hogey+15,GetColor(0,255,0),Images::getIns()->font,"%s",mes2.c_str());
+
+	DrawFormatStringToHandle(hogex+10,hogey+30,GetColor(255,255,0),Images::getIns()->font,"%s",mes3.c_str());
 
 
 
