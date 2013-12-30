@@ -6,12 +6,12 @@
 #include"difine.h"
 
 
-#define SWAPWAIT 30
-#define SWAPTIME 15
 class SceneSwitcher:public SceneNode
 {
 	int dgree;
 	int phase;
+	int swapwait;
+	int swaptime;
 
 
 	SN_Ptr afterScene;
@@ -23,6 +23,7 @@ public:
 	SceneSwitcher(SN_Ptr b,SN_Ptr a);
 	void main();
 	void draw();
+	void setSwapTime(int,int);
 
 
 

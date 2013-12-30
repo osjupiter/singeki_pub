@@ -18,6 +18,12 @@ SceneManager SceneManager::ins;
 		SN_Ptr s(new SceneSwitcher(nowScene,p));
 		changeScene(s,false);
 	}
+	void SceneManager::switchScene(SN_Ptr p,int wait,int time){
+		auto hoge=new SceneSwitcher(nowScene,p);
+		hoge->setSwapTime(wait,time);
+		SN_Ptr s(hoge);
+		changeScene(s,false);
+	}
 	void SceneManager::changeScene(SN_Ptr s,boolean doLeave){
 		if(nowScene!=nullptr&&doLeave)nowScene->leaveScene();
 		nowScene=s;
