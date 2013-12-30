@@ -662,8 +662,8 @@ void Game::scrollLeft(int sx){
 void Game::scrollRight(int sx){
 	int r_end = stage_W[getNowStage()] + WID_CASTLE / 2 - 100;
 	x += sx;	
-	if (!CheckHitKey(KEY_INPUT_Z))
-		if (x + FIELD_W > r_end) x = r_end - FIELD_W;
+	
+	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
 }
 void Game::setCamera(int tar){
