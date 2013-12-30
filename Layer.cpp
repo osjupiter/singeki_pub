@@ -75,6 +75,9 @@ SelectLayer::SelectLayer(int _x,int _y,int _id){
 	py=33;
 	 tate=70,yoko=60;
 }
+void SelectLayer::called(){
+	Images::playSE("sound/se_maoudamashii_system49.wav");
+}
 void SelectLayer::main(){
 	
 	mouse_in* m=mouse_in::getIns();
@@ -100,6 +103,7 @@ void SelectLayer::main(){
 			if(m->LeftClick()){
 				p->getGame()->setProduct(id,i);
 				parentScene->rmLayer(thisLayerID);
+				parentScene->rmLayer(18);
 			}
 		}
 	}
@@ -553,6 +557,10 @@ PopFactoryLayer::PopFactoryLayer(shared_ptr<Game> g){
 
 
 }
+void PopFactoryLayer::called(){
+
+	Images::playSE("sound/se_maoudamashii_system49.wav");
+}
 void PopFactoryLayer::draw(){
 		
 
@@ -669,6 +677,7 @@ void ChipFactoryLayer:: main(){
 					m->Reset();
 					parentScene->rmLayer(18);
 					stringstream ss2;
+
 					ss2 << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
 					parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str()));
 				}
@@ -759,6 +768,7 @@ void HoverLayer::draw(){
 
 
 }
+void HoverLayer::called(){Images::playSE("sound/button03a.mp3");}
 void HoverLayer::main(){
 	if(testBox(x-25,y-25,x+25,y+25)){
 		mouse_in::getIns()->recieveOver();

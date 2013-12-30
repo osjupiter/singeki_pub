@@ -93,6 +93,8 @@ public:
 	SelectLayer(int,int,int);
 	void draw();
 	void main();
+	void called();
+
 	
 };
 
@@ -188,6 +190,7 @@ public:
 	PopFactoryLayer(shared_ptr<Game>);
 	void draw();
 	void main();
+	void called();
 };
 
 class ChipFactoryLayer:public Layer{
@@ -229,6 +232,8 @@ public:
 	HoverLayer(int,int,string,string,string);
 	void draw();
 	void main();
+	void called();
+	void setString(string,string,string);
 
 
 
