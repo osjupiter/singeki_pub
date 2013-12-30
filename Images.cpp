@@ -252,7 +252,8 @@ void Images::load(){
 	filelist.push_back("pic/メカ草原城a2.png");
 	filelist.push_back("pic/生産中止a.png");
 	filelist.push_back("pic/生産中止a2.png");
-	filelist.push_back("pic/MUI.png");
+	filelist.push_back("pic/SUI.png");
+	filelist.push_back("pic/まるなしMUI.png");
 	filelist.push_back("pic/SUI、オプション.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
 	filelist.push_back("pic/MUIのステージのまる.png");
@@ -268,6 +269,8 @@ void Images::load(){
 	filelist.push_back("pic/歩兵ボタン3.png");
 	filelist.push_back("pic/エンディング.png");
 	filelist.push_back("pic/Lv.png");
+	filelist.push_back("pic/CUSTUM.png");
+	filelist.push_back("pic/CUSTUMon.png");
 
 	soundlist.push_back("sound/kuma.mp3");
 	

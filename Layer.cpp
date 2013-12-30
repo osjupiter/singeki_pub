@@ -297,7 +297,10 @@ void MenuLayer::draw(){
 
 	//Menu
 
-	DrawGraph(0,0,Images::get("pic/MUI.png"),TRUE);
+	//DrawGraph(0,0,Images::get("pic/MUI.png"),TRUE);
+	DrawGraph(0,0,Images::get("pic/SUI.png"),TRUE);
+	DrawGraph(0,0,Images::get("pic/‚Ü‚é‚È‚µMUI.png"),TRUE);
+
 
 
 	DrawRotaGraph(13,13,0.5,0,Images::get("pic/Ž‘Œ¹.png"),TRUE);
@@ -375,6 +378,7 @@ void MenuLayer::draw(){
 
 	//factory
 	//DrawBox(221,62,221+66,62+60,GetColor(0,255,0),TRUE);
+	DrawGraph(221-30,62-35,(testBox(221,62,221+66,62+60))?Images::get("pic/CUSTUMon.png"):Images::get("pic/CUSTUM.png"),TRUE);
 
 	//option
 	//DrawBox(130,50,130+60,50+20,GetColor(0,255,0),TRUE);
