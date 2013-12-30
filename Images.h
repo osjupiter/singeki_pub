@@ -82,4 +82,10 @@ public:
 	static int getSiroIcon(int,boolean=false);
 	static int getParamTypeIcon(ParamType,boolean=false);
 	static void LoadSound(string);
+	static void setting(){
+	
+
+	ChangeVolumeSoundMem(255*50/100, ins.ss["sound/shot002.wav"]);
+	ChangeVolumeSoundMem(255 * 70 / 100, ins.ss["sound/sen_mi_robo_bato01.mp3"]);
+	}
 };

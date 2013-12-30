@@ -318,9 +318,6 @@ void Images::load(){
 
 	}
 
-	ChangeVolumeSoundMem(255*50/100, ss["sound/shot002.wav"]);
-	ChangeVolumeSoundMem(255 * 70 / 100, ss["sound/sen_mi_robo_bato01.mp3"]);
-
 
 	SetUseASyncLoadFlag( FALSE ); // ”ñ“¯Šú“Ç‚İ‚İƒtƒ‰ƒOOFF
 
