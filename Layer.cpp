@@ -758,6 +758,8 @@ void HOHEILayer::main(){
 			flag=0;
 			
 				Images::playSE("sound/spawn.wav");
+				
+				Images::playSE("sound/spawn.mp3");
 		}
 	}
 }
