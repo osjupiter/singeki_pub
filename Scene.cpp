@@ -150,8 +150,10 @@ LoadingScene::LoadingScene(){
 
 }
 void LoadingScene::main(){
-	if(GetASyncLoadNum()==0)
+	if(GetASyncLoadNum()==0){
+		Images::setting();
 		SceneManager::getIns()->switchScene(make_shared<GameScene>(),0,5);
+	}
 }
 void LoadingScene::draw(){
 	DrawString(0,0,"Now Loading...",GetColor(255,255,255));

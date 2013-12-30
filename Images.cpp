@@ -252,7 +252,7 @@ void Images::load(){
 	filelist.push_back("pic/メカ草原城a2.png");
 	filelist.push_back("pic/生産中止a.png");
 	filelist.push_back("pic/生産中止a2.png");
-	filelist.push_back("pic/SUI.png");
+	filelist.push_back("pic/MUI.png");
 	filelist.push_back("pic/まるなしMUI.png");
 	filelist.push_back("pic/SUI、オプション.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");
@@ -292,6 +292,8 @@ void Images::load(){
 	soundlist.push_back("sound/se_maoudamashii_system39.mp3");//
 	soundlist.push_back("sound/se_maoudamashii_system42.mp3");
 	
+	soundlist.push_back("sound/spawn.wav");
+	
 	soundlist.push_back("sound/山.mp3");
 	soundlist.push_back("sound/森.mp3");
 
@@ -317,10 +319,6 @@ void Images::load(){
 			ss[s]=LoadSoundMem(s.c_str());
 
 	}
-
-	ChangeVolumeSoundMem(255*(40/100), ss["sound/shot002.wav"]);
-	ChangeVolumeSoundMem(255 * 70 / 100, ss["sound/sen_mi_robo_bato01.mp3"]);
-
 
 	SetUseASyncLoadFlag( FALSE ); // 非同期読み込みフラグOFF
 

@@ -177,7 +177,7 @@ StageClearLayer::StageClearLayer(int sid,int d){
 		remain_time=default_time;
 }
 void StageClearLayer::draw(){
-	DrawFormatString(0,0,GetColor(255,0,0),"%d is cleard. time = %d",stage_id,remain_time);
+	//DrawFormatString(0,0,GetColor(255,0,0),"%d is cleard. time = %d",stage_id,remain_time);
 	
 
 }
@@ -304,9 +304,9 @@ void MenuLayer::draw(){
 
 	//Menu
 
-	//DrawGraph(0,0,Images::get("pic/MUI.png"),TRUE);
-	DrawGraph(0,0,Images::get("pic/SUI.png"),TRUE);
-	DrawGraph(0,0,Images::get("pic/‚Ü‚é‚È‚µMUI.png"),TRUE);
+	DrawGraph(0,0,Images::get("pic/MUI.png"),TRUE);
+	//DrawGraph(0,0,Images::get("pic/SUI.png"),TRUE);
+	//DrawGraph(0,0,Images::get("pic/‚Ü‚é‚È‚µMUI.png"),TRUE);
 
 
 
@@ -757,7 +757,7 @@ void HOHEILayer::main(){
 			timer=0;
 			flag=0;
 			
-				Images::playSE("sound/se_maoudamashii_system42.mp3");
+				Images::playSE("sound/spawn.wav");
 		}
 	}
 }
