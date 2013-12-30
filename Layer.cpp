@@ -177,7 +177,7 @@ StageClearLayer::StageClearLayer(int sid,int d){
 		remain_time=default_time;
 }
 void StageClearLayer::draw(){
-	DrawFormatString(0,0,GetColor(255,0,0),"%d is cleard. time = %d",stage_id,remain_time);
+	//DrawFormatString(0,0,GetColor(255,0,0),"%d is cleard. time = %d",stage_id,remain_time);
 	
 
 }
