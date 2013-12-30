@@ -252,7 +252,7 @@ void Images::load(){
 	filelist.push_back("pic/メカ草原城a2.png");
 	filelist.push_back("pic/生産中止a.png");
 	filelist.push_back("pic/生産中止a2.png");
-	filelist.push_back("pic/SUI.png");
+	filelist.push_back("pic/MUI.png");
 	filelist.push_back("pic/まるなしMUI.png");
 	filelist.push_back("pic/SUI、オプション.png");
 	filelist.push_back("pic/ユニット選択ウインドウ.png");

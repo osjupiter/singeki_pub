@@ -304,9 +304,9 @@ void MenuLayer::draw(){
 
 	//Menu
 
-	//DrawGraph(0,0,Images::get("pic/MUI.png"),TRUE);
-	DrawGraph(0,0,Images::get("pic/SUI.png"),TRUE);
-	DrawGraph(0,0,Images::get("pic/‚Ü‚é‚È‚µMUI.png"),TRUE);
+	DrawGraph(0,0,Images::get("pic/MUI.png"),TRUE);
+	//DrawGraph(0,0,Images::get("pic/SUI.png"),TRUE);
+	//DrawGraph(0,0,Images::get("pic/‚Ü‚é‚È‚µMUI.png"),TRUE);
 
 
 
