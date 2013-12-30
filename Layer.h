@@ -234,6 +234,7 @@ public:
 	void main();
 	void called();
 	void setString(string,string,string);
+	void setPos(int,int);
 
 
 

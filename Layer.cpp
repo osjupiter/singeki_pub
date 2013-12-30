@@ -664,6 +664,11 @@ ChipFactoryLayer::ChipFactoryLayer(std::shared_ptr<Game> g,int _x,int _y,int _id
 	w=200;
 	h=50;
 
+	for(int i=0;i<3;i++){
+		//hov[i]=std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss.str());
+		hov[i]=std::make_shared<HoverLayer>(0,0,"","","");
+		
+	}
 
 }
 void ChipFactoryLayer::draw(){
@@ -690,14 +695,14 @@ void ChipFactoryLayer:: main(){
 			stringstream ss;
 			ss << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
 			if(timer>=5&&m->isntOver()){
-				hov[i]=std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss.str());
+				hov[i]->setPos(hogex,y);
+				hov[i]->setString(game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss.str());
 				parentScene->addLayer(18,hov[i]);
 				
 			}
 			if(m->LeftClick()){
 				if(game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]))){
 					m->Reset();
-					//parentScene->rmLayer(18);
 					stringstream ss2;
 					Images::playSE("sound/se_maoudamashii_system39.mp3");
 					ss2 << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
@@ -809,4 +814,10 @@ void HoverLayer::setString(string m1,string m2,string m3){
 		mes1=m1;
 	mes2=m2;
 	mes3=m3;
+}
+
+
+void HoverLayer::setPos(int _x,int _y){
+		x=_x;
+		y=_y;
 }
