@@ -12,6 +12,7 @@ protected:
 	int hp;
 	int maxhp;
 	int wait_time;
+	bool state_change_flag;
 	UnitType unit_type;
 
 	bool life;

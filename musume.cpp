@@ -56,6 +56,7 @@ void musume::draw(int cx){
 }
 
 void musume::changeState(UnitState next_state){
+	if (!state_change_flag && next_state != UnitState::DIE) return;
 	switch (next_state){
 	case UnitState::MOV:		
 		ani_count = 0;

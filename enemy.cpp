@@ -7,6 +7,7 @@ enemy::enemy(int fx, int fy, int ln,int lv) :unit(fx, fy, ln){
 }
 
 void enemy::main(int front){
+
 	unit::main();
 	if (wait_time>0)
 		wait_time--;
@@ -114,6 +115,7 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 
 
 void enemy::changeState(UnitState next_state){
+	if (!state_change_flag && next_state != UnitState::DIE) return;
 	switch (next_state){
 	case UnitState::MOV:
 		state = next_state;

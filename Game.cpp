@@ -56,7 +56,7 @@ Game::Game(){
 	musume_nuber_list.assign(10,0);
 	
 	//for DEBUG
-/*	for (int i = 0; i < 7; i++){
+	/*for (int i = 0; i < 7; i++){
 		stageInc();
 	}*/
 	
@@ -87,7 +87,7 @@ void Game::param_init(){
 void Game::background_init(){
 	for (int i = 0; i < STAGE_NUM; i++){
 		for (int j = 0; j < 5; j++){
-			if (j == 2){
+			if (j == 2 && (i!=5 && i!=6)){
 				shared_ptr<background> p(new background(stage_W[i], i, j, stage_W[i+1]-stage_W[i], true));
 				back_list.push_back(p);
 			}
@@ -181,7 +181,7 @@ void Game::birth(int st,int type){
 	}
 	case BIG:{
 		line = 2;
-		shared_ptr<musume> p(new bigrobo(stage_W[st], WINDOW_Y - HEI_BIG - line * 3, line, param_list[BIG]));
+		shared_ptr<musume> p(new bigrobo(stage_W[st], WINDOW_Y - HEI_BIG + line * 3, line, param_list[BIG]));
 		musume_list[line].push_back(p);
 
 		break;
@@ -550,7 +550,6 @@ void Game::draw(){
 	}
 
 	Test();
-	//if (mouse_in::getIns()->LeftClick())  birth(getNowStage() - 1, HOHEI);
 
 	atkrange_musume_list.clear();
 	atkrange_enemy_list.clear();
@@ -679,7 +678,7 @@ int Game::getParamLevel(int u_type, ParamType p_type){
 
 
 bool Game::incParamLevel(int u_type, ParamType p_type,int lvcost){
-	if (getResource() <= lvcost) return false;
+	if (getResource() < lvcost) return false;
 	
 	if (param_list[u_type]->LevelUp(p_type)){
 		useResource(lvcost);

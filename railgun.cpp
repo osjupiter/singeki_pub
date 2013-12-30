@@ -37,7 +37,7 @@ void railgun::main(int front){
 	switch (state){
 	case UnitState::MOV:
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-		//wait_time = atk_freq;
+		wait_time = atk_freq;
 		break;
 	case ATK:
 		atk = false;
@@ -60,12 +60,19 @@ void railgun::main(int front){
 		}
 
 		if (((ani_count / ANIM_SPEED) == ANI_BEAM)){
-			changeState(WAIT);
+			state_change_flag = true;
+			changeState(MOV);
 
 		}
 		break;
 	case UnitState::WAIT:
-
+		if (wait_time>0)
+		state_change_flag = false;
+		else {
+			state_change_flag = true;
+			changeState(ATK);
+			state_change_flag = false;
+		}
 		break;
 	case UnitState::DIE:
 		if (ani_count / 3 == 0 || ani_count / 3 == 8) {

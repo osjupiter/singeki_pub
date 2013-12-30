@@ -3,13 +3,13 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
-#define DIST_BIG 
+#define DIST_BIG 0
 int bigrobo::num = 0;
 
 
 
 bigrobo::bigrobo(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
-	dist = rand()%100+WID_SHOCK;
+	dist = rand()%100;
 	width = WID_BIG;
 	height = HEI_BIG;
 	num++;
@@ -33,10 +33,11 @@ void bigrobo::main(int front){
 
 		break;
 	case UnitState::ATK:
+		
 		if (ani_count / ANIM_SPEED % ANI_BIG_ATK == ANI_BIG_ATK - 1 ){
 			if (!stopper){
 				Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
-				shared_ptr<AttackRange> p(new AttackRange(x + 95, x + 95+ WID_SHOCK, param->getParam(POWER), RAND));
+				shared_ptr<AttackRange> p(new AttackRange(x + 120, x + 120+ WID_SHOCK, param->getParam(POWER), RAND));
 				Game::getIns()->push_attack_list(p, MUSUME);
 				Images::getIns()->playSE("sound/sen_ge_hasai02.mp3");
 
@@ -47,8 +48,12 @@ void bigrobo::main(int front){
 			stopper = false;
 		}
 		if ((ani_count / ANIM_SPEED == ANI_BIG_ATK )){
+			state_change_flag = true;
 			changeState(WAIT);
 			stopper = false;
+		}
+		else{
+			state_change_flag = false;
 		}
 		break;
 	case UnitState::DIE:

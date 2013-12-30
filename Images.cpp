@@ -135,8 +135,8 @@ void Images::load(){
 	back[4][4] = LoadGraph("dat/img/‘Œ´/”wŒi‚T|‚R.png");
 
 	back[5][0] = LoadGraph("dat/img/“´ŒA/”wŒi‚U|‚P.png");
-	back[5][1] = LoadGraph("dat/img/“´ŒA/”wŒi‚U|‚Q.png");
-	back[5][2] = 0;
+	back[5][1] = 0;
+	back[5][2] = LoadGraph("dat/img/“´ŒA/”wŒi‚U|‚Q.png");
 	back[5][3] = LoadGraph("dat/img/“´ŒA/”wŒi‚U|‚R.png");
 	back[5][4] = LoadGraph("dat/img/“´ŒA/”wŒi‚U|‚S.png");
 
@@ -310,7 +310,7 @@ void Images::load(){
 
 	}
 
-	ChangeVolumeSoundMem(255*70/100, ss["sound/shot002.wav"]);
+	ChangeVolumeSoundMem(255*60/100, ss["sound/shot002.wav"]);
 
 
 	SetUseASyncLoadFlag( FALSE ); // ”ñ“¯Šú“Ç‚İ‚İƒtƒ‰ƒOOFF

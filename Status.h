@@ -22,7 +22,7 @@
 #define A_FREQ_BALLOON 100
 
 /*ロボ兵*/
-#define POWER_BIG 300
+#define POWER_BIG 550
 #define MAXHP_BIG 4000
 #define DEFENSE_BIG 2
 #define SPEED_BIG 1
@@ -66,7 +66,7 @@
 #define A_TYPE_TANK RAND
 #define COST_TANK 10
 #define CLK_TANK 120
-#define A_FREQ_TANK 100
+#define A_FREQ_TANK 90
 
 /*ゲッコー*/
 #define POWER_GEKKO 7
@@ -76,7 +76,7 @@
 #define A_TYPE_GEKKO ALL
 #define COST_GEKKO 30
 #define CLK_GEKKO 120
-#define A_FREQ_GEKKO 1
+#define A_FREQ_GEKKO 0
 
 /*レールガン*/
 #define POWER_RAILGUN 1000
@@ -86,7 +86,7 @@
 #define A_TYPE_RAILGUN NOATK
 #define COST_RAILGUN 0
 #define CLK_RAILGUN 120
-#define A_FREQ_RAILGUN 1000
+#define A_FREQ_RAILGUN 600
 
 /*ヘリ*/
 #define POWER_COPTER 200
