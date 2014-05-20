@@ -1,4 +1,6 @@
 #pragma warning(disable:4244)
+
+
 #include "GV.h"
 #include"fps.h"
 #include"mouse.h"
@@ -7,6 +9,7 @@
 #include"SceneManager.h"
 #include"Images.h"
 #include"Scene.h"
+#include"Data.h"
 //ŠÖ”‚ÌŽž-----------------------------------------------------
 
 #define MAINICON 101
@@ -44,7 +47,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	fps_c::getIns()->fps_change(30);
 	Images::init();
 
-
+	Data::getIns()->Run();
 
 
 	SN_Ptr p(new LogoScene());
