@@ -4,7 +4,6 @@
 TitleScene::TitleScene(){
 	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/title.png")));
 	addLayer(0,p);
-	//LAY_Ptr q((new ButtonLayer(267,336,Images::get(""),0,0,233,98))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
 	LAY_Ptr q((new ButtonLayer(0,0,Images::get(""),0,0,WINDOW_X,WINDOW_Y))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
 	
 	addLayer(1,q);
@@ -13,7 +12,9 @@ TitleScene::TitleScene(){
 }
 void TitleScene::buttonPushed(string id){
 	if(id=="start"){
-		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
+		SceneManager::getIns()->switchScene(std::make_shared<WorldScene>(),0,5);
+	}else if(id=="enter"){
+		this->rmLayer(1);
 	}else{
 		DxLib_End() ;
 		exit(0);
@@ -25,6 +26,39 @@ void TitleScene::enterScene(){
 void TitleScene::leaveScene(){
 	Images::playBGM("");
 }
+
+
+
+
+
+WorldScene::WorldScene(){
+	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/world.png")));
+	addLayer(0,p);
+	LAY_Ptr q((new ButtonLayer(0,0,Images::get(""),0,0,WINDOW_X,WINDOW_Y))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+	
+	addLayer(1,q);
+
+	
+}
+void WorldScene::buttonPushed(string id){
+	if(id=="start"){
+		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
+	}else if(id=="enter"){
+		this->rmLayer(1);
+	}else{
+		DxLib_End() ;
+		exit(0);
+	}
+}
+void WorldScene::enterScene(){
+	Images::playBGM("sound/ƒ^ƒCƒgƒ‹.mp3");
+}
+void WorldScene::leaveScene(){
+	Images::playBGM("");
+}
+
+
+
 
 
 

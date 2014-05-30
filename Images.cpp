@@ -10,11 +10,13 @@ void Images::load(){
 	//タイトルに使うものたちよ
 	filelist.push_back("pic/title.png");
 	filelist.push_back("pic/定刻ぼるけーの.png");
+	filelist.push_back("pic/world.png");
 	soundlist.push_back("sound/button03a.mp3");
 	soundlist.push_back("sound/se_maoudamashii_system49.wav");
 		
 	filelist.push_back("pic/test.jpg");
 	filelist.push_back("pic/black.jpg");
+	
 	blend=LoadBlendGraph("pic/blend.jpg");
 	soundlist.push_back("sound/タイトル.mp3");
 

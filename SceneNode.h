@@ -24,6 +24,9 @@ class SceneNode
 	list<shared_ptr<LayerPushPop>> pushPop;
 	multimap<int, LAY_Ptr> layers;
 
+
+
+
 public:
 	SceneNode(void){}
 	
@@ -76,7 +79,10 @@ public:
 		std::shared_ptr<LayerPushPop> p(new LayerPushPop(false,i,m));
 		pushPop.push_back(p);
 	}
-	void listpushpop(){
+	
+	virtual void buttonPushed(string){}
+
+		void listpushpop(){
 		for(auto p:pushPop){
 			if(p->isPop){
 				if(p->pointer!=nullptr){
@@ -102,7 +108,6 @@ public:
 		if(!pushPop.empty())
 			pushPop.clear();
 	}
-	virtual void buttonPushed(string){}
 
 };
 

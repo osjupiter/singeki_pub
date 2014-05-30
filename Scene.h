@@ -30,6 +30,16 @@ public:
 	std::shared_ptr<Game> getGame();
 };
 
+class WorldScene : public SceneNode{
+
+public:
+	WorldScene();
+	void buttonPushed(string);
+	void enterScene();
+	void leaveScene();
+
+};
+
 class EndScene : public SceneNode{
 	int count,endc;
 public:
