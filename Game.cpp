@@ -25,6 +25,7 @@
 #include "nomalExp.h"
 #include <time.h>
 #include <algorithm>
+#include "CsvReader.h"
 
 const int castle_resouce[9] = { 4000, 4000, 4500, 5000, 5000, 5500, 6000, 6500, 7000 };
 const int Game::stage_W[9] = {0,STAGE1_W, STAGE2_W, STAGE3_W, STAGE4_W, STAGE5_W, STAGE6_W, STAGE7_W, STAGE8_W };
@@ -63,24 +64,34 @@ Game::Game(){
 }
 
 void Game::param_init(){
+	auto data=CsvReader::parseTable("dat/test.txt",",");
+	ParamType tmp[10][3];
+	int i=0;
+	for(auto a:data){
+		for(int j=0;j<3;j++){
+			tmp[i][j]=static_cast<ParamType>(stoi(a[j]));
+		}
+		i++;
+	}
+
 	param_list[HOHEI] = shared_ptr<Parameter>(
 		new Parameter(POWER_HOHEI, MAXHP_HOHEI
-		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI,ParamType::MAXHP,ParamType::CLK,ParamType::SPEED));
+		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI,tmp[0][0],tmp[0][1],tmp[0][2]));
 	param_list[BALLOON] = shared_ptr<Parameter>(
 		new Parameter(POWER_BALLOON, MAXHP_BALLOON
-		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON,ParamType::POWER,ParamType::MAXHP,ParamType::SPEED));
+		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON,tmp[1][0],tmp[1][1],tmp[1][2]));
 	param_list[BAZOOKA] = shared_ptr<Parameter>(
 		new Parameter(POWER_BAZOOKA, MAXHP_BAZOOKA
-		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA,ParamType::POWER,ParamType::SPEED,ParamType::CLK));
+		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA,tmp[2][0],tmp[2][1],tmp[2][2]));
 	param_list[BIG] = shared_ptr<Parameter>(
 		new Parameter(POWER_BIG, MAXHP_BIG
-		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG,ParamType::DEFENSE,ParamType::SPEED,ParamType::POWER));
+		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG,tmp[3][0],tmp[3][1],tmp[3][2]));
 	param_list[KAMIKAZE] = shared_ptr<Parameter>(
 		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
-		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE,ParamType::POWER,ParamType::SPEED,ParamType::CLK));
+		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE,tmp[4][0],tmp[4][1],tmp[4][2]));
 	param_list[SEGWAY] = shared_ptr<Parameter>(
 		new Parameter(POWER_SEGWAY, MAXHP_SEGWAY
-		, SPEED_SEGWAY, DEFENSE_SEGWAY, A_TYPE_SEGWAY, CLK_SEGWAY, COST_SEGWAY, A_FREQ_SEGWAY,ParamType::SPEED,ParamType::A_FREQ,ParamType::POWER));
+		, SPEED_SEGWAY, DEFENSE_SEGWAY, A_TYPE_SEGWAY, CLK_SEGWAY, COST_SEGWAY, A_FREQ_SEGWAY,tmp[5][0],tmp[5][1],tmp[5][2]));
 
 }
 

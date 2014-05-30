@@ -7,8 +7,9 @@
 
 class Data {
 	static Data ins;
-	std::map<std::string, std::string> dataTable;
+	std::map<std::string, int> dataTable;
 public:
+	std::map<std::string, std::string> paramTable;
 	void Run();
 	static Data* getIns();
 	
