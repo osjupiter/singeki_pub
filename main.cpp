@@ -46,6 +46,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	fps_c::getIns()->init();
 	fps_c::getIns()->fps_change(30);
 	Images::init();
+	SoundController::getIns()->load();
 
 	Data::getIns()->Run();
 

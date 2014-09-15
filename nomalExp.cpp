@@ -12,9 +12,9 @@ nomalExp::nomalExp(int fx, int fy, bool Ex) :effect(fx, fy){
 void nomalExp::main(){
 	effect::main();
 	if (ani_count == 1){
-		//Images::playSE("sound/taihou03.mp3");
+		//SoundController::getSE()->playSE("sound/taihou03.mp3");
 		if (!ExFlag)
-		Images::getIns()->playSE("sound/sen_ge_hasai02.mp3");
+		SoundController::getSE()->playSE("sound/sen_ge_hasai02.mp3");
 	}
 	if (ani_count / ANIM_SPEED % ANI_BIGEXP == ANI_NOMALEXP - 1){
 		del();

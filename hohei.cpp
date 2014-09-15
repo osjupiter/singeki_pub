@@ -26,7 +26,7 @@ void hohei::main(int front){
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED % ANI_HOHEI_ATK == 0){
 			if (!atk){
-				Images::playSE("sound/shot002.wav",true);
+				SoundController::getSE()->playSE("sound/shot002.wav",true);
 				
 				atk = true;
 			}

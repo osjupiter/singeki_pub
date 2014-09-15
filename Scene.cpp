@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "SceneManager.h"
 #include "Game.h"
+#include "SoundController.h"
 TitleScene::TitleScene(){
 	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/title.png")));
 	addLayer(0,p);
@@ -22,10 +23,10 @@ void TitleScene::buttonPushed(string id){
 	}
 }
 void TitleScene::enterScene(){
-	Images::playBGM("sound/タイトル.mp3");
+	SoundController::getBgm()->playBGM("sound/タイトル.mp3");
 }
 void TitleScene::leaveScene(){
-	Images::playBGM("");
+	SoundController::getBgm()->playBGM("");
 }
 
 
@@ -52,10 +53,10 @@ void WorldScene::buttonPushed(string id){
 	}
 }
 void WorldScene::enterScene(){
-	Images::playBGM("sound/タイトル.mp3");
+	SoundController::getBgm()->playBGM("sound/タイトル.mp3");
 }
 void WorldScene::leaveScene(){
-	Images::playBGM("");
+	SoundController::getBgm()->playBGM("");
 }
 
 
@@ -80,11 +81,11 @@ GameScene::GameScene(){
 }
 void GameScene::enterScene(){
 	//PlaySoundMem( Images::getSound("sound/kuma.mp3"),DX_PLAYTYPE_LOOP);
-	Images::playBGM("sound/山.mp3");
+	SoundController::getBgm()->playBGM("sound/山.mp3");
 }
 void GameScene::leaveScene(){
 	//StopSoundMem( Images::getSound("sound/kuma.mp3")) ;
-	Images::playBGM("");
+	SoundController::getBgm()->playBGM("");
 }
 void GameScene::beforemain(){
 	char Buf[ 256 ] ;
@@ -142,7 +143,7 @@ EndScene::EndScene(){
 	endc=0;
 }
 void EndScene::enterScene(){
-	Images::playBGM("sound/エンディング.mp3",false);
+	SoundController::getBgm()->playBGM("sound/エンディング.mp3",false);
 }
 void EndScene::main(){
 	count+=6;
@@ -183,7 +184,7 @@ LoadingScene::LoadingScene(){
 }
 void LoadingScene::main(){
 	if(GetASyncLoadNum()==0){
-		Images::setting();
+		SoundController::getSE()->setting();
 		SceneManager::getIns()->switchScene(make_shared<GameScene>(),0,5);
 	}
 }

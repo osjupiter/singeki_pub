@@ -38,10 +38,10 @@ void ButtonLayer::main(){
 	mouse_in* m=mouse_in::getIns();
 	if(x+bx<m->X()&&y+by<m->Y()&&m->X()<x+bx+bw&&m->Y()<y+by+bh){
 		if(!_oldMouseisin)
-			Images::playSE(_enterSE);
+			SoundController::getSE()->playSE(_enterSE);
 		if(_clicktype==ONMOUSE|| m->Left()==_clicktype){
 			parentScene->buttonPushed(id);
-			Images::playSE(_clickSE);
+			SoundController::getSE()->playSE(_clickSE);
 			mouse_in::getIns()->Reset();
 		}
 		_oldMouseisin=true;
@@ -78,7 +78,7 @@ SelectLayer::SelectLayer(int _x,int _y,int _id){
 	 tate=70,yoko=60;
 }
 void SelectLayer::called(){
-	Images::playSE("sound/se_maoudamashii_system49.wav");
+	SoundController::getSE()->playSE("sound/se_maoudamashii_system49.wav");
 }
 void SelectLayer::main(){
 	
@@ -106,7 +106,7 @@ void SelectLayer::main(){
 				p->getGame()->setProduct(id,i);
 				parentScene->rmLayer(thisLayerID);
 				parentScene->rmLayer(18);
-				Images::playSE("sound/se_maoudamashii_system42.mp3");
+				SoundController::getSE()->playSE("sound/se_maoudamashii_system42.mp3");
 			}
 		}
 	}
@@ -185,7 +185,7 @@ void StageClearLayer::draw(){
 }
 void StageClearLayer:: main(){
 	if(remain_time--<=0){
-		Images::changeBGM(stage_id);
+		SoundController::getBgm()->changeBGM(stage_id);
 		parentScene->rmLayer(thisLayerID);
 
 	}
@@ -202,7 +202,7 @@ void GameClearLayer::draw(){
 
 }
 void GameClearLayer::called(){
-		Images::playBGM("");
+		SoundController::getBgm()->playBGM("");
 		auto g=Game::getIns();
 		g->setCamera(g->stage_W[g->getNowStage()]-WINDOW_X/2);
 }
@@ -227,8 +227,8 @@ void GameOverLayer::draw(){
 	DrawGraph(0,0,Images::get("pic/GAMEOVER.png"),TRUE);
 }
 void GameOverLayer::called(){
-		Images::playBGM("");
-		Images::playSE("sound/ゲームオーバー.mp3");
+		SoundController::getBgm()->playBGM("");
+		SoundController::getSE()->playSE("sound/ゲームオーバー.mp3");
 		auto g=Game::getIns();
 		
 		g->setCamera(g->stage_W[g->getNowStage()-1]-WINDOW_X/2);
@@ -373,7 +373,7 @@ void MenuLayer:: main(){
 		ratelist[i]=1.0;
 		if((game->getNowStage()>i)&& testBox(_x-_w,_y-_w,_x+_w,_y+_w)){
 			
-			if(onmouse[i]==0){Images::playSE("sound/button03a.mp3");onmouse[i]=1;}
+			if(onmouse[i]==0){SoundController::getSE()->playSE("sound/button03a.mp3");onmouse[i]=1;}
 			if(m->LeftClick()){
 
 				m->Reset();
@@ -397,7 +397,7 @@ void MenuLayer:: main(){
 	if(testBox(221,62,221+66,62+60)){
 		if(customon==0){
 			customon=1;
-			Images::playSE("sound/button03a.mp3");
+			SoundController::getSE()->playSE("sound/button03a.mp3");
 		}
 	}else{
 			customon=0;
@@ -521,7 +521,7 @@ PopFactoryLayer::PopFactoryLayer(shared_ptr<Game> g){
 }
 void PopFactoryLayer::called(){
 
-	Images::playSE("sound/se_maoudamashii_system49.wav");
+	SoundController::getSE()->playSE("sound/se_maoudamashii_system49.wav");
 }
 void PopFactoryLayer::draw(){
 		
@@ -648,7 +648,7 @@ void ChipFactoryLayer:: main(){
 				if(game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]))){
 					m->Reset();
 					stringstream ss2;
-					Images::playSE("sound/se_maoudamashii_system39.mp3");
+					SoundController::getSE()->playSE("sound/se_maoudamashii_system39.mp3");
 					ss2 << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
 					hov[i]->setString(game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str());
 					//parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str()));
@@ -707,7 +707,7 @@ void HOHEILayer::main(){
 			flag=0;
 			
 				
-				Images::playSE("sound/spawn.mp3");
+				SoundController::getSE()->playSE("sound/spawn.mp3");
 		}
 	}
 }
@@ -743,7 +743,7 @@ void HoverLayer::draw(){
 
 
 }
-void HoverLayer::called(){Images::playSE("sound/button03a.mp3");}
+void HoverLayer::called(){SoundController::getSE()->playSE("sound/button03a.mp3");}
 void HoverLayer::main(){
 	if(testBox(x-25,y-25,x+25,y+25)){
 		mouse_in::getIns()->recieveOver();

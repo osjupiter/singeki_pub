@@ -27,7 +27,7 @@ void bazooka::main(int front){
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED % ANI_BAZOOKA_ATK == 9){
 			if (!atk){
-				Images::playSE("sound/taihou03.mp3");
+				SoundController::getSE()->playSE("sound/taihou03.mp3");
 				atk = true;
 			}
 		}

@@ -2,6 +2,7 @@
 #include "Images.h"
 #include "Game.h"
 #include "Status.h"
+#include"SoundController.h"
 
 #define ANIM_SPEED 3
 #define ANIM_SPEED_DIE 2
@@ -46,7 +47,7 @@ void tank::main(int front){
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED%ANI_TANK_ATK == 2){
 			if (!atk){
-				Images::playSE("sound/taihou03.mp3");
+				SoundController::getSE()->playSE("sound/taihou03.mp3");
 		
 				atk = true;
 			}
@@ -65,7 +66,7 @@ void tank::main(int front){
 	case UnitState::DIE:
 
 		if (ani_count == 1)
-			Images::getIns()->playSE("sound/sen_ge_hasai02.mp3");
+			SoundController::getSE()->playSE("sound/sen_ge_hasai02.mp3");
 
 		if (ani_count / ANIM_SPEED_DIE >= ANI_TANK_DEL){
 			del();

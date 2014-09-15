@@ -44,7 +44,7 @@ void copter::main(int front){
 			if (!stopper){
 				stopper = true;
 				Game::getIns()->effect_create(x + width / 2-WID_MISSILE/2+10*dir, y + 140, MISSILE, dir,power,front);
-				Images::playSE("sound/misairu.mp3");
+				SoundController::getSE()->playSE("sound/misairu.mp3");
 			}
 		}
 		else{
@@ -61,7 +61,7 @@ void copter::main(int front){
 	case UnitState::DIE:
 
 		if (ani_count==1)
-			Images::getIns()->playSE("sound/sen_ge_hasai02.mp3");
+			SoundController::getSE()->playSE("sound/sen_ge_hasai02.mp3");
 
 		if (ani_count / ANIM_SPEED_DIE == ANI_COPTER_DIE ){
 			del();

@@ -167,7 +167,7 @@ void castle::main(int front){
 			loop_count = 0;
 			Game::getIns()->stageInc();
 			hp = meka_castle_hp[stage];
-			Images::getIns()->playSE("sound/sen_ka_heirappa01.mp3");
+			SoundController::getSE()->playSE("sound/sen_ka_heirappa01.mp3");
 
 		}
 		break;

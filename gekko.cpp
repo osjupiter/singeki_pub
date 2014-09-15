@@ -45,7 +45,7 @@ void gekko::main(int front){
 		atk = false;
 		if (ani_count / ANIM_SPEED_ATK % ANI_GEKKO == 2){
 			atk=true;
-			Images::playSE("sound/shot002.wav", true);
+			SoundController::getSE()->playSE("sound/shot002.wav", true);
 		}
 		else{ atk = false; }
 		if (ani_count / ANIM_SPEED_ATK == ANI_GEKKO){

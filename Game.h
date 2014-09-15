@@ -10,6 +10,7 @@
 #include "Layer.h"
 #include "Images.h"
 #include "musume.h"
+#include "SoundController.h"
 
 #include <list>
 #include <vector>
