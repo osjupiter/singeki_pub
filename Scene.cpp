@@ -13,8 +13,9 @@ TitleScene::TitleScene(){
 void TitleScene::buttonPushed(string id){
 	if(id=="start"){
 		SceneManager::getIns()->switchScene(std::make_shared<WorldScene>(),0,5);
-	}else if(id=="enter"){
-		this->rmLayer(1);
+	}else if(id=="option"){
+		LAY_Ptr q(new OptionLayer());
+		addLayer(2,q);
 	}else{
 		DxLib_End() ;
 		exit(0);
@@ -66,16 +67,13 @@ GameScene::GameScene(){
 	std::shared_ptr<Game> p(new Game());
 	game=p;
 	addLayer(0,p);
-	//"pic/left.png"
 	LAY_Ptr q((new ButtonLayer(0,0,0,0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
 	addLayer(1,q);
 	LAY_Ptr r((new ButtonLayer(700,0,0,50,0,50,450))->setId("right")->setClickType(ButtonLayer::ONMOUSE));
 	addLayer(1,r);
 
-	//addLayer(5,std::make_shared<MapLayer>(game));
 	addLayer(4,std::make_shared<MenuLayer>(game));
 	addLayer(4,std::make_shared<HOHEILayer>(game,164,7));
-	//addLayer(10,std::make_shared<MapLayer>(game));
 	notEnd=true;
 	old_stage=1;
 	

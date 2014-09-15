@@ -6,6 +6,23 @@
 Images Images::ins;
 
 void Images::load(){
+	vector<string> filelist;
+	vector<string> soundlist;
+	SEVol=100;
+	BGMVol=100;
+	MASTERVol=100;
+
+
+	bgmlist.push_back("sound/山.mp3");
+	bgmlist.push_back("sound/森.mp3");
+	bgmlist.push_back("sound/夜戦.mp3");
+	bgmlist.push_back("sound/橋.mp3");
+	bgmlist.push_back("sound/草原.mp3");
+	bgmlist.push_back("sound/洞窟.mp3");
+	bgmlist.push_back("sound/都市.mp3");
+	bgmlist.push_back("sound/エンディング.mp3");
+
+
 	SetUseASyncLoadFlag( FALSE ); // 非同期読み込みフラグOFF
 	//タイトルに使うものたちよ
 	filelist.push_back("pic/title.png");
@@ -433,24 +450,61 @@ void Images::load(){
 
 	}
 
+
+
+
+
+
+	void Images::setSEVol(int v){ins.SEVol=v;}
+	void Images::setBGMVol(int v){ins.BGMVol=v;}
+	void Images::setMASTERVol(int v){ins.MASTERVol=v;}
+	
+	int Images::getSEVol(){return ins.SEVol;}
+	int Images::getBGMVol(){return ins.BGMVol;}
+	int Images::getMASTERVol(){return ins.MASTERVol;}
+
+	void Images::assignVol(){
+		int resse=255*(MASTERVol/(double)100)*(SEVol/(double)100);
+		for(auto part:ss){
+			ChangeVolumeSoundMem( resse ,part.second) ;
+		}
+		int resbgm=255*(MASTERVol/(double)100)*(BGMVol/(double)100);
+		for(auto part:bgms){
+			ChangeVolumeSoundMem( resbgm ,part.second) ;
+		}
+		
+	}
+
+	void Images::initBGM(){
+		string n=ins.bgmlist[0];
+		Images::LoadBGM(n,true);
+	}
+
+	void Images::changeBGM(int stage_id){
+		string s,n;
+		s=ins.bgmlist[stage_id];
+		n=ins.bgmlist[stage_id+1];
+		Images::playBGM(s);
+		Images::LoadBGM(n,true);
+	}
 	void Images::playBGM(string name,boolean defaulttrue){
 		if(ins._nowBGM!="")
-			StopSoundMem(getSound(ins._nowBGM.c_str()));
+			StopSoundMem(ins.bgms[ins._nowBGM]);
 		if(name!="")
 			if(defaulttrue){
-				PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_LOOP);
+				PlaySoundMem(ins.bgms[name],DX_PLAYTYPE_LOOP);
 			}else{
-				PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_BACK);
+				PlaySoundMem(ins.bgms[name],DX_PLAYTYPE_BACK);
 			}
 			ins._nowBGM=name;
 	}
 
-	void Images::LoadSound(string s){
-		SetUseASyncLoadFlag( TRUE ); // 非同期読み込みフラグOFF
-		if(ins.ss.count(s)==0)
-			ins.ss[s]=LoadSoundMem(s.c_str());
-		
+	void Images::LoadBGM(string s,boolean async){
+		if(async){
+			SetUseASyncLoadFlag( TRUE ); // 非同期読み込みフラグON
+		}
+		if(ins.ss.count(s)==0){
+			ins.bgms[s]=LoadSoundMem(s.c_str());
+		}
 		SetUseASyncLoadFlag( FALSE ); // 非同期読み込みフラグOFF
 	}
-
-

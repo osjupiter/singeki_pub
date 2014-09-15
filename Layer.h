@@ -167,16 +167,7 @@ public:
 	void main();
 };
 
-class OptionLayer:public Layer{
-private:
-	int x,y,w,h,lh;
 
-
-public:
-	OptionLayer();
-	void draw();
-	void main();
-};
 
 
 class PopFactoryLayer:public Layer{
@@ -236,6 +227,23 @@ public:
 	void setString(string,string,string);
 	void setPos(int,int);
 
+
+
+};
+
+class OptionLayer:public Layer{
+private:
+	int x,y,w,h;
+	int master,se,bgm;
+	int y1,y2,y3;
+
+
+	
+public:
+	OptionLayer();
+	void draw();
+	void main();
+	void called();
 
 
 };
