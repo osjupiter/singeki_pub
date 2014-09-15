@@ -81,7 +81,8 @@ GameScene::GameScene(){
 }
 void GameScene::enterScene(){
 	//PlaySoundMem( Images::getSound("sound/kuma.mp3"),DX_PLAYTYPE_LOOP);
-	SoundController::getBgm()->playBGM("sound/ŽR.mp3");
+	//SoundController::getBgm()->playBGM("sound/ŽR.mp3");
+	SoundController::getBgm()->changeBGM(0);
 }
 void GameScene::leaveScene(){
 	//StopSoundMem( Images::getSound("sound/kuma.mp3")) ;

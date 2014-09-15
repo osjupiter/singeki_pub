@@ -13,7 +13,9 @@ void Bgm::load(){
 	bgmlist.push_back("sound/都市.mp3");
 	bgmlist.push_back("sound/エンディング.mp3");
 
-	bgmlist.push_back("sound/タイトル.mp3");
+
+	LoadBGM("sound/タイトル.mp3",false);
+	LoadBGM("sound/山.mp3",true);
 	_nowBGM="";
 
 }
@@ -21,7 +23,7 @@ void Bgm::load(){
 	int Bgm::getBGMVol(){return BGMVol;}
 	void Bgm::initBGM(){
 		string n=bgmlist[0];
-		Bgm::LoadBGM(n,true);
+		Bgm::LoadBGM(n,false);
 	}
 
 	void Bgm::changeBGM(int stage_id){
