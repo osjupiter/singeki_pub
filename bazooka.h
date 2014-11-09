@@ -9,7 +9,7 @@ private:
 
 	static int num;
 public:
-	bazooka(int fx, int fy, int ln, shared_ptr<Parameter>);
+	bazooka(int fx, int ln);
 	void main(int);
 	void draw(int);
 	static void init();

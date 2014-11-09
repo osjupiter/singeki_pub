@@ -14,7 +14,7 @@ protected:
 	int cost;
 	static const int castle_hp[9];
 	static const int draw_gap[9][3];
-
+	CastleState state;
 	vector<ii> spownlist;
 	vector<ii> eventlist;
 	int spownID;
@@ -33,22 +33,46 @@ public:
 	castle(int,int,int);
 	virtual void main(int);
 	virtual void draw(int);
-	void damage(int,UnitType op_unit_type);
+	virtual void damage(int,UnitType op_unit_type);
 	bool getClock(unsigned int);
 	bool isProductTime();
-	void setState(int);
+	void setState(CastleState);
 	void setProduct(int);
 	int getProduct();
+	CastleState getState();
 	double getProductCLKPAR();
 //	static int getNowstage();
 //	static void setNowstage(int st);
 };
 
-class shiro_yama :public castle{
+
+
+class castle_musume : public castle{
+private:
+
+
+public:
+	castle_musume(int, int, int);
+	void main(int);
+	void draw(int);
+	bool isProductTime();
+};
+class castle_enemy : public castle{
+private:
+
+
+public:
+	castle_enemy(int, int, int);
+	void main(int);
+	void draw(int);
+
+};
+
+class shiro_yama :public castle_enemy{
 	int wait_time;
 	bool break_flag;
 public:
-	shiro_yama(int,int,int);
+	shiro_yama(int, int, int);
 	void main(int);
 	void draw(int);
 };

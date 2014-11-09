@@ -6,7 +6,7 @@ private:
 
 	static int num;
 public:
-	segway(int fx, int fy, int ln, shared_ptr<Parameter>);
+	segway(int fx, int ln);
 	void main(int);
 	void draw(int);
 	static void init();

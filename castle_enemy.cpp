@@ -20,7 +20,7 @@ castle_enemy::castle_enemy(int fx, int fy, int st) :castle(fx, fy, st){
 	if (st == 1)state = CastleState::ACTIVE;
 	else state = CastleState::STAY;
 
-	ii one[] = { ii(300, 10) };
+	ii one[] = { ii(30000, 13) };
 	ii two[] = { ii(80, 10), ii(130, 12) };
 	ii three[] = { ii(130, 11), ii(49, 10) };
 	ii four[] = { ii(85, 12), ii(150, 11) };
@@ -34,7 +34,7 @@ castle_enemy::castle_enemy(int fx, int fy, int st) :castle(fx, fy, st){
 	ii eight[] = { ii(49, 12), ii(70, 10), ii(90, 11) };
 	ii nine[] = { ii(30, 10), ii(100, 12), ii(100, 11) };
 
-	ii oneEvent[] = { ii(0, 10) };
+	ii oneEvent[] = { ii(0, 13) };
 	ii twoEvent[] = { ii(0, 10) };
 	ii threeEvent[] = { ii(30, 11) };
 	ii fourEvent[] = { ii(0, 13), ii(30, 10), ii(20, 11), };

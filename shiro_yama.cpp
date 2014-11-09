@@ -7,17 +7,17 @@
 #define POWER_YAMASHIRO 1000
 #define P_ATTACK 3
 #define ATK_RANGE 400
-shiro_yama::shiro_yama(int fx, int fy, int st) :castle(fx, fy, st){
+shiro_yama::shiro_yama(int fx, int fy, int st) :castle_enemy(fx, fy, st){
 	wait_time = YAMA_CANNON_FREQ;
 	break_flag = false;
 }
 
 void shiro_yama::main(int front){
 	unit::main();
-	castle::main(front);
+	castle_enemy::main(front);
 	switch (state){
 	case CastleState::ACTIVE:
-		if (hp < castle_hp[stage] / 2)
+		if (hp < maxhp / 2)
 			break_flag = true;
 
 		if ( (wait_time <= 0) && !break_flag){
@@ -41,20 +41,12 @@ void shiro_yama::main(int front){
 	case CastleState::STAY:
 
 		break;
-	case CastleState::EN_DIE:
 
-		break;
-	case CastleState::OCCUPY:
-
-		break;
-	case CastleState::MEKA_DIE:
-
-		break;
 	}
 
 }
 void shiro_yama::draw(int cx){
-	castle::draw(cx);
+	castle_enemy::draw(cx);
 
 	switch (state){
 	case CastleState::ACTIVE:

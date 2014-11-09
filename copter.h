@@ -10,7 +10,7 @@ private:
 	static int num;
 	
 public:
-	copter(int, int, int,int);
+	copter(int, int, int);
 	void main(int);
 	void draw(int);
 	static void init();

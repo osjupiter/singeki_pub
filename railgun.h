@@ -7,7 +7,7 @@ private:
 	static int num;
 
 public:
-	railgun(int, int, int, int);
+	railgun(int, int, int);
 	void main(int);
 	void draw(int);
 	static void init();

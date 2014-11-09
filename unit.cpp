@@ -1,9 +1,8 @@
 #include "unit.h"
 
-unit::unit(int fx,int fy,int ln) : object(fx,fy){
+unit::unit(int fx,int fy) : object(fx,fy){
 	life = true;
-	line = ln;
-	state = MOV;
+	//line = 0;
 	wait_time = 0;
 	dist = (rand() / (RAND_MAX + 1.0)*180);
 	ani_count = 0;
@@ -36,9 +35,6 @@ int unit::getLine(){
 }
 
 
-int unit::getState(){
-	return state;
-}
 
 Position unit::getType(){
 	return type;

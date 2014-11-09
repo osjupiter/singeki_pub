@@ -6,7 +6,7 @@ class tank : public enemy{
 
 	static int num;
 public:
-	tank(int, int, int,int);
+	tank(int, int, int);
 	void main(int);
 	void draw(int);
 	static void init();

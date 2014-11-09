@@ -1,7 +1,7 @@
 #pragma once
 #include "Dxlib.h"
 #include "GV.h"
-
+#include "character.h"
 #include "enemy.h"
 #include "effect.h"
 #include "castle.h"
@@ -18,7 +18,7 @@ using namespace std;
 
 class Game : public Layer{
 	int x; 
-
+	int world;
 	int front_line;
 	int resource;
 	static Game* ins;
@@ -28,11 +28,11 @@ class Game : public Layer{
 
 	list<shared_ptr<effect>>  delete_effectlist;
 	list<shared_ptr<effect>>  effect_list;
-	list<shared_ptr<enemy>>  enemy_list[3];
-	list<shared_ptr<enemy>>  delete_enemylist;
-	list<shared_ptr<musume>> musume_list[3];
-	list<shared_ptr<musume>> delete_musumelist;
-
+	list<shared_ptr<character>>  enemy_list[3];
+	list<shared_ptr<character>>  delete_enemylist;
+	list<shared_ptr<character>> musume_list[3];
+	list<shared_ptr<character>> delete_musumelist;
+	
 	vector<shared_ptr<object>> memfree_list;
 
 	vector<int> musume_nuber_list;
@@ -40,6 +40,7 @@ class Game : public Layer{
 	
 
 	vector<shared_ptr<castle>> castle_list;
+	bool stage_clear;
 	list<shared_ptr<background>> back_list;
 
 	list<shared_ptr<AttackRange>> atkrange_musume_list;
@@ -52,7 +53,7 @@ class Game : public Layer{
 	int cameraMoveCount;
 public:
 	static const int stage_W[9];
-	Game();
+	Game(int _world=0);
 	void background_init();
 	void param_init();
 	void castle_init();
@@ -70,7 +71,8 @@ public:
 	void draw();
 	bool getClock(unsigned int);
 	void delete_object();
-	void stageInc(); //ステージクリア
+	void stageInc(); 
+	void stageClear();//ステージクリア
 	void setProduct(int,int); //自動生成セット
 	int getProduct(int);
 	double getProductCLKPAR(int);
@@ -86,8 +88,10 @@ public:
 
 	/**/
 	static Game* getIns();
+	void push_castle_list(int stage);
 	void push_attack_list(shared_ptr<AttackRange>,int unittype);
 
+	
 	void push_del_musume(shared_ptr<musume>);
 	void push_del_enemy(shared_ptr<enemy>);
 	void push_del_effect(shared_ptr<effect>);
@@ -97,7 +101,7 @@ public:
 	int getParamCost(int u_type, ParamType p_type);
 	bool incParamLevel(int u_type, ParamType p_type,int lvcost);
 
-	pair<list<shared_ptr<enemy>>*,list<shared_ptr<musume>>*> getDarkness();
+	pair<list<shared_ptr<character>>*,list<shared_ptr<character>>*> getDarkness();
 
 	vector<int> getMusumeNumber();
 

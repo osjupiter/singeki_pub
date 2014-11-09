@@ -8,10 +8,10 @@ int kamikaze::num = 0;
 
 
 
-kamikaze::kamikaze(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
+kamikaze::kamikaze(int fx, int ln) : musume(fx, ln, UnitType::_KAMIKAZE){
 	dist = dist + DIST_KAMIKAZE;
 	
-	//hp = param->getParam(MAXHP);
+	y = 50 - line * 3;
 	width = WID_KAMIKAZE;
 	height = HEI_KAMIKAZE;
 	num++;
@@ -20,7 +20,7 @@ kamikaze::kamikaze(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx
 	type = SKY;
 	gap_y = 0;
 	gap_vy=1;
-	unit_type=UnitType::_KAMIKAZE;
+
 }
 void kamikaze::init(){
 	num = 0;
@@ -30,7 +30,9 @@ void kamikaze::main(int front){
 	musume::main(front);
 	//	state = ATK;
 	switch (state){
-
+	case UnitState::MOV:
+		x += param->getParam(SPEED); //‰¡ˆÚ“®
+		break;
 	case UnitState::ATK:
 	/*	if (gap_y == -3)
 			gap_vy = gap_vy*-1;
@@ -43,7 +45,7 @@ void kamikaze::main(int front){
 		
 		if ((ani_count / ANIM_SPEED == ANI_KAMIKAZE_ATK)){
 			Game::getIns()->effect_create(x, y + 75,TEPODON, dir, param->getParam(POWER), front );			
-			changeState(DIE);
+			changeState(UnitState::DIE);
 
 		}
 

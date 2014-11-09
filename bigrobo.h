@@ -10,7 +10,7 @@ private:
 	
 	static int num;
 public:
-	bigrobo(int fx, int fy, int ln, shared_ptr<Parameter>);
+	bigrobo(int fx, int ln);
 	void main(int);
 	void draw(int);
 	static void init();

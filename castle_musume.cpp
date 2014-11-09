@@ -1,4 +1,4 @@
-#include "castle_musume.h"
+#include "castle.h"
 #include "difine.h"
 #include "Game.h"
 #include "bigExplode.h"
@@ -6,6 +6,8 @@
 const int meka_castle_hp[9] = { 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000 };
 
 castle_musume::castle_musume(int fx, int fy, int st) :castle(fx, fy, st){
+	hp = meka_castle_hp[st];
+	maxhp = hp;
 	state = CastleState::ACTIVE;
 }
 
@@ -25,7 +27,6 @@ void castle_musume::main(int front){
 				state = CastleState::DIE;
 			}
 		
-		
 		break;
 
 	}
@@ -44,5 +45,11 @@ void castle_musume::draw(int cx){
 		break;
 	}
 
+	castle::draw(cx);
 }
 
+bool castle_musume::isProductTime(){
+	int p = Game::getIns()->getParam(product_type, ParamType::CLK);
+	if (now_clk++ >= p){ now_clk = 0; return true; }
+	return false;
+}

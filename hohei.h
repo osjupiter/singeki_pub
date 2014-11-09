@@ -9,7 +9,7 @@ private:
 
 	static int num;
 public:
-	hohei(int fx, int fy, int ln, shared_ptr<Parameter>);
+	hohei(int fx, int ln);
 	static void init();
 	void main(int);
 	void draw(int);

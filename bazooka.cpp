@@ -7,13 +7,13 @@
 int bazooka::num = 0;
 
 
-bazooka::bazooka(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
+bazooka::bazooka(int fx, int ln) : musume(fx, ln, UnitType::_BAZOOKA){
 	dist = dist + DIST_BAZOOKA;
 	width = WID_BAZOOKA;
 	height = HEI_BAZOOKA;
 	num++;
 	type = RAND;
-	unit_type=UnitType::_BAZOOKA;
+	y = WINDOW_Y - HEI_BAZOOKA - line * 3;
 }
 void bazooka::init(){
 	num = 0;
@@ -22,7 +22,7 @@ void bazooka::main(int front){
 	musume::main(front);
 	switch (state){
 	case UnitState::MOV:
-
+		x += param->getParam(SPEED); //‰¡ˆÚ“®
 		break;
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED % ANI_BAZOOKA_ATK == 9){
@@ -35,7 +35,7 @@ void bazooka::main(int front){
 			atk = false;
 		}
 		if ((ani_count / ANIM_SPEED == ANI_BAZOOKA_ATK+1)){
-			changeState(WAIT);
+			changeState(UnitState::WAIT);
 			atk = false;
 		}
 

@@ -8,7 +8,7 @@
 #define DIST_COPTER 190;
 int copter::num = 0;
 
-copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
+copter::copter(int fx, int ln,int lv) : enemy(fx,ln,lv,UnitType::_COPTER){
 	dist = dist + DIST_COPTER;
 	power = POWER_COPTER*(1+0.3*lv);
 	hp = MAXHP_COPTER+0.7*MAXHP_COPTER*lv;
@@ -16,6 +16,7 @@ copter::copter(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
 	height = HEI_COPTER;
 	num++;
 	atk = false;
+	y = 50 - line * 3;
 	defense = DEFENSE_COPTER*(1+0.9*lv);
 	type = SKY;
 	atk_type = RAND;
@@ -38,7 +39,7 @@ void copter::main(int front){
 	case UnitState::MOV:
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		break;
-	case ATK:
+	case UnitState::ATK:
 		atk = false;
 		if ((ani_count / ANIM_SPEED)== ANI_COPTER - 1 ){
 			if (!stopper){
@@ -54,7 +55,7 @@ void copter::main(int front){
 	
 		if (((ani_count / ANIM_SPEED) == ANI_COPTER)){
 			state_change_flag = true;
-			changeState(WAIT);
+			changeState(UnitState::WAIT);
 			
 		}
 		break;

@@ -10,12 +10,13 @@
 int segway::num = 0;
 
 
-segway::segway(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
+segway::segway(int fx, int ln) : musume(fx, ln, UnitType::_SEGWAY){
 	dist = dist + DIST_SEGWAY;
 	width = WID_SEGWAY;
 	height = HEI_SEGWAY;
 	num++;
 	type = RAND;
+	y = WINDOW_Y - HEI_SEGWAY - line * 3;
 	unit_type=UnitType::_SEGWAY;
 }
 void segway::init(){
@@ -25,7 +26,7 @@ void segway::main(int front){
 	musume::main(front);
 	switch (state){
 	case UnitState::MOV:
-
+		x += param->getParam(SPEED); //‰¡ˆÚ“®
 		break;
 	case UnitState::ATK:
 		x += param->getParam(SPEED)*3;
@@ -34,7 +35,7 @@ void segway::main(int front){
 			//Game::getIns()->effect_create(x - 125, WINDOW_Y - HEI_NOMALEXP + 25, NOMALEXP);
 			Images::playSE("sound/sen_mi_robo_bato01.mp3");
 			Game::getIns()->damage_effect_create(x - 125 +5, WINDOW_Y - HEI_NOMALEXP + 25, NOMALEXP);
-			changeState(WAIT);
+			changeState(UnitState::WAIT);
 		}
 
 		if (x-width/2 > front){

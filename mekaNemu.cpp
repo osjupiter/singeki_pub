@@ -18,7 +18,7 @@
 
 #define THUNDER_POINT(x) x- MEKANEMU_DIST
 #define RANGE_TUNDER 130
-mekaNemu::mekaNemu(int fx,int fy,int st) :castle(fx,fy,st){
+mekaNemu::mekaNemu(int fx,int fy,int st) :castle_enemy(fx,fy,st){
 	x = fx - WID_MEKANEMU;
 	width = WID_MEKANEMU;
 	wait_time = MEKANEMU_FREQ;
@@ -27,7 +27,7 @@ mekaNemu::mekaNemu(int fx,int fy,int st) :castle(fx,fy,st){
 
 void mekaNemu::main(int front){
 	unit::main();
-	castle::main(front);
+	castle_enemy::main(front);
 	
 
 	switch (state){
@@ -72,15 +72,7 @@ void mekaNemu::main(int front){
 	case CastleState::STAY:
 
 		break;
-	case CastleState::EN_DIE:
 
-		break;
-	case CastleState::OCCUPY:
-
-		break;
-	case CastleState::MEKA_DIE:
-
-		break;
 	}
 }
 
@@ -111,13 +103,7 @@ void mekaNemu::draw(int cx){
 			DrawGraph(x - cx - WID_TUNDER+110, WINDOW_Y - HEI_TUNDER, Images::getIns()->g_thunder_mekanemu[ani_count / ANIM_SPEED%ANI_THUNDER], true);
 */
 		break;
-	case CastleState::EN_DIE:
-		break;
-	case CastleState::OCCUPY:
-	
-		break;
-	case CastleState::MEKA_DIE:
-		break;
+
 	}
 
 }
