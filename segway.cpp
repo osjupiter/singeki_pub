@@ -79,7 +79,7 @@ void segway::draw(int cx){
 		break;
 	}
 
-	unit::draw(cx);
+	character::draw(cx);
 
 }
 

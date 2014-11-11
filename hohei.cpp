@@ -67,7 +67,7 @@ void hohei::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_hohei[ani_count / ANIM_SPEED%ANI_HOHEI_ATK], true);
 		break;
 	}
-	unit::draw(cx);
+	character::draw(cx);
 
 }
 

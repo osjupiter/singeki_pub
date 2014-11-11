@@ -1,15 +1,18 @@
 #pragma once
 #include "unit.h"
 #include "difine.h"
+#include <string>
 
 class character : public unit{
 protected:
 	UnitState state;
 	PropertyType property;
+	string name;
 public:
 	character(int, int, UnitType);
 	virtual void main(int front);
-	virtual void draw(int cx)=0;
+	virtual void draw(int cx);
+	//virtual void draw(int cx, int x, int y,int img)=0;
 	virtual UnitState getState();
 	PropertyType getProperty();
 	virtual int getPower()=0;

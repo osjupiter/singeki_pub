@@ -71,7 +71,7 @@ void balloon::draw(int cx){
 
 	}
 
-	unit::draw(cx);
+	character::draw(cx);
 }
 
 int balloon::getNum(){

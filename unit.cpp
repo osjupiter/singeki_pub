@@ -16,6 +16,7 @@ void unit::main(){
 void unit::draw(int cx){
 	//DrawLine(x-cx,y+2,x+width-cx,y+2,GetColor(255,0,0),5);
 	//DrawLine(x-cx, y+2, x+max((width)*hp/(maxhp*1.0),0)-cx, y+2, GetColor(0, 255, 0), 5);
+	/*
 	int dx = x + width/2 - 60/2;
 	int dy= (type==RAND)? y+3:y+height-10;
 	DrawLine(dx - cx, dy+3, dx+60-cx, dy+3, GetColor(255, 0, 0), 5);
@@ -26,7 +27,7 @@ void unit::draw(int cx){
 	}
 
 	DrawLine(dx - cx, dy+3, dx + 60 * max(i,0) / (1000 * 1.0) - cx, dy+3, GetColor(0, 255, 0), 5);
-
+	*/
 	//DrawBox(x - cx, y , x+width-cx,y+height ,GetColor(255, 0, 0), false);
 }
 

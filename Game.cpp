@@ -20,7 +20,7 @@ Game::Game(int _world){
 	param_init();
 	world = _world;
 	ins = this;
-	resource = RESOURCE_INIT;
+	resource = RESOURCE_INIT+50000;
 	background_init();
 	castle_init();
 	srand((unsigned int)time(NULL));

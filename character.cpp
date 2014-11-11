@@ -51,6 +51,23 @@ void character::main(int front){
 	
 }
 
+void character::draw(int cx){
+
+	//HP•\Ž¦
+	if (state != UnitState::DIE){
+		int dx = x + width / 2 - 60 / 2;
+		int dy = (type == RAND) ? y + 3 : y + height - 10;
+		DrawLine(dx - cx, dy + 3, dx + 60 - cx, dy + 3, GetColor(255, 0, 0), 5);
+		int i = hp;
+		for (int j = dx; i > 1000; i -= 1000, j += 7){
+			DrawLine(j - cx, dy + 9, j - cx, dy + 15, GetColor(0, 255, 0), 3);
+
+		}
+
+		DrawLine(dx - cx, dy + 3, dx + 60 * max(i, 0) / (1000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
+	}
+}
+
 bool character::isInSight(int front){
 	if (dir == LEFT){
 		if (x < front + dist)

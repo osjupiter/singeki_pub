@@ -11,41 +11,7 @@ musume::musume(int fx, int ln, UnitType u_type) : character(fx, ln ,u_type){
 
 void musume::main(int front){
 	character::main(front);
-	/*	unit::main();
-	if (wait_time>0)
-		wait_time--;
-	switch (state){
-	case UnitState::MOV:
-		if (x > front - dist){
-			if (wait_time==0)
-				changeState(UnitState::ATK);
-			else changeState(UnitState::WAIT);
-		}
-		break;
-	case UnitState::ATK:
-		if (!(x > front - dist)) {
-			changeState(UnitState::MOV);
-		}
-		break;
-	case UnitState::WAIT:
-		if (!(x > front - dist)) {
-			changeState(UnitState::MOV);
-		}
-		
-		else if (wait_time == 0){
-			changeState(UnitState::ATK);
-		}
-		break;
-	case UnitState::DIE:
-		y += vy;
-		x += vx;
-		vy -= 10;
-		vx -= 5;
-		if (y + height<0)
-			del();
-		break;
-	}
-	*/
+
 	switch (state){
 	case UnitState::DIE:
 		y += vy;

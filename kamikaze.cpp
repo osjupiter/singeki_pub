@@ -20,7 +20,7 @@ kamikaze::kamikaze(int fx, int ln) : musume(fx, ln, UnitType::_KAMIKAZE){
 	type = SKY;
 	gap_y = 0;
 	gap_vy=1;
-
+	image = &(Images::getIns()->g_kamikaze[0]);
 }
 void kamikaze::init(){
 	num = 0;
@@ -46,12 +46,12 @@ void kamikaze::main(int front){
 		if ((ani_count / ANIM_SPEED == ANI_KAMIKAZE_ATK)){
 			Game::getIns()->effect_create(x, y + 75,TEPODON, dir, param->getParam(POWER), front );			
 			changeState(UnitState::DIE);
-
+			image = 0;
 		}
-
+		
 		break;
 	case UnitState::DIE:
-
+		
 		break;
 	}
 }
@@ -68,12 +68,13 @@ void kamikaze::draw(int cx){
 		DrawGraph(x - cx, y + gap_y, Images::getIns()->g_kamikaze_atk[ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK], true);
 		break;
 	case UnitState::DIE:
-		DrawGraph(x - cx, y + gap_y, Images::getIns()->g_kamikaze[ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK], true);
+		//DrawGraph(x - cx, y + gap_y, Images::getIns()->g_kamikaze[ani_count / ANIM_SPEED%ANI_KAMIKAZE_ATK], true);
+		if(image!=NULL)DrawGraph(x - cx, y + gap_y, *image, true);
 		break;
 
 	}
 
-	unit::draw(cx);
+	character::draw(cx);
 }
 
 int kamikaze::getNum(){
