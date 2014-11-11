@@ -26,7 +26,7 @@ using namespace std;
 
 
 shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType type){
-	shared_ptr<character> chara_ins = NULL;
+	shared_ptr<character> chara_ins(nullptr);
 	switch (type){
 	case UnitType::_HOHEI:
 		chara_ins.reset(new hohei(x, line));
@@ -72,8 +72,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 
 	return chara_ins;
 }
+
 shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Direction dr, int atk_power, int dest){
-	shared_ptr<effect> ret_ins = NULL;
+	shared_ptr<effect> ret_ins(nullptr);
 	switch (type) {
 	case BOMB:
 		ret_ins.reset(new bomb(fx, fy, atk_power));
@@ -120,7 +121,7 @@ shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Direction dr
 }
 
 shared_ptr<effect> Factory::create_damage_effect(int fx, int fy, int e_type, bool TurnFlag){
-	shared_ptr<effect> ret_ins = NULL;
+	shared_ptr<effect> ret_ins(nullptr);
 	switch (e_type) {
 	case GUNSHOT:
 		ret_ins.reset(new gunshot(fx, fy, TurnFlag));
@@ -136,82 +137,4 @@ shared_ptr<effect> Factory::create_damage_effect(int fx, int fy, int e_type, boo
 	
 	}
 	return ret_ins;
-}
-
-shared_ptr<musume> Factory::create_musume(int x, int st, int line, UnitType type){
-	shared_ptr<musume> chara_ins = NULL;
-	switch (type){
-	case UnitType::_HOHEI:
-		chara_ins.reset(new hohei(x, line));
-		break;
-		
-	case UnitType::_BALOON:
-		chara_ins.reset(new balloon(x, line));
-		break;
-
-	case UnitType::_BIG:		
-		chara_ins.reset(new bigrobo(x, line));
-		break;
-
-	case UnitType::_KAMIKAZE :
-		chara_ins.reset(new kamikaze(x,line));
-		break;
-	
-	case UnitType::_BAZOOKA :
-	
-		chara_ins.reset(new bazooka(x, line));
-		break;
-	
-	case UnitType::_SEGWAY :
-	
-		chara_ins.reset(new segway(x, line));
-		break;
-	
-/*	case UnitType::_TANK:
-		chara_ins = new tank(x, WINDOW_Y - HEI_TANK - line * 3, line, st);
-		break;
-		
-	case COPTER:
-		chara_ins = new copter(stage_W[st], 50 - line * 3, line, getNowStage());
-		break;
-	
-	case GEKKO:
-		chara_ins = new gekko(stage_W[st], WINDOW_Y - HEI_GEKKO - line * 3, line, getNowStage());
-		break;
-	
-	case RAILGUN:
-		chara_ins = new railgun(stage_W[st], WINDOW_Y - HEI_RAILGUN - line * 3, line, getNowStage());
-		break;
-	*/
-	default:
-		break;
-	}
-//	shared_ptr<character> p(chara_ins);
-	return chara_ins;
-}
-
-shared_ptr<enemy> Factory::create_enemy(int x, int st, int line, UnitType type){
-	shared_ptr<enemy> chara_ins = NULL;
-	switch (type){
-	case UnitType::_TANK:
-		chara_ins.reset(new tank(x, line, st));
-		break;
-		/*
-		case COPTER:
-		chara_ins = new copter(stage_W[st], 50 - line * 3, line, getNowStage());
-		break;
-
-		case GEKKO:
-		chara_ins = new gekko(stage_W[st], WINDOW_Y - HEI_GEKKO - line * 3, line, getNowStage());
-		break;
-
-		case RAILGUN:
-		chara_ins = new railgun(stage_W[st], WINDOW_Y - HEI_RAILGUN - line * 3, line, getNowStage());
-		break;
-		*/
-	default:
-		break;
-	}
-
-	return chara_ins;
 }
