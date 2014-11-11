@@ -100,7 +100,7 @@ void copter::draw(int cx){
 
 	}
 
-	unit::draw(cx);
+	enemy::draw(cx);
 }
 
 int copter::getNum(){

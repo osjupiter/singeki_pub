@@ -129,7 +129,7 @@ void railgun::draw(int cx){
 
 	}
 
-	unit::draw(cx);
+	enemy::draw(cx);
 }
 
 int railgun::getNum(){

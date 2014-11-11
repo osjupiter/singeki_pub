@@ -11,7 +11,7 @@ void enemy::main(int front){
 }
 
 void enemy::draw(int cx){
-	
+	character::draw(cx);
 }
 
 void enemy::del(){

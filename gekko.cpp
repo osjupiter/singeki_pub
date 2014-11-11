@@ -121,7 +121,7 @@ void gekko::draw(int cx){
 		break;
 	}
 
-	unit::draw(cx);
+	enemy::draw(cx);
 }
 
 int gekko::getNum(){
