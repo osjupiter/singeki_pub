@@ -4,7 +4,7 @@ class gekko : public enemy{
 
 	static int num;
 public:
-	gekko(int, int, int, int);
+	gekko(int, int, int);
 	
 	void main(int);
 	void draw(int);

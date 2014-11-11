@@ -6,16 +6,17 @@
 int balloon::num = 0;
 
 
-balloon::balloon(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
+balloon::balloon(int fx, int ln) : musume(fx, ln, UnitType::_BALOON){
 	dist = -dist;
-	//hp = param->getParam(MAXHP);
+
 	width = WID_BALLOON;
 	height = HEI_BALLOON;
 	num++;
 	atk = false;
 	stopper = false;
+	y = 50 - ln * 10;
 	type = SKY;
-	unit_type=UnitType::_BALOON;
+
 }
 void balloon::init(){
 	num = 0;
@@ -25,6 +26,7 @@ void balloon::main(int front){
 //	state = ATK;
 	switch (state){
 	case UnitState::MOV:
+		x += param->getParam(SPEED); //‰¡ˆÚ“®
 		break;
 	case UnitState::ATK:
 		
@@ -41,7 +43,7 @@ void balloon::main(int front){
 		if ((ani_count / ANIM_SPEED == ANI_BALLOON_ATK)){
 			state_change_flag = true;
 
-			changeState(WAIT);
+			changeState(UnitState::WAIT);
 //			atk = false;
 		}
 
@@ -69,7 +71,7 @@ void balloon::draw(int cx){
 
 	}
 
-	unit::draw(cx);
+	character::draw(cx);
 }
 
 int balloon::getNum(){

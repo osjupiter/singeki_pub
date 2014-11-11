@@ -8,7 +8,7 @@ int bigrobo::num = 0;
 
 
 
-bigrobo::bigrobo(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
+bigrobo::bigrobo(int fx, int ln) : musume(fx, ln, UnitType::_BIG){
 	dist = rand()%50-10;
 	width = WID_BIG;
 	height = HEI_BIG;
@@ -16,13 +16,12 @@ bigrobo::bigrobo(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, 
 	type = RAND;
 	atk = false;
 	dist = width;
-	unit_type=UnitType::_BIG;
+	y = WINDOW_Y - HEI_BIG + line * 3;
 	stopper = false;
 }
 
 void bigrobo::init(){
-	num = 0;
-	
+	num = 0;	
 }
 
 void bigrobo::main(int front){
@@ -30,7 +29,7 @@ void bigrobo::main(int front){
 
 	switch (state){		
 	case UnitState::MOV:
-
+		x += param->getParam(SPEED); //‰¡ˆÚ“®
 		break;
 	case UnitState::ATK:
 		
@@ -49,7 +48,7 @@ void bigrobo::main(int front){
 		}
 		if ((ani_count / ANIM_SPEED == ANI_BIG_ATK )){
 			state_change_flag = true;
-			changeState(WAIT);
+			changeState(UnitState::WAIT);
 			stopper = false;
 		}
 		else{
@@ -79,7 +78,7 @@ void bigrobo::draw(int cx){
 		break;
 	}
 
-	unit::draw(cx);
+	character::draw(cx);
 
 }
 

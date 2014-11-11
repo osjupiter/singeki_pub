@@ -1,78 +1,13 @@
 #include "enemy.h"
 #include "Game.h"
-enemy::enemy(int fx, int fy, int ln,int lv) :unit(fx, fy, ln){
+enemy::enemy(int fx, int ln, int lv , UnitType u_type) :character(fx, ln, u_type){
 	level = lv;
 	dir = Direction::LEFT;
 	atk = false;
 }
 
 void enemy::main(int front){
-
-	unit::main();
-	if (wait_time>0)
-		wait_time--;
-	if (dir == LEFT){
-		if (x+width <= front - dist)
-			switchDirection();
-		switch (state){
-		case UnitState::MOV:
-			if (x < front + dist){
-				if (wait_time == 0)
-					changeState(ATK);
-				else changeState(WAIT);
-			}
-			break;
-		case UnitState::ATK:
-			if (!(x < front + dist)){
-				changeState(MOV);
-			}
-			break;
-		case UnitState::WAIT:
-			if (!(x < front + dist)) {
-				changeState(MOV);
-			}
-
-			else if (wait_time == 0){
-				changeState(ATK);
-			}
-			break;
-		case UnitState::DIE:
-
-			break;
-		}
-	}
-	else if (dir == RIGHT){
-		if (x+width > front )
-			switchDirection();
-		
-		switch (state){
-		case UnitState::MOV:
-			if (x+width > front - dist){
-				if (wait_time == 0)
-					changeState(ATK);
-				else changeState(WAIT);
-			}
-			break;
-		case UnitState::ATK:
-			if (!(x + width > front - dist)){
-				changeState(MOV);
-			}
-			break;
-		case UnitState::WAIT:
-			if (!(x + width > front - dist)) {
-				changeState(MOV);
-			}
-
-			else if (wait_time == 0){
-				changeState(ATK);
-			}
-			break;
-		case UnitState::DIE:
-			atk = false;
-
-			break;
-		}
-	}
+	character::main(front);
 }
 
 void enemy::draw(int cx){
@@ -106,8 +41,8 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 			}
 		}
 		hp -= max(d - defense, 0);
-		if (state!=DIE && hp < 0){
-			changeState(DIE);
+		if (state != UnitState::DIE && hp < 0){
+			changeState(UnitState::DIE);
 		}
 	}
 
@@ -117,46 +52,46 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 void enemy::changeState(UnitState next_state){
 	if (!state_change_flag && next_state != UnitState::DIE) return;
 	switch (next_state){
-	case UnitState::MOV:
-		state = next_state;
+	case UnitState::MOV:		
 		ani_count = 0;
 		switch (state){
-		case ATK:
+		case UnitState::ATK:
 		//	wait_time = param->getParam(A_FREQ);
 			wait_time = atk_freq;
 			atk = false;
 			break;
 		}
+		state = next_state;
 		break;
 	case UnitState::ATK:
 		switch (state){
-		case MOV:
-			state = ATK;
+		case UnitState::MOV:
+			state = UnitState::ATK;
 			ani_count = 0;
 
 			break;
-		case WAIT:
-			state = ATK;
+		case UnitState::WAIT:
+			state = UnitState::ATK;
 			ani_count = 0;
 			break;
 		}
 		break;
 	case UnitState::WAIT:
 		switch (state){
-		case MOV:
-			state = WAIT;
+		case UnitState::MOV:
+			state = UnitState::WAIT;
 			break;
-		case ATK:
+		case UnitState::ATK:
 			//	wait_time = param->getParam(A_FREQ);
 			wait_time = atk_freq;
 			atk = false;
 			ani_count = 0;
 			if (wait_time == 0){
 				
-				state = ATK;
+				state = UnitState::ATK;
 			}
 			else{
-				state = WAIT;
+				state = UnitState::WAIT;
 			}
 			break;
 		}

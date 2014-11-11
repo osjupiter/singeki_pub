@@ -1,10 +1,10 @@
 #pragma once
 #include "Dxlib.h"
 #include "GV.h"
-#include "unit.h"
+#include "character.h"
 #include "Parameter.h"
 
-class musume :public unit, enable_shared_from_this<musume>{
+class musume :public character, enable_shared_from_this<musume>{
 protected:
 	int vx;
 	int vy;
@@ -12,7 +12,7 @@ protected:
 	shared_ptr<Parameter> param;
 	bool atk;
 public:
-	musume(int, int, int, shared_ptr<Parameter>);
+	musume(int, int, UnitType);
 	virtual void main(int);
 	virtual void draw(int);
 	void damage(int, Position, UnitType);

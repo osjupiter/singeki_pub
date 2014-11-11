@@ -15,13 +15,14 @@
 #define L_MAX 60
 
 
-enum UnitState{ MOV, WAIT,ATK, DIE};
+enum class UnitState{ MOV, WAIT,ATK, DIE};
 
-enum CastleState{ACTIVE,STAY,OCCUPY,EN_DIE,MEKA_DIE};
+//enum CastleState{ACTIVE,STAY,OCCUPY,EN_DIE,MEKA_DIE};
+enum class CastleState{ ACTIVE, STAY, DIE};
 enum Direction { LEFT = -1, NODIR = 0, RIGHT = 1 };
 enum ParamType{ POWER, MAXHP, SPEED, DEFENSE, A_TYPE, CLK, COST, A_FREQ, PARAM_NUM };
 enum Position{ RAND, SKY ,ALL,NOATK};
-
+enum class PropertyType{NONE};
 
 
 enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUSUME,_TANK=10,_COPTER,_GEKKO,_RAILGUN};

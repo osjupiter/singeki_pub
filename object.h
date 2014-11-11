@@ -7,7 +7,7 @@ protected:
 	int y;
 	int width;
 	int height;
-	
+	const int* image;
 public:
 	object(int fx,int fy){
 		x = fx;

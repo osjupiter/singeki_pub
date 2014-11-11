@@ -10,7 +10,7 @@ private:
 	bool atk;
 	static int num;
 public:
-	balloon(int fx, int fy, int ln, shared_ptr<Parameter>);
+	balloon(int fx, int ln);
 	void main(int);
 	void draw(int);
 	static void init();

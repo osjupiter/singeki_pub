@@ -10,7 +10,7 @@ private:
 	int gap_vy;//縦揺れアニメーション用
 	static int num;
 public:
-	kamikaze(int fx, int fy, int ln, shared_ptr<Parameter> pm);
+	kamikaze(int fx, int ln);
 	void main(int);
 	void draw(int);
 	static void init();

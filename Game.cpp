@@ -1,28 +1,14 @@
 #include "Game.h"
 #include"mouse.h"
 #include "object.h"
-#include "hohei.h"
-#include "bigrobo.h"
-#include "tank.h"
-#include "railgun.h"
-#include "copter.h"
-#include "segway.h"
-#include "beam.h"
-#include "kamikaze.h"
+
+
 #include "Status.h"
-#include "gunshot.h"
-#include "cannonshot.h"
-#include "gekko.h"
-#include "bazooka.h"
-#include "tepodon.h"
+
 #include "mekaNemu.h"
-#include "balloon.h"
-#include "bomb.h"
-#include "missile.h"
-#include "shock.h"
-#include "explode.h"
-#include "bigExplode.h"
-#include "nomalExp.h"
+
+#include "castle.h"
+#include "Factory.h"
 #include <time.h>
 #include <algorithm>
 #include "CsvReader.h"
@@ -31,25 +17,17 @@ const int castle_resouce[9] = { 4000, 4000, 4500, 5000, 5000, 5500, 6000, 6500, 
 const int Game::stage_W[9] = {0,STAGE1_W, STAGE2_W, STAGE3_W, STAGE4_W, STAGE5_W, STAGE6_W, STAGE7_W, STAGE8_W };
 Game* Game::ins;
 
-Game::Game(){
+Game::Game(int _world){
 	param_init();
-
+	world = _world;
 	ins = this;
-	resource = RESOURCE_INIT;
+	resource = RESOURCE_INIT+50000;
 	background_init();
 	castle_init();
 	srand((unsigned int)time(NULL));
 	x=0;
 	nowstage = 1;
-	balloon::init();
-	bazooka::init();
-	bigrobo::init();
-	copter::init();
-	hohei::init();
-	kamikaze::init();
-	tank::init();
-	segway::init();
-//	castle::setNowstage(1);
+
 
 	cameraTargetSpeed=0;
 	cameraMoveCount=0;
@@ -98,42 +76,37 @@ void Game::param_init(){
 void Game::background_init(){
 	for (int i = 0; i < STAGE_NUM; i++){
 		for (int j = 0; j < 5; j++){
-			if (j == 2 && (i!=5 && i!=6)){
-				shared_ptr<background> p(new background(stage_W[i], i, j, stage_W[i+1]-stage_W[i], true));
+				shared_ptr<background> p(new background(stage_W[i], i, j, stage_W[i+1]-stage_W[i], false));
 				back_list.push_back(p);
-			}
-			else{
-				shared_ptr<background> p(new background(stage_W[i], i, j, stage_W[i+1] - stage_W[i], false));
-				back_list.push_back(p);
-			}
+			
 		}
 	}
 }
 
 void Game::castle_init(){
 
-	shared_ptr<castle> p(new castle(stage_W[0], 0, 0));
+	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0));
 	castle_list.push_back(p);
 	
 	p = shared_ptr<castle>(new shiro_yama(stage_W[1], 0, 1));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle(stage_W[2], 0, 2));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[2], 0, 2));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle(stage_W[3], 0, 3));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[3], 0, 3));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle(stage_W[4], 0, 4));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[4], 0, 4));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle(stage_W[5], 0, 5));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[5], 0, 5));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle(stage_W[6], 0, 6));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[6], 0, 6));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle(stage_W[7], 0, 7));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[7], 0, 7));
 	castle_list.push_back(p);
 
 	p = shared_ptr<castle>(new mekaNemu(stage_W[8], 0, 8));
@@ -169,75 +142,21 @@ int Game::getX(){
 
 
 void Game::birth(int st,int type){
-	int line=(int)(rand()/(RAND_MAX+1.0)*3);
+	int line = (int)(rand() / (RAND_MAX + 1.0) * 3);
 	//自分のユニットのときリソース確認消費
-	if(type<10){
+	if (type < static_cast<int>(UnitType::END_MUSUME)){
 		int t=getParam(type,ParamType::COST);
 		if (getResource() < t) return;
 		if(getMusumeSum()>=getBirthLimit())return;
 		useResource(t);
 		musume_nuber_list.at(type)++;
+		shared_ptr<character> p(Factory::create_chara(stage_W[st], line, st, (UnitType)type));
+		if (p != NULL) musume_list[line].push_back(p);
 	}
-	switch (type){
-	case HOHEI:
-	{
-		shared_ptr<musume> p(new hohei(stage_W[st], WINDOW_Y - HEI_HOHEI - line * 3, line, param_list[HOHEI]));
-		musume_list[line].push_back(p);		
-		break;
+	else {
+		shared_ptr<character> p(Factory::create_chara(stage_W[st], line, st, (UnitType)type));
+		if(p != NULL) enemy_list[line].push_back(p);
 	}
-	case BALLOON:{
-		shared_ptr<musume> p(new balloon(stage_W[st], 50 - line * 10, line, param_list[BALLOON]));
-		musume_list[line].push_back(p);
-		break;
-	}
-	case BIG:{
-		line = 2;
-		shared_ptr<musume> p(new bigrobo(stage_W[st], WINDOW_Y - HEI_BIG + line * 3, line, param_list[BIG]));
-		musume_list[line].push_back(p);
-
-		break;
-	}
-	case KAMIKAZE:{
-				shared_ptr<musume> p(new kamikaze(stage_W[st], 50 - line * 3, line, param_list[KAMIKAZE]));
-				musume_list[line].push_back(p);
-				break;
-	}
-	case BAZOOKA:
-	{
-			shared_ptr<musume> p(new bazooka(stage_W[st], WINDOW_Y - HEI_BAZOOKA - line * 3, line, param_list[BAZOOKA]));
-			musume_list[line].push_back(p);
-			break;
-	}
-	case SEGWAY:
-	{
-				   shared_ptr<musume> p(new segway(stage_W[st], WINDOW_Y - HEI_SEGWAY - line * 3, line, param_list[SEGWAY]));
-					musume_list[line].push_back(p);
-					break;
-	}
-	case TANK:{
-		shared_ptr<enemy> p(new tank(stage_W[st], WINDOW_Y - HEI_TANK - line * 3, line,getNowStage()));
-		enemy_list[line].push_back(p);
-		break;
-	}
-	case COPTER:{
-					shared_ptr<enemy> p(new copter(stage_W[st], 50 - line * 3, line, getNowStage()));
-		enemy_list[line].push_back(p);
-		 break;
-	}
-	case GEKKO:{
-				   shared_ptr<enemy> p(new gekko(stage_W[st], WINDOW_Y - HEI_GEKKO  - line * 3, line, getNowStage()));
-					enemy_list[line].push_back(p);
-					break;
-	}
-	case RAILGUN:{
-				shared_ptr<enemy> p(new railgun(stage_W[st], WINDOW_Y - HEI_RAILGUN - line * 3, line, getNowStage()));
-				   enemy_list[line].push_back(p);
-				   break;
-	}
-	default:
-		break;
-	}
-	
 }
 
 void Game::setProduct(int tw_num, int m_type){
@@ -259,79 +178,15 @@ void Game::enemy_birth(){
 }
 
 void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, int dest){
-	switch(type) {
-	case BOMB:{
-				  shared_ptr<effect> p(new bomb(fx, fy, atk_power));
-		effect_list.push_back(p);
-		break; 
-	}
-	case EXP:{
-		shared_ptr<effect> p(new explode(fx, fy));
-		effect_list.push_back(p);
-		break;
-	}
-	case SHOCK:{
-				 shared_ptr<effect> p(new shock(fx, fy));
-				 effect_list.push_back(p);
-				 break;
-	}
-	case MISSILE:{
-				   shared_ptr<effect> p(new missile(fx, fy,dr,atk_power));
-				   effect_list.push_back(p);
-				   break;
-	}
-	case TEPODON:{
-					 shared_ptr<effect> p(new tepodon(fx, fy, atk_power,dest));
-					 effect_list.push_back(p);
-					 break;
-	}
-	case BEAM:{
-					 shared_ptr<effect> p(new beam(fx, fy, atk_power));
-					 effect_list.push_back(p);
-					 break;
-	}
-	case BIGEXP:{
-				 shared_ptr<effect> p(new bigExp(fx, fy));
-				 effect_list.push_back(p);
-				 break;
-	}
-	case NOMALEXP:{
-					shared_ptr<effect> p(new nomalExp(fx, fy));
-					effect_list.push_back(p);
-					break;
-	}
-	case WISP:{
-					  shared_ptr<effect> p(new wisp(fx, fy));
-					  effect_list.push_back(p);
-					  break;
-	}	
-	case DROP:{
-					  shared_ptr<effect> p(new drop(fx, fy));
-					  effect_list.push_back(p);
-					  break;
-	}
-	}
+	shared_ptr<effect> p(Factory::create_effect(fx,fy,type,dr,atk_power,dest));
+	if (p != NULL) effect_list.push_back(p);
 }
 
 void Game::damage_effect_create(int fx,int fy,int e_type,bool TurnFlag){
-	switch (e_type) {
-	case GUNSHOT:{
-					 shared_ptr<effect> p(new gunshot(fx, fy, TurnFlag));
-					 effect_list.push_back(p);
-					 break;
-	}
-	case CANNONSHOT:{
-						shared_ptr<effect> p(new cannonshot(fx, fy, TurnFlag));
-						effect_list.push_back(p);
-						break;
-	}
-	case NOMALEXP:{
-					  shared_ptr<effect> p(new nomalExp(fx, fy,true));
-					  effect_list.push_back(p);
-					  break;
-	}
-	}
+	shared_ptr<effect> p(Factory::create_damage_effect(fx, fy, e_type, TurnFlag));
+	if (p != NULL) effect_list.push_back(p);
 }
+
 
 void Game::push_del_musume(shared_ptr<musume> p){
 	musume_nuber_list.at((int)p->getUnitType())--;
@@ -343,6 +198,12 @@ void Game::push_del_enemy(shared_ptr<enemy> p){
 void Game::push_del_effect(shared_ptr<effect> p){
 	delete_effectlist.push_back(p);
 }
+
+void Game::push_castle_list(int stage_num){
+	shared_ptr<castle> p(new castle(stage_W[stage_num], 0, stage_num));
+	castle_list.push_back(p);
+}
+
 void Game::push_attack_list(shared_ptr<AttackRange> p, int unittype){
 	switch (unittype){
 	case MUSUME:
@@ -362,10 +223,10 @@ void Game::main(){
 	int front_tmp, front_S_tmp;
 	Position front_type;
 	int target_X=INT_MAX,target_X_S=INT_MAX;
-	shared_ptr<enemy> target_e;
-	shared_ptr<musume> target_m;
-	shared_ptr<enemy> target_e_sky;
-	shared_ptr<musume> target_m_sky;
+	shared_ptr<character> target_e;
+	shared_ptr<character> target_m;
+	shared_ptr<character> target_e_sky;
+	shared_ptr<character> target_m_sky;
 
 	if(cameraMoveCount-->0){
 		x+=cameraTargetSpeed;
@@ -389,7 +250,7 @@ void Game::main(){
 						target_e = i;
 						target_X = i->getX();
 					}
-				
+						
 					if (i->getType() == SKY && target_X_S > i->getX()){
 						target_e_sky = i;
 						target_X_S = i->getX();
@@ -442,7 +303,7 @@ void Game::main(){
 			}
 
 			/*ダメージ*/
-			if (i->getState() == ATK){
+			if (i->getState() == UnitState::ATK){
 			if (front_type == RAND){
 				if (target_e != NULL)
 					target_e->damage(i->getPower(), i->getAtkType(),i->getUnitType());
@@ -482,7 +343,7 @@ void Game::main(){
 			}
 			i->main(front);
 			/*ダメージ*/
-			if (i->getState() == ATK){
+			if (i->getState() == UnitState::ATK){
 			if (front_type == RAND){
 				if (target_m != NULL)
 					target_m->damage(i->getPower(), i->getAtkType(), i->getUnitType());
@@ -499,11 +360,16 @@ void Game::main(){
 	}
 	front_line = max(front_tmp,front_S_tmp);
 
-	
-	
+	vector<shared_ptr<castle>>::iterator eraseIterator = castle_list.begin();
+	stage_clear = false;
 	for (auto i : castle_list){
 		i->main(front_line);
+		if (stage_clear){
+			stageInc();
+			break;
+		}
 	}
+	
 
 	for (auto k : atkrange_enemy_list){
 		for (int j = 0; j < 3; j++){
@@ -531,6 +397,8 @@ void Game::main(){
 	}
 
 	delete_object();
+
+
 
 }
 
@@ -567,8 +435,8 @@ void Game::draw(){
 
 	//Test();
 
-	atkrange_musume_list.clear();
-	atkrange_enemy_list.clear();
+//	atkrange_musume_list.clear();
+//	atkrange_enemy_list.clear();
 
 }
 
@@ -579,10 +447,25 @@ void Game::stageInc(){
 		}
 	}
 	gainResource(castle_resouce[nowstage]);
-	if (nowstage+1 == STAGE_NUM + 1)return;
-	nowstage++;
-	castle_list.at(nowstage-1)->setState(OCCUPY);
-	castle_list.at(nowstage)->setState(ACTIVE);
+	if (nowstage + 1 == STAGE_NUM + 1)return;
+	vector<shared_ptr<castle>>::iterator eraseIterator = castle_list.begin();
+	for (int i = 0; i < nowstage; i++){
+		eraseIterator++;
+	}
+	eraseIterator = castle_list.erase(eraseIterator);
+	nowstage++;	
+	
+	shared_ptr<castle_musume> p(new castle_musume(stage_W[nowstage - 1], 0, nowstage - 1));
+	castle_list.insert(eraseIterator, p);
+
+	
+	//castle_list.at(nowstage-1)->setState(OCCUPY);
+	//敵城は順番に入ってるはず
+	castle_list.at(nowstage)->setState(CastleState::ACTIVE);
+}
+
+void Game::stageClear(){
+	stage_clear = true;
 }
 
 void Game::delete_object(){
@@ -618,7 +501,10 @@ void Game::delete_object(){
 		delete_effectlist.clear();
 	}
 	
+	atkrange_musume_list.clear();
+	atkrange_enemy_list.clear();
 
+	/*一斉開放による処理落ちを防止*/
 	if(memfree_list.size()<10)
 		memfree_list.clear();
 	else
@@ -641,7 +527,7 @@ void Game::Test(){
 	}
 
 	if (CheckHitKey(KEY_INPUT_Z)) for (int i = 0; i < 1; i++);
-	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++)setProduct(0,KAMIKAZE);
+	if (CheckHitKey(KEY_INPUT_X)) for (int i = 0; i < 1; i++);
 	if (CheckHitKey(KEY_INPUT_C)) for (int i = 0; i < 3; i++)enemy_list[i].clear();
 	if (CheckHitKey(KEY_INPUT_V)) for (int i = 0; i < 3; i++)musume_list[i].clear();
 
@@ -659,7 +545,7 @@ void Game::Test(){
 	//if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
 	//if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
 
-	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(getNowStage() , COPTER);
+	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(getNowStage()-1 , COPTER);
 
 }
 
@@ -704,15 +590,15 @@ bool Game::incParamLevel(int u_type, ParamType p_type,int lvcost){
 }
 
 bool Game::isClear(){
-	int now_st = castle_list.at(STAGE_NUM)->getState();
+	CastleState now_st = castle_list.at(STAGE_NUM)->getState();
 	return !(now_st == CastleState::ACTIVE || now_st == CastleState::STAY);
 }
 
 bool Game::isGameover(){
-	return (castle_list.at(getNowStage()-1)->getState()==MEKA_DIE);
+	return (castle_list.at(getNowStage() - 1)->getState() == CastleState::DIE);
 }
 
-pair<list<shared_ptr<enemy>>*,list<shared_ptr<musume>>*> Game::getDarkness(){
+pair<list<shared_ptr<character>>*,list<shared_ptr<character>>*> Game::getDarkness(){
 	return std::make_pair(enemy_list,musume_list);
 }
 

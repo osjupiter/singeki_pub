@@ -1,8 +1,8 @@
 #include "musume.h"
 #include "Game.h"
 
-musume::musume(int fx, int fy, int ln, shared_ptr<Parameter> pm) :unit(fx, fy, ln){
-	param = pm;
+musume::musume(int fx, int ln, UnitType u_type) : character(fx, ln ,u_type){
+	param = Game::getIns()->getParam(static_cast<int>(unit_type));
 	dir = Direction::RIGHT;
 	hp = param->getParam(MAXHP);
 	maxhp = hp;
@@ -10,32 +10,9 @@ musume::musume(int fx, int fy, int ln, shared_ptr<Parameter> pm) :unit(fx, fy, l
 }
 
 void musume::main(int front){
-	unit::main();
-	if (wait_time>0)
-		wait_time--;
+	character::main(front);
+
 	switch (state){
-	case UnitState::MOV:
-		x += param->getParam(SPEED); //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-		if (x > front - dist){
-			if (wait_time==0)
-				changeState(ATK);	
-			else changeState(WAIT);
-		}
-		break;
-	case UnitState::ATK:
-		if (!(x > front - dist)) {
-			changeState(MOV);
-		}
-		break;
-	case UnitState::WAIT:
-		if (!(x > front - dist)) {
-			changeState(MOV);
-		}
-		
-		else if (wait_time == 0){
-			changeState(ATK);
-		}
-		break;
 	case UnitState::DIE:
 		y += vy;
 		x += vx;
@@ -45,10 +22,6 @@ void musume::main(int front){
 			del();
 		break;
 	}
-
-	
-	if (x > FIELD_W * 15) {
-		life = false; }
 }
 
 void musume::draw(int cx){
@@ -61,7 +34,7 @@ void musume::changeState(UnitState next_state){
 	case UnitState::MOV:		
 		ani_count = 0;
 		switch (state){
-		case ATK:
+		case UnitState::ATK:
 			wait_time = param->getParam(A_FREQ);
 			atk = false;
 			break;
@@ -70,29 +43,29 @@ void musume::changeState(UnitState next_state){
 		break;
 	case UnitState::ATK:
 		switch (state){
-		case MOV:
-			state = ATK;
+		case UnitState::MOV:
+			state = UnitState::ATK;
 			ani_count = 0;
 		
 			break;
-		case WAIT:
-			state = ATK;
+		case UnitState::WAIT:
+			state = UnitState::ATK;
 			ani_count = 0;
 			break;
 		}
 		break;
 	case UnitState::WAIT:
 		switch (state){
-		case MOV:
-			state = WAIT;
+		case UnitState::MOV:
+			state = UnitState::WAIT;
 			break;
-		case ATK:
+		case UnitState::ATK:
 			wait_time = param->getParam(A_FREQ);	
 			ani_count = 0;
 			if (wait_time == 0)
-				state = ATK;
+				state = UnitState::ATK;
 			else 
-				state = WAIT;
+				state = UnitState::WAIT;
 
 			atk = false;
 			break;
@@ -128,7 +101,7 @@ void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
 		}
 		hp -= max(d - param->getParam(DEFENSE), 0);
 		if (hp < 0){
-			changeState(DIE);
+			changeState(UnitState::DIE);
 		}
 	}
 

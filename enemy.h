@@ -1,8 +1,8 @@
 #pragma once
 #include  "DxLib.h"
-#include "unit.h"
+#include "character.h"
 
-class enemy : public unit,enable_shared_from_this<enemy>{
+class enemy : public character,enable_shared_from_this<enemy>{
 protected:
 	int level;
 	int power;
@@ -15,7 +15,7 @@ protected:
 	Position atk_position;
 	bool atk;
 public:
-	enemy(int,int,int,int);
+	enemy(int,int,int,UnitType);
 	virtual void main(int);
 	virtual void draw(int);
 	void del();

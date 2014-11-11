@@ -3,6 +3,16 @@
 #include "background.h"
 #include "GV.h"
 
+const int scroll_type[8][5] = {
+	{0,0,0,0,0},
+	{0,0,1,0,0},
+	{0,0,1,0,0},
+	{0,2,1,0,0},
+	{0,0,1,0,0},
+	{0,0,0,0,0},
+	{0,0,0,0,0},
+	{0,0,0,0,0}
+};
 double remain(double a,int b){
 	int c=a/b;
 	return a - c*b;
@@ -15,7 +25,7 @@ background::background(int x_st, int st, int ly, int w_st,bool mv):object(x_st,0
 		width = w_st;
 		height = WINDOW_Y;
 		pic_wid = 650;
-		move = mv;
+		move = (scroll_type[stage][layer] == 1);
 		dx=0;
 		if (move){
 			gap = 0;
@@ -33,15 +43,15 @@ void background::main(int cx){
 	
 	}
 	else{
-		if (cx < x)
-			dx = x - cx;
+		if (cx < x){
+		dx = (x - cx);
 		//	dx = remain(x - cx*(layer + 1) / 3, pic_wid);
 		/*else if (x + width < cx + FIELD_W){
 		dx=x + width - (cx + FIELD_W);
 		}*/
-		else{
+		}else{
 			//îwåiÇÃÇ∏ÇÁÇµï˚óvåüì¢
-			dx = ((int)(remain(x*gap - cx*gap, pic_wid)));
+			dx = ((int)(remain((x - cx)*gap, pic_wid)));
 		}
 	}
 	
@@ -56,7 +66,7 @@ void background::draw(int cx){
 	
 	if (move){
 		if (cx < x){
-		DrawRectGraph(x - cx, y, x - cx - (dx), y, pic_wid - (x - cx - (dx)), height, Images::getIns()->back[stage][layer], true, false);
+			DrawRectGraph(x - cx, y, x - cx - (dx), y, pic_wid - (x - cx - (dx)), height, Images::getIns()->back[stage][layer], true, false);
 		}
 		else{
 			DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
@@ -70,7 +80,8 @@ void background::draw(int cx){
 			DrawLine(dx + pic_wid + pic_wid+1, 0, dx + pic_wid + pic_wid+1, WINDOW_Y, GetColor(255, 0, 0), 4);
 
 		}*/
-		if (layer != 1){
+		//äGÉãÅ[Év
+		if (scroll_type[stage][layer] != 2){
 			int tmpdx=dx;
 			while (tmpdx <= FIELD_W){
 				

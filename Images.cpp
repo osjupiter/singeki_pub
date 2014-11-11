@@ -100,11 +100,11 @@ void Images::load(){
 	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea3.png", 7, 7, 1, 155, 168, g_e_wisp[2]);
 
 
-	back[0][0] = LoadGraph("dat/img/R/”wŒi‚P|‚P.png");
-	back[0][1] = LoadGraph("dat/img/R/”wŒi‚P|‚T.png");
-	back[0][2] = LoadGraph("dat/img/R/”wŒi‚P|‚S.png");
-	back[0][3] = LoadGraph("dat/img/R/”wŒi‚P|‚Q.png");
-	back[0][4] = LoadGraph("dat/img/R/”wŒi‚P|‚R.png");
+	back[0][0] = LoadGraph("dat/img/r–ì/r–ì‚P|‚S.png");
+	back[0][1] = 0;
+	back[0][2] = LoadGraph("dat/img/r–ì/r–ì‚P|‚R.png");
+	back[0][3] = LoadGraph("dat/img/r–ì/r–ì‚P|‚Q.png");
+	back[0][4] = LoadGraph("dat/img/r–ì/r–ì‚P|‚P.png");
 	houdai_yama = LoadGraph("dat/img/R/Ré–C‘ä.png");
 
 	back[1][0] = 0;

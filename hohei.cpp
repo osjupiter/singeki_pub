@@ -5,14 +5,15 @@
 #define ANIM_SPEED 3
 #define DIST_HOHEI 150
 int hohei::num = 0;
-hohei::hohei(int fx, int fy, int ln, shared_ptr<Parameter> pm) : musume(fx, fy, ln, pm){
+hohei::hohei(int fx, int ln) : musume(fx, ln, UnitType::_HOHEI){
 	dist = dist + DIST_HOHEI;
-	//hp = param->getParam(MAXHP);
+	type = RAND;
+
 	width = WID_HOHEI;
 	height = HEI_HOHEI;
-	num++;
-	type = RAND;
-	unit_type=UnitType::_HOHEI;
+	y = WINDOW_Y - height - ln * 3;
+ 	num++;
+
 }
 
 void hohei::init(){
@@ -22,7 +23,9 @@ void hohei::init(){
 void hohei::main(int front){
 	musume::main(front);
 	switch (state){
-
+	case UnitState::MOV:
+		x += param->getParam(SPEED); //‰¡ˆÚ“®
+		break;
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED % ANI_HOHEI_ATK == 0){
 			if (!atk){
@@ -36,7 +39,7 @@ void hohei::main(int front){
 			atk = false;
 		}
 		if ((ani_count / ANIM_SPEED == ANI_HOHEI_ATK)){
-			changeState(WAIT);
+			changeState(UnitState::WAIT);
 			atk = false;
 		}
 
@@ -64,7 +67,7 @@ void hohei::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_hohei[ani_count / ANIM_SPEED%ANI_HOHEI_ATK], true);
 		break;
 	}
-	unit::draw(cx);
+	character::draw(cx);
 
 }
 

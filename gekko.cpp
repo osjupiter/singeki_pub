@@ -9,9 +9,9 @@
 int gekko::num;
 
 	
-gekko::gekko(int fx, int fy, int ln, int lv) : enemy(fx, fy, ln, lv){
+gekko::gekko(int fx, int ln, int lv) : enemy(fx, ln, lv, UnitType::_GEKKO){
 	dist = dist + DIST_GEKKO;
-	
+	y = WINDOW_Y - HEI_GEKKO - line * 3;
 	power = POWER_GEKKO*(1+0.2*lv);
 	hp = MAXHP_GEKKO + MAXHP_GEKKO*0.4*lv;
 	width = WID_GEKKO;
@@ -39,7 +39,7 @@ void gekko::main(int front){
 	switch (state){
 	case UnitState::MOV:
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-		if (x + width < 0) state = DIE;
+		if (x + width < 0) state = UnitState::DIE;
 		break;
 	case UnitState::ATK:
 		atk = false;
@@ -49,7 +49,7 @@ void gekko::main(int front){
 		}
 		else{ atk = false; }
 		if (ani_count / ANIM_SPEED_ATK == ANI_GEKKO){
-			changeState(WAIT);
+			changeState(UnitState::WAIT);
 		}
 		break;
 	case UnitState::WAIT:

@@ -7,7 +7,7 @@ using namespace std;
 class unit:public object{
 protected:
 	Direction dir;
-	int line;
+	int line; //—v‚ç‚ñ‚Ì‚Å‚Í
 	int dist;
 	int hp;
 	int maxhp;
@@ -15,24 +15,21 @@ protected:
 	bool state_change_flag;
 	UnitType unit_type;
 
-	bool life;
-	int state;
-//	int power;
-//	int defense;
+	bool life;//—v‚ç‚ñ‚Ì‚Å‚Í
+
+
 	Position type;
-//	int atk_type;
-//	int atk_freq;
-//	int cost;
+
 	unsigned int ani_count;
 public:
-	unit(int,int,int);
+	unit(int,int);
 	virtual void main();
 	virtual void draw(int);
 	int getLine();
 	bool getLife();
 //	virtual void damage(int,int);
 	//int getPower();
-	int getState(); 
+
 	
 	Position getType();
 	//int getAtkType();

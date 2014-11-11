@@ -28,7 +28,8 @@ void missile::main(){
 void missile::draw(int cx){
 	if (dir == LEFT){
 		DrawGraph(x - cx, y, Images::getIns()->g_missile[ani_count / ANIM_SPEED % ANI_MISSILE], true);
-//		DrawLine((x + x + width) / 2 - cx, 0, (x + x + width) / 2 - cx, WINDOW_Y, GetColor(255, 255, 0), 5);
+//		
+		((x + x + width) / 2 - cx, 0, (x + x + width) / 2 - cx, WINDOW_Y, GetColor(255, 255, 0), 5);
 //		DrawBox((x + x + width) / 2 - WID_EXP / 2 - cx, WINDOW_Y - HEI_EXP, (x + x + width) / 2 + WID_EXP / 2 - cx, WINDOW_Y, GetColor(255, 0, 0), false);
 	}
 	else 

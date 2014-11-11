@@ -11,10 +11,10 @@
 int tank::num;
 
 
-tank::tank(int fx, int fy, int ln,int lv) : enemy(fx, fy, ln,lv){
+tank::tank(int fx, int ln, int lv) : enemy(fx, ln,lv,UnitType::_TANK){
 	width = WID_TANK;
 	height = HEI_TANK;
-
+	y = WINDOW_Y - height - line * 3;
 
 	dist = dist + DIST_TANK;
 	power = POWER_TANK *(1*lv);
@@ -42,7 +42,7 @@ void tank::main(int front){
 	switch (state){
 	case UnitState::MOV:
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-		if (x + width < 0) state = DIE;
+		if (x + width < 0) state = UnitState::DIE;
 		break;
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED%ANI_TANK_ATK == 2){
@@ -56,7 +56,7 @@ void tank::main(int front){
 		else{ atk = false; }
 
 		if (((ani_count / ANIM_SPEED) == ANI_TANK_ATK)){
-			changeState(WAIT);
+			changeState(UnitState::WAIT);
 
 		}
 		break;
