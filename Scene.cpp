@@ -1,10 +1,10 @@
 #include "Scene.h"
 #include "SceneManager.h"
 #include "Game.h"
+#include "SoundController.h"
 TitleScene::TitleScene(){
 	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/title.png")));
 	addLayer(0,p);
-	//LAY_Ptr q((new ButtonLayer(267,336,Images::get(""),0,0,233,98))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
 	LAY_Ptr q((new ButtonLayer(0,0,Images::get(""),0,0,WINDOW_X,WINDOW_Y))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
 	
 	addLayer(1,q);
@@ -13,18 +13,54 @@ TitleScene::TitleScene(){
 }
 void TitleScene::buttonPushed(string id){
 	if(id=="start"){
-		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
+		SceneManager::getIns()->switchScene(std::make_shared<WorldScene>(),0,5);
+	}else if(id=="option"){
+		LAY_Ptr q(new OptionLayer());
+		addLayer(2,q);
 	}else{
 		DxLib_End() ;
 		exit(0);
 	}
 }
 void TitleScene::enterScene(){
-	Images::playBGM("sound/タイトル.mp3");
+	SoundController::getBgm()->playBGM("sound/タイトル.mp3");
 }
 void TitleScene::leaveScene(){
-	Images::playBGM("");
+	SoundController::getBgm()->playBGM("");
 }
+
+
+
+
+
+WorldScene::WorldScene(){
+	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/world.png")));
+	addLayer(0,p);
+	LAY_Ptr q((new ButtonLayer(0,0,Images::get(""),0,0,WINDOW_X,WINDOW_Y))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+	
+	addLayer(1,q);
+
+	
+}
+void WorldScene::buttonPushed(string id){
+	if(id=="start"){
+		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
+	}else if(id=="enter"){
+		this->rmLayer(1);
+	}else{
+		DxLib_End() ;
+		exit(0);
+	}
+}
+void WorldScene::enterScene(){
+	SoundController::getBgm()->playBGM("sound/タイトル.mp3");
+}
+void WorldScene::leaveScene(){
+	SoundController::getBgm()->playBGM("");
+}
+
+
+
 
 
 
@@ -32,27 +68,25 @@ GameScene::GameScene(){
 	std::shared_ptr<Game> p(new Game());
 	game=p;
 	addLayer(0,p);
-	//"pic/left.png"
 	LAY_Ptr q((new ButtonLayer(0,0,0,0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
 	addLayer(1,q);
 	LAY_Ptr r((new ButtonLayer(700,0,0,50,0,50,450))->setId("right")->setClickType(ButtonLayer::ONMOUSE));
 	addLayer(1,r);
 
-	//addLayer(5,std::make_shared<MapLayer>(game));
 	addLayer(4,std::make_shared<MenuLayer>(game));
 	addLayer(4,std::make_shared<HOHEILayer>(game,164,7));
-	//addLayer(10,std::make_shared<MapLayer>(game));
 	notEnd=true;
 	old_stage=1;
 	
 }
 void GameScene::enterScene(){
 	//PlaySoundMem( Images::getSound("sound/kuma.mp3"),DX_PLAYTYPE_LOOP);
-	Images::playBGM("sound/山.mp3");
+	//SoundController::getBgm()->playBGM("sound/山.mp3");
+	SoundController::getBgm()->changeBGM(0);
 }
 void GameScene::leaveScene(){
 	//StopSoundMem( Images::getSound("sound/kuma.mp3")) ;
-	Images::playBGM("");
+	SoundController::getBgm()->playBGM("");
 }
 void GameScene::beforemain(){
 	char Buf[ 256 ] ;
@@ -110,7 +144,7 @@ EndScene::EndScene(){
 	endc=0;
 }
 void EndScene::enterScene(){
-	Images::playBGM("sound/エンディング.mp3",false);
+	SoundController::getBgm()->playBGM("sound/エンディング.mp3",false);
 }
 void EndScene::main(){
 	count+=6;
@@ -151,7 +185,7 @@ LoadingScene::LoadingScene(){
 }
 void LoadingScene::main(){
 	if(GetASyncLoadNum()==0){
-		Images::setting();
+		SoundController::getSE()->setting();
 		SceneManager::getIns()->switchScene(make_shared<GameScene>(),0,5);
 	}
 }

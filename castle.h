@@ -2,6 +2,7 @@
 #include  "DxLib.h"
 #include "unit.h"
 #include <vector>
+#include "SoundController.h"
 
 typedef pair<int, int> ii;
 class castle : public unit{

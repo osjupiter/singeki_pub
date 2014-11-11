@@ -38,9 +38,11 @@ void ButtonLayer::main(){
 	mouse_in* m=mouse_in::getIns();
 	if(x+bx<m->X()&&y+by<m->Y()&&m->X()<x+bx+bw&&m->Y()<y+by+bh){
 		if(!_oldMouseisin)
-			Images::playSE(_enterSE);
+			SoundController::getSE()->playSE(_enterSE);
 		if(_clicktype==ONMOUSE|| m->Left()==_clicktype){
-			if(parentScene!=nullptr){parentScene->buttonPushed(id);Images::playSE(_clickSE);}
+			parentScene->buttonPushed(id);
+			SoundController::getSE()->playSE(_clickSE);
+			mouse_in::getIns()->Reset();
 		}
 		_oldMouseisin=true;
 	}else{
@@ -76,7 +78,7 @@ SelectLayer::SelectLayer(int _x,int _y,int _id){
 	 tate=70,yoko=60;
 }
 void SelectLayer::called(){
-	Images::playSE("sound/se_maoudamashii_system49.wav");
+	SoundController::getSE()->playSE("sound/se_maoudamashii_system49.wav");
 }
 void SelectLayer::main(){
 	
@@ -104,7 +106,7 @@ void SelectLayer::main(){
 				p->getGame()->setProduct(id,i);
 				parentScene->rmLayer(thisLayerID);
 				parentScene->rmLayer(18);
-				Images::playSE("sound/se_maoudamashii_system42.mp3");
+				SoundController::getSE()->playSE("sound/se_maoudamashii_system42.mp3");
 			}
 		}
 	}
@@ -183,39 +185,7 @@ void StageClearLayer::draw(){
 }
 void StageClearLayer:: main(){
 	if(remain_time--<=0){
-		string s,n;
-		switch(stage_id){
-		case 1:
-			s="sound/X.mp3";
-			n="sound/–éí.mp3";
-			break;
-		case 2:
-			s="sound/–éí.mp3";
-			n="sound/‹´.mp3";
-			break;
-		case 3:
-			s="sound/‹´.mp3";
-			n="sound/‘Œ´.mp3";
-			break;
-		case 4:
-			s="sound/‘Œ´.mp3";
-			n="sound/“´ŒA.mp3";
-			break;
-		case 5:
-			s="sound/“´ŒA.mp3";
-			n="sound/“sŽs.mp3";
-			break;
-		case 6:
-			s="sound/“sŽs.mp3";
-			n="sound/ˆÅ‚Ì¢ŠE.mp3";
-			break;
-		case 7:
-			s="sound/ˆÅ‚Ì¢ŠE.mp3";
-			n="sound/ƒGƒ“ƒfƒBƒ“ƒO.mp3";
-			break;
-		}
-		Images::playBGM(s.c_str());
-		Images::LoadSound(n);
+		SoundController::getBgm()->changeBGM(stage_id);
 		parentScene->rmLayer(thisLayerID);
 
 	}
@@ -232,7 +202,7 @@ void GameClearLayer::draw(){
 
 }
 void GameClearLayer::called(){
-		Images::playBGM("");
+		SoundController::getBgm()->playBGM("");
 		auto g=Game::getIns();
 		g->setCamera(g->stage_W[g->getNowStage()]-WINDOW_X/2);
 }
@@ -257,8 +227,8 @@ void GameOverLayer::draw(){
 	DrawGraph(0,0,Images::get("pic/GAMEOVER.png"),TRUE);
 }
 void GameOverLayer::called(){
-		Images::playBGM("");
-		Images::playSE("sound/ƒQ[ƒ€ƒI[ƒo[.mp3");
+		SoundController::getBgm()->playBGM("");
+		SoundController::getSE()->playSE("sound/ƒQ[ƒ€ƒI[ƒo[.mp3");
 		auto g=Game::getIns();
 		
 		g->setCamera(g->stage_W[g->getNowStage()-1]-WINDOW_X/2);
@@ -403,7 +373,7 @@ void MenuLayer:: main(){
 		ratelist[i]=1.0;
 		if((game->getNowStage()>i)&& testBox(_x-_w,_y-_w,_x+_w,_y+_w)){
 			
-			if(onmouse[i]==0){Images::playSE("sound/button03a.mp3");onmouse[i]=1;}
+			if(onmouse[i]==0){SoundController::getSE()->playSE("sound/button03a.mp3");onmouse[i]=1;}
 			if(m->LeftClick()){
 
 				m->Reset();
@@ -418,11 +388,7 @@ void MenuLayer:: main(){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
 			if( p != NULL )	p->addLayer(15,std::make_shared<PopFactoryLayer>(game));
 			m->Reset();
-		}/*else	if(testBox(130,50,130+60,50+20)){
-			GameScene* p = dynamic_cast<GameScene*>( parentScene );
-			if( p != NULL )	p->addLayer(15,std::make_shared<OptionLayer>());
-			m->Reset();
-		}*/else if(testBox(mx,my-mh,mx+mw,my+mh)){
+		}else if(testBox(mx,my-mh,mx+mw,my+mh)){
 			int targe=(m->X()-mx)/(double)mw*game->stage_W[game->getNowStage()];
 			game->setCamera(targe-WINDOW_X/2);
 			m->Reset();
@@ -431,7 +397,7 @@ void MenuLayer:: main(){
 	if(testBox(221,62,221+66,62+60)){
 		if(customon==0){
 			customon=1;
-			Images::playSE("sound/button03a.mp3");
+			SoundController::getSE()->playSE("sound/button03a.mp3");
 		}
 	}else{
 			customon=0;
@@ -536,28 +502,6 @@ void FactoryLayer:: main(){
 
 
 
-OptionLayer::OptionLayer(){
-	x=100;
-	y=100;
-	w=600;
-	h=300;
-
-}
-void OptionLayer::draw(){
-	DrawBox(x,y,x+w,y+h,GetColor(255,0,0),TRUE);
-	DrawBox(x+100,y+h-100,x+w-100,y+h-50,GetColor(255,255,0),TRUE);
-	DrawString(x+100,y+h-100,"ƒQ[ƒ€‚ðI—¹‚·‚é",GetColor(0,0,0));
-}
-void OptionLayer:: main(){
-	mouse_in* m=mouse_in::getIns();
-		if(testBox(x+100,y+h-100,x+w-100,y+h-50)){
-			if(m->LeftClick())parentScene->buttonPushed("exit");
-		}else{
-			if(m->LeftClick())
-				parentScene->rmLayer(thisLayerID);
-		}
-	
-}
 
 PopFactoryLayer::PopFactoryLayer(shared_ptr<Game> g){
 	x=257;
@@ -577,7 +521,7 @@ PopFactoryLayer::PopFactoryLayer(shared_ptr<Game> g){
 }
 void PopFactoryLayer::called(){
 
-	Images::playSE("sound/se_maoudamashii_system49.wav");
+	SoundController::getSE()->playSE("sound/se_maoudamashii_system49.wav");
 }
 void PopFactoryLayer::draw(){
 		
@@ -704,7 +648,7 @@ void ChipFactoryLayer:: main(){
 				if(game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]))){
 					m->Reset();
 					stringstream ss2;
-					Images::playSE("sound/se_maoudamashii_system39.mp3");
+					SoundController::getSE()->playSE("sound/se_maoudamashii_system39.mp3");
 					ss2 << "ŠJ”­ƒRƒXƒg:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
 					hov[i]->setString(game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str());
 					//parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str()));
@@ -763,7 +707,7 @@ void HOHEILayer::main(){
 			flag=0;
 			
 				
-				Images::playSE("sound/spawn.mp3");
+				SoundController::getSE()->playSE("sound/spawn.mp3");
 		}
 	}
 }
@@ -799,7 +743,7 @@ void HoverLayer::draw(){
 
 
 }
-void HoverLayer::called(){Images::playSE("sound/button03a.mp3");}
+void HoverLayer::called(){SoundController::getSE()->playSE("sound/button03a.mp3");}
 void HoverLayer::main(){
 	if(testBox(x-25,y-25,x+25,y+25)){
 		mouse_in::getIns()->recieveOver();
@@ -820,4 +764,56 @@ void HoverLayer::setString(string m1,string m2,string m3){
 void HoverLayer::setPos(int _x,int _y){
 		x=_x;
 		y=_y;
+}
+
+OptionLayer::OptionLayer(){
+	x=100;
+	y=100;
+	w=WINDOW_X-200;
+	h=WINDOW_Y-200;
+	y1=y+50;
+	y2=y+100;
+	y3=y+150;
+	master=50;
+	se=50;
+	bgm=50;
+}
+
+void OptionLayer::draw(){
+	DrawBox(x,y,x+w,y+h,GetColor(255,0,0),TRUE);
+	int pos1=x+50+(w-100)*master/100;
+	int pos2=x+50+(w-100)*se/100;
+	int pos3=x+50+(w-100)*bgm/100;
+	DrawBox(x+50,y1,x+w-50,y1+10,GetColor(255,255,0),TRUE);
+	DrawBox(x+50,y2,x+w-50,y2+10,GetColor(255,255,0),TRUE);
+	DrawBox(x+50,y3,x+w-50,y3+10,GetColor(255,255,0),TRUE);
+
+	DrawBox(pos1-5,y1,pos1+5,y1+10,GetColor(0,0,255),TRUE);
+	DrawBox(pos2-5,y2,pos2+5,y2+10,GetColor(0,0,255),TRUE);
+	DrawBox(pos3-5,y3,pos3+5,y3+10,GetColor(0,0,255),TRUE);
+}
+
+void OptionLayer::main(){
+	if(!testBox(x,y,x+w,y+h)&&mouse_in::getIns()->LeftClick()){
+		mouse_in::getIns()->Reset();
+		this->removeThis();
+	}
+	if(testBox(x+50,y1,x+w-50,y1+10)&&mouse_in::getIns()->LeftClick()){
+		mouse_in::getIns()->Reset();
+		master=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
+		
+	}
+	if(testBox(x+50,y2,x+w-50,y2+10)&&mouse_in::getIns()->LeftClick()){
+		mouse_in::getIns()->Reset();
+		se=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
+		
+	}
+	if(testBox(x+50,y3,x+w-50,y3+10)&&mouse_in::getIns()->LeftClick()){
+		mouse_in::getIns()->Reset();
+		bgm=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
+	}
+}
+void OptionLayer::called(){
+
+	
 }

@@ -6,17 +6,20 @@
 Images Images::ins;
 
 void Images::load(){
+	vector<string> filelist;
+
 	SetUseASyncLoadFlag( FALSE ); // 非同期読み込みフラグOFF
 	//タイトルに使うものたちよ
 	filelist.push_back("pic/title.png");
 	filelist.push_back("pic/定刻ぼるけーの.png");
-	soundlist.push_back("sound/button03a.mp3");
-	soundlist.push_back("sound/se_maoudamashii_system49.wav");
+	filelist.push_back("pic/world.png");
+	
 		
 	filelist.push_back("pic/test.jpg");
 	filelist.push_back("pic/black.jpg");
+	
 	blend=LoadBlendGraph("pic/blend.jpg");
-	soundlist.push_back("sound/タイトル.mp3");
+	
 
 		
 	for(auto s:filelist){
@@ -24,10 +27,6 @@ void Images::load(){
 
 	}	
 
-	for(auto s:soundlist){
-		ss[s]=LoadSoundMem(s.c_str());
-
-	}
 
 
 
@@ -35,9 +34,7 @@ void Images::load(){
 	SetUseASyncLoadFlag( TRUE ); // 非同期読み込みフラグON
 	
 
-	_nowBGM="";
 
-//	gs[0]=LoadGraph("pic/test.jpg");
 	LoadDivGraph("dat/img/歩兵w.png", ANI_HOHEI, ANI_HOHEI, 1, WID_HOHEI, HEI_HOHEI, g_hohei);
 	LoadDivGraph("dat/img/歩兵a.png", ANI_HOHEI_ATK, ANI_HOHEI_ATK, 1, WID_HOHEI, HEI_HOHEI, g_hohei_atk);
 
@@ -270,79 +267,25 @@ void Images::load(){
 	filelist.push_back("pic/ポップアップウインドウ.png");
 	filelist.push_back("pic/ポップアップ歯車.png");
 
-	soundlist.push_back("sound/kuma.mp3");
-	
-	soundlist.push_back("sound/taihou03.mp3");
-	soundlist.push_back("sound/misairu.mp3");
-	soundlist.push_back("sound/shot002.wav");
-	soundlist.push_back("sound/gun04.mp3");
-	soundlist.push_back("sound/sen_ge_taihou08.mp3");
-	//soundlist.push_back("sound/sen_ge_taihou06.mp3");
-	soundlist.push_back("sound/sen_mi_lasergun01.mp3");
-	soundlist.push_back("sound/sen_ka_heirappa01.mp3");
-	soundlist.push_back("sound/sen_ge_bom17.mp3");
-	soundlist.push_back("sound/sen_mi_robo_bato01.mp3");
-	soundlist.push_back("sound/sen_ge_hasai02.mp3");
-	soundlist.push_back("sound/se_maoudamashii_system49.mp3");
-	soundlist.push_back("sound/se_maoudamashii_system39.mp3");//
-	soundlist.push_back("sound/se_maoudamashii_system42.mp3");
-	
-	soundlist.push_back("sound/spawn.mp3");
 
-	
-	soundlist.push_back("sound/山.mp3");
-	soundlist.push_back("sound/森.mp3");
-
-	
-	soundlist.push_back("sound/ゲームオーバー.mp3");
-	/*
-	soundlist.push_back("sound/エンディング.mp3");
-	soundlist.push_back("sound/闇の世界.mp3");
-	soundlist.push_back("sound/橋.mp3"); 
-	soundlist.push_back("sound/草原.mp3");
-	soundlist.push_back("sound/都市.mp3");
-	soundlist.push_back("sound/洞窟.mp3");
-	soundlist.push_back("sound/夜戦.mp3");
-	*/
 	for(auto s:filelist){
 		if (gs.count(s) == 0)
 			gs[s]=LoadGraph(s.c_str());
 
 	}	
 
-	for(auto s:soundlist){
-		if (ss.count(s) == 0)
-			ss[s]=LoadSoundMem(s.c_str());
-
-	}
-
 	SetUseASyncLoadFlag( FALSE ); // 非同期読み込みフラグOFF
-
-
-
 	font=CreateFontToHandle( "メイリオ" , 13 , 5 ,DX_FONTTYPE_ANTIALIASING_EDGE_4X4) ;
-
-
-	
 }
 
 	void Images::init(){ins.load();}
 	Images* Images::getIns(){return &ins;}
 
 	int Images::get(const char name[]){return ins.gs[string(name)];}
-	int Images::getSound(const char name[]){return ins.ss[string(name)];}
+
 
 	
-	void Images::playSE(string name,boolean ischeck){
-		if(ischeck){
-			if(CheckSoundMem(ins.ss[name])==1)
-				return;
-		}
-		PlaySoundMem(ins.ss[name] ,DX_PLAYTYPE_BACK);
-	}
-	void Images::playSE(string name){Images::playSE(name,false);}
 
-	void Images::stopSE(string name){StopSoundMem(ins.ss[name] );}
 
 	int Images::getMusumeIcon(int id,boolean dfalse){
 		string s;
@@ -430,25 +373,4 @@ void Images::load(){
 		return ins.get((hoge[i]+(dfalse?"2":"")+".png").c_str());
 
 	}
-
-	void Images::playBGM(string name,boolean defaulttrue){
-		if(ins._nowBGM!="")
-			StopSoundMem(getSound(ins._nowBGM.c_str()));
-		if(name!="")
-			if(defaulttrue){
-				PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_LOOP);
-			}else{
-				PlaySoundMem(getSound(name.c_str()),DX_PLAYTYPE_BACK);
-			}
-			ins._nowBGM=name;
-	}
-
-	void Images::LoadSound(string s){
-		SetUseASyncLoadFlag( TRUE ); // 非同期読み込みフラグOFF
-		if(ins.ss.count(s)==0)
-			ins.ss[s]=LoadSoundMem(s.c_str());
-		
-		SetUseASyncLoadFlag( FALSE ); // 非同期読み込みフラグOFF
-	}
-
 

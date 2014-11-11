@@ -85,8 +85,14 @@ void castle::main(int front){
 		loop_count ++ ;
 		if (loop_count / ANIM_SPEED_BIGEXP >= 8){			
 			loop_count = 0;
+<<<<<<< HEAD
 			Game::getIns()->stageClear();			
 			Images::getIns()->playSE("sound/sen_ka_heirappa01.mp3");
+=======
+			Game::getIns()->stageInc();
+			hp = meka_castle_hp[stage];
+			SoundController::getSE()->playSE("sound/sen_ka_heirappa01.mp3");
+>>>>>>> 5e692be8e0f7d1066d8ddc8ebb5fa0c9292004ec
 
 		}
 		break;*/

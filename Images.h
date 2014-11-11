@@ -5,18 +5,20 @@
 
 
 #include<map>
+#include<list>
 #include<string>
 #include<vector>
 using namespace std;
 
 class Images
 {
-	vector<string> filelist;
-	vector<string> soundlist;
-	string _nowBGM;
+
+
 	static Images ins;
 	std::map<std::string, int> gs;
-	std::map<std::string, int> ss;
+
+
+
 public:	
 	int blend;
 	
@@ -73,19 +75,17 @@ public:
 	static void init();
 	static Images* getIns();
 	static int get(const char name[]);
-	static int getSound(const char name[]);
-	static void playSE(string name,boolean);
-	static void playSE(string name);
-	static void stopSE(string name);
-	static void playBGM(string name,boolean defaulttrue=true);
+
+
+	
 	static int getMusumeIcon(int,boolean=false);
 	static int getSiroIcon(int,boolean=false);
 	static int getParamTypeIcon(ParamType,boolean=false);
-	static void LoadSound(string);
-	static void setting(){
+
+
 	
 
-	ChangeVolumeSoundMem(255*50/100, ins.ss["sound/shot002.wav"]);
-	ChangeVolumeSoundMem(255 * 70 / 100, ins.ss["sound/sen_mi_robo_bato01.mp3"]);
-	}
+
+
+
 };

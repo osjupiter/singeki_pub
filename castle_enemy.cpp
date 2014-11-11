@@ -2,6 +2,7 @@
 #include "bigExplode.h"
 #include "Game.h"
 
+
 const int castle::castle_hp[9] = { 10000, 10000, 30000, 40000, 60000, 80000, 100000, 300000, 500000 };
 
 template<typename TYPE, std::size_t SIZE>
@@ -124,7 +125,7 @@ void castle_enemy::main(int front){
 		if (loop_count / ANIM_SPEED_BIGEXP >= 8){
 			loop_count = 0;
 			Game::getIns()->stageClear();
-			Images::getIns()->playSE("sound/sen_ka_heirappa01.mp3");
+			SoundController::getSE()->playSE("sound/sen_ka_heirappa01.mp3");
 
 		}
 		break;

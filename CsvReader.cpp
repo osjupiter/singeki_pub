@@ -21,3 +21,16 @@ vector<vector<string>> CsvReader::parseTable(string name, const string &delim){
     return table;
 }
  
+
+void CsvReader::saveCsv(string filename,map<string,string> hash){
+
+	ofstream ofs(filename);
+ 
+	
+	for(auto part: hash ) 
+	{
+		ofs << part.first << "," << part.second << endl;
+	}
+	return;
+
+}

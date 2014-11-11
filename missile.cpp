@@ -18,7 +18,7 @@ void missile::main(){
 		//Game::getIns()->effect_create(x - 50, WINDOW_Y-HEI_EXP, EXP);
 		Game::getIns()->effect_create(x +width/2-WID_NOMALEXP/2, WINDOW_Y-HEI_NOMALEXP, NOMALEXP);
 		int center = (x + x + width) / 2;
-//		Images::playSE("sound/taihou03.mp3");
+//		SoundController::getSE()->playSE("sound/taihou03.mp3");
 		
 		shared_ptr<AttackRange> p(new AttackRange(center - WID_NOMALEXP / 2, center + WID_NOMALEXP / 2, power, RAND));
 		Game::getIns()->push_attack_list(p, ENEMY);

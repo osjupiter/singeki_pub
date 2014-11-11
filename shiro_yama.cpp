@@ -27,8 +27,8 @@ void shiro_yama::main(int front){
 				Game::getIns()->push_attack_list(p, ENEMY);
 				Game::getIns()->effect_create(x - rand_x - WID_SHOCK+100, FIELD_H - HEI_SHOCK, SHOCK);
 				Game::getIns()->damage_effect_create(x + 168 - WID_CANNONSHOT / 2 - draw_gap[stage][0],y + 210 - HEI_CANNONSHOT / 2, CANNONSHOT);
-				Images::playSE("sound/taihou03.mp3");
-				Images::getIns()->playSE("sound/sen_ge_taihou08.mp3");
+				SoundController::getSE()->playSE("sound/taihou03.mp3");
+				SoundController::getSE()->playSE("sound/sen_ge_taihou08.mp3");
 			}
 			wait_time = YAMA_CANNON_FREQ;
 		}
