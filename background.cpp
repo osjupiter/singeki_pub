@@ -5,10 +5,10 @@
 
 const int scroll_type[8][5] = {
 	{0,0,0,0,0},
-	{0,0,1,0,0},
-	{0,0,1,0,0},
-	{0,2,1,0,0},
-	{0,0,1,0,0},
+	{0,0,0,0,0},
+	{0,0,0,0,0},
+	{0,0,0,0,0},
+	{0,2,0,0,0},
 	{0,0,0,0,0},
 	{0,0,0,0,0},
 	{0,0,0,0,0}
@@ -99,7 +99,7 @@ void background::draw(int cx){
 	}else{
 		DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
 		int tmpdx=dx;
-		if (layer != 1){
+		if (scroll_type[stage][layer] != 2){
 			while (tmpdx <= cx + FIELD_W){
 				if ((tmpdx = tmpdx + pic_wid) <= cx + FIELD_W)
 					DrawGraph(tmpdx, y, Images::getIns()->back[stage][layer], true);

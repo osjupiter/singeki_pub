@@ -437,7 +437,7 @@ void Game::draw(){
 			i->draw(x);
 	}
 
-//	Test();
+	Test();
 
 //	atkrange_musume_list.clear();
 //	atkrange_enemy_list.clear();
@@ -520,7 +520,8 @@ void Game::delete_object(){
 
 
 void Game::Test(){
-	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "m%d en%d ef%d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
+	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "TEST");
+/*	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "m%d en%d ef%d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
 	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "x %d", x);
 
 	DrawFormatString(FIELD_W - 200, 126, GetColor(255, 255, 255), "resouce %d", getResource());
@@ -546,7 +547,7 @@ void Game::Test(){
 		param_list[i]->draw(0, 200+30*i);
 	}
 
-
+	*/
 	if (mouse_in::getIns()->RightClick())turnPauseFlag();
 
 }
