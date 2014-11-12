@@ -52,6 +52,8 @@ class Game : public Layer{
 	void Test();
 	int cameraTargetSpeed;
 	int cameraMoveCount;
+
+	bool pauseFlag;
 public:
 	static const int stage_W[9];
 	Game(int _world=0);
@@ -78,7 +80,9 @@ public:
 	int getProduct(int);
 	double getProductCLKPAR(int);
 	int getNowStage();
-	
+	/*É|Å[ÉY*/
+	void turnPauseFlag();
+	bool getPauseFlag();
 	/*éëåπ*/
 	void useResource(int);
 	void gainResource(int);

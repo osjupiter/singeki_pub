@@ -27,7 +27,7 @@ Game::Game(int _world){
 	srand((unsigned int)time(NULL));
 	x=0;
 	nowstage = 1;
-
+	pauseFlag = false;
 
 	cameraTargetSpeed=0;
 	cameraMoveCount=0;
@@ -218,6 +218,7 @@ void Game::push_attack_list(shared_ptr<AttackRange> p, int unittype){
 
 
 void Game::main(){
+	if (pauseFlag)return;
 	int now_stage = getNowStage();
 	int front=-1;
 	int front_tmp, front_S_tmp;
@@ -231,10 +232,13 @@ void Game::main(){
 	if(cameraMoveCount-->0){
 		x+=cameraTargetSpeed;
 		int r_end = stage_W[getNowStage()] + WID_CASTLE / 2 - 100;
+		if (!getPauseFlag()) //背景デバッグ用if
 		if (x + FIELD_W > r_end){ x = r_end - FIELD_W;cameraMoveCount=0;}
 		if (x + FIELD_W > STAGE8_W){ x = STAGE8_W - FIELD_W ;cameraMoveCount=0;}
 		if (x < 0){x = 0;cameraMoveCount=0;}
-
+		for (auto i : back_list) {
+			i->scroll(x);
+		}
 	}
 
 	for (auto i : back_list){
@@ -433,7 +437,7 @@ void Game::draw(){
 			i->draw(x);
 	}
 
-	//Test();
+//	Test();
 
 //	atkrange_musume_list.clear();
 //	atkrange_enemy_list.clear();
@@ -542,10 +546,8 @@ void Game::Test(){
 		param_list[i]->draw(0, 200+30*i);
 	}
 
-	//if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
-	//if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
 
-	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(getNowStage()-1 , COPTER);
+	if (mouse_in::getIns()->RightClick())turnPauseFlag();
 
 }
 
@@ -554,14 +556,22 @@ void Game::Test(){
 void Game::scrollLeft(int sx){
 	x -= sx;
 	if (x < 0)x = 0;
+	for (auto i : back_list) {
+		i->scroll(x);
+	}
 }
 
 void Game::scrollRight(int sx){
 	int r_end = stage_W[getNowStage()] + WID_CASTLE / 2 - 100;
 	x += sx;	
 	
-	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
+	//デバッグ用一時実装
+	if (!getPauseFlag())
+		if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
+	for (auto i : back_list) {
+		i->scroll(x);
+	}
 }
 void Game::setCamera(int tar){
 	cameraMoveCount=10;
@@ -612,6 +622,12 @@ void Game::setBirthLimit(int i){
 }
 int Game::getBirthLimit(){
 	return birth_limit;
+}
+
+bool Game::getPauseFlag(){ return pauseFlag; }
+
+void Game::turnPauseFlag(){
+	pauseFlag = !pauseFlag;
 }
 
 int Game::getMusumeSum(){

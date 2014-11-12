@@ -13,5 +13,6 @@ public:
 	background(int x_st, int st, int ly, int w_st,bool type);
 	void main(int);
 	void draw(int);
-	void calc(int);
+
+	void scroll(int);
 };
