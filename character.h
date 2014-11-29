@@ -6,14 +6,16 @@
 class character : public unit{
 protected:
 	UnitState state;
+	bool no_die_flag;
 	PropertyType property;
 	string name;
 public:
 	character(int, int, UnitType);
 	virtual void main(int front);
 	virtual void draw(int cx);
-	//virtual void draw(int cx, int x, int y,int img)=0;
+	virtual void draw(int cx, int x, int y,int img);
 	virtual UnitState getState();
+	bool isMusume();
 	PropertyType getProperty();
 	virtual int getPower()=0;
 	virtual Position getAtkType()=0;

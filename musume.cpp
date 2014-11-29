@@ -29,6 +29,7 @@ void musume::draw(int cx){
 }
 
 void musume::changeState(UnitState next_state){
+	
 	if (!state_change_flag && next_state != UnitState::DIE) return;
 	switch (next_state){
 	case UnitState::MOV:		
@@ -42,20 +43,14 @@ void musume::changeState(UnitState next_state){
 		state = next_state;
 		break;
 	case UnitState::ATK:
-		switch (state){
-		case UnitState::MOV:
-			state = UnitState::ATK;
-			ani_count = 0;
+		state = UnitState::ATK;
+		ani_count = 0;
 		
-			break;
-		case UnitState::WAIT:
-			state = UnitState::ATK;
-			ani_count = 0;
-			break;
-		}
 		break;
 	case UnitState::WAIT:
-		switch (state){
+		switch (state){		state = UnitState::ATK;
+		ani_count = 0;
+		break;
 		case UnitState::MOV:
 			state = UnitState::WAIT;
 			break;
@@ -66,12 +61,20 @@ void musume::changeState(UnitState next_state){
 				state = UnitState::ATK;
 			else 
 				state = UnitState::WAIT;
-
-			atk = false;
+				atk = false;
+			break;
+		default:
+			state = UnitState::WAIT;
+			ani_count = 0;
 			break;
 		}
 		break;
+	case UnitState::ST0:
+		state = next_state;
+		
+		break;
 	case UnitState::DIE:
+		if (no_die_flag) return;
 		state = next_state;
 		atk = false;
 		ani_count = 0;

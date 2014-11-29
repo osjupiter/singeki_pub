@@ -64,17 +64,8 @@ void enemy::changeState(UnitState next_state){
 		state = next_state;
 		break;
 	case UnitState::ATK:
-		switch (state){
-		case UnitState::MOV:
-			state = UnitState::ATK;
-			ani_count = 0;
-
-			break;
-		case UnitState::WAIT:
-			state = UnitState::ATK;
-			ani_count = 0;
-			break;
-		}
+		state = UnitState::ATK;
+		ani_count = 0;
 		break;
 	case UnitState::WAIT:
 		switch (state){
@@ -94,9 +85,14 @@ void enemy::changeState(UnitState next_state){
 				state = UnitState::WAIT;
 			}
 			break;
+		case UnitState::ST0:
+			state = next_state;
+
+			break;
 		}
 		break;
 	case UnitState::DIE:
+		if (no_die_flag) return;
 		state = next_state;
 		ani_count = 0;
 		atk = false;

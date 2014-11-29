@@ -28,7 +28,7 @@ void kamikaze::init(){
 }
 void kamikaze::main(int front){
 	musume::main(front);
-	//	state = ATK;
+	
 	switch (state){
 	case UnitState::MOV:
 		x += param->getParam(SPEED); //‰¡ˆÚ“®

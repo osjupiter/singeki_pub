@@ -75,6 +75,10 @@ void Images::load(){
 
 	LoadDivGraph("dat/img/レールガンさんw.png", ANI_RAILGUN, 1, ANI_RAILGUN, WID_RAILGUN, HEI_RAILGUN, g_rail);
 
+	LoadDivGraph("dat/img/むすめユニット/幼女ｗ.png",ANI_YOUJO_W,ANI_YOUJO_W,1,WID_YOUJO,HEI_YOUJO,g_youjo_w);
+	LoadDivGraph("dat/img/むすめユニット/幼女d.png", ANI_YOUJO_D, ANI_YOUJO_D, 1, WID_YOUJO, HEI_YOUJO-10, g_youjo_d);
+	LoadDivGraph("dat/img/むすめユニット/幼女j.png", ANI_YOUJO_A, ANI_YOUJO_A/2, 2, WID_YOUJO, HEI_YOUJO, g_youjo_a);
+
 
 	LoadDivGraph("dat/img/爆弾.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
 	LoadDivGraph("dat/img/爆発E.png", ANI_EXP, 6, 2, WID_EXP, HEI_EXP, g_exp);

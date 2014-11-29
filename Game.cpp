@@ -21,7 +21,7 @@ Game::Game(int _world){
 	param_init();
 	world = _world;
 	ins = this;
-	resource = RESOURCE_INIT+50000;
+	resource = RESOURCE_INIT+500000;
 	background_init();
 	castle_init();
 	srand((unsigned int)time(NULL));
@@ -52,24 +52,27 @@ void Game::param_init(){
 		i++;
 	}
 
-	param_list[HOHEI] = shared_ptr<Parameter>(
+	param_list[_HOHEI] = shared_ptr<Parameter>(
 		new Parameter(POWER_HOHEI, MAXHP_HOHEI
 		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI,tmp[0][0],tmp[0][1],tmp[0][2]));
-	param_list[BALLOON] = shared_ptr<Parameter>(
+	param_list[_BALOON] = shared_ptr<Parameter>(
 		new Parameter(POWER_BALLOON, MAXHP_BALLOON
 		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON,tmp[1][0],tmp[1][1],tmp[1][2]));
-	param_list[BAZOOKA] = shared_ptr<Parameter>(
+	param_list[_BAZOOKA] = shared_ptr<Parameter>(
 		new Parameter(POWER_BAZOOKA, MAXHP_BAZOOKA
 		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA,tmp[2][0],tmp[2][1],tmp[2][2]));
-	param_list[BIG] = shared_ptr<Parameter>(
+	param_list[_BIG] = shared_ptr<Parameter>(
 		new Parameter(POWER_BIG, MAXHP_BIG
 		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG,tmp[3][0],tmp[3][1],tmp[3][2]));
-	param_list[KAMIKAZE] = shared_ptr<Parameter>(
+	param_list[_KAMIKAZE] = shared_ptr<Parameter>(
 		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
 		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE,tmp[4][0],tmp[4][1],tmp[4][2]));
-	param_list[SEGWAY] = shared_ptr<Parameter>(
+	param_list[_SEGWAY] = shared_ptr<Parameter>(
 		new Parameter(POWER_SEGWAY, MAXHP_SEGWAY
 		, SPEED_SEGWAY, DEFENSE_SEGWAY, A_TYPE_SEGWAY, CLK_SEGWAY, COST_SEGWAY, A_FREQ_SEGWAY,tmp[5][0],tmp[5][1],tmp[5][2]));
+	param_list[_YOUJO] = shared_ptr<Parameter>(
+		new Parameter(POWER_YOUJO, MAXHP_YOUJO
+		, SPEED_YOUJO, DEFENSE_YOUJO, A_TYPE_YOUJO, CLK_YOUJO, COST_YOUJO, A_FREQ_YOUJO, tmp[6][0], tmp[6][1], tmp[6][2]));
 
 }
 
@@ -412,7 +415,7 @@ void Game::draw(){
 		if (i->inCamera(x))
 			i->draw(x);
 	}
-
+	
 	for (auto i : castle_list){
 		if (i->inCamera(x))
 			i->draw(x);
@@ -543,13 +546,15 @@ void Game::Test(){
 		i->draw(x);
 	}
 
-	for (int i = 1; i < UNIT_M_NUM+1; i++){
+	for (int i = 1; i < END_MUSUME; i++){
 		param_list[i]->draw(0, 200+30*i);
 	}
 
 	*/
-	if (mouse_in::getIns()->RightClick())turnPauseFlag();
-
+//	if (mouse_in::getIns()->RightClick())turnPauseFlag();
+	if (mouse_in::getIns()->RightClick()){
+		birth(nowstage-1, _YOUJO);
+	}
 }
 
 

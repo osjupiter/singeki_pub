@@ -58,6 +58,17 @@
 #define CLK_SEGWAY 80
 #define A_FREQ_SEGWAY 50
 
+/*ócèó*/
+#define POWER_YOUJO 200
+#define MAXHP_YOUJO 2000
+#define DEFENSE_YOUJO 1
+#define SPEED_YOUJO 5
+#define A_TYPE_YOUJO RAND
+#define COST_YOUJO 500
+#define CLK_YOUJO 200
+#define A_FREQ_YOUJO 50
+
+
 /*êÌé‘*/
 #define POWER_TANK 25
 #define MAXHP_TANK 1200

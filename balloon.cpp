@@ -82,4 +82,7 @@ void balloon::setNum(int i){
 	num = i;
 }
 
+void balloon::decideDirection(int front){
+	return;
+}
 

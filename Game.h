@@ -47,7 +47,7 @@ class Game : public Layer{
 	list<shared_ptr<AttackRange>> atkrange_musume_list;
 	list<shared_ptr<AttackRange>> atkrange_enemy_list;
 
-	shared_ptr<Parameter> param_list[UNIT_M_NUM + 1];
+	shared_ptr<Parameter> param_list[UNITTYPE_NUM];
 
 	void Test();
 	int cameraTargetSpeed;

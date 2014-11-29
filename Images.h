@@ -47,6 +47,9 @@ public:
 	int g_segway[3];
 	int g_segway_wait[2];
 	int g_segway_run[3];
+	int g_youjo_w[4];
+	int g_youjo_d[3];
+	int g_youjo_a[14];
 	int g_gekko[4];
 	int g_gekko_up[3];
 	int g_gekko_down[4];
