@@ -50,6 +50,8 @@ public:
 	int g_youjo_w[4];
 	int g_youjo_d[3];
 	int g_youjo_a[14];
+	int g_tateko_w[5];
+	int g_tateko_a[3];
 	int g_gekko[4];
 	int g_gekko_up[3];
 	int g_gekko_down[4];

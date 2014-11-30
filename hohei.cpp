@@ -28,6 +28,7 @@ void hohei::main(int front){
 		break;
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED % ANI_HOHEI_ATK == 0){
+			
 			if (!atk){
 				SoundController::getSE()->playSE("sound/shot002.wav",true);
 				

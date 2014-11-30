@@ -5,6 +5,7 @@
 #define ANIM_SPEED_D 5
 #define ANIM_SPEED_A 2
 #define DIST_YOUJO 50
+
 youjo::youjo(int fx, int ln) :musume(fx, ln, UnitType::_YOUJO){
 	dist = dist + DIST_YOUJO;
 
@@ -34,13 +35,7 @@ void youjo::main(int front){
 			changeState(UnitState::ST0);
 		}
 		
-/*
-		state_change_flag = false;
-		if ((ani_count / ANIM_SPEED == ANI_YOUJO_A - 2)){
-			state_change_flag = true;
-			changeState(UnitState::ST0);		
-		}
-*/
+
 		break;
 	case UnitState::ST0:
 		state_change_flag = false;
@@ -56,20 +51,7 @@ void youjo::main(int front){
 			no_die_flag = false;
 			changeState(UnitState::DIE);
 		}
-/*		no_die_flag = true;
-		if (ani_count / ANIM_SPEED_A >= ANI_YOUJO_A){ 
-				ani_count = (ANI_YOUJO_A - 2)*ANIM_SPEED_A; 
-		}
-		if(x >= front){
-			Game::getIns()->effect_create(x, FIELD_H - HEI_SHOCK, SHOCK);
 
-			shared_ptr<AttackRange> p(new AttackRange(x, x + WID_YOUJO, param->getParam(POWER), RAND));
-			Game::getIns()->push_attack_list(p, MUSUME);
-			image = 0;
-			no_die_flag = false;
-			changeState(UnitState::DIE);
-		}
-*/
 		break;
 	case UnitState::DIE:
 

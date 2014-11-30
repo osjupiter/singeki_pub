@@ -68,6 +68,16 @@
 #define CLK_YOUJO 200
 #define A_FREQ_YOUJO 50
 
+/*èÇòUÇË*/
+#define POWER_TATEKO 0
+#define MAXHP_TATEKO 3000
+#define DEFENSE_TATEKO 2
+#define SPEED_TATEKO 3
+#define A_TYPE_TATEKO RAND
+#define COST_TATEKO 400
+#define CLK_TATEKO 200
+#define A_FREQ_TATEKO 0
+
 
 /*êÌé‘*/
 #define POWER_TANK 25

@@ -73,7 +73,9 @@ void Game::param_init(){
 	param_list[_YOUJO] = shared_ptr<Parameter>(
 		new Parameter(POWER_YOUJO, MAXHP_YOUJO
 		, SPEED_YOUJO, DEFENSE_YOUJO, A_TYPE_YOUJO, CLK_YOUJO, COST_YOUJO, A_FREQ_YOUJO, tmp[6][0], tmp[6][1], tmp[6][2]));
-
+	param_list[_TATEKO] = shared_ptr<Parameter>(
+		new Parameter(POWER_TATEKO, MAXHP_TATEKO
+		, SPEED_TATEKO, DEFENSE_TATEKO, A_TYPE_TATEKO, CLK_TATEKO, COST_TATEKO, A_FREQ_TATEKO, tmp[7][0], tmp[7][1], tmp[7][2]));
 }
 
 void Game::background_init(){
@@ -553,7 +555,7 @@ void Game::Test(){
 	*/
 //	if (mouse_in::getIns()->RightClick())turnPauseFlag();
 	if (mouse_in::getIns()->RightClick()){
-		birth(nowstage-1, _YOUJO);
+		birth(nowstage-1, _TATEKO);
 	}
 }
 
