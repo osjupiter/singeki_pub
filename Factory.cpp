@@ -12,6 +12,7 @@
 #include "balloon.h"
 #include "youjo.h"
 #include "tateko.h"
+#include "himekishi.h"
 
 #include "gunshot.h"
 #include "cannonshot.h"
@@ -59,6 +60,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		break;
 	case UnitType::_TATEKO:
 		chara_ins.reset(new tateko(x, line));
+		break;
+	case UnitType::_HIME:
+		chara_ins.reset(new himekishi(x, line));
 		break;
 	case UnitType::_TANK:
 		chara_ins.reset(new tank(x, line, st));

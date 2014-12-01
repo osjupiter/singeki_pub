@@ -17,6 +17,10 @@ PropertyType character::getProperty(){
 	return property;
 }
 
+bool character::getAtk(){
+	return atk;
+};
+
 void character::main(int front){
 	unit::main();
 	if (wait_time>0)

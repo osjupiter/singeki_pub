@@ -76,6 +76,12 @@ void Game::param_init(){
 	param_list[_TATEKO] = shared_ptr<Parameter>(
 		new Parameter(POWER_TATEKO, MAXHP_TATEKO
 		, SPEED_TATEKO, DEFENSE_TATEKO, A_TYPE_TATEKO, CLK_TATEKO, COST_TATEKO, A_FREQ_TATEKO, tmp[7][0], tmp[7][1], tmp[7][2]));
+	param_list[_HIME] = shared_ptr<Parameter>(
+		new Parameter(POWER_HIME, MAXHP_HIME
+		, SPEED_HIME, DEFENSE_HIME, A_TYPE_HIME, CLK_HIME, COST_HIME, A_FREQ_HIME, tmp[8][0], tmp[8][1], tmp[8][2]));
+/*	param_list[_IKAROS] = shared_ptr<Parameter>(
+		new Parameter(POWER_IKAROS, MAXHP_IKAROS
+		, SPEED_IKAROS, DEFENSE_IKAROS, A_TYPE_IKAROS, CLK_IKAROS, COST_IKAROS, A_FREQ_IKAROS, tmp[9][0], tmp[9][1], tmp[9][2]));*/
 }
 
 void Game::background_init(){
@@ -312,7 +318,7 @@ void Game::main(){
 			}
 
 			/*ダメージ*/
-			if (i->getState() == UnitState::ATK){
+			if (i->getAtk()){
 			if (front_type == RAND){
 				if (target_e != NULL)
 					target_e->damage(i->getPower(), i->getAtkType(),i->getUnitType());
@@ -352,7 +358,7 @@ void Game::main(){
 			}
 			i->main(front);
 			/*ダメージ*/
-			if (i->getState() == UnitState::ATK){
+			if (i->getAtk()){
 			if (front_type == RAND){
 				if (target_m != NULL)
 					target_m->damage(i->getPower(), i->getAtkType(), i->getUnitType());
@@ -555,7 +561,7 @@ void Game::Test(){
 	*/
 //	if (mouse_in::getIns()->RightClick())turnPauseFlag();
 	if (mouse_in::getIns()->RightClick()){
-		birth(nowstage-1, _TATEKO);
+		birth(nowstage-1, _HIME);
 	}
 }
 

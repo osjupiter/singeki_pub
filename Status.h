@@ -78,6 +78,25 @@
 #define CLK_TATEKO 200
 #define A_FREQ_TATEKO 0
 
+/*ïPãRém*/
+#define POWER_HIME 50
+#define MAXHP_HIME 3000
+#define DEFENSE_HIME 2
+#define SPEED_HIME 3
+#define A_TYPE_HIME RAND
+#define COST_HIME 400
+#define CLK_HIME 200
+#define A_FREQ_HIME 10
+
+/*ÉCÉJÉçÉX*/
+#define POWER_IKAROS 50
+#define MAXHP_IKAROS 3000
+#define DEFENSE_IKAROS 2
+#define SPEED_IKAROS 3
+#define A_TYPE_IKAROS RAND
+#define COST_IKAROS 400
+#define CLK_IKAROS 200
+#define A_FREQ_IKAROS 20
 
 /*êÌé‘*/
 #define POWER_TANK 25

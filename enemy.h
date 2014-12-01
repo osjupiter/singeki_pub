@@ -13,7 +13,7 @@ protected:
 	int clk;
 	int cost;
 	Position atk_position;
-	bool atk;
+	
 public:
 	enemy(int,int,int,UnitType);
 	virtual void main(int);

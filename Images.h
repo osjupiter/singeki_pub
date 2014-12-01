@@ -52,6 +52,11 @@ public:
 	int g_youjo_a[14];
 	int g_tateko_w[5];
 	int g_tateko_a[3];
+	int g_hime_w[4];
+	int g_hime_a[7];
+	int g_ikaros_w[5];
+	int g_ikaros_a[4];
+
 	int g_gekko[4];
 	int g_gekko_up[3];
 	int g_gekko_down[4];

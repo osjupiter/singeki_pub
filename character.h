@@ -9,6 +9,7 @@ protected:
 	bool no_die_flag;
 	PropertyType property;
 	string name;
+	bool atk;
 public:
 	character(int, int, UnitType);
 	virtual void main(int front);
@@ -18,6 +19,7 @@ public:
 	bool isMusume();
 	PropertyType getProperty();
 	virtual int getPower()=0;
+	virtual bool getAtk();
 	virtual Position getAtkType()=0;
 	virtual void damage(int, Position, UnitType)=0;
 	virtual void changeState(UnitState)=0;

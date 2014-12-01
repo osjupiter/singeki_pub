@@ -3,11 +3,10 @@
 
 #define ANIM_SPEED_W 5
 #define ANIM_SPEED_A 7
-#define DIST_TATEKO 0
 
 
 tateko::tateko(int fx, int ln) : musume(fx, ln, UnitType::_TATEKO){
-	dist = rand() % 20 - width;
+	dist = rand() % 40 - width;
 	width = WID_TATEKO;
 	height = HEI_TATEKO;
 	type = RAND;
