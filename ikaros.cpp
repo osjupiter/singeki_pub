@@ -2,8 +2,8 @@
 #include "Images.h"
 #include "Game.h"
 
-#define ANIM_SPEED 3
-#define DIST_IKAROS 300
+#define ANIM_SPEED 4
+#define DIST_IKAROS 150
 
 
 ikaros::ikaros(int fx, int ln) : musume(fx, ln, UnitType::_IKAROS){
@@ -20,7 +20,7 @@ void ikaros::main(int front){
 	musume::main(front);
 	switch (state){
 	case UnitState::MOV:
-		x += param->getParam(SPEED); //‰¡ˆÚ“®
+		x += param->getParam(SPEED) * dir; //‰¡ˆÚ“®
 		break;
 	case UnitState::ATK:
 		state_change_flag = false;
@@ -54,16 +54,20 @@ void ikaros::draw(int cx){
 
 	switch (state){
 	case UnitState::MOV:
-		DrawGraph(x - cx, y, Images::getIns()->g_ikaros_w[ani_count / ANIM_SPEED%ANI_IKAROS_W], true);
+		//DrawGraph(x - cx, y, Images::getIns()->g_ikaros_w[ani_count / ANIM_SPEED%ANI_IKAROS_W], true);
+		character::draw(cx, x, y, Images::getIns()->g_ikaros_w[ani_count / ANIM_SPEED%ANI_IKAROS_W]);
 		break;
 	case UnitState::ATK:
-			DrawGraph(x - cx, y, Images::getIns()->g_ikaros_a[ani_count / ANIM_SPEED%ANI_IKAROS_A], true);
+		//	DrawGraph(x - cx, y, Images::getIns()->g_ikaros_a[ani_count / ANIM_SPEED%ANI_IKAROS_A], true);
+		character::draw(cx, x, y, Images::getIns()->g_ikaros_a[ani_count / ANIM_SPEED%ANI_IKAROS_A]);
 		break;
 	case UnitState::WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->g_ikaros_w[ani_count / ANIM_SPEED%ANI_IKAROS_W], true);
+		//DrawGraph(x - cx, y, Images::getIns()->g_ikaros_w[ani_count / ANIM_SPEED%ANI_IKAROS_W], true);
+		character::draw(cx, x, y, Images::getIns()->g_ikaros_w[ani_count / ANIM_SPEED%ANI_IKAROS_W]);
 		break;
 	case UnitState::DIE:
-		DrawGraph(x - cx, y, Images::getIns()->g_ikaros_w[0], true);
+		//DrawGraph(x - cx, y, Images::getIns()->g_ikaros_w[0], true);
+		character::draw(cx, x, y, Images::getIns()->g_ikaros_w[ani_count / ANIM_SPEED%ANI_IKAROS_W]);
 		break;
 	}
 

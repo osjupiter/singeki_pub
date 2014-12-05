@@ -88,6 +88,9 @@ void Images::load(){
 	LoadDivGraph("dat/img/むすめユニット/イカロスw.png", ANI_IKAROS_W, ANI_IKAROS_W, 1, WID_IKAROS_W, HEI_IKAROS, g_ikaros_w);
 	LoadDivGraph("dat/img/むすめユニット/イカロスa.png", ANI_IKAROS_A, ANI_IKAROS_A, 1, WID_IKAROS_A, HEI_IKAROS, g_ikaros_a);
 
+	LoadDivGraph("dat/img/むすめユニット/マジョw.png", ANI_MAJO_W, ANI_MAJO_W, 1, WID_MAJO_W, HEI_MAJO, g_majo_w);
+	LoadDivGraph("dat/img/むすめユニット/マジョa.png", ANI_MAJO_A, ANI_MAJO_A, 1, WID_MAJO_A, HEI_MAJO, g_majo_a);
+
 	LoadDivGraph("dat/img/爆弾.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
 	LoadDivGraph("dat/img/爆発E.png", ANI_EXP, 6, 2, WID_EXP, HEI_EXP, g_exp);
 	LoadDivGraph("dat/img/死亡時爆発.png", ANI_NOMALEXP, ANI_NOMALEXP, 1, WID_NOMALEXP, HEI_NOMALEXP, g_nomalExp);

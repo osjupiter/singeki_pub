@@ -86,7 +86,7 @@
 #define A_TYPE_HIME RAND
 #define COST_HIME 400
 #define CLK_HIME 200
-#define A_FREQ_HIME 10
+#define A_FREQ_HIME 12
 
 /*イカロス*/
 #define POWER_IKAROS 10
@@ -97,6 +97,16 @@
 #define COST_IKAROS 400
 #define CLK_IKAROS 200
 #define A_FREQ_IKAROS 2
+
+/*マジョ*/
+#define POWER_MAJO 150
+#define MAXHP_MAJO 700
+#define DEFENSE_MAJO 0
+#define SPEED_MAJO 3
+#define A_TYPE_MAJO RAND
+#define COST_MAJO 400
+#define CLK_MAJO 200
+#define A_FREQ_MAJO 152
 
 /*戦車*/
 #define POWER_TANK 25

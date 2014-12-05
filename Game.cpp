@@ -43,7 +43,7 @@ Game::Game(int _world){
 
 void Game::param_init(){
 	auto data=CsvReader::parseTable("dat/test.txt",",");
-	ParamType tmp[10][3];
+	ParamType tmp[END_MUSUME][3];
 	int i=0;
 	for(auto a:data){
 		for(int j=0;j<3;j++){
@@ -82,6 +82,9 @@ void Game::param_init(){
 	param_list[_IKAROS] = shared_ptr<Parameter>(
 		new Parameter(POWER_IKAROS, MAXHP_IKAROS
 		, SPEED_IKAROS, DEFENSE_IKAROS, A_TYPE_IKAROS, CLK_IKAROS, COST_IKAROS, A_FREQ_IKAROS, tmp[9][0], tmp[9][1], tmp[9][2]));
+	param_list[_MAJO] = shared_ptr<Parameter>(
+		new Parameter(POWER_MAJO, MAXHP_MAJO
+		, SPEED_MAJO, DEFENSE_MAJO, A_TYPE_MAJO, CLK_MAJO, COST_MAJO, A_FREQ_MAJO, tmp[10][0], tmp[10][1], tmp[10][2]));
 }
 
 void Game::background_init(){
