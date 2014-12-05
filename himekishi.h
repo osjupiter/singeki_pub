@@ -6,7 +6,7 @@
 class himekishi : public musume{
 private:
 
-	bool stopper;
+	
 
 public:
 	himekishi(int fx, int ln);

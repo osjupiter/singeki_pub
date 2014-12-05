@@ -21,27 +21,28 @@ void hohei::init(){
 }
 
 void hohei::main(int front){
+	atk = false;
 	musume::main(front);
 	switch (state){
 	case UnitState::MOV:
 		x += param->getParam(SPEED); //‰¡ˆÚ“®
 		break;
 	case UnitState::ATK:
-		if (ani_count / ANIM_SPEED % ANI_HOHEI_ATK == 0){
-			
-			if (!atk){
-				SoundController::getSE()->playSE("sound/shot002.wav",true);
-				
-				atk = true;
+
+		if (ani_count / ANIM_SPEED % ANI_HOHEI_ATK == 1){
+			if (!stopper){
+				if (!atk){
+					SoundController::getSE()->playSE("sound/shot002.wav", true);
+					stopper = true;
+					atk = true;
+				}
 			}
+
 		}
-		else {
-			
-			atk = false;
-		}
+		else{ stopper = false; }
+
 		if ((ani_count / ANIM_SPEED == ANI_HOHEI_ATK)){
 			changeState(UnitState::WAIT);
-			atk = false;
 		}
 
 

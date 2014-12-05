@@ -48,9 +48,7 @@ void musume::changeState(UnitState next_state){
 		
 		break;
 	case UnitState::WAIT:
-		switch (state){		state = UnitState::ATK;
-		ani_count = 0;
-		break;
+		switch (state){		
 		case UnitState::MOV:
 			state = UnitState::WAIT;
 			break;

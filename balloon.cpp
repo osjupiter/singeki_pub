@@ -29,26 +29,23 @@ void balloon::main(int front){
 		x += param->getParam(SPEED); //‰¡ˆÚ“®
 		break;
 	case UnitState::ATK:
+		state_change_flag = false;
 		
 		if (ani_count / ANIM_SPEED % ANI_BALLOON_ATK == ANI_BALLOON_ATK - 1){
-			if (!atk){
-				Game::getIns()->effect_create(x + 59, y + 111, BOMB,Direction::NODIR,param->getParam(POWER));
-				atk = true;
+			if (!stopper){				
+				Game::getIns()->effect_create(x + 59, y + 111, BOMB, Direction::NODIR, param->getParam(POWER));
+				stopper = true;				
 			}
-		}
-		else{ atk = false;
-			state_change_flag = false;
-		}
 		
+		}
+		else { stopper = false; }
 		if ((ani_count / ANIM_SPEED == ANI_BALLOON_ATK)){
 			state_change_flag = true;
 
 			changeState(UnitState::WAIT);
-//			atk = false;
 		}
 
 	case UnitState::DIE:
-	//	del();
 		break;
 	}
 }

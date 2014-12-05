@@ -32,7 +32,7 @@ Game::Game(int _world){
 	cameraTargetSpeed=0;
 	cameraMoveCount=0;
 	birth_limit=300;
-	musume_nuber_list.assign(10,0);
+	musume_nuber_list.assign(END_MUSUME,0);
 	
 	//for DEBUG
 	/*for (int i = 0; i < 7; i++){
@@ -79,9 +79,9 @@ void Game::param_init(){
 	param_list[_HIME] = shared_ptr<Parameter>(
 		new Parameter(POWER_HIME, MAXHP_HIME
 		, SPEED_HIME, DEFENSE_HIME, A_TYPE_HIME, CLK_HIME, COST_HIME, A_FREQ_HIME, tmp[8][0], tmp[8][1], tmp[8][2]));
-/*	param_list[_IKAROS] = shared_ptr<Parameter>(
+	param_list[_IKAROS] = shared_ptr<Parameter>(
 		new Parameter(POWER_IKAROS, MAXHP_IKAROS
-		, SPEED_IKAROS, DEFENSE_IKAROS, A_TYPE_IKAROS, CLK_IKAROS, COST_IKAROS, A_FREQ_IKAROS, tmp[9][0], tmp[9][1], tmp[9][2]));*/
+		, SPEED_IKAROS, DEFENSE_IKAROS, A_TYPE_IKAROS, CLK_IKAROS, COST_IKAROS, A_FREQ_IKAROS, tmp[9][0], tmp[9][1], tmp[9][2]));
 }
 
 void Game::background_init(){
@@ -99,7 +99,7 @@ void Game::castle_init(){
 	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0));
 	castle_list.push_back(p);
 	
-	p = shared_ptr<castle>(new shiro_yama(stage_W[1], 0, 1));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1));
 	castle_list.push_back(p);
 
 	p = shared_ptr<castle>(new castle_enemy(stage_W[2], 0, 2));
@@ -561,7 +561,7 @@ void Game::Test(){
 	*/
 //	if (mouse_in::getIns()->RightClick())turnPauseFlag();
 	if (mouse_in::getIns()->RightClick()){
-		birth(nowstage-1, _HIME);
+		birth(nowstage-1, _IKAROS);
 	}
 }
 

@@ -89,14 +89,14 @@
 #define A_FREQ_HIME 10
 
 /*ÉCÉJÉçÉX*/
-#define POWER_IKAROS 50
+#define POWER_IKAROS 10
 #define MAXHP_IKAROS 3000
 #define DEFENSE_IKAROS 2
 #define SPEED_IKAROS 3
-#define A_TYPE_IKAROS RAND
+#define A_TYPE_IKAROS ALL
 #define COST_IKAROS 400
 #define CLK_IKAROS 200
-#define A_FREQ_IKAROS 20
+#define A_FREQ_IKAROS 2
 
 /*êÌé‘*/
 #define POWER_TANK 25

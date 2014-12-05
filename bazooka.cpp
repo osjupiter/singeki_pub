@@ -40,6 +40,7 @@ void bazooka::main(int front){
 				atk = false;
 			}
 		}
+		else { stopper = false; }
 		if ((ani_count / ANIM_SPEED == ANI_BAZOOKA_ATK + 1)){
 			state_change_flag = true;
 			changeState(UnitState::WAIT);

@@ -6,8 +6,7 @@
 class balloon : public musume{
 private:
 
-	bool stopper;
-	bool atk;
+	
 	static int num;
 public:
 	balloon(int fx, int ln);

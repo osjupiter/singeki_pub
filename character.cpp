@@ -3,7 +3,8 @@
 character::character(int fx, int ln, UnitType u_type) : unit(fx, 0){	
 //	int base_y = (pos == Position::RAND) ? WINDOW_Y - _height : 50;
 	unit_type = u_type;
-	
+	atk = false;
+	stopper = false;
 	state = UnitState::MOV;
 	no_die_flag = false;
 //	y = base_y - ln * 5;

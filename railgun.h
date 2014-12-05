@@ -3,7 +3,6 @@
 
 class railgun : public enemy{
 private:
-	bool stopper;
 	static int num;
 
 public:

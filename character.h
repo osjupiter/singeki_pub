@@ -10,6 +10,7 @@ protected:
 	PropertyType property;
 	string name;
 	bool atk;
+	bool stopper;
 public:
 	character(int, int, UnitType);
 	virtual void main(int front);
