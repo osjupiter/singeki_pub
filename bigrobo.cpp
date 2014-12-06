@@ -9,7 +9,7 @@ int bigrobo::num = 0;
 
 
 bigrobo::bigrobo(int fx, int ln) : musume(fx, ln, UnitType::_BIG){
-	dist = rand()%50-10;
+	dist = rand()%50-20;
 	width = WID_BIG;
 	height = HEI_BIG;
 	num++;
@@ -36,24 +36,24 @@ void bigrobo::main(int front){
 		if (ani_count / ANIM_SPEED % ANI_BIG_ATK == ANI_BIG_ATK - 1 ){
 			if (!stopper){
 				Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
-				shared_ptr<AttackRange> p(new AttackRange(x + 120, x + 120+ WID_SHOCK, param->getParam(POWER), RAND));
+				shared_ptr<AttackRange> p(new AttackRange(x + 120, x + 120+ WID_SHOCK-10, param->getParam(POWER), RAND));
 				Game::getIns()->push_attack_list(p, MUSUME);
 				SoundController::getSE()->playSE("sound/sen_ge_hasai02.mp3");
-
+				state_change_flag = true;
+				changeState(UnitState::WAIT);
 				stopper=true;
 			}
 		}
 		else {
 			stopper = false;
 		}
-		if ((ani_count / ANIM_SPEED == ANI_BIG_ATK )){
-			state_change_flag = true;
-			changeState(UnitState::WAIT);
+/*		if ((ani_count / ANIM_SPEED == ANI_BIG_ATK )){
+			
 			stopper = false;
 		}
 		else{
 			state_change_flag = false;
-		}
+		}*/
 		break;
 	case UnitState::DIE:
 		

@@ -5,7 +5,7 @@
 
 class youjo : public musume{
 private:
-	static int num;
+	bool stopper;
 public:
 	youjo(int fx, int ln);
 	static void init();

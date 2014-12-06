@@ -6,8 +6,6 @@
 class bigrobo : public musume{
 private:
 
-	bool stopper;
-	
 	static int num;
 public:
 	bigrobo(int fx, int ln);

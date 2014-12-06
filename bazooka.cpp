@@ -12,12 +12,14 @@ bazooka::bazooka(int fx, int ln) : musume(fx, ln, UnitType::_BAZOOKA){
 	width = WID_BAZOOKA;
 	height = HEI_BAZOOKA;
 	num++;
+	stopper = false;
 	type = RAND;
 	y = WINDOW_Y - HEI_BAZOOKA - line * 3;
 }
 void bazooka::init(){
 	num = 0;
 }
+
 void bazooka::main(int front){
 	musume::main(front);
 	switch (state){
@@ -25,16 +27,22 @@ void bazooka::main(int front){
 		x += param->getParam(SPEED); //‰¡ˆÚ“®
 		break;
 	case UnitState::ATK:
+		state_change_flag = false;
 		if (ani_count / ANIM_SPEED % ANI_BAZOOKA_ATK == 9){
-			if (!atk){
-				SoundController::getSE()->playSE("sound/taihou03.mp3");
-				atk = true;
+			if (!stopper){
+				if (!atk){
+					SoundController::getSE()->playSE("sound/taihou03.mp3");
+					atk = true;
+					stopper = true;
+				}
+			}
+			else {
+				atk = false;
 			}
 		}
-		else {
-			atk = false;
-		}
-		if ((ani_count / ANIM_SPEED == ANI_BAZOOKA_ATK+1)){
+		else { stopper = false; }
+		if ((ani_count / ANIM_SPEED == ANI_BAZOOKA_ATK + 1)){
+			state_change_flag = true;
 			changeState(UnitState::WAIT);
 			atk = false;
 		}
@@ -43,9 +51,9 @@ void bazooka::main(int front){
 	case UnitState::DIE:
 
 		break;
+		
 	}
 }
-
 void bazooka::draw(int cx){
 
 	switch (state){

@@ -10,7 +10,7 @@ protected:
 	int vy;
 	Position atk_position;
 	shared_ptr<Parameter> param;
-	bool atk;
+	
 public:
 	musume(int, int, UnitType);
 	virtual void main(int);

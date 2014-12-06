@@ -21,18 +21,18 @@ Game::Game(int _world){
 	param_init();
 	world = _world;
 	ins = this;
-	resource = RESOURCE_INIT+50000;
+	resource = RESOURCE_INIT+500000;
 	background_init();
 	castle_init();
 	srand((unsigned int)time(NULL));
 	x=0;
 	nowstage = 1;
-
+	pauseFlag = false;
 
 	cameraTargetSpeed=0;
 	cameraMoveCount=0;
 	birth_limit=300;
-	musume_nuber_list.assign(10,0);
+	musume_nuber_list.assign(END_MUSUME,0);
 	
 	//for DEBUG
 	/*for (int i = 0; i < 7; i++){
@@ -43,7 +43,7 @@ Game::Game(int _world){
 
 void Game::param_init(){
 	auto data=CsvReader::parseTable("dat/test.txt",",");
-	ParamType tmp[10][3];
+	ParamType tmp[END_MUSUME][3];
 	int i=0;
 	for(auto a:data){
 		for(int j=0;j<3;j++){
@@ -52,25 +52,39 @@ void Game::param_init(){
 		i++;
 	}
 
-	param_list[HOHEI] = shared_ptr<Parameter>(
+	param_list[_HOHEI] = shared_ptr<Parameter>(
 		new Parameter(POWER_HOHEI, MAXHP_HOHEI
 		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI,tmp[0][0],tmp[0][1],tmp[0][2]));
-	param_list[BALLOON] = shared_ptr<Parameter>(
+	param_list[_BALOON] = shared_ptr<Parameter>(
 		new Parameter(POWER_BALLOON, MAXHP_BALLOON
 		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON,tmp[1][0],tmp[1][1],tmp[1][2]));
-	param_list[BAZOOKA] = shared_ptr<Parameter>(
+	param_list[_BAZOOKA] = shared_ptr<Parameter>(
 		new Parameter(POWER_BAZOOKA, MAXHP_BAZOOKA
 		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA,tmp[2][0],tmp[2][1],tmp[2][2]));
-	param_list[BIG] = shared_ptr<Parameter>(
+	param_list[_BIG] = shared_ptr<Parameter>(
 		new Parameter(POWER_BIG, MAXHP_BIG
 		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG,tmp[3][0],tmp[3][1],tmp[3][2]));
-	param_list[KAMIKAZE] = shared_ptr<Parameter>(
+	param_list[_KAMIKAZE] = shared_ptr<Parameter>(
 		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
 		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE,tmp[4][0],tmp[4][1],tmp[4][2]));
-	param_list[SEGWAY] = shared_ptr<Parameter>(
+	param_list[_SEGWAY] = shared_ptr<Parameter>(
 		new Parameter(POWER_SEGWAY, MAXHP_SEGWAY
 		, SPEED_SEGWAY, DEFENSE_SEGWAY, A_TYPE_SEGWAY, CLK_SEGWAY, COST_SEGWAY, A_FREQ_SEGWAY,tmp[5][0],tmp[5][1],tmp[5][2]));
-
+	param_list[_YOUJO] = shared_ptr<Parameter>(
+		new Parameter(POWER_YOUJO, MAXHP_YOUJO
+		, SPEED_YOUJO, DEFENSE_YOUJO, A_TYPE_YOUJO, CLK_YOUJO, COST_YOUJO, A_FREQ_YOUJO, tmp[6][0], tmp[6][1], tmp[6][2]));
+	param_list[_TATEKO] = shared_ptr<Parameter>(
+		new Parameter(POWER_TATEKO, MAXHP_TATEKO
+		, SPEED_TATEKO, DEFENSE_TATEKO, A_TYPE_TATEKO, CLK_TATEKO, COST_TATEKO, A_FREQ_TATEKO, tmp[7][0], tmp[7][1], tmp[7][2]));
+	param_list[_HIME] = shared_ptr<Parameter>(
+		new Parameter(POWER_HIME, MAXHP_HIME
+		, SPEED_HIME, DEFENSE_HIME, A_TYPE_HIME, CLK_HIME, COST_HIME, A_FREQ_HIME, tmp[8][0], tmp[8][1], tmp[8][2]));
+	param_list[_IKAROS] = shared_ptr<Parameter>(
+		new Parameter(POWER_IKAROS, MAXHP_IKAROS
+		, SPEED_IKAROS, DEFENSE_IKAROS, A_TYPE_IKAROS, CLK_IKAROS, COST_IKAROS, A_FREQ_IKAROS, tmp[9][0], tmp[9][1], tmp[9][2]));
+	param_list[_MAJO] = shared_ptr<Parameter>(
+		new Parameter(POWER_MAJO, MAXHP_MAJO
+		, SPEED_MAJO, DEFENSE_MAJO, A_TYPE_MAJO, CLK_MAJO, COST_MAJO, A_FREQ_MAJO, tmp[10][0], tmp[10][1], tmp[10][2]));
 }
 
 void Game::background_init(){
@@ -88,7 +102,7 @@ void Game::castle_init(){
 	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0));
 	castle_list.push_back(p);
 	
-	p = shared_ptr<castle>(new shiro_yama(stage_W[1], 0, 1));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1));
 	castle_list.push_back(p);
 
 	p = shared_ptr<castle>(new castle_enemy(stage_W[2], 0, 2));
@@ -218,6 +232,7 @@ void Game::push_attack_list(shared_ptr<AttackRange> p, int unittype){
 
 
 void Game::main(){
+	if (pauseFlag)return;
 	int now_stage = getNowStage();
 	int front=-1;
 	int front_tmp, front_S_tmp;
@@ -231,10 +246,13 @@ void Game::main(){
 	if(cameraMoveCount-->0){
 		x+=cameraTargetSpeed;
 		int r_end = stage_W[getNowStage()] + WID_CASTLE / 2 - 100;
+		if (!getPauseFlag()) //背景デバッグ用if
 		if (x + FIELD_W > r_end){ x = r_end - FIELD_W;cameraMoveCount=0;}
 		if (x + FIELD_W > STAGE8_W){ x = STAGE8_W - FIELD_W ;cameraMoveCount=0;}
 		if (x < 0){x = 0;cameraMoveCount=0;}
-
+		for (auto i : back_list) {
+			i->scroll(x);
+		}
 	}
 
 	for (auto i : back_list){
@@ -303,7 +321,7 @@ void Game::main(){
 			}
 
 			/*ダメージ*/
-			if (i->getState() == UnitState::ATK){
+			if (i->getAtk()){
 			if (front_type == RAND){
 				if (target_e != NULL)
 					target_e->damage(i->getPower(), i->getAtkType(),i->getUnitType());
@@ -343,7 +361,7 @@ void Game::main(){
 			}
 			i->main(front);
 			/*ダメージ*/
-			if (i->getState() == UnitState::ATK){
+			if (i->getAtk()){
 			if (front_type == RAND){
 				if (target_m != NULL)
 					target_m->damage(i->getPower(), i->getAtkType(), i->getUnitType());
@@ -408,7 +426,7 @@ void Game::draw(){
 		if (i->inCamera(x))
 			i->draw(x);
 	}
-
+	
 	for (auto i : castle_list){
 		if (i->inCamera(x))
 			i->draw(x);
@@ -433,7 +451,7 @@ void Game::draw(){
 			i->draw(x);
 	}
 
-	//Test();
+	Test();
 
 //	atkrange_musume_list.clear();
 //	atkrange_enemy_list.clear();
@@ -516,7 +534,8 @@ void Game::delete_object(){
 
 
 void Game::Test(){
-	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "m%d en%d ef%d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
+	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "TEST");
+/*	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "m%d en%d ef%d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
 	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "x %d", x);
 
 	DrawFormatString(FIELD_W - 200, 126, GetColor(255, 255, 255), "resouce %d", getResource());
@@ -538,15 +557,15 @@ void Game::Test(){
 		i->draw(x);
 	}
 
-	for (int i = 1; i < UNIT_M_NUM+1; i++){
+	for (int i = 1; i < END_MUSUME; i++){
 		param_list[i]->draw(0, 200+30*i);
 	}
 
-	//if (mouse_in::getIns()->LeftClick())  birth(getNowStage()-1, HOHEI);
-	//if (mouse_in::getIns()->LeftClick())  birth(0, HOHEI);
-
-	if (mouse_in::getIns()->RightClick())Game::getIns()->birth(getNowStage()-1 , COPTER);
-
+	*/
+//	if (mouse_in::getIns()->RightClick())turnPauseFlag();
+	if (mouse_in::getIns()->RightClick()){
+		birth(nowstage-1, _IKAROS);
+	}
 }
 
 
@@ -554,14 +573,22 @@ void Game::Test(){
 void Game::scrollLeft(int sx){
 	x -= sx;
 	if (x < 0)x = 0;
+	for (auto i : back_list) {
+		i->scroll(x);
+	}
 }
 
 void Game::scrollRight(int sx){
 	int r_end = stage_W[getNowStage()] + WID_CASTLE / 2 - 100;
 	x += sx;	
 	
-	if (x + FIELD_W > r_end) x = r_end - FIELD_W;
+	//デバッグ用一時実装
+	if (!getPauseFlag())
+		if (x + FIELD_W > r_end) x = r_end - FIELD_W;
 	if (x + FIELD_W > STAGE8_W) x = STAGE8_W - FIELD_W ;
+	for (auto i : back_list) {
+		i->scroll(x);
+	}
 }
 void Game::setCamera(int tar){
 	cameraMoveCount=10;
@@ -612,6 +639,12 @@ void Game::setBirthLimit(int i){
 }
 int Game::getBirthLimit(){
 	return birth_limit;
+}
+
+bool Game::getPauseFlag(){ return pauseFlag; }
+
+void Game::turnPauseFlag(){
+	pauseFlag = !pauseFlag;
 }
 
 int Game::getMusumeSum(){

@@ -3,18 +3,16 @@
 #include "musume.h"
 #include "GV.h"
 
-class balloon : public musume{
+class tateko : public musume{
 private:
 
-	
-	static int num;
+	bool stopper;
+
 public:
-	balloon(int fx, int ln);
+	tateko(int fx, int ln);
 	void main(int);
 	void draw(int);
 	static void init();
-	static int getNum();
-	static void setNum(int);
-	void decideDirection(int front);
+
 	void damage(int, int);
 };

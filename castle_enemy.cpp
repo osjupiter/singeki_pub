@@ -21,29 +21,29 @@ castle_enemy::castle_enemy(int fx, int fy, int st) :castle(fx, fy, st){
 	if (st == 1)state = CastleState::ACTIVE;
 	else state = CastleState::STAY;
 
-	ii one[] = { ii(30000, 13) };
-	ii two[] = { ii(80, 10), ii(130, 12) };
-	ii three[] = { ii(130, 11), ii(49, 10) };
-	ii four[] = { ii(85, 12), ii(150, 11) };
-	ii five[] = { ii(60, 10), ii(70, 11), ii(33, 10) };
-	ii six[] = { ii(33, 10), ii(80, 12), ii(110, 11), ii(50, 10), ii(80, 12) };
-	ii seven[] = { ii(50, 10), ii(70, 10), ii(100, 11)
-		, ii(50, 10), ii(70, 10), ii(100, 11)
-		, ii(50, 10), ii(70, 10), ii(100, 11)
-		, ii(50, 10), ii(70, 10), ii(100, 11), ii(20, 12) };
+	ii one[] = { ii(30000, _TANK) };
+	ii two[] = { ii(80, _TANK), ii(130, _GEKKO) };
+	ii three[] = { ii(130, _COPTER), ii(49, _TANK) };
+	ii four[] = { ii(85, _GEKKO), ii(150, _COPTER) };
+	ii five[] = { ii(60, _TANK), ii(70, _COPTER), ii(33, _TANK) };
+	ii six[] = { ii(33, _TANK), ii(80, _GEKKO), ii(110, _COPTER), ii(50, _TANK), ii(80, _GEKKO) };
+	ii seven[] = { ii(50, _TANK), ii(70, 10), ii(100, _COPTER)
+		, ii(50, _TANK), ii(70, _TANK), ii(100, _COPTER)
+		, ii(50, _TANK), ii(70, _TANK), ii(100, _COPTER)
+		, ii(50, _TANK), ii(70, _TANK), ii(100, _COPTER), ii(20, _GEKKO) };
 
-	ii eight[] = { ii(49, 12), ii(70, 10), ii(90, 11) };
-	ii nine[] = { ii(30, 10), ii(100, 12), ii(100, 11) };
+	ii eight[] = { ii(49, _GEKKO), ii(70, 10), ii(90, _COPTER) };
+	ii nine[] = { ii(30, _TANK), ii(100, _GEKKO), ii(100, _COPTER) };
 
-	ii oneEvent[] = { ii(0, 13) };
-	ii twoEvent[] = { ii(0, 10) };
-	ii threeEvent[] = { ii(30, 11) };
-	ii fourEvent[] = { ii(0, 13), ii(30, 10), ii(20, 11), };
-	ii fiveEvent[] = { ii(1000, 13) };
-	ii sixEvent[] = { ii(30, 10), ii(20, 11), ii(50, 12) };
-	ii sevenEvent[] = { ii(0, 13), ii(30, 10), ii(20, 11), ii(50, 12), ii(2000, 13) };
-	ii eightEvent[] = { ii(30, 10), ii(20, 11), ii(500, 13), ii(2500, 13), ii(3500, 13), ii(4000, 13) };
-	ii nineEvent[] = { ii(30, 11) };
+	ii oneEvent[] = { ii(0, _RAILGUN) };
+	ii twoEvent[] = { ii(0, _TANK) };
+	ii threeEvent[] = { ii(30, _COPTER) };
+	ii fourEvent[] = { ii(0, _RAILGUN), ii(30, _TANK), ii(20, _COPTER), };
+	ii fiveEvent[] = { ii(1000, _RAILGUN) };
+	ii sixEvent[] = { ii(30, _TANK), ii(20, _COPTER), ii(50, _GEKKO) };
+	ii sevenEvent[] = { ii(0, _RAILGUN), ii(30, 10), ii(20, _COPTER), ii(50, _GEKKO), ii(2000, _RAILGUN) };
+	ii eightEvent[] = { ii(30, _TANK), ii(20, _COPTER), ii(500, _RAILGUN), ii(2500, _RAILGUN), ii(3500, _RAILGUN), ii(4000, _RAILGUN) };
+	ii nineEvent[] = { ii(30, _COPTER) };
 
 
 

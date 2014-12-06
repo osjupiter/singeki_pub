@@ -5,10 +5,10 @@
 
 const int scroll_type[8][5] = {
 	{0,0,0,0,0},
-	{0,0,1,0,0},
-	{0,0,1,0,0},
-	{0,2,1,0,0},
-	{0,0,1,0,0},
+	{0,0,0,0,0},
+	{0,0,0,0,0},
+	{0,0,0,0,0},
+	{0,2,0,0,0},
 	{0,0,0,0,0},
 	{0,0,0,0,0},
 	{0,0,0,0,0}
@@ -37,34 +37,38 @@ background::background(int x_st, int st, int ly, int w_st,bool mv):object(x_st,0
 
 void background::main(int cx){
 	if (move){
-		gap = gap + 1;
+//		gap = gap + 1;
 		
-		dx =  - remain((int)gap,pic_wid) ;
+//		dx =  - remain((int)gap,pic_wid) ;
 	
 	}
 	else{
-		if (cx < x){
+
+	}
+	
+
+}
+
+void background::scroll(int cx){
+	if (move) return;
+	if (cx < x){
 		dx = (x - cx);
 		//	dx = remain(x - cx*(layer + 1) / 3, pic_wid);
 		/*else if (x + width < cx + FIELD_W){
 		dx=x + width - (cx + FIELD_W);
 		}*/
-		}else{
-			//”wŒi‚Ì‚¸‚ç‚µ•û—vŒŸ“¢
-			dx = ((int)(remain((x - cx)*gap, pic_wid)));
-		}
 	}
-	
-
-}
-
-void background::calc(int cx){
-	
+	else{
+		//”wŒi‚Ì‚¸‚ç‚µ•û—vŒŸ“¢
+		dx = ((int)(remain((x - cx)*gap, pic_wid)));
+	}
 }
 
 void background::draw(int cx){
 	
 	if (move){
+		gap = gap + 1;
+		dx =  - remain((int)gap,pic_wid) ;
 		if (cx < x){
 			DrawRectGraph(x - cx, y, x - cx - (dx), y, pic_wid - (x - cx - (dx)), height, Images::getIns()->back[stage][layer], true, false);
 		}
@@ -95,7 +99,7 @@ void background::draw(int cx){
 	}else{
 		DrawGraph(dx, y, Images::getIns()->back[stage][layer], true);
 		int tmpdx=dx;
-		if (layer != 1){
+		if (scroll_type[stage][layer] != 2){
 			while (tmpdx <= cx + FIELD_W){
 				if ((tmpdx = tmpdx + pic_wid) <= cx + FIELD_W)
 					DrawGraph(tmpdx, y, Images::getIns()->back[stage][layer], true);

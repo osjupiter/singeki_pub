@@ -47,11 +47,13 @@ class Game : public Layer{
 	list<shared_ptr<AttackRange>> atkrange_musume_list;
 	list<shared_ptr<AttackRange>> atkrange_enemy_list;
 
-	shared_ptr<Parameter> param_list[UNIT_M_NUM + 1];
+	shared_ptr<Parameter> param_list[UNITTYPE_NUM];
 
 	void Test();
 	int cameraTargetSpeed;
 	int cameraMoveCount;
+
+	bool pauseFlag;
 public:
 	static const int stage_W[9];
 	Game(int _world=0);
@@ -78,7 +80,9 @@ public:
 	int getProduct(int);
 	double getProductCLKPAR(int);
 	int getNowStage();
-	
+	/*É|Å[ÉY*/
+	void turnPauseFlag();
+	bool getPauseFlag();
 	/*éëåπ*/
 	void useResource(int);
 	void gainResource(int);

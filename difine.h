@@ -15,7 +15,8 @@
 #define L_MAX 60
 
 
-enum class UnitState{ MOV, WAIT,ATK, DIE};
+enum class UnitState{ MOV, WAIT,ATK, DIE,ST0}; //ST0:汎用ステート
+
 
 //enum CastleState{ACTIVE,STAY,OCCUPY,EN_DIE,MEKA_DIE};
 enum class CastleState{ ACTIVE, STAY, DIE};
@@ -25,9 +26,10 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 enum class PropertyType{NONE};
 
 
-enum class UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,END_MUSUME,_TANK=10,_COPTER,_GEKKO,_RAILGUN};
+enum UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,_YOUJO,_TATEKO,_HIME,_IKAROS,_MAJO,END_MUSUME,_TANK,_COPTER,_GEKKO,_RAILGUN,UNITTYPE_NUM};
 
 enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP ,GUNSHOT,CANNONSHOT,DROP,WISP};
+
 
 
 /*歩兵*/
@@ -104,13 +106,47 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define WID_BAZOOKA_ATK 130
 #define HEI_BAZOOKA_ATK 110
 
-
+/*セグウェイ*/
 #define ANI_SEGWAY 3
 #define ANI_SEGWAY_WAIT 2
 #define WID_SEGWAY 70
 #define HEI_SEGWAY 110
 #define WID_SEGWAY_WAIT 85
 #define WID_SEGWAY_RUN 85
+
+/*幼女*/
+#define ANI_YOUJO_W 4
+#define ANI_YOUJO_D 3
+#define ANI_YOUJO_A 14
+#define WID_YOUJO 100
+#define HEI_YOUJO 180
+
+/*盾篭り*/
+#define ANI_TATEKO_W 5
+#define ANI_TATEKO_A 3
+#define WID_TATEKO 100
+#define HEI_TATEKO 190
+
+/*姫騎士*/
+#define ANI_HIME_W 4
+#define ANI_HIME_A 7
+#define WID_HIME_W 80
+#define WID_HIME_A 100
+#define HEI_HIME 120
+
+/*イカロス*/
+#define ANI_IKAROS_W 5
+#define ANI_IKAROS_A 4
+#define WID_IKAROS_W 90
+#define WID_IKAROS_A 110
+#define HEI_IKAROS 100
+
+/*マジョ*/
+#define ANI_MAJO_W 4
+#define ANI_MAJO_A 4
+#define WID_MAJO_W 80
+#define WID_MAJO_A 90
+#define HEI_MAJO 120
 
 /*爆弾*/
 #define ANI_BOMB 2

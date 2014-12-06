@@ -3,9 +3,10 @@
 character::character(int fx, int ln, UnitType u_type) : unit(fx, 0){	
 //	int base_y = (pos == Position::RAND) ? WINDOW_Y - _height : 50;
 	unit_type = u_type;
-	
+	atk = false;
+	stopper = false;
 	state = UnitState::MOV;
-
+	no_die_flag = false;
 //	y = base_y - ln * 5;
 }
 
@@ -16,6 +17,10 @@ UnitState character::getState(){
 PropertyType character::getProperty(){
 	return property;
 }
+
+bool character::getAtk(){
+	return atk;
+};
 
 void character::main(int front){
 	unit::main();
@@ -66,6 +71,18 @@ void character::draw(int cx){
 
 		DrawLine(dx - cx, dy + 3, dx + 60 * max(i, 0) / (1000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
 	}
+}
+void character::draw(int cx, int x, int y, int img){
+	if((dir == LEFT && !isMusume()) || (dir == RIGHT && isMusume())){
+		DrawGraph(x - cx, y, img, true);
+	}
+	else if ((dir == RIGHT && !isMusume()) || (dir == LEFT && isMusume())){
+		DrawTurnGraph(x - cx, y, img, true);
+	}
+}
+
+bool character::isMusume(){
+	return (unit_type < END_MUSUME);
 }
 
 bool character::isInSight(int front){

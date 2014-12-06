@@ -58,6 +58,56 @@
 #define CLK_SEGWAY 80
 #define A_FREQ_SEGWAY 50
 
+/*ócèó*/
+#define POWER_YOUJO 200
+#define MAXHP_YOUJO 2000
+#define DEFENSE_YOUJO 1
+#define SPEED_YOUJO 5
+#define A_TYPE_YOUJO RAND
+#define COST_YOUJO 500
+#define CLK_YOUJO 200
+#define A_FREQ_YOUJO 50
+
+/*èÇòUÇË*/
+#define POWER_TATEKO 0
+#define MAXHP_TATEKO 3000
+#define DEFENSE_TATEKO 2
+#define SPEED_TATEKO 3
+#define A_TYPE_TATEKO RAND
+#define COST_TATEKO 400
+#define CLK_TATEKO 200
+#define A_FREQ_TATEKO 0
+
+/*ïPãRém*/
+#define POWER_HIME 50
+#define MAXHP_HIME 3000
+#define DEFENSE_HIME 2
+#define SPEED_HIME 3
+#define A_TYPE_HIME RAND
+#define COST_HIME 400
+#define CLK_HIME 200
+#define A_FREQ_HIME 12
+
+/*ÉCÉJÉçÉX*/
+#define POWER_IKAROS 10
+#define MAXHP_IKAROS 3000
+#define DEFENSE_IKAROS 2
+#define SPEED_IKAROS 3
+#define A_TYPE_IKAROS ALL
+#define COST_IKAROS 400
+#define CLK_IKAROS 200
+#define A_FREQ_IKAROS 2
+
+/*É}ÉWÉá*/
+#define POWER_MAJO 150
+#define MAXHP_MAJO 700
+#define DEFENSE_MAJO 0
+#define SPEED_MAJO 3
+#define A_TYPE_MAJO RAND
+#define COST_MAJO 400
+#define CLK_MAJO 200
+#define A_FREQ_MAJO 152
+
 /*êÌé‘*/
 #define POWER_TANK 25
 #define MAXHP_TANK 1200
