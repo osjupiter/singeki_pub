@@ -73,8 +73,8 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	return chara_ins;
 }
 
-shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Direction dr, int atk_power, int dest){
-	shared_ptr<effect> ret_ins(nullptr);
+std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Direction dr, int atk_power, int dest){
+/*	shared_ptr<effect> ret_ins(nullptr);
 	switch (type) {
 	case BOMB:
 		ret_ins.reset(new bomb(fx, fy, atk_power));
@@ -118,6 +118,9 @@ shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Direction dr
 	
 	}
 	return ret_ins;
+	*/
+	shared_ptr<effect> p(new drop(fx, fy));
+	return p;
 }
 
 shared_ptr<effect> Factory::create_damage_effect(int fx, int fy, int e_type, bool TurnFlag){

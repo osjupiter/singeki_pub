@@ -2,7 +2,7 @@
 #include  "DxLib.h"
 #include "object.h"
 #include <memory>
-class effect:public object, std::enable_shared_from_this<effect>{
+class effect:public std::enable_shared_from_this<effect>,public object{
 protected:
 	int type;
 	
