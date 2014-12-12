@@ -2,7 +2,7 @@
 #include "Images.h"
 #include "Game.h"
 
-#define ANIM_SPEED 2
+#define ANIM_SPEED 3
 #define DIST_NOUKA 200
 
 nouka::nouka(int fx, int ln) : musume(fx, ln, UnitType::_NOUKA){
