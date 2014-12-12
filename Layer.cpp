@@ -774,9 +774,9 @@ OptionLayer::OptionLayer(){
 	y1=y+50;
 	y2=y+100;
 	y3=y+150;
-	master=50;
-	se=50;
-	bgm=50;
+	master=SoundController::getIns()->getMASTERVol();
+	se=SoundController::getIns()->getSE()->getSEVol();
+	bgm=SoundController::getIns()->getBgm()->getBGMVol();
 }
 
 void OptionLayer::draw(){
@@ -797,21 +797,27 @@ void OptionLayer::main(){
 	if(!testBox(x,y,x+w,y+h)&&mouse_in::getIns()->LeftClick()){
 		mouse_in::getIns()->Reset();
 		this->removeThis();
+
 	}
 	if(testBox(x+50,y1,x+w-50,y1+10)&&mouse_in::getIns()->LeftClick()){
 		mouse_in::getIns()->Reset();
 		master=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
-		
+		SoundController::getIns()->setMASTERVol(master);
+		SoundController::getIns()->assignVol();
 	}
 	if(testBox(x+50,y2,x+w-50,y2+10)&&mouse_in::getIns()->LeftClick()){
 		mouse_in::getIns()->Reset();
 		se=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
-		
+		SoundController::getIns()->getSE()->setSEVol(se);
+		SoundController::getIns()->assignVol();
 	}
 	if(testBox(x+50,y3,x+w-50,y3+10)&&mouse_in::getIns()->LeftClick()){
 		mouse_in::getIns()->Reset();
 		bgm=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
+		SoundController::getIns()->getBgm()->setBGMVol(bgm);
+		SoundController::getIns()->assignVol();
 	}
+	if(mouse_in::getIns()->LeftClick())mouse_in::getIns()->Reset();
 }
 void OptionLayer::called(){
 
