@@ -36,7 +36,7 @@ void TitleScene::leaveScene(){
 
 
 WorldScene::WorldScene(){
-	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/world.png")));
+	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/world2.png")));
 	addLayer(0,p);
 	LAY_Ptr q((new ButtonLayer(0,0,Images::get(""),0,0,WINDOW_X,WINDOW_Y))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
 	

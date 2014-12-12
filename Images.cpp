@@ -12,7 +12,7 @@ void Images::load(){
 	//タイトルに使うものたちよ
 	filelist.push_back("pic/title.png");
 	filelist.push_back("pic/定刻ぼるけーの.png");
-	filelist.push_back("pic/world.png");
+	filelist.push_back("pic/world2.png");
 	
 		
 	filelist.push_back("pic/test.jpg");
