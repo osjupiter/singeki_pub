@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "iostream"
 enemy::enemy(int fx, int ln, int lv , UnitType u_type) :character(fx, ln, u_type){
+	param = Game::getIns()->getParam(static_cast<int>(unit_type));
 	level = lv;
 	dir = Direction::LEFT;
 	atk = false;

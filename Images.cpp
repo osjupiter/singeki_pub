@@ -91,6 +91,12 @@ void Images::load(){
 	LoadDivGraph("dat/img/むすめユニット/マジョw.png", ANI_MAJO_W, ANI_MAJO_W, 1, WID_MAJO_W, HEI_MAJO, g_majo_w);
 	LoadDivGraph("dat/img/むすめユニット/マジョa.png", ANI_MAJO_A, ANI_MAJO_A, 1, WID_MAJO_A, HEI_MAJO, g_majo_a);
 
+	LoadDivGraph("dat/img/むすめユニット/農家w.png", ANI_NOUKA_W, ANI_NOUKA_W, 1, WID_NOUKA_W, HEI_NOUKA, g_nouka_w);
+	LoadDivGraph("dat/img/むすめユニット/農家s.png", ANI_NOUKA_A, 4, 4, WID_NOUKA_A, HEI_NOUKA, g_nouka_a1);
+	LoadDivGraph("dat/img/むすめユニット/農家m.png", ANI_NOUKA_A, 4, 4, WID_NOUKA_A, HEI_NOUKA, g_nouka_a2);
+
+	LoadDivGraph("dat/img/むすめユニット/花ｓ.png", ANI_HANA, 5, 5, WID_HANA, HEI_HANA, g_hana);
+
 	LoadDivGraph("dat/img/爆弾.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
 	LoadDivGraph("dat/img/爆発E.png", ANI_EXP, 6, 2, WID_EXP, HEI_EXP, g_exp);
 	LoadDivGraph("dat/img/死亡時爆発.png", ANI_NOMALEXP, ANI_NOMALEXP, 1, WID_NOMALEXP, HEI_NOMALEXP, g_nomalExp);

@@ -66,7 +66,8 @@ public:
 	void scrollRight(int);
 	void setCamera(int);
 
-	void birth(int,int); //ï∫émê∂ê¨
+	void birth(int, int); //ï∫émê∂ê¨
+	void x_birth(int,int,bool use_resouce);
 	void enemy_birth();
 	void effect_create(int,int,int,Direction dr=NODIR,int atk_power=0,int dest=0);
 	void damage_effect_create(int, int, int, bool TurnFlag=false);

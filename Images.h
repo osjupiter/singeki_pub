@@ -58,6 +58,10 @@ public:
 	int g_ikaros_a[4];
 	int g_majo_w[4];
 	int g_majo_a[4];
+	int g_nouka_w[4];
+	int g_nouka_a1[16];
+	int g_nouka_a2[16];
+	int g_hana[25];
 
 	int g_gekko[4];
 	int g_gekko_up[3];

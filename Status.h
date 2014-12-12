@@ -86,7 +86,7 @@
 #define A_TYPE_HIME RAND
 #define COST_HIME 400
 #define CLK_HIME 200
-#define A_FREQ_HIME 12
+#define A_FREQ_HIME 50
 
 /*ÉCÉJÉçÉX*/
 #define POWER_IKAROS 10
@@ -107,6 +107,16 @@
 #define COST_MAJO 400
 #define CLK_MAJO 200
 #define A_FREQ_MAJO 152
+
+/*î_â∆*/
+#define POWER_NOUKA 150
+#define MAXHP_NOUKA 700
+#define DEFENSE_NOUKA 0
+#define SPEED_NOUKA 4
+#define A_TYPE_NOUKA RAND
+#define COST_NOUKA 400
+#define CLK_NOUKA 200
+#define A_FREQ_NOUKA 152
 
 /*êÌé‘*/
 #define POWER_TANK 25

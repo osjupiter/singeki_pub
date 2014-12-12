@@ -15,6 +15,7 @@
 #include "himekishi.h"
 #include "ikaros.h"
 #include "majo.h"
+#include "nouka.h"
 
 #include "gunshot.h"
 #include "cannonshot.h"
@@ -26,7 +27,7 @@
 #include "bigExplode.h"
 #include "nomalExp.h"
 #include "beam.h"
-
+#include "hana.h"
 using namespace std;
 
 
@@ -38,24 +39,24 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		break;
 
 	case UnitType::_BALOON:
-		chara_ins.reset(new balloon(x, line));
+		chara_ins.reset(new nouka(x, line));
 		break;
 
 	case UnitType::_BIG:
-		chara_ins.reset(new bigrobo(x, line));
+		chara_ins.reset(new youjo(x, line));
 		break;
 
 	case UnitType::_KAMIKAZE:
-		chara_ins.reset(new kamikaze(x, line));
+		chara_ins.reset(new ikaros(x, line));
 		break;
 
 	case UnitType::_BAZOOKA:
 
-		chara_ins.reset(new bazooka(x, line));
+		chara_ins.reset(new tateko(x, line));
 		break;
 
 	case UnitType::_SEGWAY:
-		chara_ins.reset(new segway(x, line));
+		chara_ins.reset(new himekishi(x, line));
 		break;
 	case UnitType::_YOUJO:
 		chara_ins.reset(new youjo(x, line));
@@ -71,6 +72,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		break;
 	case UnitType::_MAJO:
 		chara_ins.reset(new majo(x, line));
+		break;
+	case UnitType::_NOUKA:
+		chara_ins.reset(new nouka(x, line));
 		break;
 	case UnitType::_TANK:
 		chara_ins.reset(new tank(x, line, st));
@@ -134,7 +138,9 @@ shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Direction dr
 	case DROP:
 		ret_ins.reset(new drop(fx, fy));
 		break;
-	
+	case HANA:
+		ret_ins.reset(new hana(fx, fy));
+		break;
 	}
 	return ret_ins;
 }

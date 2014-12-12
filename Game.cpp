@@ -43,7 +43,7 @@ Game::Game(int _world){
 
 void Game::param_init(){
 	auto data=CsvReader::parseTable("dat/test.txt",",");
-	ParamType tmp[END_MUSUME][3];
+	ParamType tmp[UNITTYPE_NUM][3];
 	int i=0;
 	for(auto a:data){
 		for(int j=0;j<3;j++){
@@ -85,6 +85,21 @@ void Game::param_init(){
 	param_list[_MAJO] = shared_ptr<Parameter>(
 		new Parameter(POWER_MAJO, MAXHP_MAJO
 		, SPEED_MAJO, DEFENSE_MAJO, A_TYPE_MAJO, CLK_MAJO, COST_MAJO, A_FREQ_MAJO, tmp[10][0], tmp[10][1], tmp[10][2]));
+	param_list[_NOUKA] = shared_ptr<Parameter>(
+		new Parameter(POWER_NOUKA, MAXHP_NOUKA
+		, SPEED_NOUKA, DEFENSE_NOUKA, A_TYPE_NOUKA, CLK_NOUKA, COST_NOUKA, A_FREQ_NOUKA, tmp[10][0], tmp[10][1], tmp[10][2]));
+	param_list[_TANK] = shared_ptr<Parameter>(
+		new Parameter(POWER_TANK, MAXHP_TANK
+		, SPEED_TANK, DEFENSE_TANK, A_TYPE_TANK, CLK_TANK, COST_TANK, A_FREQ_TANK, tmp[11][0], tmp[11][1], tmp[11][2]));
+	param_list[_COPTER] = shared_ptr<Parameter>(
+		new Parameter(POWER_COPTER, MAXHP_COPTER
+		, SPEED_COPTER, DEFENSE_COPTER, A_TYPE_COPTER, CLK_COPTER, COST_COPTER, A_FREQ_COPTER, tmp[12][0], tmp[12][1], tmp[12][2]));
+	param_list[_GEKKO] = shared_ptr<Parameter>(
+		new Parameter(POWER_GEKKO, MAXHP_GEKKO
+		, SPEED_GEKKO, DEFENSE_GEKKO, A_TYPE_GEKKO, CLK_GEKKO, COST_GEKKO, A_FREQ_GEKKO, tmp[13][0], tmp[13][1], tmp[13][2]));
+	param_list[_RAILGUN] = shared_ptr<Parameter>(
+		new Parameter(POWER_RAILGUN, MAXHP_RAILGUN
+		, SPEED_RAILGUN, DEFENSE_RAILGUN, A_TYPE_RAILGUN, CLK_RAILGUN, COST_RAILGUN, A_FREQ_RAILGUN, tmp[14][0], tmp[14][1], tmp[14][2]));
 }
 
 void Game::background_init(){
@@ -164,12 +179,33 @@ void Game::birth(int st,int type){
 		if(getMusumeSum()>=getBirthLimit())return;
 		useResource(t);
 		musume_nuber_list.at(type)++;
-		shared_ptr<character> p(Factory::create_chara(stage_W[st], line, st, (UnitType)type));
+		shared_ptr<character> p(Factory::create_chara(stage_W[st], st, line, (UnitType)type));
 		if (p != NULL) musume_list[line].push_back(p);
 	}
 	else {
-		shared_ptr<character> p(Factory::create_chara(stage_W[st], line, st, (UnitType)type));
+		shared_ptr<character> p(Factory::create_chara(stage_W[st], st,line, (UnitType)type));
 		if(p != NULL) enemy_list[line].push_back(p);
+	}
+}
+
+void Game::x_birth(int x, int type, bool use_resouce){
+	int line = (int)(rand() / (RAND_MAX + 1.0) * 3);
+	//自分のユニットのときリソース確認消費
+	if (type < static_cast<int>(UnitType::END_MUSUME)){
+
+		int t = getParam(type, ParamType::COST);
+		if (getMusumeSum() >= getBirthLimit())return;
+		if (use_resouce){
+			if (getResource() < t) return;
+			useResource(t);
+		}
+		musume_nuber_list.at(type)++;
+		shared_ptr<character> p(Factory::create_chara(x, x, line, (UnitType)type));
+		if (p != NULL) musume_list[line].push_back(p);
+	}
+	else {
+		shared_ptr<character> p(Factory::create_chara(x, 0, line, (UnitType)type));
+		if (p != NULL) enemy_list[line].push_back(p);
 	}
 }
 
@@ -562,9 +598,10 @@ void Game::Test(){
 	}
 
 	*/
-//	if (mouse_in::getIns()->RightClick())turnPauseFlag();
+	if (mouse_in::getIns()->RightClick())turnPauseFlag();
 	if (mouse_in::getIns()->RightClick()){
-		birth(nowstage-1, _IKAROS);
+//		birth(nowstage-1, _YOUJO);
+		;
 	}
 }
 

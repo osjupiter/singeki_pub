@@ -9,7 +9,7 @@ protected:
 	int vx;
 	int vy;
 	Position atk_position;
-	shared_ptr<Parameter> param;
+	
 	
 public:
 	musume(int, int, UnitType);

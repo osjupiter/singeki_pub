@@ -2,6 +2,7 @@
 #include "unit.h"
 #include "difine.h"
 #include <string>
+#include "Parameter.h"
 
 class character : public unit{
 protected:
@@ -9,6 +10,7 @@ protected:
 	bool no_die_flag;
 	PropertyType property;
 	string name;
+	shared_ptr<Parameter> param;
 	bool atk;
 	bool stopper;
 public:
