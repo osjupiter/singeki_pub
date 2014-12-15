@@ -24,6 +24,11 @@ GraphicLayer::GraphicLayer(int tx,int ty,int th){
 void GraphicLayer::draw(){
 	DrawGraph(x,y,hundle,TRUE);
 }
+void GraphicLayer::move(int _x,int _y){
+	x+=_x;
+	y+=_y;
+	
+}
 
 
 ButtonLayer::ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth):GraphicLayer(tx,ty,th){
@@ -63,6 +68,8 @@ ButtonLayer* ButtonLayer::setEnterSE(string s){
 ButtonLayer* ButtonLayer::setClickSE(string s){
 	_clickSE=s;return this;	
 }
+
+
 
 
 

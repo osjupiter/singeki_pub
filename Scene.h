@@ -31,12 +31,14 @@ public:
 };
 
 class WorldScene : public SceneNode{
-
+	list<shared_ptr<GraphicLayer>> glist;
+	int xpos;
 public:
 	WorldScene();
 	void buttonPushed(string);
 	void enterScene();
 	void leaveScene();
+	void moveX(int);
 
 };
 

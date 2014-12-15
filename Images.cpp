@@ -13,6 +13,7 @@ void Images::load(){
 	filelist.push_back("pic/title.png");
 	filelist.push_back("pic/’è‚Ú‚é‚¯[‚Ì.png");
 	filelist.push_back("pic/world2.png");
+	filelist.push_back("pic/world_icon.png");
 	
 		
 	filelist.push_back("pic/test.jpg");
