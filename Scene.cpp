@@ -47,6 +47,9 @@ void WorldScene::buttonPushed(string id){
 	}else if(id=="rightB"){
 		moveX(-50);
 	}else if(id.find("stage")!=string::npos){
+		id.erase(0,5);
+		
+		SceneManager::getIns()->nextGameID= stoi(id);
 		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
 	}
 }
@@ -121,7 +124,7 @@ void WorldScene::leaveScene(){
 
 
 GameScene::GameScene(){
-	std::shared_ptr<Game> p(new Game());
+	std::shared_ptr<Game> p(new Game(SceneManager::getIns()->nextGameID));
 	game=p;
 	addLayer(0,p);
 	LAY_Ptr q((new ButtonLayer(0,0,0,0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
