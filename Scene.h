@@ -19,6 +19,7 @@ class GameScene : public SceneNode{
 	std::shared_ptr<Game> game;
 	int old_stage;
 	boolean notEnd;
+	int pauseState;
 public:
 	GameScene();
 	void beforemain();

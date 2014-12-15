@@ -124,6 +124,7 @@ void WorldScene::leaveScene(){
 
 
 GameScene::GameScene(){
+	pauseState=0;
 	std::shared_ptr<Game> p(new Game(SceneManager::getIns()->nextGameID));
 	game=p;
 	addLayer(0,p);
@@ -149,7 +150,6 @@ void GameScene::leaveScene(){
 }
 void GameScene::beforemain(){
 	char Buf[ 256 ] ;
-
 	GetHitKeyStateAll( Buf ) ;
 
 	if( Buf[ KEY_INPUT_LEFT ] == 1 ||	 Buf[ KEY_INPUT_A ] == 1 )
@@ -161,6 +161,18 @@ void GameScene::beforemain(){
 	{
 		game->scrollRight(15);
 	}
+
+
+
+	if( Buf[ KEY_INPUT_ESCAPE ] == 1 ){
+		if(pauseState==2||pauseState==0)pauseState=3;
+		else pauseState=1;
+	}else{
+		if(pauseState==1||pauseState==3)pauseState=2;
+		else pauseState=0;
+	}
+	if(pauseState==3)game->turnPauseFlag();
+
 }
 void GameScene::buttonPushed(string id){
 	if(id=="left"){
