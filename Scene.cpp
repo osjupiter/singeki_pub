@@ -36,25 +36,82 @@ void TitleScene::leaveScene(){
 
 
 WorldScene::WorldScene(){
-	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/world.png")));
-	addLayer(0,p);
-	LAY_Ptr q((new ButtonLayer(0,0,Images::get(""),0,0,WINDOW_X,WINDOW_Y))->setId("start")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
-	
-	addLayer(1,q);
+
+
 
 	
 }
 void WorldScene::buttonPushed(string id){
-	if(id=="start"){
+	if(id=="leftB"){
+		moveX(50);
+	}else if(id=="rightB"){
+		moveX(-50);
+	}else if(id.find("stage")!=string::npos){
+		id.erase(0,5);
+		
+		SceneManager::getIns()->nextGameID= stoi(id);
 		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
-	}else if(id=="enter"){
-		this->rmLayer(1);
-	}else{
-		DxLib_End() ;
-		exit(0);
 	}
 }
+void WorldScene::moveX(int dx){
+	if(xpos+dx>=0){
+		dx=-xpos;
+	}
+	if(xpos+dx<=WINDOW_X-2400){
+		dx=WINDOW_X-2400-xpos;
+	}
+
+	for(auto gl:this->glist){
+		gl->move(dx,0);
+	}
+	xpos+=dx;
+}
 void WorldScene::enterScene(){
+	xpos=0;
+	//背景
+	shared_ptr<GraphicLayer> p(new GraphicLayer(0,0,Images::get("pic/world2.png")));
+	addLayer(0,p);
+	glist.push_back(p);
+
+
+	//移動用
+	LAY_Ptr r((new ButtonLayer(0,0,Images::get(""),0,0,100,WINDOW_Y))->setId("leftB")->setClickType(ButtonLayer::ClickFlag::ONMOUSE));
+	addLayer(9,r);
+	LAY_Ptr s((new ButtonLayer(0,0,Images::get(""),WINDOW_X-100,0,WINDOW_X,WINDOW_Y))->setId("rightB")->setClickType(ButtonLayer::ClickFlag::ONMOUSE));
+	addLayer(9,s);
+	
+	//歩兵ボタン3.png
+	//ステージへ
+	{
+		shared_ptr<GraphicLayer> q((new ButtonLayer(76,288,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage1")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+		addLayer(1,q);
+		glist.push_back(q);
+	}
+	{
+		shared_ptr<GraphicLayer> q((new ButtonLayer(497,53,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage2")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+		addLayer(1,q);
+		glist.push_back(q);
+	}
+	{
+		shared_ptr<GraphicLayer> q((new ButtonLayer(817,360,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage3")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+		addLayer(1,q);
+		glist.push_back(q);
+	}
+	{
+		shared_ptr<GraphicLayer> q((new ButtonLayer(1125,94,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage4")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+		addLayer(1,q);
+		glist.push_back(q);
+	}
+	{
+		shared_ptr<GraphicLayer> q((new ButtonLayer(1286,337,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage5")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+		addLayer(1,q);
+		glist.push_back(q);
+	}
+	{
+		shared_ptr<GraphicLayer> q((new ButtonLayer(1600,222,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage6")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+		addLayer(1,q);
+		glist.push_back(q);
+	}
 	SoundController::getBgm()->playBGM("sound/タイトル.mp3");
 }
 void WorldScene::leaveScene(){
@@ -67,7 +124,8 @@ void WorldScene::leaveScene(){
 
 
 GameScene::GameScene(){
-	std::shared_ptr<Game> p(new Game());
+	pauseState=0;
+	std::shared_ptr<Game> p(new Game(SceneManager::getIns()->nextGameID));
 	game=p;
 	addLayer(0,p);
 	LAY_Ptr q((new ButtonLayer(0,0,0,0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
@@ -92,7 +150,6 @@ void GameScene::leaveScene(){
 }
 void GameScene::beforemain(){
 	char Buf[ 256 ] ;
-
 	GetHitKeyStateAll( Buf ) ;
 
 	if( Buf[ KEY_INPUT_LEFT ] == 1 ||	 Buf[ KEY_INPUT_A ] == 1 )
@@ -104,6 +161,18 @@ void GameScene::beforemain(){
 	{
 		game->scrollRight(15);
 	}
+
+
+
+	if( Buf[ KEY_INPUT_ESCAPE ] == 1 ){
+		if(pauseState==2||pauseState==0)pauseState=3;
+		else pauseState=1;
+	}else{
+		if(pauseState==1||pauseState==3)pauseState=2;
+		else pauseState=0;
+	}
+	if(pauseState==3)game->turnPauseFlag();
+
 }
 void GameScene::buttonPushed(string id){
 	if(id=="left"){

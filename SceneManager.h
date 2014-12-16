@@ -13,9 +13,11 @@ class SceneManager
 {
 	static SceneManager ins;
 	SN_Ptr nowScene;
+	
 
 
 public:
+	int nextGameID;
 	SceneManager(void);
 
 	static SceneManager* getIns();

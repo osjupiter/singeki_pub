@@ -43,6 +43,8 @@ public:
 
 typedef std::shared_ptr<Layer> LAY_Ptr;
 
+
+
 class GraphicLayer:public Layer{
 protected:
 	int x,y;
@@ -50,6 +52,7 @@ protected:
 public:
 	GraphicLayer(int tx,int ty,int th);
 	void draw();
+	void move(int,int);
 
 };
 class ButtonLayer:public GraphicLayer{
@@ -247,3 +250,4 @@ public:
 
 
 };
+
