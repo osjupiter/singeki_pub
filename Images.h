@@ -62,6 +62,8 @@ public:
 	int g_nouka_a1[16];
 	int g_nouka_a2[16];
 	int g_hana[25];
+	int g_gajigaji_w[3][5];
+	int g_gajigaji_a[3][6];
 
 	int g_gekko[4];
 	int g_gekko_up[3];

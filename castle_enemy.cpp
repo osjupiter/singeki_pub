@@ -21,7 +21,7 @@ castle_enemy::castle_enemy(int fx, int fy, int st) :castle(fx, fy, st){
 	if (st == 1)state = CastleState::ACTIVE;
 	else state = CastleState::STAY;
 
-	ii one[] = { ii(30000, _TANK) };
+	ii one[] = { ii(300, _GAJIGAJI) };
 	ii two[] = { ii(80, _TANK), ii(130, _GEKKO) };
 	ii three[] = { ii(130, _COPTER), ii(49, _TANK) };
 	ii four[] = { ii(85, _GEKKO), ii(150, _COPTER) };
@@ -35,7 +35,7 @@ castle_enemy::castle_enemy(int fx, int fy, int st) :castle(fx, fy, st){
 	ii eight[] = { ii(49, _GEKKO), ii(70, 10), ii(90, _COPTER) };
 	ii nine[] = { ii(30, _TANK), ii(100, _GEKKO), ii(100, _COPTER) };
 
-	ii oneEvent[] = { ii(0, _RAILGUN) };
+	ii oneEvent[] = { ii(0,_TANK) };
 	ii twoEvent[] = { ii(0, _TANK) };
 	ii threeEvent[] = { ii(30, _COPTER) };
 	ii fourEvent[] = { ii(0, _RAILGUN), ii(30, _TANK), ii(20, _COPTER), };

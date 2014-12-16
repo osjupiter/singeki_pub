@@ -82,8 +82,8 @@ void Images::load(){
 	LoadDivGraph("dat/img/むすめユニット/盾篭りw.png", ANI_TATEKO_W, ANI_TATEKO_W, 1, WID_TATEKO, HEI_TATEKO, g_tateko_w);
 	LoadDivGraph("dat/img/むすめユニット/盾篭りa.png", ANI_TATEKO_A, ANI_TATEKO_A, 1, WID_TATEKO, HEI_TATEKO, g_tateko_a);
 
-	LoadDivGraph("dat/img/むすめユニット/姫騎士w.png", ANI_HIME_W, ANI_HIME_W, 1, WID_HIME_W, HEI_HIME, g_hime_w);
-	LoadDivGraph("dat/img/むすめユニット/姫騎士a.png", ANI_HIME_A, ANI_HIME_A, 1, WID_HIME_A, HEI_HIME, g_hime_a);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士w2.png", ANI_HIME_W, ANI_HIME_W, 1, WID_HIME_W, HEI_HIME, g_hime_w);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士a2.png", ANI_HIME_A, ANI_HIME_A, 1, WID_HIME_A, HEI_HIME, g_hime_a);
 
 	LoadDivGraph("dat/img/むすめユニット/イカロスw.png", ANI_IKAROS_W, ANI_IKAROS_W, 1, WID_IKAROS_W, HEI_IKAROS, g_ikaros_w);
 	LoadDivGraph("dat/img/むすめユニット/イカロスa.png", ANI_IKAROS_A, ANI_IKAROS_A, 1, WID_IKAROS_A, HEI_IKAROS, g_ikaros_a);
@@ -94,6 +94,13 @@ void Images::load(){
 	LoadDivGraph("dat/img/むすめユニット/農家w.png", ANI_NOUKA_W, ANI_NOUKA_W, 1, WID_NOUKA_W, HEI_NOUKA, g_nouka_w);
 	LoadDivGraph("dat/img/むすめユニット/農家s.png", ANI_NOUKA_A, 4, 4, WID_NOUKA_A, HEI_NOUKA, g_nouka_a1);
 	LoadDivGraph("dat/img/むすめユニット/農家m.png", ANI_NOUKA_A, 4, 4, WID_NOUKA_A, HEI_NOUKA, g_nouka_a2);
+
+	LoadDivGraph("dat/img/敵ユニット/荒野/ガジガジメカw.png", ANI_GAJIGAJI_W, ANI_GAJIGAJI_W, 1, WID_GAJIGAJI, HEI_GAJIGAJI_W, g_gajigaji_w[0]);
+	LoadDivGraph("dat/img/敵ユニット/荒野/ガジガジメカa.png", ANI_GAJIGAJI_A, ANI_GAJIGAJI_A, 1, WID_GAJIGAJI, HEI_GAJIGAJI_A, g_gajigaji_a[0]);
+	LoadDivGraph("dat/img/敵ユニット/荒野/ガジガジメカ2w.png", ANI_GAJIGAJI_W, ANI_GAJIGAJI_W, 1, WID_GAJIGAJI, HEI_GAJIGAJI_W, g_gajigaji_w[1]);
+	LoadDivGraph("dat/img/敵ユニット/荒野/ガジガジメカ2a.png", ANI_GAJIGAJI_A, ANI_GAJIGAJI_A, 1, WID_GAJIGAJI, HEI_GAJIGAJI_A, g_gajigaji_a[1]);
+	LoadDivGraph("dat/img/敵ユニット/荒野/ガジガジメカ3w.png", ANI_GAJIGAJI_W, ANI_GAJIGAJI_W, 1, WID_GAJIGAJI, HEI_GAJIGAJI_W, g_gajigaji_w[2]);
+	LoadDivGraph("dat/img/敵ユニット/荒野/ガジガジメカ3a.png", ANI_GAJIGAJI_A, ANI_GAJIGAJI_A, 1, WID_GAJIGAJI, HEI_GAJIGAJI_A, g_gajigaji_a[2]);
 
 	LoadDivGraph("dat/img/むすめユニット/花ｓ.png", ANI_HANA, 5, 5, WID_HANA, HEI_HANA, g_hana);
 

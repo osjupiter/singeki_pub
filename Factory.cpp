@@ -16,6 +16,7 @@
 #include "ikaros.h"
 #include "majo.h"
 #include "nouka.h"
+#include "gajigaji.h"
 
 #include "gunshot.h"
 #include "cannonshot.h"
@@ -39,24 +40,24 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		break;
 
 	case UnitType::_BALOON:
-		chara_ins.reset(new nouka(x, line));
+		chara_ins.reset(new balloon(x, line));
 		break;
 
 	case UnitType::_BIG:
-		chara_ins.reset(new youjo(x, line));
+		chara_ins.reset(new bigrobo(x, line));
 		break;
 
 	case UnitType::_KAMIKAZE:
-		chara_ins.reset(new ikaros(x, line));
+		chara_ins.reset(new kamikaze(x, line));
 		break;
 
 	case UnitType::_BAZOOKA:
 
-		chara_ins.reset(new tateko(x, line));
+		chara_ins.reset(new bazooka(x, line));
 		break;
 
 	case UnitType::_SEGWAY:
-		chara_ins.reset(new himekishi(x, line));
+		chara_ins.reset(new segway(x, line));
 		break;
 	case UnitType::_YOUJO:
 		chara_ins.reset(new youjo(x, line));
@@ -88,7 +89,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_RAILGUN :
 		chara_ins.reset(new railgun(x, line, st));
 		break;
-
+	case UnitType::_GAJIGAJI:
+		chara_ins.reset(new gajigaji(x, line, st));
+		break;
 	default:
 		break;
 	}

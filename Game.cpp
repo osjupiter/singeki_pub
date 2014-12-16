@@ -87,7 +87,7 @@ void Game::param_init(){
 		, SPEED_MAJO, DEFENSE_MAJO, A_TYPE_MAJO, CLK_MAJO, COST_MAJO, A_FREQ_MAJO, tmp[10][0], tmp[10][1], tmp[10][2]));
 	param_list[_NOUKA] = shared_ptr<Parameter>(
 		new Parameter(POWER_NOUKA, MAXHP_NOUKA
-		, SPEED_NOUKA, DEFENSE_NOUKA, A_TYPE_NOUKA, CLK_NOUKA, COST_NOUKA, A_FREQ_NOUKA, tmp[10][0], tmp[10][1], tmp[10][2]));
+		, SPEED_NOUKA, DEFENSE_NOUKA, A_TYPE_NOUKA, CLK_NOUKA, COST_NOUKA, A_FREQ_NOUKA, tmp[10][0], tmp[11][1], tmp[11][2]));
 	param_list[_TANK] = shared_ptr<Parameter>(
 		new Parameter(POWER_TANK, MAXHP_TANK
 		, SPEED_TANK, DEFENSE_TANK, A_TYPE_TANK, CLK_TANK, COST_TANK, A_FREQ_TANK, tmp[11][0], tmp[11][1], tmp[11][2]));

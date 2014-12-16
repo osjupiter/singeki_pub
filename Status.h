@@ -118,6 +118,16 @@
 #define CLK_NOUKA 200
 #define A_FREQ_NOUKA 152
 
+/*ÉKÉWÉKÉW*/
+#define POWER_GAJIGAJI 25
+#define MAXHP_GAJIGAJI 1200
+#define DEFENSE_GAJIGAJI 1
+#define SPEED_GAJIGAJI 2
+#define A_TYPE_GAJIGAJI RAND
+#define COST_GAJIGAJI 10
+#define CLK_GAJIGAJI 120
+#define A_FREQ_GAJIGAJI 91
+
 /*êÌé‘*/
 #define POWER_TANK 25
 #define MAXHP_TANK 1200
