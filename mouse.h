@@ -24,4 +24,6 @@ public:
 	boolean RightLeave();	//—£‚µ‚½uŠÔ‚©‚Ç‚¤‚©
 	boolean isUsed();	//g‚í‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
 	boolean isntOver();
+	
+	static boolean testBox(int,int,int,int);
 };

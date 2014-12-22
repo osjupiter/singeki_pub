@@ -48,7 +48,7 @@ void WorldScene::buttonPushed(string id){
 		moveX(-50);
 	}else if(id.find("stage")!=string::npos){
 		id.erase(0,5);
-		
+		//addLayer(10,make_shared<MapUnitSelector>(1));
 		SceneManager::getIns()->nextGameID= stoi(id);
 		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
 	}
@@ -77,7 +77,7 @@ void WorldScene::enterScene(){
 	//ˆÚ“®—p
 	LAY_Ptr r((new ButtonLayer(0,0,Images::get(""),0,0,100,WINDOW_Y))->setId("leftB")->setClickType(ButtonLayer::ClickFlag::ONMOUSE));
 	addLayer(9,r);
-	LAY_Ptr s((new ButtonLayer(0,0,Images::get(""),WINDOW_X-100,0,WINDOW_X,WINDOW_Y))->setId("rightB")->setClickType(ButtonLayer::ClickFlag::ONMOUSE));
+	LAY_Ptr s((new ButtonLayer(0,0,Images::get(""),WINDOW_X-100,0,100,WINDOW_Y))->setId("rightB")->setClickType(ButtonLayer::ClickFlag::ONMOUSE));
 	addLayer(9,s);
 	
 	//•à•ºƒ{ƒ^ƒ“3.png

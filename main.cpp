@@ -68,6 +68,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 		fps_c::getIns()->fps_wait();
 		//fps_c::getIns()->draw_fps(0,WINDOW_Y-16);
+
 		if(lcheck()==1)break;
 	}
 	DxLib_End() ;				// ＤＸライブラリ使用の終了処理

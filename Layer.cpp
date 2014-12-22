@@ -6,10 +6,7 @@
 #include <sstream>
 
 boolean Layer::testBox(int x1,int y1,int x2,int y2){
-		mouse_in* m=mouse_in::getIns();
-		if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2)
-			return true;
-		return false;
+	return mouse_in::testBox(x1,y1,x2,y2);
 
 }
 void Layer::removeThis(){
@@ -41,7 +38,7 @@ ButtonLayer::ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth):G
 }
 void ButtonLayer::main(){
 	mouse_in* m=mouse_in::getIns();
-	if(x+bx<m->X()&&y+by<m->Y()&&m->X()<x+bx+bw&&m->Y()<y+by+bh){
+	if(mouse_in::testBox(x+bx,y+by,x+bx+bw,y+by+bh)&&!m->isUsed()){	
 		if(!_oldMouseisin)
 			SoundController::getSE()->playSE(_enterSE);
 		if(_clicktype==ONMOUSE|| m->Left()==_clicktype){
@@ -827,6 +824,39 @@ void OptionLayer::main(){
 	if(mouse_in::getIns()->LeftClick())mouse_in::getIns()->Reset();
 }
 void OptionLayer::called(){
+
+	
+}
+
+
+MapUnitSelector::MapUnitSelector(int sid){
+	stage_id=sid;
+}
+
+void MapUnitSelector::draw(){
+	SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
+	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
+	SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
+
+	DrawBox(100,100,WINDOW_X-100,WINDOW_Y-100,GetColor(0,123,0),TRUE);
+
+	DrawBox(100,100,WINDOW_X-100,WINDOW_Y-100,GetColor(0,123,0),TRUE);
+	
+	
+}
+
+void MapUnitSelector::main(){
+	if(testBox(0,0,WINDOW_X,WINDOW_Y)){
+		if(mouse_in::getIns()->LeftPush()){
+			this->removeThis();
+		}else{
+			mouse_in::getIns()->Reset();
+		}
+		
+		
+	}
+}
+void MapUnitSelector::called(){
 
 	
 }

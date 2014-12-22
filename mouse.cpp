@@ -46,6 +46,13 @@ mouse_in* mouse_in::getIns(){return &ins;}
 	
 	boolean mouse_in::isntOver(){return !over;}
 
+	boolean mouse_in::testBox(int x1,int y1,int x2,int y2){
+		mouse_in* m=mouse_in::getIns();
+		if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2)
+			return true;
+		return false;
+	}
+
 	
 
 
