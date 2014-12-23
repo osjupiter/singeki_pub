@@ -68,6 +68,12 @@ public:
 	int g_saihate_a_s[ANI_SAIHATE_A];
 	int g_saihate_t[ANI_SAIHATE_T];
 	int g_saihate_h[ANI_SAIHATE_H];
+	int g_sharin_w[3][ANI_SHARIN];
+	int g_sharin_a[3][ANI_SHARIN];
+	int g_goremu_w[3][ANI_GOREMU];
+	int g_goremu_a[3][ANI_GOREMU];
+
+
 
 	int g_gekko[4];
 	int g_gekko_up[3];
@@ -85,6 +91,8 @@ public:
 	int g_cannonshot[4];
 	int g_e_yamidrop[3][8];
 	int g_e_wisp[3][7];
+	int g_yukidama1[ANI_YUKIDAMA];
+	int g_yukidama2[ANI_YUKIDAMA];
 
 	int houdai_yama;
 

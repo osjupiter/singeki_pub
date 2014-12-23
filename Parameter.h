@@ -12,7 +12,7 @@ class Parameter{
 public:
 	Parameter(){};
 	Parameter(int pw, int mh, int sp, int def, Position a_type, int clock, int cos, int a_freq,ParamType,ParamType,ParamType);
-	
+	Parameter(int pw, int mh, int sp, int def, Position a_type, int clock, int cos, int a_freq,double mag[6]);
 
 	void draw(int x,int y);
 	int getParam(ParamType p_type);

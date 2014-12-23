@@ -23,7 +23,7 @@ Game::Game(int _world){
 	param_init();
 	world = _world;
 	ins = this;
-	resource = RESOURCE_INIT+500000;
+	resource = RESOURCE_INIT+5000000;
 	background_init();
 	castle_init();
 	srand((unsigned int)time(NULL));
@@ -56,7 +56,7 @@ void Game::param_init(){
 	int line = 0;
 	
 	for (i = 0; i < END_MUSUME;i++){
-		if (i == _NONE || i == END_MUSUME) continue;
+		if (i == _NONE) continue;
 		param_list[i] = shared_ptr<Parameter>(
 			new Parameter(tmp[line][0], tmp[line][1], tmp[line][2], tmp[line][3], static_cast<Position>(tmp[line][10]), tmp[line][4], tmp[line][5]
 			, tmp[line][6], tmp[line][7], tmp[line][8], tmp[line][9]));
@@ -129,10 +129,10 @@ void Game::castle_init(){
 	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0));
 	castle_list.push_back(p);
 	
-	p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1));
+	p = shared_ptr<castle>(new boss_castle(stage_W[1], 0, 1,UnitType::_SAIHATE));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new boss_castle(stage_W[2], 0, 2, UnitType::_TANK));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[2], 0, 2));
 	castle_list.push_back(p);
 
 	p = shared_ptr<castle>(new castle_enemy(stage_W[3], 0, 3));
@@ -506,9 +506,7 @@ void Game::draw(){
 
 	Test();
 
-//	atkrange_musume_list.clear();
-//	atkrange_enemy_list.clear();
-
+	
 }
 
 void Game::stageInc(){
@@ -572,8 +570,8 @@ void Game::delete_object(){
 		delete_effectlist.clear();
 	}
 	
-	atkrange_musume_list.clear();
-	atkrange_enemy_list.clear();
+/*	atkrange_musume_list.clear();
+/*	atkrange_enemy_list.clear();
 
 	/*ˆêÄŠJ•ú‚É‚æ‚éˆ——‚¿‚ğ–h~*/
 	if(memfree_list.size()<10)
@@ -603,21 +601,34 @@ void Game::Test(){
 	if (CheckHitKey(KEY_INPUT_C)) for (int i = 0; i < 3; i++)enemy_list[i].clear();
 	if (CheckHitKey(KEY_INPUT_V)) for (int i = 0; i < 3; i++)musume_list[i].clear();
 
-	for (auto i : atkrange_enemy_list){
-		i->draw(x);
-	}
-	for (auto i : atkrange_musume_list){
-		i->draw(x);
-	}
+
 
 	for (int i = 1; i < END_MUSUME; i++){
 		param_list[i]->draw(0, 200+30*i);
 	}
 
 	*/
+	for (auto i : atkrange_enemy_list){
+		i->draw(x);
+	}
+	for (auto i : atkrange_musume_list){
+		i->draw(x);
+	}
+	atkrange_musume_list.clear();
+	atkrange_enemy_list.clear();
 
+	static bool hit = false;
+	static int b_unit = _YOUJO;
+	if (CheckHitKey(KEY_INPUT_C)) {
+		if (!hit){
+			b_unit++;
+			if (b_unit == END_MUSUME) b_unit = _YOUJO;
+			hit = true;
+		}
+	}
+	else{ hit = false; }
 	if (mouse_in::getIns()->RightClick()){
-//		birth(nowstage-1, _YOUJO);
+		birth(nowstage-1, b_unit);
 		;
 	}
 }

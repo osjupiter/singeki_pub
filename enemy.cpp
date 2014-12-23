@@ -94,6 +94,7 @@ void enemy::changeState(UnitState next_state){
 
 			break;
 		}
+
 		break;
 	case UnitState::DIE:
 		if (no_die_flag) return;
@@ -101,7 +102,13 @@ void enemy::changeState(UnitState next_state){
 		ani_count = 0;
 		atk = false;
 		break;
+	default:
+		state = next_state;
+		ani_count = 0;
+
+		break;
 	}
+	ani_count = 0;
 }
 
 

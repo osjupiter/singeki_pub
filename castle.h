@@ -67,6 +67,7 @@ public:
 	castle_enemy(int, int, int);
 	void main(int);
 	void draw(int);
+	
 //	virtual void damage(int, UnitType op_unit_type);
 };
 

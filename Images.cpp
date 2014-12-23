@@ -103,6 +103,20 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/荒野/ガジガジメカ3w.png", ANI_GAJIGAJI_W, ANI_GAJIGAJI_W, 1, WID_GAJIGAJI, HEI_GAJIGAJI_W, g_gajigaji_w[2]);
 	LoadDivGraph("dat/img/敵ユニット/荒野/ガジガジメカ3a.png", ANI_GAJIGAJI_A, ANI_GAJIGAJI_A, 1, WID_GAJIGAJI, HEI_GAJIGAJI_A, g_gajigaji_a[2]);
 
+	LoadDivGraph("dat/img/敵ユニット/荒野/車輪砲台w.png", ANI_SHARIN, ANI_SHARIN, 1, WID_SHARIN, HEI_SHARIN, g_sharin_w[0]);
+	LoadDivGraph("dat/img/敵ユニット/荒野/車輪砲台a1.png", ANI_SHARIN, ANI_SHARIN, 1, WID_SHARIN, HEI_SHARIN, g_sharin_a[0]);
+	LoadDivGraph("dat/img/敵ユニット/荒野/車輪砲台2w.png", ANI_SHARIN, ANI_SHARIN, 1, WID_SHARIN, HEI_SHARIN, g_sharin_w[1]);
+	LoadDivGraph("dat/img/敵ユニット/荒野/車輪砲台2a.png", ANI_SHARIN, ANI_SHARIN, 1, WID_SHARIN, HEI_SHARIN, g_sharin_a[1]);
+	LoadDivGraph("dat/img/敵ユニット/荒野/車輪砲台3w.png", ANI_SHARIN, ANI_SHARIN, 1, WID_SHARIN, HEI_SHARIN, g_sharin_w[2]);
+	LoadDivGraph("dat/img/敵ユニット/荒野/車輪砲台3a.png", ANI_SHARIN, ANI_SHARIN, 1, WID_SHARIN, HEI_SHARIN, g_sharin_a[2]);
+
+	LoadDivGraph("dat/img/敵ユニット/雪原/ゴレーム1s.png", ANI_GOREMU, 4, 3, WID_GOREMU, HEI_GOREMU, g_goremu_w[0]);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ゴレーム1a.png", ANI_GOREMU, 4, 3, WID_GOREMU, HEI_GOREMU, g_goremu_a[0]);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ゴレーム2s.png", ANI_GOREMU, 4, 3, WID_GOREMU, HEI_GOREMU, g_goremu_w[1]);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ゴレーム2a.png", ANI_GOREMU, 4, 3, WID_GOREMU, HEI_GOREMU, g_goremu_a[1]);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ゴレーム3s.png", ANI_GOREMU, 4, 3, WID_GOREMU, HEI_GOREMU, g_goremu_w[2]);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ゴレーム3a.png", ANI_GOREMU, 4, 3, WID_GOREMU, HEI_GOREMU, g_goremu_a[2]);
+
 	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてa1.png", ANI_SAIHATE_A, 1, ANI_SAIHATE_A, WID_SAIHATE_A_R, HEI_SAIHATE, g_saihate_a_r);
 	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてa2.png", ANI_SAIHATE_A, ANI_SAIHATE_A, 1, WID_SAIHATE, HEI_SAIHATE_A_S, g_saihate_a_s);
 	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてt.png", ANI_SAIHATE_T, ANI_SAIHATE_T, 1, WID_SAIHATE, HEI_SAIHATE, g_saihate_t);
@@ -121,6 +135,10 @@ void Images::load(){
 	LoadDivGraph("dat/img/テポドン.png", ANI_TEPODON, ANI_TEPODON, 1, WID_TEPODON, HEI_TEPODON, g_tepodon);
 	LoadDivGraph("dat/img/ビーム発射中.png", ANI_BEAM, 1,ANI_BEAM, WID_BEAM, HEI_BEAM, g_beam);
 	LoadDivGraph("dat/img/ビームチャージ中.png", ANI_BEAM_C, ANI_BEAM_C, 1, WID_BEAM_C, HEI_BEAM_C, g_beam_c);
+
+	LoadDivGraph("dat/img/敵ユニット/雪原/ゆきだま1.png", ANI_YUKIDAMA, 4, 2, WID_YUKIDAMA, HEI_YUKIDAMA, g_yukidama1);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ゆきだま2.png", ANI_YUKIDAMA, 4, 2, WID_YUKIDAMA, HEI_YUKIDAMA, g_yukidama2);
+
 
 	LoadDivGraph("dat/img/銃被弾時e.png", ANI_GUNSHOT, ANI_GUNSHOT, 1, WID_GUNSHOT, HEI_GUNSHOT, g_gunshot);
 	LoadDivGraph("dat/img/砲弾被弾時e.png", ANI_CANNONSHOT, ANI_CANNONSHOT, 1, WID_CANNONSHOT, HEI_CANNONSHOT, g_cannonshot);

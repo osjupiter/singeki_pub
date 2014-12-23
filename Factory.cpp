@@ -17,6 +17,8 @@
 #include "majo.h"
 #include "nouka.h"
 #include "gajigaji.h"
+#include "sharin.h"
+#include "gorem.h"
 
 #include "gunshot.h"
 #include "cannonshot.h"
@@ -29,6 +31,7 @@
 #include "nomalExp.h"
 #include "beam.h"
 #include "hana.h"
+#include "yukidama.h"
 #include "saihate.h"
 using namespace std;
 
@@ -41,7 +44,7 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		break;
 
 	case UnitType::_BALOON:
-		chara_ins.reset(new majo(x, line));
+		chara_ins.reset(new balloon(x, line));
 		break;
 
 	case UnitType::_BIG:
@@ -93,6 +96,13 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_GAJIGAJI:
 		chara_ins.reset(new gajigaji(x, line, st));
 		break;
+	case UnitType::_SHARIN:
+		chara_ins.reset(new sharin(x, line, st));
+		break;
+	case UnitType::_GOREMU:
+		chara_ins.reset(new goremu(x, line, st));
+		break;
+
 	case UnitType::_SAIHATE:
 		chara_ins.reset(new saihate(x, line, st));
 		break;
@@ -147,6 +157,9 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 		break;
 	case HANA:
 		ret_ins.reset(new hana(fx, fy));
+		break;
+	case YUKIDAMA:
+		ret_ins.reset(new yukidama(fx, fy,atk_power));
 		break;
 	}
 	return ret_ins;

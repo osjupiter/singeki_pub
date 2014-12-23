@@ -3,10 +3,10 @@
 
 #define ANIM_SPEED_W 5
 #define ANIM_SPEED_A 2
-#define DIST_HIME 0
+#define DIST_HIME 1
 
 himekishi::himekishi(int fx, int ln) : musume(fx, ln, UnitType::_HIME){
-	dist = rand() % 10 - width;
+	dist = rand() % 3*2;
 	width = WID_HIME_W;
 	height = HEI_HIME;
 	type = RAND;

@@ -33,6 +33,8 @@ void youjo::main(int front){
 			state_change_flag = true;
 			ani_count = 0;
 			changeState(UnitState::ST0);
+			state_change_flag = false;
+
 		}
 		
 

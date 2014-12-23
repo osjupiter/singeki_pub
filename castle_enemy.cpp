@@ -1,4 +1,5 @@
 #include "castle.h"
+#include "boss_castle.h"
 #include "bigExplode.h"
 #include "Game.h"
 
@@ -21,13 +22,13 @@ castle_enemy::castle_enemy(int fx, int fy, int st) :castle(fx, fy, st){
 	if (st == 1) setState(CastleState::ACTIVE);
 	else setState(CastleState::STAY);
 
-	ii one[] = { ii(500, _GAJIGAJI) };
+	ii one[] = { ii(400, _GOREMU) };
 	ii two[] = { ii(80, _TANK), ii(130, _GEKKO) };
 	ii three[] = { ii(130, _COPTER), ii(49, _TANK) };
 	ii four[] = { ii(85, _GEKKO), ii(150, _COPTER) };
 	ii five[] = { ii(60, _TANK), ii(70, _COPTER), ii(33, _TANK) };
 	ii six[] = { ii(33, _TANK), ii(80, _GEKKO), ii(110, _COPTER), ii(50, _TANK), ii(80, _GEKKO) };
-	ii seven[] = { ii(50, _TANK), ii(70, 10), ii(100, _COPTER)
+	ii seven[] = { ii(50, _TANK), ii(70, _COPTER), ii(100, _COPTER)
 		, ii(50, _TANK), ii(70, _TANK), ii(100, _COPTER)
 		, ii(50, _TANK), ii(70, _TANK), ii(100, _COPTER)
 		, ii(50, _TANK), ii(70, _TANK), ii(100, _COPTER), ii(20, _GEKKO) };
@@ -35,7 +36,7 @@ castle_enemy::castle_enemy(int fx, int fy, int st) :castle(fx, fy, st){
 	ii eight[] = { ii(49, _GEKKO), ii(70, _TANK), ii(90, _COPTER) };
 	ii nine[] = { ii(30, _TANK), ii(100, _GEKKO), ii(100, _COPTER) };
 
-	ii oneEvent[] = { ii(0,_TANK) };
+	ii oneEvent[] = { ii(0,_SHARIN) };
 	ii twoEvent[] = { ii(0, _TANK) };
 	ii threeEvent[] = { ii(30, _COPTER) };
 	ii fourEvent[] = { ii(0, _RAILGUN), ii(30, _TANK), ii(20, _COPTER), };

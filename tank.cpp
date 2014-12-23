@@ -1,6 +1,5 @@
 #include "tank.h"
 #include "Images.h"
-#include "Game.h"
 #include "Status.h"
 #include"SoundController.h"
 

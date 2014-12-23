@@ -29,6 +29,27 @@ Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock
 
 };
 
+Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock, int cos, int a_freq, double mag[6]){
+	base[POWER] = pw;
+	base[MAXHP] = mh;
+	base[SPEED] = sp;
+	base[DEFENSE] = def;
+	base[A_TYPE] = a_type;
+	base[CLK] = clock;
+	base[COST] = cos;
+	base[A_FREQ] = a_freq;
+
+	level[POWER] = 0;
+	level[MAXHP] = 0;
+	level[SPEED] = 0;
+	level[DEFENSE] = 0;
+	level[A_TYPE] = 0;
+	level[CLK] = 0;
+	level[COST] = 0;
+	level[A_FREQ] = 0;
+
+}
+
 void Parameter::draw(int x, int y){
 	DrawFormatString(x,y,GetColor(255,255,255)," pw%d mh%d sp%d def%d a_type%d clk%d cost%d freq%d"
 		, getParam(POWER), getParam(MAXHP),getParam(SPEED) ,getParam(DEFENSE) ,getParam(A_TYPE),getParam(CLK),getParam(COST),getParam(A_FREQ));

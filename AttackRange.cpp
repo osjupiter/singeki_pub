@@ -10,7 +10,7 @@ bool AttackRange::judge(int x, int w, Position u_type){
 }
 
 void AttackRange::draw(int cx){
-	//DrawBox(l_edge-cx, 0, r_edge-cx, WINDOW_Y, GetColor(0,255,0),true);
+	DrawBox(l_edge-cx, 0, r_edge-cx, WINDOW_Y, GetColor(0,255,0),true);
 }
 
 int AttackRange::getDamage(){
