@@ -29,6 +29,7 @@
 #include "nomalExp.h"
 #include "beam.h"
 #include "hana.h"
+#include "saihate.h"
 using namespace std;
 
 
@@ -40,7 +41,7 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		break;
 
 	case UnitType::_BALOON:
-		chara_ins.reset(new balloon(x, line));
+		chara_ins.reset(new majo(x, line));
 		break;
 
 	case UnitType::_BIG:
@@ -91,6 +92,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		break;
 	case UnitType::_GAJIGAJI:
 		chara_ins.reset(new gajigaji(x, line, st));
+		break;
+	case UnitType::_SAIHATE:
+		chara_ins.reset(new saihate(x, line, st));
 		break;
 	default:
 		break;

@@ -59,7 +59,7 @@
 #define A_FREQ_SEGWAY 50
 
 /*ócèó*/
-#define POWER_YOUJO 200
+#define POWER_YOUJO 400
 #define MAXHP_YOUJO 2000
 #define DEFENSE_YOUJO 1
 #define SPEED_YOUJO 5
@@ -109,7 +109,7 @@
 #define A_FREQ_MAJO 152
 
 /*î_â∆*/
-#define POWER_NOUKA 150
+#define POWER_NOUKA 0
 #define MAXHP_NOUKA 700
 #define DEFENSE_NOUKA 0
 #define SPEED_NOUKA 4
@@ -118,15 +118,6 @@
 #define CLK_NOUKA 200
 #define A_FREQ_NOUKA 152
 
-/*ÉKÉWÉKÉW*/
-#define POWER_GAJIGAJI 25
-#define MAXHP_GAJIGAJI 1200
-#define DEFENSE_GAJIGAJI 1
-#define SPEED_GAJIGAJI 2
-#define A_TYPE_GAJIGAJI RAND
-#define COST_GAJIGAJI 10
-#define CLK_GAJIGAJI 120
-#define A_FREQ_GAJIGAJI 91
 
 /*êÌé‘*/
 #define POWER_TANK 25
@@ -137,6 +128,16 @@
 #define COST_TANK 10
 #define CLK_TANK 120
 #define A_FREQ_TANK 91
+
+/*ÉwÉä*/
+#define POWER_COPTER 200
+#define MAXHP_COPTER 800
+#define DEFENSE_COPTER 1
+#define SPEED_COPTER 2
+#define A_TYPE_COPTER RAND
+#define COST_COPTER 50
+#define CLK_COPTER 120
+#define A_FREQ_COPTER 351
 
 /*ÉQÉbÉRÅ[*/
 #define POWER_GEKKO 7
@@ -158,15 +159,16 @@
 #define CLK_RAILGUN 120
 #define A_FREQ_RAILGUN 300
 
-/*ÉwÉä*/
-#define POWER_COPTER 200
-#define MAXHP_COPTER 800
-#define DEFENSE_COPTER 1
-#define SPEED_COPTER 2
-#define A_TYPE_COPTER RAND
-#define COST_COPTER 50
-#define CLK_COPTER 120
-#define A_FREQ_COPTER 351
+
+/*ÉKÉWÉKÉW*/
+#define POWER_GAJIGAJI 25
+#define MAXHP_GAJIGAJI 1200
+#define DEFENSE_GAJIGAJI 1
+#define SPEED_GAJIGAJI 2
+#define A_TYPE_GAJIGAJI RAND
+#define COST_GAJIGAJI 10
+#define CLK_GAJIGAJI 120
+#define A_FREQ_GAJIGAJI 91
 
 
 

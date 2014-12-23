@@ -66,7 +66,7 @@ void youjo::draw(int cx){
 		character::draw(cx);
 		break;
 	case UnitState::ATK:
-		DrawGraph(x - cx, y+10, Images::getIns()->g_youjo_d[ani_count / ANIM_SPEED_D%ANI_YOUJO_D], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_youjo_d[ani_count / ANIM_SPEED_D%ANI_YOUJO_D], true);
 		character::draw(cx);
 		break;
 	case UnitState::WAIT:

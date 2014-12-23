@@ -27,7 +27,7 @@ enum class PropertyType{NONE};
 
 
 enum UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,_YOUJO,_TATEKO,_HIME,_IKAROS,_MAJO,_NOUKA,END_MUSUME
-				,_TANK,_COPTER,_GEKKO,_RAILGUN,_SHARIN,_GAJIGAJI,_BEEBAR,UNITTYPE_NUM};
+				,_TANK,_COPTER,_GEKKO,_RAILGUN,_SHARIN,_GAJIGAJI,_BEEBAR,_SAIHATE,UNITTYPE_NUM};
 
 enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP ,GUNSHOT,CANNONSHOT,DROP,WISP,HANA};
 
@@ -124,8 +124,8 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define ANI_YOUJO_W 4
 #define ANI_YOUJO_D 3
 #define ANI_YOUJO_A 14
-#define WID_YOUJO 110
-#define HEI_YOUJO 190
+#define WID_YOUJO 150
+#define HEI_YOUJO 220
 
 /*èÇòUÇË*/
 #define ANI_TATEKO_W 5
@@ -149,9 +149,9 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 
 /*É}ÉWÉá*/
 #define ANI_MAJO_W 4
-#define ANI_MAJO_A 4
-#define WID_MAJO_W 80
-#define WID_MAJO_A 90
+#define ANI_MAJO_A 8
+#define WID_MAJO_W 100
+#define WID_MAJO_A 100
 #define HEI_MAJO 120
 
 /*î_â∆*/
@@ -160,6 +160,16 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define WID_NOUKA_W 84
 #define WID_NOUKA_A 103
 #define HEI_NOUKA 110
+
+
+/*Ç≥Ç¢ÇÕÇƒ*/
+#define ANI_SAIHATE_H 9
+#define ANI_SAIHATE_A 13
+#define ANI_SAIHATE_T 6
+#define WID_SAIHATE 400
+#define WID_SAIHATE_A_R 800
+#define HEI_SAIHATE 300
+#define HEI_SAIHATE_A_S 450
 
 /*îöíe*/
 #define ANI_BOMB 2
@@ -234,33 +244,8 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define MUSUME 0
 #define ENEMY 1
 
-
-
-//unit type
-#define UNIT_M_NUM 6 //ñ∫ÉÜÉjÉbÉgÇÃéÌóﬁ
-
-#define NONE 0
 #define HOHEI 1
-#define BALLOON 2
-#define BIG 3
-#define KAMIKAZE 4
-#define BAZOOKA 5
-#define SEGWAY 6
 
-
-#define TANK 10
-#define COPTER 11
-#define GEKKO 12
-#define RAILGUN 13
-/*
-#define BOMB 20
-#define EXP 21
-#define SHOCK 22
-#define MISSILE 23
-#define TEPODON 24
-#define BEAM 25
-#define BIGEXP 26
-*/
 #define STAGE_NUM 8
 
 

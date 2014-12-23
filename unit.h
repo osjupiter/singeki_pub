@@ -29,7 +29,7 @@ public:
 	bool getLife();
 //	virtual void damage(int,int);
 	//int getPower();
-
+	int getHP(){ return hp; }
 	
 	Position getType();
 	//int getAtkType();
