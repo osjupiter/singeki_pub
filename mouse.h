@@ -6,11 +6,13 @@ class mouse_in{
 	int x,y;
 	int l,r;
 	boolean over;
+	void Reset();
+	boolean isUsed();	//g‚í‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
 public:
 	static mouse_in* getIns();
 	mouse_in();
 	void input();
-	void Reset();
+
 	void recieveOver();
 	int Left();
 	int Right();
@@ -18,11 +20,11 @@ public:
 	int Y();
 	boolean LeftPush();	//‰Ÿ‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
 	boolean LeftClick();	//‰Ÿ‚µ‚½uŠÔ‚©‚Ç‚¤‚©
+	boolean LeftClick(boolean f);
 	boolean LeftLeave();	//—£‚µ‚½uŠÔ‚©‚Ç‚¤‚©
 	boolean RightPush();	//‰Ÿ‚µ‚Ä‚¢‚é‚©‚Ç‚¤‚©
 	boolean RightClick();	//‰Ÿ‚µ‚½uŠÔ‚©‚Ç‚¤‚©
 	boolean RightLeave();	//—£‚µ‚½uŠÔ‚©‚Ç‚¤‚©
-	boolean isUsed();	//g‚í‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
 	boolean isntOver();
 	
 	static boolean testBox(int,int,int,int);

@@ -38,15 +38,15 @@ ButtonLayer::ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth):G
 }
 void ButtonLayer::main(){
 	mouse_in* m=mouse_in::getIns();
-	if(mouse_in::testBox(x+bx,y+by,x+bx+bw,y+by+bh)&&!m->isUsed()){	
+	if(mouse_in::testBox(x+bx,y+by,x+bx+bw,y+by+bh)){	
 		if(!_oldMouseisin)
 			SoundController::getSE()->playSE(_enterSE);
 		if(_clicktype==ONMOUSE|| m->Left()==_clicktype){
 			parentScene->buttonPushed(id);
 			SoundController::getSE()->playSE(_clickSE);
-			mouse_in::getIns()->Reset();
 		}
 		_oldMouseisin=true;
+		m->recieveOver();
 	}else{
 		_oldMouseisin=false;
 	}
@@ -106,12 +106,13 @@ void SelectLayer::main(){
 				costman=ss.str();
 			}
 			if(m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(tmpx,tmpy,game->getUnitName(UnitType(i)),game->getUnitSummary(UnitType(i)),costman));}
-			if(m->LeftClick()){
+			if(m->LeftClick(false)){
 				p->getGame()->setProduct(id,i);
 				parentScene->rmLayer(thisLayerID);
 				parentScene->rmLayer(18);
 				SoundController::getSE()->playSE("sound/se_maoudamashii_system42.mp3");
 			}
+			m->recieveOver();
 		}
 	}
 
@@ -120,10 +121,9 @@ void SelectLayer::main(){
 	int _tx=x+73-px,_ty=y+196-py;
 	if(testBox(_tx-100,_ty-100,_tx+100,_ty+100)){
 		m->recieveOver();
-		if(m->LeftClick())
-			m->Reset();
+
 	}else{
-		if(m->LeftClick()||m->isUsed())
+		if(m->LeftClick(false))
 			parentScene->rmLayer(thisLayerID);
 	}
 	
@@ -376,26 +376,26 @@ void MenuLayer:: main(){
 		int _w=25;
 		ratelist[i]=1.0;
 		if((game->getNowStage()>i)&& testBox(_x-_w,_y-_w,_x+_w,_y+_w)){
-			
 			if(onmouse[i]==0){SoundController::getSE()->playSE("sound/button03a.mp3");onmouse[i]=1;}
 			if(m->LeftClick()){
-
-				m->Reset();
 				parentScene->addLayer(3,make_shared<SelectLayer>(_x,_y+35,i));
 			}
+			m->recieveOver();
 		}else{
 			onmouse[i]=0;
 		}
 	}
-	if(m->LeftClick()&&m->isntOver()){
+	if(m->LeftClick()){
 		if(testBox(221,62,221+66,62+60)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
-			if( p != NULL )	p->addLayer(15,std::make_shared<PopFactoryLayer>(game));
-			m->Reset();
+			if( p != NULL ){
+				p->addLayer(15,std::make_shared<PopFactoryLayer>(game));
+			}
+			m->recieveOver();
 		}else if(testBox(mx,my-mh,mx+mw,my+mh)){
 			int targe=(m->X()-mx)/(double)mw*game->stage_W[game->getNowStage()];
 			game->setCamera(targe-WINDOW_X/2);
-			m->Reset();
+			m->recieveOver();
 		}
 	}
 	if(testBox(221,62,221+66,62+60)){
@@ -491,6 +491,7 @@ void FactoryLayer:: main(){
 					ParamType hoge=static_cast<ParamType>(j*4+i);
 					if(testBox(xx,yy,xx+ww,yy+hh)){
 						game->incParamLevel(select,hoge,50);
+						m->recieveOver();
 					}
 				}
 			}
@@ -541,11 +542,7 @@ void PopFactoryLayer::draw(){
 		int tmpy=y+cy-py+zahyouy[i]*0.2*time;
 		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::get("pic/カスタム用小さな歯車.png"),TRUE);
 		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)),TRUE);
-		
-		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
-			;
 
-		}
 	}
 
 
@@ -573,6 +570,7 @@ void PopFactoryLayer:: main(){
 				//p->getGame()->setProduct(id,i);
 				p->addLayer(16,std::make_shared<ChipFactoryLayer>(game,tmpx,tmpy,i,&livelist[i]));
 			}
+			m->recieveOver();
 		}
 	}
 
@@ -580,10 +578,9 @@ void PopFactoryLayer:: main(){
 	
 	int _tx=x+cx-px,_ty=y+cy-py;
 	if(testBox(_tx-100,_ty-100,_tx+100,_ty+100)){
-		if(m->LeftClick())
-			m->Reset();
+		m->recieveOver();
 	}else{
-		if(m->LeftClick()&&m->isntOver()){
+		if(m->LeftClick()){
 			parentScene->rmLayer(16);
 			removeThis();
 		}
@@ -648,9 +645,9 @@ void ChipFactoryLayer:: main(){
 				parentScene->addLayer(18,hov[i]);
 				
 			}
-			if(timer>=5&&m->LeftClick()){
+
+			if(timer>=5&&m->LeftClick(false)){
 				if(game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]))){
-					m->Reset();
 					stringstream ss2;
 					SoundController::getSE()->playSE("sound/se_maoudamashii_system39.mp3");
 					ss2 << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
@@ -658,6 +655,7 @@ void ChipFactoryLayer:: main(){
 					//parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str()));
 				}
 			}
+			mouse_in::getIns()->recieveOver();
 		}
 
 	}
@@ -703,9 +701,7 @@ void HOHEILayer::main(){
 	int need=game->getParam(static_cast<int>(UnitType::_HOHEI),ParamType::CLK);
 	if(++timer>=need){timer=need;if(++flag>40)flag=0;}
 	if(testBox(x+5,y+5,x+75,y+75)){
-		m->recieveOver();
 		if(m->LeftClick()&&(timer==need)){
-			m->Reset();
 			game->birth(game->getNowStage()-1, HOHEI);
 			timer=0;
 			flag=0;
@@ -713,6 +709,7 @@ void HOHEILayer::main(){
 				
 				SoundController::getSE()->playSE("sound/spawn.mp3");
 		}
+		m->recieveOver();
 	}
 }
 
@@ -798,30 +795,30 @@ void OptionLayer::draw(){
 }
 
 void OptionLayer::main(){
-	if(!testBox(x,y,x+w,y+h)&&mouse_in::getIns()->LeftClick()){
-		mouse_in::getIns()->Reset();
+	if(!testBox(x,y,x+w,y+h)&&mouse_in::getIns()->LeftClick()&&mouse_in::getIns()->isntOver()){
+		mouse_in::getIns()->recieveOver();
 		this->removeThis();
 
 	}
-	if(testBox(x+50,y1,x+w-50,y1+10)&&mouse_in::getIns()->LeftClick()){
-		mouse_in::getIns()->Reset();
+	if(testBox(x+50,y1,x+w-50,y1+10)&&mouse_in::getIns()->LeftClick()&&mouse_in::getIns()->isntOver()){
+		mouse_in::getIns()->recieveOver();
 		master=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
 		SoundController::getIns()->setMASTERVol(master);
 		SoundController::getIns()->assignVol();
 	}
 	if(testBox(x+50,y2,x+w-50,y2+10)&&mouse_in::getIns()->LeftClick()){
-		mouse_in::getIns()->Reset();
+		mouse_in::getIns()->recieveOver();
 		se=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
 		SoundController::getIns()->getSE()->setSEVol(se);
 		SoundController::getIns()->assignVol();
 	}
 	if(testBox(x+50,y3,x+w-50,y3+10)&&mouse_in::getIns()->LeftClick()){
-		mouse_in::getIns()->Reset();
+		mouse_in::getIns()->recieveOver();
 		bgm=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
 		SoundController::getIns()->getBgm()->setBGMVol(bgm);
 		SoundController::getIns()->assignVol();
 	}
-	if(mouse_in::getIns()->LeftClick())mouse_in::getIns()->Reset();
+//	if(mouse_in::getIns()->LeftClick())mouse_in::getIns()->Reset();
 }
 void OptionLayer::called(){
 
@@ -849,9 +846,8 @@ void MapUnitSelector::main(){
 	if(testBox(0,0,WINDOW_X,WINDOW_Y)){
 		if(mouse_in::getIns()->LeftPush()){
 			this->removeThis();
-		}else{
-			mouse_in::getIns()->Reset();
 		}
+		mouse_in::getIns()->recieveOver();
 		
 		
 	}

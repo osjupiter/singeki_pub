@@ -36,13 +36,14 @@ mouse_in* mouse_in::getIns(){return &ins;}
 
 	
 	boolean mouse_in::isUsed(){return (l==4||r==4);}
-	boolean mouse_in::LeftPush(){return (l==3||l==1);}
-	boolean mouse_in::LeftClick(){return l==3;}
-	boolean mouse_in::LeftLeave(){return l==2;}
+	boolean mouse_in::LeftPush(){return this->isntOver()&&(l==3||l==1);}
+	boolean mouse_in::LeftClick(){return this->isntOver()&&l==3;}
+	boolean mouse_in::LeftClick(boolean f){return (!f||this->isntOver())&&l==3;}
+	boolean mouse_in::LeftLeave(){return this->isntOver()&&l==2;}
 
-	boolean mouse_in::RightPush(){return (r==3||r==1);}
-	boolean mouse_in::RightClick(){return r==3;}
-	boolean mouse_in::RightLeave(){return r==2;}
+	boolean mouse_in::RightPush(){return this->isntOver()&&(r==3||r==1);}
+	boolean mouse_in::RightClick(){return this->isntOver()&&r==3;}
+	boolean mouse_in::RightLeave(){return this->isntOver()&&r==2;}
 	
 	boolean mouse_in::isntOver(){return !over;}
 
