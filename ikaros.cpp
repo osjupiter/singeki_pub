@@ -12,7 +12,7 @@ ikaros::ikaros(int fx, int ln) : musume(fx, ln, UnitType::_IKAROS){
 	height = HEI_IKAROS;
 	stopper = false;
 	type = SKY;
-	y = 60 - line * 10;
+	y = 100 - line * 10;
 }
 
 

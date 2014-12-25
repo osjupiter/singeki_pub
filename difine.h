@@ -26,9 +26,10 @@ enum Position{ RAND, SKY ,ALL,NOATK};
 enum class PropertyType{NONE};
 
 
-enum UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,_YOUJO,_TATEKO,_HIME,_IKAROS,_MAJO,END_MUSUME,_TANK,_COPTER,_GEKKO,_RAILGUN,UNITTYPE_NUM};
+enum UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,_YOUJO,_TATEKO,_HIME,_IKAROS,_MAJO,_NOUKA,END_MUSUME
+				,_TANK,_COPTER,_GEKKO,_RAILGUN,_SHARIN,_GAJIGAJI,_BEEBAR,_SAIHATE,UNITTYPE_NUM};
 
-enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP ,GUNSHOT,CANNONSHOT,DROP,WISP};
+enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP ,GUNSHOT,CANNONSHOT,DROP,WISP,HANA};
 
 
 
@@ -70,7 +71,12 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define WID_BALLOON 90
 #define HEI_BALLOON 180
 
-
+/*ÉKÉWÉKÉW*/
+#define ANI_GAJIGAJI_W 5
+#define ANI_GAJIGAJI_A 6
+#define WID_GAJIGAJI 220
+#define HEI_GAJIGAJI_W  110
+#define HEI_GAJIGAJI_A  130
 
 /*ÉwÉä*/
 #define ANI_COPTER 6
@@ -118,8 +124,8 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define ANI_YOUJO_W 4
 #define ANI_YOUJO_D 3
 #define ANI_YOUJO_A 14
-#define WID_YOUJO 100
-#define HEI_YOUJO 180
+#define WID_YOUJO 150
+#define HEI_YOUJO 220
 
 /*èÇòUÇË*/
 #define ANI_TATEKO_W 5
@@ -128,11 +134,11 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define HEI_TATEKO 190
 
 /*ïPãRém*/
-#define ANI_HIME_W 4
-#define ANI_HIME_A 7
-#define WID_HIME_W 80
-#define WID_HIME_A 100
-#define HEI_HIME 120
+#define ANI_HIME_W 5
+#define ANI_HIME_A 6
+#define WID_HIME_W 120
+#define WID_HIME_A 120
+#define HEI_HIME 140
 
 /*ÉCÉJÉçÉX*/
 #define ANI_IKAROS_W 5
@@ -143,10 +149,27 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 
 /*É}ÉWÉá*/
 #define ANI_MAJO_W 4
-#define ANI_MAJO_A 4
-#define WID_MAJO_W 80
-#define WID_MAJO_A 90
+#define ANI_MAJO_A 8
+#define WID_MAJO_W 100
+#define WID_MAJO_A 100
 #define HEI_MAJO 120
+
+/*î_â∆*/
+#define ANI_NOUKA_W 4
+#define ANI_NOUKA_A 16
+#define WID_NOUKA_W 84
+#define WID_NOUKA_A 103
+#define HEI_NOUKA 110
+
+
+/*Ç≥Ç¢ÇÕÇƒ*/
+#define ANI_SAIHATE_H 9
+#define ANI_SAIHATE_A 13
+#define ANI_SAIHATE_T 6
+#define WID_SAIHATE 400
+#define WID_SAIHATE_A_R 800
+#define HEI_SAIHATE 300
+#define HEI_SAIHATE_A_S 450
 
 /*îöíe*/
 #define ANI_BOMB 2
@@ -173,7 +196,7 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define WID_SHOCK 200
 #define HEI_SHOCK 450
 
-/*É~ÉTÉC*/
+/*É~ÉTÉCÉã*/
 #define ANI_MISSILE 3
 #define WID_MISSILE 90
 #define HEI_MISSILE 60
@@ -209,39 +232,20 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define WID_DROP 96
 #define HEI_DROP 450
 
+
+#define ANI_HANA 25
+#define WID_HANA 143
+#define HEI_HANA 110
+
+
 #define ANI_MEKANEMU 3
 #define WID_MEKANEMU 400
 
 #define MUSUME 0
 #define ENEMY 1
 
-
-
-//unit type
-#define UNIT_M_NUM 6 //ñ∫ÉÜÉjÉbÉgÇÃéÌóﬁ
-
-#define NONE 0
 #define HOHEI 1
-#define BALLOON 2
-#define BIG 3
-#define KAMIKAZE 4
-#define BAZOOKA 5
-#define SEGWAY 6
 
-
-#define TANK 10
-#define COPTER 11
-#define GEKKO 12
-#define RAILGUN 13
-/*
-#define BOMB 20
-#define EXP 21
-#define SHOCK 22
-#define MISSILE 23
-#define TEPODON 24
-#define BEAM 25
-#define BIGEXP 26
-*/
 #define STAGE_NUM 8
 
 

@@ -61,7 +61,7 @@ void character::draw(int cx){
 	//HP•\Ž¦
 	if (state != UnitState::DIE){
 		int dx = x + width / 2 - 60 / 2;
-		int dy = (type == RAND) ? y + 3 : y + height - 10;
+		int dy = (type == RAND || type == ALL) ? y + 3 : y + height - 10;
 		DrawLine(dx - cx, dy + 3, dx + 60 - cx, dy + 3, GetColor(255, 0, 0), 5);
 		int i = hp;
 		for (int j = dx; i > 1000; i -= 1000, j += 7){

@@ -2,7 +2,7 @@
 #include "Images.h"
 
 #define ANIM_SPEED_W 5
-#define ANIM_SPEED_A 5
+#define ANIM_SPEED_A 2
 #define DIST_HIME 0
 
 himekishi::himekishi(int fx, int ln) : musume(fx, ln, UnitType::_HIME){
@@ -63,7 +63,7 @@ void himekishi::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_hime_a[0], true);
 		break;
 	case UnitState::WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->g_hime_w[0], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_hime_w[ani_count / ANIM_SPEED_W%ANI_HIME_W], true);
 		break;
 	}
 

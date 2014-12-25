@@ -8,6 +8,8 @@
 #include "mekaNemu.h"
 
 #include "castle.h"
+#include "boss_castle.h"
+
 #include "Factory.h"
 #include <time.h>
 #include <algorithm>
@@ -43,30 +45,39 @@ Game::Game(int _world){
 
 void Game::param_init(){
 	auto data=CsvReader::parseTable("dat/test.txt",",");
-	ParamType tmp[END_MUSUME][3];
+	ParamType tmp[UNITTYPE_NUM][11];
 	int i=0;
 	for(auto a:data){
-		for(int j=0;j<3;j++){
+		for(int j=0;j<11;j++){
 			tmp[i][j]=static_cast<ParamType>(stoi(a[j]));
 		}
 		i++;
 	}
-
-	param_list[_HOHEI] = shared_ptr<Parameter>(
+	int line = 0;
+	
+	for (i = 0; i < END_MUSUME;i++){
+		if (i == _NONE || i == END_MUSUME) continue;
+		param_list[i] = shared_ptr<Parameter>(
+			new Parameter(tmp[line][0], tmp[line][1], tmp[line][2], tmp[line][3], static_cast<Position>(tmp[line][10]), tmp[line][4], tmp[line][5]
+			, tmp[line][6], tmp[line][7], tmp[line][8], tmp[line][9]));
+		line++;
+	}
+	
+/*	param_list[_HOHEI] = shared_ptr<Parameter>(
 		new Parameter(POWER_HOHEI, MAXHP_HOHEI
 		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI,tmp[0][0],tmp[0][1],tmp[0][2]));
 	param_list[_BALOON] = shared_ptr<Parameter>(
 		new Parameter(POWER_BALLOON, MAXHP_BALLOON
-		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON,tmp[1][0],tmp[1][1],tmp[1][2]));
-	param_list[_BAZOOKA] = shared_ptr<Parameter>(
-		new Parameter(POWER_BAZOOKA, MAXHP_BAZOOKA
-		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA,tmp[2][0],tmp[2][1],tmp[2][2]));
+		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON,tmp[1][0],tmp[1][1],tmp[1][2]));	
 	param_list[_BIG] = shared_ptr<Parameter>(
 		new Parameter(POWER_BIG, MAXHP_BIG
-		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG,tmp[3][0],tmp[3][1],tmp[3][2]));
+		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG,tmp[2][0],tmp[2][1],tmp[2][2]));
 	param_list[_KAMIKAZE] = shared_ptr<Parameter>(
 		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
-		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE,tmp[4][0],tmp[4][1],tmp[4][2]));
+		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE,tmp[3][0],tmp[3][1],tmp[3][2]));
+	param_list[_BAZOOKA] = shared_ptr<Parameter>(
+		new Parameter(POWER_BAZOOKA, MAXHP_BAZOOKA
+		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA, tmp[4][0], tmp[4][1], tmp[4][2]));
 	param_list[_SEGWAY] = shared_ptr<Parameter>(
 		new Parameter(POWER_SEGWAY, MAXHP_SEGWAY
 		, SPEED_SEGWAY, DEFENSE_SEGWAY, A_TYPE_SEGWAY, CLK_SEGWAY, COST_SEGWAY, A_FREQ_SEGWAY,tmp[5][0],tmp[5][1],tmp[5][2]));
@@ -85,6 +96,22 @@ void Game::param_init(){
 	param_list[_MAJO] = shared_ptr<Parameter>(
 		new Parameter(POWER_MAJO, MAXHP_MAJO
 		, SPEED_MAJO, DEFENSE_MAJO, A_TYPE_MAJO, CLK_MAJO, COST_MAJO, A_FREQ_MAJO, tmp[10][0], tmp[10][1], tmp[10][2]));
+	param_list[_NOUKA] = shared_ptr<Parameter>(
+		new Parameter(POWER_NOUKA, MAXHP_NOUKA
+		, SPEED_NOUKA, DEFENSE_NOUKA, A_TYPE_NOUKA, CLK_NOUKA, COST_NOUKA, A_FREQ_NOUKA, tmp[10][0], tmp[11][1], tmp[11][2]));
+	param_list[_TANK] = shared_ptr<Parameter>(
+		new Parameter(POWER_TANK, MAXHP_TANK
+		, SPEED_TANK, DEFENSE_TANK, A_TYPE_TANK, CLK_TANK, COST_TANK, A_FREQ_TANK, tmp[11][0], tmp[11][1], tmp[11][2]));
+	param_list[_COPTER] = shared_ptr<Parameter>(
+		new Parameter(POWER_COPTER, MAXHP_COPTER
+		, SPEED_COPTER, DEFENSE_COPTER, A_TYPE_COPTER, CLK_COPTER, COST_COPTER, A_FREQ_COPTER, tmp[12][0], tmp[12][1], tmp[12][2]));
+	param_list[_GEKKO] = shared_ptr<Parameter>(
+		new Parameter(POWER_GEKKO, MAXHP_GEKKO
+		, SPEED_GEKKO, DEFENSE_GEKKO, A_TYPE_GEKKO, CLK_GEKKO, COST_GEKKO, A_FREQ_GEKKO, tmp[13][0], tmp[13][1], tmp[13][2]));
+	param_list[_RAILGUN] = shared_ptr<Parameter>(
+		new Parameter(POWER_RAILGUN, MAXHP_RAILGUN
+		, SPEED_RAILGUN, DEFENSE_RAILGUN, A_TYPE_RAILGUN, CLK_RAILGUN, COST_RAILGUN, A_FREQ_RAILGUN, tmp[14][0], tmp[14][1], tmp[14][2]));
+		//*/
 }
 
 void Game::background_init(){
@@ -105,7 +132,7 @@ void Game::castle_init(){
 	p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle_enemy(stage_W[2], 0, 2));
+	p = shared_ptr<castle>(new boss_castle(stage_W[2], 0, 2, UnitType::_TANK));
 	castle_list.push_back(p);
 
 	p = shared_ptr<castle>(new castle_enemy(stage_W[3], 0, 3));
@@ -155,21 +182,47 @@ int Game::getX(){
 }
 
 
-void Game::birth(int st,int type){
+shared_ptr<character> Game::birth(int st, int type, int front){
 	int line = (int)(rand() / (RAND_MAX + 1.0) * 3);
 	//自分のユニットのときリソース確認消費
 	if (type < static_cast<int>(UnitType::END_MUSUME)){
 		int t=getParam(type,ParamType::COST);
-		if (getResource() < t) return;
-		if(getMusumeSum()>=getBirthLimit())return;
+		if (getResource() < t) return nullptr;
+		if(getMusumeSum()>=getBirthLimit()) return nullptr;
 		useResource(t);
 		musume_nuber_list.at(type)++;
-		shared_ptr<character> p(Factory::create_chara(stage_W[st], line, st, (UnitType)type));
+		shared_ptr<character> p(Factory::create_chara(stage_W[st], st, line, (UnitType)type));
 		if (p != NULL) musume_list[line].push_back(p);
+		return p;
 	}
 	else {
-		shared_ptr<character> p(Factory::create_chara(stage_W[st], line, st, (UnitType)type));
+		shared_ptr<character> p(Factory::create_chara(stage_W[st], st,line, (UnitType)type));
 		if(p != NULL) enemy_list[line].push_back(p);
+		return p;
+	}
+
+}
+
+shared_ptr<character> Game::x_birth(int x, int type, bool use_resouce){
+	int line = (int)(rand() / (RAND_MAX + 1.0) * 3);
+	//自分のユニットのときリソース確認消費
+	if (type < static_cast<int>(UnitType::END_MUSUME)){
+
+		int t = getParam(type, ParamType::COST);
+		if (getMusumeSum() >= getBirthLimit())return nullptr;
+		if (use_resouce){
+			if (getResource() < t) return nullptr;
+			useResource(t);
+		}
+		musume_nuber_list.at(type)++;
+		shared_ptr<character> p(Factory::create_chara(x, x, line, (UnitType)type));
+		if (p != NULL) musume_list[line].push_back(p);
+		return p;
+	}
+	else {
+		shared_ptr<character> p(Factory::create_chara(x, 0, line, (UnitType)type));
+		if (p != NULL) enemy_list[line].push_back(p);
+		return p;
 	}
 }
 
@@ -188,7 +241,7 @@ double Game::getProductCLKPAR(int tw_num){
 }
 
 void Game::enemy_birth(){
-	if (getClock(STAGE1_W-front_line)) birth(STAGE1_W, TANK);
+//	if (getClock(STAGE1_W-front_line)) birth(STAGE1_W, TANK);
 }
 
 void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, int dest){
@@ -264,12 +317,12 @@ void Game::main(){
 			if (i->getState() != UnitState::DIE){
 				if (castle_list.at(now_stage)->getX() > i->getX()){
 
-					if (i->getType() == RAND && target_X > i->getX()){
+					if ((i->getType() == RAND || i->getType() == ALL) && target_X > i->getX()){
 						target_e = i;
 						target_X = i->getX();
 					}
 						
-					if (i->getType() == SKY && target_X_S > i->getX()){
+					if ((i->getType() == SKY || i->getType() == ALL) && target_X_S > i->getX()){
 						target_e_sky = i;
 						target_X_S = i->getX();
 					}
@@ -294,11 +347,11 @@ void Game::main(){
 			
 			front_type = i->decideTargetPos(front_tmp, front_S_tmp);
 
-			if (front_type == RAND){
+			if (front_type == RAND || i->getType() == ALL){
 //				front = front_tmp;
 				front = min(castle_list.at(now_stage)->getX(), front_tmp);
 			}
-			else if(front_type == SKY){
+			else if (front_type == SKY || i->getType() == ALL){
 //				front = front_S_tmp;
 				front = min(castle_list.at(now_stage)->getX(), front_S_tmp);
 			}
@@ -306,14 +359,14 @@ void Game::main(){
 			i->main(front);
 			if (i->getState() != UnitState::DIE){
 				if (castle_list.at(now_stage - 1)->getX() + castle_list.at(now_stage - 1)->getW() < i->getX()){
-					if (i->getType() == RAND && target_X < i->getX()){
+					if ((i->getType() == RAND || i->getType() == ALL) && target_X < i->getX()){
 
 						target_m = i;
 						target_X = i->getX()+i->getW();
 					}
 
 
-					if (i->getType() == SKY && target_X_S < i->getX()){
+					if ((i->getType() == SKY || i->getType() == ALL) && target_X_S < i->getX()){
 						target_m_sky = i;
 						target_X_S = i->getX() + i->getW();
 					}
@@ -562,9 +615,10 @@ void Game::Test(){
 	}
 
 	*/
-//	if (mouse_in::getIns()->RightClick())turnPauseFlag();
+
 	if (mouse_in::getIns()->RightClick()){
-		birth(nowstage-1, _IKAROS);
+//		birth(nowstage-1, _YOUJO);
+		;
 	}
 }
 

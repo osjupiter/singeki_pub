@@ -76,21 +76,39 @@ void Images::load(){
 
 	LoadDivGraph("dat/img/ƒŒ[ƒ‹ƒKƒ“‚³‚ñw.png", ANI_RAILGUN, 1, ANI_RAILGUN, WID_RAILGUN, HEI_RAILGUN, g_rail);
 
-	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/—c—‚—.png",ANI_YOUJO_W,ANI_YOUJO_W,1,WID_YOUJO,HEI_YOUJO,g_youjo_w);
-	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/—c—d.png", ANI_YOUJO_D, ANI_YOUJO_D, 1, WID_YOUJO, HEI_YOUJO-10, g_youjo_d);
-	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/—c—j.png", ANI_YOUJO_A, ANI_YOUJO_A/2, 2, WID_YOUJO, HEI_YOUJO, g_youjo_a);
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/—c—w2.png",ANI_YOUJO_W,ANI_YOUJO_W,1,WID_YOUJO,HEI_YOUJO,g_youjo_w);
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/—c—d2.png", ANI_YOUJO_D, ANI_YOUJO_D, 1, WID_YOUJO, HEI_YOUJO, g_youjo_d);
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/—c—j2.png", ANI_YOUJO_A, ANI_YOUJO_A/2, 2, WID_YOUJO, HEI_YOUJO, g_youjo_a);
 
 	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/‚˜U‚èw.png", ANI_TATEKO_W, ANI_TATEKO_W, 1, WID_TATEKO, HEI_TATEKO, g_tateko_w);
 	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/‚˜U‚èa.png", ANI_TATEKO_A, ANI_TATEKO_A, 1, WID_TATEKO, HEI_TATEKO, g_tateko_a);
 
-	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/•P‹Rmw.png", ANI_HIME_W, ANI_HIME_W, 1, WID_HIME_W, HEI_HIME, g_hime_w);
-	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/•P‹Rma.png", ANI_HIME_A, ANI_HIME_A, 1, WID_HIME_A, HEI_HIME, g_hime_a);
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/•P‹Rmw2.png", ANI_HIME_W, ANI_HIME_W, 1, WID_HIME_W, HEI_HIME, g_hime_w);
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/•P‹Rma2.png", ANI_HIME_A, ANI_HIME_A, 1, WID_HIME_A, HEI_HIME, g_hime_a);
 
 	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/ƒCƒJƒƒXw.png", ANI_IKAROS_W, ANI_IKAROS_W, 1, WID_IKAROS_W, HEI_IKAROS, g_ikaros_w);
 	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/ƒCƒJƒƒXa.png", ANI_IKAROS_A, ANI_IKAROS_A, 1, WID_IKAROS_A, HEI_IKAROS, g_ikaros_a);
 
-	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/ƒ}ƒWƒ‡w.png", ANI_MAJO_W, ANI_MAJO_W, 1, WID_MAJO_W, HEI_MAJO, g_majo_w);
-	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/ƒ}ƒWƒ‡a.png", ANI_MAJO_A, ANI_MAJO_A, 1, WID_MAJO_A, HEI_MAJO, g_majo_a);
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/ƒ}ƒWƒ‡w2.png", ANI_MAJO_W, ANI_MAJO_W, 1, WID_MAJO_W, HEI_MAJO, g_majo_w);
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/ƒ}ƒWƒ‡a2.png", ANI_MAJO_A, ANI_MAJO_A, 1, WID_MAJO_A, HEI_MAJO, g_majo_a);
+
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/”_‰Æw.png", ANI_NOUKA_W, ANI_NOUKA_W, 1, WID_NOUKA_W, HEI_NOUKA, g_nouka_w);
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/”_‰Æs.png", ANI_NOUKA_A, 4, 4, WID_NOUKA_A, HEI_NOUKA, g_nouka_a1);
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/”_‰Æm.png", ANI_NOUKA_A, 4, 4, WID_NOUKA_A, HEI_NOUKA, g_nouka_a2);
+
+	LoadDivGraph("dat/img/“Gƒ†ƒjƒbƒg/r–ì/ƒKƒWƒKƒWƒƒJw.png", ANI_GAJIGAJI_W, ANI_GAJIGAJI_W, 1, WID_GAJIGAJI, HEI_GAJIGAJI_W, g_gajigaji_w[0]);
+	LoadDivGraph("dat/img/“Gƒ†ƒjƒbƒg/r–ì/ƒKƒWƒKƒWƒƒJa.png", ANI_GAJIGAJI_A, ANI_GAJIGAJI_A, 1, WID_GAJIGAJI, HEI_GAJIGAJI_A, g_gajigaji_a[0]);
+	LoadDivGraph("dat/img/“Gƒ†ƒjƒbƒg/r–ì/ƒKƒWƒKƒWƒƒJ2w.png", ANI_GAJIGAJI_W, ANI_GAJIGAJI_W, 1, WID_GAJIGAJI, HEI_GAJIGAJI_W, g_gajigaji_w[1]);
+	LoadDivGraph("dat/img/“Gƒ†ƒjƒbƒg/r–ì/ƒKƒWƒKƒWƒƒJ2a.png", ANI_GAJIGAJI_A, ANI_GAJIGAJI_A, 1, WID_GAJIGAJI, HEI_GAJIGAJI_A, g_gajigaji_a[1]);
+	LoadDivGraph("dat/img/“Gƒ†ƒjƒbƒg/r–ì/ƒKƒWƒKƒWƒƒJ3w.png", ANI_GAJIGAJI_W, ANI_GAJIGAJI_W, 1, WID_GAJIGAJI, HEI_GAJIGAJI_W, g_gajigaji_w[2]);
+	LoadDivGraph("dat/img/“Gƒ†ƒjƒbƒg/r–ì/ƒKƒWƒKƒWƒƒJ3a.png", ANI_GAJIGAJI_A, ANI_GAJIGAJI_A, 1, WID_GAJIGAJI, HEI_GAJIGAJI_A, g_gajigaji_a[2]);
+
+	LoadDivGraph("dat/img/“Gƒ†ƒjƒbƒg/áŒ´/‚³‚¢‚Í‚Äa1.png", ANI_SAIHATE_A, 1, ANI_SAIHATE_A, WID_SAIHATE_A_R, HEI_SAIHATE, g_saihate_a_r);
+	LoadDivGraph("dat/img/“Gƒ†ƒjƒbƒg/áŒ´/‚³‚¢‚Í‚Äa2.png", ANI_SAIHATE_A, ANI_SAIHATE_A, 1, WID_SAIHATE, HEI_SAIHATE_A_S, g_saihate_a_s);
+	LoadDivGraph("dat/img/“Gƒ†ƒjƒbƒg/áŒ´/‚³‚¢‚Í‚Ät.png", ANI_SAIHATE_T, ANI_SAIHATE_T, 1, WID_SAIHATE, HEI_SAIHATE, g_saihate_t);
+	LoadDivGraph("dat/img/“Gƒ†ƒjƒbƒg/áŒ´/‚³‚¢‚Í‚Äh.png", ANI_SAIHATE_H, 3, 3, WID_SAIHATE, HEI_SAIHATE, g_saihate_h);
+
+	LoadDivGraph("dat/img/‚Ş‚·‚ßƒ†ƒjƒbƒg/‰Ô‚“.png", ANI_HANA, 5, 5, WID_HANA, HEI_HANA, g_hana);
 
 	LoadDivGraph("dat/img/”š’e.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);
 	LoadDivGraph("dat/img/”š”­E.png", ANI_EXP, 6, 2, WID_EXP, HEI_EXP, g_exp);
@@ -115,7 +133,7 @@ void Images::load(){
 	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea2.png", 7, 7, 1, 155, 168, g_e_wisp[1]);
 	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea3.png", 7, 7, 1, 155, 168, g_e_wisp[2]);
 
-
+	/*
 	back[0][0] = 0;
 	back[0][1] = LoadGraph("dat/img/r–ì/r–ì‚P|‚S.png");
 	back[0][2] = LoadGraph("dat/img/r–ì/r–ì‚P|‚R.png");
@@ -164,6 +182,57 @@ void Images::load(){
 	back[7][2] = LoadGraph("dat/img/r–ì/r–ì‚W|‚R.png");
 	back[7][3] = LoadGraph("dat/img/r–ì/r–ì‚W|‚Q.png");
 	back[7][4] = LoadGraph("dat/img/r–ì/r–ì‚W|‚P.png");
+*/
+	back[0][0] = LoadGraph("dat/img/áŒ´/áŒ´‚P-5.png");
+	back[0][1] = LoadGraph("dat/img/áŒ´/áŒ´‚P-4.png");
+	back[0][2] = LoadGraph("dat/img/áŒ´/áŒ´‚P-3.png");
+	back[0][3] = LoadGraph("dat/img/áŒ´/áŒ´‚P-2.png");
+	back[0][4] = LoadGraph("dat/img/áŒ´/áŒ´‚P-1.png");
+	houdai_yama = LoadGraph("dat/img/R/Ré–C‘ä.png");
+
+	back[1][0] = 0;
+	back[1][1] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚S.png");
+	back[1][2] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚R.png");
+	back[1][3] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚Q.png");
+	back[1][4] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚P.png");
+
+	back[2][0] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚T.png");
+	back[2][1] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚S.png");
+	back[2][2] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚R.png");
+	back[2][3] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚Q.png");
+	back[2][4] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚P.png");
+
+	back[3][0] = 0;
+	back[3][1] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚S.png");
+	back[3][2] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚R.png");
+	back[3][3] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚Q.png");
+	back[3][4] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚P.png");
+
+	back[4][0] = 0;
+	back[4][1] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚S.png");
+	back[4][2] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚R.png");
+	back[4][3] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚Q.png");
+	back[4][4] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚P.png");
+
+	back[5][0] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚T.png");
+	back[5][1] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚S.png");
+	back[5][2] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚R.png");
+	back[5][3] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚Q.png");
+	back[5][4] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚P.png");
+
+	back[6][0] = 0;
+	back[6][1] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚S.png");
+	back[6][2] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚R.png");
+	back[6][3] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚Q.png");
+	back[6][4] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚P.png");
+
+	back[7][0] = 0;
+	back[7][1] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚S.png");
+	back[7][2] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚R.png");
+	back[7][3] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚Q.png");
+	back[7][4] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚P.png");
+
+
 
 	g_mekahaikyo=LoadGraph("dat/img/ƒƒJ”pšĞ.png");
 

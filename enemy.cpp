@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "iostream"
 enemy::enemy(int fx, int ln, int lv , UnitType u_type) :character(fx, ln, u_type){
+	param = Game::getIns()->getParam(static_cast<int>(unit_type));
 	level = lv;
 	dir = Direction::LEFT;
 	atk = false;
@@ -29,7 +30,7 @@ Position enemy::getAtkType(){
 }
 void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 	if (op_a_type == NOATK) return;
-	if (op_a_type == ALL || op_a_type == type){
+	if (op_a_type == ALL || op_a_type == type || type ==ALL){
 		if (rand() % 30 == 0){
 			int rand_x = rand() % width / 2, rand_y = rand() % height / 2;
 			switch (op_unit_type){
@@ -37,6 +38,7 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 				Game::getIns()->damage_effect_create(x + width /3+rand_x, y + height - HEI_CANNONSHOT+35-rand_y, CANNONSHOT, true);
 				break;
 			case UnitType::_HOHEI:
+			case UnitType::_IKAROS:
 				Game::getIns()->damage_effect_create(x + width / 3+rand_x, y + height - HEI_GUNSHOT+25-rand_y, GUNSHOT);
 				break;
 			}

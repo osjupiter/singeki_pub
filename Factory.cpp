@@ -15,6 +15,8 @@
 #include "himekishi.h"
 #include "ikaros.h"
 #include "majo.h"
+#include "nouka.h"
+#include "gajigaji.h"
 
 #include "gunshot.h"
 #include "cannonshot.h"
@@ -26,7 +28,8 @@
 #include "bigExplode.h"
 #include "nomalExp.h"
 #include "beam.h"
-
+#include "hana.h"
+#include "saihate.h"
 using namespace std;
 
 
@@ -38,7 +41,7 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		break;
 
 	case UnitType::_BALOON:
-		chara_ins.reset(new balloon(x, line));
+		chara_ins.reset(new majo(x, line));
 		break;
 
 	case UnitType::_BIG:
@@ -72,6 +75,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_MAJO:
 		chara_ins.reset(new majo(x, line));
 		break;
+	case UnitType::_NOUKA:
+		chara_ins.reset(new nouka(x, line));
+		break;
 	case UnitType::_TANK:
 		chara_ins.reset(new tank(x, line, st));
 		break;
@@ -84,7 +90,12 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_RAILGUN :
 		chara_ins.reset(new railgun(x, line, st));
 		break;
-
+	case UnitType::_GAJIGAJI:
+		chara_ins.reset(new gajigaji(x, line, st));
+		break;
+	case UnitType::_SAIHATE:
+		chara_ins.reset(new saihate(x, line, st));
+		break;
 	default:
 		break;
 	}
@@ -93,7 +104,7 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 }
 
 std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Direction dr, int atk_power, int dest){
-/*	shared_ptr<effect> ret_ins(nullptr);
+	shared_ptr<effect> ret_ins(nullptr);
 	switch (type) {
 	case BOMB:
 		ret_ins.reset(new bomb(fx, fy, atk_power));
@@ -134,12 +145,12 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 	case DROP:
 		ret_ins.reset(new drop(fx, fy));
 		break;
-	
+	case HANA:
+		ret_ins.reset(new hana(fx, fy));
+		break;
 	}
 	return ret_ins;
-	*/
-	shared_ptr<effect> p(new drop(fx, fy));
-	return p;
+	
 }
 
 shared_ptr<effect> Factory::create_damage_effect(int fx, int fy, int e_type, bool TurnFlag){

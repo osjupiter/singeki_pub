@@ -40,7 +40,7 @@ castle::castle(int fx, int fy, int st) :unit(fx, fy){
 
 
 	dir = NODIR;
-	product_type = NONE;
+	product_type = _NONE;
 	now_clk = 0;
 	exist_clk = 0;
 
@@ -164,6 +164,7 @@ void castle::damage(int d, UnitType op_unit_type){
 				Game::getIns()->damage_effect_create(x + 100 +rand_x, y + height - HEI_CANNONSHOT + 35-rand_y, CANNONSHOT, true);
 				break;
 			case UnitType::_HOHEI:
+			case UnitType::_IKAROS:
 				Game::getIns()->damage_effect_create(x +100+rand_x, y + height - HEI_GUNSHOT + 25-rand_y, GUNSHOT);
 				break;
 			case UnitType::_TANK:

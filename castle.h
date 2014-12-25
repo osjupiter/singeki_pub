@@ -37,7 +37,7 @@ public:
 	virtual void damage(int,UnitType op_unit_type);
 	bool getClock(unsigned int);
 	bool isProductTime();
-	void setState(CastleState);
+	virtual void setState(CastleState);
 	void setProduct(int);
 	int getProduct();
 	CastleState getState();
@@ -54,8 +54,9 @@ private:
 
 public:
 	castle_musume(int, int, int);
-	void main(int);
-	void draw(int);
+	virtual void main(int);
+	virtual void draw(int);
+	
 	bool isProductTime();
 };
 class castle_enemy : public castle{
@@ -66,8 +67,10 @@ public:
 	castle_enemy(int, int, int);
 	void main(int);
 	void draw(int);
-
+//	virtual void damage(int, UnitType op_unit_type);
 };
+
+
 
 class shiro_yama :public castle_enemy{
 	int wait_time;
