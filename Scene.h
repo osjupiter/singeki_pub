@@ -21,7 +21,7 @@ class GameScene : public SceneNode{
 	boolean notEnd;
 	int pauseState;
 public:
-	GameScene();
+	GameScene(int,int[6]);
 	void beforemain();
 	void enterScene();
 	void leaveScene();
@@ -35,6 +35,8 @@ class WorldScene : public SceneNode{
 	list<shared_ptr<GraphicLayer>> glist;
 	int xpos;
 public:
+	int stage_id;
+	int unit_id[6];
 	WorldScene();
 	void buttonPushed(string);
 	void enterScene();
@@ -62,11 +64,12 @@ public:
 
 };
 
-template <typename T>
+
 class LoadingScene : public SceneNode{
 	int count;
+	SN_Ptr next;
 public:
-	LoadingScene();
+	LoadingScene(SN_Ptr);
 	void draw();
 	void main();
 

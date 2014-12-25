@@ -856,13 +856,31 @@ void MapUnitSelector::main(){
 		//キャラ選択
 		for(int i=1;i<10;i++){
 			if(testBox(400+i%6*50-25,200+i/6*50-25,400+i%6*50+25,200+i/6*50+25)&&mouse_in::getIns()->LeftClick()){
+				if(!flag[i]&&counter>=6)break;
 				flag[i]=!flag[i];
+
+				if(flag[i])counter++;
+				else counter--;
+
 			}
 		}
 		
 		//ステージへ
 		if(mouse_in::getIns()->LeftClick()&&testBox(100,WINDOW_Y-150,WINDOW_X-100,WINDOW_Y-50)){
-			parentScene->buttonPushed("gotogame"+std::to_string(stage_id));
+			WorldScene* p = dynamic_cast<WorldScene*>( parentScene );
+			if( p != NULL )
+			{
+				//p->getGame()->setProduct(id,i);
+				p->stage_id=stage_id;
+				int j=0;
+				for(int i=0;i<20;i++){
+					if(flag[i]){
+						p->unit_id[j]=i;
+						j++;
+					}
+				}
+			}
+			parentScene->buttonPushed("gotogame");
 		}
 		mouse_in::getIns()->recieveOver();
 	}else{
@@ -874,7 +892,7 @@ void MapUnitSelector::main(){
 	mouse_in::getIns()->recieveOver();
 }
 void MapUnitSelector::called(){
-	for(int i=0;i<20;i++)
-		flag[i]=false;
+	for(int i=0;i<20;i++){flag[i]=false;}
+	counter=0;
 	
 }

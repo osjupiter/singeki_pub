@@ -17,7 +17,6 @@ class SceneManager
 
 
 public:
-	int nextGameID;
 	SceneManager(void);
 
 	static SceneManager* getIns();
