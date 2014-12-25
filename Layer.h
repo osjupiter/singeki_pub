@@ -253,6 +253,7 @@ public:
 
 class MapUnitSelector :public Layer{
 	int stage_id;
+	boolean flag[20];
 public:
 	MapUnitSelector(int);
 	void draw();

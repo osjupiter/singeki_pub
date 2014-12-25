@@ -62,6 +62,7 @@ public:
 
 };
 
+template <typename T>
 class LoadingScene : public SceneNode{
 	int count;
 public:

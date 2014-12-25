@@ -15,7 +15,7 @@ TitleScene::TitleScene(){
 }
 void TitleScene::buttonPushed(string id){
 	if(id=="start"){
-		SceneManager::getIns()->switchScene(std::make_shared<WorldScene>(),0,5);
+		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene<WorldScene>>(),0,5);
 	}else if(id=="option"){
 		LAY_Ptr q(new OptionLayer());
 		addLayer(2,q);
@@ -52,7 +52,7 @@ void WorldScene::buttonPushed(string id){
 	}else if(id.find("gotogame")!=string::npos){
 		id.erase(0,8);
 		SceneManager::getIns()->nextGameID= stoi(id);
-		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
+		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene<GameScene>>(),0,5);
 	}
 }
 void WorldScene::moveX(int dx){
@@ -252,16 +252,18 @@ void LogoScene::main(){
 	DrawFormatString(0,0,GetColor(255,0,0),"%d",count);
 }
 
-
-LoadingScene::LoadingScene(){
+template <typename T>
+LoadingScene<T>::LoadingScene(){
 
 }
-void LoadingScene::main(){
+template <typename T>
+void LoadingScene<T>::main(){
 	if(GetASyncLoadNum()==0){
 		SoundController::getSE()->setting();
-		SceneManager::getIns()->switchScene(make_shared<GameScene>(),0,5);
+		SceneManager::getIns()->switchScene(make_shared<T>(),0,5);
 	}
 }
-void LoadingScene::draw(){
+template <typename T>
+void LoadingScene<T>::draw(){
 	DrawString(0,0,"Now Loading...",GetColor(255,255,255));
 }

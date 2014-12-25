@@ -835,26 +835,46 @@ void MapUnitSelector::draw(){
 	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
 	SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
 
-	DrawBox(100,100,WINDOW_X-100,WINDOW_Y-100,GetColor(0,123,0),TRUE);
+	DrawBox(50,50,WINDOW_X-50,WINDOW_Y-50,GetColor(0,123,0),TRUE);
+	DrawBox(50,50,WINDOW_X-400,WINDOW_Y-50,GetColor(255,255,255),TRUE);
 
-	DrawBox(100,100,WINDOW_X-100,WINDOW_Y-100,GetColor(0,123,0),TRUE);
+	DrawBox(100,WINDOW_Y-150,WINDOW_X-100,WINDOW_Y-50,GetColor(255,123,0),TRUE);
+
+	//アイコンの描写
+	for(int i=1;i<10;i++){
+		DrawRotaGraph(400+i*50,200,1.0,0,Images::getMusumeIcon(i,flag[i]),TRUE);
+	}
+
+	
 	
 	
 }
 
 void MapUnitSelector::main(){
-	if(testBox(0,0,WINDOW_X,WINDOW_Y)){
-		if(mouse_in::getIns()->LeftClick()){
-			//this->removeThis();
+	//枠内
+	if(testBox(50,50,WINDOW_X-50,WINDOW_Y-50)){
+		//キャラ選択
+		for(int i=1;i<10;i++){
+			if(testBox(400+i*50-25,200-25,400+i*50+25,200+25)&&mouse_in::getIns()->LeftClick()){
+				flag[i]=!flag[i];
+			}
+		}
+		
+		//ステージへ
+		if(mouse_in::getIns()->LeftClick()&&testBox(100,WINDOW_Y-150,WINDOW_X-100,WINDOW_Y-50)){
 			parentScene->buttonPushed("gotogame"+std::to_string(stage_id));
-
 		}
 		mouse_in::getIns()->recieveOver();
-		
+	}else{
+		//枠外
+		if(mouse_in::getIns()->LeftClick())this->removeThis();
+
 		
 	}
+	mouse_in::getIns()->recieveOver();
 }
 void MapUnitSelector::called(){
-
+	for(int i=0;i<20;i++)
+		flag[i]=false;
 	
 }
