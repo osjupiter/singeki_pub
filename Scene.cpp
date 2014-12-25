@@ -48,7 +48,9 @@ void WorldScene::buttonPushed(string id){
 		moveX(-50);
 	}else if(id.find("stage")!=string::npos){
 		id.erase(0,5);
-		//addLayer(10,make_shared<MapUnitSelector>(1));
+		addLayer(10,make_shared<MapUnitSelector>(stoi(id)));
+	}else if(id.find("gotogame")!=string::npos){
+		id.erase(0,8);
 		SceneManager::getIns()->nextGameID= stoi(id);
 		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
 	}

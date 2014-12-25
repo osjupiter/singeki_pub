@@ -38,7 +38,7 @@ ButtonLayer::ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth):G
 }
 void ButtonLayer::main(){
 	mouse_in* m=mouse_in::getIns();
-	if(mouse_in::testBox(x+bx,y+by,x+bx+bw,y+by+bh)){	
+	if(mouse_in::testBox(x+bx,y+by,x+bx+bw,y+by+bh)&&m->isntOver()){	
 		if(!_oldMouseisin)
 			SoundController::getSE()->playSE(_enterSE);
 		if(_clicktype==ONMOUSE|| m->Left()==_clicktype){
@@ -844,8 +844,10 @@ void MapUnitSelector::draw(){
 
 void MapUnitSelector::main(){
 	if(testBox(0,0,WINDOW_X,WINDOW_Y)){
-		if(mouse_in::getIns()->LeftPush()){
-			this->removeThis();
+		if(mouse_in::getIns()->LeftClick()){
+			//this->removeThis();
+			parentScene->buttonPushed("gotogame"+std::to_string(stage_id));
+
 		}
 		mouse_in::getIns()->recieveOver();
 		
