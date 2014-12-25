@@ -285,12 +285,29 @@ void Images::load(){
 	filelist.push_back("pic/na.png");
 	filelist.push_back("pic/ra.png");
 	filelist.push_back("pic/sa.png");
+
+	filelist.push_back("pic/bu.png");
+	filelist.push_back("pic/ja.png");
+	filelist.push_back("pic/ma.png");
+	filelist.push_back("pic/ta.png");
+	filelist.push_back("pic/wa.png");
+	filelist.push_back("pic/ya.png");
+
 	filelist.push_back("pic/ba2.png");
 	filelist.push_back("pic/ha2.png");
 	filelist.push_back("pic/ka2.png");
 	filelist.push_back("pic/na2.png");
 	filelist.push_back("pic/ra2.png");
 	filelist.push_back("pic/sa2.png");
+
+	
+	filelist.push_back("pic/bu2.png");
+	filelist.push_back("pic/ja2.png");
+	filelist.push_back("pic/ma2.png");
+	filelist.push_back("pic/ta2.png");
+	filelist.push_back("pic/wa2.png");
+	filelist.push_back("pic/ya2.png");
+
 	filelist.push_back("pic/éëåπ.png");
 
 	
@@ -373,36 +390,32 @@ void Images::load(){
 
 
 	int Images::getMusumeIcon(int id,boolean dfalse){
-		string s;
-		switch (id){
-			case 0:
-				s="pic/ê∂éYíÜé~a";
-				break;
-			case 1:
-				s="pic/na";
-				break;
-			case 2:
-				s="pic/ha";
-				break;
-			case 3:
-				s="pic/ra";
-				break;
-			case 4:
-				s="pic/ka";
-				break;
-			case 5:
-				s="pic/ba";
-				break;
-			case 6:
-				s="pic/sa";
-				break;
-			case 7:
-				break;
-			case 8:
-				break;
-			case 9:
-				break;
-		}
+		string hoge[]={
+			"pic/ê∂éYíÜé~a",
+			"pic/na",
+			"pic/ha",
+			"pic/ra",
+			"pic/ka",
+			"pic/ba",
+			"pic/sa",
+			"pic/bu",
+			"pic/ja",
+			"pic/ma",
+			"pic/ta",
+			"pic/wa",
+			"pic/ya",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+			"",
+
+		};
+		string s=hoge[id];
+
 		if(dfalse)s+="2";
 		return ins.get((s+".png").c_str());
 	}

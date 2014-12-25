@@ -11,7 +11,9 @@ void Bgm::load(){
 	bgmlist.push_back("sound/‘Œ´.mp3");
 	bgmlist.push_back("sound/“´ŒA.mp3");
 	bgmlist.push_back("sound/“sŽs.mp3");
+	bgmlist.push_back("ˆÅ‚Ì¢ŠE.mp3");
 	bgmlist.push_back("sound/ƒGƒ“ƒfƒBƒ“ƒO.mp3");
+	bgmlist.push_back("‚¾‚Ý[");
 
 
 	LoadBGM("sound/ƒ^ƒCƒgƒ‹.mp3",false);
@@ -29,9 +31,11 @@ void Bgm::load(){
 	void Bgm::changeBGM(int stage_id){
 		string s,n;
 		s=bgmlist[stage_id];
-		n=bgmlist[stage_id+1];
 		Bgm::playBGM(s);
-		Bgm::LoadBGM(n,true);
+		if(bgmlist.max_size()>=stage_id+1){
+			n=bgmlist[stage_id+1];
+			Bgm::LoadBGM(n,true);
+		}
 	}
 	void Bgm::playBGM(string name,boolean defaulttrue){
 		if(_nowBGM!="")

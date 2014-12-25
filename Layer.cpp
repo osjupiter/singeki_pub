@@ -842,7 +842,7 @@ void MapUnitSelector::draw(){
 
 	//アイコンの描写
 	for(int i=1;i<10;i++){
-		DrawRotaGraph(400+i*50,200,1.0,0,Images::getMusumeIcon(i,flag[i]),TRUE);
+		DrawRotaGraph(400+i%6*50,200+i/6*50,1.0,0,Images::getMusumeIcon(i,flag[i]),TRUE);
 	}
 
 	
@@ -855,7 +855,7 @@ void MapUnitSelector::main(){
 	if(testBox(50,50,WINDOW_X-50,WINDOW_Y-50)){
 		//キャラ選択
 		for(int i=1;i<10;i++){
-			if(testBox(400+i*50-25,200-25,400+i*50+25,200+25)&&mouse_in::getIns()->LeftClick()){
+			if(testBox(400+i%6*50-25,200+i/6*50-25,400+i%6*50+25,200+i/6*50+25)&&mouse_in::getIns()->LeftClick()){
 				flag[i]=!flag[i];
 			}
 		}
