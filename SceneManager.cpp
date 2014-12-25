@@ -2,7 +2,7 @@
 SceneManager SceneManager::ins;
 
 
-SceneManager::SceneManager(void){nextGameID=1;}
+SceneManager::SceneManager(void){}
 
 	SceneManager* SceneManager::getIns(){return &ins;}
 
