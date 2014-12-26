@@ -16,11 +16,13 @@ public:
 };
 
 class GameScene : public SceneNode{
+	
 	std::shared_ptr<Game> game;
 	int old_stage;
 	boolean notEnd;
 	int pauseState;
 public:
+	static int unitids[6];
 	GameScene(int,int[6]);
 	void beforemain();
 	void enterScene();

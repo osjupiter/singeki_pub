@@ -123,9 +123,12 @@ void WorldScene::leaveScene(){
 
 
 
+int GameScene::unitids[6];
+GameScene::GameScene(int stage_id,int _unitids[]){
 
-GameScene::GameScene(int stage_id,int unitids[]){
-	printfDx("%d",stage_id);
+	for(int i=0;i<6;i++){
+		GameScene::unitids[i]=_unitids[i];
+	}
 	pauseState=0;
 	std::shared_ptr<Game> p(new Game(stage_id));
 	game=p;

@@ -88,10 +88,9 @@ void SelectLayer::main(){
 	
 	mouse_in* m=mouse_in::getIns();
 
-	int zahyoux[7]={0,0,yoko,yoko,0,-yoko,-yoko};
-	int zahyouy[7]={-tate,0,-tate/2,tate/2,tate,tate/2,-tate/2};
-	for(int i=0;i<7;i++){
-		if(i==1)continue;
+	int zahyoux[6]={0,yoko,yoko,0,-yoko,-yoko};
+	int zahyouy[6]={-tate,-tate/2,tate/2,tate,tate/2,-tate/2};
+	for(int i=0;i<6;i++){
 		int tmpx=x+73-px+zahyoux[i]*0.2*time;
 		int tmpy=y+196-py+zahyouy[i]*0.2*time;
 		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)){
@@ -102,12 +101,12 @@ void SelectLayer::main(){
 			
 			if(i!=0){
 				stringstream ss;
-				ss << "生産コスト:"<< game->getParam(i)->getParam(ParamType::COST);
+				ss << "生産コスト:"<< game->getParam(GameScene::unitids[i])->getParam(ParamType::COST);
 				costman=ss.str();
 			}
-			if(m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(tmpx,tmpy,game->getUnitName(UnitType(i)),game->getUnitSummary(UnitType(i)),costman));}
+			if(m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(tmpx,tmpy,game->getUnitName(UnitType(GameScene::unitids[i])),game->getUnitSummary(UnitType(GameScene::unitids[i])),costman));}
 			if(m->LeftClick(false)){
-				p->getGame()->setProduct(id,i);
+				p->getGame()->setProduct(id,GameScene::unitids[i]);
 				parentScene->rmLayer(thisLayerID);
 				parentScene->rmLayer(18);
 				SoundController::getSE()->playSE("sound/se_maoudamashii_system42.mp3");
@@ -156,13 +155,12 @@ void SelectLayer::draw(){
 	
 	DrawGraph(x-px,y-py,Images::get("pic/ユニット選択ウインドウ.png"),TRUE);
 
-	int zahyoux[7]={0,0,yoko,yoko,0,-yoko,-yoko};
-	int zahyouy[7]={-tate,0,-tate/2,tate/2,tate,tate/2,-tate/2};
-	for(int i=0;i<7;i++){
-		if(i==1)continue;
+	int zahyoux[6]={0,yoko,yoko,0,-yoko,-yoko};
+	int zahyouy[6]={-tate,-tate/2,tate/2,tate,tate/2,-tate/2};
+	for(int i=0;i<6;i++){
 		int tmpx=x+73-px+zahyoux[i]*0.2*time;
 		int tmpy=y+196-py+zahyouy[i]*0.2*time;
-		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)),TRUE);
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(GameScene::unitids[i],testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)),TRUE);
 		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
 			;
 		}
@@ -541,7 +539,7 @@ void PopFactoryLayer::draw(){
 		int tmpx=x+cx-px+zahyoux[i]*0.2*time;
 		int tmpy=y+cy-py+zahyouy[i]*0.2*time;
 		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::get("pic/カスタム用小さな歯車.png"),TRUE);
-		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)),TRUE);
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(GameScene::unitids[i-1],testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)),TRUE);
 
 	}
 
@@ -568,7 +566,7 @@ void PopFactoryLayer:: main(){
 			if( p != NULL )
 			{
 				//p->getGame()->setProduct(id,i);
-				p->addLayer(16,std::make_shared<ChipFactoryLayer>(game,tmpx,tmpy,i,&livelist[i]));
+				p->addLayer(16,std::make_shared<ChipFactoryLayer>(game,tmpx,tmpy,GameScene::unitids[i-1],&livelist[i]));
 			}
 			m->recieveOver();
 		}
