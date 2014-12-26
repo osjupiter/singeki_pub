@@ -6,10 +6,7 @@
 #include <sstream>
 
 boolean Layer::testBox(int x1,int y1,int x2,int y2){
-		mouse_in* m=mouse_in::getIns();
-		if(x1<m->X() && y1<m->Y() && m->X()<x2 && m->Y()<y2)
-			return true;
-		return false;
+	return mouse_in::testBox(x1,y1,x2,y2);
 
 }
 void Layer::removeThis(){
@@ -41,15 +38,15 @@ ButtonLayer::ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth):G
 }
 void ButtonLayer::main(){
 	mouse_in* m=mouse_in::getIns();
-	if(x+bx<m->X()&&y+by<m->Y()&&m->X()<x+bx+bw&&m->Y()<y+by+bh){
+	if(mouse_in::testBox(x+bx,y+by,x+bx+bw,y+by+bh)&&m->isntOver()){	
 		if(!_oldMouseisin)
 			SoundController::getSE()->playSE(_enterSE);
 		if(_clicktype==ONMOUSE|| m->Left()==_clicktype){
 			parentScene->buttonPushed(id);
 			SoundController::getSE()->playSE(_clickSE);
-			mouse_in::getIns()->Reset();
 		}
 		_oldMouseisin=true;
+		m->recieveOver();
 	}else{
 		_oldMouseisin=false;
 	}
@@ -109,12 +106,13 @@ void SelectLayer::main(){
 				costman=ss.str();
 			}
 			if(m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(tmpx,tmpy,game->getUnitName(UnitType(i)),game->getUnitSummary(UnitType(i)),costman));}
-			if(m->LeftClick()){
+			if(m->LeftClick(false)){
 				p->getGame()->setProduct(id,i);
 				parentScene->rmLayer(thisLayerID);
 				parentScene->rmLayer(18);
 				SoundController::getSE()->playSE("sound/se_maoudamashii_system42.mp3");
 			}
+			m->recieveOver();
 		}
 	}
 
@@ -123,10 +121,9 @@ void SelectLayer::main(){
 	int _tx=x+73-px,_ty=y+196-py;
 	if(testBox(_tx-100,_ty-100,_tx+100,_ty+100)){
 		m->recieveOver();
-		if(m->LeftClick())
-			m->Reset();
+
 	}else{
-		if(m->LeftClick()||m->isUsed())
+		if(m->LeftClick(false))
 			parentScene->rmLayer(thisLayerID);
 	}
 	
@@ -379,26 +376,26 @@ void MenuLayer:: main(){
 		int _w=25;
 		ratelist[i]=1.0;
 		if((game->getNowStage()>i)&& testBox(_x-_w,_y-_w,_x+_w,_y+_w)){
-			
 			if(onmouse[i]==0){SoundController::getSE()->playSE("sound/button03a.mp3");onmouse[i]=1;}
 			if(m->LeftClick()){
-
-				m->Reset();
 				parentScene->addLayer(3,make_shared<SelectLayer>(_x,_y+35,i));
 			}
+			m->recieveOver();
 		}else{
 			onmouse[i]=0;
 		}
 	}
-	if(m->LeftClick()&&m->isntOver()){
+	if(m->LeftClick()){
 		if(testBox(221,62,221+66,62+60)){
 			GameScene* p = dynamic_cast<GameScene*>( parentScene );
-			if( p != NULL )	p->addLayer(15,std::make_shared<PopFactoryLayer>(game));
-			m->Reset();
+			if( p != NULL ){
+				p->addLayer(15,std::make_shared<PopFactoryLayer>(game));
+			}
+			m->recieveOver();
 		}else if(testBox(mx,my-mh,mx+mw,my+mh)){
 			int targe=(m->X()-mx)/(double)mw*game->stage_W[game->getNowStage()];
 			game->setCamera(targe-WINDOW_X/2);
-			m->Reset();
+			m->recieveOver();
 		}
 	}
 	if(testBox(221,62,221+66,62+60)){
@@ -494,6 +491,7 @@ void FactoryLayer:: main(){
 					ParamType hoge=static_cast<ParamType>(j*4+i);
 					if(testBox(xx,yy,xx+ww,yy+hh)){
 						game->incParamLevel(select,hoge,50);
+						m->recieveOver();
 					}
 				}
 			}
@@ -544,11 +542,7 @@ void PopFactoryLayer::draw(){
 		int tmpy=y+cy-py+zahyouy[i]*0.2*time;
 		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::get("pic/カスタム用小さな歯車.png"),TRUE);
 		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(i,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)),TRUE);
-		
-		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
-			;
 
-		}
 	}
 
 
@@ -576,6 +570,7 @@ void PopFactoryLayer:: main(){
 				//p->getGame()->setProduct(id,i);
 				p->addLayer(16,std::make_shared<ChipFactoryLayer>(game,tmpx,tmpy,i,&livelist[i]));
 			}
+			m->recieveOver();
 		}
 	}
 
@@ -583,10 +578,9 @@ void PopFactoryLayer:: main(){
 	
 	int _tx=x+cx-px,_ty=y+cy-py;
 	if(testBox(_tx-100,_ty-100,_tx+100,_ty+100)){
-		if(m->LeftClick())
-			m->Reset();
+		m->recieveOver();
 	}else{
-		if(m->LeftClick()&&m->isntOver()){
+		if(m->LeftClick()){
 			parentScene->rmLayer(16);
 			removeThis();
 		}
@@ -651,9 +645,9 @@ void ChipFactoryLayer:: main(){
 				parentScene->addLayer(18,hov[i]);
 				
 			}
-			if(timer>=5&&m->LeftClick()){
+
+			if(timer>=5&&m->LeftClick(false)){
 				if(game->incParamLevel(id,game->getRainForce(id)[i],game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]))){
-					m->Reset();
 					stringstream ss2;
 					SoundController::getSE()->playSE("sound/se_maoudamashii_system39.mp3");
 					ss2 << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
@@ -661,6 +655,7 @@ void ChipFactoryLayer:: main(){
 					//parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str()));
 				}
 			}
+			mouse_in::getIns()->recieveOver();
 		}
 
 	}
@@ -706,9 +701,7 @@ void HOHEILayer::main(){
 	int need=game->getParam(static_cast<int>(UnitType::_HOHEI),ParamType::CLK);
 	if(++timer>=need){timer=need;if(++flag>40)flag=0;}
 	if(testBox(x+5,y+5,x+75,y+75)){
-		m->recieveOver();
 		if(m->LeftClick()&&(timer==need)){
-			m->Reset();
 			game->birth(game->getNowStage()-1, HOHEI);
 			timer=0;
 			flag=0;
@@ -716,6 +709,7 @@ void HOHEILayer::main(){
 				
 				SoundController::getSE()->playSE("sound/spawn.mp3");
 		}
+		m->recieveOver();
 	}
 }
 
@@ -801,32 +795,104 @@ void OptionLayer::draw(){
 }
 
 void OptionLayer::main(){
-	if(!testBox(x,y,x+w,y+h)&&mouse_in::getIns()->LeftClick()){
-		mouse_in::getIns()->Reset();
+	if(!testBox(x,y,x+w,y+h)&&mouse_in::getIns()->LeftClick()&&mouse_in::getIns()->isntOver()){
+		mouse_in::getIns()->recieveOver();
 		this->removeThis();
 
 	}
-	if(testBox(x+50,y1,x+w-50,y1+10)&&mouse_in::getIns()->LeftClick()){
-		mouse_in::getIns()->Reset();
+	if(testBox(x+50,y1,x+w-50,y1+10)&&mouse_in::getIns()->LeftClick()&&mouse_in::getIns()->isntOver()){
+		mouse_in::getIns()->recieveOver();
 		master=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
 		SoundController::getIns()->setMASTERVol(master);
 		SoundController::getIns()->assignVol();
 	}
 	if(testBox(x+50,y2,x+w-50,y2+10)&&mouse_in::getIns()->LeftClick()){
-		mouse_in::getIns()->Reset();
+		mouse_in::getIns()->recieveOver();
 		se=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
 		SoundController::getIns()->getSE()->setSEVol(se);
 		SoundController::getIns()->assignVol();
 	}
 	if(testBox(x+50,y3,x+w-50,y3+10)&&mouse_in::getIns()->LeftClick()){
-		mouse_in::getIns()->Reset();
+		mouse_in::getIns()->recieveOver();
 		bgm=(mouse_in::getIns()->X()-(x+50))*100/(w-100);
 		SoundController::getIns()->getBgm()->setBGMVol(bgm);
 		SoundController::getIns()->assignVol();
 	}
-	if(mouse_in::getIns()->LeftClick())mouse_in::getIns()->Reset();
+//	if(mouse_in::getIns()->LeftClick())mouse_in::getIns()->Reset();
 }
 void OptionLayer::called(){
 
+	
+}
+
+
+MapUnitSelector::MapUnitSelector(int sid){
+	stage_id=sid;
+}
+
+void MapUnitSelector::draw(){
+	SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
+	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
+	SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
+
+	DrawBox(50,50,WINDOW_X-50,WINDOW_Y-50,GetColor(0,123,0),TRUE);
+	DrawBox(50,50,WINDOW_X-400,WINDOW_Y-50,GetColor(255,255,255),TRUE);
+
+	DrawBox(100,WINDOW_Y-150,WINDOW_X-100,WINDOW_Y-50,GetColor(255,123,0),TRUE);
+
+	//アイコンの描写
+	for(int i=1;i<10;i++){
+		DrawRotaGraph(400+i%6*50,200+i/6*50,1.0,0,Images::getMusumeIcon(i,flag[i]),TRUE);
+	}
+
+	
+	
+	
+}
+
+void MapUnitSelector::main(){
+	//枠内
+	if(testBox(50,50,WINDOW_X-50,WINDOW_Y-50)){
+		//キャラ選択
+		for(int i=1;i<10;i++){
+			if(testBox(400+i%6*50-25,200+i/6*50-25,400+i%6*50+25,200+i/6*50+25)&&mouse_in::getIns()->LeftClick()){
+				if(!flag[i]&&counter>=6)break;
+				flag[i]=!flag[i];
+
+				if(flag[i])counter++;
+				else counter--;
+
+			}
+		}
+		
+		//ステージへ
+		if(mouse_in::getIns()->LeftClick()&&testBox(100,WINDOW_Y-150,WINDOW_X-100,WINDOW_Y-50)){
+			WorldScene* p = dynamic_cast<WorldScene*>( parentScene );
+			if( p != NULL )
+			{
+				//p->getGame()->setProduct(id,i);
+				p->stage_id=stage_id;
+				int j=0;
+				for(int i=0;i<20;i++){
+					if(flag[i]){
+						p->unit_id[j]=i;
+						j++;
+					}
+				}
+			}
+			parentScene->buttonPushed("gotogame");
+		}
+		mouse_in::getIns()->recieveOver();
+	}else{
+		//枠外
+		if(mouse_in::getIns()->LeftClick())this->removeThis();
+
+		
+	}
+	mouse_in::getIns()->recieveOver();
+}
+void MapUnitSelector::called(){
+	for(int i=0;i<20;i++){flag[i]=false;}
+	counter=0;
 	
 }

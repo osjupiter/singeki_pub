@@ -251,3 +251,13 @@ public:
 
 };
 
+class MapUnitSelector :public Layer{
+	int stage_id;
+	boolean flag[20];
+	int counter;
+public:
+	MapUnitSelector(int);
+	void draw();
+	void main();
+	void called();
+};

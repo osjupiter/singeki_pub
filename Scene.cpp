@@ -15,7 +15,7 @@ TitleScene::TitleScene(){
 }
 void TitleScene::buttonPushed(string id){
 	if(id=="start"){
-		SceneManager::getIns()->switchScene(std::make_shared<WorldScene>(),0,5);
+		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(make_shared<WorldScene>()),0,5);
 	}else if(id=="option"){
 		LAY_Ptr q(new OptionLayer());
 		addLayer(2,q);
@@ -48,9 +48,10 @@ void WorldScene::buttonPushed(string id){
 		moveX(-50);
 	}else if(id.find("stage")!=string::npos){
 		id.erase(0,5);
+		addLayer(10,make_shared<MapUnitSelector>(stoi(id)));
+	}else if(id=="gotogame"){
 		
-		SceneManager::getIns()->nextGameID= stoi(id);
-		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(),0,5);
+		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(make_shared<GameScene>(this->stage_id,this->unit_id)),0,5);
 	}
 }
 void WorldScene::moveX(int dx){
@@ -77,7 +78,7 @@ void WorldScene::enterScene(){
 	//ˆÚ“®—p
 	LAY_Ptr r((new ButtonLayer(0,0,Images::get(""),0,0,100,WINDOW_Y))->setId("leftB")->setClickType(ButtonLayer::ClickFlag::ONMOUSE));
 	addLayer(9,r);
-	LAY_Ptr s((new ButtonLayer(0,0,Images::get(""),WINDOW_X-100,0,WINDOW_X,WINDOW_Y))->setId("rightB")->setClickType(ButtonLayer::ClickFlag::ONMOUSE));
+	LAY_Ptr s((new ButtonLayer(0,0,Images::get(""),WINDOW_X-100,0,100,WINDOW_Y))->setId("rightB")->setClickType(ButtonLayer::ClickFlag::ONMOUSE));
 	addLayer(9,s);
 	
 	//•à•ºƒ{ƒ^ƒ“3.png
@@ -123,9 +124,10 @@ void WorldScene::leaveScene(){
 
 
 
-GameScene::GameScene(){
+GameScene::GameScene(int stage_id,int unitids[]){
+	printfDx("%d",stage_id);
 	pauseState=0;
-	std::shared_ptr<Game> p(new Game(SceneManager::getIns()->nextGameID));
+	std::shared_ptr<Game> p(new Game(stage_id));
 	game=p;
 	addLayer(0,p);
 	LAY_Ptr q((new ButtonLayer(0,0,0,0,0,50,450))->setId("left")->setClickType(ButtonLayer::ONMOUSE));
@@ -250,16 +252,17 @@ void LogoScene::main(){
 	DrawFormatString(0,0,GetColor(255,0,0),"%d",count);
 }
 
-
-LoadingScene::LoadingScene(){
-
+LoadingScene::LoadingScene(SN_Ptr s){
+	next=s;
 }
+
 void LoadingScene::main(){
 	if(GetASyncLoadNum()==0){
 		SoundController::getSE()->setting();
-		SceneManager::getIns()->switchScene(make_shared<GameScene>(),0,5);
+		SceneManager::getIns()->switchScene(next,0,5);
 	}
 }
+
 void LoadingScene::draw(){
 	DrawString(0,0,"Now Loading...",GetColor(255,255,255));
 }
