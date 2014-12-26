@@ -29,7 +29,7 @@ void yukidama::main(){
 		}
 	}
 	if (ani_count / ANIM_SPEED%ANI_YUKIDAMA == 0){
-		shared_ptr<AttackRange> p(new AttackRange(x, x + 400, power, RAND));
+		shared_ptr<AttackRange> p(new AttackRange(x, x + 400, power, ALL));
 		Game::getIns()->push_attack_list(p, ENEMY);
 	}
 	if (ani_count / ANIM_SPEED == ANI_YUKIDAMA*5-1){

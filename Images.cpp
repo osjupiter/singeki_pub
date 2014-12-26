@@ -86,8 +86,8 @@ void Images::load(){
 	LoadDivGraph("dat/img/むすめユニット/姫騎士w2.png", ANI_HIME_W, ANI_HIME_W, 1, WID_HIME_W, HEI_HIME, g_hime_w);
 	LoadDivGraph("dat/img/むすめユニット/姫騎士a2.png", ANI_HIME_A, ANI_HIME_A, 1, WID_HIME_A, HEI_HIME, g_hime_a);
 
-	LoadDivGraph("dat/img/むすめユニット/イカロスw.png", ANI_IKAROS_W, ANI_IKAROS_W, 1, WID_IKAROS_W, HEI_IKAROS, g_ikaros_w);
-	LoadDivGraph("dat/img/むすめユニット/イカロスa.png", ANI_IKAROS_A, ANI_IKAROS_A, 1, WID_IKAROS_A, HEI_IKAROS, g_ikaros_a);
+	LoadDivGraph("dat/img/むすめユニット/イカロスw2.png", ANI_IKAROS_W, ANI_IKAROS_W, 1, WID_IKAROS_W, HEI_IKAROS, g_ikaros_w);
+	LoadDivGraph("dat/img/むすめユニット/イカロスa2.png", ANI_IKAROS_A, ANI_IKAROS_A, 1, WID_IKAROS_A, HEI_IKAROS, g_ikaros_a);
 
 	LoadDivGraph("dat/img/むすめユニット/マジョw2.png", ANI_MAJO_W, ANI_MAJO_W, 1, WID_MAJO_W, HEI_MAJO, g_majo_w);
 	LoadDivGraph("dat/img/むすめユニット/マジョa2.png", ANI_MAJO_A, ANI_MAJO_A, 1, WID_MAJO_A, HEI_MAJO, g_majo_a);
@@ -139,6 +139,7 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/雪原/ゆきだま1.png", ANI_YUKIDAMA, 4, 2, WID_YUKIDAMA, HEI_YUKIDAMA, g_yukidama1);
 	LoadDivGraph("dat/img/敵ユニット/雪原/ゆきだま2.png", ANI_YUKIDAMA, 4, 2, WID_YUKIDAMA, HEI_YUKIDAMA, g_yukidama2);
 
+	LoadDivGraph("dat/img/敵ユニット/雪原/ゴレムの声.png", ANI_GVOICE, ANI_GVOICE, 1, WID_GVOICE, HEI_GVOICE, g_gvoice);
 
 	LoadDivGraph("dat/img/銃被弾時e.png", ANI_GUNSHOT, ANI_GUNSHOT, 1, WID_GUNSHOT, HEI_GUNSHOT, g_gunshot);
 	LoadDivGraph("dat/img/砲弾被弾時e.png", ANI_CANNONSHOT, ANI_CANNONSHOT, 1, WID_CANNONSHOT, HEI_CANNONSHOT, g_cannonshot);

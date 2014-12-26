@@ -129,7 +129,7 @@ void Game::castle_init(){
 	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0));
 	castle_list.push_back(p);
 	
-	p = shared_ptr<castle>(new boss_castle(stage_W[1], 0, 1,UnitType::_SAIHATE));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1));
 	castle_list.push_back(p);
 
 	p = shared_ptr<castle>(new castle_enemy(stage_W[2], 0, 2));
@@ -150,7 +150,7 @@ void Game::castle_init(){
 	p = shared_ptr<castle>(new castle_enemy(stage_W[7], 0, 7));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new mekaNemu(stage_W[8], 0, 8));
+	p = shared_ptr<castle>(new boss_castle(stage_W[8], 0, 8,UnitType::_SAIHATE));
 	castle_list.push_back(p);
 
 }

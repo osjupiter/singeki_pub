@@ -11,7 +11,7 @@ saihate::saihate(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_SAIHATE){
 	y = WINDOW_Y - height;
 
 	dist = 200;
-	power = 200 *(1 * lv);
+	power = 100 *(1 + 1 * lv);
 	hp = MAXHP_TANK + MAXHP_TANK*lv+60000;
 	speed = SPEED_TANK + 0.5*SPEED_TANK*lv;
 	defense = DEFENSE_TANK*(1 + 0.8*lv);
@@ -26,13 +26,13 @@ void saihate::main(int front){
 	enemy::main(front);
 	switch (state){
 	case UnitState::MOV:
-		if (rand() % 10 == 0){
-			changeState(UnitState::ST1);
-		}
+		
 		break;
 	case UnitState::ATK:
 		state_change_flag = false;
-		
+		if (rand() % 10 == 0){
+			changeState(UnitState::ST1);
+		}
 		if (ani_count / ANIM_SPEED == 7){
 			if (!stopper){
 				if (atk_position == RAND){

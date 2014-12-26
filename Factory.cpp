@@ -32,6 +32,7 @@
 #include "beam.h"
 #include "hana.h"
 #include "yukidama.h"
+#include "g_voice.h"
 #include "saihate.h"
 using namespace std;
 
@@ -160,6 +161,9 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 		break;
 	case YUKIDAMA:
 		ret_ins.reset(new yukidama(fx, fy,atk_power));
+		break;
+	case GVOICE:
+		ret_ins.reset(new gvoice(fx, fy,dr, atk_power));
 		break;
 	}
 	return ret_ins;
