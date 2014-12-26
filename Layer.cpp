@@ -91,6 +91,7 @@ void SelectLayer::main(){
 	int zahyoux[6]={0,yoko,yoko,0,-yoko,-yoko};
 	int zahyouy[6]={-tate,-tate/2,tate/2,tate,tate/2,-tate/2};
 	for(int i=0;i<6;i++){
+		int tmpID=(i==0)?0:GameScene::unitids[i];
 		int tmpx=x+73-px+zahyoux[i]*0.2*time;
 		int tmpy=y+196-py+zahyouy[i]*0.2*time;
 		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)){
@@ -99,14 +100,14 @@ void SelectLayer::main(){
 			auto game=p->getGame();
 			string costman="";
 			
-			if(i!=0){
+			if(tmpID!=0){
 				stringstream ss;
-				ss << "生産コスト:"<< game->getParam(GameScene::unitids[i])->getParam(ParamType::COST);
+				ss << "生産コスト:"<< game->getParam(tmpID)->getParam(ParamType::COST);
 				costman=ss.str();
 			}
-			if(m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(tmpx,tmpy,game->getUnitName(UnitType(GameScene::unitids[i])),game->getUnitSummary(UnitType(GameScene::unitids[i])),costman));}
+			if(m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(tmpx,tmpy,game->getUnitName(UnitType(tmpID)),game->getUnitSummary(UnitType(tmpID)),costman));}
 			if(m->LeftClick(false)){
-				p->getGame()->setProduct(id,GameScene::unitids[i]);
+				p->getGame()->setProduct(id,tmpID);
 				parentScene->rmLayer(thisLayerID);
 				parentScene->rmLayer(18);
 				SoundController::getSE()->playSE("sound/se_maoudamashii_system42.mp3");
@@ -158,9 +159,10 @@ void SelectLayer::draw(){
 	int zahyoux[6]={0,yoko,yoko,0,-yoko,-yoko};
 	int zahyouy[6]={-tate,-tate/2,tate/2,tate,tate/2,-tate/2};
 	for(int i=0;i<6;i++){
+		int tmpID=(i==0)?0:GameScene::unitids[i];
 		int tmpx=x+73-px+zahyoux[i]*0.2*time;
 		int tmpy=y+196-py+zahyouy[i]*0.2*time;
-		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(GameScene::unitids[i],testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)),TRUE);
+		DrawRotaGraph(tmpx,tmpy,time*0.2,0,Images::getMusumeIcon(tmpID,testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)),TRUE);
 		if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+y)){
 			;
 		}
@@ -839,7 +841,7 @@ void MapUnitSelector::draw(){
 	DrawBox(100,WINDOW_Y-150,WINDOW_X-100,WINDOW_Y-50,GetColor(255,123,0),TRUE);
 
 	//アイコンの描写
-	for(int i=1;i<10;i++){
+	for(int i=UnitType::_BALOON;i<UnitType::END_MUSUME;i++){
 		DrawRotaGraph(400+i%6*50,200+i/6*50,1.0,0,Images::getMusumeIcon(i,flag[i]),TRUE);
 	}
 
@@ -852,9 +854,9 @@ void MapUnitSelector::main(){
 	//枠内
 	if(testBox(50,50,WINDOW_X-50,WINDOW_Y-50)){
 		//キャラ選択
-		for(int i=1;i<10;i++){
+		for(int i=UnitType::_BALOON;i<UnitType::END_MUSUME;i++){
 			if(testBox(400+i%6*50-25,200+i/6*50-25,400+i%6*50+25,200+i/6*50+25)&&mouse_in::getIns()->LeftClick()){
-				if(!flag[i]&&counter>=6)break;
+				if(!flag[i]&&counter>=5)break;
 				flag[i]=!flag[i];
 
 				if(flag[i])counter++;
@@ -870,8 +872,9 @@ void MapUnitSelector::main(){
 			{
 				//p->getGame()->setProduct(id,i);
 				p->stage_id=stage_id;
-				int j=0;
-				for(int i=0;i<20;i++){
+				int j=1;
+				p->unit_id[0]=1;
+				for(int i=UnitType::_BALOON;i<UnitType::END_MUSUME;i++){
 					if(flag[i]){
 						p->unit_id[j]=i;
 						j++;
@@ -890,7 +893,7 @@ void MapUnitSelector::main(){
 	mouse_in::getIns()->recieveOver();
 }
 void MapUnitSelector::called(){
-	for(int i=0;i<20;i++){flag[i]=false;}
+	for(int i=UnitType::_NONE;i<UnitType::END_MUSUME;i++){flag[i]=false;}
 	counter=0;
 	
 }
