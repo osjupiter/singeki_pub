@@ -841,7 +841,7 @@ void MapUnitSelector::draw(){
 	DrawBox(100,WINDOW_Y-150,WINDOW_X-100,WINDOW_Y-50,GetColor(255,123,0),TRUE);
 
 	//アイコンの描写
-	for(int i=1;i<10;i++){
+	for(int i=UnitType::_BALOON;i<UnitType::END_MUSUME;i++){
 		DrawRotaGraph(400+i%6*50,200+i/6*50,1.0,0,Images::getMusumeIcon(i,flag[i]),TRUE);
 	}
 
@@ -854,9 +854,9 @@ void MapUnitSelector::main(){
 	//枠内
 	if(testBox(50,50,WINDOW_X-50,WINDOW_Y-50)){
 		//キャラ選択
-		for(int i=1;i<10;i++){
+		for(int i=UnitType::_BALOON;i<UnitType::END_MUSUME;i++){
 			if(testBox(400+i%6*50-25,200+i/6*50-25,400+i%6*50+25,200+i/6*50+25)&&mouse_in::getIns()->LeftClick()){
-				if(!flag[i]&&counter>=6)break;
+				if(!flag[i]&&counter>=5)break;
 				flag[i]=!flag[i];
 
 				if(flag[i])counter++;
@@ -872,8 +872,9 @@ void MapUnitSelector::main(){
 			{
 				//p->getGame()->setProduct(id,i);
 				p->stage_id=stage_id;
-				int j=0;
-				for(int i=0;i<20;i++){
+				int j=1;
+				p->unit_id[0]=1;
+				for(int i=UnitType::_BALOON;i<UnitType::END_MUSUME;i++){
 					if(flag[i]){
 						p->unit_id[j]=i;
 						j++;
@@ -892,7 +893,7 @@ void MapUnitSelector::main(){
 	mouse_in::getIns()->recieveOver();
 }
 void MapUnitSelector::called(){
-	for(int i=0;i<20;i++){flag[i]=false;}
+	for(int i=UnitType::_NONE;i<UnitType::END_MUSUME;i++){flag[i]=false;}
 	counter=0;
 	
 }

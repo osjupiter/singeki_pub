@@ -73,6 +73,9 @@ void WorldScene::enterScene(){
 	shared_ptr<GraphicLayer> p(new GraphicLayer(0,0,Images::get("pic/world2.png")));
 	addLayer(0,p);
 	glist.push_back(p);
+	for(int i=0;i<6;i++){
+		this->unit_id[i]=1;
+	}
 
 
 	//ˆÚ“®—p
