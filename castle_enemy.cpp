@@ -6,6 +6,7 @@
 
 const int castle::castle_hp[9] = { 10000, 10000, 30000, 40000, 60000, 80000, 100000, 300000, 500000 };
 
+
 template<typename TYPE, std::size_t SIZE>
 std::size_t array_length(const TYPE(&)[SIZE])
 {
@@ -13,15 +14,31 @@ std::size_t array_length(const TYPE(&)[SIZE])
 }
 
 #define HELPassign(x) spownlist.assign(x,x+array_length(x))
-
 #define Eventassign(x) eventlist.assign(x,x+array_length(x))
-castle_enemy::castle_enemy(int fx, int fy, int st) :castle(fx, fy, st){
+
+
+castle_enemy::castle_enemy(int fx, int fy, int st, vector<vector<string>> list) :castle(fx, fy, st){
 	hp = castle_hp[st];
 	maxhp = hp;
 
 	if (st == 1) setState(CastleState::ACTIVE);
 	else setState(CastleState::STAY);
+	ii tmp;
 
+	for (auto data : list){
+		int i_data[4] = { stoi(data[0]), stoi(data[1]), stoi(data[2]), stoi(data[3])};
+		if (i_data[0] == st){
+			tmp = ii(i_data[2], i_data[3]);
+			if (i_data[1] == 0){
+				spownlist.push_back(tmp);
+			}
+			else{
+				eventlist.push_back(tmp);
+			}
+		}
+	}
+	
+	/*
 	ii one[] = { ii(400, _GOREMU) };
 	ii two[] = { ii(80, _TANK), ii(130, _GEKKO) };
 	ii three[] = { ii(130, _COPTER), ii(49, _TANK) };
@@ -45,50 +62,12 @@ castle_enemy::castle_enemy(int fx, int fy, int st) :castle(fx, fy, st){
 	ii sevenEvent[] = { ii(0, _RAILGUN), ii(30, 10), ii(20, _COPTER), ii(50, _GEKKO), ii(2000, _RAILGUN) };
 	ii eightEvent[] = { ii(30, _TANK), ii(20, _COPTER), ii(500, _RAILGUN), ii(2500, _RAILGUN), ii(3500, _RAILGUN), ii(4000, _RAILGUN) };
 	ii nineEvent[] = { ii(30, _COPTER) };
+	
 
-
-
-
-	switch (st){
-	case 1:
 		HELPassign(one);
 		Eventassign(oneEvent);
-		break;
-	case 2:
-		HELPassign(two);
-		Eventassign(twoEvent);
-		break;
-	case 3:
-		HELPassign(three);
-		Eventassign(threeEvent);
-		break;
-	case 4:
-		HELPassign(four);
-		Eventassign(fourEvent);
-		break;
-	case 5:
-		HELPassign(five);
-		Eventassign(fiveEvent);
-		break;
-	case 6:
-		HELPassign(six);
-		Eventassign(sixEvent);
-		break;
-	case 7:
-		HELPassign(seven);
-		Eventassign(sevenEvent);
-		break;
-	case 8:
-		HELPassign(eight);
-		Eventassign(eightEvent);
-		break;
-	case 9:
-		HELPassign(nine);
-		Eventassign(nineEvent);
-		break;
 
-	}
-
+		*/
 	spownID = 0;
 	exist_ID = 0;
 }

@@ -48,7 +48,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	Images::init();
 	SoundController::getIns()->load();
 
-	Data::getIns()->Run();
+	// Data::getIns()->Run();
 
 
 	SN_Ptr p(new LogoScene());

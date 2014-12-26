@@ -126,31 +126,33 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
+	auto pop_list = CsvReader::parseTable("dat/r–ìspown.txt", ",");
+
 	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0));
 	castle_list.push_back(p);
 	
-	p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1, pop_list));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle_enemy(stage_W[2], 0, 2));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[2], 0, 2, pop_list));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle_enemy(stage_W[3], 0, 3));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[3], 0, 3, pop_list));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle_enemy(stage_W[4], 0, 4));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[4], 0, 4,pop_list));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle_enemy(stage_W[5], 0, 5));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[5], 0, 5, pop_list));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle_enemy(stage_W[6], 0, 6));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[6], 0, 6, pop_list));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new castle_enemy(stage_W[7], 0, 7));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[7], 0, 7, pop_list));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new boss_castle(stage_W[8], 0, 8,UnitType::_SAIHATE));
+	p = shared_ptr<castle>(new boss_castle(stage_W[8], 0, 8, pop_list, UnitType::_SAIHATE));
 	castle_list.push_back(p);
 
 }

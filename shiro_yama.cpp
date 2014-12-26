@@ -7,7 +7,7 @@
 #define POWER_YAMASHIRO 1000
 #define P_ATTACK 3
 #define ATK_RANGE 400
-shiro_yama::shiro_yama(int fx, int fy, int st) :castle_enemy(fx, fy, st){
+shiro_yama::shiro_yama(int fx, int fy, int st, vector<vector<string>> list) :castle_enemy(fx, fy, st,list){
 	wait_time = YAMA_CANNON_FREQ;
 	break_flag = false;
 }

@@ -18,7 +18,7 @@
 
 #define THUNDER_POINT(x) x- MEKANEMU_DIST
 #define RANGE_TUNDER 130
-mekaNemu::mekaNemu(int fx,int fy,int st) :castle_enemy(fx,fy,st){
+mekaNemu::mekaNemu(int fx, int fy, int st, vector<vector<string>> list) :castle_enemy(fx, fy, st,list){
 	x = fx - WID_MEKANEMU;
 	width = WID_MEKANEMU;
 	wait_time = MEKANEMU_FREQ;

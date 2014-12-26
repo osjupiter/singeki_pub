@@ -60,11 +60,12 @@ public:
 	bool isProductTime();
 };
 class castle_enemy : public castle{
-private:
-
+protected:
+	
 
 public:
-	castle_enemy(int, int, int);
+	castle_enemy(int, int, int, vector<vector<string>>);
+	
 	void main(int);
 	void draw(int);
 	
@@ -77,7 +78,7 @@ class shiro_yama :public castle_enemy{
 	int wait_time;
 	bool break_flag;
 public:
-	shiro_yama(int, int, int);
+	shiro_yama(int, int, int, vector<vector<string>>);
 	void main(int);
 	void draw(int);
 };
