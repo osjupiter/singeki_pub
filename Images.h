@@ -106,6 +106,8 @@ public:
 	static Images* getIns();
 	static int get(const char name[]);
 
+	void loadStage(int);
+
 
 	
 	static int getMusumeIcon(int,boolean=false);
