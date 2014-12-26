@@ -75,6 +75,7 @@ void musume::changeState(UnitState next_state){
 		if (no_die_flag) return;
 		state = next_state;
 		atk = false;
+		state_change_flag = false;
 		ani_count = 0;
 		break;
 	}

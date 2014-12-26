@@ -101,6 +101,7 @@ void enemy::changeState(UnitState next_state){
 		state = next_state;
 		ani_count = 0;
 		atk = false;
+		state_change_flag = false;
 		break;
 	default:
 		state = next_state;

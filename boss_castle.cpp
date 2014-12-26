@@ -25,15 +25,16 @@ void boss_castle::main(int front){
 		
 		break;
 	case CastleState::DIE:
-		loop_count++;
+/*		loop_count++;
 		if (loop_count / ANIM_SPEED_BIGEXP >= 8){
 			loop_count = 0;
 			Game::getIns()->stageClear();
 			SoundController::getSE()->playSE("sound/sen_ka_heirappa01.mp3");
 
-		}
+		}*/
 		break;
 	}
+	
 	castle_enemy::main(front);
 
 }

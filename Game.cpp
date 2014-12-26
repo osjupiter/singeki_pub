@@ -2,10 +2,7 @@
 #include"mouse.h"
 #include "object.h"
 
-
 #include "Status.h"
-
-#include "mekaNemu.h"
 
 #include "castle.h"
 #include "boss_castle.h"
@@ -14,6 +11,7 @@
 #include <time.h>
 #include <algorithm>
 #include "CsvReader.h"
+
 
 const int castle_resouce[9] = { 4000, 4000, 4500, 5000, 5000, 5500, 6000, 6500, 7000 };
 const int Game::stage_W[9] = {0,STAGE1_W, STAGE2_W, STAGE3_W, STAGE4_W, STAGE5_W, STAGE6_W, STAGE7_W, STAGE8_W };
@@ -37,9 +35,11 @@ Game::Game(int _world){
 	musume_nuber_list.assign(END_MUSUME,0);
 	
 	//for DEBUG
-	/*for (int i = 0; i < 7; i++){
+	/*
+	for (int i = 0; i < 7; i++){
 		stageInc();
-	}*/
+	}
+	//*/
 	
 }
 

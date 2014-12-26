@@ -3,21 +3,47 @@
 #include "Game.h"
 #define ANIM_SPEED 3
 
-#define BIRTH_NUM 7
-UnitType birth_unit[BIRTH_NUM] = { _HOHEI, _BIG, _BAZOOKA, _SEGWAY, _YOUJO, _TATEKO, _HIME };
+#define BIRTH_NUM END_MUSUME
+#define RAND_UNIT_NUM 7
+UnitType rand_unit[RAND_UNIT_NUM] = { _HOHEI, _BIG, _BAZOOKA, _SEGWAY, _YOUJO, _TATEKO, _HIME };
+
+bool isRandUnit(UnitType ut){
+	for (int i = 0; i < RAND_UNIT_NUM; i++)
+	{
+		if(ut == rand_unit[i])
+			return true;
+	}
+	return false;
+}
 
 hana::hana(int fx, int fy) :effect(fx, fy){
 	type = HANA;
 	width = WID_HANA;
 	height = HEI_HANA;
 	stopper = false;
+	spown = static_cast<UnitType>(rand() % BIRTH_NUM);
+	spown = (spown == 0) ? _HOHEI:spown;
+	fly = false;
+	if (!(isRandUnit(spown))){
+		dest_y = 100;		
+		fly = true;
+	}
+
 }
 void hana::main(){
 	effect::main();
-
+	if (ani_count / ANIM_SPEED == 12){
+		if (fly){
+			y-=15;
+			ani_count--;
+			if (y < dest_y){
+				fly = false;
+			}
+		}
+	}
 	if (ani_count / ANIM_SPEED == 14){
-		if (!stopper){
-			Game::getIns()->x_birth(x, birth_unit[rand() % BIRTH_NUM], false);
+		if (!stopper){			
+			Game::getIns()->x_birth(x,spown, false);
 			stopper = true;
 		}
 	}

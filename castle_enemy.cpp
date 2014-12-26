@@ -105,7 +105,7 @@ void castle_enemy::main(int front){
 		if (loop_count / ANIM_SPEED_BIGEXP >= 8){
 			loop_count = 0;
 			Game::getIns()->stageClear();
-			SoundController::getSE()->playSE("sound/sen_ka_heirappa01.mp3");
+			SoundController::getSE()->playSE("sound/sen_ka_heirappa01.mp3",true);
 
 		}
 		break;
