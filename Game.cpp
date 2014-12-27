@@ -37,7 +37,7 @@ Game::Game(int _world){
 	musume_nuber_list.assign(END_MUSUME,0);
 	
 	//for DEBUG
-	/*
+	///*
 	for (int i = 0; i < 7; i++){
 		stageInc();
 	}
@@ -189,7 +189,7 @@ shared_ptr<character> Game::birth(int st, int type, int front){
 
 }
 
-shared_ptr<character> Game::x_birth(int x, int type, bool use_resouce){
+shared_ptr<character> Game::x_birth(int x, int lv,int type, bool use_resouce){
 	int line = (int)(rand() / (RAND_MAX + 1.0) * 3);
 	//自分のユニットのときリソース確認消費
 	if (type < static_cast<int>(UnitType::END_MUSUME)){
@@ -202,7 +202,7 @@ shared_ptr<character> Game::x_birth(int x, int type, bool use_resouce){
 			useResource(t);
 		}
 		musume_nuber_list.at(type)++;
-		shared_ptr<character> p(Factory::create_chara(x, x, line, (UnitType)type));
+		shared_ptr<character> p(Factory::create_chara(x, lv, line, (UnitType)type));
 		if (p != NULL) musume_list[line].push_back(p);
 		return p;
 	}

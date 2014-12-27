@@ -13,6 +13,7 @@ protected:
 	shared_ptr<Parameter> param;
 	bool atk;
 	bool stopper;
+	bool no_damage_flag;
 public:
 	character(int, int, UnitType);
 	virtual void main(int front);

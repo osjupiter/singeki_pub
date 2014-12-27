@@ -91,6 +91,7 @@ void musume::del(){
 }
 
 void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
+	if (no_damage_flag) return;
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type){
 		if (rand() % 30==0){

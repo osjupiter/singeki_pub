@@ -28,13 +28,17 @@ void yukidama::main(){
 			count[i*5+j]++;
 		}
 	}
-	if (ani_count / ANIM_SPEED%ANI_YUKIDAMA == 0){
-		shared_ptr<AttackRange> p(new AttackRange(x, x + 400, power, ALL));
-		Game::getIns()->push_attack_list(p, ENEMY);
+
+	for (int i = 0; i < 5; i++){
+		if (count[i*5] / ANIM_SPEED%ANI_YUKIDAMA == 4){
+			shared_ptr<AttackRange> p(new AttackRange(x + 140, x + 5 * 80 + 40 + 140, power / 5, ALL));
+			Game::getIns()->push_attack_list(p, ENEMY);
+		}
+		if (count[24] / ANIM_SPEED == ANI_YUKIDAMA ){
+			del();
+		}
 	}
-	if (ani_count / ANIM_SPEED == ANI_YUKIDAMA*5-1){
-		del();
-	}
+
 
 }
 
@@ -46,7 +50,7 @@ void yukidama::draw(int cx){
 			if (i%2 == 1)
 				DrawGraph(x + j*80 - cx, y, Images::getIns()->g_yukidama2[count[id] / ANIM_SPEED % ANI_YUKIDAMA], true);
 			else
-				DrawGraph(x + j * 80+40 - cx, y, Images::getIns()->g_yukidama2[count[id] / ANIM_SPEED % ANI_YUKIDAMA], true);
+				DrawGraph(x + j * 80 + 40 - cx, y, Images::getIns()->g_yukidama2[count[id] / ANIM_SPEED % ANI_YUKIDAMA], true);
 		}
 	}
 }

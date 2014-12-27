@@ -66,7 +66,7 @@ public:
 	void setCamera(int);
 
 	shared_ptr<character> birth(int st, int type, int front = -1); //ï∫émê∂ê¨
-	shared_ptr<character> x_birth(int, int, bool use_resouce);
+	shared_ptr<character> x_birth(int, int,int, bool use_resouce);
 	void enemy_birth();
 	void effect_create(int,int,int,Direction dr=NODIR,int atk_power=0,int dest=0);
 	void damage_effect_create(int, int, int, bool TurnFlag=false);
