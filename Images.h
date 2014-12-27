@@ -83,7 +83,9 @@ public:
 	int g_monoris_a1[3][ANI_MONORIS_A1];
 	int g_monoris_a2[3][ANI_MONORIS_A2];
 	int g_monobeam[3][ANI_MONOBEAM];
-
+	int g_dengumo_w[3][ANI_DENGUMO_W];
+	int g_dengumo_a[3][ANI_DENGUMO_A];
+	int g_denkami[3][ANI_DENKAMI];
 	int g_shiro_icon[20][2];
 
 

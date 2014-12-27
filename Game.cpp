@@ -595,12 +595,14 @@ void Game::Test(){
 	}
 
 	*/
+///*
 	for (auto i : atkrange_enemy_list){
 		i->draw(x);
 	}
 	for (auto i : atkrange_musume_list){
 		i->draw(x);
 	}
+	//*/
 	atkrange_musume_list.clear();
 	atkrange_enemy_list.clear();
 

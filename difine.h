@@ -112,6 +112,17 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP, NOMALEXP
 #define WID_MONOBEAM 250
 #define HEI_MONOBEAM 450 
 
+/*”­“d‰_*/
+#define ANI_DENGUMO_W 11
+#define ANI_DENGUMO_A 15
+#define WID_DENGUMO 220
+#define HEI_DENGUMO 260 
+
+/*”­“d‰_—‹*/
+#define ANI_DENKAMI 4
+#define WID_DENKAMI 370
+#define HEI_DENKAMI 180 
+
 /*ƒwƒŠ*/
 #define ANI_COPTER 6
 #define WID_COPTER 280

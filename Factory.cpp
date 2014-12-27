@@ -35,7 +35,7 @@
 #include "yukidama.h"
 #include "g_voice.h"
 #include "monoris.h"
-
+#include "dengumo.h"
 #include "saihate.h"
 using namespace std;
 
@@ -111,6 +111,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		break;
 	case UnitType::_MONORIS:
 		chara_ins.reset(new monoris(x, line, st));
+		break;
+	case UnitType::_DENGUMO:
+		chara_ins.reset(new dengumo(x, line, st));
 		break;
 	case UnitType::_SAIHATE:
 		chara_ins.reset(new saihate(x, line, st));
