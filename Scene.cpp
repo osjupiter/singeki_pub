@@ -146,7 +146,7 @@ GameScene::GameScene(int stage_id,int _unitids[]){
 	addLayer(4,std::make_shared<HOHEILayer>(game,164,7));
 	notEnd=true;
 	old_stage=1;
-	
+	pauseNow=false;
 }
 void GameScene::enterScene(){
 	SoundController::getBgm()->changeBGM(0);
@@ -177,7 +177,7 @@ void GameScene::beforemain(){
 		if(pauseState==1||pauseState==3)pauseState=2;
 		else pauseState=0;
 	}
-	if(pauseState==3)game->turnPauseFlag();
+	if(pauseState==3){game->turnPauseFlag();pauseNow=!pauseNow;}
 
 }
 void GameScene::buttonPushed(string id){

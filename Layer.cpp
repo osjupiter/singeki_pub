@@ -699,17 +699,26 @@ void HOHEILayer::draw(){
 void HOHEILayer::main(){
 	auto m=mouse_in::getIns();
 	int need=game->getParam(static_cast<int>(UnitType::_HOHEI),ParamType::CLK);
-	if(++timer>=need){timer=need;if(++flag>40)flag=0;}
-	if(testBox(x+5,y+5,x+75,y+75)){
-		if(m->LeftClick()&&(timer==need)){
-			game->birth(game->getNowStage()-1, HOHEI);
-			timer=0;
-			flag=0;
+
+	GameScene* p = dynamic_cast<GameScene*>( parentScene );
+	if( p != NULL )
+	{
+		if(!p->pauseNow){
+			timer++;
+		}
+	
+		if(timer>=need){timer=need;if(++flag>40)flag=0;}
+		if(!p->pauseNow&&testBox(x+5,y+5,x+75,y+75)){
+			if(m->LeftClick()&&(timer==need)){
+				game->birth(game->getNowStage()-1, HOHEI);
+				timer=0;
+				flag=0;
 			
 				
-				SoundController::getSE()->playSE("sound/spawn.mp3");
+					SoundController::getSE()->playSE("sound/spawn.mp3");
+			}
+			m->recieveOver();
 		}
-		m->recieveOver();
 	}
 }
 

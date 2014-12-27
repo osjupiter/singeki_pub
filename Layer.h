@@ -261,3 +261,14 @@ public:
 	void main();
 	void called();
 };
+
+
+
+class PauseLayer :public Layer{
+
+public:
+	PauseLayer(int);
+	void draw();
+	void main();
+	void called();
+};

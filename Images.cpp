@@ -702,15 +702,15 @@ void Images::load(){
 			g_castle[1][2] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚P–¡•ûé.png");
 	
 			g_castle[2][0] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚Q“Gé‚P.png");
-			g_castle[2][1] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚Q“Gé‚Q.png");
+			g_castle[2][1] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚Q“Gé2.png");
 			g_castle[2][2] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚Q–¡•ûé.png");
 	
 			g_castle[3][0] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚R“Gé‚P.png");
-			g_castle[3][1] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚R“Gé‚Q.png");
+			g_castle[3][1] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚R“Gé2.png");
 			g_castle[3][2] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚R–¡•ûé.png");
 	
 			g_castle[4][0] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚S“Gé‚P.png");
-			g_castle[4][1] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚S“Gé‚Q.png");
+			g_castle[4][1] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚S“Gé2.png");
 			g_castle[4][2] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚S–¡•ûé.png");
 	
 			g_castle[5][0] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚T“Gé‚P.png");
@@ -718,7 +718,7 @@ void Images::load(){
 			g_castle[5][2] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚T–¡•ûé.png");
 	
 			g_castle[6][0] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚U“Gé‚P.png");
-			g_castle[6][1] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚U“Gé‚P.png");
+			g_castle[6][1] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚U“Gé2.png");
 			g_castle[6][2] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚U–¡•ûé.png");
 	
 			g_castle[7][0] = LoadGraph("dat/img/Vé/XƒK[ƒ‹/XƒK[ƒ‹‚V“Gé‚P.png");

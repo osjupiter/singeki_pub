@@ -22,6 +22,8 @@ class GameScene : public SceneNode{
 	boolean notEnd;
 	int pauseState;
 public:
+	
+	boolean pauseNow;
 	static int unitids[6];
 	GameScene(int,int[6]);
 	void beforemain();
