@@ -8,7 +8,7 @@
 steam::steam(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_STEAM){
 	width = WID_STEAM;
 	height = HEI_STEAM;
-	y = WINDOW_Y - height;
+	y = WINDOW_Y - height+20;
 	x = x - width + 200;
 	dist = 200;
 	type = ALL;
@@ -18,32 +18,53 @@ void steam::main(int front){
 	enemy::main(front);
 	switch (state){
 	case UnitState::MOV:
-//		x += speed*dir; 
+//		x += speed; 
 		if (x + width < 0) state = UnitState::DIE;
 		break;
 	case UnitState::ATK:
-		if (ani_count / ANIM_SPEED%ANI_STEAM_A == 2){
-			if (!atk){
+		state_change_flag = false;
 
-				atk = true;
+		if (ani_count / ANIM_SPEED%ANI_STEAM_A == 10){
+			if (!stopper){
+				if (!atk){
+					shared_ptr<AttackRange> p(new AttackRange(x + 50, x + 550, param->getParam(POWER), SKY));
+					Game::getIns()->push_attack_list(p, ENEMY);
+					stopper = true;
+				}
 			}
-
 		}
-		else{ atk = false; }
+		else{ stopper = false; };
+
+		if (ani_count / ANIM_SPEED%ANI_STEAM_A == 12){
+			if (!stopper){
+				if (!atk){
+					shared_ptr<AttackRange> p(new AttackRange(x- (1500), x + 550, param->getParam(POWER), RAND));
+					Game::getIns()->push_attack_list(p, ENEMY);
+					stopper = true;
+				}
+			}
+		}
+		else{ stopper = false; };
+		
 
 		if (((ani_count / ANIM_SPEED) == ANI_STEAM_A)){
-			changeState(UnitState::WAIT);
-
+			state_change_flag = true;
+			changeState(UnitState::ST0);
 		}
+
 		break;
 	case UnitState::WAIT:
 		atk = false;
 		break;
 	case UnitState::DIE:
-
-			del();
+		del();
 		break;
 	case UnitState::ST0:
+		state_change_flag = false;
+		if (ani_count / ANIM_SPEED%ANI_STEAM_F){
+			state_change_flag = true;
+			changeState(UnitState::MOV);
+		}
 
 		break;
 	}
@@ -63,6 +84,9 @@ void steam::draw(int cx){
 		break;
 	case UnitState::DIE:
 //			DrawGraph(x - cx, y, Images::getIns()->g_steam_dei[level / 3][ani_count / ANIM_SPEED_DIE%ANI_STEAM_DEL], true);
+		break;
+	case UnitState::ST0:
+		DrawGraph(x - cx, y, Images::getIns()->g_steam_f[(ANI_STEAM_F-1) - ani_count / ANIM_SPEED%ANI_STEAM_F], true);
 		break;
 	}
 

@@ -21,7 +21,9 @@ Game::Game(int _world){
 	param_init();
 	world = _world;
 	ins = this;
-	resource = RESOURCE_INIT+5000000;
+	auto data = CsvReader::parseTable("dat/resouce.csv", ",");
+
+	resource = stoi(data[0][0]);
 	background_init();
 	castle_init();
 	srand((unsigned int)time(NULL));
@@ -35,7 +37,7 @@ Game::Game(int _world){
 	musume_nuber_list.assign(END_MUSUME,0);
 	
 	//for DEBUG
-	/*
+	///*
 	for (int i = 0; i < 7; i++){
 		stageInc();
 	}
@@ -44,7 +46,7 @@ Game::Game(int _world){
 }
 
 void Game::param_init(){
-	auto data=CsvReader::parseTable("dat/test.txt",",");
+	auto data=CsvReader::parseTable("dat/test.csv",",");
 	ParamType tmp[UNITTYPE_NUM][11];
 	int i=0;
 	for(auto a:data){
@@ -62,7 +64,8 @@ void Game::param_init(){
 			, tmp[line][6], tmp[line][7], tmp[line][8], tmp[line][9]));
 		line++;
 	}
-	auto elv = CsvReader::parseTable("dat/e_lv.txt", ",");
+
+	auto elv = CsvReader::parseTable("dat/e_lv.csv", ",");
 	double mag[UNITTYPE_NUM][6];
 	i = _TANK;
 	for (auto e : elv){
