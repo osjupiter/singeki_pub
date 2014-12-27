@@ -7,6 +7,7 @@
 typedef pair<int, int> ii;
 class castle : public unit{
 protected:
+	int world;
 	int stage;
 	int tm;
 	int loop_count;
@@ -31,7 +32,7 @@ protected:
 	vector<int> musume_table;
 	vector<int> enemy_table;
 public:
-	castle(int,int,int);
+	castle(int,int,int,int);
 	virtual void main(int);
 	virtual void draw(int);
 	virtual void damage(int,UnitType op_unit_type);
@@ -53,7 +54,7 @@ private:
 
 
 public:
-	castle_musume(int, int, int);
+	castle_musume(int, int, int,int);
 	virtual void main(int);
 	virtual void draw(int);
 	
@@ -64,7 +65,7 @@ protected:
 	
 
 public:
-	castle_enemy(int, int, int, vector<vector<string>>);
+	castle_enemy(int, int, int, int,vector<vector<string>>);
 	
 	void main(int);
 	void draw(int);
@@ -78,7 +79,7 @@ class shiro_yama :public castle_enemy{
 	int wait_time;
 	bool break_flag;
 public:
-	shiro_yama(int, int, int, vector<vector<string>>);
+	shiro_yama(int, int, int, int,vector<vector<string>>);
 	void main(int);
 	void draw(int);
 };

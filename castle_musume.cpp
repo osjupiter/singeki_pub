@@ -5,7 +5,7 @@
 
 const int meka_castle_hp[9] = { 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000 };
 
-castle_musume::castle_musume(int fx, int fy, int st) :castle(fx, fy, st){
+castle_musume::castle_musume(int fx, int fy, int st,int wl) :castle(fx, fy, st,wl){
 	hp = meka_castle_hp[st];
 	maxhp = hp;
 	state = CastleState::ACTIVE;

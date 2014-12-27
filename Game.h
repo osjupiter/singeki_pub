@@ -24,7 +24,6 @@ class Game : public Layer{
 	int resource;
 	static Game* ins;
 	int nowstage;
-
 	int birth_limit;
 
 	list<shared_ptr<effect>>  delete_effectlist;

@@ -17,7 +17,8 @@ std::size_t array_length(const TYPE(&)[SIZE])
 #define Eventassign(x) eventlist.assign(x,x+array_length(x))
 
 
-castle_enemy::castle_enemy(int fx, int fy, int st, vector<vector<string>> list) :castle(fx, fy, st){
+
+castle_enemy::castle_enemy(int fx, int fy, int st,int wl, vector<vector<string>> list) :castle(fx, fy, st,wl){
 	hp = castle_hp[st];
 	maxhp = hp;
 

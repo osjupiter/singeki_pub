@@ -25,8 +25,8 @@ const int castle::draw_gap[9][3] = { //é‰æ‘œ’†‰›‚Æ”wŒiØ‚ê–Ú‰B‚µ•”•ª‚Ì·
 
 
 
-castle::castle(int fx, int fy, int st) :unit(fx, fy){
-	
+castle::castle(int fx, int fy, int st,int wl) :unit(fx, fy){
+	world = wl;
 	width = (st==0) ? 300:WID_CASTLE;
 	height = (st == 0) ? 180 : HEI_CASTLE;
 	//width = 300;

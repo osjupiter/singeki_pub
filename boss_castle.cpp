@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "bigExplode.h"
 
-boss_castle::boss_castle(int fx, int fy, int st, vector<vector<string>> list, UnitType ut) :castle_enemy(fx, fy, st,list){
+boss_castle::boss_castle(int fx, int fy, int st,int wl, vector<vector<string>> list, UnitType ut) :castle_enemy(fx, fy, st,wl,list){
 	unit_type = ut;
 	if (st == 1){
 		boss_unit = Game::getIns()->x_birth(x, unit_type, false);

@@ -274,6 +274,7 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define HOHEI 1
 
 #define STAGE_NUM 8
+#define WORLD_NUM 6
 
 
 #define FIELD_W 800
