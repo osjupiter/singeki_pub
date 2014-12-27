@@ -77,6 +77,24 @@ void character::draw(int cx){
 		DrawLine(dx - cx, dy + 3, dx + 60 * max(i, 0) / (1000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
 	}
 }
+
+void character::drawHP(int cx, int ty){
+
+	//HP•\Ž¦
+	if (state != UnitState::DIE){
+		int dx = x + width / 2 - 60 / 2;
+		int dy = ty;
+		DrawLine(dx - cx, dy + 3, dx + 60 - cx, dy + 3, GetColor(255, 0, 0), 5);
+		int i = hp;
+		for (int j = dx; i > 1000; i -= 1000, j += 7){
+			DrawLine(j - cx, dy + 9, j - cx, dy + 15, GetColor(0, 255, 0), 3);
+
+		}
+
+		DrawLine(dx - cx, dy + 3, dx + 60 * max(i, 0) / (1000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
+	}
+}
+
 void character::draw(int cx, int x, int y, int img){
 	if((dir == LEFT && !isMusume()) || (dir == RIGHT && isMusume())){
 		DrawGraph(x - cx, y, img, true);

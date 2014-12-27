@@ -42,8 +42,15 @@ void beebar::main(int front){
 		atk = false;
 		break;
 	case UnitState::DIE:
+		if (ani_count == 1){
+			Game::getIns()->effect_create(x + width / 2 - WID_NOMALEXP / 2, y + height / 2 - HEI_NOMALEXP / 2, NOMALEXP);
+		}
+		if (ani_count == 4)
+			Game::getIns()->effect_create(x + width / 2 - WID_NOMALEXP / 2 + 10, y + height / 2 - HEI_NOMALEXP / 2, NOMALEXP);
 
-		del();
+		if (ani_count / 3 == 2){
+			del();
+		}
 		break;
 
 	}

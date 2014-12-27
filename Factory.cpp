@@ -34,6 +34,8 @@
 #include "hana.h"
 #include "yukidama.h"
 #include "g_voice.h"
+#include "monoris.h"
+
 #include "saihate.h"
 using namespace std;
 
@@ -107,6 +109,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_BEEBAR:
 		chara_ins.reset(new beebar(x, line, st));
 		break;
+	case UnitType::_MONORIS:
+		chara_ins.reset(new monoris(x, line, st));
+		break;
 	case UnitType::_SAIHATE:
 		chara_ins.reset(new saihate(x, line, st));
 		break;
@@ -171,6 +176,7 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 	case GVOICE:
 		ret_ins.reset(new gvoice(fx, fy,dr, atk_power));
 		break;
+
 	}
 	return ret_ins;
 	

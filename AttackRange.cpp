@@ -10,7 +10,13 @@ bool AttackRange::judge(int x, int w, Position u_type){
 }
 
 void AttackRange::draw(int cx){
-	DrawBox(l_edge-cx, 0, r_edge-cx, WINDOW_Y, GetColor(0,255,0),true);
+	if(atk_type==ALL)
+		DrawBox(l_edge-cx, 0, r_edge-cx, WINDOW_Y, GetColor(0,255,0),true);
+	else if (atk_type == RAND)
+		DrawBox(l_edge - cx, WINDOW_Y/2, r_edge - cx, WINDOW_Y, GetColor(0, 255, 0), true); 
+	else if (atk_type == SKY)
+		DrawBox(l_edge - cx, 0, r_edge - cx, WINDOW_Y/2, GetColor(0, 255, 0), true);
+
 }
 
 int AttackRange::getDamage(){

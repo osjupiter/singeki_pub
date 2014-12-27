@@ -143,6 +143,21 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてt.png", ANI_SAIHATE_T, ANI_SAIHATE_T, 1, WID_SAIHATE, HEI_SAIHATE, g_saihate_t);
 	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてh.png", ANI_SAIHATE_H, 3, 3, WID_SAIHATE, HEI_SAIHATE, g_saihate_h);
 
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス1w.png", ANI_MONORIS_W, ANI_MONORIS_W, 1, WID_MONORIS, HEI_MONORIS, g_monoris_w[0]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス1a1.png", ANI_MONORIS_A1, ANI_MONORIS_A1, 1, WID_MONORIS, HEI_MONORIS, g_monoris_a1[0]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス1a2.png", ANI_MONORIS_A2, ANI_MONORIS_A2, 1, WID_MONORIS, HEI_MONORIS, g_monoris_a2[0]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス2w.png", ANI_MONORIS_W, ANI_MONORIS_W, 1, WID_MONORIS, HEI_MONORIS, g_monoris_w[1]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス2a1.png", ANI_MONORIS_A1, ANI_MONORIS_A1, 1, WID_MONORIS, HEI_MONORIS, g_monoris_a1[1]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス2a2.png", ANI_MONORIS_A2, ANI_MONORIS_A2, 1, WID_MONORIS, HEI_MONORIS, g_monoris_a2[1]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス3w.png", ANI_MONORIS_W, ANI_MONORIS_W, 1, WID_MONORIS, HEI_MONORIS, g_monoris_w[2]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス3a1.png", ANI_MONORIS_A1, ANI_MONORIS_A1, 1, WID_MONORIS, HEI_MONORIS, g_monoris_a1[2]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス3a2.png", ANI_MONORIS_A2, ANI_MONORIS_A2, 1, WID_MONORIS, HEI_MONORIS, g_monoris_a2[2]);
+
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス1ビーム.png", ANI_MONOBEAM, ANI_MONOBEAM, 1, WID_MONOBEAM, HEI_MONOBEAM, g_monobeam[0]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス2ビーム.png", ANI_MONOBEAM, ANI_MONOBEAM, 1, WID_MONOBEAM, HEI_MONOBEAM, g_monobeam[1]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス3ビーム.png", ANI_MONOBEAM, ANI_MONOBEAM, 1, WID_MONOBEAM, HEI_MONOBEAM, g_monobeam[2]);
+
+
 	LoadDivGraph("dat/img/むすめユニット/花ｓ.png", ANI_HANA, 5, 5, WID_HANA, HEI_HANA, g_hana);
 
 	LoadDivGraph("dat/img/爆弾.png", ANI_BOMB, ANI_BOMB, 1, WID_BOMB, HEI_BOMB, g_bomb);

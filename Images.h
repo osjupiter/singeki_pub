@@ -79,6 +79,10 @@ public:
 	int g_beebar_w[3][ANI_BEEBAR_W];
 	int g_beebar_a[3][ANI_BEEBAR_A];
 	int g_gvoice[ANI_GVOICE];
+	int g_monoris_w[3][ANI_MONORIS_W];
+	int g_monoris_a1[3][ANI_MONORIS_A1];
+	int g_monoris_a2[3][ANI_MONORIS_A2];
+	int g_monobeam[3][ANI_MONOBEAM];
 
 	int g_shiro_icon[20][2];
 
