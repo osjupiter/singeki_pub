@@ -19,6 +19,7 @@
 #include "gajigaji.h"
 #include "sharin.h"
 #include "gorem.h"
+#include "steam.h"
 
 #include "gunshot.h"
 #include "cannonshot.h"
@@ -106,6 +107,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 
 	case UnitType::_SAIHATE:
 		chara_ins.reset(new saihate(x, line, st));
+		break;
+	case UnitType::_STEAM:
+		chara_ins.reset(new steam(x, line, st));
 		break;
 	default:
 		break;

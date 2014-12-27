@@ -21,7 +21,9 @@ Game::Game(int _world){
 	param_init();
 	world = _world;
 	ins = this;
-	resource = RESOURCE_INIT+5000000;
+	auto data = CsvReader::parseTable("dat/resouce.csv", ",");
+
+	resource = stoi(data[0][0]);
 	background_init();
 	castle_init();
 	srand((unsigned int)time(NULL));
@@ -44,7 +46,7 @@ Game::Game(int _world){
 }
 
 void Game::param_init(){
-	auto data=CsvReader::parseTable("dat/test.txt",",");
+	auto data=CsvReader::parseTable("dat/test.csv",",");
 	ParamType tmp[UNITTYPE_NUM][11];
 	int i=0;
 	for(auto a:data){
@@ -62,7 +64,8 @@ void Game::param_init(){
 			, tmp[line][6], tmp[line][7], tmp[line][8], tmp[line][9]));
 		line++;
 	}
-	auto elv = CsvReader::parseTable("dat/e_lv.txt", ",");
+
+	auto elv = CsvReader::parseTable("dat/e_lv.csv", ",");
 	double mag[UNITTYPE_NUM][6];
 	i = _TANK;
 	for (auto e : elv){
@@ -101,6 +104,9 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
+	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_AKUUMON, UnitType::_GUUZOU,
+		UnitType::_TAMANEGI, UnitType::_DARKMUSUME };
+
 	string spownfilename[WORLD_NUM+1] = { "","dat/çrñÏspown.csv", "dat/ê·å¥spown.csv", "dat/â_ÇÃè„spown.csv"
 		, "dat/êXÉKÅ[Éãspown.csv", "dat/êÖÇÃíÜspown.csv", "dat/ÉÅÉJÉVÉeÉBspown.csv" };
 	
@@ -130,7 +136,7 @@ void Game::castle_init(){
 	p = shared_ptr<castle>(new castle_enemy(stage_W[7], 0, 7, world, pop_list));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new boss_castle(stage_W[8], 0, 8, world, pop_list, UnitType::_SAIHATE));
+	p = shared_ptr<castle>(new boss_castle(stage_W[8], 0, 8, world, pop_list, boss_type[world-1]));
 	castle_list.push_back(p);
 
 }
@@ -190,6 +196,7 @@ shared_ptr<character> Game::x_birth(int x, int type, bool use_resouce){
 
 		int t = getParam(type, ParamType::COST);
 		if (getMusumeSum() >= getBirthLimit())return nullptr;
+		
 		if (use_resouce){
 			if (getResource() < t) return nullptr;
 			useResource(t);
@@ -598,11 +605,11 @@ void Game::Test(){
 	atkrange_enemy_list.clear();
 
 	static bool hit = false;
-	static int b_unit = _YOUJO;
+	static int b_unit = _HOHEI;
 	if (CheckHitKey(KEY_INPUT_C)) {
 		if (!hit){
 			b_unit++;
-			if (b_unit == END_MUSUME) b_unit = _YOUJO;
+			if (b_unit == END_MUSUME) b_unit = _HOHEI;
 			hit = true;
 		}
 	}

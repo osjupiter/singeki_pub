@@ -62,6 +62,10 @@ public:
 	int g_nouka_a1[ANI_NOUKA_A];
 	int g_nouka_a2[ANI_NOUKA_A];
 	int g_hana[ANI_HANA];
+	int g_steam_w[ANI_STEAM_W];
+	int g_steam_a[ANI_STEAM_A];
+	int g_steam_f[ANI_STEAM_F];
+
 	int g_gajigaji_w[3][5];
 	int g_gajigaji_a[3][6];
 	int g_saihate_a_r[ANI_SAIHATE_A];

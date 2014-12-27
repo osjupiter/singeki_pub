@@ -47,18 +47,22 @@ void musume::changeState(UnitState next_state){
 		
 		break;
 	case UnitState::WAIT:
-		switch (state){		
+		switch (state){
 		case UnitState::MOV:
 			state = UnitState::WAIT;
 			break;
 		case UnitState::ATK:
-			wait_time = param->getParam(A_FREQ);	
-			ani_count = 0;
-			if (wait_time == 0)
+			wait_time = param->getParam(A_FREQ);
+
+			if (wait_time == 0){
 				state = UnitState::ATK;
-			else 
+				ani_count = 0;
+			}
+			else {
 				state = UnitState::WAIT;
+				ani_count = 0;
 				atk = false;
+			}
 			break;
 		default:
 			state = UnitState::WAIT;
