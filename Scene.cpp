@@ -51,6 +51,7 @@ void WorldScene::buttonPushed(string id){
 		addLayer(10,make_shared<MapUnitSelector>(stoi(id)));
 	}else if(id=="gotogame"){
 		Images::getIns()->loadStage(this->stage_id);
+		SoundController::getBgm()->loadStage(this->stage_id);
 		SceneManager::getIns()->switchScene(std::make_shared<LoadingScene>(make_shared<GameScene>(this->stage_id,this->unit_id)),0,5);
 	}
 }
@@ -148,12 +149,9 @@ GameScene::GameScene(int stage_id,int _unitids[]){
 	
 }
 void GameScene::enterScene(){
-	//PlaySoundMem( Images::getSound("sound/kuma.mp3"),DX_PLAYTYPE_LOOP);
-	//SoundController::getBgm()->playBGM("sound/ŽR.mp3");
 	SoundController::getBgm()->changeBGM(0);
 }
 void GameScene::leaveScene(){
-	//StopSoundMem( Images::getSound("sound/kuma.mp3")) ;
 	SoundController::getBgm()->playBGM("");
 }
 void GameScene::beforemain(){

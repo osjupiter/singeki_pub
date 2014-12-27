@@ -78,6 +78,8 @@ public:
 	int g_goremu_a[3][ANI_GOREMU];
 	int g_gvoice[ANI_GVOICE];
 
+	int g_shiro_icon[20][2];
+
 
 	int g_gekko[4];
 	int g_gekko_up[3];
