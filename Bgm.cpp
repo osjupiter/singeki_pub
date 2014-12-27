@@ -4,8 +4,9 @@
 
 void Bgm::load(){
 	BGMVol=100;
-	LoadBGM("sound/タイトル.mp3",false);
-	LoadBGM("sound/山.mp3",true);
+	LoadBGM("sound/システム/title.mp3",false);
+	
+	LoadBGM("sound/システム/stageselect.mp3",false);
 	_nowBGM="";
 
 }

@@ -25,7 +25,7 @@ void TitleScene::buttonPushed(string id){
 	}
 }
 void TitleScene::enterScene(){
-	SoundController::getBgm()->playBGM("sound/タイトル.mp3");
+	SoundController::getBgm()->playBGM("sound/システム/title.mp3");
 }
 void TitleScene::leaveScene(){
 	SoundController::getBgm()->playBGM("");
@@ -117,7 +117,7 @@ void WorldScene::enterScene(){
 		addLayer(1,q);
 		glist.push_back(q);
 	}
-	SoundController::getBgm()->playBGM("sound/タイトル.mp3");
+	SoundController::getBgm()->playBGM("sound/システム/stageselect.mp3");
 }
 void WorldScene::leaveScene(){
 	SoundController::getBgm()->playBGM("");
@@ -190,7 +190,8 @@ void GameScene::buttonPushed(string id){
 	}else if(id=="exit"){
 		SceneManager::getIns()->switchScene(std::make_shared<TitleScene>());
 	}else if(id=="gotoEnd"){
-		SceneManager::getIns()->switchScene(std::make_shared<EndScene>());
+		SoundController::getIns()->getBgm()->LoadBGM("sound/システム/ending.mp3",true);
+		SceneManager::getIns()->switchScene(make_shared<LoadingScene>((std::make_shared<EndScene>())));
 	}
 }
 void GameScene::aftermain(){
@@ -221,7 +222,7 @@ EndScene::EndScene(){
 	endc=0;
 }
 void EndScene::enterScene(){
-	SoundController::getBgm()->playBGM("sound/エンディング.mp3",false);
+	SoundController::getBgm()->playBGM("sound/システム/ending.mp3",false);
 }
 void EndScene::main(){
 	count+=6;
