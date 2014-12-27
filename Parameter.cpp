@@ -89,7 +89,7 @@ int Parameter::getParamMag(ParamType p_type,int lv){
 		ret = _base*(1 - 0.1 * _level);
 		break;
 	case ParamType::COST:
-		ret = _base*(1 - mag[COST] * _level);
+		ret = _base*(1 + mag[COST] * _level);
 		break;
 	case ParamType::A_FREQ:
 		ret = _base*(1 - mag[A_FREQ] * _level);
