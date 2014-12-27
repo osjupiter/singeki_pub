@@ -1,9 +1,8 @@
+#pragma once
 #include "enemy.h"
 
 class tank : public enemy{
 	
-
-
 	static int num;
 public:
 	tank(int, int, int);

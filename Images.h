@@ -76,6 +76,8 @@ public:
 	int g_sharin_a[3][ANI_SHARIN];
 	int g_goremu_w[3][ANI_GOREMU];
 	int g_goremu_a[3][ANI_GOREMU];
+	int g_beebar_w[3][ANI_BEEBAR_W];
+	int g_beebar_a[3][ANI_BEEBAR_A];
 	int g_gvoice[ANI_GVOICE];
 
 	int g_shiro_icon[20][2];

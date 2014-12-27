@@ -127,6 +127,13 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/雪原/ゴレーム3s.png", ANI_GOREMU, 4, 3, WID_GOREMU, HEI_GOREMU, g_goremu_w[2]);
 	LoadDivGraph("dat/img/敵ユニット/雪原/ゴレーム3a.png", ANI_GOREMU, 4, 3, WID_GOREMU, HEI_GOREMU, g_goremu_a[2]);
 
+	LoadDivGraph("dat/img/敵ユニット/雪原/ビーバーw.png", ANI_BEEBAR_W, ANI_BEEBAR_W, 1, WID_BEEBAR_W, HEI_BEEBAR_W, g_beebar_w[0]);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ビーバーa.png", ANI_BEEBAR_A, ANI_BEEBAR_A, 1, WID_BEEBAR_A, HEI_BEEBAR_A, g_beebar_a[0]);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ビーバー2w.png", ANI_BEEBAR_W, ANI_BEEBAR_W, 1, WID_BEEBAR_W, HEI_BEEBAR_W, g_beebar_w[1]);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ビーバー2a.png", ANI_BEEBAR_A, ANI_BEEBAR_A, 1, WID_BEEBAR_A, HEI_BEEBAR_A, g_beebar_a[1]);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ビーバー3w.png", ANI_BEEBAR_W, ANI_BEEBAR_W, 1, WID_BEEBAR_W, HEI_BEEBAR_W, g_beebar_w[2]);
+	LoadDivGraph("dat/img/敵ユニット/雪原/ビーバー3a.png", ANI_BEEBAR_A, ANI_BEEBAR_A, 1, WID_BEEBAR_A, HEI_BEEBAR_A, g_beebar_a[2]);
+
 	LoadDivGraph("dat/img/敵ユニット/荒野/スチームパンクロボ歩き.png", ANI_STEAM_W, 3, 3, WID_STEAM, HEI_STEAM, g_steam_w);
 	LoadDivGraph("dat/img/敵ユニット/荒野/スチームパンクロボ攻撃.png", ANI_STEAM_A, 4, 4, WID_STEAM, HEI_STEAM, g_steam_a);
 	LoadDivGraph("dat/img/敵ユニット/荒野/スチームパンクロボ復帰.png", ANI_STEAM_F, ANI_STEAM_F, 1, WID_STEAM, HEI_STEAM, g_steam_f);
