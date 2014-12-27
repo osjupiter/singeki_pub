@@ -2,7 +2,6 @@
 #include "Game.h"
 
 musume::musume(int fx, int ln, UnitType u_type) : character(fx, ln ,u_type){
-	param = Game::getIns()->getParam(static_cast<int>(unit_type));
 	dir = Direction::RIGHT;
 	hp = param->getParam(MAXHP);
 	maxhp = hp;

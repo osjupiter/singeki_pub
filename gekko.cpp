@@ -12,19 +12,10 @@ int gekko::num;
 gekko::gekko(int fx, int ln, int lv) : enemy(fx, ln, lv, UnitType::_GEKKO){
 	dist = dist + DIST_GEKKO;
 	y = WINDOW_Y - HEI_GEKKO - line * 3;
-	power = POWER_GEKKO*(1+0.2*lv);
-	hp = MAXHP_GEKKO + MAXHP_GEKKO*0.4*lv;
 	width = WID_GEKKO;
 	height = HEI_GEKKO;
-	speed = SPEED_GEKKO + 0.5*SPEED_GEKKO;
-	defense = DEFENSE_GEKKO*(1+0.3*lv);
 	num++;
 	type = RAND;
-	atk_type = A_TYPE_GEKKO;
-	cost = COST_GEKKO+120*lv;
-	atk_freq = A_FREQ_GEKKO ;
-	unit_type = UnitType::_GEKKO;
-	maxhp = hp;
 
 }
 

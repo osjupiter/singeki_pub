@@ -25,6 +25,7 @@ void nouka::main(int front){
 		break;
 	case UnitState::ATK:
 		state_change_flag = false;
+		//atk = false;
 		if (ani_count / ANIM_SPEED == ANI_NOUKA_A*2){
 			if (!stopper){
 				Game::getIns()->effect_create(x + 88 -71, FIELD_H - HEI_HANA, HANA);

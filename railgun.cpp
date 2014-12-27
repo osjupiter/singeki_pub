@@ -10,21 +10,13 @@ int railgun::num = 0;
 
 railgun::railgun(int fx, int ln, int lv) : enemy(fx, ln, lv, UnitType::_RAILGUN){
 	dist = dist + DIST_RAILGUN;
-	power = POWER_RAILGUN+POWER_RAILGUN*0.3*lv;
-	hp = MAXHP_RAILGUN+MAXHP_RAILGUN*0.4*lv;
 	width = WID_RAILGUN;
 	height = HEI_RAILGUN;
 	num++;
 	atk = false;
-	defense = DEFENSE_RAILGUN+DEFENSE_RAILGUN*0.5*lv;
 	type = RAND;
 	atk_type = RAND;
-	cost = COST_RAILGUN+500*lv;
-	atk_freq = A_FREQ_RAILGUN;
 	stopper = false;
-	speed = SPEED_RAILGUN*(1+0.3*lv);
-	unit_type = UnitType::_RAILGUN;
-	maxhp = hp;
 	y = WINDOW_Y - HEI_RAILGUN - line * 3;
 	wait_time = 0;
 }

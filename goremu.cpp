@@ -13,17 +13,9 @@
 goremu::goremu(int fx, int ln, int lv) : enemy(fx, ln, lv, UnitType::_GOREMU){
 	dist = dist + DIST_GOREMU;
 	y = WINDOW_Y - HEI_GOREMU - line * 3;
-	power = 200;
-	hp = MAXHP_GEKKO + MAXHP_GEKKO*0.4*lv;
 	width = WID_GOREMU;
 	height = HEI_GOREMU;
-	speed = SPEED_GEKKO + 0.5*SPEED_GEKKO;
-	defense = DEFENSE_GEKKO*(1 + 0.3*lv);
 	type = RAND;
-	atk_type = A_TYPE_GEKKO;
-	cost = COST_GEKKO + 120 * lv;
-	atk_freq = 10;
-	maxhp = hp;
 	visible = false;
 }
 
@@ -36,9 +28,9 @@ void goremu::main(int front){
 		if (visible){
 			changeState(UnitState::WAIT);
 		}
-		else{
-			x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-		}
+		
+		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
+		
 		break;
 	case UnitState::ATK:
 		if (!visible){
@@ -47,7 +39,7 @@ void goremu::main(int front){
 		}else	state_change_flag = false;
 		if (ani_count / ANIM_SPEED_ATK == 10){
 			if (!stopper){
-				Game::getIns()->effect_create(x, y, GVOICE, dir, power);
+				Game::getIns()->effect_create(x, y+60, GVOICE, dir, power);
 				stopper = true;
 			}
 		}

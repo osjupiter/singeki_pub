@@ -15,17 +15,8 @@ gajigaji::gajigaji(int fx, int ln, int lv) : enemy(fx, ln, lv, UnitType::_GAJIGA
 	y = WINDOW_Y - height - line * 3;
 
 	dist = DIST_GAJIGAJI;
-	power = POWER_GAJIGAJI *(1 * lv);
-	hp = MAXHP_GAJIGAJI + MAXHP_GAJIGAJI*lv;
-	speed = SPEED_GAJIGAJI + 0.5*SPEED_GAJIGAJI*lv;
-	defense = DEFENSE_GAJIGAJI*(1 + 0.8*lv);
 	type = RAND;
-	atk_type = A_TYPE_GAJIGAJI;
-	cost = COST_GAJIGAJI + 40 * lv;
-	atk_freq = A_FREQ_GAJIGAJI - 0.05*A_FREQ_GAJIGAJI*lv;
-	unit_type = UnitType::_GAJIGAJI;
-	maxhp = hp;
-
+	
 }
 
 

@@ -52,66 +52,41 @@ void Game::param_init(){
 			tmp[i][j]=static_cast<ParamType>(stoi(a[j]));
 		}
 		i++;
+		if (i >= UNITTYPE_NUM) break;
 	}
 	int line = 0;
 	
-	for (i = 0; i < END_MUSUME;i++){
-		if (i == _NONE) continue;
+	for (i = _HOHEI; i < END_MUSUME;i++){
 		param_list[i] = shared_ptr<Parameter>(
 			new Parameter(tmp[line][0], tmp[line][1], tmp[line][2], tmp[line][3], static_cast<Position>(tmp[line][10]), tmp[line][4], tmp[line][5]
 			, tmp[line][6], tmp[line][7], tmp[line][8], tmp[line][9]));
 		line++;
 	}
+	auto elv = CsvReader::parseTable("dat/e_lv.txt", ",");
+	double mag[UNITTYPE_NUM][6];
+	i = _TANK;
+	for (auto e : elv){
+
+		for (int j = 0; j < 6; j++){
+			mag[i][j] = stof(e[j]);
+
+		}
+		i++;
+		if (i >= UNITTYPE_NUM) break;
+	}
+	line++; //1çsîÚÇŒÇ∑
+	for (i = _TANK; i < UNITTYPE_NUM; i++){
+		param_list[i] = shared_ptr<Parameter>(
+			new Parameter(tmp[line][0], tmp[line][1], tmp[line][2], tmp[line][3], static_cast<Position>(tmp[line][10]), tmp[line][4], tmp[line][5]
+			, tmp[line][6], mag[i]));
+		line++;
+		if (i >= UNITTYPE_NUM) break;
+	}
 	
 /*	param_list[_HOHEI] = shared_ptr<Parameter>(
 		new Parameter(POWER_HOHEI, MAXHP_HOHEI
 		, SPEED_HOHEI, DEFENSE_HOHEI, A_TYPE_HOHEI, CLK_HOHEI, COST_HOHEI, A_FREQ_HOHEI,tmp[0][0],tmp[0][1],tmp[0][2]));
-	param_list[_BALOON] = shared_ptr<Parameter>(
-		new Parameter(POWER_BALLOON, MAXHP_BALLOON
-		, SPEED_BALLOON, DEFENSE_BALLOON, A_TYPE_BALLOON, CLK_BALLOON, COST_BALLOON, A_FREQ_BALLOON,tmp[1][0],tmp[1][1],tmp[1][2]));	
-	param_list[_BIG] = shared_ptr<Parameter>(
-		new Parameter(POWER_BIG, MAXHP_BIG
-		, SPEED_BIG, DEFENSE_BIG, A_TYPE_BIG, CLK_BIG, COST_BIG, A_FREQ_BIG,tmp[2][0],tmp[2][1],tmp[2][2]));
-	param_list[_KAMIKAZE] = shared_ptr<Parameter>(
-		new Parameter(POWER_KAMIKAZE, MAXHP_KAMIKAZE
-		, SPEED_KAMIKAZE, DEFENSE_KAMIKAZE, A_TYPE_KAMIKAZE, CLK_KAMIKAZE, COST_KAMIKAZE, A_FREQ_KAMIKAZE,tmp[3][0],tmp[3][1],tmp[3][2]));
-	param_list[_BAZOOKA] = shared_ptr<Parameter>(
-		new Parameter(POWER_BAZOOKA, MAXHP_BAZOOKA
-		, SPEED_BAZOOKA, DEFENSE_BAZOOKA, A_TYPE_BAZOOKA, CLK_BAZOOKA, COST_BAZOOKA, A_FREQ_BAZOOKA, tmp[4][0], tmp[4][1], tmp[4][2]));
-	param_list[_SEGWAY] = shared_ptr<Parameter>(
-		new Parameter(POWER_SEGWAY, MAXHP_SEGWAY
-		, SPEED_SEGWAY, DEFENSE_SEGWAY, A_TYPE_SEGWAY, CLK_SEGWAY, COST_SEGWAY, A_FREQ_SEGWAY,tmp[5][0],tmp[5][1],tmp[5][2]));
-	param_list[_YOUJO] = shared_ptr<Parameter>(
-		new Parameter(POWER_YOUJO, MAXHP_YOUJO
-		, SPEED_YOUJO, DEFENSE_YOUJO, A_TYPE_YOUJO, CLK_YOUJO, COST_YOUJO, A_FREQ_YOUJO, tmp[6][0], tmp[6][1], tmp[6][2]));
-	param_list[_TATEKO] = shared_ptr<Parameter>(
-		new Parameter(POWER_TATEKO, MAXHP_TATEKO
-		, SPEED_TATEKO, DEFENSE_TATEKO, A_TYPE_TATEKO, CLK_TATEKO, COST_TATEKO, A_FREQ_TATEKO, tmp[7][0], tmp[7][1], tmp[7][2]));
-	param_list[_HIME] = shared_ptr<Parameter>(
-		new Parameter(POWER_HIME, MAXHP_HIME
-		, SPEED_HIME, DEFENSE_HIME, A_TYPE_HIME, CLK_HIME, COST_HIME, A_FREQ_HIME, tmp[8][0], tmp[8][1], tmp[8][2]));
-	param_list[_IKAROS] = shared_ptr<Parameter>(
-		new Parameter(POWER_IKAROS, MAXHP_IKAROS
-		, SPEED_IKAROS, DEFENSE_IKAROS, A_TYPE_IKAROS, CLK_IKAROS, COST_IKAROS, A_FREQ_IKAROS, tmp[9][0], tmp[9][1], tmp[9][2]));
-	param_list[_MAJO] = shared_ptr<Parameter>(
-		new Parameter(POWER_MAJO, MAXHP_MAJO
-		, SPEED_MAJO, DEFENSE_MAJO, A_TYPE_MAJO, CLK_MAJO, COST_MAJO, A_FREQ_MAJO, tmp[10][0], tmp[10][1], tmp[10][2]));
-	param_list[_NOUKA] = shared_ptr<Parameter>(
-		new Parameter(POWER_NOUKA, MAXHP_NOUKA
-		, SPEED_NOUKA, DEFENSE_NOUKA, A_TYPE_NOUKA, CLK_NOUKA, COST_NOUKA, A_FREQ_NOUKA, tmp[10][0], tmp[11][1], tmp[11][2]));
-	param_list[_TANK] = shared_ptr<Parameter>(
-		new Parameter(POWER_TANK, MAXHP_TANK
-		, SPEED_TANK, DEFENSE_TANK, A_TYPE_TANK, CLK_TANK, COST_TANK, A_FREQ_TANK, tmp[11][0], tmp[11][1], tmp[11][2]));
-	param_list[_COPTER] = shared_ptr<Parameter>(
-		new Parameter(POWER_COPTER, MAXHP_COPTER
-		, SPEED_COPTER, DEFENSE_COPTER, A_TYPE_COPTER, CLK_COPTER, COST_COPTER, A_FREQ_COPTER, tmp[12][0], tmp[12][1], tmp[12][2]));
-	param_list[_GEKKO] = shared_ptr<Parameter>(
-		new Parameter(POWER_GEKKO, MAXHP_GEKKO
-		, SPEED_GEKKO, DEFENSE_GEKKO, A_TYPE_GEKKO, CLK_GEKKO, COST_GEKKO, A_FREQ_GEKKO, tmp[13][0], tmp[13][1], tmp[13][2]));
-	param_list[_RAILGUN] = shared_ptr<Parameter>(
-		new Parameter(POWER_RAILGUN, MAXHP_RAILGUN
-		, SPEED_RAILGUN, DEFENSE_RAILGUN, A_TYPE_RAILGUN, CLK_RAILGUN, COST_RAILGUN, A_FREQ_RAILGUN, tmp[14][0], tmp[14][1], tmp[14][2]));
-		//*/
+*/
 }
 
 void Game::background_init(){
@@ -222,7 +197,7 @@ shared_ptr<character> Game::x_birth(int x, int type, bool use_resouce){
 		return p;
 	}
 	else {
-		shared_ptr<character> p(Factory::create_chara(x, 0, line, (UnitType)type));
+		shared_ptr<character> p(Factory::create_chara(x, getNowStage(), line, (UnitType)type));
 		if (p != NULL) enemy_list[line].push_back(p);
 		return p;
 	}

@@ -29,7 +29,7 @@ Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock
 
 };
 
-Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock, int cos, int a_freq, double mag[6]){
+Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock, int cos, int a_freq, double m[6]){
 	base[POWER] = pw;
 	base[MAXHP] = mh;
 	base[SPEED] = sp;
@@ -48,6 +48,13 @@ Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock
 	level[COST] = 0;
 	level[A_FREQ] = 0;
 
+	mag[POWER] = m[0];
+	mag[MAXHP] = m[1];
+	mag[SPEED] = m[2];
+	mag[DEFENSE] = m[3];
+	mag[COST] = m[4];
+	mag[A_FREQ] = m[5];
+
 }
 
 void Parameter::draw(int x, int y){
@@ -58,6 +65,37 @@ void Parameter::draw(int x, int y){
 
 int Parameter::getParamLevel(ParamType p_type){
 	return level[p_type];
+}
+
+int Parameter::getParamMag(ParamType p_type,int lv){
+	int ret = 0, _base = base[p_type], _level = lv-1;
+	switch (p_type){
+	case ParamType::POWER:
+		ret = _base*(1 + mag[POWER]*_level);
+		break;
+	case ParamType::MAXHP:
+		ret = _base*(1 + mag[MAXHP] * _level);
+		break;
+	case ParamType::SPEED:
+		ret = _base*(1 + mag[SPEED]*_level);
+		break;
+	case ParamType::DEFENSE:
+		ret = _base*(1 + mag[DEFENSE] * _level);
+		break;
+	case ParamType::A_TYPE:
+		ret = _base;
+		break;
+	case ParamType::CLK:
+		ret = _base*(1 - 0.1 * _level);
+		break;
+	case ParamType::COST:
+		ret = _base*(1 - mag[COST] * _level);
+		break;
+	case ParamType::A_FREQ:
+		ret = _base*(1 - mag[A_FREQ] * _level);
+		break;
+	}
+	return ret;
 }
 
 int Parameter::getParam(ParamType p_type){

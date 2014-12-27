@@ -15,7 +15,7 @@ gvoice::gvoice(int fx, int fy, Direction d, int p) :effect(fx, fy){
 }
 void gvoice::main(){
 	effect::main();
-	x += 14 * dir;
+	x += 21 * dir;
 	
 	if (dir*(x - pre_atk_x) > 110){
 		shared_ptr<AttackRange> p(new AttackRange(x+24, x + 300-24, power/2, RAND));
@@ -23,7 +23,7 @@ void gvoice::main(){
 		pre_atk_x = x;
 	}
 
-	if (ani_count / ANIM_SPEED == 10){
+	if (ani_count / ANIM_SPEED == 7){
 		del();
 	}
 

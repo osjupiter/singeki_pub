@@ -16,16 +16,7 @@ sharin::sharin(int fx, int ln, int lv) : enemy(fx, ln, lv, UnitType::_SHARIN){
 	y = WINDOW_Y - height - line * 3;
 
 	dist = dist + DIST_SHARIN;
-	power = POWER_TANK *(1 * lv);
-	hp = MAXHP_TANK + MAXHP_TANK*lv;
-	speed = SPEED_TANK + 0.5*SPEED_TANK*lv;
-	defense = DEFENSE_TANK*(1 + 0.8*lv);
 	type = RAND;
-	atk_type = A_TYPE_TANK;
-	cost = COST_TANK + 40 * lv;
-	atk_freq = 10;
-	unit_type = UnitType::_SHARIN;
-	maxhp = hp;
 
 }
 

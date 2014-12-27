@@ -10,22 +10,16 @@ int copter::num = 0;
 
 copter::copter(int fx, int ln,int lv) : enemy(fx,ln,lv,UnitType::_COPTER){
 	dist = dist + DIST_COPTER;
-	power = POWER_COPTER*(1+0.3*lv);
-	hp = MAXHP_COPTER+0.7*MAXHP_COPTER*lv;
+	
 	width = WID_COPTER;
 	height = HEI_COPTER;
 	num++;
 	atk = false;
 	y = 50 - line * 3;
-	defense = DEFENSE_COPTER*(1+0.9*lv);
+	
 	type = SKY;
-	atk_type = RAND;
-	cost = COST_COPTER + 150 * lv;
-	atk_freq = A_FREQ_COPTER*(1-0.05*lv);
+
 	stopper = false;
-	speed = SPEED_COPTER + 0.5*SPEED_COPTER*lv;
-	unit_type=UnitType::_COPTER;
-	maxhp = hp;
 
 }
 void copter::init(){

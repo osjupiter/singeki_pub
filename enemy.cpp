@@ -6,6 +6,18 @@ enemy::enemy(int fx, int ln, int lv , UnitType u_type) :character(fx, ln, u_type
 	level = lv;
 	dir = Direction::LEFT;
 	atk = false;
+
+	hp = param->getParamMag(MAXHP, lv);
+	speed = param->getParamMag(SPEED, lv);
+	power = param->getParamMag(POWER, lv);
+	defense = param->getParamMag(DEFENSE, lv);
+	type = RAND;
+	atk_type = static_cast<Position> (param->getParam(A_TYPE));
+	cost = param->getParamMag(COST, lv);
+	atk_freq = param->getParamMag(A_FREQ, lv);
+	unit_type = UnitType::_TANK;
+	maxhp = hp;
+
 }
 
 void enemy::main(int front){
