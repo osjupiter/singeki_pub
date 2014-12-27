@@ -4,42 +4,112 @@
 
 void Bgm::load(){
 	BGMVol=100;
-	bgmlist.push_back("sound/ŽR.mp3");
-	bgmlist.push_back("sound/X.mp3");
-	bgmlist.push_back("sound/–éí.mp3");
-	bgmlist.push_back("sound/‹´.mp3");
-	bgmlist.push_back("sound/‘Œ´.mp3");
-	bgmlist.push_back("sound/“´ŒA.mp3");
-	bgmlist.push_back("sound/“sŽs.mp3");
-	bgmlist.push_back("ˆÅ‚Ì¢ŠE.mp3");
-	bgmlist.push_back("sound/ƒGƒ“ƒfƒBƒ“ƒO.mp3");
-	bgmlist.push_back("‚¾‚Ý[");
-
-
 	LoadBGM("sound/ƒ^ƒCƒgƒ‹.mp3",false);
 	LoadBGM("sound/ŽR.mp3",true);
 	_nowBGM="";
 
 }
+void Bgm::loadStage(int sid){
+	bgmlist.clear();
+	switch (sid)
+	{
+	case 1:
+		bgmlist.push_back("sound/r–ì/kouya_1.mp3");
+		bgmlist.push_back("sound/r–ì/kouya_1.5.mp3");
+		bgmlist.push_back("sound/r–ì/kouya_2.mp3");
+		bgmlist.push_back("sound/r–ì/kouya_3.mp3");
+		bgmlist.push_back("sound/r–ì/kouya_5.mp3");
+		bgmlist.push_back("sound/r–ì/kouya_6.mp3");
+		bgmlist.push_back("sound/r–ì/kouya_7.mp3");
+		bgmlist.push_back("sound/r–ì/kouya_8.mp3");
+		bgmlist.push_back("‚¾‚Ý[");
+		break;
+	case 2:
+		bgmlist.push_back("sound/áŒ´/setsugen_1.mp3");
+		bgmlist.push_back("sound/áŒ´/setsugen_2.mp3");
+		bgmlist.push_back("sound/áŒ´/setsugen_3.mp3");
+		bgmlist.push_back("sound/áŒ´/setsugen_4.mp3");
+		bgmlist.push_back("sound/áŒ´/setsugen_5.mp3");
+		bgmlist.push_back("sound/áŒ´/setsugen_6.mp3");
+		bgmlist.push_back("sound/áŒ´/setsugen_7.mp3");
+		bgmlist.push_back("sound/áŒ´/setsugen_8.mp3");
+		bgmlist.push_back("‚¾‚Ý[");
+		break;
+	case 3:
+		bgmlist.push_back("sound/‰_‚Ìã/kumo_1.mp3");
+		bgmlist.push_back("sound/‰_‚Ìã/kumo_2.mp3");
+		bgmlist.push_back("sound/‰_‚Ìã/kumo_3.mp3");
+		bgmlist.push_back("sound/‰_‚Ìã/kumo_4.mp3");
+		bgmlist.push_back("sound/‰_‚Ìã/kumo_5.mp3");
+		bgmlist.push_back("sound/‰_‚Ìã/kumo_6.mp3");
+		bgmlist.push_back("sound/‰_‚Ìã/kumo_7.mp3");
+		bgmlist.push_back("sound/‰_‚Ìã/kumo_8.mp3");
+		bgmlist.push_back("‚¾‚Ý[");
+		break;
+	case 4:
+		bgmlist.push_back("sound/XƒK[ƒ‹/mori_1.mp3");
+		bgmlist.push_back("sound/XƒK[ƒ‹/mori_2.mp3");
+		bgmlist.push_back("sound/XƒK[ƒ‹/mori_3.mp3");
+		bgmlist.push_back("sound/XƒK[ƒ‹/mori_4.mp3");
+		bgmlist.push_back("sound/XƒK[ƒ‹/mori_5.mp3");
+		bgmlist.push_back("sound/XƒK[ƒ‹/mori_6.mp3");
+		bgmlist.push_back("sound/XƒK[ƒ‹/mori_7.mp3");
+		bgmlist.push_back("sound/XƒK[ƒ‹/mori_8.mp3");
+		bgmlist.push_back("‚¾‚Ý[");
+		break;
+	case 5:
+		bgmlist.push_back("sound/…‚Ì’†/mizu_1.mp3");
+		bgmlist.push_back("sound/…‚Ì’†/mizu_2.mp3");
+		bgmlist.push_back("sound/…‚Ì’†/mizu_3.mp3");
+		bgmlist.push_back("sound/…‚Ì’†/mizu_4.mp3");
+		bgmlist.push_back("sound/…‚Ì’†/mizu_5.mp3");
+		bgmlist.push_back("sound/…‚Ì’†/mizu_6.mp3");
+		bgmlist.push_back("sound/…‚Ì’†/mizu_7.mp3");
+		bgmlist.push_back("sound/…‚Ì’†/mizu_8.mp3");
+		bgmlist.push_back("‚¾‚Ý[");
+		break;
+	case 6:
+		bgmlist.push_back("sound/ƒƒJƒVƒeƒB/meka_1.mp3");
+		bgmlist.push_back("sound/ƒƒJƒVƒeƒB/meka_2.mp3");
+		bgmlist.push_back("sound/ƒƒJƒVƒeƒB/meka_3.mp3");
+		bgmlist.push_back("sound/ƒƒJƒVƒeƒB/meka_4.mp3");
+		bgmlist.push_back("sound/ƒƒJƒVƒeƒB/meka_5.mp3");
+		bgmlist.push_back("sound/ƒƒJƒVƒeƒB/meka_6.mp3");
+		bgmlist.push_back("sound/ƒƒJƒVƒeƒB/meka_7.mp3");
+		bgmlist.push_back("sound/ƒƒJƒVƒeƒB/meka_8.mp3");
+		bgmlist.push_back("sound/ƒƒJƒVƒeƒB/meka_9.mp3");
+		bgmlist.push_back("‚¾‚Ý[");
+		break;
+	default:
+		printfDx("loadStageerror!!");
+		break;
+	}
+	Bgm::initBGM();
+}
+	
 	void Bgm::setBGMVol(int v){BGMVol=v;}
 	int Bgm::getBGMVol(){return BGMVol;}
 	void Bgm::initBGM(){
 		string n=bgmlist[0];
-		Bgm::LoadBGM(n,false);
+		Bgm::LoadBGM(n,true);
 	}
 
 	void Bgm::changeBGM(int stage_id){
 		string s,n;
-		s=bgmlist[stage_id];
-		Bgm::playBGM(s);
+		if(bgmlist.max_size()>=stage_id){
+			s=bgmlist[stage_id];
+			Bgm::playBGM(s);
+		}
 		if(bgmlist.max_size()>=stage_id+1){
 			n=bgmlist[stage_id+1];
 			Bgm::LoadBGM(n,true);
 		}
 	}
 	void Bgm::playBGM(string name,boolean defaulttrue){
-		if(_nowBGM!="")
+		if(_nowBGM!=""){
 			StopSoundMem(bgms[_nowBGM]);
+			DeleteSoundMem(bgms[_nowBGM]);
+		}
 		if(name!="")
 			if(defaulttrue){
 				PlaySoundMem(bgms[name],DX_PLAYTYPE_LOOP);

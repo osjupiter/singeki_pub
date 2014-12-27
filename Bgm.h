@@ -16,11 +16,12 @@ class Bgm
 
 public:
 
-
+	
 	int getBGMVol();
 	void setBGMVol(int);
 
 	void load();
+	void loadStage(int);
 	void LoadBGM(string,boolean);
 	void initBGM();
 	void playBGM(string name,boolean defaulttrue=true);
