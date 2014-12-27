@@ -5,6 +5,16 @@
 #include <iostream>
 Images Images::ins;
 
+template
+<
+    typename TYPE,
+    std::size_t SIZE
+>
+std::size_t array_length(const TYPE (&)[SIZE])
+{
+    return SIZE;
+}
+
 void Images::load(){
 	vector<string> filelist;
 
@@ -221,22 +231,7 @@ void Images::load(){
 
 
 
-	filelist.push_back("pic/メカ海城a.png");
-	filelist.push_back("pic/メカ海城a2.png");
-	filelist.push_back("pic/メカ山城a.png");
-	filelist.push_back("pic/メカ山城a2.png");
-	filelist.push_back("pic/メカ森城a.png");
-	filelist.push_back("pic/メカ森城a2.png");
-	filelist.push_back("pic/メカ都市城a.png");
-	filelist.push_back("pic/メカ都市城a2.png");
-	filelist.push_back("pic/メカ洞窟城a.png");
-	filelist.push_back("pic/メカ洞窟城a2.png");
-	filelist.push_back("pic/メカ夜戦城a.png");
-	filelist.push_back("pic/メカ夜戦城a2.png");
-	filelist.push_back("pic/最初の拠点a.png");
-	filelist.push_back("pic/最初の拠点a2.png");
-	filelist.push_back("pic/メカ草原城a.png");
-	filelist.push_back("pic/メカ草原城a2.png");
+
 	filelist.push_back("pic/生産中止a.png");
 	filelist.push_back("pic/生産中止a2.png");
 	filelist.push_back("pic/MUI.png");
@@ -312,40 +307,7 @@ void Images::load(){
 		return ins.get((s+".png").c_str());
 	}
 	int Images::getSiroIcon(int id,boolean defalt_false){
-		string s;
-		switch (id){
-			case 0:
-				s="pic/最初の拠点a";
-				break;
-			case 1:
-				s="pic/メカ山城a";
-				break;
-			case 2:
-				s="pic/メカ森城a";
-				break;
-			case 3:
-				s="pic/メカ夜戦城a";
-				break;
-			case 4:
-				s="pic/メカ海城a";
-				break;
-			case 5:
-				s="pic/メカ草原城a";
-				break;
-			case 6:
-				s="pic/メカ洞窟城a";
-				break;
-			case 7:
-				s="pic/メカ都市城a";
-				break;
-			case 8:
-				break;
-			case 9:
-				break;
-		}
-		if(defalt_false)
-			s+="2";
-		return ins.get((s+".png").c_str());
+		return ins.g_shiro_icon[id][(defalt_false)?1:0];
 	}
 
 	int Images::getParamTypeIcon(ParamType i,boolean dfalse){
@@ -455,6 +417,24 @@ void Images::load(){
 			g_castle[7][0] = LoadGraph("dat/img/新城/荒野/荒野７敵城１.png");
 			g_castle[7][1] = LoadGraph("dat/img/新城/荒野/荒野７敵城２.png");
 			g_castle[7][2] = LoadGraph("dat/img/新城/荒野/荒野７味方城.png");
+			{
+				string shiro_icon_name[]={
+					"pic/first_ufo",
+					"pic/wild_s1",
+					"pic/wild_s2",
+					"pic/wild_s3",
+					"pic/wild_s4",
+					"pic/wild_s5",
+					"pic/wild_s6",
+					"pic/wild_s7",
+					"pic/wild_s8",
+				};
+				for(int i=0;i<array_length(shiro_icon_name);i++){
+					g_shiro_icon[i][0]= LoadGraph((shiro_icon_name[i]+"_1.png").c_str());
+					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
+				}
+			}
+
 			break;
 		case 2:
 			back[0][0] = LoadGraph("dat/img/雪原/雪原１-5.png");
@@ -538,6 +518,25 @@ void Images::load(){
 			g_castle[7][0] = LoadGraph("dat/img/新城/雪原/雪原７敵城１.png");
 			g_castle[7][1] = LoadGraph("dat/img/新城/雪原/雪原７敵城２.png");
 			g_castle[7][2] = LoadGraph("dat/img/新城/雪原/雪原７味方城.png");
+			{
+				string shiro_icon_name[]={
+					"pic/first_ufo",
+					"pic/snow_s1",
+					"pic/snow_s2",
+					"pic/snow_s3",
+					"pic/snow_s4",
+					"pic/snow_s5",
+					"pic/snow_s6",
+					"pic/snow_s7",
+					"pic/snow_s8",
+				};
+				for(int i=0;i<array_length(shiro_icon_name);i++){
+					g_shiro_icon[i][0]= LoadGraph((shiro_icon_name[i]+"_1.png").c_str());
+					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
+				}
+			}
+
+
 			break;
 		case 3:
 			back[0][0] = LoadGraph("dat/img/雲の上/雲の上１－５.png");
@@ -620,6 +619,24 @@ void Images::load(){
 			g_castle[7][0] = LoadGraph("dat/img/新城/雲の上/雲の上７敵城１.png");
 			g_castle[7][1] = LoadGraph("dat/img/新城/雲の上/雲の上７敵城２.png");
 			g_castle[7][2] = LoadGraph("dat/img/新城/雲の上/雲の上７味方城.png");
+			{
+				string shiro_icon_name[]={
+					"pic/first_ufo",
+					"pic/cloud_s1",
+					"pic/cloud_s2",
+					"pic/cloud_s3",
+					"pic/cloud_s4",
+					"pic/cloud_s5",
+					"pic/cloud_s6",
+					"pic/cloud_s7",
+					"pic/cloud_s8",
+				};
+				for(int i=0;i<array_length(shiro_icon_name);i++){
+					g_shiro_icon[i][0]= LoadGraph((shiro_icon_name[i]+"_1.png").c_str());
+					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
+				}
+			}
+
 			break;
 		case 4:
 			back[0][0] = 0;
@@ -703,6 +720,24 @@ void Images::load(){
 			g_castle[7][0] = LoadGraph("dat/img/新城/森ガール/森ガール７敵城１.png");
 			g_castle[7][1] = LoadGraph("dat/img/新城/森ガール/森ガール７敵城２.png");
 			g_castle[7][2] = LoadGraph("dat/img/新城/森ガール/森ガール７味方城.png");
+			{
+				string shiro_icon_name[]={
+					"pic/first_ufo",
+					"pic/forest_s1",
+					"pic/forest_s2",
+					"pic/forest_s3",
+					"pic/forest_s4",
+					"pic/forest_s5",
+					"pic/forest_s6",
+					"pic/forest_s7",
+					"pic/forest_s8",
+				};
+				for(int i=0;i<array_length(shiro_icon_name);i++){
+					g_shiro_icon[i][0]= LoadGraph((shiro_icon_name[i]+"_1.png").c_str());
+					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
+				}
+			}
+
 			break;
 		case 5:
 			back[0][0] = 0;
@@ -785,6 +820,24 @@ void Images::load(){
 			g_castle[7][0] = LoadGraph("dat/img/新城/水の中/水の中７敵城１.png");
 			g_castle[7][1] = LoadGraph("dat/img/新城/水の中/水の中７敵城２.png");
 			g_castle[7][2] = LoadGraph("dat/img/新城/水の中/水の中７味方城.png");
+			{
+				string shiro_icon_name[]={
+					"pic/first_ufo",
+					"pic/water_s1",
+					"pic/water_s2",
+					"pic/water_s3",
+					"pic/water_s4",
+					"pic/water_s5",
+					"pic/water_s6",
+					"pic/water_s7",
+					"pic/water_s8",
+				};
+				for(int i=0;i<array_length(shiro_icon_name);i++){
+					g_shiro_icon[i][0]= LoadGraph((shiro_icon_name[i]+"_1.png").c_str());
+					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
+				}
+			}
+
 			break;
 		case 6:
 			back[0][0] = 0;
@@ -840,33 +893,51 @@ void Images::load(){
 			g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
 			g_castle[0][2] = LoadGraph("dat/img/最初の拠点.png");
 	
-			g_castle[1][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ１敵城１.png");
-			g_castle[1][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ１敵城２.png");
+			g_castle[1][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ１敵城1.png");
+			g_castle[1][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ１敵城2.png");
 			g_castle[1][2] = LoadGraph("dat/img/新城/メカシティ/メカシティ１味方城.png");
 	
 			g_castle[2][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ２敵城１.png");
 			g_castle[2][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ２敵城２.png");
 			g_castle[2][2] = LoadGraph("dat/img/新城/メカシティ/メカシティ２味方城.png");
 	
-			g_castle[3][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ３敵城１.png");
-			g_castle[3][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ３敵城２.png");
+			g_castle[3][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ３敵城1.png");
+			g_castle[3][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ３敵城2.png");
 			g_castle[3][2] = LoadGraph("dat/img/新城/メカシティ/メカシティ３味方城.png");
 	
-			g_castle[4][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ４敵城１.png");
-			g_castle[4][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ４敵城２.png");
+			g_castle[4][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ４敵城1.png");
+			g_castle[4][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ４敵城2.png");
 			g_castle[4][2] = LoadGraph("dat/img/新城/メカシティ/メカシティ４味方城.png");
 	
-			g_castle[5][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ５敵城１.png");
-			g_castle[5][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ５敵城２.png");
+			g_castle[5][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ５敵城1.png");
+			g_castle[5][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ５敵城2.png");
 			g_castle[5][2] = LoadGraph("dat/img/新城/メカシティ/メカシティ５味方城.png");
 	
-			g_castle[6][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ６敵城１.png");
-			g_castle[6][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ６敵城１.png");
+			g_castle[6][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ６敵城1.png");
+			g_castle[6][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ６敵城2.png");
 			g_castle[6][2] = LoadGraph("dat/img/新城/メカシティ/メカシティ６味方城.png");
 	
-			g_castle[7][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ７敵城１.png");
-			g_castle[7][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ７敵城２.png");
+			g_castle[7][0] = LoadGraph("dat/img/新城/メカシティ/メカシティ７敵城1.png");
+			g_castle[7][1] = LoadGraph("dat/img/新城/メカシティ/メカシティ７敵城2.png");
 			g_castle[7][2] = LoadGraph("dat/img/新城/メカシティ/メカシティ７味方城.png");
+			{
+				string shiro_icon_name[]={
+					"pic/first_ufo",
+					"pic/meka_s1",
+					"pic/meka_s2",
+					"pic/meka_s3",
+					"pic/meka_s4",
+					"pic/meka_s5",
+					"pic/meka_s6",
+					"pic/meka_s7",
+					"pic/meka_s8",
+				};
+				for(int i=0;i<array_length(shiro_icon_name);i++){
+					g_shiro_icon[i][0]= LoadGraph((shiro_icon_name[i]+"_1.png").c_str());
+					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
+				}
+			}
+
 			break;
 
 		default:
