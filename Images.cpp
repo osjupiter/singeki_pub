@@ -151,141 +151,14 @@ void Images::load(){
 	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea1.png", 7, 7, 1, 155, 168, g_e_wisp[0]);
 	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea2.png", 7, 7, 1, 155, 168, g_e_wisp[1]);
 	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea3.png", 7, 7, 1, 155, 168, g_e_wisp[2]);
-
+	houdai_yama = LoadGraph("dat/img/R/Ré–C‘ä.png");
 	/*
-	back[0][0] = 0;
-	back[0][1] = LoadGraph("dat/img/r–ì/r–ì‚P|‚S.png");
-	back[0][2] = LoadGraph("dat/img/r–ì/r–ì‚P|‚R.png");
-	back[0][3] = LoadGraph("dat/img/r–ì/r–ì‚P|‚Q.png");
-	back[0][4] = LoadGraph("dat/img/r–ì/r–ì‚P|‚P.png");
-	houdai_yama = LoadGraph("dat/img/R/Ré–C‘ä.png");
-
-	back[1][0] = 0;
-	back[1][1] = LoadGraph("dat/img/r–ì/r–ì‚PD‚T|‚S.png");
-	back[1][2] = LoadGraph("dat/img/r–ì/r–ì‚PD‚T|‚R.png");
-	back[1][3] = LoadGraph("dat/img/r–ì/r–ì‚PD‚T|‚Q.png");
-	back[1][4] = LoadGraph("dat/img/r–ì/r–ì‚PD‚T|‚P.png");
-
-	back[2][0] = 0;
-	back[2][1] = LoadGraph("dat/img/r–ì/r–ì‚Q|‚S.png");
-	back[2][2] = LoadGraph("dat/img/r–ì/r–ì‚Q|‚R.png");
-	back[2][3] = LoadGraph("dat/img/r–ì/r–ì‚Q|‚Q.png");
-	back[2][4] = LoadGraph("dat/img/r–ì/r–ì‚Q|‚P.png");
-
-	back[3][0] = 0;
-	back[3][1] = LoadGraph("dat/img/r–ì/r–ì‚R|‚S.png");
-	back[3][2] = LoadGraph("dat/img/r–ì/r–ì‚R|‚R.png");
-	back[3][3] = LoadGraph("dat/img/r–ì/r–ì‚R|‚Q.png");
-	back[3][4] = LoadGraph("dat/img/r–ì/r–ì‚R|‚P.png");
-
-	back[4][0] = LoadGraph("dat/img/r–ì/r–ì‚T|‚T.png");
-	back[4][1] = LoadGraph("dat/img/r–ì/r–ì‚T|‚S.png");
-	back[4][2] = LoadGraph("dat/img/r–ì/r–ì‚T|‚R.png");
-	back[4][3] = LoadGraph("dat/img/r–ì/r–ì‚T|‚Q.png");
-	back[4][4] = LoadGraph("dat/img/r–ì/r–ì‚T|‚P.png");
-
-	back[5][0] = 0;
-	back[5][1] = LoadGraph("dat/img/r–ì/r–ì‚U|‚S.png");
-	back[5][2] = LoadGraph("dat/img/r–ì/r–ì‚U|‚R.png");
-	back[5][3] = LoadGraph("dat/img/r–ì/r–ì‚U|‚Q.png");
-	back[5][4] = LoadGraph("dat/img/r–ì/r–ì‚U|‚P.png");
-
-	back[6][0] = 0;
-	back[6][1] = LoadGraph("dat/img/r–ì/r–ì‚V|‚S.png");
-	back[6][2] = LoadGraph("dat/img/r–ì/r–ì‚V|‚R.png");
-	back[6][3] = LoadGraph("dat/img/r–ì/r–ì‚V|‚Q.png");
-	back[6][4] = LoadGraph("dat/img/r–ì/r–ì‚V|‚P.png");
-	
-	back[7][0] = LoadGraph("dat/img/r–ì/r–ì‚W|‚T.png");
-	back[7][1] = LoadGraph("dat/img/r–ì/r–ì‚W|‚S.png");
-	back[7][2] = LoadGraph("dat/img/r–ì/r–ì‚W|‚R.png");
-	back[7][3] = LoadGraph("dat/img/r–ì/r–ì‚W|‚Q.png");
-	back[7][4] = LoadGraph("dat/img/r–ì/r–ì‚W|‚P.png");
 */
-	back[0][0] = LoadGraph("dat/img/áŒ´/áŒ´‚P-5.png");
-	back[0][1] = LoadGraph("dat/img/áŒ´/áŒ´‚P-4.png");
-	back[0][2] = LoadGraph("dat/img/áŒ´/áŒ´‚P-3.png");
-	back[0][3] = LoadGraph("dat/img/áŒ´/áŒ´‚P-2.png");
-	back[0][4] = LoadGraph("dat/img/áŒ´/áŒ´‚P-1.png");
-	houdai_yama = LoadGraph("dat/img/R/Ré–C‘ä.png");
-
-	back[1][0] = 0;
-	back[1][1] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚S.png");
-	back[1][2] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚R.png");
-	back[1][3] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚Q.png");
-	back[1][4] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚P.png");
-
-	back[2][0] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚T.png");
-	back[2][1] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚S.png");
-	back[2][2] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚R.png");
-	back[2][3] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚Q.png");
-	back[2][4] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚P.png");
-
-	back[3][0] = 0;
-	back[3][1] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚S.png");
-	back[3][2] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚R.png");
-	back[3][3] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚Q.png");
-	back[3][4] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚P.png");
-
-	back[4][0] = 0;
-	back[4][1] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚S.png");
-	back[4][2] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚R.png");
-	back[4][3] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚Q.png");
-	back[4][4] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚P.png");
-
-	back[5][0] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚T.png");
-	back[5][1] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚S.png");
-	back[5][2] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚R.png");
-	back[5][3] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚Q.png");
-	back[5][4] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚P.png");
-
-	back[6][0] = 0;
-	back[6][1] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚S.png");
-	back[6][2] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚R.png");
-	back[6][3] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚Q.png");
-	back[6][4] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚P.png");
-
-	back[7][0] = 0;
-	back[7][1] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚S.png");
-	back[7][2] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚R.png");
-	back[7][3] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚Q.png");
-	back[7][4] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚P.png");
 
 
 
 	g_mekahaikyo=LoadGraph("dat/img/ƒƒJ”pšĞ.png");
 
-	g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
-	g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
-	g_castle[0][2] = LoadGraph("dat/img/Å‰‚Ì‹’“_.png");
-	
-	g_castle[1][0] = LoadGraph("dat/img/R/Ré.png");
-	g_castle[1][1] = LoadGraph("dat/img/R/Ré”¼‰ó.png");
-	g_castle[1][2] = LoadGraph("dat/img/R/ƒƒJRé.png");
-	
-	g_castle[2][0] = LoadGraph("dat/img/X/Xé.png");
-	g_castle[2][1] = LoadGraph("dat/img/X/Xé”¼‰ó.png");
-	g_castle[2][2] = LoadGraph("dat/img/X/ƒƒJXé.png");
-	
-	g_castle[3][0] = LoadGraph("dat/img/–éí/–éíé.png");
-	g_castle[3][1] = LoadGraph("dat/img/–éí/–éíé”¼‰ó.png");
-	g_castle[3][2] = LoadGraph("dat/img/–éí/ƒƒJ–éíé.png");
-	
-	g_castle[4][0] = LoadGraph("dat/img/ŠC/ŠCé.png");
-	g_castle[4][1] = LoadGraph("dat/img/ŠC/ŠCé”¼‰ó.png");
-	g_castle[4][2] = LoadGraph("dat/img/ŠC/ƒƒJŠCé.png");
-	
-	g_castle[5][0] = LoadGraph("dat/img/‘Œ´/‘Œ´é.png");
-	g_castle[5][1] = LoadGraph("dat/img/‘Œ´/‘Œ´é”¼‰ó.png");
-	g_castle[5][2] = LoadGraph("dat/img/‘Œ´/ƒƒJ‘Œ´é.png");
-	
-	g_castle[6][0] = LoadGraph("dat/img/“´ŒA/“´ŒAé.png");
-	g_castle[6][1] = LoadGraph("dat/img/“´ŒA/“´ŒAé”¼‰ó.png");
-	g_castle[6][2] = LoadGraph("dat/img/“´ŒA/ƒƒJ“´ŒAé.png");
-	
-	g_castle[7][0] = LoadGraph("dat/img/“ss/“ssé.png");
-	g_castle[7][1] = LoadGraph("dat/img/“ss/“ssé”¼‰ó.png");
-	g_castle[7][2] = LoadGraph("dat/img/“ss/ƒƒJ“ssé.png");
 	
 	LoadDivGraph("dat/img/ƒƒJ‚Ë‚Ş–º.png", ANI_MEKANEMU, ANI_MEKANEMU, 1, WID_MEKANEMU, HEI_CASTLE, g_castle[8]);
 	LoadDivGraph("dat/img/ƒ‰ƒXƒ{ƒX—‹.png", 3, 3, 1, 324, 364, g_thunder_mekanemu);
@@ -491,3 +364,520 @@ void Images::load(){
 
 	}
 
+
+	void Images::loadStage(int sid){
+		
+
+
+		SetUseASyncLoadFlag( TRUE ); // ”ñ“¯Šú“Ç‚İ‚İƒtƒ‰ƒOON
+		switch (sid)
+		{
+		case 1:
+			
+			back[0][0] = 0;
+			back[0][1] = LoadGraph("dat/img/r–ì/r–ì‚P|‚S.png");
+			back[0][2] = LoadGraph("dat/img/r–ì/r–ì‚P|‚R.png");
+			back[0][3] = LoadGraph("dat/img/r–ì/r–ì‚P|‚Q.png");
+			back[0][4] = LoadGraph("dat/img/r–ì/r–ì‚P|‚P.png");
+
+			back[1][0] = 0;
+			back[1][1] = LoadGraph("dat/img/r–ì/r–ì‚PD‚T|‚S.png");
+			back[1][2] = LoadGraph("dat/img/r–ì/r–ì‚PD‚T|‚R.png");
+			back[1][3] = LoadGraph("dat/img/r–ì/r–ì‚PD‚T|‚Q.png");
+			back[1][4] = LoadGraph("dat/img/r–ì/r–ì‚PD‚T|‚P.png");
+
+			back[2][0] = 0;
+			back[2][1] = LoadGraph("dat/img/r–ì/r–ì‚Q|‚S.png");
+			back[2][2] = LoadGraph("dat/img/r–ì/r–ì‚Q|‚R.png");
+			back[2][3] = LoadGraph("dat/img/r–ì/r–ì‚Q|‚Q.png");
+			back[2][4] = LoadGraph("dat/img/r–ì/r–ì‚Q|‚P.png");
+
+			back[3][0] = 0;
+			back[3][1] = LoadGraph("dat/img/r–ì/r–ì‚R|‚S.png");
+			back[3][2] = LoadGraph("dat/img/r–ì/r–ì‚R|‚R.png");
+			back[3][3] = LoadGraph("dat/img/r–ì/r–ì‚R|‚Q.png");
+			back[3][4] = LoadGraph("dat/img/r–ì/r–ì‚R|‚P.png");
+
+			back[4][0] = LoadGraph("dat/img/r–ì/r–ì‚T|‚T.png");
+			back[4][1] = LoadGraph("dat/img/r–ì/r–ì‚T|‚S.png");
+			back[4][2] = LoadGraph("dat/img/r–ì/r–ì‚T|‚R.png");
+			back[4][3] = LoadGraph("dat/img/r–ì/r–ì‚T|‚Q.png");
+			back[4][4] = LoadGraph("dat/img/r–ì/r–ì‚T|‚P.png");
+
+			back[5][0] = 0;
+			back[5][1] = LoadGraph("dat/img/r–ì/r–ì‚U|‚S.png");
+			back[5][2] = LoadGraph("dat/img/r–ì/r–ì‚U|‚R.png");
+			back[5][3] = LoadGraph("dat/img/r–ì/r–ì‚U|‚Q.png");
+			back[5][4] = LoadGraph("dat/img/r–ì/r–ì‚U|‚P.png");
+
+			back[6][0] = 0;
+			back[6][1] = LoadGraph("dat/img/r–ì/r–ì‚V|‚S.png");
+			back[6][2] = LoadGraph("dat/img/r–ì/r–ì‚V|‚R.png");
+			back[6][3] = LoadGraph("dat/img/r–ì/r–ì‚V|‚Q.png");
+			back[6][4] = LoadGraph("dat/img/r–ì/r–ì‚V|‚P.png");
+	
+			back[7][0] = LoadGraph("dat/img/r–ì/r–ì‚W|‚T.png");
+			back[7][1] = LoadGraph("dat/img/r–ì/r–ì‚W|‚S.png");
+			back[7][2] = LoadGraph("dat/img/r–ì/r–ì‚W|‚R.png");
+			back[7][3] = LoadGraph("dat/img/r–ì/r–ì‚W|‚Q.png");
+			back[7][4] = LoadGraph("dat/img/r–ì/r–ì‚W|‚P.png");
+
+
+			
+			g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][2] = LoadGraph("dat/img/Å‰‚Ì‹’“_.png");
+	
+			g_castle[1][0] = LoadGraph("dat/img/R/Ré.png");
+			g_castle[1][1] = LoadGraph("dat/img/R/Ré”¼‰ó.png");
+			g_castle[1][2] = LoadGraph("dat/img/R/ƒƒJRé.png");
+	
+			g_castle[2][0] = LoadGraph("dat/img/X/Xé.png");
+			g_castle[2][1] = LoadGraph("dat/img/X/Xé”¼‰ó.png");
+			g_castle[2][2] = LoadGraph("dat/img/X/ƒƒJXé.png");
+	
+			g_castle[3][0] = LoadGraph("dat/img/–éí/–éíé.png");
+			g_castle[3][1] = LoadGraph("dat/img/–éí/–éíé”¼‰ó.png");
+			g_castle[3][2] = LoadGraph("dat/img/–éí/ƒƒJ–éíé.png");
+	
+			g_castle[4][0] = LoadGraph("dat/img/ŠC/ŠCé.png");
+			g_castle[4][1] = LoadGraph("dat/img/ŠC/ŠCé”¼‰ó.png");
+			g_castle[4][2] = LoadGraph("dat/img/ŠC/ƒƒJŠCé.png");
+	
+			g_castle[5][0] = LoadGraph("dat/img/‘Œ´/‘Œ´é.png");
+			g_castle[5][1] = LoadGraph("dat/img/‘Œ´/‘Œ´é”¼‰ó.png");
+			g_castle[5][2] = LoadGraph("dat/img/‘Œ´/ƒƒJ‘Œ´é.png");
+	
+			g_castle[6][0] = LoadGraph("dat/img/“´ŒA/“´ŒAé.png");
+			g_castle[6][1] = LoadGraph("dat/img/“´ŒA/“´ŒAé”¼‰ó.png");
+			g_castle[6][2] = LoadGraph("dat/img/“´ŒA/ƒƒJ“´ŒAé.png");
+	
+			g_castle[7][0] = LoadGraph("dat/img/“ss/“ssé.png");
+			g_castle[7][1] = LoadGraph("dat/img/“ss/“ssé”¼‰ó.png");
+			g_castle[7][2] = LoadGraph("dat/img/“ss/ƒƒJ“ssé.png");
+			break;
+		case 2:
+			back[0][0] = LoadGraph("dat/img/áŒ´/áŒ´‚P-5.png");
+			back[0][1] = LoadGraph("dat/img/áŒ´/áŒ´‚P-4.png");
+			back[0][2] = LoadGraph("dat/img/áŒ´/áŒ´‚P-3.png");
+			back[0][3] = LoadGraph("dat/img/áŒ´/áŒ´‚P-2.png");
+			back[0][4] = LoadGraph("dat/img/áŒ´/áŒ´‚P-1.png");
+
+			back[1][0] = 0;
+			back[1][1] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚S.png");
+			back[1][2] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚R.png");
+			back[1][3] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚Q.png");
+			back[1][4] = LoadGraph("dat/img/áŒ´/áŒ´‚Q|‚P.png");
+
+			back[2][0] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚T.png");
+			back[2][1] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚S.png");
+			back[2][2] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚R.png");
+			back[2][3] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚Q.png");
+			back[2][4] = LoadGraph("dat/img/áŒ´/áŒ´‚R|‚P.png");
+
+			back[3][0] = 0;
+			back[3][1] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚S.png");
+			back[3][2] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚R.png");
+			back[3][3] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚Q.png");
+			back[3][4] = LoadGraph("dat/img/áŒ´/áŒ´‚S|‚P.png");
+
+			back[4][0] = 0;
+			back[4][1] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚S.png");
+			back[4][2] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚R.png");
+			back[4][3] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚Q.png");
+			back[4][4] = LoadGraph("dat/img/áŒ´/áŒ´‚T|‚P.png");
+
+			back[5][0] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚T.png");
+			back[5][1] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚S.png");
+			back[5][2] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚R.png");
+			back[5][3] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚Q.png");
+			back[5][4] = LoadGraph("dat/img/áŒ´/áŒ´‚U|‚P.png");
+			
+			
+			back[6][0] = 0;
+			back[6][1] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚S.png");
+			back[6][2] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚R.png");
+			back[6][3] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚Q.png");
+			back[6][4] = LoadGraph("dat/img/áŒ´/áŒ´‚V|‚P.png");
+
+			back[7][0] = 0;
+			back[7][1] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚S.png");
+			back[7][2] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚R.png");
+			back[7][3] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚Q.png");
+			back[7][4] = LoadGraph("dat/img/áŒ´/áŒ´‚W|‚P.png");
+
+			g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][2] = LoadGraph("dat/img/Å‰‚Ì‹’“_.png");
+	
+			g_castle[1][0] = LoadGraph("dat/img/R/Ré.png");
+			g_castle[1][1] = LoadGraph("dat/img/R/Ré”¼‰ó.png");
+			g_castle[1][2] = LoadGraph("dat/img/R/ƒƒJRé.png");
+	
+			g_castle[2][0] = LoadGraph("dat/img/X/Xé.png");
+			g_castle[2][1] = LoadGraph("dat/img/X/Xé”¼‰ó.png");
+			g_castle[2][2] = LoadGraph("dat/img/X/ƒƒJXé.png");
+	
+			g_castle[3][0] = LoadGraph("dat/img/–éí/–éíé.png");
+			g_castle[3][1] = LoadGraph("dat/img/–éí/–éíé”¼‰ó.png");
+			g_castle[3][2] = LoadGraph("dat/img/–éí/ƒƒJ–éíé.png");
+	
+			g_castle[4][0] = LoadGraph("dat/img/ŠC/ŠCé.png");
+			g_castle[4][1] = LoadGraph("dat/img/ŠC/ŠCé”¼‰ó.png");
+			g_castle[4][2] = LoadGraph("dat/img/ŠC/ƒƒJŠCé.png");
+	
+			g_castle[5][0] = LoadGraph("dat/img/‘Œ´/‘Œ´é.png");
+			g_castle[5][1] = LoadGraph("dat/img/‘Œ´/‘Œ´é”¼‰ó.png");
+			g_castle[5][2] = LoadGraph("dat/img/‘Œ´/ƒƒJ‘Œ´é.png");
+	
+			g_castle[6][0] = LoadGraph("dat/img/“´ŒA/“´ŒAé.png");
+			g_castle[6][1] = LoadGraph("dat/img/“´ŒA/“´ŒAé”¼‰ó.png");
+			g_castle[6][2] = LoadGraph("dat/img/“´ŒA/ƒƒJ“´ŒAé.png");
+	
+			g_castle[7][0] = LoadGraph("dat/img/“ss/“ssé.png");
+			g_castle[7][1] = LoadGraph("dat/img/“ss/“ssé”¼‰ó.png");
+			g_castle[7][2] = LoadGraph("dat/img/“ss/ƒƒJ“ssé.png");
+
+			break;
+		case 3:
+			back[0][0] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚T.png");
+			back[0][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚S.png");
+			back[0][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚R.png");
+			back[0][3] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚Q.png");
+			back[0][4] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚P.png");
+			
+
+			back[1][0] = 0;
+			back[1][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚Q|‚S.png");
+			back[1][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚Q|‚R.png");
+			back[1][3] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚Q|‚Q.png");
+			back[1][4] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚Q|‚P.png");
+
+			back[2][0] = 0;
+			back[2][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚R|‚S.png");
+			back[2][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚R|‚R.png");
+			back[2][3] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚R|‚Q.png");
+			back[2][4] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚R|‚P.png");
+
+			back[3][0] = 0;
+			back[3][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚S|‚S.png");
+			back[3][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚S|‚R.png");
+			back[3][3] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚S|‚Q.png");
+			back[3][4] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚S|‚P.png");
+
+			back[4][0] = 0;
+			back[4][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚T|‚S.png");
+			back[4][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚T|‚R.png");
+			back[4][3] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚T|‚Q.png");
+			back[4][4] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚T|‚P.png");
+
+			back[5][0] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚U|‚T.png");
+			back[5][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚U|‚S.png");
+			back[5][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚U|‚R.png");
+			back[5][3] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚U|‚Q.png");
+			back[5][4] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚U|‚P.png");
+			
+			
+			back[6][0] = 0;
+			back[6][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚V|‚S.png");
+			back[6][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚V|‚R.png");
+			back[6][3] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚V|‚Q.png");
+			back[6][4] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚V|‚P.png");
+
+			back[7][0] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚W|‚T.png");
+			back[7][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚W|‚S.png");
+			back[7][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚W|‚R.png");
+			back[7][3] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚W|‚Q.png");
+			back[7][4] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚W|‚P.png");
+
+			g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][2] = LoadGraph("dat/img/Å‰‚Ì‹’“_.png");
+	
+			g_castle[1][0] = LoadGraph("dat/img/R/Ré.png");
+			g_castle[1][1] = LoadGraph("dat/img/R/Ré”¼‰ó.png");
+			g_castle[1][2] = LoadGraph("dat/img/R/ƒƒJRé.png");
+	
+			g_castle[2][0] = LoadGraph("dat/img/X/Xé.png");
+			g_castle[2][1] = LoadGraph("dat/img/X/Xé”¼‰ó.png");
+			g_castle[2][2] = LoadGraph("dat/img/X/ƒƒJXé.png");
+	
+			g_castle[3][0] = LoadGraph("dat/img/–éí/–éíé.png");
+			g_castle[3][1] = LoadGraph("dat/img/–éí/–éíé”¼‰ó.png");
+			g_castle[3][2] = LoadGraph("dat/img/–éí/ƒƒJ–éíé.png");
+	
+			g_castle[4][0] = LoadGraph("dat/img/ŠC/ŠCé.png");
+			g_castle[4][1] = LoadGraph("dat/img/ŠC/ŠCé”¼‰ó.png");
+			g_castle[4][2] = LoadGraph("dat/img/ŠC/ƒƒJŠCé.png");
+	
+			g_castle[5][0] = LoadGraph("dat/img/‘Œ´/‘Œ´é.png");
+			g_castle[5][1] = LoadGraph("dat/img/‘Œ´/‘Œ´é”¼‰ó.png");
+			g_castle[5][2] = LoadGraph("dat/img/‘Œ´/ƒƒJ‘Œ´é.png");
+	
+			g_castle[6][0] = LoadGraph("dat/img/“´ŒA/“´ŒAé.png");
+			g_castle[6][1] = LoadGraph("dat/img/“´ŒA/“´ŒAé”¼‰ó.png");
+			g_castle[6][2] = LoadGraph("dat/img/“´ŒA/ƒƒJ“´ŒAé.png");
+	
+			g_castle[7][0] = LoadGraph("dat/img/“ss/“ssé.png");
+			g_castle[7][1] = LoadGraph("dat/img/“ss/“ssé”¼‰ó.png");
+			g_castle[7][2] = LoadGraph("dat/img/“ss/ƒƒJ“ssé.png");
+
+			break;
+		case 4:
+			back[0][0] = 0;
+			back[0][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚P|‚S.png");
+			back[0][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚P|‚R.png");
+			back[0][3] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚P|‚Q.png");
+			back[0][4] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚P|‚P.png");
+			
+
+			back[1][0] = 0;
+			back[1][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚Q|‚S.png");
+			back[1][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚Q|‚R.png");
+			back[1][3] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚Q|‚Q.png");
+			back[1][4] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚Q|‚P.png");
+
+			back[2][0] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚R|‚T.png");
+			back[2][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚R|‚S.png");
+			back[2][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚R|‚R.png");
+			back[2][3] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚R|‚Q.png");
+			back[2][4] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚R|‚P.png");
+
+			back[3][0] = 0;
+			back[3][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚S|‚S.png");
+			back[3][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚S|‚R.png");
+			back[3][3] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚S|‚Q.png");
+			back[3][4] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚S|‚P.png");
+
+			back[4][0] = 0;
+			back[4][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚T|‚S.png");
+			back[4][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚T|‚R.png");
+			back[4][3] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚T|‚Q.png");
+			back[4][4] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚T|‚P.png");
+
+			back[5][0] = 0;
+			back[5][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚U|‚S.png");
+			back[5][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚U|‚R.png");
+			back[5][3] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚U|‚Q.png");
+			back[5][4] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚U|‚P.png");
+			
+			
+			back[6][0] = 0;
+			back[6][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚V|‚S.png");
+			back[6][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚V|‚R.png");
+			back[6][3] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚V|‚Q.png");
+			back[6][4] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚V|‚P.png");
+
+			back[7][0] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚W|‚T.png");
+			back[7][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚W|‚S.png");
+			back[7][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚W|‚R.png");
+			back[7][3] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚W|‚Q.png");
+			back[7][4] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚W|‚P.png");
+
+			g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][2] = LoadGraph("dat/img/Å‰‚Ì‹’“_.png");
+	
+			g_castle[1][0] = LoadGraph("dat/img/R/Ré.png");
+			g_castle[1][1] = LoadGraph("dat/img/R/Ré”¼‰ó.png");
+			g_castle[1][2] = LoadGraph("dat/img/R/ƒƒJRé.png");
+	
+			g_castle[2][0] = LoadGraph("dat/img/X/Xé.png");
+			g_castle[2][1] = LoadGraph("dat/img/X/Xé”¼‰ó.png");
+			g_castle[2][2] = LoadGraph("dat/img/X/ƒƒJXé.png");
+	
+			g_castle[3][0] = LoadGraph("dat/img/–éí/–éíé.png");
+			g_castle[3][1] = LoadGraph("dat/img/–éí/–éíé”¼‰ó.png");
+			g_castle[3][2] = LoadGraph("dat/img/–éí/ƒƒJ–éíé.png");
+	
+			g_castle[4][0] = LoadGraph("dat/img/ŠC/ŠCé.png");
+			g_castle[4][1] = LoadGraph("dat/img/ŠC/ŠCé”¼‰ó.png");
+			g_castle[4][2] = LoadGraph("dat/img/ŠC/ƒƒJŠCé.png");
+	
+			g_castle[5][0] = LoadGraph("dat/img/‘Œ´/‘Œ´é.png");
+			g_castle[5][1] = LoadGraph("dat/img/‘Œ´/‘Œ´é”¼‰ó.png");
+			g_castle[5][2] = LoadGraph("dat/img/‘Œ´/ƒƒJ‘Œ´é.png");
+	
+			g_castle[6][0] = LoadGraph("dat/img/“´ŒA/“´ŒAé.png");
+			g_castle[6][1] = LoadGraph("dat/img/“´ŒA/“´ŒAé”¼‰ó.png");
+			g_castle[6][2] = LoadGraph("dat/img/“´ŒA/ƒƒJ“´ŒAé.png");
+	
+			g_castle[7][0] = LoadGraph("dat/img/“ss/“ssé.png");
+			g_castle[7][1] = LoadGraph("dat/img/“ss/“ssé”¼‰ó.png");
+			g_castle[7][2] = LoadGraph("dat/img/“ss/ƒƒJ“ssé.png");
+
+			break;
+		case 5:
+			back[0][0] = 0;
+			back[0][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚S.png");
+			back[0][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚R.png");
+			back[0][3] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚Q.png");
+			back[0][4] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚P.png");
+			houdai_yama = LoadGraph("dat/img/R/Ré–C‘ä.png");
+
+			back[1][0] = 0;
+			back[1][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚Q|‚S.png");
+			back[1][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚Q|‚R.png");
+			back[1][3] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚Q|‚Q.png");
+			back[1][4] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚Q|‚P.png");
+
+			back[2][0] = 0;
+			back[2][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚R|‚S.png");
+			back[2][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚R|‚R.png");
+			back[2][3] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚R|‚Q.png");
+			back[2][4] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚R|‚P.png");
+
+			back[3][0] = 0;
+			back[3][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚S|‚S.png");
+			back[3][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚S|‚R.png");
+			back[3][3] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚S|‚Q.png");
+			back[3][4] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚S|‚P.png");
+
+			back[4][0] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚T|‚T.png");
+			back[4][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚T|‚S.png");
+			back[4][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚T|‚R.png");
+			back[4][3] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚T|‚Q.png");
+			back[4][4] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚T|‚P.png");
+
+			back[5][0] = 0;
+			back[5][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚U|‚S.png");
+			back[5][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚U|‚R.png");
+			back[5][3] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚U|‚Q.png");
+			back[5][4] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚U|‚P.png");
+			
+			
+			back[6][0] = 0;
+			back[6][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚V|‚S.png");
+			back[6][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚V|‚R.png");
+			back[6][3] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚V|‚Q.png");
+			back[6][4] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚V|‚P.png");
+
+			back[7][0] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚W|‚T.png");
+			back[7][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚W|‚S.png");
+			back[7][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚W|‚R.png");
+			back[7][3] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚W|‚Q.png");
+			back[7][4] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚W|‚P.png");
+
+			g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][2] = LoadGraph("dat/img/Å‰‚Ì‹’“_.png");
+	
+			g_castle[1][0] = LoadGraph("dat/img/R/Ré.png");
+			g_castle[1][1] = LoadGraph("dat/img/R/Ré”¼‰ó.png");
+			g_castle[1][2] = LoadGraph("dat/img/R/ƒƒJRé.png");
+	
+			g_castle[2][0] = LoadGraph("dat/img/X/Xé.png");
+			g_castle[2][1] = LoadGraph("dat/img/X/Xé”¼‰ó.png");
+			g_castle[2][2] = LoadGraph("dat/img/X/ƒƒJXé.png");
+	
+			g_castle[3][0] = LoadGraph("dat/img/–éí/–éíé.png");
+			g_castle[3][1] = LoadGraph("dat/img/–éí/–éíé”¼‰ó.png");
+			g_castle[3][2] = LoadGraph("dat/img/–éí/ƒƒJ–éíé.png");
+	
+			g_castle[4][0] = LoadGraph("dat/img/ŠC/ŠCé.png");
+			g_castle[4][1] = LoadGraph("dat/img/ŠC/ŠCé”¼‰ó.png");
+			g_castle[4][2] = LoadGraph("dat/img/ŠC/ƒƒJŠCé.png");
+	
+			g_castle[5][0] = LoadGraph("dat/img/‘Œ´/‘Œ´é.png");
+			g_castle[5][1] = LoadGraph("dat/img/‘Œ´/‘Œ´é”¼‰ó.png");
+			g_castle[5][2] = LoadGraph("dat/img/‘Œ´/ƒƒJ‘Œ´é.png");
+	
+			g_castle[6][0] = LoadGraph("dat/img/“´ŒA/“´ŒAé.png");
+			g_castle[6][1] = LoadGraph("dat/img/“´ŒA/“´ŒAé”¼‰ó.png");
+			g_castle[6][2] = LoadGraph("dat/img/“´ŒA/ƒƒJ“´ŒAé.png");
+	
+			g_castle[7][0] = LoadGraph("dat/img/“ss/“ssé.png");
+			g_castle[7][1] = LoadGraph("dat/img/“ss/“ssé”¼‰ó.png");
+			g_castle[7][2] = LoadGraph("dat/img/“ss/ƒƒJ“ssé.png");
+
+			break;
+		case 6:
+			back[0][0] = 0;
+			back[0][1] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚P|‚S.png");
+			back[0][2] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚P|‚R.png");
+			back[0][3] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚P|‚Q.png");
+			back[0][4] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚P|‚P.png");
+
+			back[1][0] = 0;
+			back[1][1] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚Q|‚S.png");
+			back[1][2] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚Q|‚R.png");
+			back[1][3] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚Q|‚Q.png");
+			back[1][4] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚Q|‚P.png");
+
+			back[2][0] = 0;
+			back[2][1] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚R|‚S.png");
+			back[2][2] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚R|‚R.png");
+			back[2][3] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚R|‚Q.png");
+			back[2][4] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚R|‚P.png");
+
+			back[3][0] = 0;
+			back[3][1] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚S|‚S.png");
+			back[3][2] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚S|‚R.png");
+			back[3][3] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚S|‚Q.png");
+			back[3][4] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚S|‚P.png");
+
+			back[4][0] = 0;
+			back[4][1] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚T|‚S.png");
+			back[4][2] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚T|‚R.png");
+			back[4][3] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚T|‚Q.png");
+			back[4][4] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚T|‚P.png");
+
+			back[5][0] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚U|‚T.png");
+			back[5][1] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚U|‚S.png");
+			back[5][2] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚U|‚R.png");
+			back[5][3] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚U|‚Q.png");
+			back[5][4] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚U|‚P.png");
+			
+			
+			back[6][0] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚V|‚T.png");
+			back[6][1] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚V|‚S.png");
+			back[6][2] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚V|‚R.png");
+			back[6][3] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚V|‚Q.png");
+			back[6][4] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚V|‚P.png");
+
+			back[7][0] = 0;
+			back[7][1] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚W|‚S.png");
+			back[7][2] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚W|‚R.png");
+			back[7][3] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚W|‚Q.png");
+			back[7][4] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚W|‚P.png");
+
+			g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
+			g_castle[0][2] = LoadGraph("dat/img/Å‰‚Ì‹’“_.png");
+	
+			g_castle[1][0] = LoadGraph("dat/img/R/Ré.png");
+			g_castle[1][1] = LoadGraph("dat/img/R/Ré”¼‰ó.png");
+			g_castle[1][2] = LoadGraph("dat/img/R/ƒƒJRé.png");
+	
+			g_castle[2][0] = LoadGraph("dat/img/X/Xé.png");
+			g_castle[2][1] = LoadGraph("dat/img/X/Xé”¼‰ó.png");
+			g_castle[2][2] = LoadGraph("dat/img/X/ƒƒJXé.png");
+	
+			g_castle[3][0] = LoadGraph("dat/img/–éí/–éíé.png");
+			g_castle[3][1] = LoadGraph("dat/img/–éí/–éíé”¼‰ó.png");
+			g_castle[3][2] = LoadGraph("dat/img/–éí/ƒƒJ–éíé.png");
+	
+			g_castle[4][0] = LoadGraph("dat/img/ŠC/ŠCé.png");
+			g_castle[4][1] = LoadGraph("dat/img/ŠC/ŠCé”¼‰ó.png");
+			g_castle[4][2] = LoadGraph("dat/img/ŠC/ƒƒJŠCé.png");
+	
+			g_castle[5][0] = LoadGraph("dat/img/‘Œ´/‘Œ´é.png");
+			g_castle[5][1] = LoadGraph("dat/img/‘Œ´/‘Œ´é”¼‰ó.png");
+			g_castle[5][2] = LoadGraph("dat/img/‘Œ´/ƒƒJ‘Œ´é.png");
+	
+			g_castle[6][0] = LoadGraph("dat/img/“´ŒA/“´ŒAé.png");
+			g_castle[6][1] = LoadGraph("dat/img/“´ŒA/“´ŒAé”¼‰ó.png");
+			g_castle[6][2] = LoadGraph("dat/img/“´ŒA/ƒƒJ“´ŒAé.png");
+	
+			g_castle[7][0] = LoadGraph("dat/img/“ss/“ssé.png");
+			g_castle[7][1] = LoadGraph("dat/img/“ss/“ssé”¼‰ó.png");
+			g_castle[7][2] = LoadGraph("dat/img/“ss/ƒƒJ“ssé.png");
+
+			break;
+
+		default:
+			printfDx("initStageERROR!!");
+			break;
+		}
+		SetUseASyncLoadFlag( FALSE ); // ”ñ“¯Šú“Ç‚İ‚İƒtƒ‰ƒOON
+	}
