@@ -7,6 +7,7 @@ boss_castle::boss_castle(int fx, int fy, int st,int wl, vector<vector<string>> l
 	if (st == 1){
 		boss_unit = Game::getIns()->x_birth(x, unit_type, false);
 	}
+	x = fx;
 }
 
 void boss_castle::main(int front){

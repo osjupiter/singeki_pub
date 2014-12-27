@@ -180,6 +180,12 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define WID_NOUKA_A 103
 #define HEI_NOUKA 110
 
+/*スチームパンクロボ*/
+#define ANI_STEAM_W 9
+#define ANI_STEAM_F 4
+#define ANI_STEAM_A 16
+#define WID_STEAM 650
+#define HEI_STEAM 450
 
 
 /*さいはて*/

@@ -101,6 +101,9 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
+	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_AKUUMON, UnitType::_GUUZOU,
+		UnitType::_TAMANEGI, UnitType::_DARKMUSUME };
+
 	string spownfilename[WORLD_NUM+1] = { "","dat/çrñÏspown.csv", "dat/ê·å¥spown.csv", "dat/â_ÇÃè„spown.csv"
 		, "dat/êXÉKÅ[Éãspown.csv", "dat/êÖÇÃíÜspown.csv", "dat/ÉÅÉJÉVÉeÉBspown.csv" };
 	
@@ -130,7 +133,7 @@ void Game::castle_init(){
 	p = shared_ptr<castle>(new castle_enemy(stage_W[7], 0, 7, world, pop_list));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new boss_castle(stage_W[8], 0, 8, world, pop_list, UnitType::_SAIHATE));
+	p = shared_ptr<castle>(new boss_castle(stage_W[8], 0, 8, world, pop_list, boss_type[world-1]));
 	castle_list.push_back(p);
 
 }
@@ -598,11 +601,11 @@ void Game::Test(){
 	atkrange_enemy_list.clear();
 
 	static bool hit = false;
-	static int b_unit = _YOUJO;
+	static int b_unit = _HOHEI;
 	if (CheckHitKey(KEY_INPUT_C)) {
 		if (!hit){
 			b_unit++;
-			if (b_unit == END_MUSUME) b_unit = _YOUJO;
+			if (b_unit == END_MUSUME) b_unit = _HOHEI;
 			hit = true;
 		}
 	}

@@ -18,6 +18,7 @@ segway::segway(int fx, int ln) : musume(fx, ln, UnitType::_SEGWAY){
 	type = RAND;
 	y = WINDOW_Y - HEI_SEGWAY - line * 3;
 	unit_type=UnitType::_SEGWAY;
+	atk_done = false;
 }
 void segway::init(){
 	num = 0;
@@ -31,18 +32,21 @@ void segway::main(int front){
 	case UnitState::ATK:
 		x += param->getParam(SPEED)*3;
 
-		if (atk){
+		if (atk_done){
 			//Game::getIns()->effect_create(x - 125, WINDOW_Y - HEI_NOMALEXP + 25, NOMALEXP);
 			SoundController::getSE()->playSE("sound/sen_mi_robo_bato01.mp3");
 			Game::getIns()->damage_effect_create(x - 125 +5, WINDOW_Y - HEI_NOMALEXP + 25, NOMALEXP);
+			state_change_flag = true;
 			changeState(UnitState::WAIT);
+			atk_done = false;
+			ani_count = 0;
+
+		}else if (x - width / 2 > front){
+			atk = true;
+			atk_done = true;
 		}
 
-		if (x-width/2 > front){
-			atk = true;
-			
-			ani_count = 0;
-		}
+
 
 		break;
 	case UnitState::WAIT:
@@ -50,7 +54,7 @@ void segway::main(int front){
 		if (ani_count < 18){
 			state_change_flag = false;
 			x -= BACK_SEGWAY;		
-
+			
 		}
 		else{
 			state_change_flag = true;
@@ -82,7 +86,9 @@ void segway::draw(int cx){
 	character::draw(cx);
 
 }
-
+void segway::decideDirection(int front){
+	
+}
 int segway::getNum(){
 	return num;
 }
