@@ -231,8 +231,8 @@ void Game::enemy_birth(){
 //	if (getClock(STAGE1_W-front_line)) birth(STAGE1_W, TANK);
 }
 
-void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, int dest){
-	shared_ptr<effect> p(Factory::create_effect(fx,fy,type,dr,atk_power,dest));
+void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, int destx, int desty,int lv){
+	shared_ptr<effect> p(Factory::create_effect(fx,fy,type,dr,atk_power,destx,desty,lv));
 	if (p != NULL) effect_list.push_back(p);
 }
 
@@ -618,7 +618,7 @@ void Game::Test(){
 	else{ hit = false; }
 	if (mouse_in::getIns()->RightClick()){
 		birth(nowstage-1, b_unit);
-		;
+		
 	}
 }
 

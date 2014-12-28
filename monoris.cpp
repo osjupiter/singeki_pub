@@ -12,8 +12,8 @@
 monoris::monoris(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_MONORIS){
 	width = WID_MONORIS;
 	height = HEI_MONORIS;
-	y = 20 + ln * 3;
-	atk_type = SKY;
+	y = 40 + ln * 3;
+	atk_type = ALL;
 	dist = dist + DIST_MONORIS;
 	type = SKY;
 	beam_count = 0;
@@ -50,10 +50,11 @@ void monoris::main(int front){
 		}
 		if (((beam_count / ANIM_SPEED_MONOBEAM) == ANI_MONOBEAM-2)){
 			if (!stopper){
-				shared_ptr<AttackRange> p(new AttackRange(x + 88 - 194, x + +88 - 194 + 156, power, SKY));
-				Game::getIns()->push_attack_list(p, ENEMY);
-
+				if (!atk){
+					atk = true;
+				}
 			}
+			else { atk = false; }
 		}
 		else{stopper = false;}
 		if (((beam_count / ANIM_SPEED_MONOBEAM) == ANI_MONOBEAM)){

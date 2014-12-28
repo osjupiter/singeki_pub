@@ -160,13 +160,25 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/雲の上/発電雲３歩く.png", ANI_DENGUMO_W, ANI_DENGUMO_W, 1, WID_DENGUMO, HEI_DENGUMO, g_dengumo_w[2]);
 	LoadDivGraph("dat/img/敵ユニット/雲の上/発電雲３攻撃.png", ANI_DENGUMO_A, 5, 3, WID_DENGUMO, HEI_DENGUMO, g_dengumo_a[2]);
 
-	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス1ビーム.png", ANI_MONOBEAM, ANI_MONOBEAM, 1, WID_MONOBEAM, HEI_MONOBEAM, g_monobeam[0]);
-	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス2ビーム.png", ANI_MONOBEAM, ANI_MONOBEAM, 1, WID_MONOBEAM, HEI_MONOBEAM, g_monobeam[1]);
-	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス3ビーム.png", ANI_MONOBEAM, ANI_MONOBEAM, 1, WID_MONOBEAM, HEI_MONOBEAM, g_monobeam[2]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/ビームエフェクト1.png", ANI_MONOBEAM, ANI_MONOBEAM, 1, WID_MONOBEAM, HEI_MONOBEAM, g_monobeam[0]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/ビームエフェクト2.png", ANI_MONOBEAM, ANI_MONOBEAM, 1, WID_MONOBEAM, HEI_MONOBEAM, g_monobeam[1]);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/ビームエフェクト3.png", ANI_MONOBEAM, ANI_MONOBEAM, 1, WID_MONOBEAM, HEI_MONOBEAM, g_monobeam[2]);
 
 	LoadDivGraph("dat/img/敵ユニット/雲の上/雷１.png", ANI_DENKAMI, 1, ANI_DENKAMI, WID_DENKAMI, HEI_DENKAMI, g_denkami[0]);
 	LoadDivGraph("dat/img/敵ユニット/雲の上/雷2.png", ANI_DENKAMI, 1, ANI_DENKAMI, WID_DENKAMI, HEI_DENKAMI, g_denkami[1]);
 	LoadDivGraph("dat/img/敵ユニット/雲の上/雷3.png", ANI_DENKAMI, 1, ANI_DENKAMI, WID_DENKAMI, HEI_DENKAMI, g_denkami[2]);
+
+	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇1w.png", ANI_SENKOU_W, ANI_SENKOU_W, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_w[0]);
+	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇1a.png", ANI_SENKOU_A, ANI_SENKOU_A, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_a[0]);
+	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇2w.png", ANI_SENKOU_W, ANI_SENKOU_W, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_w[1]);
+	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇2a.png", ANI_SENKOU_A, ANI_SENKOU_A, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_a[1]);
+	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇3w.png", ANI_SENKOU_W, ANI_SENKOU_W, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_w[2]);
+	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇3a.png", ANI_SENKOU_A, ANI_SENKOU_A, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_a[2]);
+
+	LoadDivGraph("dat/img/敵ユニット/水の中/魚雷1.png", ANI_GYORAI, ANI_GYORAI, 1, WID_GYORAI, HEI_GYORAI, g_gyorai[0]);
+	LoadDivGraph("dat/img/敵ユニット/水の中/魚雷2.png", ANI_GYORAI, ANI_GYORAI, 1, WID_GYORAI, HEI_GYORAI, g_gyorai[1]);
+	LoadDivGraph("dat/img/敵ユニット/水の中/魚雷3.png", ANI_GYORAI, ANI_GYORAI, 1, WID_GYORAI, HEI_GYORAI, g_gyorai[2]);
+
 
 
 	LoadDivGraph("dat/img/むすめユニット/花ｓ.png", ANI_HANA, 5, 5, WID_HANA, HEI_HANA, g_hana);

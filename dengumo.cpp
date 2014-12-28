@@ -4,13 +4,13 @@
 #include "Game.h"
 
 #define ANIM_SPEED 4
-#define DIST_DENGUMO WID_DENKAMI
+#define DIST_DENGUMO (WID_DENKAMI-30)
 dengumo::dengumo(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_DENGUMO){
 	width = WID_DENGUMO;
 	height = HEI_DENGUMO;
 	y =40*ln+3;
 	atk_type = SKY;
-	dist = dist + DIST_DENGUMO;
+	dist = DIST_DENGUMO - rand() %10;
 	type = SKY;
 	thunder = false;
 	thunder_count = 0;
