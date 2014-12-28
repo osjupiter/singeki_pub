@@ -92,6 +92,11 @@ public:
 	int g_kirakira[3][ANI_KIRAKIRA];
 	int g_ohana_s[3][ANI_OHANA_S];
 	int g_ohana_a[3][ANI_OHANA_A];
+	int g_tamanegi_w[ANI_TAMANEGI_WA];
+	int g_tamanegi_a[ANI_TAMANEGI_WA];
+	int g_tamanegi_t[ANI_TAMANEGI_T];
+	int g_tamanegi_tr[ANI_TAMANEGI_TR];
+	int g_negimissile[3][ANI_NEGIMISSILE];
 
 	int g_shiro_icon[20][2];
 

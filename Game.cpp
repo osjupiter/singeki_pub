@@ -37,7 +37,7 @@ Game::Game(int _world){
 	musume_nuber_list.assign(END_MUSUME,0);
 	
 	//for DEBUG
-	/*
+	///*
 	for (int i = 0; i < 7; i++){
 		stageInc();
 	}
@@ -104,7 +104,7 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
-	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_AKUUMON, UnitType::_GUUZOU,
+	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_AKUUMON, UnitType::_TAMANEGI,
 		UnitType::_TAMANEGI, UnitType::_STEAM };
 
 	string spownfilename[WORLD_NUM+1] = { "","dat/r–ìspown.csv", "dat/áŒ´spown.csv", "dat/‰_‚Ìãspown.csv"

@@ -43,12 +43,15 @@
 #include "dengumo.h"
 #include "saihate.h"
 #include "ohana.h"
+#include "tamanegi.h"
 using namespace std;
 
 
 shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType type){
 	shared_ptr<character> chara_ins(nullptr);
 	switch (type){
+	case UnitType::_NONE:
+		break;
 	case UnitType::_HOHEI:
 		chara_ins.reset(new hohei(x, line));
 		break;
@@ -137,7 +140,11 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_STEAM:
 		chara_ins.reset(new steam(x, line, st));
 		break;
+	case UnitType::_TAMANEGI:
+		chara_ins.reset(new tamanegi(x, line, st));
+		break;
 	default:
+		printfDx("FactoryTypeError\n");
 		break;
 	}
 

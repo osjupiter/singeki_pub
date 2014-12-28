@@ -20,7 +20,8 @@ public:
 	character(int, int, UnitType);
 	virtual void main(int front);
 	virtual void draw(int cx);
-	virtual void drawHP(int cx,int ty);
+	virtual void drawHP(int dx_,int cx,int ty);
+	virtual void drawBossHP(int dx_,int cx, int ty);
 
 	virtual void draw(int cx, int x, int y,int img);
 	virtual UnitState getState();

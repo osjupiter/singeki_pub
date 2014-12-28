@@ -12,6 +12,7 @@ steam::steam(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_STEAM){
 	x = x - width + 200;
 	dist = 200;
 	type = ALL;
+	atk_type = ALL;
 }
 
 void steam::main(int front){
@@ -61,7 +62,7 @@ void steam::main(int front){
 		break;
 	case UnitState::ST0:
 		state_change_flag = false;
-		if (ani_count / ANIM_SPEED%ANI_STEAM_F){
+		if (ani_count / ANIM_SPEED==ANI_STEAM_F){
 			state_change_flag = true;
 			changeState(UnitState::MOV);
 		}
