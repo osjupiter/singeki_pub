@@ -189,7 +189,7 @@ shared_ptr<character> Game::birth(int st, int type, int front){
 
 }
 
-shared_ptr<character> Game::x_birth(int x, int type, bool use_resouce){
+shared_ptr<character> Game::x_birth(int x, int lv,int type, bool use_resouce){
 	int line = (int)(rand() / (RAND_MAX + 1.0) * 3);
 	//自分のユニットのときリソース確認消費
 	if (type < static_cast<int>(UnitType::END_MUSUME)){
@@ -202,7 +202,7 @@ shared_ptr<character> Game::x_birth(int x, int type, bool use_resouce){
 			useResource(t);
 		}
 		musume_nuber_list.at(type)++;
-		shared_ptr<character> p(Factory::create_chara(x, x, line, (UnitType)type));
+		shared_ptr<character> p(Factory::create_chara(x, lv, line, (UnitType)type));
 		if (p != NULL) musume_list[line].push_back(p);
 		return p;
 	}
@@ -231,8 +231,8 @@ void Game::enemy_birth(){
 //	if (getClock(STAGE1_W-front_line)) birth(STAGE1_W, TANK);
 }
 
-void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, int dest){
-	shared_ptr<effect> p(Factory::create_effect(fx,fy,type,dr,atk_power,dest));
+void Game::effect_create(int fx, int fy, int type, Direction dr, int atk_power, int destx, int desty,int lv){
+	shared_ptr<effect> p(Factory::create_effect(fx,fy,type,dr,atk_power,destx,desty,lv));
 	if (p != NULL) effect_list.push_back(p);
 }
 
@@ -595,12 +595,14 @@ void Game::Test(){
 	}
 
 	*/
+///*
 	for (auto i : atkrange_enemy_list){
 		i->draw(x);
 	}
 	for (auto i : atkrange_musume_list){
 		i->draw(x);
 	}
+	//*/
 	atkrange_musume_list.clear();
 	atkrange_enemy_list.clear();
 
@@ -616,7 +618,7 @@ void Game::Test(){
 	else{ hit = false; }
 	if (mouse_in::getIns()->RightClick()){
 		birth(nowstage-1, b_unit);
-		;
+		
 	}
 }
 

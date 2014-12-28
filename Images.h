@@ -65,6 +65,7 @@ public:
 	int g_steam_w[ANI_STEAM_W];
 	int g_steam_a[ANI_STEAM_A];
 	int g_steam_f[ANI_STEAM_F];
+	int g_gyorai[3][ANI_GYORAI];
 
 	int g_gajigaji_w[3][5];
 	int g_gajigaji_a[3][6];
@@ -79,7 +80,15 @@ public:
 	int g_beebar_w[3][ANI_BEEBAR_W];
 	int g_beebar_a[3][ANI_BEEBAR_A];
 	int g_gvoice[ANI_GVOICE];
-
+	int g_monoris_w[3][ANI_MONORIS_W];
+	int g_monoris_a1[3][ANI_MONORIS_A1];
+	int g_monoris_a2[3][ANI_MONORIS_A2];
+	int g_monobeam[3][ANI_MONOBEAM];
+	int g_dengumo_w[3][ANI_DENGUMO_W];
+	int g_dengumo_a[3][ANI_DENGUMO_A];
+	int g_denkami[3][ANI_DENKAMI];
+	int g_senkoutei_w[3][ANI_SENKOU_W];
+	int g_senkoutei_a[3][ANI_SENKOU_A];
 	int g_shiro_icon[20][2];
 
 

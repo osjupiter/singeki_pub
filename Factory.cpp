@@ -30,10 +30,15 @@
 #include "explode.h"
 #include "bigExplode.h"
 #include "nomalExp.h"
+#include "senkoutei.h"
+#include "gyorai.h"
+
 #include "beam.h"
 #include "hana.h"
 #include "yukidama.h"
 #include "g_voice.h"
+#include "monoris.h"
+#include "dengumo.h"
 #include "saihate.h"
 using namespace std;
 
@@ -107,6 +112,16 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_BEEBAR:
 		chara_ins.reset(new beebar(x, line, st));
 		break;
+	case UnitType::_MONORIS:
+		chara_ins.reset(new monoris(x, line, st));
+		break;
+	case UnitType::_DENGUMO:
+		chara_ins.reset(new dengumo(x, line, st));
+		break;
+	case UnitType::_SENKOUTEI:
+		chara_ins.reset(new senkoutei(x, line, st));
+		break;
+
 	case UnitType::_SAIHATE:
 		chara_ins.reset(new saihate(x, line, st));
 		break;
@@ -120,7 +135,7 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	return chara_ins;
 }
 
-std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Direction dr, int atk_power, int dest){
+std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Direction dr, int atk_power, int destx = 0, int desty = 0, int lv = 0){
 	shared_ptr<effect> ret_ins(nullptr);
 	switch (type) {
 	case BOMB:
@@ -140,7 +155,7 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 		break;
 	
 	case TEPODON:
-		ret_ins.reset(new tepodon(fx, fy, atk_power, dest));
+		ret_ins.reset(new tepodon(fx, fy, atk_power, destx));
 		break;
 	
 	case BEAM:
@@ -171,6 +186,10 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 	case GVOICE:
 		ret_ins.reset(new gvoice(fx, fy,dr, atk_power));
 		break;
+	case GYORAI:
+		ret_ins.reset(new gyorai(fx, fy, dr, atk_power,destx,desty,lv));
+		break;
+
 	}
 	return ret_ins;
 	

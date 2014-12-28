@@ -26,7 +26,11 @@ void goremu::main(int front){
 	switch (state){
 	case UnitState::MOV:
 		if (visible){
+
 			changeState(UnitState::WAIT);
+		}
+		else{
+			no_damage_flag = true;
 		}
 		
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
@@ -36,6 +40,7 @@ void goremu::main(int front){
 		if (!visible){
 			changeState(UnitState::ST0);
 			visible = true;
+			no_damage_flag = false;
 		}else	state_change_flag = false;
 		if (ani_count / ANIM_SPEED_ATK == 10){
 			if (!stopper){

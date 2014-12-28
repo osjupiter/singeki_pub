@@ -43,7 +43,7 @@ void hana::main(){
 	}
 	if (ani_count / ANIM_SPEED == 14){
 		if (!stopper){			
-			Game::getIns()->x_birth(x,spown, false);
+			Game::getIns()->x_birth(x,0,spown, false);
 			stopper = true;
 		}
 	}

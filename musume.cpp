@@ -71,6 +71,8 @@ void musume::changeState(UnitState next_state){
 		}
 		break;
 	case UnitState::ST0:
+	case UnitState::ST1:
+	case UnitState::ST2:
 		state = next_state;
 		
 		break;
@@ -91,6 +93,7 @@ void musume::del(){
 }
 
 void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
+	if (no_damage_flag) return;
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type){
 		if (rand() % 30==0){
@@ -105,6 +108,8 @@ void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
 			}
 		}
 		hp -= max(d - param->getParam(DEFENSE), 0);
+		printfDx("%d %d\n", op_a_type, d - param->getParam(DEFENSE));
+
 		if (hp < 0){
 			changeState(UnitState::DIE);
 		}

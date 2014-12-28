@@ -13,10 +13,13 @@ protected:
 	shared_ptr<Parameter> param;
 	bool atk;
 	bool stopper;
+	bool no_damage_flag;
 public:
 	character(int, int, UnitType);
 	virtual void main(int front);
 	virtual void draw(int cx);
+	virtual void drawHP(int cx,int ty);
+
 	virtual void draw(int cx, int x, int y,int img);
 	virtual UnitState getState();
 	bool isMusume();

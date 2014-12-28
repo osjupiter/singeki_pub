@@ -41,6 +41,7 @@ Position enemy::getAtkType(){
 	return atk_type;
 }
 void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
+	if (no_damage_flag) return;
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type || type ==ALL){
 		if (rand() % 30 == 0){
@@ -56,7 +57,7 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 			}
 		}
 		hp -= max(d - defense, 0);
-		printfDx("%d\n", d - defense);
+		printfDx("%d %d\n",op_a_type, d - defense);
 		if (state != UnitState::DIE && hp < 0){
 			changeState(UnitState::DIE);
 		}
@@ -101,10 +102,11 @@ void enemy::changeState(UnitState next_state){
 				state = UnitState::WAIT;
 			}
 			break;
-		case UnitState::ST0:
+		default:
 			state = next_state;
 
 			break;
+			
 		}
 
 		break;
