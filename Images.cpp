@@ -185,6 +185,7 @@ void Images::load(){
 	else
 		printfDx("LOAD Image \n");
 
+	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1出現.png", ANI_SHOKUSH_S, 5, 3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1攻撃.png", ANI_SHOKUSH_A, 3,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_a[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2出現.png", ANI_SHOKUSH_S, 5,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[1]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2攻撃.png", ANI_SHOKUSH_A, 3,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_a[1]);
@@ -194,6 +195,14 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1キラキラ.png", ANI_KIRAKIRA, 6,2, WID_KIRAKIRA, HEI_KIRAKIRA, g_kirakira[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2キラキラ.png", ANI_KIRAKIRA, 6,2, WID_KIRAKIRA, HEI_KIRAKIRA, g_kirakira[1]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手3キラキラ.png", ANI_KIRAKIRA, 6,2, WID_KIRAKIRA, HEI_KIRAKIRA, g_kirakira[2]);
+
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台1出現.png", ANI_OHANA_S, 4, 4, WID_OHANA, HEI_OHANA, g_ohana_s[0]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台1攻撃.png", ANI_OHANA_A, 3, 3, WID_OHANA, HEI_OHANA, g_ohana_a[0]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台2出現.png", ANI_OHANA_S, 4, 4, WID_OHANA, HEI_OHANA, g_ohana_s[1]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台2攻撃.png", ANI_OHANA_A, 3, 3, WID_OHANA, HEI_OHANA, g_ohana_a[1]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台3出現.png", ANI_OHANA_S, 4, 4, WID_OHANA, HEI_OHANA, g_ohana_s[2]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台3攻撃.png", ANI_OHANA_A, 3, 3, WID_OHANA, HEI_OHANA, g_ohana_a[2]);
+
 
 
 	LoadDivGraph("dat/img/むすめユニット/花ｓ.png", ANI_HANA, 5, 5, WID_HANA, HEI_HANA, g_hana);

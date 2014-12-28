@@ -105,7 +105,7 @@ void Game::background_init(){
 void Game::castle_init(){
 
 	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_AKUUMON, UnitType::_GUUZOU,
-		UnitType::_TAMANEGI, UnitType::_DARKMUSUME };
+		UnitType::_TAMANEGI, UnitType::_STEAM };
 
 	string spownfilename[WORLD_NUM+1] = { "","dat/荒野spown.csv", "dat/雪原spown.csv", "dat/雲の上spown.csv"
 		, "dat/森ガールspown.csv", "dat/水の中spown.csv", "dat/メカシティspown.csv" };

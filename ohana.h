@@ -1,11 +1,10 @@
 #pragma once
 #include "enemy.h"
 
-class shokush : public enemy{
+class ohana : public enemy{
 	UnitState pre_state;
-
 public:
-	shokush(int, int, int);
+	ohana(int, int, int);
 	void main(int);
 	void draw(int);
 	static void init();

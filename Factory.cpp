@@ -42,6 +42,7 @@
 #include "monoris.h"
 #include "dengumo.h"
 #include "saihate.h"
+#include "ohana.h"
 using namespace std;
 
 
@@ -125,6 +126,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		break;
 	case UnitType::_SHOKUSH:
 		chara_ins.reset(new shokush(x, line, st));
+		break;
+	case UnitType::_OHANA:
+		chara_ins.reset(new ohana(x, line, st));
 		break;
 
 	case UnitType::_SAIHATE:

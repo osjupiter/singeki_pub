@@ -1,6 +1,8 @@
 #include "enemy.h"
 
 class goremu : public enemy{
+	UnitState pre_state;
+
 public:
 	goremu(int, int, int);
 

@@ -9,7 +9,7 @@ kirakira::kirakira(int fx, int fy, Direction d, int p,int dx, int dy ,int lv) :e
 	width = WID_KIRAKIRA;
 	height = HEI_KIRAKIRA;
 	dir = d;
-	pre_atk_x = x - 85 * dir;
+	pre_atk_x = x - 120 * dir;
 	power = p;
 	level = lv;
 }
@@ -17,8 +17,8 @@ void kirakira::main(){
 	effect::main();
 	x += 21 * dir;
 
-	if (dir*(x - pre_atk_x) > 85){
-		shared_ptr<AttackRange> p(new AttackRange(x + 75, x + 160 - 75, power / 2, RAND));
+	if (dir*(x - pre_atk_x) > 60){
+		shared_ptr<AttackRange> p(new AttackRange(x + 50, x + 170 - 50, power / 2, RAND));
 		Game::getIns()->push_attack_list(p, ENEMY);
 		pre_atk_x = x;
 	}

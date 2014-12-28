@@ -90,6 +90,8 @@ public:
 	int g_senkoutei_w[3][ANI_SENKOU_W];
 	int g_senkoutei_a[3][ANI_SENKOU_A];
 	int g_kirakira[3][ANI_KIRAKIRA];
+	int g_ohana_s[3][ANI_OHANA_S];
+	int g_ohana_a[3][ANI_OHANA_A];
 
 	int g_shiro_icon[20][2];
 
