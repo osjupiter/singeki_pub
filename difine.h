@@ -92,7 +92,16 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP,NOMALEXP 
 #define WID_GOREMU 300
 #define HEI_GOREMU 300
 
-/**/
+/*ビーバー*/
+#define ANI_BEEBAR_W 4
+#define ANI_BEEBAR_A 7
+
+#define WID_BEEBAR_W 120
+#define HEI_BEEBAR_W 120
+
+
+#define WID_BEEBAR_A 240
+#define HEI_BEEBAR_A 280
 
 /**/
 

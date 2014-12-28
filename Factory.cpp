@@ -20,7 +20,7 @@
 #include "sharin.h"
 #include "gorem.h"
 #include "steam.h"
-
+#include "beebar.h"
 #include "gunshot.h"
 #include "cannonshot.h"
 #include "tepodon.h"
@@ -104,7 +104,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_GOREMU:
 		chara_ins.reset(new goremu(x, line, st));
 		break;
-
+	case UnitType::_BEEBAR:
+		chara_ins.reset(new beebar(x, line, st));
+		break;
 	case UnitType::_SAIHATE:
 		chara_ins.reset(new saihate(x, line, st));
 		break;
