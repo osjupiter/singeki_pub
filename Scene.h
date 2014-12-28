@@ -16,7 +16,7 @@ public:
 };
 
 class GameScene : public SceneNode{
-	
+	int stage_id;
 	std::shared_ptr<Game> game;
 	int old_stage;
 	boolean notEnd;

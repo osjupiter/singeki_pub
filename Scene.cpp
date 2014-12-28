@@ -143,7 +143,8 @@ void WorldScene::leaveScene(){
 
 
 int GameScene::unitids[6];
-GameScene::GameScene(int stage_id,int _unitids[]){
+GameScene::GameScene(int _stage_id,int _unitids[]){
+	stage_id=_stage_id;
 
 	for(int i=0;i<6;i++){
 		GameScene::unitids[i]=_unitids[i];
@@ -172,6 +173,7 @@ void GameScene::leaveScene(){
 	SoundController::getBgm()->releaseStageBGM();
 }
 void GameScene::beforemain(){
+	if(!notEnd)return;
 	char Buf[ 256 ] ;
 	GetHitKeyStateAll( Buf ) ;
 
@@ -219,8 +221,12 @@ void GameScene::buttonPushed(string id){
 	}else if(id=="exit"){
 		SceneManager::getIns()->switchScene(std::make_shared<WorldScene>());
 	}else if(id=="gotoEnd"){
-		SoundController::getIns()->getBgm()->LoadBGM("sound/システム/ending.mp3",true);
-		SceneManager::getIns()->switchScene(make_shared<LoadingScene>((std::make_shared<EndScene>())));
+		if(stage_id==6){
+			SoundController::getIns()->getBgm()->LoadBGM("sound/システム/ending.mp3",true);
+			SceneManager::getIns()->switchScene(make_shared<LoadingScene>((std::make_shared<EndScene>())));
+		}else{
+			SceneManager::getIns()->switchScene(make_shared<LoadingScene>((std::make_shared<WorldScene>())));
+		}
 	}else if(id=="pause"){
 		pause();
 	}
