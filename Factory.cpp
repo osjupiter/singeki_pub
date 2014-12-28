@@ -32,6 +32,8 @@
 #include "nomalExp.h"
 #include "senkoutei.h"
 #include "gyorai.h"
+#include "shokush.h"
+#include "kirakira.h"
 
 #include "beam.h"
 #include "hana.h"
@@ -121,6 +123,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_SENKOUTEI:
 		chara_ins.reset(new senkoutei(x, line, st));
 		break;
+	case UnitType::_SHOKUSH:
+		chara_ins.reset(new shokush(x, line, st));
+		break;
 
 	case UnitType::_SAIHATE:
 		chara_ins.reset(new saihate(x, line, st));
@@ -189,7 +194,9 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 	case GYORAI:
 		ret_ins.reset(new gyorai(fx, fy, dr, atk_power,destx,desty,lv));
 		break;
-
+	case KIRAKIRA:
+		ret_ins.reset(new kirakira(fx, fy, dr, atk_power, destx, desty, lv));
+		break;
 	}
 	return ret_ins;
 	

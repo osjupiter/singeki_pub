@@ -11,6 +11,8 @@ character::character(int fx, int ln, UnitType u_type) : unit(fx, 0){
 	no_die_flag = false;
 	param = Game::getIns()->getParam(static_cast<int>(unit_type));
 	no_damage_flag = false;
+	visible = true;;
+
 //	y = base_y - ln * 5;
 }
 

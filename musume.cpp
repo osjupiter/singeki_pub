@@ -108,7 +108,7 @@ void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
 			}
 		}
 		hp -= max(d - param->getParam(DEFENSE), 0);
-		printfDx("%d %d\n", op_a_type, d - param->getParam(DEFENSE));
+		printfDx("%d %d\n", op_unit_type, d - param->getParam(DEFENSE));
 
 		if (hp < 0){
 			changeState(UnitState::DIE);
