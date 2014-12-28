@@ -41,6 +41,21 @@ WorldScene::WorldScene(){
 
 	
 }
+void WorldScene::beforemain(){
+	char Buf[ 256 ] ;
+	GetHitKeyStateAll( Buf ) ;
+
+	if( Buf[ KEY_INPUT_LEFT ] == 1 ||	 Buf[ KEY_INPUT_A ] == 1 )
+	{
+		moveX(50);
+	}
+
+	if( Buf[ KEY_INPUT_RIGHT ] == 1||  Buf[ KEY_INPUT_D ] == 1 )
+	{
+		moveX(-50);
+	}
+
+}
 void WorldScene::buttonPushed(string id){
 	if(id=="leftB"){
 		moveX(50);

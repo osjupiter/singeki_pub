@@ -43,6 +43,7 @@ public:
 	int stage_id;
 	int unit_id[6];
 	WorldScene();
+	void beforemain();
 	void buttonPushed(string);
 	void enterScene();
 	void leaveScene();
