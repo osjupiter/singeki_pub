@@ -950,3 +950,21 @@ void Images::load(){
 		}
 		SetUseASyncLoadFlag( FALSE ); // ”ñ“¯Šú“Ç‚İ‚İƒtƒ‰ƒOON
 	}
+
+	void Images::releaseStage(){
+			
+		
+		for(int i=0;i<8;i++){
+			for(int j=0;j<5;j++){
+				DeleteGraph(back[i][j]);
+			}
+		}
+
+		for(int i=0;i<9;i++){
+			for(int j=0;j<3;j++){
+				DeleteGraph(g_castle[i][j]);
+			}
+		}
+
+	
+	}

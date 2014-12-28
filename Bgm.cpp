@@ -141,5 +141,6 @@ void Bgm::loadStage(int sid){
 	void Bgm::releaseStageBGM(){
 		for(auto hoge:bgmlist){
 			DeleteSoundMem(bgms[hoge.c_str()]);
+			bgms.erase(hoge.c_str());
 		}
 	}

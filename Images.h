@@ -113,6 +113,7 @@ public:
 	static int get(const char name[]);
 
 	void loadStage(int);
+	void releaseStage();
 
 
 	

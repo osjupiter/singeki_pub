@@ -152,6 +152,7 @@ void GameScene::enterScene(){
 	SoundController::getBgm()->changeBGM(0);
 }
 void GameScene::leaveScene(){
+	Images::getIns()->releaseStage();
 	SoundController::getBgm()->playBGM("");
 	SoundController::getBgm()->releaseStageBGM();
 }
