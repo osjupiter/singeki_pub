@@ -122,6 +122,7 @@ public:
 	void draw();
 	void main();
 	void called();
+
 	
 };
 class GameOverLayer:public Layer{

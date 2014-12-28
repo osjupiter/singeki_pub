@@ -50,9 +50,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	// Data::getIns()->Run();
 
-
-	SN_Ptr p(new LogoScene());
-	SceneManager::getIns()->changeScene(p);
+	SceneManager::getIns()->changeScene(make_shared<LogoScene>());
 	
 
 	while(1){

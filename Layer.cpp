@@ -197,12 +197,18 @@ void StageClearLayer:: main(){
 
 
 GameClearLayer::GameClearLayer(){
-		default_time=150;
+		default_time=600;
 		remain_time=default_time;
 }
 void GameClearLayer::draw(){
-	DrawFormatString(0,0,GetColor(0,255,0),"Game is cleard. time = %d",remain_time);
-	
+	//DrawFormatString(0,0,GetColor(0,255,0),"Game is cleard. time = %d",remain_time);
+
+	if(remain_time<=450){
+		SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
+		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
+		SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
+
+	}
 
 }
 void GameClearLayer::called(){
@@ -211,6 +217,10 @@ void GameClearLayer::called(){
 		g->setCamera(g->stage_W[g->getNowStage()]-WINDOW_X/2);
 }
 void GameClearLayer:: main(){
+	if(remain_time==450){
+		SoundController::getBgm()->playBGM("sound/ƒVƒXƒeƒ€/stageclear.mp3");
+		Game::getIns()->turnPauseFlag();
+	}
 	if(remain_time--<=0){
 		parentScene->rmLayer(thisLayerID);
 		parentScene->buttonPushed("gotoEnd");

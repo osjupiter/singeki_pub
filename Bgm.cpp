@@ -7,6 +7,9 @@ void Bgm::load(){
 	LoadBGM("sound/システム/title.mp3",false);
 	
 	LoadBGM("sound/システム/stageselect.mp3",false);
+	
+	LoadBGM("sound/システム/stageclear.mp3",false);
+
 	_nowBGM="";
 
 }
