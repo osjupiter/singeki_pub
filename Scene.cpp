@@ -177,8 +177,20 @@ void GameScene::beforemain(){
 		if(pauseState==1||pauseState==3)pauseState=2;
 		else pauseState=0;
 	}
-	if(pauseState==3){game->turnPauseFlag();pauseNow=!pauseNow;}
+	if(pauseState==3){
+		pause();
+	}
 
+}
+
+void GameScene::pause(){
+	game->turnPauseFlag();
+	if(pauseNow){
+		rmLayer(50);
+	}else{
+		addLayer(50,make_shared<PauseLayer>());
+	}
+	pauseNow=!pauseNow;
 }
 void GameScene::buttonPushed(string id){
 	if(id=="left"){
@@ -188,10 +200,12 @@ void GameScene::buttonPushed(string id){
 	}else if(id=="birth"){
 		game->birth(0, HOHEI);
 	}else if(id=="exit"){
-		SceneManager::getIns()->switchScene(std::make_shared<TitleScene>());
+		SceneManager::getIns()->switchScene(std::make_shared<WorldScene>());
 	}else if(id=="gotoEnd"){
 		SoundController::getIns()->getBgm()->LoadBGM("sound/ƒVƒXƒeƒ€/ending.mp3",true);
 		SceneManager::getIns()->switchScene(make_shared<LoadingScene>((std::make_shared<EndScene>())));
+	}else if(id=="pause"){
+		pause();
 	}
 }
 void GameScene::aftermain(){

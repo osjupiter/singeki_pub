@@ -31,6 +31,7 @@ public:
 	void leaveScene();
 	void aftermain();
 	void buttonPushed(string);
+	void pause();
 
 	std::shared_ptr<Game> getGame();
 };

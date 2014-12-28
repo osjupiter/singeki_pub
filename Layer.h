@@ -19,6 +19,8 @@ class Game;class HoverLayer;
 	16 ChipFActory
 	18 Hover
 	20 OptionLayer
+
+	50 PauseLayer
 */
 
 
@@ -267,7 +269,7 @@ public:
 class PauseLayer :public Layer{
 
 public:
-	PauseLayer(int);
+	PauseLayer();
 	void draw();
 	void main();
 	void called();

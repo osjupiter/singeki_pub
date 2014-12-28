@@ -99,6 +99,7 @@ void Bgm::loadStage(int sid){
 		string s,n;
 		if(bgmlist.max_size()>=stage_id){
 			s=bgmlist[stage_id];
+			DeleteSoundMem(bgms[_nowBGM]);
 			Bgm::playBGM(s);
 		}
 		if(bgmlist.max_size()>=stage_id+1){
@@ -109,7 +110,6 @@ void Bgm::loadStage(int sid){
 	void Bgm::playBGM(string name,boolean defaulttrue){
 		if(_nowBGM!=""){
 			StopSoundMem(bgms[_nowBGM]);
-			DeleteSoundMem(bgms[_nowBGM]);
 		}
 		if(name!="")
 			if(defaulttrue){

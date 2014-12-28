@@ -906,3 +906,41 @@ void MapUnitSelector::called(){
 	counter=0;
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PauseLayer::PauseLayer(){
+
+}
+
+void PauseLayer::draw(){
+	SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
+	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
+	SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
+	DrawBox(WINDOW_X-200,WINDOW_Y-200,WINDOW_X-50,WINDOW_Y-50,GetColor(255,0,0),TRUE);
+}
+
+void PauseLayer::main(){
+	if(this->testBox(WINDOW_X-200,WINDOW_Y-200,WINDOW_X-50,WINDOW_Y-50)&&mouse_in::getIns()->LeftClick()){
+		parentScene->buttonPushed("exit");
+	}else if(mouse_in::getIns()->LeftClick()){
+		parentScene->buttonPushed("pause");
+	}
+	mouse_in::getIns()->recieveOver();
+}
+void PauseLayer::called(){
+
+	
+}
