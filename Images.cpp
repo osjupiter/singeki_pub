@@ -223,6 +223,11 @@ void Images::load(){
 	LoadDivGraph("dat/img/銃被弾時e.png", ANI_GUNSHOT, ANI_GUNSHOT, 1, WID_GUNSHOT, HEI_GUNSHOT, g_gunshot);
 	LoadDivGraph("dat/img/砲弾被弾時e.png", ANI_CANNONSHOT, ANI_CANNONSHOT, 1, WID_CANNONSHOT, HEI_CANNONSHOT, g_cannonshot);
 
+	LoadDivGraph("dat/img/敵ユニット/荒野/かみつきエフェクト.png", ANI_GAJIKAMI, ANI_GAJIKAMI, 1, WID_GAJIKAMI, HEI_GAJIKAMI, g_gajikami);
+	LoadDivGraph("dat/img/むすめユニット/魔方陣.png", ANI_MAHOJIN, 5, 4, WID_MAHOJIN, HEI_MAHOJIN, g_mahojin);
+	LoadDivGraph("dat/img/むすめユニット/斬撃エフェクト1.png", ANI_ZANGEKI, ANI_ZANGEKI, 1, WID_ZANGEKI, HEI_ZANGEKI, g_zangeki);
+
+
 	LoadDivGraph("dat/img/闇の世界/e2a1.png", 8, 8, 1, 96, 450, g_e_yamidrop[0]);
 	LoadDivGraph("dat/img/闇の世界/e2a2.png", 8, 8, 1, 96, 450, g_e_yamidrop[1]);
 	LoadDivGraph("dat/img/闇の世界/e2a3.png", 8, 8, 1, 96, 450, g_e_yamidrop[2]);
@@ -917,6 +922,11 @@ void Images::load(){
 					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
 				}
 			}
+
+			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像待機.png", ANI_GUUZO_W, 4, 1, WID_GUUZO, HEI_GUUZO, g_guuzo_w);
+			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像攻撃1.png", ANI_GUUZO_A, 2, 1, WID_GUUZO, HEI_GUUZO, g_guuzo_a1);
+			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像攻撃2.png", ANI_GUUZO_A, 2, 1, WID_GUUZO, HEI_GUUZO, g_guuzo_a2);
+
 
 			break;
 		case 6:

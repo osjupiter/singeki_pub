@@ -44,6 +44,8 @@
 #include "saihate.h"
 #include "ohana.h"
 #include "tamanegi.h"
+#include "gajikami.h"
+#include "zangeki.h"
 using namespace std;
 
 
@@ -226,7 +228,12 @@ shared_ptr<effect> Factory::create_damage_effect(int fx, int fy, int e_type, boo
 	case CANNONSHOT:
 		ret_ins.reset(new cannonshot(fx, fy, TurnFlag));
 		break;
-	
+	case GAJIKAMI:
+		ret_ins.reset(new gajikami(fx, fy, TurnFlag));
+		break;
+	case ZANGEKI:
+		ret_ins.reset(new zangeki(fx, fy, TurnFlag));
+		break;
 	case NOMALEXP:
 		ret_ins.reset(new nomalExp(fx, fy, true));
 		break;

@@ -100,10 +100,16 @@ void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
 			int rand_x = rand() % width/2, rand_y = rand() % height/2;
 			switch (op_unit_type){
 			case UnitType::_TANK:
+			case UnitType::_BEEBAR:
+			case UnitType::_OHANA:
 				Game::getIns()->damage_effect_create(x-WID_CANNONSHOT/2+rand_x, y + height - HEI_CANNONSHOT +35-rand_y, CANNONSHOT);
 				break;
 			case UnitType::_GEKKO:
+			case UnitType::_SHARIN:
 				Game::getIns()->damage_effect_create(x - WID_GUNSHOT / 2+rand_x, y + height - HEI_GUNSHOT+25 -rand_y, GUNSHOT, true);
+				break;
+			case UnitType::_GAJIGAJI:
+				Game::getIns()->damage_effect_create(x - WID_GAJIKAMI / 2 + rand_x, y + height - HEI_GAJIKAMI + 25 - rand_y, GAJIKAMI, true);
 				break;
 			}
 		}

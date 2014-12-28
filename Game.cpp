@@ -37,7 +37,7 @@ Game::Game(int _world){
 	musume_nuber_list.assign(END_MUSUME,0);
 	
 	//for DEBUG
-	///*
+	/*
 	for (int i = 0; i < 7; i++){
 		stageInc();
 	}

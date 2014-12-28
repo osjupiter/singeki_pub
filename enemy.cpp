@@ -43,7 +43,8 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 	if (no_damage_flag) return;
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type || type ==ALL){
-		if (rand() % 30 == 0){
+		//if (rand() % 30 == 0){
+		if (1){
 			int rand_x = rand() % width / 2, rand_y = rand() % height / 2;
 			switch (op_unit_type){
 			case UnitType::_BAZOOKA:
@@ -53,6 +54,10 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 			case UnitType::_IKAROS:
 				Game::getIns()->damage_effect_create(x + width / 3+rand_x, y + height - HEI_GUNSHOT+25-rand_y, GUNSHOT);
 				break;
+			case UnitType::_HIME:
+				Game::getIns()->damage_effect_create(x + width / 3 + rand_x, y + height - HEI_ZANGEKI + 25 - rand_y, ZANGEKI);
+				break;
+
 			}
 		}
 		hp -= max(d - defense, 0);
