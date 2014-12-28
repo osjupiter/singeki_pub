@@ -28,5 +28,8 @@ public:
 	void changeBGM(int stage_id);
 	void assignVol(int MASTERVol);
 
+	
+	void releaseStageBGM();
+
 };
 

@@ -153,6 +153,7 @@ void GameScene::enterScene(){
 }
 void GameScene::leaveScene(){
 	SoundController::getBgm()->playBGM("");
+	SoundController::getBgm()->releaseStageBGM();
 }
 void GameScene::beforemain(){
 	char Buf[ 256 ] ;
