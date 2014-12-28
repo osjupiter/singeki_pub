@@ -34,7 +34,7 @@
 #include "gyorai.h"
 #include "shokush.h"
 #include "kirakira.h"
-
+#include "negimissile.h"
 #include "beam.h"
 #include "hana.h"
 #include "yukidama.h"
@@ -207,6 +207,9 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 		break;
 	case KIRAKIRA:
 		ret_ins.reset(new kirakira(fx, fy, dr, atk_power, destx, desty, lv));
+		break;
+	case NEGIMISSILE:
+		ret_ins.reset(new negimissile(fx, fy, dr, atk_power, destx, desty, lv));
 		break;
 	}
 	return ret_ins;

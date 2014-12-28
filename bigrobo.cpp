@@ -35,7 +35,7 @@ void bigrobo::main(int front){
 		
 		if (ani_count / ANIM_SPEED % ANI_BIG_ATK == ANI_BIG_ATK - 1 ){
 			if (!stopper){
-				Game::getIns()->effect_create(x + 95, FIELD_H - HEI_SHOCK, SHOCK);
+				Game::getIns()->effect_create(x + 105, FIELD_H - HEI_SHOCK, SHOCK);
 				shared_ptr<AttackRange> p(new AttackRange(x + 120, x + 120+ WID_SHOCK-10, param->getParam(POWER), RAND));
 				Game::getIns()->push_attack_list(p, MUSUME);
 				SoundController::getSE()->playSE("sound/sen_ge_hasai02.mp3");

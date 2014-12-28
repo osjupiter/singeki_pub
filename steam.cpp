@@ -34,9 +34,7 @@ void steam::main(int front){
 				}
 			}
 		}
-		else{ stopper = false; };
-
-		if (ani_count / ANIM_SPEED%ANI_STEAM_A == 12){
+		else if (ani_count / ANIM_SPEED%ANI_STEAM_A == 12){
 			if (!stopper){
 				if (!atk){
 					shared_ptr<AttackRange> p(new AttackRange(x- (1500), x + 550, param->getParam(POWER), RAND));

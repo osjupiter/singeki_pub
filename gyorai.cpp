@@ -9,7 +9,7 @@ gyorai::gyorai(int fx, int fy, Direction d, int p,int destx_,int tarpos_,int lv)
 	dir = d;
 	power = p;
 	destx = destx_;
-	desty = (tarpos==SKY) ?  0:fy;
+	desty = (tarpos_==SKY) ?  0:fy;
 	level = lv;
 	tarpos = static_cast<Position>(tarpos_);
 }

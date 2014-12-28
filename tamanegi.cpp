@@ -44,22 +44,21 @@ void tamanegi::main(int front){
 		if (ani_count / ANIM_SPEED == 2){
 			if (!stopper){
 				stopper = true;
+				Game::getIns()->effect_create(dx + 0, y+50, NEGIMISSILE, dir, power, dx, 0, 2);
 
 			}
 		}
-		else{ stopper = false; }
-
-		if (ani_count / ANIM_SPEED == 4){
+		else if (ani_count / ANIM_SPEED == 4){
 			if (!stopper){
 				stopper = true;
+				Game::getIns()->effect_create(dx + 0, y + 50, NEGIMISSILE, dir, power, dx, 0, 1);
 
 			}
 		}
-		else{ stopper = false; }
-
-		if (ani_count / ANIM_SPEED == 6){
+		else if (ani_count / ANIM_SPEED == 6){
 			if (!stopper){
 				stopper = true;
+				Game::getIns()->effect_create(x + 0, y + 50, NEGIMISSILE, dir, power, dx, 0, 0);
 
 			}
 		}
