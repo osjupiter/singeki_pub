@@ -43,8 +43,7 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 	if (no_damage_flag) return;
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type || type ==ALL){
-		//if (rand() % 30 == 0){
-		if (1){
+		if (rand() % 30 == 0){		
 			int rand_x = rand() % width / 2, rand_y = rand() % height / 2;
 			switch (op_unit_type){
 			case UnitType::_BAZOOKA:
@@ -55,7 +54,7 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 				Game::getIns()->damage_effect_create(x + width / 3+rand_x, y + height - HEI_GUNSHOT+25-rand_y, GUNSHOT);
 				break;
 			case UnitType::_HIME:
-				Game::getIns()->damage_effect_create(x + width / 3 + rand_x, y + height - HEI_ZANGEKI + 25 - rand_y, ZANGEKI);
+				Game::getIns()->damage_effect_create(x + rand_x, y + height - HEI_ZANGEKI + 25 - rand_y, ZANGEKI);
 				break;
 
 			}
@@ -75,6 +74,7 @@ void enemy::changeState(UnitState next_state){
 	switch (next_state){
 	case UnitState::MOV:		
 		ani_count = 0;
+		
 		switch (state){
 		case UnitState::ATK:
 		//	wait_time = param->getParam(A_FREQ);
@@ -122,6 +122,8 @@ void enemy::changeState(UnitState next_state){
 		state_change_flag = false;
 		break;
 	default:
+		if (state == UnitState::ATK)
+			wait_time = atk_freq;
 		state = next_state;
 		ani_count = 0;
 

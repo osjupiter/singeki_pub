@@ -207,7 +207,7 @@ shared_ptr<character> Game::x_birth(int x, int lv,int type, bool use_resouce){
 		return p;
 	}
 	else {
-		shared_ptr<character> p(Factory::create_chara(x, getNowStage(), line, (UnitType)type));
+		shared_ptr<character> p(Factory::create_chara(x, lv, line, (UnitType)type));
 		if (p != NULL) enemy_list[line].push_back(p);
 		return p;
 	}

@@ -6,13 +6,13 @@
 #define ANIM_SPEED 3
 #define ANIM_SPEED_A 1
 #define ANIM_SPEED_MONOBEAM 4
-#define DIST_MONORIS  (10)
+#define DIST_MONORIS  (100)
 #define ANI_MONORIS_A (ANI_MONORIS_A1+ANI_MONORIS_A2+ANI_MONORIS_A1)
 
 monoris::monoris(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_MONORIS){
 	width = WID_MONORIS;
 	height = HEI_MONORIS;
-	y = 40 + ln * 3;
+	y = 40 + ln * 15;
 	atk_type = ALL;
 	dist = dist + DIST_MONORIS;
 	type = SKY;
@@ -21,11 +21,18 @@ monoris::monoris(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_MONORIS){
 }
 
 void monoris::main(int front){
-	bool pre_wait = (state == UnitState::WAIT);
+	UnitState pre_state = state;
 	enemy::main(front);
-	if (pre_wait && state != UnitState::WAIT){
-		changeState(UnitState::ST1);
-		ani_count = 0;
+	if ((pre_state == UnitState::WAIT)){
+		if (state == UnitState::ATK){
+			changeState(UnitState::ST0);
+			ani_count = 0;
+			
+		}
+		else if (state != UnitState::WAIT && state != UnitState::ATK){
+			changeState(UnitState::ST1);
+			ani_count = 0;
+		}
 	}
 	switch (state){
 	case UnitState::MOV:
@@ -52,6 +59,7 @@ void monoris::main(int front){
 			if (!stopper){
 				if (!atk){
 					atk = true;
+					stopper = true;
 				}
 			}
 			else { atk = false; }
@@ -61,7 +69,7 @@ void monoris::main(int front){
 			state_change_flag = true;
 			changeState(UnitState::WAIT);
 			ani_count = 0;
-
+			wait_time = atk_freq;
 //			state_change_flag = false;
 			beam_count = 0;
 		}
@@ -69,9 +77,9 @@ void monoris::main(int front){
 		break;
 	case UnitState::ST1:
 		state_change_flag = false;
-		if (((ani_count / ANIM_SPEED_A) == ANI_MONORIS_A1)){
+		if (ani_count / ANIM_SPEED_A == ANI_MONORIS_A1){
 			state_change_flag = true;
-			changeState(UnitState::WAIT);
+			changeState(UnitState::MOV);
 			ani_count = 0;
 
 		}
@@ -113,7 +121,7 @@ void monoris::draw(int cx){
 		break;
 
 	case UnitState::WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->g_monoris_a2[level / 3][ani_count / ANIM_SPEED%ANI_MONORIS_A1], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_monoris_a2[level / 3][ani_count / ANIM_SPEED%ANI_MONORIS_A2], true);
 		break;
 	case UnitState::DIE:
 		DrawGraph(x - cx, y, Images::getIns()->g_monoris_w[level / 3][ani_count / ANIM_SPEED %ANI_MONORIS_W], true);

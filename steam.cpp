@@ -28,6 +28,11 @@ void steam::main(int front){
 
 	case UnitState::ATK:
 		state_change_flag = false;
+		if ((ani_count / ANIM_SPEED%ANI_STEAM_A >7)
+			&& (ani_count / ANIM_SPEED%ANI_STEAM_A <12)){
+			no_damage_flag = true;
+		}
+		else { no_damage_flag = false; }
 		if (ani_count / ANIM_SPEED%ANI_STEAM_A == 10){
 			if (!stopper){
 				if (!atk){
