@@ -31,12 +31,15 @@ void MoveGraphLayer::main(){
 	if(timer>=360){timer=0;}
 }
 
-MoveGraphLayer::MoveGraphLayer(int tx,int ty,int th,int init):GraphicLayer(tx,ty,th){
+MoveGraphLayer::MoveGraphLayer(int tx,int ty,int th,int init,int _pat,int yoko,int tate):GraphicLayer(tx,ty,th){
 	timer=init;
-	haba=10;
+	haba=yoko;
+	takasa=tate;
+	pat=_pat;
 }
 void MoveGraphLayer::draw(){
-	DrawGraph(x,y+haba*sin((double)timer/180.0*3.14),hundle,TRUE);
+	if(pat==1)
+		DrawGraph(x+takasa*cos((double)timer/180.0*3.14),y+haba*sin((double)timer/180.0*3.14),hundle,TRUE);
 	
 }
 
@@ -216,10 +219,15 @@ void GameClearLayer::draw(){
 	//DrawFormatString(0,0,GetColor(0,255,0),"Game is cleard. time = %d",remain_time);
 
 	if(remain_time<=450){
-		SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
-		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
+		SetDrawBlendMode( DX_BLENDMODE_ALPHA , 200 ) ;
+		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(0,0,0),TRUE);
 		SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
 
+		if(remain_time>=360){
+			SetDrawBlendMode( DX_BLENDMODE_ALPHA , 255*((450-remain_time)/90.0) ) ;
+		}
+		DrawGraph(0,0,Images::get("pic/clear.png"),TRUE);
+		SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
 	}
 
 }
@@ -234,7 +242,6 @@ void GameClearLayer:: main(){
 		Game::getIns()->turnPauseFlag();
 	}
 	if(remain_time--<=0){
-		parentScene->rmLayer(thisLayerID);
 		parentScene->buttonPushed("gotoEnd");
 	}
 }
@@ -952,9 +959,7 @@ PauseLayer::PauseLayer(){
 }
 
 void PauseLayer::draw(){
-	SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
-	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
-	SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
+	DrawGraph(0,0,Images::get("pic/Pause.png"),TRUE);
 	DrawBox(WINDOW_X-200,WINDOW_Y-200,WINDOW_X-50,WINDOW_Y-50,GetColor(255,0,0),TRUE);
 }
 

@@ -83,21 +83,47 @@ void WorldScene::moveX(int dx){
 	}
 	xpos+=dx;
 }
+template
+<
+    typename TYPE,
+    std::size_t SIZE
+>
+std::size_t array_length(const TYPE (&)[SIZE])
+{
+    return SIZE;
+}
 void WorldScene::enterScene(){
 	xpos=0;
-	//背景
+
+
 {
 	shared_ptr<GraphicLayer> p(new GraphicLayer (0,0,Images::get("pic/ワールドマップa.png")));
 	addLayer(0,p);
 	glist.push_back(p);
-	shared_ptr<GraphicLayer> q(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップb.png"),0));
+}
+{
+	shared_ptr<GraphicLayer> q(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップb.png"),0,1,10,10));
 	addLayer(1,q);
 	glist.push_back(q);
-	shared_ptr<GraphicLayer> r(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップc.png"),120));
+}
+{
+	shared_ptr<GraphicLayer> r(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップc.png"),120,1,0,10));
 	addLayer(2,r);
 	glist.push_back(r);
-	shared_ptr<GraphicLayer> s(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップd.png"),240));
+}
+{
+	shared_ptr<GraphicLayer> s(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップd.png"),120,1,10,0));
 	addLayer(3,s);
+	glist.push_back(s);
+}
+{
+	shared_ptr<GraphicLayer> s(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップe.png"),240,1,0,10));
+	addLayer(4,s);
+	glist.push_back(s);
+}
+{
+	shared_ptr<GraphicLayer> s(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップf.png"),240,1,10,0));
+	addLayer(5,s);
 	glist.push_back(s);
 }
 
@@ -166,19 +192,22 @@ void GameScene::leaveScene(){
 }
 void GameScene::beforemain(){
 	if(!notEnd)return;
+	
 	char Buf[ 256 ] ;
 	GetHitKeyStateAll( Buf ) ;
 
-	if( Buf[ KEY_INPUT_LEFT ] == 1 ||	 Buf[ KEY_INPUT_A ] == 1 )
-	{
-		game->scrollLeft(15);
-	}
+	if(!pauseNow){
 
-	if( Buf[ KEY_INPUT_RIGHT ] == 1||  Buf[ KEY_INPUT_D ] == 1 )
-	{
-		game->scrollRight(15);
-	}
+		if( Buf[ KEY_INPUT_LEFT ] == 1 ||	 Buf[ KEY_INPUT_A ] == 1 )
+		{
+			game->scrollLeft(15);
+		}
 
+		if( Buf[ KEY_INPUT_RIGHT ] == 1||  Buf[ KEY_INPUT_D ] == 1 )
+		{
+			game->scrollRight(15);
+		}
+	}
 
 
 	if( Buf[ KEY_INPUT_ESCAPE ] == 1 ){
@@ -189,6 +218,7 @@ void GameScene::beforemain(){
 		else pauseState=0;
 	}
 	if(pauseState==3){
+		
 		pause();
 	}
 
@@ -205,7 +235,8 @@ void GameScene::pause(){
 }
 void GameScene::buttonPushed(string id){
 	if(id=="left"){
-		game->scrollLeft(15);
+		
+		notEnd=false;
 	}else if(id=="right"){
 		game->scrollRight(15);
 	}else if(id=="birth"){
