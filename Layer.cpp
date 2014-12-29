@@ -903,6 +903,9 @@ void MapUnitSelector::draw(){
 	int score=Data::getIns()->get(to_string(stage_id));
 	DrawFormatStringToHandle(193,96,GetColor(0,255,0),Images::getIns()->font2,Images::getIns()->getStageName(stage_id).c_str());
 
+	stringstream ss;
+	ss<<"pic/stage_ss_"<<stage_id<<".png";
+	DrawGraph(200,140,Images::getIns()->get(ss.str().c_str()),TRUE);
 	DrawFormatStringToHandle(200,270,GetColor(0,0,255),Images::getIns()->font,"Å‚‹L˜^",score/30/60,score/30%60,score%30*3);
 	DrawFormatStringToHandle(210,290,GetColor(255,255,0),Images::getIns()->font2,"%02d:%02d.%02d",score/30/60,score/30%60,score%30*3);
 	DrawFormatStringToHandle(210,350,GetColor(0,255,0),Images::getIns()->font,Images::getIns()->getStageSummary(stage_id).c_str());
@@ -925,6 +928,7 @@ void MapUnitSelector::main(){
 			if(testBox(440+j%5*50-25,155+j/5*50-25,440+j%5*50+25,155+j/5*50+25)&&mouse_in::getIns()->LeftClick()){
 				if(!flag[i]&&counter>=5)break;
 				flag[i]=!flag[i];
+				SoundController::getSE()->playSE("sound/se_maoudamashii_system39.mp3");
 
 				if(flag[i])counter++;
 				else counter--;
@@ -950,6 +954,7 @@ void MapUnitSelector::main(){
 						}
 					}
 				}
+				SoundController::getSE()->playSE("sound/sen_ka_heirappa01.mp3");
 				parentScene->buttonPushed("gotogame");
 			}
 		}
@@ -988,11 +993,10 @@ PauseLayer::PauseLayer(){
 
 void PauseLayer::draw(){
 	DrawGraph(0,0,Images::get("pic/Pause.png"),TRUE);
-	DrawBox(WINDOW_X-200,WINDOW_Y-200,WINDOW_X-50,WINDOW_Y-50,GetColor(255,0,0),TRUE);
 }
 
 void PauseLayer::main(){
-	if(this->testBox(WINDOW_X-200,WINDOW_Y-200,WINDOW_X-50,WINDOW_Y-50)&&mouse_in::getIns()->LeftClick()){
+	if(this->testBox(606,384,762,419)&&mouse_in::getIns()->LeftClick()){
 		parentScene->buttonPushed("exit");
 	}else if(mouse_in::getIns()->LeftClick()){
 		parentScene->buttonPushed("pause");

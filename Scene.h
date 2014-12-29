@@ -54,6 +54,7 @@ public:
 
 class EndScene : public SceneNode{
 	int count,endc;
+	int nagasa;
 public:
 	EndScene();
 	void draw();

@@ -144,7 +144,7 @@ void WorldScene::enterScene(){
 	addLayer(9,s);
 
 	int tmp[6][2]={
-		{76,288},{497,53},{817,330},{1125,94},{1286,377},{1600,222}
+		{76,288},{497,53},{817,330},{1125,44},{1286,277},{1600,222}
 	};
 	for(int i=1;i<=6;i++){
 		if(Data::getIns()->get("stage")+1<i)break;
@@ -295,14 +295,15 @@ std::shared_ptr<Game> GameScene::getGame(){return game;}
 EndScene::EndScene(){
 	count=0;
 	endc=0;
+	nagasa=4550;
 }
 void EndScene::enterScene(){
 	SoundController::getBgm()->playBGM("sound/システム/ending.mp3",false);
 }
 void EndScene::main(){
 	count+=6;
-	if(10400-WINDOW_X<=count){
-		count=10400-WINDOW_X;
+	if(nagasa*2-WINDOW_X<=count){
+		count=nagasa*2-WINDOW_X;
 		endc++;
 		if(endc>=60){
 			SceneManager::getIns()->switchScene(std::make_shared<TitleScene>());
@@ -310,10 +311,10 @@ void EndScene::main(){
 	}
 }
 void EndScene::draw(){
-	if(count<=5200)
+	if(count<=nagasa)
 		DrawRectGraph(0,0,count,0,WINDOW_X,WINDOW_Y,Images::get("pic/エンディング.png"),FALSE,FALSE);
-	if(count>=5200-WINDOW_X)
-		DrawRectGraph(0,0,count-5200,450,WINDOW_X,WINDOW_Y,Images::get("pic/エンディング.png"),FALSE,FALSE);
+	if(count>=nagasa-WINDOW_X)
+		DrawRectGraph(0,0,count-nagasa,450,WINDOW_X,WINDOW_Y,Images::get("pic/エンディング.png"),FALSE,FALSE);
 
 	
 }
