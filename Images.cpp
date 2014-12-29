@@ -255,6 +255,8 @@ void Images::load(){
 
 	filelist.push_back("pic/Pause.png");
 
+	filelist.push_back("pic/clear.png");
+	
 	filelist.push_back("pic/ba.png");
 	filelist.push_back("pic/ha.png");
 	filelist.push_back("pic/ka.png");

@@ -218,6 +218,7 @@ void GameScene::beforemain(){
 		else pauseState=0;
 	}
 	if(pauseState==3){
+		
 		pause();
 	}
 
@@ -234,7 +235,8 @@ void GameScene::pause(){
 }
 void GameScene::buttonPushed(string id){
 	if(id=="left"){
-		game->scrollLeft(15);
+		
+		notEnd=false;
 	}else if(id=="right"){
 		game->scrollRight(15);
 	}else if(id=="birth"){

@@ -219,10 +219,15 @@ void GameClearLayer::draw(){
 	//DrawFormatString(0,0,GetColor(0,255,0),"Game is cleard. time = %d",remain_time);
 
 	if(remain_time<=450){
-		SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
-		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
+		SetDrawBlendMode( DX_BLENDMODE_ALPHA , 200 ) ;
+		DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(0,0,0),TRUE);
 		SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
 
+		if(remain_time>=360){
+			SetDrawBlendMode( DX_BLENDMODE_ALPHA , 255*((450-remain_time)/90.0) ) ;
+		}
+		DrawGraph(0,0,Images::get("pic/clear.png"),TRUE);
+		SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
 	}
 
 }
@@ -237,7 +242,6 @@ void GameClearLayer:: main(){
 		Game::getIns()->turnPauseFlag();
 	}
 	if(remain_time--<=0){
-		parentScene->rmLayer(thisLayerID);
 		parentScene->buttonPushed("gotoEnd");
 	}
 }
