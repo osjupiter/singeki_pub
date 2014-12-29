@@ -34,9 +34,9 @@ void majo::main(int front){
 			if (!stopper){
 				if (!atk){
 					Game::getIns()->effect_create(front, FIELD_H - HEI_EXP, EXP);
-					//	shared_ptr<AttackRange> p(new AttackRange(front, front + WID_EXP - 10, param->getParam(POWER), RAND));
+						shared_ptr<AttackRange> p(new AttackRange(front, front + WID_EXP - 10, param->getParam(POWER), RAND));
 
-						shared_ptr<AttackRange> p(new AttackRange(x + width + dist, x + width + dist + WID_EXP - 10, param->getParam(POWER), RAND));
+					//	shared_ptr<AttackRange> p(new AttackRange(x + width + dist, x + width + dist + WID_EXP - 10, param->getParam(POWER), RAND));
 					Game::getIns()->push_attack_list(p, MUSUME);
 					stopper = true;
 					

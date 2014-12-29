@@ -26,6 +26,9 @@ void ohana::main(int front){
 		if (pre_state != UnitState::MOV){
 			visible = false;
 		}
+		if (pre_state != UnitState::MOV){
+			visible = false;
+		}
 		if (visible){
 
 			changeState(UnitState::WAIT);

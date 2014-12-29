@@ -17,6 +17,7 @@ shokush::shokush(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_SHOKUSH){
 }
 
 void shokush::main(int front){
+	pre_state = state;
 	enemy::main(front);
 	switch (state){
 	case UnitState::MOV:

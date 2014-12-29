@@ -7,11 +7,11 @@
 
 #define ANIM_SPEED 2
 #define ANIM_SPEED_ATK 4
-#define DIST_GOREMU 350
+#define DIST_GOREMU 60
 
 
 goremu::goremu(int fx, int ln, int lv) : enemy(fx, ln, lv, UnitType::_GOREMU){
-	dist = dist + DIST_GOREMU;
+	dist = DIST_GOREMU - rand()%50;
 	y = WINDOW_Y - HEI_GOREMU - line * 3;
 	width = WID_GOREMU;
 	height = HEI_GOREMU;
@@ -22,19 +22,25 @@ goremu::goremu(int fx, int ln, int lv) : enemy(fx, ln, lv, UnitType::_GOREMU){
 
 
 void goremu::main(int front){
+	pre_state = state;
 	enemy::main(front);
 	switch (state){
 	case UnitState::MOV:
+		if (pre_state != UnitState::MOV){
+//			visible = false;
+			;
+		}
 		if (visible){
 
 			changeState(UnitState::WAIT);
 		}
 		else{
 			no_damage_flag = true;
+
 		}
 		
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
-		
+
 		break;
 	case UnitState::ATK:
 		if (!visible){
@@ -57,13 +63,24 @@ void goremu::main(int front){
 
 		break;
 	case UnitState::WAIT:
-		
+		if (!visible){
+			changeState(UnitState::ST0);
+			visible = true;
+			no_damage_flag = false;
+		}
 		break;
 	case UnitState::ST0:   //oŒ»
 		if (ani_count / ANIM_SPEED == ANI_GOREMU){
 			changeState(UnitState::ATK);
 		}
 		break;
+	case UnitState::ST1:  
+		if (ani_count / ANIM_SPEED == ANI_GOREMU){
+
+			changeState(UnitState::MOV);
+		}
+		break;
+
 	case UnitState::DIE:
 
 		if (ani_count == 1){
@@ -94,6 +111,9 @@ void goremu::draw(int cx){
 		break;
 	case UnitState::ST0:
 		DrawGraph(x - cx, y, Images::getIns()->g_goremu_w[level / 3][ani_count / ANIM_SPEED%ANI_GOREMU], true);
+		break;
+	case UnitState::ST1:
+		DrawGraph(x - cx, y, Images::getIns()->g_goremu_w[level / 3][(ANI_GOREMU -1) - ani_count / ANIM_SPEED%ANI_GOREMU], true);
 		break;
 	case UnitState::WAIT:
 		DrawGraph(x - cx, y, Images::getIns()->g_goremu_a[level / 3][0], true);

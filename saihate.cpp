@@ -28,7 +28,7 @@ void saihate::main(int front){
 		break;
 	case UnitState::ATK:
 		state_change_flag = false;
-		if (rand() % 10 == 0 && first_atk){
+		if (rand() % 2 == 0 && first_atk){
 			state_change_flag = true;
 			changeState(UnitState::ST1);
 			first_atk = true;

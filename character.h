@@ -29,6 +29,7 @@ public:
 	PropertyType getProperty();
 	virtual int getPower()=0;
 	virtual bool getAtk();
+	virtual bool getVisible();
 	virtual Position getAtkType()=0;
 	virtual void damage(int, Position, UnitType)=0;
 	virtual void changeState(UnitState)=0;

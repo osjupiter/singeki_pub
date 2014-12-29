@@ -146,3 +146,7 @@ void character::decideDirection(int front){
 		|| ((x + width > front) && dir == RIGHT))
 		switchDirection();
 }
+
+bool character::getVisible(){
+	return visible;
+}
