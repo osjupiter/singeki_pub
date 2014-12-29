@@ -903,6 +903,9 @@ void MapUnitSelector::draw(){
 	int score=Data::getIns()->get(to_string(stage_id));
 	DrawFormatStringToHandle(193,96,GetColor(0,255,0),Images::getIns()->font2,Images::getIns()->getStageName(stage_id).c_str());
 
+	stringstream ss;
+	ss<<"pic/stage_ss_"<<stage_id<<".png";
+	DrawGraph(200,140,Images::getIns()->get(ss.str().c_str()),TRUE);
 	DrawFormatStringToHandle(200,270,GetColor(0,0,255),Images::getIns()->font,"Å‚‹L˜^",score/30/60,score/30%60,score%30*3);
 	DrawFormatStringToHandle(210,290,GetColor(255,255,0),Images::getIns()->font2,"%02d:%02d.%02d",score/30/60,score/30%60,score%30*3);
 	DrawFormatStringToHandle(210,350,GetColor(0,255,0),Images::getIns()->font,Images::getIns()->getStageSummary(stage_id).c_str());

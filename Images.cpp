@@ -323,6 +323,14 @@ void Images::load(){
 	filelist.push_back("pic/出撃ボタンNO.png");
 	filelist.push_back("pic/world_stage.png");
 
+	filelist.push_back("pic/stage_ss_1.png");
+	filelist.push_back("pic/stage_ss_2.png");
+	filelist.push_back("pic/stage_ss_3.png");
+	filelist.push_back("pic/stage_ss_4.png");
+	filelist.push_back("pic/stage_ss_5.png");
+	filelist.push_back("pic/stage_ss_6.png");
+	
+	filelist.push_back("pic/ワールドマップg.png");
 
 
 
