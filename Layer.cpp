@@ -928,6 +928,7 @@ void MapUnitSelector::main(){
 			if(testBox(440+j%5*50-25,155+j/5*50-25,440+j%5*50+25,155+j/5*50+25)&&mouse_in::getIns()->LeftClick()){
 				if(!flag[i]&&counter>=5)break;
 				flag[i]=!flag[i];
+				SoundController::getSE()->playSE("sound/se_maoudamashii_system39.mp3");
 
 				if(flag[i])counter++;
 				else counter--;
@@ -953,6 +954,7 @@ void MapUnitSelector::main(){
 						}
 					}
 				}
+				SoundController::getSE()->playSE("sound/sen_ka_heirappa01.mp3");
 				parentScene->buttonPushed("gotogame");
 			}
 		}
