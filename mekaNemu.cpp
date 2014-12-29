@@ -36,14 +36,14 @@ void mekaNemu::main(int front){
 		//	if (rand() % 2 == 0){
 				int rand_x = rand() % (Game::stage_W[8] - Game::stage_W[7]);
 				
-				Game::getIns()->effect_create(Game::stage_W[7] +325 + rand_x, 0, DROP);
+			//	Game::getIns()->effect_create(Game::stage_W[7] +325 + rand_x, 0, DROP);
 				
 		//	}
 		//	else{
 				 rand_x = rand() % (Game::stage_W[8] - Game::stage_W[7]);
 				int rand_y = rand() % (WINDOW_Y * 3 / 4);
 				
-					Game::getIns()->effect_create(Game::stage_W[7] +325 + rand_x, rand_y, WISP);
+			//		Game::getIns()->effect_create(Game::stage_W[7] +325 + rand_x, rand_y, WISP);
 				
 		//	}
 		}

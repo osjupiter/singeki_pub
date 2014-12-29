@@ -59,7 +59,7 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 			}
 		}
 		hp -= max(d - defense, 0);
-		printfDx("%d %d\n",op_unit_type, d - defense);
+//		printfDx("%d %d\n",op_unit_type, d - defense);
 		if (state != UnitState::DIE && hp < 0){
 			changeState(UnitState::DIE);
 		}

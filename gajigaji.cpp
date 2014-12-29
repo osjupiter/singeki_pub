@@ -33,6 +33,8 @@ void gajigaji::main(int front){
 				if (!atk){
 					atk = true;
 					stopper = true;
+					SoundController::getSE()->playSE("sound/ガジガジメカ音（修正）.mp3");
+
 				}
 
 			}

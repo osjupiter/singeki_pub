@@ -1,5 +1,6 @@
 #include "musume.h"
 #include "Game.h"
+#include "Status.h"
 
 musume::musume(int fx, int ln, UnitType u_type) : character(fx, ln ,u_type){
 	dir = Direction::RIGHT;
@@ -10,7 +11,9 @@ musume::musume(int fx, int ln, UnitType u_type) : character(fx, ln ,u_type){
 
 void musume::main(int front){
 	character::main(front);
-
+	if (x > STAGE8_W + 200){
+		changeState(UnitState::DIE);
+	}
 	switch (state){
 	case UnitState::DIE:
 		y += vy;
@@ -94,6 +97,7 @@ void musume::del(){
 }
 
 void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
+
 	if (no_damage_flag) return;
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type){
@@ -118,7 +122,7 @@ void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
 			}
 		}
 		hp -= max(d - param->getParam(DEFENSE), 0);
-		printfDx("%d %d\n", op_unit_type, d - param->getParam(DEFENSE));
+	//	printfDx("%d %d\n", op_unit_type, d - param->getParam(DEFENSE));
 
 		if (hp < 0){
 			changeState(UnitState::DIE);

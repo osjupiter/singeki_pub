@@ -4,6 +4,8 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
+#define ANIM_SPEED_S 1
+
 #define DIST_SHOKUSH 30
 shokush::shokush(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_SHOKUSH){
 	width = WID_SHOKUSH;
@@ -58,7 +60,7 @@ void shokush::main(int front){
 
 		break;
 	case UnitState::ST0:   //oŒ»
-		if (ani_count / ANIM_SPEED == ANI_SHOKUSH_S){
+		if (ani_count / ANIM_SPEED_S == ANI_SHOKUSH_S){
 			changeState(UnitState::ATK);
 			visible = true;
 			no_damage_flag = false;
@@ -88,7 +90,7 @@ void shokush::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_shokush_a[level / 3][ani_count / ANIM_SPEED%ANI_SHOKUSH_A], true);
 		break;
 	case UnitState::ST0:
-		DrawGraph(x - cx, y, Images::getIns()->g_shokush_s[level / 3][ani_count / ANIM_SPEED%ANI_SHOKUSH_S], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_shokush_s[level / 3][ani_count / ANIM_SPEED_S%ANI_SHOKUSH_S], true);
 		break;
 	case UnitState::WAIT:
 		DrawGraph(x - cx, y, Images::getIns()->g_shokush_a[level / 3][ani_count / ANIM_SPEED%ANI_SHOKUSH_A], true);

@@ -53,6 +53,8 @@ void ohana::main(int front){
 				if (!atk){
 					stopper = true;
 					atk = true;
+					SoundController::getSE()->playSE("sound/‚¨‰Ô–C‘ä.mp3");
+
 				}
 			}
 			else{ atk = false; }
@@ -69,6 +71,12 @@ void ohana::main(int front){
 
 		break;
 	case UnitState::ST0:   //oŒ»
+		if (ani_count == 1){
+			SoundController::getSE()->playSE("sound/‚¨‰Ô–C‘äiª‚Á‚±‚Ì‰¹j.mp3");
+
+		}
+
+
 		if (ani_count / ANIM_SPEED_S == ANI_OHANA_S){
 			changeState(UnitState::ATK);
 			visible = true;
