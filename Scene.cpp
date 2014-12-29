@@ -221,19 +221,18 @@ void GameScene::buttonPushed(string id){
 	}else if(id=="exit"){
 		SceneManager::getIns()->switchScene(std::make_shared<WorldScene>());
 	}else if(id=="gotoEnd"){
-		if(stage_id==6){
-			SoundController::getIns()->getBgm()->LoadBGM("sound/システム/ending.mp3",true);
-			SceneManager::getIns()->switchScene(make_shared<LoadingScene>((std::make_shared<EndScene>())));
-		}else{
-			int time=-11;
-			if(time<Data::getIns()->get(to_string(stage_id))){
+			int time=game->score_flame;
+			if(Data::getIns()->get(to_string(stage_id))==0||time<Data::getIns()->get(to_string(stage_id))){
 				Data::getIns()->set(to_string(stage_id),time);
 			}
 			if(stage_id>Data::getIns()->get("stage")){
 				Data::getIns()->set("stage",stage_id);
 			}
 			Data::getIns()->Write();
-
+		if(stage_id==6){
+			SoundController::getIns()->getBgm()->LoadBGM("sound/システム/ending.mp3",true);
+			SceneManager::getIns()->switchScene(make_shared<LoadingScene>((std::make_shared<EndScene>())));
+		}else{
 			SceneManager::getIns()->switchScene(make_shared<LoadingScene>((std::make_shared<WorldScene>())));
 		}
 	}else if(id=="pause"){
