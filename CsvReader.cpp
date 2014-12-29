@@ -41,3 +41,16 @@ boolean CsvReader::existCsv(string filename){
 	}
 	return true;
 }
+
+vector<vector<string>> CsvReader::parseTableDX(string name, const string &delim){
+	auto fp=FileRead_open(name.c_str());
+	 char String[2048] ;
+    vector<vector<string>> table;
+    string str;
+    while( FileRead_gets( String, 2048, fp ) ){
+		if(FileRead_eof( fp))break;
+		str=(String);
+		table.emplace_back(split(str, delim));
+    }
+    return table;
+}
