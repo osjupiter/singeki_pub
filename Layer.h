@@ -58,6 +58,14 @@ public:
 
 };
 
+class StringLayer:public GraphicLayer{
+protected:
+	string str;
+public:
+	StringLayer(int tx,int ty,int th,string a);
+	void draw();
+
+};
 
 class MoveGraphLayer:public GraphicLayer{
 private:

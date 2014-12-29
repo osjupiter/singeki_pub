@@ -26,6 +26,16 @@ void GraphicLayer::move(int _x,int _y){
 	y+=_y;
 	
 }
+
+StringLayer::StringLayer(int tx,int ty,int th,string a):GraphicLayer(tx,ty,th){
+	str=a;
+}
+
+void StringLayer::draw(){
+	DrawFormatStringToHandle(x,y,GetColor(255,255,0),Images::getIns()->font2,str.c_str());
+
+}
+
 void MoveGraphLayer::main(){
 	timer+=2;
 	if(timer>=360){timer=0;}
