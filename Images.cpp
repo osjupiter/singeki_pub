@@ -312,6 +312,8 @@ void Images::load(){
 	filelist.push_back("pic/ワールドマップd.png");
 	filelist.push_back("pic/ワールドマップe.png");
 	filelist.push_back("pic/ワールドマップf.png");
+	
+	filelist.push_back("pic/ワールドマップg.png");
 
 	
 	filelist.push_back("pic/出撃前ユニット選択ウインドウ.png");
@@ -357,6 +359,8 @@ void Images::load(){
 
 	SetUseASyncLoadFlag( FALSE ); // 非同期読み込みフラグOFF
 	font=CreateFontToHandle( "メイリオ" , 13 , 5 ,DX_FONTTYPE_ANTIALIASING_EDGE_4X4) ;
+	
+	font2=CreateFontToHandle( "メイリオ" , 30 , 5 ,DX_FONTTYPE_ANTIALIASING_EDGE_4X4) ;
 }
 
 	void Images::init(){ins.load();}
@@ -1072,3 +1076,30 @@ void Images::load(){
 
 	
 	}
+
+	string Images::getStageSummary(int sid){
+	
+		string s[]={
+		"",
+		"かつてこの地で戦争があった",
+		"UFOは雲にぶつかる",
+		"水陸両用UFO",
+		"山の奥には主が潜んでいるという",
+		"今女子は森ガールが熱い！",
+		"故郷"	};
+	return s[sid];
+}
+
+	
+	string Images::getStageName(int sid){
+	
+		string s[]={
+		"",
+		"荒野",
+		"雲の上",
+		"水中",
+		"雪原",
+		"森林",
+		"機械街"	};
+	return s[sid];
+}
