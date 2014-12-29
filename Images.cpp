@@ -1050,6 +1050,10 @@ void Images::load(){
 				}
 			}
 
+			LoadDivGraph("dat/img/敵ユニット/メカシティ/くろいしみw.png", ANI_KUROSHIMI_W, ANI_KUROSHIMI_W, 1, WID_KUROSHIMI, HEI_KUROSHIMI, g_kuroshimi_w);
+			LoadDivGraph("dat/img/敵ユニット/メカシティ/くろいしみa.png", ANI_KUROSHIMI_A, ANI_KUROSHIMI_A, 1, WID_KUROSHIMI, HEI_KUROSHIMI, g_kuroshimi_a);
+
+
 			break;
 
 		default:

@@ -40,7 +40,7 @@ Game::Game(int _world){
 	
 	//for DEBUG
 	/*
-	for (int i = 0; i < 1; i++){
+	for (int i = 0; i < 7; i++){
 		stageInc();
 	}
 	//*/
@@ -117,7 +117,9 @@ void Game::castle_init(){
 	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0,world));
 	castle_list.push_back(p);
 	
-	p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1, world, pop_list));
+	//p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1, world, pop_list));
+	p = shared_ptr<castle>(new boss_castle(stage_W[1], 0, 1, world, pop_list, boss_type[world - 1]));
+
 	castle_list.push_back(p);
 
 	p = shared_ptr<castle>(new castle_enemy(stage_W[2], 0, 2, world, pop_list));

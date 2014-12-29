@@ -5,6 +5,7 @@
 #include "tank.h"
 #include "railgun.h"
 #include "copter.h"
+#include "kuroshimi.h"
 #include "segway.h"
 #include "kamikaze.h"
 #include "gekko.h"
@@ -136,6 +137,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_OHANA:
 		chara_ins.reset(new ohana(x, line, st));
 		break;
+	case UnitType::_KUROSHIMI:
+		chara_ins.reset(new kuroshimi(x, line, st));
+		break;
 
 	case UnitType::_SAIHATE:
 		chara_ins.reset(new saihate(x, line, st));
@@ -147,7 +151,7 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 		chara_ins.reset(new tamanegi(x, line, st));
 		break;
 	default:
-		printfDx("FactoryTypeError\n");
+//		printfDx("FactoryTypeError\n");
 		break;
 	}
 
