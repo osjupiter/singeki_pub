@@ -112,39 +112,18 @@ void WorldScene::enterScene(){
 	addLayer(9,r);
 	LAY_Ptr s((new ButtonLayer(0,0,Images::get(""),WINDOW_X-100,0,100,WINDOW_Y))->setId("rightB")->setClickType(ButtonLayer::ClickFlag::ONMOUSE));
 	addLayer(9,s);
+
+	int tmp[6][2]={
+		{76,288},{497,53},{817,360},{1125,94},{1286,377},{1600,222}
+	};
+	for(int i=1;i<6;i++){
+		if(Data::getIns()->get("stage")+1<i)break;
+		shared_ptr<GraphicLayer> q((new ButtonLayer(tmp[i-1][0],tmp[i-1][1],Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage"+to_string(i))->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+		addLayer(8,q);
+		glist.push_back(q);
 	
-	//歩兵ボタン3.png
-	//ステージへ
-	{
-		shared_ptr<GraphicLayer> q((new ButtonLayer(76,288,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage1")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
-		addLayer(8,q);
-		glist.push_back(q);
 	}
-	{
-		shared_ptr<GraphicLayer> q((new ButtonLayer(497,53,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage2")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
-		addLayer(8,q);
-		glist.push_back(q);
-	}
-	{
-		shared_ptr<GraphicLayer> q((new ButtonLayer(817,360,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage3")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
-		addLayer(8,q);
-		glist.push_back(q);
-	}
-	{
-		shared_ptr<GraphicLayer> q((new ButtonLayer(1125,94,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage4")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
-		addLayer(8,q);
-		glist.push_back(q);
-	}
-	{
-		shared_ptr<GraphicLayer> q((new ButtonLayer(1286,337,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage5")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
-		addLayer(8,q);
-		glist.push_back(q);
-	}
-	{
-		shared_ptr<GraphicLayer> q((new ButtonLayer(1600,222,Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage6")->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
-		addLayer(8,q);
-		glist.push_back(q);
-	}
+	
 	SoundController::getBgm()->playBGM("sound/システム/stageselect.mp3");
 }
 void WorldScene::leaveScene(){
