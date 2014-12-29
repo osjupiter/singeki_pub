@@ -955,9 +955,7 @@ PauseLayer::PauseLayer(){
 }
 
 void PauseLayer::draw(){
-	SetDrawBlendMode( DX_BLENDMODE_ALPHA , 128 ) ;
-	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
-	SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
+	DrawGraph(0,0,Images::get("pic/Pause.png"),TRUE);
 	DrawBox(WINDOW_X-200,WINDOW_Y-200,WINDOW_X-50,WINDOW_Y-50,GetColor(255,0,0),TRUE);
 }
 

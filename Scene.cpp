@@ -192,19 +192,22 @@ void GameScene::leaveScene(){
 }
 void GameScene::beforemain(){
 	if(!notEnd)return;
+	
 	char Buf[ 256 ] ;
 	GetHitKeyStateAll( Buf ) ;
 
-	if( Buf[ KEY_INPUT_LEFT ] == 1 ||	 Buf[ KEY_INPUT_A ] == 1 )
-	{
-		game->scrollLeft(15);
-	}
+	if(!pauseNow){
 
-	if( Buf[ KEY_INPUT_RIGHT ] == 1||  Buf[ KEY_INPUT_D ] == 1 )
-	{
-		game->scrollRight(15);
-	}
+		if( Buf[ KEY_INPUT_LEFT ] == 1 ||	 Buf[ KEY_INPUT_A ] == 1 )
+		{
+			game->scrollLeft(15);
+		}
 
+		if( Buf[ KEY_INPUT_RIGHT ] == 1||  Buf[ KEY_INPUT_D ] == 1 )
+		{
+			game->scrollRight(15);
+		}
+	}
 
 
 	if( Buf[ KEY_INPUT_ESCAPE ] == 1 ){

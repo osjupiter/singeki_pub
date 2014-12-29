@@ -240,8 +240,10 @@ void Images::load(){
 	//sound[0]=LoadSoundMem("sound/kuma.mp3");
 
 	
-
+	
 	filelist.push_back("pic/tou.png");
+
+	filelist.push_back("pic/Pause.png");
 
 	filelist.push_back("pic/ba.png");
 	filelist.push_back("pic/ha.png");
