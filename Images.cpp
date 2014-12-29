@@ -520,7 +520,7 @@ void Images::load(){
 
 
 			break;
-		case 2:
+		case 4:
 			back[0][0] = LoadGraph("dat/img/áŒ´/áŒ´‚P-5.png");
 			back[0][1] = LoadGraph("dat/img/áŒ´/áŒ´‚P-4.png");
 			back[0][2] = LoadGraph("dat/img/áŒ´/áŒ´‚P-3.png");
@@ -622,7 +622,7 @@ void Images::load(){
 
 
 			break;
-		case 3:
+		case 2:
 			back[0][0] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚T.png");
 			back[0][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚R.png");
@@ -722,7 +722,7 @@ void Images::load(){
 			}
 
 			break;
-		case 4:
+		case 5:
 			back[0][0] = 0;
 			back[0][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚P|‚R.png");
@@ -829,7 +829,7 @@ void Images::load(){
 
 
 			break;
-		case 5:
+		case 3:
 			back[0][0] = 0;
 			back[0][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚R.png");

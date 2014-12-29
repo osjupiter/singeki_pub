@@ -4,15 +4,17 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
-#define DIST_SENKOU 120
+#define DIST_SENKOU 50
 senkoutei::senkoutei(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_SENKOUTEI){
 	width = WID_SENKOU;
 	height = HEI_SENKOU;
 	y = WINDOW_Y - height;
 	atk_type = ALL;
-	dist = rand()%40 + DIST_SENKOU;
+	dist = -rand()%40 + DIST_SENKOU;
 	type = RAND;
 }
+
+
 
 void senkoutei::main(int front){
 	enemy::main(front);
@@ -26,7 +28,7 @@ void senkoutei::main(int front){
 		if (ani_count / ANIM_SPEED%ANI_SENKOU_A == 2){
 			if (!stopper){
 					
-					Game::getIns()->effect_create(x + width / 2 - WID_GYORAI / 2 + 10 * dir, y +220-95, GYORAI, dir, power, front, atk_position,level);
+					Game::getIns()->effect_create(x + width / 2 - WID_GYORAI / 2 + 10 * dir, y +220-95, GYORAI, dir, power, front-WID_GYORAI/2, atk_position,level);
 					SoundController::getSE()->playSE("sound/misairu.mp3");
 					stopper = true;
 			}
@@ -74,4 +76,39 @@ void senkoutei::draw(int cx){
 	}
 
 	enemy::draw(cx);
+}
+
+void senkoutei::decideDirection(int front){
+	return;
+	if (((x + width <= front - dist) && dir == LEFT)
+		|| ((x + width > front) && dir == RIGHT))
+		switchDirection();
+}
+
+Position senkoutei::decideTargetPos(int target_x_rand, int target_x_sky){
+	Position ret;
+	switch (atk_type){
+	case ALL:
+		if (dir == RIGHT){
+			if (target_x_rand <= target_x_sky) ret = RAND;
+			else ret = SKY;
+		}
+		else {
+			if (target_x_rand >= target_x_sky) ret = RAND;
+			else ret = SKY;
+			if (target_x_sky > x) ret == RAND;
+		}
+		break;
+	case RAND:
+		ret = RAND;
+		break;
+	case SKY:
+		ret = SKY;
+		break;
+	case NOATK:
+		ret = RAND;
+		break;
+	}
+	atk_position = ret;
+	return ret;
 }

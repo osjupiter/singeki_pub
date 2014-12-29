@@ -23,7 +23,7 @@ void kirakira::main(){
 		pre_atk_x = x;
 	}
 
-	if (ani_count / ANIM_SPEED == 9){
+	if (ani_count / ANIM_SPEED == 12){
 		del();
 	}
 

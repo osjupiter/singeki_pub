@@ -17,7 +17,7 @@ void gyorai::main(){
 	effect::main();
 	x += 11 * dir;
 	if(tarpos==SKY)y -= 7;
-	if ((tarpos == RAND && x+width/2 < destx) || ((tarpos == SKY && y < 10))) {
+	if ((tarpos == RAND && x+width < destx) || ((tarpos == SKY && y < 10))) {
 		del();
 		//Game::getIns()->effect_create(x - 50, WINDOW_Y-HEI_EXP, EXP);
 		int center = (x + x + width) / 2;

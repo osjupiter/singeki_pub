@@ -4,7 +4,7 @@
 #include "Game.h"
 
 #define ANIM_SPEED 4
-#define DIST_DENGUMO (WID_DENKAMI-30)
+#define DIST_DENGUMO (100)
 dengumo::dengumo(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_DENGUMO){
 	width = WID_DENGUMO;
 	height = HEI_DENGUMO;
@@ -37,9 +37,14 @@ void dengumo::main(int front){
 		if (ani_count / ANIM_SPEED%ANI_DENGUMO_A == 7 || ani_count / ANIM_SPEED%ANI_DENGUMO_A == 9){
 			if (!stopper){
 					stopper = true;
-					shared_ptr<AttackRange> p(new AttackRange(x + WID_DENGUMO/2 - 326, x + width/2, power/2, SKY));
-					Game::getIns()->push_attack_list(p, ENEMY);
-
+					if (dir == LEFT){
+						shared_ptr<AttackRange> p(new AttackRange(x + WID_DENGUMO / 2 - 326, x + width / 2, power / 2, SKY));
+						Game::getIns()->push_attack_list(p, ENEMY);
+					}
+					else{
+						shared_ptr<AttackRange> p(new AttackRange(x + WID_DENGUMO / 2, x + width / 2 + 326, power / 2, SKY));
+						Game::getIns()->push_attack_list(p, ENEMY);
+					}
 			}
 		}	
 		else{ stopper = false; }
@@ -74,23 +79,43 @@ void dengumo::main(int front){
 }
 
 void dengumo::draw(int cx){
-	switch (state){
-	case UnitState::MOV:
-		DrawGraph(x - cx, y, Images::getIns()->g_dengumo_w[level / 3][ani_count / ANIM_SPEED%ANI_DENGUMO_W], true);
-		break;
-	case UnitState::ATK:
-		DrawGraph(x - cx, y, Images::getIns()->g_dengumo_a[level / 3][ani_count / ANIM_SPEED%ANI_DENGUMO_A], true);
-		if (thunder){
-			DrawGraph(x - cx + WID_DENGUMO/2 -326, y+120-99, Images::getIns()->g_denkami[level / 3][thunder_count / ANIM_SPEED%ANI_DENKAMI], true);
+	if (dir == LEFT){
+		switch (state){
+		case UnitState::MOV:
+			DrawGraph(x - cx, y, Images::getIns()->g_dengumo_w[level / 3][ani_count / ANIM_SPEED%ANI_DENGUMO_W], true);
+			break;
+		case UnitState::ATK:
+			DrawGraph(x - cx, y, Images::getIns()->g_dengumo_a[level / 3][ani_count / ANIM_SPEED%ANI_DENGUMO_A], true);
+			if (thunder){
+				DrawGraph(x - cx + WID_DENGUMO / 2 - 326, y + 120 - 99, Images::getIns()->g_denkami[level / 3][thunder_count / ANIM_SPEED%ANI_DENKAMI], true);
+			}
+			break;
+		case UnitState::WAIT:
+			DrawGraph(x - cx, y, Images::getIns()->g_dengumo_w[level / 3][ani_count / ANIM_SPEED%ANI_DENGUMO_W], true);
+			break;
+		case UnitState::DIE:
+			DrawGraph(x - cx, y, Images::getIns()->g_dengumo_w[level / 3][ani_count / ANIM_SPEED %ANI_DENGUMO_W], true);
+			break;
 		}
-		break;
-	case UnitState::WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->g_dengumo_w[level / 3][ani_count / ANIM_SPEED%ANI_DENGUMO_W], true);
-		break;
-	case UnitState::DIE:
-		DrawGraph(x - cx, y, Images::getIns()->g_dengumo_w[level / 3][ani_count / ANIM_SPEED %ANI_DENGUMO_W], true);
-		break;
 	}
-
+	else{
+		switch (state){
+		case UnitState::MOV:
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_dengumo_w[level / 3][ani_count / ANIM_SPEED%ANI_DENGUMO_W], true);
+			break;
+		case UnitState::ATK:
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_dengumo_a[level / 3][ani_count / ANIM_SPEED%ANI_DENGUMO_A], true);
+			if (thunder){
+				DrawTurnGraph(x - cx + WID_DENGUMO / 2 - 55, y + 120 - 99, Images::getIns()->g_denkami[level / 3][thunder_count / ANIM_SPEED%ANI_DENKAMI], true);
+			}
+			break;
+		case UnitState::WAIT:
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_dengumo_w[level / 3][ani_count / ANIM_SPEED%ANI_DENGUMO_W], true);
+			break;
+		case UnitState::DIE:
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_dengumo_w[level / 3][ani_count / ANIM_SPEED %ANI_DENGUMO_W], true);
+			break;
+		}
+	}
 	enemy::draw(cx);
 }

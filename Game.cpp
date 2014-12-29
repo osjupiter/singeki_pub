@@ -40,7 +40,7 @@ Game::Game(int _world){
 	
 	//for DEBUG
 	/*
-	for (int i = 0; i < 7; i++){
+	for (int i = 0; i < 1; i++){
 		stageInc();
 	}
 	//*/
@@ -106,11 +106,11 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
-	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_SAIHATE, UnitType::_TAMANEGI,
+	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_TAMANEGI, UnitType::_SAIHATE,
 		UnitType::_TAMANEGI, UnitType::_STEAM };
 
-	string spownfilename[WORLD_NUM+1] = { "","dat/r–ìspown.csv", "dat/áŒ´spown.csv", "dat/‰_‚Ìãspown.csv"
-		, "dat/XƒK[ƒ‹spown.csv", "dat/…‚Ì’†spown.csv", "dat/ƒƒJƒVƒeƒBspown.csv" };
+	string spownfilename[WORLD_NUM + 1] = { "", "dat/r–ìspown.csv", "dat/‰_‚Ìãspown.csv" ,"dat/…‚Ì’†spown.csv"
+		,"dat/áŒ´spown.csv", "dat/XƒK[ƒ‹spown.csv", "dat/ƒƒJƒVƒeƒBspown.csv" };
 	
 	auto pop_list = CsvReader::parseTable(spownfilename[world], ",");
 

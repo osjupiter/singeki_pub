@@ -4,6 +4,7 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
+#define ANIM_SPEED_A 2
 
 beebar::beebar(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_BEEBAR){
 	width = WID_BEEBAR_W;
@@ -23,7 +24,7 @@ void beebar::main(int front){
 		break;
 	case UnitState::ATK:
 		atk = false;
-		if (ani_count / ANIM_SPEED%ANI_BEEBAR_A == 3){
+		if (ani_count / ANIM_SPEED_A%ANI_BEEBAR_A == 3){
 			if (!stopper){
 				if (!atk){
 					stopper = true;
@@ -33,7 +34,7 @@ void beebar::main(int front){
 		}
 		else{ stopper = false; }
 
-		if (((ani_count / ANIM_SPEED) == ANI_BEEBAR_A)){
+		if (((ani_count / ANIM_SPEED_A) == ANI_BEEBAR_A)){
 			changeState(UnitState::WAIT);
 
 		}
@@ -58,20 +59,37 @@ void beebar::main(int front){
 }
 
 void beebar::draw(int cx){
-	switch (state){
-	case UnitState::MOV:
-		DrawGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);
-		break;
-	case UnitState::ATK:
-		DrawGraph(x - cx - 120, y, Images::getIns()->g_beebar_a[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_A], true);
-		break;
-	case UnitState::WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);
-		break;
-	case UnitState::DIE:
-		DrawGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);
-		break;
+	if (dir == LEFT){
+		switch (state){
+		case UnitState::MOV:
+			DrawGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);
+			break;
+		case UnitState::ATK:
+			DrawGraph(x - cx - 120, y, Images::getIns()->g_beebar_a[level / 3][ani_count / ANIM_SPEED_A%ANI_BEEBAR_A], true);
+			break;
+		case UnitState::WAIT:
+			DrawGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);
+			break;
+		case UnitState::DIE:
+			DrawGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);
+			break;
+		}
 	}
-
+	else{
+		switch (state){
+		case UnitState::MOV:
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);
+			break;
+		case UnitState::ATK:
+			DrawTurnGraph(x - cx - 120, y, Images::getIns()->g_beebar_a[level / 3][ani_count / ANIM_SPEED_A%ANI_BEEBAR_A], true);
+			break;
+		case UnitState::WAIT:
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);
+			break;
+		case UnitState::DIE:
+			DrawTurnGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);
+			break;
+		}
+	}
 	enemy::draw(cx);
 }

@@ -23,5 +23,5 @@ public:
 	Position getAtkType();
 	void damage(int, Position, UnitType);
 	void changeState(UnitState);
-	Position decideTargetPos(int target_x_rand, int target_x_sky);
+	virtual Position decideTargetPos(int target_x_rand, int target_x_sky);
 };

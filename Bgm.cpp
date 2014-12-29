@@ -28,7 +28,7 @@ void Bgm::loadStage(int sid){
 		bgmlist.push_back("sound/r–ì/kouya_8.mp3");
 		bgmlist.push_back("‚¾‚İ[");
 		break;
-	case 2:
+	case 4:
 		bgmlist.push_back("sound/áŒ´/setsugen_1.mp3");
 		bgmlist.push_back("sound/áŒ´/setsugen_2.mp3");
 		bgmlist.push_back("sound/áŒ´/setsugen_3.mp3");
@@ -39,7 +39,7 @@ void Bgm::loadStage(int sid){
 		bgmlist.push_back("sound/áŒ´/setsugen_8.mp3");
 		bgmlist.push_back("‚¾‚İ[");
 		break;
-	case 3:
+	case 2:
 		bgmlist.push_back("sound/‰_‚Ìã/kumo_1.mp3");
 		bgmlist.push_back("sound/‰_‚Ìã/kumo_2.mp3");
 		bgmlist.push_back("sound/‰_‚Ìã/kumo_3.mp3");
@@ -50,7 +50,7 @@ void Bgm::loadStage(int sid){
 		bgmlist.push_back("sound/‰_‚Ìã/kumo_8.mp3");
 		bgmlist.push_back("‚¾‚İ[");
 		break;
-	case 4:
+	case 5:
 		bgmlist.push_back("sound/XƒK[ƒ‹/mori_1.mp3");
 		bgmlist.push_back("sound/XƒK[ƒ‹/mori_2.mp3");
 		bgmlist.push_back("sound/XƒK[ƒ‹/mori_3.mp3");
@@ -61,7 +61,7 @@ void Bgm::loadStage(int sid){
 		bgmlist.push_back("sound/XƒK[ƒ‹/mori_8.mp3");
 		bgmlist.push_back("‚¾‚İ[");
 		break;
-	case 5:
+	case 3:
 		bgmlist.push_back("sound/…‚Ì’†/mizu_1.mp3");
 		bgmlist.push_back("sound/…‚Ì’†/mizu_2.mp3");
 		bgmlist.push_back("sound/…‚Ì’†/mizu_3.mp3");

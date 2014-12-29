@@ -4,13 +4,13 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
-#define DIST_SHOKUSH 50
+#define DIST_SHOKUSH 30
 shokush::shokush(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_SHOKUSH){
 	width = WID_SHOKUSH;
 	height = HEI_SHOKUSH;
 	y = WINDOW_Y - height;
 	atk_type = RAND;
-	dist = dist%20 + DIST_SHOKUSH;
+	dist = DIST_SHOKUSH - rand()%35;
 	type = RAND;
 	visible = false;
 
