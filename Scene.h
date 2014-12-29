@@ -5,6 +5,7 @@
 #include"Images.h"
 #include"Layer.h"
 #include"Game.h"
+#include"Data.h"
 class TitleScene : public SceneNode{
 
 public:

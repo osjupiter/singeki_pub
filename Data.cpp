@@ -9,7 +9,7 @@ using namespace std;
 Data Data::ins;
 void Data::Read(){
 	if(!CsvReader::existCsv("save.dat")){
-		dataTable["stage"]=1;
+		dataTable["stage"]=0;
 		dataTable["1"]=0;
 		dataTable["2"]=0;
 		dataTable["3"]=0;

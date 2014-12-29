@@ -225,6 +225,15 @@ void GameScene::buttonPushed(string id){
 			SoundController::getIns()->getBgm()->LoadBGM("sound/ƒVƒXƒeƒ€/ending.mp3",true);
 			SceneManager::getIns()->switchScene(make_shared<LoadingScene>((std::make_shared<EndScene>())));
 		}else{
+			int time=-11;
+			if(time<Data::getIns()->get(to_string(stage_id))){
+				Data::getIns()->set(to_string(stage_id),time);
+			}
+			if(stage_id>Data::getIns()->get("stage")){
+				Data::getIns()->set("stage",stage_id);
+			}
+			Data::getIns()->Write();
+
 			SceneManager::getIns()->switchScene(make_shared<LoadingScene>((std::make_shared<WorldScene>())));
 		}
 	}else if(id=="pause"){
