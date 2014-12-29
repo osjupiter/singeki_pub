@@ -22,8 +22,7 @@ void Images::load(){
 	//タイトルに使うものたちよ
 	filelist.push_back("pic/title.png");
 	filelist.push_back("pic/定刻ぼるけーの.png");
-	filelist.push_back("pic/world2.png");
-	filelist.push_back("pic/world_icon.png");
+	
 	
 		
 	filelist.push_back("pic/test.jpg");
@@ -44,7 +43,6 @@ void Images::load(){
 
 	SetUseASyncLoadFlag( TRUE ); // 非同期読み込みフラグON
 	
-
 
 	LoadDivGraph("dat/img/歩兵w.png", ANI_HOHEI, ANI_HOHEI, 1, WID_HOHEI, HEI_HOHEI, g_hohei);
 	LoadDivGraph("dat/img/歩兵a.png", ANI_HOHEI_ATK, ANI_HOHEI_ATK, 1, WID_HOHEI, HEI_HOHEI, g_hohei_atk);
@@ -292,6 +290,13 @@ void Images::load(){
 	filelist.push_back("pic/速さ2.png");
 	filelist.push_back("pic/防御2.png");
 	filelist.push_back("pic/力2.png");
+
+	
+	filelist.push_back("pic/ワールドマップa.png");
+	filelist.push_back("pic/ワールドマップb.png");
+	filelist.push_back("pic/ワールドマップc.png");
+	filelist.push_back("pic/ワールドマップd.png");
+	filelist.push_back("pic/world_icon.png");
 
 
 

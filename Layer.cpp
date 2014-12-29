@@ -26,7 +26,19 @@ void GraphicLayer::move(int _x,int _y){
 	y+=_y;
 	
 }
+void MoveGraphLayer::main(){
+	timer+=2;
+	if(timer>=360){timer=0;}
+}
 
+MoveGraphLayer::MoveGraphLayer(int tx,int ty,int th,int init):GraphicLayer(tx,ty,th){
+	timer=init;
+	haba=10;
+}
+void MoveGraphLayer::draw(){
+	DrawGraph(x,y+haba*sin((double)timer/180.0*3.14),hundle,TRUE);
+	
+}
 
 ButtonLayer::ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth):GraphicLayer(tx,ty,th){
 	bx=ttx;
