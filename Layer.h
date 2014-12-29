@@ -62,10 +62,11 @@ public:
 class MoveGraphLayer:public GraphicLayer{
 private:
 	int timer;
-	int haba;
+	int haba,takasa;
+	int pat;
 public:
 	void draw();
-	MoveGraphLayer(int tx,int ty,int th,int init);
+	MoveGraphLayer(int tx,int ty,int th,int init,int,int,int);
 	void main();
 };
 

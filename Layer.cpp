@@ -31,12 +31,15 @@ void MoveGraphLayer::main(){
 	if(timer>=360){timer=0;}
 }
 
-MoveGraphLayer::MoveGraphLayer(int tx,int ty,int th,int init):GraphicLayer(tx,ty,th){
+MoveGraphLayer::MoveGraphLayer(int tx,int ty,int th,int init,int _pat,int yoko,int tate):GraphicLayer(tx,ty,th){
 	timer=init;
-	haba=10;
+	haba=yoko;
+	takasa=tate;
+	pat=_pat;
 }
 void MoveGraphLayer::draw(){
-	DrawGraph(x,y+haba*sin((double)timer/180.0*3.14),hundle,TRUE);
+	if(pat==1)
+		DrawGraph(x+takasa*cos((double)timer/180.0*3.14),y+haba*sin((double)timer/180.0*3.14),hundle,TRUE);
 	
 }
 
