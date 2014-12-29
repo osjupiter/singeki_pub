@@ -28,7 +28,7 @@ void saihate::main(int front){
 		break;
 	case UnitState::ATK:
 		state_change_flag = false;
-		if (rand() % 10 == 0 && first_atk){
+		if (rand() % 2 == 0 && first_atk){
 			state_change_flag = true;
 			changeState(UnitState::ST1);
 			first_atk = true;
@@ -100,7 +100,7 @@ void saihate::draw(int cx){
 		DrawGraph(x - cx, y, Images::getIns()->g_saihate_t[ani_count / ANIM_SPEED%ANI_SAIHATE_T], true);
 		break;
 	case UnitState::ATK:
-		DrawGraph(x - cx + WID_SAIHATE - WID_SAIHATE_A_R, y, Images::getIns()->g_saihate_a_r[ani_count / ANIM_SPEED%ANI_SAIHATE_A], true);
+		DrawGraph(x - cx + WID_SAIHATE - WID_SAIHATE_A_R, y, Images::getIns()->g_saihate_a_r[(ANI_SAIHATE_A -1)-ani_count / ANIM_SPEED%ANI_SAIHATE_A], true);
 		break;
 	case UnitState::WAIT:
 		DrawGraph(x - cx, y, Images::getIns()->g_saihate_t[ani_count / ANIM_SPEED%ANI_SAIHATE_T], true);
@@ -112,7 +112,7 @@ void saihate::draw(int cx){
 		DrawGraph(x - cx, y + HEI_SAIHATE - HEI_SAIHATE_A_S, Images::getIns()->g_saihate_a_s[ani_count / ANIM_SPEED%ANI_SAIHATE_A], true);
 		break;
 	case UnitState::DIE:
-		DrawGraph(x - cx, y, Images::getIns()->g_saihate_t[ani_count / ANIM_SPEED%ANI_SAIHATE_T], true);
+		//DrawGraph(x - cx, y, Images::getIns()->g_saihate_t[ani_count / ANIM_SPEED%ANI_SAIHATE_T], true);
 		break;
 	}
 	character::draw(cx);

@@ -10,7 +10,7 @@ beebar::beebar(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_BEEBAR){
 	height = HEI_BEEBAR_W;
 	y = 100 + ln * 5;
 	atk_type = RAND;
-	dist = dist + 200;
+	dist = dist%50 + 170;
 	type = SKY;
 }
 

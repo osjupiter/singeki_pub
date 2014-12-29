@@ -1,26 +1,34 @@
-#include "shokush.h"
+#include "ohana.h"
 #include "Status.h"
 #include "Images.h"
 #include "Game.h"
 
 #define ANIM_SPEED 3
-#define DIST_SHOKUSH 50
-shokush::shokush(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_SHOKUSH){
-	width = WID_SHOKUSH;
-	height = HEI_SHOKUSH;
+#define ANIM_SPEED_S 2
+
+#define DIST_OHANA 50
+ohana::ohana(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_OHANA){
+	width = WID_OHANA;
+	height = HEI_OHANA;
 	y = WINDOW_Y - height;
 	atk_type = RAND;
-	dist = dist%20 + DIST_SHOKUSH;
+	dist = dist % 20 + DIST_OHANA;
 	type = RAND;
 	visible = false;
-
 }
 
-void shokush::main(int front){
+void ohana::main(int front){
 	pre_state = state;
 	enemy::main(front);
+
 	switch (state){
 	case UnitState::MOV:
+		if (pre_state != UnitState::MOV){
+			visible = false;
+		}
+		if (pre_state != UnitState::MOV){
+			visible = false;
+		}
 		if (visible){
 
 			changeState(UnitState::WAIT);
@@ -38,16 +46,21 @@ void shokush::main(int front){
 			visible = true;
 			no_damage_flag = false;
 		}
-		else	state_change_flag = false;
-		if (ani_count / ANIM_SPEED == 4){
+		else{
+			state_change_flag = false;
+		}
+		if (ani_count / ANIM_SPEED == 6){
 			if (!stopper){
-				Game::getIns()->effect_create(x, y, KIRAKIRA, dir, power,0,0,level);
-				stopper = true;
+				if (!atk){
+					stopper = true;
+					atk = true;
+				}
 			}
+			else{ atk = false; }
 		}
 		else { stopper = false; }
 
-		if (ani_count / ANIM_SPEED == ANI_SHOKUSH_A){
+		if (ani_count / ANIM_SPEED == ANI_OHANA_A){
 			state_change_flag = true;
 			changeState(UnitState::WAIT);
 		}
@@ -57,7 +70,7 @@ void shokush::main(int front){
 
 		break;
 	case UnitState::ST0:   //oŒ»
-		if (ani_count / ANIM_SPEED == ANI_SHOKUSH_S){
+		if (ani_count / ANIM_SPEED_S == ANI_OHANA_S){
 			changeState(UnitState::ATK);
 		}
 		break;
@@ -77,21 +90,21 @@ void shokush::main(int front){
 	}
 }
 
-void shokush::draw(int cx){
+void ohana::draw(int cx){
 	switch (state){
 	case UnitState::MOV:
 		break;
 	case UnitState::ATK:
-		DrawGraph(x - cx, y, Images::getIns()->g_shokush_a[level / 3][ani_count / ANIM_SPEED%ANI_SHOKUSH_A], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_ohana_a[level / 3][ani_count / ANIM_SPEED%ANI_OHANA_A], true);
 		break;
 	case UnitState::ST0:
-		DrawGraph(x - cx, y, Images::getIns()->g_shokush_s[level / 3][ani_count / ANIM_SPEED%ANI_SHOKUSH_S], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_ohana_s[level / 3][ani_count / ANIM_SPEED_S%ANI_OHANA_S], true);
 		break;
 	case UnitState::WAIT:
-		DrawGraph(x - cx, y, Images::getIns()->g_shokush_a[level / 3][ani_count / ANIM_SPEED%ANI_SHOKUSH_A], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_ohana_a[level / 3][ani_count / ANIM_SPEED%6], true);
 		break;
 	case UnitState::DIE:
-		DrawGraph(x - cx, y, Images::getIns()->g_shokush_a[level / 3][ani_count / ANIM_SPEED %ANI_SHOKUSH_A], true);
+		DrawGraph(x - cx, y, Images::getIns()->g_ohana_a[level / 3][ani_count / ANIM_SPEED %ANI_OHANA_A], true);
 		break;
 	}
 

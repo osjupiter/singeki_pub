@@ -5,7 +5,7 @@
 
 class majo : public musume{
 private:
-
+	int maho_count;
 public:
 	majo(int fx, int ln);
 	void main(int);

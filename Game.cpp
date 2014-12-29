@@ -23,7 +23,7 @@ Game::Game(int _world){
 	ins = this;
 	auto data = CsvReader::parseTable("dat/resouce.csv", ",");
 
-	resource = stoi(data[0][0]);
+	resource = stoi(data[0][world-1]);
 	background_init();
 	castle_init();
 	srand((unsigned int)time(NULL));
@@ -106,8 +106,8 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
-	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_AKUUMON, UnitType::_GUUZOU,
-		UnitType::_TAMANEGI, UnitType::_DARKMUSUME };
+	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_SAIHATE, UnitType::_TAMANEGI,
+		UnitType::_TAMANEGI, UnitType::_STEAM };
 
 	string spownfilename[WORLD_NUM+1] = { "","dat/çrñÏspown.csv", "dat/ê·å¥spown.csv", "dat/â_ÇÃè„spown.csv"
 		, "dat/êXÉKÅ[Éãspown.csv", "dat/êÖÇÃíÜspown.csv", "dat/ÉÅÉJÉVÉeÉBspown.csv" };
@@ -209,7 +209,7 @@ shared_ptr<character> Game::x_birth(int x, int lv,int type, bool use_resouce){
 		return p;
 	}
 	else {
-		shared_ptr<character> p(Factory::create_chara(x, getNowStage(), line, (UnitType)type));
+		shared_ptr<character> p(Factory::create_chara(x, lv, line, (UnitType)type));
 		if (p != NULL) enemy_list[line].push_back(p);
 		return p;
 	}
@@ -306,15 +306,16 @@ void Game::main(){
 		for (auto i : enemy_list[j]){
 			if (i->getState() != UnitState::DIE){
 				if (castle_list.at(now_stage)->getX() > i->getX()){
+					if (i->getVisible()){
+						if ((i->getType() == RAND || i->getType() == ALL) && target_X > i->getX()){
+							target_e = i;
+							target_X = i->getX();
+						}
 
-					if ((i->getType() == RAND || i->getType() == ALL) && target_X > i->getX()){
-						target_e = i;
-						target_X = i->getX();
-					}
-						
-					if ((i->getType() == SKY || i->getType() == ALL) && target_X_S > i->getX()){
-						target_e_sky = i;
-						target_X_S = i->getX();
+						if ((i->getType() == SKY || i->getType() == ALL) && target_X_S > i->getX()){
+							target_e_sky = i;
+							target_X_S = i->getX();
+						}
 					}
 				}
 			}
@@ -349,16 +350,18 @@ void Game::main(){
 			i->main(front);
 			if (i->getState() != UnitState::DIE){
 				if (castle_list.at(now_stage - 1)->getX() + castle_list.at(now_stage - 1)->getW() < i->getX()){
-					if ((i->getType() == RAND || i->getType() == ALL) && target_X < i->getX()){
+					if (i->getVisible()){
+						if ((i->getType() == RAND || i->getType() == ALL) && target_X < i->getX()){
 
-						target_m = i;
-						target_X = i->getX()+i->getW();
-					}
+							target_m = i;
+							target_X = i->getX() + i->getW();
+						}
 
 
-					if ((i->getType() == SKY || i->getType() == ALL) && target_X_S < i->getX()){
-						target_m_sky = i;
-						target_X_S = i->getX() + i->getW();
+						if ((i->getType() == SKY || i->getType() == ALL) && target_X_S < i->getX()){
+							target_m_sky = i;
+							target_X_S = i->getX() + i->getW();
+						}
 					}
 				}
 			}

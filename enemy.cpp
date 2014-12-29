@@ -2,7 +2,6 @@
 #include "Game.h"
 #include "iostream"
 enemy::enemy(int fx, int ln, int lv , UnitType u_type) :character(fx, ln, u_type){
-	param = Game::getIns()->getParam(static_cast<int>(unit_type));
 	level = lv;
 	dir = Direction::LEFT;
 	atk = false;
@@ -15,7 +14,6 @@ enemy::enemy(int fx, int ln, int lv , UnitType u_type) :character(fx, ln, u_type
 	atk_type = static_cast<Position> (param->getParam(A_TYPE));
 	cost = param->getParamMag(COST, lv);
 	atk_freq = param->getParamMag(A_FREQ, lv);
-	unit_type = UnitType::_TANK;
 	maxhp = hp;
 
 }
@@ -44,7 +42,7 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 	if (no_damage_flag) return;
 	if (op_a_type == NOATK) return;
 	if (op_a_type == ALL || op_a_type == type || type ==ALL){
-		if (rand() % 30 == 0){
+		if (rand() % 30 == 0){		
 			int rand_x = rand() % width / 2, rand_y = rand() % height / 2;
 			switch (op_unit_type){
 			case UnitType::_BAZOOKA:
@@ -54,6 +52,10 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 			case UnitType::_IKAROS:
 				Game::getIns()->damage_effect_create(x + width / 3+rand_x, y + height - HEI_GUNSHOT+25-rand_y, GUNSHOT);
 				break;
+			case UnitType::_HIME:
+				Game::getIns()->damage_effect_create(x + rand_x, y + height - HEI_ZANGEKI + 25 - rand_y, ZANGEKI);
+				break;
+
 			}
 		}
 		hp -= max(d - defense, 0);
@@ -67,10 +69,12 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 
 
 void enemy::changeState(UnitState next_state){
+	if (state == UnitState::DIE)return;
 	if (!state_change_flag && next_state != UnitState::DIE) return;
 	switch (next_state){
 	case UnitState::MOV:		
 		ani_count = 0;
+		
 		switch (state){
 		case UnitState::ATK:
 		//	wait_time = param->getParam(A_FREQ);
@@ -118,6 +122,8 @@ void enemy::changeState(UnitState next_state){
 		state_change_flag = false;
 		break;
 	default:
+		if (state == UnitState::ATK)
+			wait_time = atk_freq;
 		state = next_state;
 		ani_count = 0;
 

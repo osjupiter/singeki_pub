@@ -34,7 +34,7 @@
 #include "gyorai.h"
 #include "shokush.h"
 #include "kirakira.h"
-
+#include "negimissile.h"
 #include "beam.h"
 #include "hana.h"
 #include "yukidama.h"
@@ -42,12 +42,18 @@
 #include "monoris.h"
 #include "dengumo.h"
 #include "saihate.h"
+#include "ohana.h"
+#include "tamanegi.h"
+#include "gajikami.h"
+#include "zangeki.h"
 using namespace std;
 
 
 shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType type){
 	shared_ptr<character> chara_ins(nullptr);
 	switch (type){
+	case UnitType::_NONE:
+		break;
 	case UnitType::_HOHEI:
 		chara_ins.reset(new hohei(x, line));
 		break;
@@ -126,6 +132,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_SHOKUSH:
 		chara_ins.reset(new shokush(x, line, st));
 		break;
+	case UnitType::_OHANA:
+		chara_ins.reset(new ohana(x, line, st));
+		break;
 
 	case UnitType::_SAIHATE:
 		chara_ins.reset(new saihate(x, line, st));
@@ -133,7 +142,11 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_STEAM:
 		chara_ins.reset(new steam(x, line, st));
 		break;
+	case UnitType::_TAMANEGI:
+		chara_ins.reset(new tamanegi(x, line, st));
+		break;
 	default:
+		printfDx("FactoryTypeError\n");
 		break;
 	}
 
@@ -197,6 +210,9 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 	case KIRAKIRA:
 		ret_ins.reset(new kirakira(fx, fy, dr, atk_power, destx, desty, lv));
 		break;
+	case NEGIMISSILE:
+		ret_ins.reset(new negimissile(fx, fy, dr, atk_power, destx, desty, lv));
+		break;
 	}
 	return ret_ins;
 	
@@ -212,7 +228,12 @@ shared_ptr<effect> Factory::create_damage_effect(int fx, int fy, int e_type, boo
 	case CANNONSHOT:
 		ret_ins.reset(new cannonshot(fx, fy, TurnFlag));
 		break;
-	
+	case GAJIKAMI:
+		ret_ins.reset(new gajikami(fx, fy, TurnFlag));
+		break;
+	case ZANGEKI:
+		ret_ins.reset(new zangeki(fx, fy, TurnFlag));
+		break;
 	case NOMALEXP:
 		ret_ins.reset(new nomalExp(fx, fy, true));
 		break;

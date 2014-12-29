@@ -2,7 +2,9 @@
 #include "Images.h"
 #include "Game.h"
 
-#define ANIM_SPEED 7
+#define ANIM_SPEED 4
+#define ANIM_SPEED_M 2
+
 #define DIST_MAJO 200
 
 
@@ -12,6 +14,7 @@ majo::majo(int fx, int ln) : musume(fx, ln, UnitType::_MAJO){
 	height = HEI_MAJO;
 	stopper = false;
 	type = SKY;
+	maho_count = -1;
 	y = 150 - line * 7;
 }
 
@@ -24,13 +27,19 @@ void majo::main(int front){
 		break;
 	case UnitState::ATK:
 		state_change_flag = false;
+		if (ani_count > 1 && maho_count<ANI_MAHOJIN-1){
+			maho_count++;
+		}
 		if (ani_count / ANIM_SPEED == ANI_MAJO_A - 1){
 			if (!stopper){
 				if (!atk){
 					Game::getIns()->effect_create(front, FIELD_H - HEI_EXP, EXP);
-					shared_ptr<AttackRange> p(new AttackRange(front, front + WID_EXP - 10, param->getParam(POWER), RAND));
+						shared_ptr<AttackRange> p(new AttackRange(front, front + WID_EXP - 10, param->getParam(POWER), RAND));
+
+					//	shared_ptr<AttackRange> p(new AttackRange(x + width + dist, x + width + dist + WID_EXP - 10, param->getParam(POWER), RAND));
 					Game::getIns()->push_attack_list(p, MUSUME);
 					stopper = true;
+					
 				}
 			}
 			else {
@@ -40,6 +49,7 @@ void majo::main(int front){
 		else { stopper = false; }
 		if ((ani_count / ANIM_SPEED == ANI_MAJO_A)){
 			state_change_flag = true;
+			maho_count = -1;
 			changeState(UnitState::WAIT);
 			atk = false;
 		}
@@ -61,6 +71,12 @@ void majo::draw(int cx){
 	case UnitState::ATK:
 //		DrawGraph(x - cx, y, Images::getIns()->g_majo_a[ani_count / ANIM_SPEED%ANI_MAJO_A], true);
 		character::draw(cx, x, y, Images::getIns()->g_majo_a[ani_count / ANIM_SPEED%ANI_MAJO_A]);
+		if (dir == RIGHT){
+			DrawGraph(x - cx+76-36, y, Images::getIns()->g_mahojin[maho_count%ANI_MAHOJIN], true);
+		}
+		else if (dir == LEFT){
+			DrawTurnGraph(x -WID_MAHOJIN+36+23- cx, y, Images::getIns()->g_mahojin[maho_count%ANI_MAHOJIN], true);
+		}
 		break;
 	case UnitState::WAIT:
 //		DrawGraph(x - cx, y, Images::getIns()->g_majo_w[ani_count / ANIM_SPEED%ANI_MAJO_W], true);

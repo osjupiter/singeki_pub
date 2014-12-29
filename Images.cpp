@@ -132,9 +132,6 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/雪原/ビーバー3w.png", ANI_BEEBAR_W, ANI_BEEBAR_W, 1, WID_BEEBAR_W, HEI_BEEBAR_W, g_beebar_w[2]);
 	LoadDivGraph("dat/img/敵ユニット/雪原/ビーバー3a.png", ANI_BEEBAR_A, ANI_BEEBAR_A, 1, WID_BEEBAR_A, HEI_BEEBAR_A, g_beebar_a[2]);
 
-	LoadDivGraph("dat/img/敵ユニット/荒野/スチームパンクロボ歩き.png", ANI_STEAM_W, 3, 3, WID_STEAM, HEI_STEAM, g_steam_w);
-	LoadDivGraph("dat/img/敵ユニット/荒野/スチームパンクロボ攻撃.png", ANI_STEAM_A, 4, 4, WID_STEAM, HEI_STEAM, g_steam_a);
-	LoadDivGraph("dat/img/敵ユニット/荒野/スチームパンクロボ復帰.png", ANI_STEAM_F, ANI_STEAM_F, 1, WID_STEAM, HEI_STEAM, g_steam_f);
 	
 	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてa1.png", ANI_SAIHATE_A, 1, ANI_SAIHATE_A, WID_SAIHATE_A_R, HEI_SAIHATE, g_saihate_a_r);
 	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてa2.png", ANI_SAIHATE_A, ANI_SAIHATE_A, 1, WID_SAIHATE, HEI_SAIHATE_A_S, g_saihate_a_s);
@@ -178,11 +175,8 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/水の中/魚雷3.png", ANI_GYORAI, ANI_GYORAI, 1, WID_GYORAI, HEI_GYORAI, g_gyorai[2]);
 
 
-	if(LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1出現.png", ANI_SHOKUSH_S, ANI_SHOKUSH_S, 1, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[0]))
-		printfDx("Faile Image \n");
-	else
-		printfDx("LOAD Image \n");
-
+	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1出現.png", ANI_SHOKUSH_S, ANI_SHOKUSH_S, 1, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[0]);
+	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1出現.png", ANI_SHOKUSH_S, 5, 3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1攻撃.png", ANI_SHOKUSH_A, 3,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_a[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2出現.png", ANI_SHOKUSH_S, 5,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[1]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2攻撃.png", ANI_SHOKUSH_A, 3,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_a[1]);
@@ -192,6 +186,17 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1キラキラ.png", ANI_KIRAKIRA, 6,2, WID_KIRAKIRA, HEI_KIRAKIRA, g_kirakira[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2キラキラ.png", ANI_KIRAKIRA, 6,2, WID_KIRAKIRA, HEI_KIRAKIRA, g_kirakira[1]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手3キラキラ.png", ANI_KIRAKIRA, 6,2, WID_KIRAKIRA, HEI_KIRAKIRA, g_kirakira[2]);
+
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台1出現.png", ANI_OHANA_S, 4, 4, WID_OHANA, HEI_OHANA, g_ohana_s[0]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台1攻撃.png", ANI_OHANA_A, 3, 3, WID_OHANA, HEI_OHANA, g_ohana_a[0]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台2出現.png", ANI_OHANA_S, 4, 4, WID_OHANA, HEI_OHANA, g_ohana_s[1]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台2攻撃.png", ANI_OHANA_A, 3, 3, WID_OHANA, HEI_OHANA, g_ohana_a[1]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台3出現.png", ANI_OHANA_S, 4, 4, WID_OHANA, HEI_OHANA, g_ohana_s[2]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台3攻撃.png", ANI_OHANA_A, 3, 3, WID_OHANA, HEI_OHANA, g_ohana_a[2]);
+
+	LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎミサイル1.png", ANI_NEGIMISSILE, 2, 1, WID_NEGIMISSILE, HEI_NEGIMISSILE, g_negimissile[2]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎミサイル2.png", ANI_NEGIMISSILE, 2, 1, WID_NEGIMISSILE, HEI_NEGIMISSILE, g_negimissile[1]);
+	LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎミサイル3.png", ANI_NEGIMISSILE, 2, 1, WID_NEGIMISSILE, HEI_NEGIMISSILE, g_negimissile[0]);
 
 
 	LoadDivGraph("dat/img/むすめユニット/花ｓ.png", ANI_HANA, 5, 5, WID_HANA, HEI_HANA, g_hana);
@@ -215,6 +220,11 @@ void Images::load(){
 
 	LoadDivGraph("dat/img/銃被弾時e.png", ANI_GUNSHOT, ANI_GUNSHOT, 1, WID_GUNSHOT, HEI_GUNSHOT, g_gunshot);
 	LoadDivGraph("dat/img/砲弾被弾時e.png", ANI_CANNONSHOT, ANI_CANNONSHOT, 1, WID_CANNONSHOT, HEI_CANNONSHOT, g_cannonshot);
+
+	LoadDivGraph("dat/img/敵ユニット/荒野/かみつきエフェクト.png", ANI_GAJIKAMI, ANI_GAJIKAMI, 1, WID_GAJIKAMI, HEI_GAJIKAMI, g_gajikami);
+	LoadDivGraph("dat/img/むすめユニット/魔方陣.png", ANI_MAHOJIN, 5, 4, WID_MAHOJIN, HEI_MAHOJIN, g_mahojin);
+	LoadDivGraph("dat/img/むすめユニット/斬撃エフェクト1.png", ANI_ZANGEKI, ANI_ZANGEKI, 1, WID_ZANGEKI, HEI_ZANGEKI, g_zangeki);
+
 
 	LoadDivGraph("dat/img/闇の世界/e2a1.png", 8, 8, 1, 96, 450, g_e_yamidrop[0]);
 	LoadDivGraph("dat/img/闇の世界/e2a2.png", 8, 8, 1, 96, 450, g_e_yamidrop[1]);
@@ -505,6 +515,11 @@ void Images::load(){
 					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
 				}
 			}
+
+			LoadDivGraph("dat/img/敵ユニット/荒野/スチームパンクロボ歩き.png", ANI_STEAM_W, 3, 3, WID_STEAM, HEI_STEAM, g_steam_w);
+			LoadDivGraph("dat/img/敵ユニット/荒野/スチームパンクロボ攻撃.png", ANI_STEAM_A, 4, 4, WID_STEAM, HEI_STEAM, g_steam_a);
+			LoadDivGraph("dat/img/敵ユニット/荒野/スチームパンクロボ復帰.png", ANI_STEAM_F, ANI_STEAM_F, 1, WID_STEAM, HEI_STEAM, g_steam_f);
+
 
 			break;
 		case 2:
@@ -809,6 +824,12 @@ void Images::load(){
 				}
 			}
 
+			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎ待機.png", ANI_TAMANEGI_WA, 4, 1, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_w);
+			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎ攻撃.png", ANI_TAMANEGI_WA, 4, 1, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_a);
+			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎトランスフォーム.png", ANI_TAMANEGI_T, 4, 3, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_t);
+			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎreトランスフォーム.png", ANI_TAMANEGI_TR, 6, 1, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_tr);
+
+
 			break;
 		case 5:
 			back[0][0] = 0;
@@ -908,6 +929,11 @@ void Images::load(){
 					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
 				}
 			}
+
+			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像待機.png", ANI_GUUZO_W, 4, 1, WID_GUUZO, HEI_GUUZO, g_guuzo_w);
+			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像攻撃1.png", ANI_GUUZO_A, 2, 1, WID_GUUZO, HEI_GUUZO, g_guuzo_a1);
+			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像攻撃2.png", ANI_GUUZO_A, 2, 1, WID_GUUZO, HEI_GUUZO, g_guuzo_a2);
+
 
 			break;
 		case 6:

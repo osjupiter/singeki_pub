@@ -90,6 +90,19 @@ public:
 	int g_senkoutei_w[3][ANI_SENKOU_W];
 	int g_senkoutei_a[3][ANI_SENKOU_A];
 	int g_kirakira[3][ANI_KIRAKIRA];
+	int g_ohana_s[3][ANI_OHANA_S];
+	int g_ohana_a[3][ANI_OHANA_A];
+	int g_tamanegi_w[ANI_TAMANEGI_WA];
+	int g_tamanegi_a[ANI_TAMANEGI_WA];
+	int g_tamanegi_t[ANI_TAMANEGI_T];
+	int g_tamanegi_tr[ANI_TAMANEGI_TR];
+	int g_negimissile[3][ANI_NEGIMISSILE];
+	int g_guuzo_w[ANI_GUUZO_W];
+	int g_guuzo_a1[ANI_GUUZO_A];
+	int g_guuzo_a2[ANI_GUUZO_W];
+	int g_gajikami[ANI_GAJIKAMI];
+	int g_zangeki[ANI_ZANGEKI];
+	int g_mahojin[ANI_MAHOJIN];
 
 	int g_shiro_icon[20][2];
 

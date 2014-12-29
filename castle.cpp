@@ -168,11 +168,16 @@ void castle::damage(int d, UnitType op_unit_type){
 				Game::getIns()->damage_effect_create(x +100+rand_x, y + height - HEI_GUNSHOT + 25-rand_y, GUNSHOT);
 				break;
 			case UnitType::_TANK:
+			case UnitType::_BEEBAR:
 				Game::getIns()->damage_effect_create(x + width - WID_CANNONSHOT * 2 - rand_x, y + HEI_CASTLE - HEI_CANNONSHOT - rand_y, CANNONSHOT);
 				break;
 			case UnitType::_GEKKO:
 				Game::getIns()->damage_effect_create(x + width - WID_GUNSHOT * 2 - rand_x, y + HEI_CASTLE - HEI_GUNSHOT - rand_y, GUNSHOT, true);
 				break;
+			case UnitType::_HIME:
+				Game::getIns()->damage_effect_create(x + rand_x, y + height - HEI_ZANGEKI + 25 - rand_y, ZANGEKI);
+				break;
+
 			}
 		}
 		
