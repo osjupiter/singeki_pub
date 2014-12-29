@@ -23,7 +23,6 @@ vector<vector<string>> CsvReader::parseTable(string name, const string &delim){
  
 
 void CsvReader::saveCsv(string filename,map<string,string> hash){
-
 	ofstream ofs(filename);
  
 	
@@ -33,4 +32,12 @@ void CsvReader::saveCsv(string filename,map<string,string> hash){
 	}
 	return;
 
+}
+
+boolean CsvReader::existCsv(string filename){
+	ifstream *ifs = new ifstream(filename.c_str(), ios::in);
+	if (!*ifs) {
+		return false;
+	}
+	return true;
 }

@@ -35,6 +35,8 @@ Game::Game(int _world){
 	cameraMoveCount=0;
 	birth_limit=300;
 	musume_nuber_list.assign(END_MUSUME,0);
+
+	score_flame=0;
 	
 	//for DEBUG
 	/*
@@ -273,6 +275,7 @@ void Game::push_attack_list(shared_ptr<AttackRange> p, int unittype){
 
 void Game::main(){
 	if (pauseFlag)return;
+	if(!isClear())score_flame+=1;
 	int now_stage = getNowStage();
 	int front=-1;
 	int front_tmp, front_S_tmp;

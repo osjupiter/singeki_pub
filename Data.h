@@ -10,7 +10,10 @@ class Data {
 	std::map<std::string, int> dataTable;
 public:
 	std::map<std::string, std::string> paramTable;
-	void Run();
+	void Read();
 	static Data* getIns();
+	void Write();
+	int get(std::string);
+	void set(std::string,int);
 	
 };

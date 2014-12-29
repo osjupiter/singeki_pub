@@ -48,7 +48,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	Images::init();
 	SoundController::getIns()->load();
 
-	// Data::getIns()->Run();
+	Data::getIns()->Read();
 
 	SceneManager::getIns()->changeScene(make_shared<LogoScene>());
 	

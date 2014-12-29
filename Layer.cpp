@@ -26,7 +26,19 @@ void GraphicLayer::move(int _x,int _y){
 	y+=_y;
 	
 }
+void MoveGraphLayer::main(){
+	timer+=2;
+	if(timer>=360){timer=0;}
+}
 
+MoveGraphLayer::MoveGraphLayer(int tx,int ty,int th,int init):GraphicLayer(tx,ty,th){
+	timer=init;
+	haba=10;
+}
+void MoveGraphLayer::draw(){
+	DrawGraph(x,y+haba*sin((double)timer/180.0*3.14),hundle,TRUE);
+	
+}
 
 ButtonLayer::ButtonLayer(int tx,int ty,int th,int ttx,int tty,int ttw,int tth):GraphicLayer(tx,ty,th){
 	bx=ttx;
@@ -298,6 +310,8 @@ void MenuLayer::draw(){
 	//DrawFormatString(25,0,GetColor(0,0,255),"%d",game->getResource());
 	DrawFormatStringToHandle(20,0,GetColor(0,0,255),Images::getIns()->font,"%d",game->getResource());
 
+	
+	
 	auto numberlist=game->getMusumeNumber();
 	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::END_MUSUME);i++){
 			DrawRotaGraph(5+60*((i-1)%3),30+((i-1)/3)*20,0.5,0,Images::getMusumeIcon(i),TRUE);
@@ -309,6 +323,8 @@ void MenuLayer::draw(){
 	//DrawFormatString(margin+55,0,GetColor(0,0,255),"%d/%d",game->getMusumeSum(),game->getBirthLimit());
 	DrawFormatStringToHandle(margin+55,0,GetColor(0,0,255),Images::getIns()->font,"%d/%d",game->getMusumeSum(),game->getBirthLimit());
 
+	//ŽžŠÔ
+	DrawFormatStringToHandle(250,0,GetColor(0,0,255),Images::getIns()->font,"%02d:%02d.%02d",game->score_flame/30/60,game->score_flame/30%60,game->score_flame%30*3);
 
 
 

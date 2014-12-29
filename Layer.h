@@ -53,10 +53,22 @@ protected:
 	int hundle;
 public:
 	GraphicLayer(int tx,int ty,int th);
-	void draw();
+	virtual void draw();
 	void move(int,int);
 
 };
+
+
+class MoveGraphLayer:public GraphicLayer{
+private:
+	int timer;
+	int haba;
+public:
+	void draw();
+	MoveGraphLayer(int tx,int ty,int th,int init);
+	void main();
+};
+
 class ButtonLayer:public GraphicLayer{
 public :static enum ClickFlag { ONMOUSE=0,CLICK = 3, PUSH = 1,LEAVE=2};
 private:

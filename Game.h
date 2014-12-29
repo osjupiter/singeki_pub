@@ -54,6 +54,7 @@ class Game : public Layer{
 
 	bool pauseFlag;
 public:
+	unsigned int score_flame;
 	static const int stage_W[9];
 	Game(int _world=0);
 	void background_init();

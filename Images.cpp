@@ -22,8 +22,7 @@ void Images::load(){
 	//タイトルに使うものたちよ
 	filelist.push_back("pic/title.png");
 	filelist.push_back("pic/定刻ぼるけーの.png");
-	filelist.push_back("pic/world2.png");
-	filelist.push_back("pic/world_icon.png");
+	
 	
 		
 	filelist.push_back("pic/test.jpg");
@@ -44,7 +43,6 @@ void Images::load(){
 
 	SetUseASyncLoadFlag( TRUE ); // 非同期読み込みフラグON
 	
-
 
 	LoadDivGraph("dat/img/歩兵w.png", ANI_HOHEI, ANI_HOHEI, 1, WID_HOHEI, HEI_HOHEI, g_hohei);
 	LoadDivGraph("dat/img/歩兵a.png", ANI_HOHEI_ATK, ANI_HOHEI_ATK, 1, WID_HOHEI, HEI_HOHEI, g_hohei_atk);
@@ -302,6 +300,13 @@ void Images::load(){
 	filelist.push_back("pic/速さ2.png");
 	filelist.push_back("pic/防御2.png");
 	filelist.push_back("pic/力2.png");
+
+	
+	filelist.push_back("pic/ワールドマップa.png");
+	filelist.push_back("pic/ワールドマップb.png");
+	filelist.push_back("pic/ワールドマップc.png");
+	filelist.push_back("pic/ワールドマップd.png");
+	filelist.push_back("pic/world_icon.png");
 
 
 
@@ -954,7 +959,7 @@ void Images::load(){
 			back[3][3] = LoadGraph("dat/img/メカシティ/メカシティ４－２.png");
 			back[3][4] = LoadGraph("dat/img/メカシティ/メカシティ４－１.png");
 
-			back[4][0] = 0;
+			back[4][0] = LoadGraph("dat/img/メカシティ/メカシティ５－５.png");
 			back[4][1] = LoadGraph("dat/img/メカシティ/メカシティ５－４.png");
 			back[4][2] = LoadGraph("dat/img/メカシティ/メカシティ５－３.png");
 			back[4][3] = LoadGraph("dat/img/メカシティ/メカシティ５－２.png");
@@ -973,11 +978,11 @@ void Images::load(){
 			back[6][3] = LoadGraph("dat/img/メカシティ/メカシティ７－２.png");
 			back[6][4] = LoadGraph("dat/img/メカシティ/メカシティ７－１.png");
 
-			back[7][0] = 0;
-			back[7][1] = LoadGraph("dat/img/メカシティ/メカシティ８－４.png");
-			back[7][2] = LoadGraph("dat/img/メカシティ/メカシティ８－３.png");
-			back[7][3] = LoadGraph("dat/img/メカシティ/メカシティ８－２.png");
-			back[7][4] = LoadGraph("dat/img/メカシティ/メカシティ８－１.png");
+			back[7][0] = LoadGraph("dat/img/メカシティ/メカシティ8-5.png");
+			back[7][1] = LoadGraph("dat/img/メカシティ/メカシティ8-4.png");
+			back[7][2] = LoadGraph("dat/img/メカシティ/メカシティ8-3.png");
+			back[7][3] = LoadGraph("dat/img/メカシティ/メカシティ8-2.png");
+			back[7][4] = LoadGraph("dat/img/メカシティ/メカシティ8-1.png");
 
 			g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
 			g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
