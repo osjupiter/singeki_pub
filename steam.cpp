@@ -45,6 +45,8 @@ void steam::main(int front){
 		else if (ani_count / ANIM_SPEED%ANI_STEAM_A == 12){
 			if (!stopper){
 				if (!atk){
+					SoundController::getSE()->playSE("sound/スチームパンク（地割れ）.mp3",true);
+
 					shared_ptr<AttackRange> p(new AttackRange(x- (1500), x + 550, param->getParam(POWER), RAND));
 					Game::getIns()->push_attack_list(p, ENEMY);
 					stopper = true;

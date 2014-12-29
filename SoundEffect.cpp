@@ -34,9 +34,28 @@
 	
 		soundlist.push_back("sound/spawn.mp3");
 
+		soundlist.push_back("sound/イカロス銃声（修正）.mp3");
+		soundlist.push_back("sound/お花砲台（根っこの音）.mp3");
+		soundlist.push_back("sound/お花砲台.mp3");
+		soundlist.push_back("sound/スチームパンク（地割れ）.mp3");
+		soundlist.push_back("sound/ビーバーブシュー(修正).mp3");
+		soundlist.push_back("sound/ビーム（修正1.2）.mp3");
+		soundlist.push_back("sound/レイピア.mp3");
+		soundlist.push_back("sound/魚雷発射音.mp3");
+		soundlist.push_back("sound/玉ねぎミサイル移動.mp3");
+		soundlist.push_back("sound/車輪砲台.mp3");
+		soundlist.push_back("sound/偶像雷.mp3");
+		soundlist.push_back("sound/謎の手キラキラ音.mp3");
+			
+		
+		soundlist.push_back("sound/農家（くわ）.mp3");
+
+		soundlist.push_back("sound/魔方陣.mp3");
+
 	
 		soundlist.push_back("sound/山.mp3");
 		soundlist.push_back("sound/森.mp3");
+
 
 	
 		soundlist.push_back("sound/ゲームオーバー.mp3");

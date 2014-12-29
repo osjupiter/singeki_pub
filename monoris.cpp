@@ -5,7 +5,7 @@
 
 #define ANIM_SPEED 3
 #define ANIM_SPEED_A 1
-#define ANIM_SPEED_MONOBEAM 4
+#define ANIM_SPEED_MONOBEAM 1
 #define DIST_MONORIS  (150)
 #define ANI_MONORIS_A (ANI_MONORIS_A1+ANI_MONORIS_A2+ANI_MONORIS_A1)
 
@@ -53,7 +53,9 @@ void monoris::main(int front){
 		}
 		break;
 	case UnitState::ST0: //ビーム発射
-
+		if (beam_count == 1){
+			SoundController::getSE()->playSE("sound/ビーム（修正1.2）.mp3");
+		}
 		if (ani_count > 0){
 			beam_count++;
 		}

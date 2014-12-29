@@ -29,7 +29,7 @@ void senkoutei::main(int front){
 			if (!stopper){
 					
 					Game::getIns()->effect_create(x + width / 2 - WID_GYORAI / 2 + 10 * dir, y +220-95, GYORAI, dir, power, front-WID_GYORAI/2, atk_position,level);
-					SoundController::getSE()->playSE("sound/misairu.mp3");
+					SoundController::getSE()->playSE("sound/‹›—‹”­ŽË‰¹.mp3");
 					stopper = true;
 			}
 		}

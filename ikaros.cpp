@@ -27,7 +27,8 @@ void ikaros::main(int front){
 		if (ani_count / ANIM_SPEED == ANI_IKAROS_A - 1 ){
 			if (!stopper){
 				if (!atk){
-					
+					SoundController::getSE()->playSE("sound/イカロス銃声（修正）.mp3");
+
 					atk = true;
 					stopper = true;
 				}

@@ -27,6 +27,9 @@ void majo::main(int front){
 		break;
 	case UnitState::ATK:
 		state_change_flag = false;
+		if (ani_count == 1){
+			SoundController::getSE()->playSE("sound/–‚•ûw.mp3");
+		}
 		if (ani_count > 1 && maho_count<ANI_MAHOJIN-1){
 			maho_count++;
 		}

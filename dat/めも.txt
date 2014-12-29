@@ -61,5 +61,5 @@ POWER, MAXHP, SPEED, DEFENSE, COST, A_FREQ
 
 ・SE
 ・触手登場
-・モノリスエフェクト
+振り返り
 ・ボス

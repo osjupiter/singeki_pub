@@ -177,7 +177,9 @@ void castle::damage(int d, UnitType op_unit_type){
 			case UnitType::_HIME:
 				Game::getIns()->damage_effect_create(x + rand_x, y + height - HEI_ZANGEKI + 25 - rand_y, ZANGEKI);
 				break;
-
+			case UnitType::_MONORIS:
+				Game::getIns()->damage_effect_create(x + width - WID_MONOB_H * 2 - rand_x, y + HEI_CASTLE - HEI_MONOB_H - rand_y, MONOB_H, true);
+				break;			
 			}
 		}
 		

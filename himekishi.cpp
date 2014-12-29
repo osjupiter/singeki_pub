@@ -1,6 +1,6 @@
 #include "himekishi.h"
 #include "Images.h"
-
+#include "SoundController.h"
 #define ANIM_SPEED_W 5
 #define ANIM_SPEED_A 2
 #define DIST_HIME 1
@@ -27,6 +27,9 @@ void himekishi::main(int front){
 				if (!atk){
 					stopper = true;
 					atk = true;
+					SoundController::getSE()->playSE("sound/ƒŒƒCƒsƒA.mp3");
+
+
 				}
 			}else {
 

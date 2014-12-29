@@ -35,14 +35,15 @@ void shokush::main(int front){
 	case UnitState::ATK:
 		if (!visible){
 			changeState(UnitState::ST0);
-			visible = true;
-			no_damage_flag = false;
+		
 		}
 		else	state_change_flag = false;
 		if (ani_count / ANIM_SPEED == 4){
 			if (!stopper){
 				Game::getIns()->effect_create(x, y, KIRAKIRA, dir, power,0,0,level);
 				stopper = true;
+				SoundController::getSE()->playSE("sound/“ä‚ÌèƒLƒ‰ƒLƒ‰‰¹.mp3", true);
+				
 			}
 		}
 		else { stopper = false; }
@@ -59,6 +60,8 @@ void shokush::main(int front){
 	case UnitState::ST0:   //oŒ»
 		if (ani_count / ANIM_SPEED == ANI_SHOKUSH_S){
 			changeState(UnitState::ATK);
+			visible = true;
+			no_damage_flag = false;
 		}
 		break;
 	case UnitState::DIE:

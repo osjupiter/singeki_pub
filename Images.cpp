@@ -175,7 +175,6 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/水の中/魚雷3.png", ANI_GYORAI, ANI_GYORAI, 1, WID_GYORAI, HEI_GYORAI, g_gyorai[2]);
 
 
-	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1出現.png", ANI_SHOKUSH_S, ANI_SHOKUSH_S, 1, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1出現.png", ANI_SHOKUSH_S, 5, 3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1攻撃.png", ANI_SHOKUSH_A, 3,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_a[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2出現.png", ANI_SHOKUSH_S, 5,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[1]);
@@ -222,6 +221,7 @@ void Images::load(){
 	LoadDivGraph("dat/img/砲弾被弾時e.png", ANI_CANNONSHOT, ANI_CANNONSHOT, 1, WID_CANNONSHOT, HEI_CANNONSHOT, g_cannonshot);
 
 	LoadDivGraph("dat/img/敵ユニット/荒野/かみつきエフェクト.png", ANI_GAJIKAMI, ANI_GAJIKAMI, 1, WID_GAJIKAMI, HEI_GAJIKAMI, g_gajikami);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/ビーム被弾１.png", ANI_MONOB_H, ANI_MONOB_H, 1, WID_MONOB_H, HEI_MONOB_H, g_monob_h);
 	LoadDivGraph("dat/img/むすめユニット/魔方陣.png", ANI_MAHOJIN, 5, 4, WID_MAHOJIN, HEI_MAHOJIN, g_mahojin);
 	LoadDivGraph("dat/img/むすめユニット/斬撃エフェクト1.png", ANI_ZANGEKI, ANI_ZANGEKI, 1, WID_ZANGEKI, HEI_ZANGEKI, g_zangeki);
 
@@ -1049,6 +1049,10 @@ void Images::load(){
 					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
 				}
 			}
+
+			LoadDivGraph("dat/img/敵ユニット/メカシティ/くろいしみw.png", ANI_KUROSHIMI_W, ANI_KUROSHIMI_W, 1, WID_KUROSHIMI, HEI_KUROSHIMI, g_kuroshimi_w);
+			LoadDivGraph("dat/img/敵ユニット/メカシティ/くろいしみa.png", ANI_KUROSHIMI_A, ANI_KUROSHIMI_A, 1, WID_KUROSHIMI, HEI_KUROSHIMI, g_kuroshimi_a);
+
 
 			break;
 
