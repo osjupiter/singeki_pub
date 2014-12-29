@@ -311,6 +311,8 @@ void Images::load(){
 	filelist.push_back("pic/ワールドマップb.png");
 	filelist.push_back("pic/ワールドマップc.png");
 	filelist.push_back("pic/ワールドマップd.png");
+	filelist.push_back("pic/ワールドマップe.png");
+	filelist.push_back("pic/ワールドマップf.png");
 	filelist.push_back("pic/world_icon.png");
 
 
