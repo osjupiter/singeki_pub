@@ -889,6 +889,16 @@ void MapUnitSelector::draw(){
 		int j=i-UnitType::_BALOON;
 		DrawRotaGraph(440+j%5*50,155+j/5*50,1.0,0,Images::getMusumeIcon(i,flag[i]),TRUE);
 	}
+	//‚»‚Ì‚½
+	int score=Data::getIns()->get(to_string(stage_id));
+	DrawFormatStringToHandle(193,96,GetColor(0,255,0),Images::getIns()->font2,Images::getIns()->getStageName(stage_id).c_str());
+
+	DrawFormatStringToHandle(200,270,GetColor(0,0,255),Images::getIns()->font,"Å‚‹L˜^",score/30/60,score/30%60,score%30*3);
+	DrawFormatStringToHandle(210,290,GetColor(255,255,0),Images::getIns()->font2,"%02d:%02d.%02d",score/30/60,score/30%60,score%30*3);
+	DrawFormatStringToHandle(210,350,GetColor(0,255,0),Images::getIns()->font,Images::getIns()->getStageSummary(stage_id).c_str());
+
+	//DrawFormatStringToHandle(250,0,GetColor(0,0,255),Images::getIns()->font,"%02d:%02d.%02d",game->score_flame/30/60,game->score_flame/30%60,game->score_flame%30*3);
+//DrawFormatStringToHandle(250,0,GetColor(0,0,255),Images::getIns()->font,"%02d:%02d.%02d",game->score_flame/30/60,game->score_flame/30%60,game->score_flame%30*3);
 
 	
 	

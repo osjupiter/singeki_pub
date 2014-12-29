@@ -126,7 +126,11 @@ void WorldScene::enterScene(){
 	addLayer(5,s);
 	glist.push_back(s);
 }
-
+{
+	shared_ptr<GraphicLayer> s(new GraphicLayer(0,0,Images::get("pic/ワールドマップg.png")));
+	addLayer(6,s);
+	glist.push_back(s);
+}
 
 	for(int i=0;i<6;i++){
 		this->unit_id[i]=1;

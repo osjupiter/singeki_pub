@@ -130,7 +130,7 @@ public:
 
 	int houdai_yama;
 
-	int font;
+	int font,font2;
 	
 	int back[8][5];
 	Images(void){}
@@ -149,8 +149,10 @@ public:
 	static int getSiroIcon(int,boolean=false);
 	static int getParamTypeIcon(ParamType,boolean=false);
 
-
+	string getStageSummary(int);
 	
+	
+	string getStageName(int sid);
 
 
 
