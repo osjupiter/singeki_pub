@@ -6,6 +6,7 @@
 
 #include "castle.h"
 #include "boss_castle.h"
+#include "mekaNemu.h"
 
 #include "Factory.h"
 #include <time.h>
@@ -117,8 +118,8 @@ void Game::castle_init(){
 	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0,world));
 	castle_list.push_back(p);
 	
-	//p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1, world, pop_list));
-	p = shared_ptr<castle>(new boss_castle(stage_W[1], 0, 1, world, pop_list, boss_type[world - 1]));
+	p = shared_ptr<castle>(new castle_enemy(stage_W[1], 0, 1, world, pop_list));
+	//p = shared_ptr<castle>(new boss_castle(stage_W[1], 0, 1, world, pop_list, boss_type[world - 1]));
 
 	castle_list.push_back(p);
 
@@ -140,8 +141,15 @@ void Game::castle_init(){
 	p = shared_ptr<castle>(new castle_enemy(stage_W[7], 0, 7, world, pop_list));
 	castle_list.push_back(p);
 
-	p = shared_ptr<castle>(new boss_castle(stage_W[8], 0, 8, world, pop_list, boss_type[world-1]));
-	castle_list.push_back(p);
+	if (world == 6){
+		p = shared_ptr<castle>(new mekaNemu(stage_W[8], 0, 8, world, pop_list));
+		castle_list.push_back(p);
+	}
+	else{
+		p = shared_ptr<castle>(new boss_castle(stage_W[8], 0, 8, world, pop_list, boss_type[world - 1]));
+		castle_list.push_back(p);
+
+	}
 
 }
 
@@ -565,8 +573,8 @@ void Game::delete_object(){
 		delete_effectlist.clear();
 	}
 	
-/*	atkrange_musume_list.clear();
-/*	atkrange_enemy_list.clear();
+	//atkrange_musume_list.clear();
+//	atkrange_enemy_list.clear();
 
 	/*ˆêÄŠJ•ú‚É‚æ‚éˆ——‚¿‚ğ–h~*/
 	if(memfree_list.size()<10)

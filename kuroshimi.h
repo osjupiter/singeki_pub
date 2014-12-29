@@ -2,7 +2,8 @@
 #include "enemy.h"
 
 class kuroshimi : public enemy{
-
+	int back;
+	int p_back;
 public:
 	kuroshimi(int, int, int);
 	void main(int);
