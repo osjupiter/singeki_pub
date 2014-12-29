@@ -89,8 +89,12 @@ public:
 	int g_denkami[3][ANI_DENKAMI];
 	int g_senkoutei_w[3][ANI_SENKOU_W];
 	int g_senkoutei_a[3][ANI_SENKOU_A];
+	int g_kirakira[3][ANI_KIRAKIRA];
+
 	int g_shiro_icon[20][2];
 
+	int g_shokush_s[3][ANI_SHOKUSH_S];
+	int g_shokush_a[3][ANI_SHOKUSH_A];
 
 	int g_gekko[4];
 	int g_gekko_up[3];

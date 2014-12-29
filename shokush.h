@@ -1,13 +1,13 @@
+#pragma once
 #include "enemy.h"
 
-class goremu : public enemy{
-public:
-	goremu(int, int, int);
+class shokush : public enemy{
 
+public:
+	shokush(int, int, int);
 	void main(int);
 	void draw(int);
 	static void init();
 
-	
 
 };
