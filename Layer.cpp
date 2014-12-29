@@ -988,11 +988,10 @@ PauseLayer::PauseLayer(){
 
 void PauseLayer::draw(){
 	DrawGraph(0,0,Images::get("pic/Pause.png"),TRUE);
-	DrawBox(WINDOW_X-200,WINDOW_Y-200,WINDOW_X-50,WINDOW_Y-50,GetColor(255,0,0),TRUE);
 }
 
 void PauseLayer::main(){
-	if(this->testBox(WINDOW_X-200,WINDOW_Y-200,WINDOW_X-50,WINDOW_Y-50)&&mouse_in::getIns()->LeftClick()){
+	if(this->testBox(606,384,762,419)&&mouse_in::getIns()->LeftClick()){
 		parentScene->buttonPushed("exit");
 	}else if(mouse_in::getIns()->LeftClick()){
 		parentScene->buttonPushed("pause");
