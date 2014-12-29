@@ -26,6 +26,16 @@ void GraphicLayer::move(int _x,int _y){
 	y+=_y;
 	
 }
+
+StringLayer::StringLayer(int tx,int ty,int th,string a):GraphicLayer(tx,ty,th){
+	str=a;
+}
+
+void StringLayer::draw(){
+	DrawFormatStringToHandle(x,y,GetColor(255,255,0),Images::getIns()->font2,str.c_str());
+
+}
+
 void MoveGraphLayer::main(){
 	timer+=2;
 	if(timer>=360){timer=0;}
@@ -885,7 +895,7 @@ void MapUnitSelector::draw(){
 		DrawGraph(360,250,(testBox(431,305,648,370))?Images::get("pic/出撃ボタンON.png"):Images::get("pic/出撃ボタンOFF.png"),TRUE);
 	}
 	//アイコンの描写
-	for(int i=UnitType::_BALOON;i<UnitType::_IDLE;i++){
+	for(int i=UnitType::_BALOON;i<=UnitType::_SEGWAY+Data::getIns()->get("stage");i++){
 		int j=i-UnitType::_BALOON;
 		DrawRotaGraph(440+j%5*50,155+j/5*50,1.0,0,Images::getMusumeIcon(i,flag[i]),TRUE);
 	}
@@ -909,7 +919,7 @@ void MapUnitSelector::main(){
 	//枠内
 	if(testBox(173,65,672,400)){
 		//アイコンの描写
-		for(int i=UnitType::_BALOON;i<UnitType::_IDLE;i++){
+		for(int i=UnitType::_BALOON;i<=UnitType::_SEGWAY+Data::getIns()->get("stage");i++){
 			int j=i-UnitType::_BALOON;
 			
 			if(testBox(440+j%5*50-25,155+j/5*50-25,440+j%5*50+25,155+j/5*50+25)&&mouse_in::getIns()->LeftClick()){
@@ -933,7 +943,7 @@ void MapUnitSelector::main(){
 					p->stage_id=stage_id;
 					int j=1;
 					p->unit_id[0]=1;
-					for(int i=UnitType::_BALOON;i<UnitType::_IDLE;i++){
+					for(int i=UnitType::_BALOON;i<=UnitType::_SEGWAY+Data::getIns()->get("stage");i++){
 						if(flag[i]){
 							p->unit_id[j]=i;
 							j++;

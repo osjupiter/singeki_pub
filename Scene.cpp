@@ -144,13 +144,17 @@ void WorldScene::enterScene(){
 	addLayer(9,s);
 
 	int tmp[6][2]={
-		{76,288},{497,53},{817,360},{1125,94},{1286,377},{1600,222}
+		{76,288},{497,53},{817,330},{1125,94},{1286,377},{1600,222}
 	};
-	for(int i=1;i<6;i++){
+	for(int i=1;i<=6;i++){
 		if(Data::getIns()->get("stage")+1<i)break;
-		shared_ptr<GraphicLayer> q((new ButtonLayer(tmp[i-1][0],tmp[i-1][1],Images::get("pic/world_icon.png"),0,0,70,70))->setId("stage"+to_string(i))->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
-		addLayer(8,q);
+		shared_ptr<GraphicLayer> q((new ButtonLayer(tmp[i-1][0],tmp[i-1][1],Images::get("pic/world_stage.png"),0,0,275,98))->setId("stage"+to_string(i))->setEnterSE("sound/button03a.mp3")->setClickSE("sound/se_maoudamashii_system49.wav"));
+		addLayer(8,q); 
 		glist.push_back(q);
+		
+		shared_ptr<GraphicLayer> w((new StringLayer(tmp[i-1][0]+110,tmp[i-1][1]+45,0,Images::getIns()->getStageName(i))));
+		addLayer(8,w);
+		glist.push_back(w);
 	
 	}
 	

@@ -321,7 +321,7 @@ void Images::load(){
 	filelist.push_back("pic/出撃ボタンOFF.png");
 	
 	filelist.push_back("pic/出撃ボタンNO.png");
-	filelist.push_back("pic/world_icon.png");
+	filelist.push_back("pic/world_stage.png");
 
 
 
