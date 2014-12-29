@@ -102,27 +102,27 @@ void WorldScene::enterScene(){
 	glist.push_back(p);
 }
 {
-	shared_ptr<GraphicLayer> q(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップb.png"),0,1,10,10));
+	shared_ptr<GraphicLayer> q(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップb.png"),0,1,10,0));
 	addLayer(1,q);
 	glist.push_back(q);
 }
 {
-	shared_ptr<GraphicLayer> r(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップc.png"),120,1,0,10));
+	shared_ptr<GraphicLayer> r(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップc.png"),72,1,10,0));
 	addLayer(2,r);
 	glist.push_back(r);
 }
 {
-	shared_ptr<GraphicLayer> s(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップd.png"),120,1,10,0));
+	shared_ptr<GraphicLayer> s(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップd.png"),144,1,10,0));
 	addLayer(3,s);
 	glist.push_back(s);
 }
 {
-	shared_ptr<GraphicLayer> s(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップe.png"),240,1,0,10));
+	shared_ptr<GraphicLayer> s(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップe.png"),216,1,10,0));
 	addLayer(4,s);
 	glist.push_back(s);
 }
 {
-	shared_ptr<GraphicLayer> s(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップf.png"),240,1,10,0));
+	shared_ptr<GraphicLayer> s(new MoveGraphLayer(0,0,Images::get("pic/ワールドマップf.png"),288,1,10,0));
 	addLayer(5,s);
 	glist.push_back(s);
 }

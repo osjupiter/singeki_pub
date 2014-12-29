@@ -897,7 +897,7 @@ void MapUnitSelector::draw(){
 
 void MapUnitSelector::main(){
 	//˜g“à
-	if(testBox(50,50,WINDOW_X-50,WINDOW_Y-50)){
+	if(testBox(173,65,672,400)){
 		//ƒAƒCƒRƒ“‚Ì•`ŽÊ
 		for(int i=UnitType::_BALOON;i<UnitType::_IDLE;i++){
 			int j=i-UnitType::_BALOON;
