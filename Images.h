@@ -103,7 +103,7 @@ public:
 	int g_gajikami[ANI_GAJIKAMI];
 	int g_zangeki[ANI_ZANGEKI];
 	int g_mahojin[ANI_MAHOJIN];
-
+	int g_monob_h[ANI_MONOB_H];
 	int g_shiro_icon[20][2];
 
 	int g_shokush_s[3][ANI_SHOKUSH_S];

@@ -35,6 +35,7 @@
 #include "shokush.h"
 #include "kirakira.h"
 #include "negimissile.h"
+#include "monob_hidan.h"
 #include "beam.h"
 #include "hana.h"
 #include "yukidama.h"
@@ -237,7 +238,10 @@ shared_ptr<effect> Factory::create_damage_effect(int fx, int fy, int e_type, boo
 	case NOMALEXP:
 		ret_ins.reset(new nomalExp(fx, fy, true));
 		break;
-	
+	case MONOB_H:
+		ret_ins.reset(new monob_hidan(fx, fy, true));
+		break;
+
 	}
 	return ret_ins;
 }

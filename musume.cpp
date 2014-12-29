@@ -112,6 +112,9 @@ void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
 			case UnitType::_GAJIGAJI:
 				Game::getIns()->damage_effect_create(x - WID_GAJIKAMI / 2 + rand_x, y + height - HEI_GAJIKAMI + 25 - rand_y, GAJIKAMI, true);
 				break;
+			case UnitType::_MONORIS:
+				Game::getIns()->damage_effect_create(x - WID_MONOB_H / 2 + rand_x, y + height - HEI_MONOB_H + 25 - rand_y, MONOB_H, true);
+				break;
 			}
 		}
 		hp -= max(d - param->getParam(DEFENSE), 0);

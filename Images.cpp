@@ -222,6 +222,7 @@ void Images::load(){
 	LoadDivGraph("dat/img/砲弾被弾時e.png", ANI_CANNONSHOT, ANI_CANNONSHOT, 1, WID_CANNONSHOT, HEI_CANNONSHOT, g_cannonshot);
 
 	LoadDivGraph("dat/img/敵ユニット/荒野/かみつきエフェクト.png", ANI_GAJIKAMI, ANI_GAJIKAMI, 1, WID_GAJIKAMI, HEI_GAJIKAMI, g_gajikami);
+	LoadDivGraph("dat/img/敵ユニット/雲の上/ビーム被弾１.png", ANI_MONOB_H, ANI_MONOB_H, 1, WID_MONOB_H, HEI_MONOB_H, g_monob_h);
 	LoadDivGraph("dat/img/むすめユニット/魔方陣.png", ANI_MAHOJIN, 5, 4, WID_MAHOJIN, HEI_MAHOJIN, g_mahojin);
 	LoadDivGraph("dat/img/むすめユニット/斬撃エフェクト1.png", ANI_ZANGEKI, ANI_ZANGEKI, 1, WID_ZANGEKI, HEI_ZANGEKI, g_zangeki);
 
