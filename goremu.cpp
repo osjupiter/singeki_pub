@@ -12,7 +12,7 @@
 
 goremu::goremu(int fx, int ln, int lv) : enemy(fx, ln, lv, UnitType::_GOREMU){
 	dist = DIST_GOREMU - rand()%50;
-	y = WINDOW_Y - HEI_GOREMU - line * 3;
+	y = WINDOW_Y - HEI_GOREMU + 20 - line * 3;
 	width = WID_GOREMU;
 	height = HEI_GOREMU;
 	type = RAND;

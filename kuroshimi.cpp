@@ -14,35 +14,34 @@ kuroshimi::kuroshimi(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_KUROS
 	type = RAND;
 	back = 0;
 	p_back = 0;
+	alpha = 255;
 }
 
 void kuroshimi::main(int front){
-	enemy::main(front);
+	ani_count++;
 	switch (state){
 	case UnitState::MOV:
 		x += speed*dir; //‚Æ‚è‚ ‚¦‚¸‰¡ˆÚ“®
 		if (x + width < 0) state = UnitState::DIE;
 		if (x + width > STAGE8_W-500) state = UnitState::DIE;
+		if (front > x - dist){
+			changeState(UnitState::ATK);
+		}
 
 		break;
 	case UnitState::ATK:
 		atk = false;
 		state_change_flag = false;
-		if (ani_count / ANIM_SPEED%ANI_KUROSHIMI_A == 2){
-			if (!stopper){
-				if (!atk){
-					stopper = true;
-					dist = max(rand() % 400, 0);
-				}
-			}
-		}
-		else{ stopper = false; }
 
 		if (((ani_count / ANIM_SPEED) % ANI_KUROSHIMI_A == ANI_KUROSHIMI_A-1)){
 			state_change_flag = true;
 			changeState(UnitState::WAIT);
+			state_change_flag = false;
+
 			if (rand() % 2){
-				back = rand()%2000 + 1000;
+				back = rand()%400 + 200;
+				dist = rand() % 400 + 100;
+
 				p_back = x;
 			}
 		}
@@ -50,7 +49,7 @@ void kuroshimi::main(int front){
 	case UnitState::WAIT:
 		atk = false;
 			state_change_flag = false;
-			x += speed - 2;
+			x += speed + 2;
 			if(x - p_back > back){
 				state_change_flag = true;
 				changeState(UnitState::MOV);
@@ -59,6 +58,8 @@ void kuroshimi::main(int front){
 			
 		break;
 	case UnitState::DIE:
+		alpha =max(alpha-10,0);
+		if (alpha == 0)
 			del();
 		
 		break;
@@ -71,17 +72,22 @@ void kuroshimi::draw(int cx){
 	switch (state){
 	case UnitState::MOV:
 		DrawGraph(x - cx, y, Images::getIns()->g_kuroshimi_w[ani_count / ANIM_SPEED%ANI_KUROSHIMI_W], true);
+		enemy::draw(cx);
 		break;
 	case UnitState::ATK:
 		DrawGraph(x - cx, y, Images::getIns()->g_kuroshimi_a[ani_count / ANIM_SPEED%ANI_KUROSHIMI_A], true);
+		enemy::draw(cx);
 		break;
 	case UnitState::WAIT:
 		DrawGraph(x - cx, y, Images::getIns()->g_kuroshimi_a[ani_count / ANIM_SPEED%ANI_KUROSHIMI_A], true);
+		enemy::draw(cx);
 		break;
 	case UnitState::DIE:
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
 		DrawGraph(x - cx, y, Images::getIns()->g_kuroshimi_a[ani_count / ANIM_SPEED %ANI_KUROSHIMI_A], true);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 		break;
 	}
 
-	enemy::draw(cx);
+
 }

@@ -4,6 +4,7 @@
 class kuroshimi : public enemy{
 	int back;
 	int p_back;
+	int alpha;
 public:
 	kuroshimi(int, int, int);
 	void main(int);
