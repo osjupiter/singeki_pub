@@ -45,8 +45,7 @@ void goremu::main(int front){
 	case UnitState::ATK:
 		if (!visible){
 			changeState(UnitState::ST0);
-			visible = true;
-			no_damage_flag = false;
+			
 		}else	state_change_flag = false;
 		if (ani_count / ANIM_SPEED_ATK == 10){
 			if (!stopper){
@@ -72,6 +71,8 @@ void goremu::main(int front){
 	case UnitState::ST0:   //èoåª
 		if (ani_count / ANIM_SPEED == ANI_GOREMU){
 			changeState(UnitState::ATK);
+			visible = true;
+			no_damage_flag = false;
 		}
 		break;
 	case UnitState::ST1:  

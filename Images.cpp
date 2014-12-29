@@ -175,7 +175,6 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/水の中/魚雷3.png", ANI_GYORAI, ANI_GYORAI, 1, WID_GYORAI, HEI_GYORAI, g_gyorai[2]);
 
 
-	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1出現.png", ANI_SHOKUSH_S, ANI_SHOKUSH_S, 1, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1出現.png", ANI_SHOKUSH_S, 5, 3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1攻撃.png", ANI_SHOKUSH_A, 3,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_a[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2出現.png", ANI_SHOKUSH_S, 5,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[1]);

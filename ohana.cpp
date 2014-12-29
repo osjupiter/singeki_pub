@@ -43,8 +43,7 @@ void ohana::main(int front){
 	case UnitState::ATK:
 		if (!visible){
 			changeState(UnitState::ST0);
-			visible = true;
-			no_damage_flag = false;
+
 		}
 		else{
 			state_change_flag = false;
@@ -72,6 +71,8 @@ void ohana::main(int front){
 	case UnitState::ST0:   //èoåª
 		if (ani_count / ANIM_SPEED_S == ANI_OHANA_S){
 			changeState(UnitState::ATK);
+			visible = true;
+			no_damage_flag = false;
 		}
 		break;
 	case UnitState::DIE:

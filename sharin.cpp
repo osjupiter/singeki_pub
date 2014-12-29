@@ -31,7 +31,8 @@ void sharin::main(int front){
 	case UnitState::ATK:
 		if (ani_count / ANIM_SPEED == ANI_SHARIN -1){
 			if (!atk){
-				SoundController::getSE()->playSE("sound/taihou03.mp3");
+				//SoundController::getSE()->playSE("sound/taihou03.mp3");
+				SoundController::getSE()->playSE("sound/ŽÔ—Ö–C‘ä.mp3");
 
 				atk = true;
 			}
