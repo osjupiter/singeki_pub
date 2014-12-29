@@ -320,7 +320,7 @@ void MenuLayer::draw(){
 	
 	
 	auto numberlist=game->getMusumeNumber();
-	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::END_MUSUME);i++){
+	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::_IDLE);i++){
 			DrawRotaGraph(5+60*((i-1)%3),30+((i-1)/3)*20,0.5,0,Images::getMusumeIcon(i),TRUE);
 			//DrawFormatString(15+60*((i-1)%3)+10,30+((i-1)/3)*20,GetColor(0,255,0),"%d",numberlist.at(i));
 			DrawFormatStringToHandle(15+60*((i-1)%3)+10,30+((i-1)/3)*20,GetColor(0,255,0),Images::getIns()->font,"%d",numberlist.at(i));
@@ -877,14 +877,17 @@ void MapUnitSelector::draw(){
 	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
 	SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
 
-	DrawBox(50,50,WINDOW_X-50,WINDOW_Y-50,GetColor(0,123,0),TRUE);
-	DrawBox(50,50,WINDOW_X-400,WINDOW_Y-50,GetColor(255,255,255),TRUE);
-
-	DrawBox(100,WINDOW_Y-150,WINDOW_X-100,WINDOW_Y-50,GetColor(255,123,0),TRUE);
-
+	DrawGraph(0,0,Images::get("pic/出撃前ユニット選択ウインドウ.png"),TRUE);
+	if(counter<5){
+		DrawGraph(360,250,Images::get("pic/出撃ボタンNO.png"),TRUE);
+	
+	}else{
+		DrawGraph(360,250,(testBox(431,305,648,370))?Images::get("pic/出撃ボタンON.png"):Images::get("pic/出撃ボタンOFF.png"),TRUE);
+	}
 	//アイコンの描写
-	for(int i=UnitType::_BALOON;i<UnitType::END_MUSUME;i++){
-		DrawRotaGraph(400+i%6*50,200+i/6*50,1.0,0,Images::getMusumeIcon(i,flag[i]),TRUE);
+	for(int i=UnitType::_BALOON;i<UnitType::_IDLE;i++){
+		int j=i-UnitType::_BALOON;
+		DrawRotaGraph(440+j%5*50,155+j/5*50,1.0,0,Images::getMusumeIcon(i,flag[i]),TRUE);
 	}
 
 	
@@ -894,10 +897,12 @@ void MapUnitSelector::draw(){
 
 void MapUnitSelector::main(){
 	//枠内
-	if(testBox(50,50,WINDOW_X-50,WINDOW_Y-50)){
-		//キャラ選択
-		for(int i=UnitType::_BALOON;i<UnitType::END_MUSUME;i++){
-			if(testBox(400+i%6*50-25,200+i/6*50-25,400+i%6*50+25,200+i/6*50+25)&&mouse_in::getIns()->LeftClick()){
+	if(testBox(173,65,672,400)){
+		//アイコンの描写
+		for(int i=UnitType::_BALOON;i<UnitType::_IDLE;i++){
+			int j=i-UnitType::_BALOON;
+			
+			if(testBox(440+j%5*50-25,155+j/5*50-25,440+j%5*50+25,155+j/5*50+25)&&mouse_in::getIns()->LeftClick()){
 				if(!flag[i]&&counter>=5)break;
 				flag[i]=!flag[i];
 
@@ -906,24 +911,27 @@ void MapUnitSelector::main(){
 
 			}
 		}
-		
-		//ステージへ
-		if(mouse_in::getIns()->LeftClick()&&testBox(100,WINDOW_Y-150,WINDOW_X-100,WINDOW_Y-50)){
-			WorldScene* p = dynamic_cast<WorldScene*>( parentScene );
-			if( p != NULL )
-			{
-				//p->getGame()->setProduct(id,i);
-				p->stage_id=stage_id;
-				int j=1;
-				p->unit_id[0]=1;
-				for(int i=UnitType::_BALOON;i<UnitType::END_MUSUME;i++){
-					if(flag[i]){
-						p->unit_id[j]=i;
-						j++;
+
+
+		if(counter>=5){
+			//ステージへ
+			if(mouse_in::getIns()->LeftClick()&&testBox(431,305,648,370)){
+				WorldScene* p = dynamic_cast<WorldScene*>( parentScene );
+				if( p != NULL )
+				{
+					//p->getGame()->setProduct(id,i);
+					p->stage_id=stage_id;
+					int j=1;
+					p->unit_id[0]=1;
+					for(int i=UnitType::_BALOON;i<UnitType::_IDLE;i++){
+						if(flag[i]){
+							p->unit_id[j]=i;
+							j++;
+						}
 					}
 				}
+				parentScene->buttonPushed("gotogame");
 			}
-			parentScene->buttonPushed("gotogame");
 		}
 		mouse_in::getIns()->recieveOver();
 	}else{

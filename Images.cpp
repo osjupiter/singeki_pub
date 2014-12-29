@@ -312,6 +312,13 @@ void Images::load(){
 	filelist.push_back("pic/ワールドマップd.png");
 	filelist.push_back("pic/ワールドマップe.png");
 	filelist.push_back("pic/ワールドマップf.png");
+
+	
+	filelist.push_back("pic/出撃前ユニット選択ウインドウ.png");
+	filelist.push_back("pic/出撃ボタンON.png");
+	filelist.push_back("pic/出撃ボタンOFF.png");
+	
+	filelist.push_back("pic/出撃ボタンNO.png");
 	filelist.push_back("pic/world_icon.png");
 
 
