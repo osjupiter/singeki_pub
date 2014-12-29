@@ -320,7 +320,7 @@ void MenuLayer::draw(){
 	
 	
 	auto numberlist=game->getMusumeNumber();
-	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::END_MUSUME);i++){
+	for(int i=static_cast<int>(UnitType::_HOHEI);i<static_cast<int>(UnitType::_IDLE);i++){
 			DrawRotaGraph(5+60*((i-1)%3),30+((i-1)/3)*20,0.5,0,Images::getMusumeIcon(i),TRUE);
 			//DrawFormatString(15+60*((i-1)%3)+10,30+((i-1)/3)*20,GetColor(0,255,0),"%d",numberlist.at(i));
 			DrawFormatStringToHandle(15+60*((i-1)%3)+10,30+((i-1)/3)*20,GetColor(0,255,0),Images::getIns()->font,"%d",numberlist.at(i));
