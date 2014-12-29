@@ -507,7 +507,7 @@ void Game::draw(){
 			i->draw(x);
 	}
 
-	Test();
+//	Test();
 
 	
 }
@@ -573,8 +573,8 @@ void Game::delete_object(){
 		delete_effectlist.clear();
 	}
 	
-	//atkrange_musume_list.clear();
-//	atkrange_enemy_list.clear();
+	atkrange_musume_list.clear();
+	atkrange_enemy_list.clear();
 
 	/*ˆêÄŠJ•ú‚É‚æ‚éˆ——‚¿‚ğ–h~*/
 	if(memfree_list.size()<10)

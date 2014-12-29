@@ -46,7 +46,8 @@
 		soundlist.push_back("sound/車輪砲台.mp3");
 		soundlist.push_back("sound/偶像雷.mp3");
 		soundlist.push_back("sound/謎の手キラキラ音.mp3");
-			
+		soundlist.push_back("sound/ガジガジメカ音（修正）.mp3");
+
 		
 		soundlist.push_back("sound/農家（くわ）.mp3");
 

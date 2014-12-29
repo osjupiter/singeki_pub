@@ -72,15 +72,12 @@ void kuroshimi::draw(int cx){
 	switch (state){
 	case UnitState::MOV:
 		DrawGraph(x - cx, y, Images::getIns()->g_kuroshimi_w[ani_count / ANIM_SPEED%ANI_KUROSHIMI_W], true);
-		enemy::draw(cx);
 		break;
 	case UnitState::ATK:
 		DrawGraph(x - cx, y, Images::getIns()->g_kuroshimi_a[ani_count / ANIM_SPEED%ANI_KUROSHIMI_A], true);
-		enemy::draw(cx);
 		break;
 	case UnitState::WAIT:
 		DrawGraph(x - cx, y, Images::getIns()->g_kuroshimi_a[ani_count / ANIM_SPEED%ANI_KUROSHIMI_A], true);
-		enemy::draw(cx);
 		break;
 	case UnitState::DIE:
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
