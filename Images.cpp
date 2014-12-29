@@ -928,7 +928,7 @@ void Images::load(){
 			back[3][3] = LoadGraph("dat/img/メカシティ/メカシティ４－２.png");
 			back[3][4] = LoadGraph("dat/img/メカシティ/メカシティ４－１.png");
 
-			back[4][0] = 0;
+			back[4][0] = LoadGraph("dat/img/メカシティ/メカシティ５－５.png");
 			back[4][1] = LoadGraph("dat/img/メカシティ/メカシティ５－４.png");
 			back[4][2] = LoadGraph("dat/img/メカシティ/メカシティ５－３.png");
 			back[4][3] = LoadGraph("dat/img/メカシティ/メカシティ５－２.png");
@@ -947,11 +947,11 @@ void Images::load(){
 			back[6][3] = LoadGraph("dat/img/メカシティ/メカシティ７－２.png");
 			back[6][4] = LoadGraph("dat/img/メカシティ/メカシティ７－１.png");
 
-			back[7][0] = 0;
-			back[7][1] = LoadGraph("dat/img/メカシティ/メカシティ８－４.png");
-			back[7][2] = LoadGraph("dat/img/メカシティ/メカシティ８－３.png");
-			back[7][3] = LoadGraph("dat/img/メカシティ/メカシティ８－２.png");
-			back[7][4] = LoadGraph("dat/img/メカシティ/メカシティ８－１.png");
+			back[7][0] = LoadGraph("dat/img/メカシティ/メカシティ8-5.png");
+			back[7][1] = LoadGraph("dat/img/メカシティ/メカシティ8-4.png");
+			back[7][2] = LoadGraph("dat/img/メカシティ/メカシティ8-3.png");
+			back[7][3] = LoadGraph("dat/img/メカシティ/メカシティ8-2.png");
+			back[7][4] = LoadGraph("dat/img/メカシティ/メカシティ8-1.png");
 
 			g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
 			g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
