@@ -14,7 +14,6 @@ steam::steam(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_STEAM){
 	type = ALL;
 	atk_type = ALL;
 	dx = x - 165;
-	
 }
 
 void steam::main(int front){

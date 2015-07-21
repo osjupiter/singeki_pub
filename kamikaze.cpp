@@ -41,9 +41,9 @@ void kamikaze::main(int front){
 		gap_y += gap_vy;
 		*/
 	
-	
+		
 		if ((ani_count / ANIM_SPEED == ANI_KAMIKAZE_ATK)){
-			Game::getIns()->effect_create(x, y + 75,TEPODON, dir, param->getParam(POWER), front );			
+			Game::getIns()->effect_create(x, y + 75,TEPODON, dir, param->getParam(POWER), front -20);			
 			changeState(UnitState::DIE);
 			image = 0;
 		}

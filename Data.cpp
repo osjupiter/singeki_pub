@@ -19,7 +19,7 @@ void Data::Read(){
 		Write();
 	}
 
-	auto tmp=CsvReader::parseTable("save.dat",",");
+	auto tmp = CsvReader::parseTable("save.dat", ",");
 	
 	for(auto line:tmp){
 		//”’l‚É•ÏŠ·‚Å‚«‚é•¶š—ñ‚Å‚È‚¢‚ÆƒGƒ‰[‚Í‚­‚æ	

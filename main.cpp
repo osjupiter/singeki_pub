@@ -35,7 +35,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetMouseDispFlag( FALSE );
 	SetOutApplicationLogValidFlag( false ) ; 
 	//SetMainWindowText("‚­‚Á‚«[") ;
-	SetMainWindowText("N—ª‚Ç‚¤‚Å‚·‚©") ;
+	SetMainWindowText("N—ª‚Ç‚¤‚Å‚µ‚å‚¤") ;
 	SetWindowIconID(MAINICON);
 	// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‰Šú‰»ˆ—
 	if( DxLib_Init() == -1 ) return -1;

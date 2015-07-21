@@ -22,7 +22,7 @@ Game::Game(int _world){
 	param_init();
 	world = _world;
 	ins = this;
-	auto data = CsvReader::parseTable("dat/resouce.csv", ",");
+	auto data = CsvReader::parseTableDX("dat/resouce.csv", ",");
 
 	resource = stoi(data[0][world-1]);
 	background_init();
@@ -49,7 +49,7 @@ Game::Game(int _world){
 }
 
 void Game::param_init(){
-	auto data=CsvReader::parseTable("dat/test.csv",",");
+	auto data = CsvReader::parseTableDX("dat/test.csv", ",");
 	ParamType tmp[UNITTYPE_NUM][11];
 	int i=0;
 	for(auto a:data){
@@ -68,7 +68,7 @@ void Game::param_init(){
 		line++;
 	}
 
-	auto elv = CsvReader::parseTable("dat/e_lv.csv", ",");
+	auto elv = CsvReader::parseTableDX("dat/e_lv.csv", ",");
 	double mag[UNITTYPE_NUM][6];
 	i = _TANK;
 	for (auto e : elv){
@@ -113,7 +113,7 @@ void Game::castle_init(){
 	string spownfilename[WORLD_NUM + 1] = { "", "dat/çrñÏspown.csv", "dat/â_ÇÃè„spown.csv" ,"dat/êÖÇÃíÜspown.csv"
 		,"dat/ê·å¥spown.csv", "dat/êXÉKÅ[Éãspown.csv", "dat/ÉÅÉJÉVÉeÉBspown.csv" };
 	
-	auto pop_list = CsvReader::parseTable(spownfilename[world], ",");
+	auto pop_list = CsvReader::parseTableDX(spownfilename[world], ",");
 
 	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0,world));
 	castle_list.push_back(p);

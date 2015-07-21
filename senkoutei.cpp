@@ -29,7 +29,7 @@ void senkoutei::main(int front){
 			if (!stopper){
 					
 					Game::getIns()->effect_create(x + width / 2 - WID_GYORAI / 2 + 10 * dir, y +220-95, GYORAI, dir, power, front-WID_GYORAI/2, atk_position,level);
-					SoundController::getSE()->playSE("sound/魚雷発射音.mp3");
+					SoundController::getSE()->playSE("sound/ビーバーブシュー(修正).mp3");
 					stopper = true;
 			}
 		}

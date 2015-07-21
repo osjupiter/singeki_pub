@@ -24,6 +24,10 @@ void beebar::main(int front){
 		break;
 	case UnitState::ATK:
 		atk = false;
+		if (ani_count / ANIM_SPEED_A%ANI_BEEBAR_A == 1){
+			SoundController::getSE()->playSE("sound/ビーバーブシュー(修正).mp3");
+
+		}
 		if (ani_count / ANIM_SPEED_A%ANI_BEEBAR_A == 3){
 			if (!stopper){
 				if (!atk){
@@ -81,7 +85,7 @@ void beebar::draw(int cx){
 			DrawTurnGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);
 			break;
 		case UnitState::ATK:
-			DrawTurnGraph(x - cx - 120, y, Images::getIns()->g_beebar_a[level / 3][ani_count / ANIM_SPEED_A%ANI_BEEBAR_A], true);
+			DrawTurnGraph(x - cx + 120, y, Images::getIns()->g_beebar_a[level / 3][ani_count / ANIM_SPEED_A%ANI_BEEBAR_A], true);
 			break;
 		case UnitState::WAIT:
 			DrawTurnGraph(x - cx, y, Images::getIns()->g_beebar_w[level / 3][ani_count / ANIM_SPEED%ANI_BEEBAR_W], true);

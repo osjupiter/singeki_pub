@@ -28,7 +28,6 @@ mekaNemu::mekaNemu(int fx, int fy, int st,int wl, vector<vector<string>> list) :
 void mekaNemu::main(int front){
 	unit::main();
 	castle_enemy::main(front);
-	
 
 	switch (state){
 	case CastleState::ACTIVE:

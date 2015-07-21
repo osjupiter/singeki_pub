@@ -301,7 +301,7 @@ void EndScene::enterScene(){
 	SoundController::getBgm()->playBGM("sound/ƒVƒXƒeƒ€/ending.mp3",false);
 }
 void EndScene::main(){
-	count+=6;
+	count+=4;
 	if(nagasa*2-WINDOW_X<=count){
 		count=nagasa*2-WINDOW_X;
 		endc++;

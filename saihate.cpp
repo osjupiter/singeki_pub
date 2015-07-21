@@ -115,5 +115,5 @@ void saihate::draw(int cx){
 		//DrawGraph(x - cx, y, Images::getIns()->g_saihate_t[ani_count / ANIM_SPEED%ANI_SAIHATE_T], true);
 		break;
 	}
-	character::draw(cx);
+	character::drawBossHP(x,cx,y+height/2);
 }

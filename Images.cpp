@@ -175,7 +175,7 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/水の中/魚雷3.png", ANI_GYORAI, ANI_GYORAI, 1, WID_GYORAI, HEI_GYORAI, g_gyorai[2]);
 
 
-	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1出現.png", ANI_SHOKUSH_S, 5, 3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[0]);
+	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手１出現.png", ANI_SHOKUSH_S, 5, 3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手1攻撃.png", ANI_SHOKUSH_A, 3,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_a[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2出現.png", ANI_SHOKUSH_S, 5,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_s[1]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2攻撃.png", ANI_SHOKUSH_A, 3,3, WID_SHOKUSH, HEI_SHOKUSH, g_shokush_a[1]);
@@ -953,9 +953,11 @@ void Images::load(){
 				}
 			}
 
-			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像待機.png", ANI_GUUZO_W, 4, 1, WID_GUUZO, HEI_GUUZO, g_guuzo_w);
-			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像攻撃1.png", ANI_GUUZO_A, 2, 1, WID_GUUZO, HEI_GUUZO, g_guuzo_a1);
-			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像攻撃2.png", ANI_GUUZO_A, 2, 1, WID_GUUZO, HEI_GUUZO, g_guuzo_a2);
+			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎ待機.png", ANI_TAMANEGI_WA, 4, 1, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_w);
+			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎ攻撃.png", ANI_TAMANEGI_WA, 4, 1, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_a);
+			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎトランスフォーム.png", ANI_TAMANEGI_T, 4, 3, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_t);
+			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎreトランスフォーム.png", ANI_TAMANEGI_TR, 6, 1, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_tr);
+
 
 
 			break;

@@ -45,6 +45,7 @@ void tamanegi::main(int front){
 			if (!stopper){
 				stopper = true;
 				Game::getIns()->effect_create(dx - 20, y+50, NEGIMISSILE, dir, power, dx, 0, 2);
+				SoundController::getSE()->playSE("sound/玉ねぎミサイル移動.mp3");
 
 			}
 		}
@@ -52,6 +53,7 @@ void tamanegi::main(int front){
 			if (!stopper){
 				stopper = true;
 				Game::getIns()->effect_create(dx + 0, y + 70, NEGIMISSILE, dir, power, dx, 0, 1);
+				SoundController::getSE()->playSE("sound/玉ねぎミサイル移動.mp3");
 
 			}
 		}
@@ -59,6 +61,7 @@ void tamanegi::main(int front){
 			if (!stopper){
 				stopper = true;
 				Game::getIns()->effect_create(x + 0, y + 50, NEGIMISSILE, dir, power, dx, 0, 0);
+				SoundController::getSE()->playSE("sound/玉ねぎミサイル移動.mp3");
 
 			}
 		}
