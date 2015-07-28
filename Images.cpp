@@ -439,7 +439,24 @@ void Images::load(){
 		switch (sid)
 		{
 		case 1:
-			
+			{
+					  int stage_back_ismove[8][5] =
+					  {
+						  { 0, 0, 0, 0, 0 },
+						  { 0, 0, 0, 0, 0 },
+						  { 0, 0, 0, 0, 0 },
+						  { 0, 0, 0, 0, 0 },
+						  { 0, 0, 0, 0, 0 },
+						  { 0, 0, 0, 0, 0 },
+						  { 0, 0, 0, 0, 0 },
+						  { 0, 0, 0, 0, 0 },
+					  };
+					  for (int i = 0; i < 8; i++){
+						  for (int j = 0; j < 5; j++){
+							  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+						  }
+					  }
+			}
 			back[0][0] = 0;
 			back[0][1] = LoadGraph("dat/img/r–ì/r–ì‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/r–ì/r–ì‚P|‚R.png");
@@ -546,6 +563,24 @@ void Images::load(){
 
 			break;
 		case 4:
+			{
+					  int stage_back_ismove[8][5] =
+					  {
+						  { 1, 0, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 1, 0, 0, 0, 0 },
+						  { 0, 1, 0, 1, 0 },
+						  { 0, 0, 1, 0, 0 },
+						  { 0, 0, 0, 0, 0 },
+						  { 1, 0, 0, 0, 0 },
+						  { 0, 1, 1, 1, 0 },
+					  };
+					  for (int i = 0; i < 8; i++){
+						  for (int j = 0; j < 5; j++){
+							  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+						  }
+					  }
+			}
 			back[0][0] = LoadGraph("dat/img/áŒ´/áŒ´‚P-5.png");
 			back[0][1] = LoadGraph("dat/img/áŒ´/áŒ´‚P-4.png");
 			back[0][2] = LoadGraph("dat/img/áŒ´/áŒ´‚P-3.png");
@@ -648,6 +683,24 @@ void Images::load(){
 
 			break;
 		case 2:
+		{
+				  int stage_back_ismove[8][5] =
+				  {
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+				  };
+				  for (int i = 0; i < 8; i++){
+					  for (int j = 0; j < 5; j++){
+						  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+					  }
+				  }
+		}
 			back[0][0] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚T.png");
 			back[0][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚R.png");
@@ -748,6 +801,24 @@ void Images::load(){
 
 			break;
 		case 5:
+		{
+				  int stage_back_ismove[8][5] =
+				  {
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+				  };
+				  for (int i = 0; i < 8; i++){
+					  for (int j = 0; j < 5; j++){
+						  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+					  }
+				  }
+		}
 			back[0][0] = 0;
 			back[0][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚P|‚R.png");
@@ -855,7 +926,24 @@ void Images::load(){
 
 			break;
 		case 3:
-			back[0][0] = 0;
+		{
+				  int stage_back_ismove[8][5] =
+				  {
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+				  };
+				  for (int i = 0; i < 8; i++){
+					  for (int j = 0; j < 5; j++){
+						  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+					  }
+				  }
+		}			back[0][0] = 0;
 			back[0][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚R.png");
 			back[0][3] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚Q.png");
@@ -962,7 +1050,24 @@ void Images::load(){
 
 			break;
 		case 6:
-			back[0][0] = 0;
+		{
+				  int stage_back_ismove[8][5] =
+				  {
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+				  };
+				  for (int i = 0; i < 8; i++){
+					  for (int j = 0; j < 5; j++){
+						  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+					  }
+				  }
+		}			back[0][0] = 0;
 			back[0][1] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚P|‚R.png");
 			back[0][3] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚P|‚Q.png");

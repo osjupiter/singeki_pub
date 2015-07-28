@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "Game.h"
 #include "SoundController.h"
+#include "define.h"
 TitleScene::TitleScene(){
 	LAY_Ptr p(new GraphicLayer(0,0,Images::get("pic/title.png")));
 	addLayer(0,p);
@@ -215,6 +216,8 @@ void GameScene::beforemain(){
 		{
 			game->scrollRight(15);
 		}
+
+
 	}
 
 
@@ -226,8 +229,13 @@ void GameScene::beforemain(){
 		else pauseState=0;
 	}
 	if(pauseState==3){
+		if (DEBUG_MODE&&Buf[KEY_INPUT_Z] == 1){
+			game->stageInc();
+		}
+		else{
+			pause();
+		}
 		
-		pause();
 	}
 
 }

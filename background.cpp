@@ -33,7 +33,7 @@ background::background(int x_st, int st, int ly, int w_st,bool mv):object(x_st,0
 		width = w_st;
 		height = WINDOW_Y;
 		pic_wid = 650;
-		move = (scroll_type[stage][layer] == 1);
+		move = Images::getIns()->back_ismove[stage][layer];//(scroll_type[stage][layer] == 1);
 		dx=0;
 		if (move){
 			gap = 0;
