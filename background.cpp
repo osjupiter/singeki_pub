@@ -75,7 +75,7 @@ void background::scroll(int cx){
 void background::draw(int cx){
 	
 	if (move){
-		gap = gap + 1;
+		gap = gap + layer+1;
 		dx =  - remain((int)gap,pic_wid) ;
 		if (cx < x){
 			DrawRectGraph(x - cx, y, x - cx - (dx), y, pic_wid - (x - cx - (dx)), height, Images::getIns()->back[stage][layer], true, false);
