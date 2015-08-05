@@ -26,7 +26,7 @@ void shiro_yama::main(int front){
 				shared_ptr<AttackRange> p(new AttackRange(x+100-rand_x-WID_SHOCK,x+100-rand_x, POWER_YAMASHIRO, ALL));
 				Game::getIns()->push_attack_list(p, ENEMY);
 				Game::getIns()->effect_create(x - rand_x - WID_SHOCK+100, FIELD_H - HEI_SHOCK, SHOCK);
-				Game::getIns()->damage_effect_create(x + 168 - WID_CANNONSHOT / 2 - draw_gap[stage][0],y + 210 - HEI_CANNONSHOT / 2, CANNONSHOT);
+				Game::getIns()->damage_effect_create(x + 168 - WID_CANNONSHOT / 2 - Images::getIns()->draw_gap[stage][0], y + 210 - HEI_CANNONSHOT / 2, CANNONSHOT);
 				SoundController::getSE()->playSE("sound/taihou03.mp3");
 				SoundController::getSE()->playSE("sound/sen_ge_taihou08.mp3");
 			}
@@ -51,7 +51,7 @@ void shiro_yama::draw(int cx){
 	switch (state){
 	case CastleState::ACTIVE:
 		if (!break_flag)
-			DrawGraph(x - draw_gap[stage][0] - cx, y, Images::getIns()->houdai_yama, true);
+			DrawGraph(x - Images::getIns()->draw_gap[stage][0] - cx, y, Images::getIns()->houdai_yama, true);
 		break;
 	}
 

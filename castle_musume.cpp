@@ -35,13 +35,13 @@ void castle_musume::main(int front){
 void castle_musume::draw(int cx){
 	switch (state){
 	case CastleState::ACTIVE:
-		DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_castle[stage][2], true);
+		DrawGraph(x - Images::getIns()->draw_gap[stage][2] - cx, y, Images::getIns()->g_castle[stage][2], true);
 		break;
 	case CastleState::STAY:
 		break;
 	case CastleState::DIE:
 		if (stage != 0)
-			DrawGraph(x - draw_gap[stage][2] - cx, y, Images::getIns()->g_mekahaikyo, true);
+			DrawGraph(x - Images::getIns()->draw_gap[stage][2] - cx, y, Images::getIns()->g_mekahaikyo, true);
 		break;
 	}
 
