@@ -16,7 +16,7 @@ void nomalExp::main(){
 		if (!ExFlag)
 		SoundController::getSE()->playSE("sound/sen_ge_hasai02.mp3");
 	}
-	if (ani_count / ANIM_SPEED % ANI_BIGEXP == ANI_NOMALEXP - 1){
+	if (ani_count / ANIM_SPEED % ANI_NOMALEXP == ANI_NOMALEXP - 1){
 		del();
 	}
 }

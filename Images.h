@@ -97,9 +97,11 @@ public:
 	int g_tamanegi_t[ANI_TAMANEGI_T];
 	int g_tamanegi_tr[ANI_TAMANEGI_TR];
 	int g_negimissile[3][ANI_NEGIMISSILE];
-	int g_guuzo_w[ANI_GUUZO_W];
-	int g_guuzo_a1[ANI_GUUZO_A];
-	int g_guuzo_a2[ANI_GUUZO_W];
+	int g_guuzou_w[ANI_GUUZOU_W];
+	int g_guuzou_a1[ANI_GUUZOU_A];
+	int g_guuzou_a2[ANI_GUUZOU_W];
+	int g_glight[ANI_GLIGHT];
+
 	int g_gajikami[ANI_GAJIKAMI];
 	int g_zangeki[ANI_ZANGEKI];
 	int g_mahojin[ANI_MAHOJIN];

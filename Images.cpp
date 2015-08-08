@@ -186,6 +186,12 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2キラキラ.png", ANI_KIRAKIRA, 6,2, WID_KIRAKIRA, HEI_KIRAKIRA, g_kirakira[1]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手3キラキラ.png", ANI_KIRAKIRA, 6,2, WID_KIRAKIRA, HEI_KIRAKIRA, g_kirakira[2]);
 
+	LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像待機.png", ANI_GUUZOU_W, 4, 1, WID_GUUZOU, HEI_GUUZOU, g_guuzou_w);
+	LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像攻撃1.png", ANI_GUUZOU_A, 2, 1, WID_GUUZOU, HEI_GUUZOU, g_guuzou_a1);
+	LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像攻撃2.png", ANI_GUUZOU_A, 2, 1, WID_GUUZOU, HEI_GUUZOU, g_guuzou_a2);
+
+	LoadDivGraph("dat/img/敵ユニット/水の中/偶像の光.png", ANI_GLIGHT, 4, 1, WID_GLIGHT, HEI_GLIGHT, g_glight);
+
 	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台1出現.png", ANI_OHANA_S, 4, 4, WID_OHANA, HEI_OHANA, g_ohana_s[0]);
 	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台1攻撃.png", ANI_OHANA_A, 3, 3, WID_OHANA, HEI_OHANA, g_ohana_a[0]);
 	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台2出現.png", ANI_OHANA_S, 4, 4, WID_OHANA, HEI_OHANA, g_ohana_s[1]);

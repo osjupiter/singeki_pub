@@ -40,7 +40,7 @@ Game::Game(int _world){
 	score_flame=0;
 	
 	//for DEBUG
-	/*
+	//*
 	for (int i = 0; i < 7; i++){
 		stageInc();
 	}
@@ -107,7 +107,7 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
-	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_TAMANEGI, UnitType::_SAIHATE,
+	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_GUUZOU, UnitType::_SAIHATE,
 		UnitType::_TAMANEGI, UnitType::_STEAM };
 
 	string spownfilename[WORLD_NUM + 1] = { "", "dat/r–ìspown.csv", "dat/‰_‚Ìãspown.csv" ,"dat/…‚Ì’†spown.csv"
@@ -507,7 +507,7 @@ void Game::draw(){
 			i->draw(x);
 	}
 
-//	Test();
+	//Test();
 
 	
 }
