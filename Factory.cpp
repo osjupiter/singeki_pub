@@ -49,6 +49,9 @@
 #include "tamanegi.h"
 #include "gajikami.h"
 #include "zangeki.h"
+#include "ikai.h"
+#include "gomi.h"
+
 using namespace std;
 
 
@@ -154,6 +157,9 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_GUUZOU:
 		chara_ins.reset(new guuzou(x, line, st));
 		break;
+	case UnitType::_AKUUMON:
+		chara_ins.reset(new ikai(x, line, st));
+		break;
 	default:
 //		printfDx("FactoryTypeError\n");
 		break;
@@ -224,6 +230,9 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 		break;
 	case GLIGHT:
 		ret_ins.reset(new glight(fx, fy,atk_power));
+		break;
+	case GOMI:
+		ret_ins.reset(new gomi(fx, fy, atk_power));
 		break;
 	}
 	return ret_ins;

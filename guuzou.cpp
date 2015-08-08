@@ -6,12 +6,12 @@
 
 
 
-#define ANIM_SPEED 5
+#define ANIM_SPEED 3
 #define DIST_GUUZOU 1000
 guuzou::guuzou(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_GUUZOU){
 	width = WID_GUUZOU;
 	height = HEI_GUUZOU;
-	x = x - width +10;
+	x = x - width +20;
 	y = WINDOW_Y - height;
 	atk_type = RAND;
 	dist = dist + DIST_GUUZOU;
@@ -95,7 +95,6 @@ void glight::main(){
 	}
 	if (ani_count / ANIM_SPEED_L % ANI_GLIGHT == ANI_GLIGHT - 1){
 		if (rand() % 3 == 1){
-			printfDx("glight\n");
 			shared_ptr<AttackRange> p(new AttackRange(x + 80, x + WID_GLIGHT - 80, power, ALL));
 			Game::getIns()->push_attack_list(p,ENEMY);
 		}

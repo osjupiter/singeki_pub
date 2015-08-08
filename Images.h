@@ -101,7 +101,9 @@ public:
 	int g_guuzou_a1[ANI_GUUZOU_A];
 	int g_guuzou_a2[ANI_GUUZOU_W];
 	int g_glight[ANI_GLIGHT];
-
+	int g_ikai_w[ANI_IKAI_W];
+	int g_ikai_a1[ANI_IKAI_A1];
+	int g_ikai_a2[ANI_IKAI_A2];
 	int g_gajikami[ANI_GAJIKAMI];
 	int g_zangeki[ANI_ZANGEKI];
 	int g_mahojin[ANI_MAHOJIN];
@@ -131,7 +133,7 @@ public:
 	int g_e_wisp[3][7];
 	int g_yukidama1[ANI_YUKIDAMA];
 	int g_yukidama2[ANI_YUKIDAMA];
-
+	int g_gomi[3][ANI_GOMI];
 	int houdai_yama;
 
 	int font,font2;
