@@ -221,10 +221,31 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP, NOMALEXP
 
 /*ïPãRém*/
 #define ANI_HIME_W 5
-#define ANI_HIME_A 6
+#define ANI_HIME_A 3
 #define WID_HIME_W 120
 #define WID_HIME_A 120
 #define HEI_HIME 140
+
+#define ANI_HIME_O 6
+#define WID_HIME_O 80
+#define HEI_HIME_O 300
+
+#define ANI_HIME_C 5
+#define WID_HIME_C 120
+#define HEI_HIME_C 140
+
+#define ANI_HIME_H 5
+#define WID_HIME_H 720
+#define HEI_HIME_H 290
+
+#define ANI_HIME_HC 2
+#define WID_HIME_HC 120
+#define HEI_HIME_HC 140
+
+#define ANI_HIME_AE 3
+#define WID_HIME_AE 120
+#define HEI_HIME_AE 140
+
 
 /*ÉCÉJÉçÉX*/
 #define ANI_IKAROS_W 5

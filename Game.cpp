@@ -40,7 +40,7 @@ Game::Game(int _world){
 	score_flame=0;
 	
 	//for DEBUG
-	//*
+	/*
 	for (int i = 0; i < 7; i++){
 		stageInc();
 	}
@@ -507,7 +507,7 @@ void Game::draw(){
 			i->draw(x);
 	}
 
-	//Test();
+	Test();
 
 	
 }
@@ -588,6 +588,7 @@ void Game::delete_object(){
 
 
 void Game::Test(){
+	return;
 	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "TEST");
 /*	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "m%d en%d ef%d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
 	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "x %d", x);

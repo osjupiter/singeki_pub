@@ -91,8 +91,15 @@ void Images::load(){
 	LoadDivGraph("dat/img/むすめユニット/盾篭りw.png", ANI_TATEKO_W, ANI_TATEKO_W, 1, WID_TATEKO, HEI_TATEKO, g_tateko_w);
 	LoadDivGraph("dat/img/むすめユニット/盾篭りa.png", ANI_TATEKO_A, ANI_TATEKO_A, 1, WID_TATEKO, HEI_TATEKO, g_tateko_a);
 
-	LoadDivGraph("dat/img/むすめユニット/姫騎士w2.png", ANI_HIME_W, ANI_HIME_W, 1, WID_HIME_W, HEI_HIME, g_hime_w);
-	LoadDivGraph("dat/img/むすめユニット/姫騎士a2.png", ANI_HIME_A, ANI_HIME_A, 1, WID_HIME_A, HEI_HIME, g_hime_a);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/姫騎士w3.png", ANI_HIME_W, ANI_HIME_W, 1, WID_HIME_W, HEI_HIME, g_hime_w);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/姫騎士a3.png", ANI_HIME_A, ANI_HIME_A, 1, WID_HIME_A, HEI_HIME, g_hime_a);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/姫騎士オーラ.png", ANI_HIME_O, ANI_HIME_O, 1, WID_HIME_O, HEI_HIME_O, g_hime_o);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/姫騎士チャージ.png", ANI_HIME_C, ANI_HIME_C, 1, WID_HIME_C, HEI_HIME_C, g_hime_c);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/姫騎士攻撃終了.png", ANI_HIME_AE, ANI_HIME_AE, 1, WID_HIME_AE, HEI_HIME_AE, g_hime_ae);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/大衆宝具.png", ANI_HIME_H, 1,ANI_HIME_H, WID_HIME_H, HEI_HIME_H, g_hime_h);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/大衆宝具発動中.png", ANI_HIME_HC, ANI_HIME_HC, 1, WID_HIME_HC, HEI_HIME_HC, g_hime_hc);
+
+
 
 	LoadDivGraph("dat/img/むすめユニット/イカロスw2.png", ANI_IKAROS_W, ANI_IKAROS_W, 1, WID_IKAROS_W, HEI_IKAROS, g_ikaros_w);
 	LoadDivGraph("dat/img/むすめユニット/イカロスa2.png", ANI_IKAROS_A, ANI_IKAROS_A, 1, WID_IKAROS_A, HEI_IKAROS, g_ikaros_a);
