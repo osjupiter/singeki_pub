@@ -49,6 +49,8 @@ vector<vector<string>> CsvReader::parseTableDX(string name, const string &delim)
     string str;
     while( FileRead_gets( String, 2048, fp ) ){
 		str=(String);
+		auto res = str.find("//", 0);
+		if (res == 0)continue;
 		table.emplace_back(split(str, delim));
 		if (FileRead_eof(fp))break;
     }

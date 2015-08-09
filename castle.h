@@ -17,14 +17,11 @@ protected:
 	static const int castle_hp[9];
 	//static const int draw_gap[9][3];
 	CastleState state;
-	vector<ii> spownlist;
-	vector<ii> eventlist;
-	int spownID;
+
 
 	//static int nowstage;
 	int product_type;
 
-	int now_clk;
 
 	int exist_clk;
 	int exist_ID;
@@ -42,7 +39,7 @@ public:
 	void setProduct(int);
 	int getProduct();
 	CastleState getState();
-	double getProductCLKPAR();
+	virtual double getProductCLKPAR();
 //	static int getNowstage();
 //	static void setNowstage(int st);
 };
@@ -52,17 +49,20 @@ public:
 class castle_musume : public castle{
 private:
 
-
+	int now_clk;
 public:
 	castle_musume(int, int, int,int);
 	virtual void main(int);
 	virtual void draw(int);
-	
+	virtual double getProductCLKPAR() override;
 	bool isProductTime();
 };
 class castle_enemy : public castle{
 protected:
-	
+	vector<ii> spownlist[5];
+	vector<ii> eventlist;
+	int spownIndex[5];
+	int spown_clk[5];
 
 public:
 	castle_enemy(int, int, int, int,vector<vector<string>>);

@@ -88,6 +88,14 @@ void Game::param_init(){
 		line++;
 		if (i >= UNITTYPE_NUM) break;
 	}
+
+	/*文字列リソース読み込み */
+	auto res = CsvReader::parseTableDX("dat/文字リソース.csv", ",");
+
+	pramSummary = res.at(0);
+	pramName = res.at(1);
+	unitName = res.at(2);
+	unitSummary = res.at(3);
 	
 /*	param_list[_HOHEI] = shared_ptr<Parameter>(
 		new Parameter(POWER_HOHEI, MAXHP_HOHEI
@@ -738,83 +746,23 @@ shared_ptr<Parameter> Game::getParam(int id){
 	}
 
 string Game::getParamSummary(ParamType p){
-	string s[]={
-		"敵へのダメージを増加させる。",
-		"最大HPを増加させる。",
-		"足が速くなる。",
-		"ダメージを食らいにくくなる。",
-		"^o^",
-		"生産速度が増加する。",
-		"生産コストが安くなる。",
-		"攻撃後の待機時間が短くなる。",
-	};
-	return s[p];
+
+	return pramSummary.at(p);
 
 
 }
 
 string Game::getParamName(ParamType p){
-	string s[]={
-		"攻撃強化",
-		"HP増加",
-		"スピードアップ",
-		"防御アップ",
-		"^o^",
-		"高速生産",
-		"コストダウン",
-		"攻撃回数増加",
-	};
-	return s[p];
+
+	return pramName.at(p);
 }
 
 string Game::getUnitName(UnitType p){
 	int i=static_cast<int>(p);
-	string s[]={
-		"生産中止",
-		"歩兵",
-		"風船兵",
-		"ロボ兵",
-		"ミサイル兵",
-		"バズーカ兵",
-		"セグウェイ兵",
-		"ぶるま",
-		"太田さん",
-		"姫騎士",
-		"イカロス兵",
-		"魔女",
-		"農家",
-		"歩きスマホ",
-		"セグウェイ兵",
-		"セグウェイ兵",
-		"セグウェイ兵",
-		"わりとメンヘラ",
-		"わりとメンヘラ",
-		"わりとメンヘラ",
-	};
-	return s[i];
+	return unitName.at(i);
 }
 
 string Game::getUnitSummary(UnitType p){
 	int i=static_cast<int>(p);
-	string s[]={
-		"節約しよう",
-		"一般兵、数が多い",
-		"空から爆弾を落とす",
-		"振りかぶり攻撃は敵に大ダメージを与えるぞ！",
-		"帰宅部所属その１",
-		"空に攻撃ができる。",
-		"わりとメンヘラ",
-		"帰宅部所属その２",
-		"みんなを守る",
-		"くっ、殺せ",
-		"人生なめてそう",
-		"割といい子",
-		"何を育てているかわからない",
-		"わりとメンヘラ",
-		"わりとメンヘラ",
-		"わりとメンヘラ",
-		"わりとメンヘラ",
-		"わりとメンヘラ",
-	};
-	return s[i];
+	return unitSummary.at(i);
 }

@@ -30,11 +30,12 @@ castle_enemy::castle_enemy(int fx, int fy, int st,int wl, vector<vector<string>>
 		int i_data[4] = { stoi(data[0]), stoi(data[1]), stoi(data[2]), stoi(data[3])};
 		if (i_data[0] == st){
 			tmp = ii(i_data[2], i_data[3]);
-			if (i_data[1] == 0){
-				spownlist.push_back(tmp);
+			if (i_data[1] == 1){
+
+				eventlist.push_back(tmp);
 			}
 			else{
-				eventlist.push_back(tmp);
+				spownlist[i_data[1]].push_back(tmp);
 			}
 		}
 	}
@@ -69,7 +70,10 @@ castle_enemy::castle_enemy(int fx, int fy, int st,int wl, vector<vector<string>>
 		Eventassign(oneEvent);
 
 		*/
-	spownID = 0;
+	for (int i = 0; i < 5; i++){
+		spownIndex[i] = 0;
+		spown_clk[i] = 0;
+	}
 	exist_ID = 0;
 }
 
@@ -78,17 +82,22 @@ void castle_enemy::main(int front){
 
 	case CastleState::ACTIVE:
 
-		now_clk++;
 
+		for (int i = 0; i < 5; i++){
 
-		if (now_clk >= spownlist.at(spownID).first){
-			Game::getIns()->birth(stage, spownlist.at(spownID).second);
-			spownID++;
-			if (spownID >= spownlist.size()){
-				spownID = 0;
-				now_clk = 0;
+			spown_clk[i]++;
+			if (spownlist[i].empty())continue;
+			if (spown_clk[i] >= spownlist[i].at(spownIndex[i]).first){
+				Game::getIns()->birth(stage, spownlist[i].at(spownIndex[i]).second);
+				spownIndex[i]++;
+				if (spownIndex[i] >= spownlist[i].size()){
+					spownIndex[i] = 0;
+					spown_clk[i] = 0;
+				}
 			}
+		
 		}
+
 		if (exist_ID < eventlist.size()){
 			exist_clk++;
 			if (exist_clk >= eventlist.at(exist_ID).first){
