@@ -28,7 +28,7 @@ void ikai::main(int front){
 		if (ani_count / ANIM_SPEED%ANI_IKAI_A1 == 2){
 			if (!stopper){
 				if (!atk){
-					Game::getIns()->effect_create(x - (WID_IKAI*1.5)*(rand()*0 % 2 + 1), FIELD_H - 450, GOMI, NODIR, power);
+		//			Game::getIns()->effect_create(x - (WID_IKAI*1.5)*(rand()*0 % 2 + 1), FIELD_H - 450, GOMI, NODIR, power);
 
 					stopper = true;
 				//	atk = true;

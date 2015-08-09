@@ -82,7 +82,7 @@ void castle_enemy::main(int front){
 
 
 		if (now_clk >= spownlist.at(spownID).first){
-//			Game::getIns()->birth(stage, spownlist.at(spownID).second);
+			Game::getIns()->birth(stage, spownlist.at(spownID).second);
 			spownID++;
 			if (spownID >= spownlist.size()){
 				spownID = 0;
@@ -92,7 +92,7 @@ void castle_enemy::main(int front){
 		if (exist_ID < eventlist.size()){
 			exist_clk++;
 			if (exist_clk >= eventlist.at(exist_ID).first){
-//				Game::getIns()->birth(stage, eventlist.at(exist_ID).second);
+				Game::getIns()->birth(stage, eventlist.at(exist_ID).second);
 				exist_ID++;
 			}
 		}

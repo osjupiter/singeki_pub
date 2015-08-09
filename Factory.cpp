@@ -51,6 +51,7 @@
 #include "zangeki.h"
 #include "ikai.h"
 #include "gomi.h"
+#include "mahou.h"
 
 using namespace std;
 
@@ -233,6 +234,9 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 		break;
 	case GOMI:
 		ret_ins.reset(new gomi(fx, fy, atk_power));
+		break;
+	case MAHOU:
+		ret_ins.reset(new mahou(fx, fy, dr, atk_power, destx, desty));
 		break;
 	}
 	return ret_ins;

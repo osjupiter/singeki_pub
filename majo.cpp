@@ -21,6 +21,7 @@ majo::majo(int fx, int ln) : musume(fx, ln, UnitType::_MAJO){
 
 void majo::main(int front){
 	musume::main(front);
+
 	switch (state){
 	case UnitState::MOV:
 		x += param->getParam(SPEED) * dir; //‰¡ˆÚ“®
@@ -36,11 +37,13 @@ void majo::main(int front){
 		if (ani_count / ANIM_SPEED == ANI_MAJO_A - 1){
 			if (!stopper){
 				if (!atk){
-					Game::getIns()->effect_create(front, FIELD_H - HEI_EXP, EXP);
-						shared_ptr<AttackRange> p(new AttackRange(front, front + WID_EXP - 10, param->getParam(POWER), RAND));
+					Game::getIns()->effect_create(x + 76 - 36, y, MAHOU, dir, param->getParam(POWER),x+width+ dist/*front*/, FIELD_H - HEI_MAHOU);
+
+//					Game::getIns()->effect_create(front, FIELD_H - HEI_EXP, EXP);
+//						shared_ptr<AttackRange> p(new AttackRange(front, front + WID_EXP - 10, param->getParam(POWER), RAND));
 
 					//	shared_ptr<AttackRange> p(new AttackRange(x + width + dist, x + width + dist + WID_EXP - 10, param->getParam(POWER), RAND));
-					Game::getIns()->push_attack_list(p, MUSUME);
+			//		Game::getIns()->push_attack_list(p, MUSUME);
 					stopper = true;
 					
 				}
@@ -95,3 +98,6 @@ void majo::draw(int cx){
 
 }
 
+void majo::decideDirection(int front){
+	return;
+}

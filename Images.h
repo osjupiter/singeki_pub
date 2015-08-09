@@ -59,6 +59,7 @@ public:
 	int g_hime_ae[ANI_HIME_AE];
 	int g_hime_h[ANI_HIME_H];
 	int g_hime_hc[ANI_HIME_HC];
+	int g_mahou[ANI_MAHOU];
 
 	int g_ikaros_w[ANI_IKAROS_W];
 	int g_ikaros_a[ANI_IKAROS_A];

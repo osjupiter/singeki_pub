@@ -106,6 +106,7 @@ void Images::load(){
 
 	LoadDivGraph("dat/img/むすめユニット/マジョw2.png", ANI_MAJO_W, ANI_MAJO_W, 1, WID_MAJO_W, HEI_MAJO, g_majo_w);
 	LoadDivGraph("dat/img/むすめユニット/マジョa2.png", ANI_MAJO_A, ANI_MAJO_A, 1, WID_MAJO_A, HEI_MAJO, g_majo_a);
+	LoadDivGraph("dat/img/むすめユニット/魔女てこ入れ/魔女ソウルの矢.png", ANI_MAHOU, 5, 2, WID_MAHOU, HEI_MAHOU, g_mahou);
 
 	LoadDivGraph("dat/img/むすめユニット/農家w.png", ANI_NOUKA_W, ANI_NOUKA_W, 1, WID_NOUKA_W, HEI_NOUKA, g_nouka_w);
 	LoadDivGraph("dat/img/むすめユニット/農家s.png", ANI_NOUKA_A, 4, 4, WID_NOUKA_A, HEI_NOUKA, g_nouka_a1);
