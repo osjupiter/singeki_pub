@@ -41,7 +41,6 @@ castle::castle(int fx, int fy, int st,int wl) :unit(fx, fy){
 
 	dir = NODIR;
 	product_type = _NONE;
-	now_clk = 0;
 	exist_clk = 0;
 
 	
@@ -227,10 +226,7 @@ int castle::getProduct(){
 	
 }
 double castle::getProductCLKPAR(){
-	int product_clk=Game::getIns()->getParam(product_type,ParamType::CLK);
-	if(product_clk==0)return 0;
-	return now_clk/(double)product_clk;
-	
+	return 0;
 }
 
 void castle::setState(CastleState s){

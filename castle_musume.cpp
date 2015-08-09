@@ -9,6 +9,7 @@ castle_musume::castle_musume(int fx, int fy, int st,int wl) :castle(fx, fy, st,w
 	hp = meka_castle_hp[st];
 	maxhp = hp;
 	state = CastleState::ACTIVE;
+	now_clk = 0;
 }
 
 void castle_musume::main(int front){
@@ -52,4 +53,10 @@ bool castle_musume::isProductTime(){
 	int p = Game::getIns()->getParam(product_type, ParamType::CLK);
 	if (now_clk++ >= p){ now_clk = 0; return true; }
 	return false;
+}
+double castle_musume::getProductCLKPAR(){
+	int product_clk = Game::getIns()->getParam(product_type, ParamType::CLK);
+	if (product_clk == 0)return 0;
+	return now_clk / (double)product_clk;
+
 }
