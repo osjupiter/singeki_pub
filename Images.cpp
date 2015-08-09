@@ -442,7 +442,43 @@ void Images::load(){
 		switch (sid)
 		{
 		case 1:
-			
+			{
+					  int stage_back_ismove[8][5] =
+					  {
+						  { 0, 1, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 1, 0, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 1, 0, 0, 0, 0 },
+					  };
+					  for (int i = 0; i < 8; i++){
+						  for (int j = 0; j < 5; j++){
+							  back_ismove[i][j] = (stage_back_ismove[i][j] );
+						  }
+					  }
+
+					  int stage_drawgap[9][3] =
+					  {
+						{0,0,20},
+						{62,-16,-16}, 
+						{25,30,-70}, 
+						{5,5,0}, 
+						{0,0,0},  
+						{0,0,0}, 
+						{0,0,0}, 
+						{0,0,0}, 
+						{0,0,0}
+					  };
+					  for (int i = 0; i < 9; i++){
+						  for (int j = 0; j < 3; j++){
+							  draw_gap[i][j] = stage_drawgap[i][j];
+						  }
+					  }
+					  
+			}
 			back[0][0] = 0;
 			back[0][1] = LoadGraph("dat/img/r–ì/r–ì‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/r–ì/r–ì‚P|‚R.png");
@@ -549,6 +585,41 @@ void Images::load(){
 
 			break;
 		case 4:
+			{
+					  int stage_back_ismove[8][5] =
+					  {
+						  { 1, 0, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 1, 0, 0, 0, 0 },
+						  { 0, 1, 0, 1, 0 },
+						  { 0, 0, 1, 0, 0 },
+						  { 0, 0, 0, 0, 0 },
+						  { 1, 0, 0, 0, 0 },
+						  { 0, 1, 1, 1, 0 },
+					  };
+					  for (int i = 0; i < 8; i++){
+						  for (int j = 0; j < 5; j++){
+							  back_ismove[i][j] = (stage_back_ismove[i][j] );
+						  }
+					  }
+					   int stage_drawgap[9][3] =
+					  {
+						{0,0,20},
+						{20,20,-20}, 
+						{10,10,-70}, 
+						{5,5,0}, 
+						{0,0,0},  
+						{200,200,200}, 
+						{0,0,0}, 
+						{50,50,0}, 
+						{0,0,0}
+					  };
+					  for (int i = 0; i < 9; i++){
+						  for (int j = 0; j < 3; j++){
+							  draw_gap[i][j] = stage_drawgap[i][j];
+						  }
+					  }
+			}
 			back[0][0] = LoadGraph("dat/img/áŒ´/áŒ´‚P-5.png");
 			back[0][1] = LoadGraph("dat/img/áŒ´/áŒ´‚P-4.png");
 			back[0][2] = LoadGraph("dat/img/áŒ´/áŒ´‚P-3.png");
@@ -658,6 +729,41 @@ void Images::load(){
 
 			break;
 		case 2:
+		{
+				  int stage_back_ismove[8][5] =
+				  {
+					  { 1, 0, 0, 0, 0 },
+					  { 0, 0, 1, 1, 0 },
+					  { 0, 1, 0, 0, 0 },
+					  { 0, 0, 1, 1, 0 },
+					  { 0, 0, 1, 1, 0 },
+					  { 0, 0, 1, 1, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 1, 0, 0, 0 },
+				  };
+				  for (int i = 0; i < 8; i++){
+					  for (int j = 0; j < 5; j++){
+						  back_ismove[i][j] = (stage_back_ismove[i][j] );
+					  }
+				  }
+					  int stage_drawgap[9][3] =
+					  {
+						{0,0,20},
+						{-16,-16,-16}, 
+						{25,30,-70}, 
+						{5,5,0}, 
+						{0,0,0},  
+						{0,0,0}, 
+						{0,0,0}, 
+						{0,0,0}, 
+						{0,0,0}
+					  };
+					  for (int i = 0; i < 9; i++){
+						  for (int j = 0; j < 3; j++){
+							  draw_gap[i][j] = stage_drawgap[i][j];
+						  }
+					  }
+		}
 			back[0][0] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚T.png");
 			back[0][1] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/‰_‚Ìã/‰_‚Ìã‚P|‚R.png");
@@ -768,6 +874,41 @@ void Images::load(){
 
 			break;
 		case 5:
+		{
+				  int stage_back_ismove[8][5] =
+				  {
+					  { 0, 1, 0, 0, 0 },
+					  { 0, 1, 0, 0, 0 },
+					  { 1, 1, 0, 0, 0 },
+					  { 0, 1, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 1, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 1, 0, 0, 0, 0 },
+				  };
+				  for (int i = 0; i < 8; i++){
+					  for (int j = 0; j < 5; j++){
+						  back_ismove[i][j] = (stage_back_ismove[i][j] );
+					  }
+				  }
+					  int stage_drawgap[9][3] =
+					  {
+						{0,0,20},
+						{0,0,0}, 
+						{-20,-20,-70}, 
+						{5,5,0}, 
+						{0,0,0},  
+						{0,0,0}, 
+						{0,0,0}, 
+						{0,0,0}, 
+						{0,0,0}
+					  };
+					  for (int i = 0; i < 9; i++){
+						  for (int j = 0; j < 3; j++){
+							  draw_gap[i][j] = stage_drawgap[i][j];
+						  }
+					  }
+		}
 			back[0][0] = 0;
 			back[0][1] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/XƒK[ƒ‹/XƒK[ƒ‹‚P|‚R.png");
@@ -875,6 +1016,41 @@ void Images::load(){
 
 			break;
 		case 3:
+			{
+					  int stage_back_ismove[8][5] =
+					  {
+						  { 0, 1, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 1, 1, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 0, 1, 0, 0, 0 },
+						  { 0, 0, 0, 0, 0 },
+					  };
+					  for (int i = 0; i < 8; i++){
+						  for (int j = 0; j < 5; j++){
+							  back_ismove[i][j] = (stage_back_ismove[i][j] );
+						  }
+					  }
+					  int stage_drawgap[9][3] =
+					  {
+						{0,0,20},
+						{62,-16,-16}, 
+						{25,30,-70}, 
+						{5,5,0}, 
+						{170,160,0},  
+						{20,20,0}, 
+						{0,0,0}, 
+						{0,0,0}, 
+						{0,0,0}
+					  };
+					  for (int i = 0; i < 9; i++){
+						  for (int j = 0; j < 3; j++){
+							  draw_gap[i][j] = stage_drawgap[i][j];
+						  }
+					  }
+			}			
 			back[0][0] = 0;
 			back[0][1] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/…‚Ì’†/…‚Ì’†‚P|‚R.png");
@@ -983,6 +1159,41 @@ void Images::load(){
 
 			break;
 		case 6:
+		{
+				  int stage_back_ismove[8][5] =
+				  {
+					  { 0, 0, 1, 0, 0 },
+					  { 0, 0, 0, 1, 1 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 1, 0, 0, 0 },
+					  { 0, 1, 0, 0, 0 },
+					  { 0, 0, 0, 0, 0 },
+					  { 0, 0, 0, 777, 0 },
+					  { 0, 1, 1, 1, 1 },
+				  };
+				  for (int i = 0; i < 8; i++){
+					  for (int j = 0; j < 5; j++){
+						  back_ismove[i][j] = (stage_back_ismove[i][j] );
+					  }
+				  }
+					  int stage_drawgap[9][3] =
+					  {
+						{0,0,20},
+						{62,-16,-16}, 
+						{25,30,0}, 
+						{5,5,0}, 
+						{0,0,0},  
+						{0,0,0}, 
+						{0,0,0}, 
+						{0,0,0}, 
+						{0,0,0}
+					  };
+					  for (int i = 0; i < 9; i++){
+						  for (int j = 0; j < 3; j++){
+							  draw_gap[i][j] = stage_drawgap[i][j];
+						  }
+					  }
+		}	
 			back[0][0] = 0;
 			back[0][1] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚P|‚S.png");
 			back[0][2] = LoadGraph("dat/img/ƒƒJƒVƒeƒB/ƒƒJƒVƒeƒB‚P|‚R.png");

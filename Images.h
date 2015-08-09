@@ -130,6 +130,8 @@ public:
 	int g_beam_c[5];
 	int g_mekanemu[3];
 	int g_castle[9][3];
+	int draw_gap[9][3];
+
 	int g_mekahaikyo;
 	int g_bigexp[15];
 	int g_thunder_mekanemu[3];
@@ -146,6 +148,7 @@ public:
 	int font,font2;
 	
 	int back[8][5];
+	int back_ismove[8][5];
 	Images(void){}
 	~Images(void){}
 	void load();

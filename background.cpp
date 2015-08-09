@@ -33,7 +33,7 @@ background::background(int x_st, int st, int ly, int w_st,bool mv):object(x_st,0
 		width = w_st;
 		height = WINDOW_Y;
 		pic_wid = 650;
-		move = (scroll_type[stage][layer] == 1);
+		move = Images::getIns()->back_ismove[stage][layer]!=0;//(scroll_type[stage][layer] == 1);
 		dx=0;
 		if (move){
 			gap = 0;
@@ -75,7 +75,8 @@ void background::scroll(int cx){
 void background::draw(int cx){
 	
 	if (move){
-		gap = gap + 1;
+		gap = gap + layer+1;
+		if(Images::getIns()->back_ismove[stage][layer] == 777)gap += 24;
 		dx =  - remain((int)gap,pic_wid) ;
 		if (cx < x){
 			DrawRectGraph(x - cx, y, x - cx - (dx), y, pic_wid - (x - cx - (dx)), height, Images::getIns()->back[stage][layer], true, false);

@@ -6,7 +6,7 @@
 //const int meka_castle_hp[9] = { 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000, 100000 };
 
 //const int unit_clk[6] = { 0,CLK_HOHEI, CLK_BALLOON, CLK_BIG ,CLK_KAMIKAZE,CLK_BAZOOKA};
-const int castle::draw_gap[9][3] = { //é‰æ‘œ’†‰›‚Æ”wŒiØ‚ê–Ú‰B‚µ•”•ª‚Ì·
+/*const int castle::draw_gap[9][3] = { //é‰æ‘œ’†‰›‚Æ”wŒiØ‚ê–Ú‰B‚µ•”•ª‚Ì·
 	{0,0,20},
 	{62,-16,-16}, 
 	{25,30,-70}, 
@@ -16,7 +16,7 @@ const int castle::draw_gap[9][3] = { //é‰æ‘œ’†‰›‚Æ”wŒiØ‚ê–Ú‰B‚µ•”•ª‚Ì·
 	{0,0,0}, 
 	{0,0,0}, 
 	{0,0,0}, 
-};
+};*/
 
 
 

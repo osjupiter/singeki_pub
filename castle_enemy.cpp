@@ -119,7 +119,7 @@ void castle_enemy::draw(int cx){
 	switch (state){
 	case CastleState::ACTIVE:
 		
-		DrawGraph(x - draw_gap[stage][koma] - cx, y, Images::getIns()->g_castle[stage][koma], true);
+		DrawGraph(x - Images::getIns()->draw_gap[stage][koma] - cx, y, Images::getIns()->g_castle[stage][koma], true);
 		//		DrawFormatString(FIELD_W - 50, 200, GetColor(255, 255, 255), "%d", hp);
 		break;
 	case CastleState::STAY:

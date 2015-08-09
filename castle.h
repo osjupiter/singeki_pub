@@ -15,7 +15,7 @@ protected:
 	int defense;
 	int cost;
 	static const int castle_hp[9];
-	static const int draw_gap[9][3];
+	//static const int draw_gap[9][3];
 	CastleState state;
 	vector<ii> spownlist;
 	vector<ii> eventlist;
