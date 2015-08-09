@@ -15,8 +15,8 @@ castle_musume::castle_musume(int fx, int fy, int st,int wl) :castle(fx, fy, st,w
 void castle_musume::main(int front){
 	switch (state){
 	case CastleState::ACTIVE:
+		if (product_type!=UnitType::_NONE)now_clk++;
 		if (isProductTime()){
-
 			auto res=Game::getIns()->birth(stage, product_type);
 			if (res!=nullptr)now_clk = 0;
 		}
@@ -54,7 +54,7 @@ void castle_musume::draw(int cx){
 
 bool castle_musume::isProductTime(){
 	int p = Game::getIns()->getParam(product_type, ParamType::CLK);
-	if (now_clk++ >= p){ return true; }
+	if (now_clk >= p){ return true; }
 	return false;
 }
 double castle_musume::getProductCLKPAR(){
