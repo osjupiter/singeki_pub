@@ -137,7 +137,7 @@ public:
 	int font,font2;
 	
 	int back[8][5];
-	boolean back_ismove[8][5];
+	int back_ismove[8][5];
 	Images(void){}
 	~Images(void){}
 	void load();

@@ -453,7 +453,7 @@ void Images::load(){
 					  };
 					  for (int i = 0; i < 8; i++){
 						  for (int j = 0; j < 5; j++){
-							  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+							  back_ismove[i][j] = (stage_back_ismove[i][j] );
 						  }
 					  }
 
@@ -596,7 +596,7 @@ void Images::load(){
 					  };
 					  for (int i = 0; i < 8; i++){
 						  for (int j = 0; j < 5; j++){
-							  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+							  back_ismove[i][j] = (stage_back_ismove[i][j] );
 						  }
 					  }
 					   int stage_drawgap[9][3] =
@@ -733,7 +733,7 @@ void Images::load(){
 				  };
 				  for (int i = 0; i < 8; i++){
 					  for (int j = 0; j < 5; j++){
-						  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+						  back_ismove[i][j] = (stage_back_ismove[i][j] );
 					  }
 				  }
 					  int stage_drawgap[9][3] =
@@ -868,7 +868,7 @@ void Images::load(){
 				  };
 				  for (int i = 0; i < 8; i++){
 					  for (int j = 0; j < 5; j++){
-						  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+						  back_ismove[i][j] = (stage_back_ismove[i][j] );
 					  }
 				  }
 					  int stage_drawgap[9][3] =
@@ -1010,7 +1010,7 @@ void Images::load(){
 					  };
 					  for (int i = 0; i < 8; i++){
 						  for (int j = 0; j < 5; j++){
-							  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+							  back_ismove[i][j] = (stage_back_ismove[i][j] );
 						  }
 					  }
 					  int stage_drawgap[9][3] =
@@ -1147,12 +1147,12 @@ void Images::load(){
 					  { 0, 1, 0, 0, 0 },
 					  { 0, 1, 0, 0, 0 },
 					  { 0, 0, 0, 0, 0 },
-					  { 0, 0, 0, 1, 0 },
+					  { 0, 0, 0, 777, 0 },
 					  { 0, 1, 1, 1, 1 },
 				  };
 				  for (int i = 0; i < 8; i++){
 					  for (int j = 0; j < 5; j++){
-						  back_ismove[i][j] = (stage_back_ismove[i][j] == 1);
+						  back_ismove[i][j] = (stage_back_ismove[i][j] );
 					  }
 				  }
 					  int stage_drawgap[9][3] =
