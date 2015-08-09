@@ -54,10 +54,7 @@ class Game : public Layer{
 
 	bool pauseFlag;
 
-	vector<string> pramSummary;
-	vector<string> pramName;
-	vector<string> unitName;
-	vector<string> unitSummary;
+
 
 
 
@@ -126,8 +123,5 @@ public:
 	
 	ParamType* Game::getRainForce(int);
 	shared_ptr<Parameter> getParam(int id);
-	string getParamSummary(ParamType);
-	string getParamName(ParamType p);
-	string getUnitName(UnitType p);
-	string getUnitSummary(UnitType p);
+
 };

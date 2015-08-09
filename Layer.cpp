@@ -130,7 +130,7 @@ void SelectLayer::main(){
 				ss << "生産コスト:"<< game->getParam(tmpID)->getParam(ParamType::COST);
 				costman=ss.str();
 			}
-			if(m->isntOver()){parentScene->addLayer(18,std::make_shared<HoverLayer>(tmpx,tmpy,game->getUnitName(UnitType(tmpID)),game->getUnitSummary(UnitType(tmpID)),costman));}
+			if (m->isntOver()){ parentScene->addLayer(18, std::make_shared<HoverLayer>(tmpx, tmpy, Images::getIns()->getUnitName(UnitType(tmpID)), Images::getIns()->getUnitSummary(UnitType(tmpID)), costman)); }
 			if(m->LeftClick(false)){
 				p->getGame()->setProduct(id,tmpID);
 				parentScene->rmLayer(thisLayerID);
@@ -684,7 +684,7 @@ void ChipFactoryLayer:: main(){
 			ss << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
 			if(timer>=5&&m->isntOver()){
 				hov[i]->setPos(hogex,y);
-				hov[i]->setString(game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss.str());
+				hov[i]->setString(Images::getIns()->getParamName(game->getRainForce(id)[i]), Images::getIns()->getParamSummary(game->getRainForce(id)[i]), ss.str());
 				parentScene->addLayer(18,hov[i]);
 				
 			}
@@ -694,7 +694,7 @@ void ChipFactoryLayer:: main(){
 					stringstream ss2;
 					SoundController::getSE()->playSE("sound/se_maoudamashii_system39.mp3");
 					ss2 << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
-					hov[i]->setString(game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str());
+					hov[i]->setString(Images::getIns()->getParamName(game->getRainForce(id)[i]), Images::getIns()->getParamSummary(game->getRainForce(id)[i]), ss2.str());
 					//parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str()));
 				}
 			}
@@ -924,15 +924,20 @@ void MapUnitSelector::main(){
 		//アイコンの描写
 		for(int i=UnitType::_BALOON;i<=UnitType::_SEGWAY+Data::getIns()->get("stage");i++){
 			int j=i-UnitType::_BALOON;
-			
-			if(testBox(440+j%5*50-25,155+j/5*50-25,440+j%5*50+25,155+j/5*50+25)&&mouse_in::getIns()->LeftClick()){
-				if(!flag[i]&&counter>=5)break;
-				flag[i]=!flag[i];
-				SoundController::getSE()->playSE("sound/se_maoudamashii_system39.mp3");
+			int tmpx = 440 + j % 5 * 50;
+			int tmpy = 155 + j / 5 * 50;
+			if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)){
+				auto m = mouse_in::getIns();
+				if (m->isntOver()){ parentScene->addLayer(18, std::make_shared<HoverLayer>(tmpx, tmpy, Images::getIns()->getUnitName(UnitType(i)), Images::getIns()->getUnitSummary(UnitType(i)), "")); }
+				if (m->LeftClick(false)){
+					if (!flag[i] && counter >= 5)break;
+					flag[i] = !flag[i];
+					SoundController::getSE()->playSE("sound/se_maoudamashii_system39.mp3");
 
-				if(flag[i])counter++;
-				else counter--;
+					if (flag[i])counter++;
+					else counter--;
 
+				}
 			}
 		}
 
