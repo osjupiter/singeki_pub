@@ -238,6 +238,9 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 	case MAHOU:
 		ret_ins.reset(new mahou(fx, fy, dr, atk_power, destx, desty));
 		break;
+	case IKAMINARI:
+		ret_ins.reset(new i_kaminari(fx, fy, atk_power));
+		break;
 	}
 	return ret_ins;
 	

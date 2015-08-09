@@ -40,7 +40,7 @@ Game::Game(int _world){
 	score_flame=0;
 	
 	//for DEBUG
-	/*
+	//*
 	for (int i = 0; i < 7; i++){
 		stageInc();
 	}

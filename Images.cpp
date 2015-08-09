@@ -168,6 +168,8 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/雲の上/雷2.png", ANI_DENKAMI, 1, ANI_DENKAMI, WID_DENKAMI, HEI_DENKAMI, g_denkami[1]);
 	LoadDivGraph("dat/img/敵ユニット/雲の上/雷3.png", ANI_DENKAMI, 1, ANI_DENKAMI, WID_DENKAMI, HEI_DENKAMI, g_denkami[2]);
 
+	LoadDivGraph("dat/img/敵ユニット/いかずちE.png", ANI_IKAMINARI, 5, 2, WID_IKAMINARI, HEI_IKAMINARI, g_ikaminari);
+
 	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇1w.png", ANI_SENKOU_W, ANI_SENKOU_W, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_w[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇1a.png", ANI_SENKOU_A, ANI_SENKOU_A, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_a[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇2w.png", ANI_SENKOU_W, ANI_SENKOU_W, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_w[1]);

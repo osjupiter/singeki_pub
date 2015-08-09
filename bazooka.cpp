@@ -24,7 +24,7 @@ void bazooka::main(int front){
 	musume::main(front);
 	switch (state){
 	case UnitState::MOV:
-		x += param->getParam(SPEED); //‰¡ˆÚ“®
+		x += param->getParam(SPEED)*dir; //‰¡ˆÚ“®
 		break;
 	case UnitState::ATK:
 		state_change_flag = false;
