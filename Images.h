@@ -56,6 +56,13 @@ public:
 	int g_tateko_a[ANI_TATEKO_A];
 	int g_hime_w[ANI_HIME_W];
 	int g_hime_a[ANI_HIME_A];
+	int g_hime_o[ANI_HIME_O];
+	int g_hime_c[ANI_HIME_C];
+	int g_hime_ae[ANI_HIME_AE];
+	int g_hime_h[ANI_HIME_H];
+	int g_hime_hc[ANI_HIME_HC];
+	int g_mahou[ANI_MAHOU];
+
 	int g_ikaros_w[ANI_IKAROS_W];
 	int g_ikaros_a[ANI_IKAROS_A];
 	int g_majo_w[ANI_MAJO_W];
@@ -99,9 +106,13 @@ public:
 	int g_tamanegi_t[ANI_TAMANEGI_T];
 	int g_tamanegi_tr[ANI_TAMANEGI_TR];
 	int g_negimissile[3][ANI_NEGIMISSILE];
-	int g_guuzo_w[ANI_GUUZO_W];
-	int g_guuzo_a1[ANI_GUUZO_A];
-	int g_guuzo_a2[ANI_GUUZO_W];
+	int g_guuzou_w[ANI_GUUZOU_W];
+	int g_guuzou_a1[ANI_GUUZOU_A];
+	int g_guuzou_a2[ANI_GUUZOU_W];
+	int g_glight[ANI_GLIGHT];
+	int g_ikai_w[ANI_IKAI_W];
+	int g_ikai_a1[ANI_IKAI_A1];
+	int g_ikai_a2[ANI_IKAI_A2];
 	int g_gajikami[ANI_GAJIKAMI];
 	int g_zangeki[ANI_ZANGEKI];
 	int g_mahojin[ANI_MAHOJIN];
@@ -133,7 +144,7 @@ public:
 	int g_e_wisp[3][7];
 	int g_yukidama1[ANI_YUKIDAMA];
 	int g_yukidama2[ANI_YUKIDAMA];
-
+	int g_gomi[3][ANI_GOMI];
 	int houdai_yama;
 
 	int font,font2;

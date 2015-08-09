@@ -92,14 +92,22 @@ void Images::load(){
 	LoadDivGraph("dat/img/むすめユニット/盾篭りw.png", ANI_TATEKO_W, ANI_TATEKO_W, 1, WID_TATEKO, HEI_TATEKO, g_tateko_w);
 	LoadDivGraph("dat/img/むすめユニット/盾篭りa.png", ANI_TATEKO_A, ANI_TATEKO_A, 1, WID_TATEKO, HEI_TATEKO, g_tateko_a);
 
-	LoadDivGraph("dat/img/むすめユニット/姫騎士w2.png", ANI_HIME_W, ANI_HIME_W, 1, WID_HIME_W, HEI_HIME, g_hime_w);
-	LoadDivGraph("dat/img/むすめユニット/姫騎士a2.png", ANI_HIME_A, ANI_HIME_A, 1, WID_HIME_A, HEI_HIME, g_hime_a);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/姫騎士w3.png", ANI_HIME_W, ANI_HIME_W, 1, WID_HIME_W, HEI_HIME, g_hime_w);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/姫騎士a3.png", ANI_HIME_A, ANI_HIME_A, 1, WID_HIME_A, HEI_HIME, g_hime_a);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/姫騎士オーラ.png", ANI_HIME_O, ANI_HIME_O, 1, WID_HIME_O, HEI_HIME_O, g_hime_o);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/姫騎士チャージ.png", ANI_HIME_C, ANI_HIME_C, 1, WID_HIME_C, HEI_HIME_C, g_hime_c);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/姫騎士攻撃終了.png", ANI_HIME_AE, ANI_HIME_AE, 1, WID_HIME_AE, HEI_HIME_AE, g_hime_ae);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/大衆宝具.png", ANI_HIME_H, 1,ANI_HIME_H, WID_HIME_H, HEI_HIME_H, g_hime_h);
+	LoadDivGraph("dat/img/むすめユニット/姫騎士てこ入れ/大衆宝具発動中.png", ANI_HIME_HC, ANI_HIME_HC, 1, WID_HIME_HC, HEI_HIME_HC, g_hime_hc);
+
+
 
 	LoadDivGraph("dat/img/むすめユニット/イカロスw2.png", ANI_IKAROS_W, ANI_IKAROS_W, 1, WID_IKAROS_W, HEI_IKAROS, g_ikaros_w);
 	LoadDivGraph("dat/img/むすめユニット/イカロスa2.png", ANI_IKAROS_A, ANI_IKAROS_A, 1, WID_IKAROS_A, HEI_IKAROS, g_ikaros_a);
 
 	LoadDivGraph("dat/img/むすめユニット/マジョw2.png", ANI_MAJO_W, ANI_MAJO_W, 1, WID_MAJO_W, HEI_MAJO, g_majo_w);
 	LoadDivGraph("dat/img/むすめユニット/マジョa2.png", ANI_MAJO_A, ANI_MAJO_A, 1, WID_MAJO_A, HEI_MAJO, g_majo_a);
+	LoadDivGraph("dat/img/むすめユニット/魔女てこ入れ/魔女ソウルの矢.png", ANI_MAHOU, 5, 2, WID_MAHOU, HEI_MAHOU, g_mahou);
 
 	LoadDivGraph("dat/img/むすめユニット/農家w.png", ANI_NOUKA_W, ANI_NOUKA_W, 1, WID_NOUKA_W, HEI_NOUKA, g_nouka_w);
 	LoadDivGraph("dat/img/むすめユニット/農家s.png", ANI_NOUKA_A, 4, 4, WID_NOUKA_A, HEI_NOUKA, g_nouka_a1);
@@ -134,10 +142,6 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/雪原/ビーバー3a.png", ANI_BEEBAR_A, ANI_BEEBAR_A, 1, WID_BEEBAR_A, HEI_BEEBAR_A, g_beebar_a[2]);
 
 	
-	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてa1.png", ANI_SAIHATE_A, 1, ANI_SAIHATE_A, WID_SAIHATE_A_R, HEI_SAIHATE, g_saihate_a_r);
-	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてa2.png", ANI_SAIHATE_A, ANI_SAIHATE_A, 1, WID_SAIHATE, HEI_SAIHATE_A_S, g_saihate_a_s);
-	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてt.png", ANI_SAIHATE_T, ANI_SAIHATE_T, 1, WID_SAIHATE, HEI_SAIHATE, g_saihate_t);
-	LoadDivGraph("dat/img/敵ユニット/雪原/さいはてh.png", ANI_SAIHATE_H, 3, 3, WID_SAIHATE, HEI_SAIHATE, g_saihate_h);
 
 	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス1w.png", ANI_MONORIS_W, ANI_MONORIS_W, 1, WID_MONORIS, HEI_MONORIS, g_monoris_w[0]);
 	LoadDivGraph("dat/img/敵ユニット/雲の上/モノリス1a1.png", ANI_MONORIS_A1, ANI_MONORIS_A1, 1, WID_MONORIS, HEI_MONORIS, g_monoris_a1[0]);
@@ -187,6 +191,7 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手2キラキラ.png", ANI_KIRAKIRA, 6,2, WID_KIRAKIRA, HEI_KIRAKIRA, g_kirakira[1]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/謎の触手3キラキラ.png", ANI_KIRAKIRA, 6,2, WID_KIRAKIRA, HEI_KIRAKIRA, g_kirakira[2]);
 
+	
 	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台1出現.png", ANI_OHANA_S, 4, 4, WID_OHANA, HEI_OHANA, g_ohana_s[0]);
 	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台1攻撃.png", ANI_OHANA_A, 3, 3, WID_OHANA, HEI_OHANA, g_ohana_a[0]);
 	LoadDivGraph("dat/img/敵ユニット/森ガール/お花砲台2出現.png", ANI_OHANA_S, 4, 4, WID_OHANA, HEI_OHANA, g_ohana_s[1]);
@@ -213,8 +218,6 @@ void Images::load(){
 	LoadDivGraph("dat/img/ビーム発射中.png", ANI_BEAM, 1,ANI_BEAM, WID_BEAM, HEI_BEAM, g_beam);
 	LoadDivGraph("dat/img/ビームチャージ中.png", ANI_BEAM_C, ANI_BEAM_C, 1, WID_BEAM_C, HEI_BEAM_C, g_beam_c);
 
-	LoadDivGraph("dat/img/敵ユニット/雪原/ゆきだま1.png", ANI_YUKIDAMA, 4, 2, WID_YUKIDAMA, HEI_YUKIDAMA, g_yukidama1);
-	LoadDivGraph("dat/img/敵ユニット/雪原/ゆきだま2.png", ANI_YUKIDAMA, 4, 2, WID_YUKIDAMA, HEI_YUKIDAMA, g_yukidama2);
 
 	LoadDivGraph("dat/img/敵ユニット/雪原/ゴレムの声.png", ANI_GVOICE, ANI_GVOICE, 1, WID_GVOICE, HEI_GVOICE, g_gvoice);
 
@@ -723,6 +726,13 @@ void Images::load(){
 				}
 			}
 
+			LoadDivGraph("dat/img/敵ユニット/雪原/さいはてa1.png", ANI_SAIHATE_A, 1, ANI_SAIHATE_A, WID_SAIHATE_A_R, HEI_SAIHATE, g_saihate_a_r);
+			LoadDivGraph("dat/img/敵ユニット/雪原/さいはてa2.png", ANI_SAIHATE_A, ANI_SAIHATE_A, 1, WID_SAIHATE, HEI_SAIHATE_A_S, g_saihate_a_s);
+			LoadDivGraph("dat/img/敵ユニット/雪原/さいはてt.png", ANI_SAIHATE_T, ANI_SAIHATE_T, 1, WID_SAIHATE, HEI_SAIHATE, g_saihate_t);
+			LoadDivGraph("dat/img/敵ユニット/雪原/さいはてh.png", ANI_SAIHATE_H, 3, 3, WID_SAIHATE, HEI_SAIHATE, g_saihate_h);
+
+			LoadDivGraph("dat/img/敵ユニット/雪原/ゆきだま1.png", ANI_YUKIDAMA, 4, 2, WID_YUKIDAMA, HEI_YUKIDAMA, g_yukidama1);
+			LoadDivGraph("dat/img/敵ユニット/雪原/ゆきだま2.png", ANI_YUKIDAMA, 4, 2, WID_YUKIDAMA, HEI_YUKIDAMA, g_yukidama2);
 
 			break;
 		case 2:
@@ -858,6 +868,16 @@ void Images::load(){
 					g_shiro_icon[i][1]= LoadGraph((shiro_icon_name[i]+"_2.png").c_str());
 				}
 			}
+
+
+			LoadDivGraph("dat/img/敵ユニット/雲の上/異界の門待機.png", ANI_IKAI_W, 4, 1, WID_IKAI, HEI_IKAI, g_ikai_w);
+			LoadDivGraph("dat/img/敵ユニット/雲の上/異界の門攻撃1.png", ANI_IKAI_A1, 3, 1, WID_IKAI, HEI_IKAI, g_ikai_a1);
+			LoadDivGraph("dat/img/敵ユニット/雲の上/異界の門攻撃2.png", ANI_IKAI_A2, 4, 1, WID_IKAI, HEI_IKAI, g_ikai_a2);
+
+			LoadDivGraph("dat/img/敵ユニット/雲の上/ごみ1.png", ANI_GOMI, 6, 2, WID_GOMI, HEI_GOMI, g_gomi[0]);
+			LoadDivGraph("dat/img/敵ユニット/雲の上/ごみ2.png", ANI_GOMI, 6, 2, WID_GOMI, HEI_GOMI, g_gomi[1]);
+			LoadDivGraph("dat/img/敵ユニット/雲の上/ごみ3.png", ANI_GOMI, 6, 2, WID_GOMI, HEI_GOMI, g_gomi[2]);
+
 
 			break;
 		case 5:
@@ -1136,10 +1156,11 @@ void Images::load(){
 				}
 			}
 
-			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎ待機.png", ANI_TAMANEGI_WA, 4, 1, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_w);
-			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎ攻撃.png", ANI_TAMANEGI_WA, 4, 1, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_a);
-			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎトランスフォーム.png", ANI_TAMANEGI_T, 4, 3, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_t);
-			LoadDivGraph("dat/img/敵ユニット/森ガール/玉ねぎreトランスフォーム.png", ANI_TAMANEGI_TR, 6, 1, WID_TAMANEGI, HEI_TAMANEGI, g_tamanegi_tr);
+			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像待機.png", ANI_GUUZOU_W, 4, 1, WID_GUUZOU, HEI_GUUZOU, g_guuzou_w);
+			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像攻撃1.png", ANI_GUUZOU_A, 2, 1, WID_GUUZOU, HEI_GUUZOU, g_guuzou_a1);
+			LoadDivGraph("dat/img/敵ユニット/水の中/水底の偶像攻撃2.png", ANI_GUUZOU_A, 2, 1, WID_GUUZOU, HEI_GUUZOU, g_guuzou_a2);
+
+			LoadDivGraph("dat/img/敵ユニット/水の中/偶像の光.png", ANI_GLIGHT, 4, 1, WID_GLIGHT, HEI_GLIGHT, g_glight);
 
 
 

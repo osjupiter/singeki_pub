@@ -33,7 +33,7 @@ enum UnitType{_NONE,_HOHEI,_BALOON,_BIG,_KAMIKAZE,_BAZOOKA,_SEGWAY,_YOUJO,_TATEK
 
 
 enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP, NOMALEXP, GUNSHOT, CANNONSHOT, DROP, WISP, HANA, YUKIDAMA, GVOICE, MONOBEAM,GYORAI,KIRAKIRA,NEGIMISSILE
-	, GAJIKAMI, ZANGEKI, MAHOJIN,MONOB_H};
+	, GAJIKAMI, ZANGEKI, MAHOJIN,MONOB_H,GLIGHT,GOMI,MAHOU};
 
 
 
@@ -221,10 +221,31 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP, NOMALEXP
 
 /*ïPãRém*/
 #define ANI_HIME_W 5
-#define ANI_HIME_A 6
+#define ANI_HIME_A 3
 #define WID_HIME_W 120
 #define WID_HIME_A 120
 #define HEI_HIME 140
+
+#define ANI_HIME_O 6
+#define WID_HIME_O 80
+#define HEI_HIME_O 300
+
+#define ANI_HIME_C 5
+#define WID_HIME_C 120
+#define HEI_HIME_C 140
+
+#define ANI_HIME_H 5
+#define WID_HIME_H 720
+#define HEI_HIME_H 290
+
+#define ANI_HIME_HC 2
+#define WID_HIME_HC 120
+#define HEI_HIME_HC 140
+
+#define ANI_HIME_AE 3
+#define WID_HIME_AE 120
+#define HEI_HIME_AE 140
+
 
 /*ÉCÉJÉçÉX*/
 #define ANI_IKAROS_W 5
@@ -240,6 +261,10 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP, NOMALEXP
 #define WID_MAJO_A 100
 #define HEI_MAJO 120
 
+#define ANI_MAHOU 10
+#define WID_MAHOU 150
+#define HEI_MAHOU 150
+
 /*î_â∆*/
 #define ANI_NOUKA_W 4
 #define ANI_NOUKA_A 16
@@ -254,12 +279,29 @@ enum EffectType{ BOMB = 20, EXP, SHOCK, MISSILE, TEPODON, BEAM, BIGEXP, NOMALEXP
 #define WID_STEAM 650
 #define HEI_STEAM 450
 
-/*ãÙëú*/
-#define ANI_GUUZO_W 4
-#define ANI_GUUZO_A 2
-#define WID_GUUZO 650
-#define HEI_GUUZO 450
+/*àŸäEÇÃñÂ*/
+#define ANI_IKAI_W 4
+#define ANI_IKAI_A1 3
+#define ANI_IKAI_A2 4
+#define WID_IKAI 650
+#define HEI_IKAI 450
 
+/*ÉSÉ~*/
+#define ANI_GOMI 12
+#define WID_GOMI 80
+#define HEI_GOMI 80
+
+
+/*ãÙëú*/
+#define ANI_GUUZOU_W 4
+#define ANI_GUUZOU_A 2
+#define WID_GUUZOU 650
+#define HEI_GUUZOU 450
+
+/*ãÙëúÇÃåı*/
+#define ANI_GLIGHT 4
+#define WID_GLIGHT 290
+#define HEI_GLIGHT 450
 
 /*Ç≥Ç¢ÇÕÇƒ*/
 #define ANI_SAIHATE_H 9

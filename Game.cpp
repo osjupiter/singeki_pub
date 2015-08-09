@@ -115,7 +115,7 @@ void Game::background_init(){
 
 void Game::castle_init(){
 
-	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_SAIHATE, UnitType::_TAMANEGI, UnitType::_SAIHATE,
+	UnitType boss_type[WORLD_NUM] = { UnitType::_STEAM, UnitType::_AKUUMON, UnitType::_GUUZOU, UnitType::_SAIHATE,
 		UnitType::_TAMANEGI, UnitType::_STEAM };
 
 	string spownfilename[WORLD_NUM + 1] = { "", "dat/r–ìspown.csv", "dat/‰_‚Ìãspown.csv" ,"dat/…‚Ì’†spown.csv"
@@ -515,7 +515,7 @@ void Game::draw(){
 			i->draw(x);
 	}
 
-	//Test();
+	Test();
 
 	
 }
@@ -596,6 +596,7 @@ void Game::delete_object(){
 
 
 void Game::Test(){
+	return;
 	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "TEST");
 	if (CheckHitKey(KEY_INPUT_Z)) stageInc();
 /*	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "m%d en%d ef%d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());

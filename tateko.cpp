@@ -2,7 +2,7 @@
 #include "Images.h"
 
 #define ANIM_SPEED_W 5
-#define ANIM_SPEED_A 7
+#define ANIM_SPEED_A 3
 
 
 tateko::tateko(int fx, int ln) : musume(fx, ln, UnitType::_TATEKO){

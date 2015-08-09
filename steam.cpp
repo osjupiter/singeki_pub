@@ -10,7 +10,7 @@ steam::steam(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_STEAM){
 	height = HEI_STEAM;
 	y = WINDOW_Y - height+20;
 	x = x - width + 200+165;
-	dist = 200;
+	dist = 1000;
 	type = ALL;
 	atk_type = ALL;
 	dx = x - 165;

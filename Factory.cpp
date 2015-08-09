@@ -39,6 +39,7 @@
 #include "monob_hidan.h"
 #include "beam.h"
 #include "hana.h"
+#include "guuzou.h"
 #include "yukidama.h"
 #include "g_voice.h"
 #include "monoris.h"
@@ -48,6 +49,10 @@
 #include "tamanegi.h"
 #include "gajikami.h"
 #include "zangeki.h"
+#include "ikai.h"
+#include "gomi.h"
+#include "mahou.h"
+
 using namespace std;
 
 
@@ -150,6 +155,12 @@ shared_ptr<character> Factory::create_chara(int x, int st, int line, UnitType ty
 	case UnitType::_TAMANEGI:
 		chara_ins.reset(new tamanegi(x, line, st));
 		break;
+	case UnitType::_GUUZOU:
+		chara_ins.reset(new guuzou(x, line, st));
+		break;
+	case UnitType::_AKUUMON:
+		chara_ins.reset(new ikai(x, line, st));
+		break;
 	default:
 //		printfDx("FactoryTypeError\n");
 		break;
@@ -217,6 +228,15 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 		break;
 	case NEGIMISSILE:
 		ret_ins.reset(new negimissile(fx, fy, dr, atk_power, destx, desty, lv));
+		break;
+	case GLIGHT:
+		ret_ins.reset(new glight(fx, fy,atk_power));
+		break;
+	case GOMI:
+		ret_ins.reset(new gomi(fx, fy, atk_power));
+		break;
+	case MAHOU:
+		ret_ins.reset(new mahou(fx, fy, dr, atk_power, destx, desty));
 		break;
 	}
 	return ret_ins;
