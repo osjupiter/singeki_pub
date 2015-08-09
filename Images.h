@@ -17,6 +17,8 @@ class Images
 	static Images ins;
 	std::map<std::string, int> gs;
 
+	vector<string> stageSummary;
+	vector<string> stageName;
 
 
 public:	

@@ -53,6 +53,14 @@ class Game : public Layer{
 	int cameraMoveCount;
 
 	bool pauseFlag;
+
+	vector<string> pramSummary;
+	vector<string> pramName;
+	vector<string> unitName;
+	vector<string> unitSummary;
+
+
+
 public:
 	unsigned int score_flame;
 	static const int stage_W[9];

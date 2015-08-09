@@ -3,6 +3,7 @@
 #include<map>
 #include <string>
 #include <iostream>
+#include"CsvReader.h"
 Images Images::ins;
 
 template
@@ -369,6 +370,12 @@ void Images::load(){
 	font=CreateFontToHandle( "メイリオ" , 13 , 5 ,DX_FONTTYPE_ANTIALIASING_EDGE_4X4) ;
 	
 	font2=CreateFontToHandle( "メイリオ" , 30 , 5 ,DX_FONTTYPE_ANTIALIASING_EDGE_4X4) ;
+
+	auto data = CsvReader::parseTableDX("dat/ステージ情報.csv", ",");
+	stageName = data.at(0);
+	stageSummary = data.at(1);
+	int i = 100;
+
 }
 
 	void Images::init(){ins.load();}
@@ -1303,28 +1310,10 @@ void Images::load(){
 	}
 
 	string Images::getStageSummary(int sid){
-	
-		string s[]={
-		"",
-		"かつてこの地で戦争があった",
-		"UFOは雲にぶつかる",
-		"水陸両用UFO",
-		"山の奥には主が潜んでいるという",
-		"今女子は森ガールが熱い！",
-		"故郷"	};
-	return s[sid];
+	return stageSummary.at(sid);
 }
 
 	
 	string Images::getStageName(int sid){
-	
-		string s[]={
-		"",
-		"荒野",
-		"雲の上",
-		"水中",
-		"雪原",
-		"森林",
-		"機械街"	};
-	return s[sid];
+	return stageName.at(sid);
 }
