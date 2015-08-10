@@ -88,7 +88,6 @@ glight::glight(int fx, int fy, int p) :effect(fx, fy){
 void glight::main(){
 	effect::main();
 	if (ani_count == 1){
-		//SoundController::getSE()->playSE("sound/taihou03.mp3");
 	}
 	if (ani_count / ANIM_SPEED_L % ANI_GLIGHT == 2){
 		

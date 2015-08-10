@@ -14,6 +14,8 @@ public:
 	static void init();
 	static int getNum();
 	static void setNum(int);
-
+	void decideDirection(int front);
 	void damage(int, int);
+	Position decideTargetPos(int target_x_rand, int target_x_sky);
+
 };

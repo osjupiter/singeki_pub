@@ -168,7 +168,6 @@ void Images::load(){
 	LoadDivGraph("dat/img/敵ユニット/雲の上/雷2.png", ANI_DENKAMI, 1, ANI_DENKAMI, WID_DENKAMI, HEI_DENKAMI, g_denkami[1]);
 	LoadDivGraph("dat/img/敵ユニット/雲の上/雷3.png", ANI_DENKAMI, 1, ANI_DENKAMI, WID_DENKAMI, HEI_DENKAMI, g_denkami[2]);
 
-	LoadDivGraph("dat/img/敵ユニット/いかずちE.png", ANI_IKAMINARI, 5, 2, WID_IKAMINARI, HEI_IKAMINARI, g_ikaminari);
 
 	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇1w.png", ANI_SENKOU_W, ANI_SENKOU_W, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_w[0]);
 	LoadDivGraph("dat/img/敵ユニット/水の中/潜航艇1a.png", ANI_SENKOU_A, ANI_SENKOU_A, 1, WID_SENKOU, HEI_SENKOU, g_senkoutei_a[0]);
@@ -880,6 +879,7 @@ void Images::load(){
 			LoadDivGraph("dat/img/敵ユニット/雲の上/ごみ2.png", ANI_GOMI, 6, 2, WID_GOMI, HEI_GOMI, g_gomi[1]);
 			LoadDivGraph("dat/img/敵ユニット/雲の上/ごみ3.png", ANI_GOMI, 6, 2, WID_GOMI, HEI_GOMI, g_gomi[2]);
 
+			LoadDivGraph("dat/img/敵ユニット/いかずちE.png", ANI_IKAMINARI, 5, 2, WID_IKAMINARI, HEI_IKAMINARI, g_ikaminari);
 
 			break;
 		case 5:
@@ -1164,7 +1164,8 @@ void Images::load(){
 
 			LoadDivGraph("dat/img/敵ユニット/水の中/偶像の光.png", ANI_GLIGHT, 4, 1, WID_GLIGHT, HEI_GLIGHT, g_glight);
 
-
+			LoadDivGraph("dat/img/敵ユニット/水の中/偶像の洗脳術.png", ANI_GBEAM, ANI_GBEAM, 1, WID_GBEAM, HEI_GBEAM, g_gbeam);
+			LoadDivGraph("dat/img/敵ユニット/水の中/洗脳状態.png", ANI_SENNOU, ANI_SENNOU, 1, WID_SENNOU, HEI_SENNOU, g_sennou);
 
 			break;
 		case 6:

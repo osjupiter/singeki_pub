@@ -4,6 +4,8 @@
 #include "math.h"
 
 #define ANIM_SPEED 1
+#define SPEED 10
+#define SPEED_G 25 //…•½ˆÚ“®‘¬“x
 
 mahou::mahou(int fx, int fy, Direction d,int p,int dstx,int dsty) :effect(fx, fy){
 	type = MAHOU;
@@ -16,26 +18,35 @@ mahou::mahou(int fx, int fy, Direction d,int p,int dstx,int dsty) :effect(fx, fy
 	fiy = fy;
 	power = p;
 	stopper = false;
+	arrive = false; //–Ú“I‚Ì‚‚³‚É“ž’…
+	end = false; // Á‚¦‚é
 }
 void mahou::main(){
 	effect::main();
-	x += 10*dir;
-	y += (desty-fiy) /((destx-fix)/10.0);
-
-	if (x > destx) {
-		if (!stopper){
-			shared_ptr<AttackRange> p(new AttackRange(x, x + width - 20, power, RAND));
+	if (!arrive){
+		x += SPEED*dir;
+		y += (desty - fiy) / ((destx - fix)*2/3.0 / (SPEED*1.0));
+	}
+	else{
+		x += SPEED_G*dir;
+	}
+	if (y > desty){	
+		arrive = true;
+	}
+	if (arrive) {
+		if ((x-destx)%((width-20)/5)==0){
+			shared_ptr<AttackRange> p(new AttackRange(x, x + width - 20, power/5, RAND));
 			Game::getIns()->push_attack_list(p, MUSUME);
 			stopper = true;
+			
 			ani_count = 0;
 		}
-		if (stopper){
+		if (x > destx + SPEED_G * 5){ end = true; }
+		if (end){
 			if (ani_count / 3 >3)
 				del();
 		}
-//		Game::getIns()->effect_create(x + width / 2 - WID_NOMALEXP / 2, y + height / 2 - HEI_NOMALEXP / 2, NOMALEXP);
-//		shared_ptr<AttackRange> p(new AttackRange(x - 50, x + width + 50, power, SKY));
-	//	Game::getIns()->push_attack_list(p, MUSUME);
+
 	}
 }
 
@@ -43,12 +54,15 @@ void mahou::draw(int cx){
 	switch (dir){
 	case Direction::RIGHT:
 		
-		if (ani_count / ANIM_SPEED < 7){
+		if (ani_count / ANIM_SPEED < 5){
 	//		DrawRotaGraph2(x - cx, y, 0, 0, 1.0, atan2(desty - fiy, destx - fix), Images::getIns()->g_mahou[ani_count / ANIM_SPEED], true);
-			DrawGraph(x - cx, y,  Images::getIns()->g_mahou[ani_count / 2 % 3 + 7], true);
+			DrawGraph(x - cx, y,  Images::getIns()->g_mahou[ani_count / ANIM_SPEED], true);
 
 		}
-		else if (stopper){
+		else if (!arrive){
+			DrawGraph(x - cx, y, Images::getIns()->g_mahou[ani_count / ANIM_SPEED % 2+3], true);
+
+		}else if (end){
 			DrawGraph(x - cx, y, Images::getIns()->g_mahou[6 - (ani_count /3 )%4], true);
 		}
 		else{

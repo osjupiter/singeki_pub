@@ -57,8 +57,13 @@ void character::main(int front){
 		}
 		break;
 	case UnitState::DIE:
-
+		atk = false;
 		break;
+	case UnitState::SENNOU:
+		atk = false;
+		ani_count = 0;
+		break;
+		
 	}
 	
 }

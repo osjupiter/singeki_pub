@@ -8,6 +8,9 @@ class mahou : public effect{
 	int fiy;
 	int fix;
 	bool stopper;
+	
+	int arrive;
+	bool end;
 public:
 	mahou(int fx, int fy, Direction d, int p, int dstx, int dsty);
 	void main();

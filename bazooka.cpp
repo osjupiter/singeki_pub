@@ -86,3 +86,28 @@ void bazooka::setNum(int i){
 	num = i;
 }
 
+void bazooka::decideDirection(int front){
+	return;
+}
+
+Position bazooka::decideTargetPos(int target_x_rand, int target_x_sky){
+	Position ret;
+	switch (param->getParam(A_TYPE)){
+	case ALL:
+		if (target_x_sky < x){ ret = RAND; }
+		else if (target_x_rand <= target_x_sky) ret = RAND;
+		else ret = SKY;
+		break;
+	case RAND:
+		ret = RAND;
+		break;
+	case SKY:
+		ret = SKY;
+		break;
+	case NOATK:
+		ret = RAND;
+		break;
+	}
+	atk_position = ret;
+	return ret;
+}
