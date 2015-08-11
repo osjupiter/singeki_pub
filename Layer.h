@@ -286,6 +286,14 @@ public:
 	void called();
 };
 
+class MapGo :public Layer{
+	int stage_id;
+public:
+	MapGo(int);
+	void draw();
+	void main();
+};
+
 
 
 class PauseLayer :public Layer{

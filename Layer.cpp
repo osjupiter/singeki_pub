@@ -983,6 +983,87 @@ void MapUnitSelector::called(){
 
 
 
+MapGo::MapGo(int sid){
+	stage_id = sid;
+}
+
+void MapGo::draw(){
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 128);
+	DrawBox(0, 0, WINDOW_X, WINDOW_Y, GetColor(123, 0, 0), TRUE);
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+	DrawGraph(0, 0, Images::get("pic/出撃前ユニット選択ウインドウ.png"), TRUE);
+	DrawGraph(360, 250, (testBox(431, 305, 648, 370)) ? Images::get("pic/出撃ボタンON.png") : Images::get("pic/出撃ボタンOFF.png"), TRUE);
+	
+	//アイコンの描写
+	auto list = Images::getIns()->getUnitIdByStage(stage_id);
+	for (int i =0 ; i < list.size(); i++){
+		int j = i ;
+		DrawRotaGraph(440 + j % 5 * 50, 155 + j / 5 * 50, 1.0, 0, Images::getMusumeIcon(list.at(i), 0), TRUE);
+	}
+	//そのた
+	int score = Data::getIns()->get(to_string(stage_id));
+	DrawFormatStringToHandle(193, 96, GetColor(0, 255, 0), Images::getIns()->font2, Images::getIns()->getStageName(stage_id).c_str());
+
+	stringstream ss;
+	ss << "pic/stage_ss_" << stage_id << ".png";
+	DrawGraph(200, 140, Images::getIns()->get(ss.str().c_str()), TRUE);
+	DrawFormatStringToHandle(200, 270, GetColor(0, 0, 255), Images::getIns()->font, "最高記録", score / 30 / 60, score / 30 % 60, score % 30 * 3);
+	DrawFormatStringToHandle(210, 290, GetColor(255, 255, 0), Images::getIns()->font2, "%02d:%02d.%02d", score / 30 / 60, score / 30 % 60, score % 30 * 3);
+	DrawFormatStringToHandle(210, 350, GetColor(0, 255, 0), Images::getIns()->font, Images::getIns()->getStageSummary(stage_id).c_str());
+
+	//DrawFormatStringToHandle(250,0,GetColor(0,0,255),Images::getIns()->font,"%02d:%02d.%02d",game->score_flame/30/60,game->score_flame/30%60,game->score_flame%30*3);
+	//DrawFormatStringToHandle(250,0,GetColor(0,0,255),Images::getIns()->font,"%02d:%02d.%02d",game->score_flame/30/60,game->score_flame/30%60,game->score_flame%30*3);
+
+
+
+
+}
+
+void MapGo::main(){
+	//枠内
+	if (testBox(173, 65, 672, 400)){
+		//アイコンの描写
+		auto list = Images::getIns()->getUnitIdByStage(stage_id);
+		for (int i = 0; i < list.size(); i++){
+			int j = i ;
+			int tmpx = 440 + j % 5 * 50;
+			int tmpy = 155 + j / 5 * 50;
+			if (testBox(tmpx - 25, tmpy - 25, tmpx + 25, tmpy + 25)){
+				auto m = mouse_in::getIns();
+				if (m->isntOver()){ parentScene->addLayer(18, std::make_shared<HoverLayer>(tmpx, tmpy, Images::getIns()->getUnitName(UnitType(list.at(i))), Images::getIns()->getUnitSummary(UnitType(list.at(i))), "")); }
+			}
+		}
+
+
+		//ステージへ
+		if (mouse_in::getIns()->LeftClick() && testBox(431, 305, 648, 370)){
+			WorldScene* p = dynamic_cast<WorldScene*>(parentScene);
+			if (p != NULL)
+			{
+				//p->getGame()->setProduct(id,i);
+				p->stage_id = stage_id;
+				p->unit_id[0] = 1;
+				auto list = Images::getIns()->getUnitIdByStage(stage_id);
+				for (int i = 0; i < list.size(); i++){
+						p->unit_id[i+1] = list.at(i);
+				}
+				int j = 0;
+			}
+			SoundController::getSE()->playSE("sound/sen_ka_heirappa01.mp3");
+			parentScene->buttonPushed("gotogame");
+		}
+		
+		mouse_in::getIns()->recieveOver();
+	}else{
+		//枠外
+		if (mouse_in::getIns()->LeftClick())this->removeThis();
+	}
+	mouse_in::getIns()->recieveOver();
+}
+
+
+
 
 
 
