@@ -24,6 +24,8 @@ class Images
 	vector<string> unitName;
 	vector<string> unitSummary;
 
+	vector<int> unitByStage[6];
+
 
 public:	
 	int blend;
@@ -184,6 +186,6 @@ public:
 	string getParamName(ParamType p);
 	string getUnitName(UnitType p);
 	string getUnitSummary(UnitType p);
-
+	vector<int> getUnitIdByStage(int sid);
 
 };

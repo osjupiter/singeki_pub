@@ -387,6 +387,14 @@ void Images::load(){
 	stageSummary = data.at(1);
 	
 
+	auto data1 = CsvReader::parseTableDX("dat/ステージごとキャラ表.csv", ",");
+	for (int i = 0; i < 6; i++){
+		for (int j = 0; j < data1.at(i).size(); j++){
+			unitByStage[i].push_back(stoi(data1.at(i).at(j)));
+		}
+		
+	}
+	
 }
 
 	void Images::init(){ins.load();}
@@ -1369,4 +1377,8 @@ void Images::load(){
 	string Images::getUnitSummary(UnitType p){
 		int i = static_cast<int>(p);
 		return unitSummary.at(i);
+	}
+
+	vector<int> Images::getUnitIdByStage(int sid){
+		return unitByStage[sid-1];
 	}
