@@ -22,4 +22,6 @@ public:
 	void drawWait(int dx_, int cx, int ty);
 	virtual Position decideTargetPos(int target_x_rand, int target_x_sky);
 	void del();
+	virtual void decideDirection(int front);
+
 };

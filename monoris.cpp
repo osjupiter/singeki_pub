@@ -167,7 +167,7 @@ void monoris::draw(int cx){
 void monoris::decideDirection(int front){
 //	return;
 	if (((x + width <= front - dist) && dir == LEFT)
-		|| ((x + width > front) && dir == RIGHT))
+		|| ((x + width > front - dist) && dir == RIGHT))
 		switchDirection();
 }
 
@@ -176,11 +176,11 @@ Position monoris::decideTargetPos(int target_x_rand, int target_x_sky){
 	switch (atk_type){
 	case ALL:
 		if (dir == RIGHT){
-			if (target_x_rand <= target_x_sky) ret = RAND;
+			if (abs(x-target_x_rand) <= abs(x-target_x_sky)) ret = RAND;
 			else ret = SKY;
 		}
 		else {
-			if (target_x_rand >= target_x_sky) ret = RAND;
+			if (abs(x-target_x_rand) <= abs(x-target_x_sky)) ret = RAND;
 			else ret = SKY;
 			if (target_x_sky > x) ret = RAND;
 		}

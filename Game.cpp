@@ -41,7 +41,7 @@ Game::Game(int _world){
 	
 	//for DEBUG
 	//*
-	for (int i = 0; i < 7; i++){
+	for (int i = 0; i < 0; i++){
 		stageInc();
 	}
 	//*/
@@ -590,7 +590,7 @@ void Game::delete_object(){
 
 
 void Game::Test(){
-	return;
+	//return;
 	DrawFormatString(FIELD_W - 200, 113, GetColor(255, 255, 255), "TEST");
 	if (CheckHitKey(KEY_INPUT_Z)) stageInc();
 /*	DrawFormatString(FIELD_W - 200, 100, GetColor(255, 255, 255), "m%d en%d ef%d", musume_list[0].size() + musume_list[1].size() + musume_list[2].size(), enemy_list[0].size() + enemy_list[1].size() + enemy_list[2].size(),effect_list.size());
@@ -637,7 +637,7 @@ void Game::Test(){
 	}
 	else{ hit = false; }
 	if (mouse_in::getIns()->RightClick()){
-		birth(nowstage-1, b_unit);
+		birth(nowstage, _MONORIS);
 		
 	}
 }

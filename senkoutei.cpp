@@ -4,7 +4,7 @@
 #include "Game.h"
 
 #define ANIM_SPEED 3
-#define DIST_SENKOU 50
+#define DIST_SENKOU 200
 senkoutei::senkoutei(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_SENKOUTEI){
 	width = WID_SENKOU;
 	height = HEI_SENKOU;

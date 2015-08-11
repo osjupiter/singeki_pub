@@ -168,7 +168,7 @@ bool character::isInSight(int front){
 
 void character::decideDirection(int front){
 	if (((x + width <= front - dist) && dir == LEFT)
-		|| ((x - dist> front) && dir == RIGHT))
+		|| ((x +width > front-dist) && dir == RIGHT))
 		switchDirection();
 }
 

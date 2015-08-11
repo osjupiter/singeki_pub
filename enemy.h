@@ -25,5 +25,6 @@ public:
 	void changeState(UnitState);
 	virtual Position decideTargetPos(int target_x_rand, int target_x_sky);
 	void drawWait(int dx_, int cx, int ty);
+	virtual void decideDirection(int front);
 
 };

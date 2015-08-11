@@ -12,7 +12,7 @@ musume::musume(int fx, int ln, UnitType u_type) : character(fx, ln ,u_type){
 void musume::main(int front){
 	switch (state){
 	case UnitState::MOV:
-		wait_time = param->getParam(A_FREQ);
+	//	wait_time = param->getParam(A_FREQ);
 
 		break;
 	}
@@ -191,3 +191,16 @@ void musume::drawWait(int dx_, int cx, int ty){
 	*/
 }
 
+
+void musume::decideDirection(int front){
+	boolean flag=false;
+	switch (unit_type){
+	case UnitType::_IKAROS:
+		flag = true;
+			break;	
+	}
+	if (!flag) return;
+	if (((x  <= front) && dir == LEFT)
+		|| ((x > front) && dir == RIGHT))
+		switchDirection();
+}

@@ -21,7 +21,7 @@ enemy::enemy(int fx, int ln, int lv , UnitType u_type) :character(fx, ln, u_type
 void enemy::main(int front){
 	switch (state){
 	case UnitState::MOV:
-		wait_time = atk_freq;
+//		wait_time = atk_freq;
 
 		break;
 	}
@@ -144,11 +144,11 @@ Position enemy::decideTargetPos(int target_x_rand, int target_x_sky){
 	switch (atk_type){
 	case ALL:
 		if (dir == RIGHT){
-			if (target_x_rand <= target_x_sky) ret = RAND;
+			if (abs(x-target_x_rand) <= abs(target_x_sky)) ret = RAND;
 			else ret = SKY;
 		}
 		else {
-			if (target_x_rand >= target_x_sky) ret = RAND;
+			if (abs(x-target_x_rand) <= abs(x-target_x_sky)) ret = RAND;
 			else ret = SKY;
 		}
 		break;
@@ -180,3 +180,9 @@ void enemy::drawWait(int dx_, int cx, int ty){
 	*/
 }
 
+
+void enemy::decideDirection(int front){
+	if (((x + width/2 <= front) && dir == LEFT)
+		|| ((x + width/2 > front) && dir == RIGHT))
+		switchDirection();
+}

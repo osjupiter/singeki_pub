@@ -38,6 +38,7 @@ Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock
 	base[CLK] = clock;
 	base[COST] = cos;
 	base[A_FREQ] = a_freq;
+;
 
 	level[POWER] = 0;
 	level[MAXHP] = 0;
@@ -47,6 +48,7 @@ Parameter::Parameter(int pw, int mh, int sp, int def, Position a_type, int clock
 	level[CLK] = 0;
 	level[COST] = 0;
 	level[A_FREQ] = 0;
+
 
 	mag[POWER] = m[0];
 	mag[MAXHP] = m[1];

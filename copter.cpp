@@ -5,7 +5,7 @@
 
 #define ANIM_SPEED 3
 #define ANIM_SPEED_DIE 3
-#define DIST_COPTER 190;
+#define DIST_COPTER 140;
 int copter::num = 0;
 
 copter::copter(int fx, int ln,int lv) : enemy(fx,ln,lv,UnitType::_COPTER){

@@ -41,7 +41,7 @@ void railgun::main(int front){
 		if ((ani_count / ANIM_SPEED) == ANI_BEAM - 1){
 			if (!stopper){
 				stopper = true;
-				atk_freq += 300;
+	//			atk_freq += 300;
 				for (int i = x - WID_BEAM; i + WID_EXP < x ; i += WID_EXP-100)
 					Game::getIns()->effect_create(i, WINDOW_Y - 240, EXP);
 				shared_ptr<AttackRange> p(new AttackRange(x - WID_BEAM+80, x, power, RAND));

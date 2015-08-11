@@ -6,9 +6,10 @@
 
 
 tateko::tateko(int fx, int ln) : musume(fx, ln, UnitType::_TATEKO){
-	dist = rand() % 40 - width;
 	width = WID_TATEKO;
 	height = HEI_TATEKO;
+	dist = rand() % 40;
+
 	type = RAND;
 	atk = false;	
 	y = WINDOW_Y - HEI_TATEKO + line * 3;

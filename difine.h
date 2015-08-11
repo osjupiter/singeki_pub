@@ -21,7 +21,7 @@ enum class UnitState{ MOV, WAIT,ATK, DIE,ST0,ST1,ST2,SENNOU}; //ST0:汎用ステート
 //enum CastleState{ACTIVE,STAY,OCCUPY,EN_DIE,MEKA_DIE};
 enum class CastleState{ ACTIVE, STAY, DIE};
 enum Direction { LEFT = -1, NODIR = 0, RIGHT = 1 };
-enum ParamType{ POWER, MAXHP, SPEED, DEFENSE, A_TYPE, CLK, COST, A_FREQ, PARAM_NUM };
+enum ParamType{ POWER, MAXHP, SPEED, DEFENSE, A_TYPE, CLK, COST, A_FREQ, DIST,PARAM_NUM };
 enum Position{ RAND, SKY ,ALL,NOATK};
 enum class PropertyType{NONE};
 
