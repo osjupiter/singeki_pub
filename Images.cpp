@@ -375,10 +375,17 @@ void Images::load(){
 	
 	font2=CreateFontToHandle( "メイリオ" , 30 , 5 ,DX_FONTTYPE_ANTIALIASING_EDGE_4X4) ;
 
+	/*文字列リソース読み込み */
+	auto res = CsvReader::parseTableDX("dat/文字リソース.csv", ",");
+
+	pramSummary = res.at(0);
+	pramName = res.at(1);
+	unitName = res.at(2);
+	unitSummary = res.at(3);
 	auto data = CsvReader::parseTableDX("dat/ステージ情報.csv", ",");
 	stageName = data.at(0);
 	stageSummary = data.at(1);
-	int i = 100;
+	
 
 }
 
@@ -1341,3 +1348,25 @@ void Images::load(){
 	string Images::getStageName(int sid){
 	return stageName.at(sid);
 }
+
+	string Images::getParamSummary(ParamType p){
+
+		return pramSummary.at(p);
+
+
+	}
+
+	string Images::getParamName(ParamType p){
+
+		return pramName.at(p);
+	}
+
+	string Images::getUnitName(UnitType p){
+		int i = static_cast<int>(p);
+		return unitName.at(i);
+	}
+
+	string Images::getUnitSummary(UnitType p){
+		int i = static_cast<int>(p);
+		return unitSummary.at(i);
+	}

@@ -89,13 +89,7 @@ void Game::param_init(){
 		if (i >= UNITTYPE_NUM) break;
 	}
 
-	/*文字列リソース読み込み */
-	auto res = CsvReader::parseTableDX("dat/文字リソース.csv", ",");
 
-	pramSummary = res.at(0);
-	pramName = res.at(1);
-	unitName = res.at(2);
-	unitSummary = res.at(3);
 	
 /*	param_list[_HOHEI] = shared_ptr<Parameter>(
 		new Parameter(POWER_HOHEI, MAXHP_HOHEI
@@ -745,24 +739,3 @@ shared_ptr<Parameter> Game::getParam(int id){
 		return param_list[id];
 	}
 
-string Game::getParamSummary(ParamType p){
-
-	return pramSummary.at(p);
-
-
-}
-
-string Game::getParamName(ParamType p){
-
-	return pramName.at(p);
-}
-
-string Game::getUnitName(UnitType p){
-	int i=static_cast<int>(p);
-	return unitName.at(i);
-}
-
-string Game::getUnitSummary(UnitType p){
-	int i=static_cast<int>(p);
-	return unitSummary.at(i);
-}
