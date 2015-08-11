@@ -69,7 +69,8 @@ void ikai::draw(int cx){
 		break;
 	}
 
-	enemy::draw(cx);
+	enemy::drawBossHP(x, cx, height / 2);
+
 }
 
 

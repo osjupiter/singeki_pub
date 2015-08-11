@@ -19,6 +19,12 @@ enemy::enemy(int fx, int ln, int lv , UnitType u_type) :character(fx, ln, u_type
 }
 
 void enemy::main(int front){
+	switch (state){
+	case UnitState::MOV:
+		wait_time = atk_freq;
+
+		break;
+	}
 	character::main(front);
 }
 
@@ -160,5 +166,17 @@ Position enemy::decideTargetPos(int target_x_rand, int target_x_sky){
 	return ret;
 }
 
-
+void enemy::drawWait(int dx_, int cx, int ty){
+	character::drawWait(dx_, cx, ty, atk_freq);
+	/*
+	//çUåÇë“ã@éûä‘ï\é¶
+	if (state != UnitState::DIE){
+		int dx = dx_ + width / 2 - 60 / 2;
+		int dy = ty;
+		DrawLine(dx - cx, dy + 3, dx + 60 - cx, dy + 3, GetColor(205, 149, 12), 5);
+		int i = wait_time;
+		DrawLine(dx - cx, dy + 3, dx + 60 * max(i, 0) / (freq * 1.0) - cx, dy + 3, GetColor(139, 101, 8), 5);
+	}
+	*/
+}
 

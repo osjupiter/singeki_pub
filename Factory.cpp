@@ -231,6 +231,9 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 		break;
 	case GLIGHT:
 		ret_ins.reset(new glight(fx, fy,atk_power));
+		break;	
+	case GBEAM:
+		ret_ins.reset(new gbeam(fx, fy));
 		break;
 	case GOMI:
 		ret_ins.reset(new gomi(fx, fy, atk_power));

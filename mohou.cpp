@@ -27,6 +27,10 @@ void mahou::main(){
 		x += SPEED*dir;
 		y += (desty - fiy) / ((destx - fix)*2/3.0 / (SPEED*1.0));
 	}
+	else if (end){
+		x += SPEED*dir;
+
+	}
 	else{
 		x += SPEED_G*dir;
 	}
@@ -37,11 +41,10 @@ void mahou::main(){
 		if ((x-destx)%((width-20)/5)==0){
 			shared_ptr<AttackRange> p(new AttackRange(x, x + width - 20, power/5, RAND));
 			Game::getIns()->push_attack_list(p, MUSUME);
-			stopper = true;
 			
-			ani_count = 0;
+			
 		}
-		if (x > destx + SPEED_G * 5){ end = true; }
+		if (x > destx + SPEED_G * 5 && !end){ end = true; ani_count = 0; }
 		if (end){
 			if (ani_count / 3 >3)
 				del();
@@ -54,26 +57,21 @@ void mahou::draw(int cx){
 	switch (dir){
 	case Direction::RIGHT:
 		
-		if (ani_count / ANIM_SPEED < 5){
-	//		DrawRotaGraph2(x - cx, y, 0, 0, 1.0, atan2(desty - fiy, destx - fix), Images::getIns()->g_mahou[ani_count / ANIM_SPEED], true);
-			DrawGraph(x - cx, y,  Images::getIns()->g_mahou[ani_count / ANIM_SPEED], true);
-
+		if (end){
+			DrawGraph(x - cx, y, Images::getIns()->g_mahou[6 - (ani_count / 3) % 4], true);
 		}
 		else if (!arrive){
 			DrawGraph(x - cx, y, Images::getIns()->g_mahou[ani_count / ANIM_SPEED % 2+3], true);
 
-		}else if (end){
-			DrawGraph(x - cx, y, Images::getIns()->g_mahou[6 - (ani_count /3 )%4], true);
+		}else if(ani_count / ANIM_SPEED < 5){
+			//		DrawRotaGraph2(x - cx, y, 0, 0, 1.0, atan2(desty - fiy, destx - fix), Images::getIns()->g_mahou[ani_count / ANIM_SPEED], true);
+			DrawGraph(x - cx, y, Images::getIns()->g_mahou[ani_count / ANIM_SPEED % 10], true);
+
 		}
 		else{
 			DrawGraph(x - cx, y,  Images::getIns()->g_mahou[ani_count / ANIM_SPEED % 3 + 7], true);
-	//		DrawRotaGraph2(x - cx, y, 0, 0, 1.0, atan2(desty - fiy, destx - fix), Images::getIns()->g_mahou[ani_count / ANIM_SPEED % 3 + 7], true);
-
-			//DrawGraph(x - cx, y, Images::getIns()->g_mahou[ani_count / ANIM_SPEED % (ANI_MAHOU-7)+7], true);
 		}
-	//	DrawLine(destx-cx, 0, destx - cx, 450, GetColor(0, 0, 255), 2);
-	//	DrawLine(0, desty, 800, desty, GetColor(0, 0, 255), 2);
-
+	
 		break;
 	case Direction::LEFT:
 		DrawTurnGraph(x - cx, y, Images::getIns()->g_mahou[ani_count / ANIM_SPEED % ANI_MAHOU], true);

@@ -19,7 +19,7 @@ public:
 	int getPower();
 	Position getAtkType();
 	void changeState(UnitState);
-
+	void drawWait(int dx_, int cx, int ty);
 	virtual Position decideTargetPos(int target_x_rand, int target_x_sky);
 	void del();
 };

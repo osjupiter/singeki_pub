@@ -12,6 +12,16 @@ public:
 
 };
 
+class gbeam : public effect{
+
+public:
+	gbeam(int, int);
+	void main();
+	void draw(int);
+	static void init();
+
+};
+
 class guuzou : public enemy{
 
 public:

@@ -83,7 +83,11 @@ void character::draw(int cx){
 
 		DrawLine(dx - cx, dy + 3, dx + 60 * max(i, 0) / (1000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
 	}
+	int dy = (type == RAND || type == ALL) ? y + 3 : y + height - 10;
+
+	drawWait(x,cx,dy-5);
 }
+
 
 void character::drawHP(int dx_,int cx, int ty){
 
@@ -110,12 +114,12 @@ void character::drawBossHP(int dx_, int cx, int ty){
 		int dy = ty;
 		DrawLine(dx - cx, dy + 3, dx + 100 - cx, dy + 3, GetColor(255, 0, 0), 5);
 		int i = hp;
-		for (int j = dx; i > 10000; i -= 10000, j += 7){
+		for (int j = dx; i > 50000; i -= 50000, j += 7){
 			DrawLine(j - cx, dy + 9, j - cx, dy + 15, GetColor(0, 255, 0), 3);
 
 		}
 
-		DrawLine(dx - cx, dy + 3, dx + 100 * max(i, 0) / (10000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
+		DrawLine(dx - cx, dy + 3, dx + 100 * max(i, 0) / (50000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
 	}
 }
 
@@ -126,6 +130,22 @@ void character::draw(int cx, int x, int y, int img){
 	else if ((dir == RIGHT && !isMusume()) || (dir == LEFT && isMusume())){
 		DrawTurnGraph(x - cx, y, img, true);
 	}
+}
+
+
+void character::drawWait(int dx_, int cx, int ty,int freq){
+
+	
+	//UŒ‚‘Ò‹@ŽžŠÔ•\Ž¦
+	if (state != UnitState::DIE){
+	int dx = dx_ + width / 2 - 60 / 2;
+	int dy = ty;
+	DrawLine(dx - cx, dy + 3, dx + 60 - cx, dy + 3, GetColor(85, 26, 139), 4);
+	int i = wait_time+1;
+	if (freq>0)
+		DrawLine(dx - cx, dy + 3, dx + 60  * max(i, 0) / (freq * 1.0) - cx, dy + 3, GetColor(205, 149, 12), 4);
+	}
+	
 }
 
 bool character::isMusume(){

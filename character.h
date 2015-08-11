@@ -36,5 +36,8 @@ public:
 	virtual Position decideTargetPos(int target_x_rand, int target_x_sky)=0;
 	virtual bool isInSight(int front); //‘Šè‚ÌÅ‘Oü‚ªUŒ‚”ÍˆÍ“à‚É‚¢‚é‚©
 	virtual void decideDirection(int front);
+	void drawWait(int dx_, int cx, int ty,int freq);
+	virtual void drawWait(int dx_, int cx, int ty) = 0;
+
 };
 

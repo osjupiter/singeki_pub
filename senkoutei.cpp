@@ -96,7 +96,7 @@ Position senkoutei::decideTargetPos(int target_x_rand, int target_x_sky){
 		else {
 			if (target_x_rand >= target_x_sky) ret = RAND;
 			else ret = SKY;
-			if (target_x_sky > x) ret == RAND;
+			if (target_x_sky > x) ret = RAND;
 		}
 		break;
 	case RAND:

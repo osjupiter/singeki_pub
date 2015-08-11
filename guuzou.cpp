@@ -73,7 +73,7 @@ void guuzou::draw(int cx){
 		break;
 	}
 
-	enemy::draw(cx);
+	enemy::drawBossHP(x, cx, height / 2);
 }
 
 
@@ -105,4 +105,33 @@ void glight::draw(int cx){
 
 	DrawGraph(x - cx, y, Images::getIns()->g_glight[ani_count / ANIM_SPEED_L % ANI_GLIGHT], true);
 		effect::draw(cx);
+}
+
+#define ANIM_SPEED_B 4
+
+gbeam::gbeam(int fx, int fy) :effect(fx, fy){
+	type = GBEAM;
+	width = WID_GBEAM;
+	height = HEI_GBEAM;
+
+
+}
+void gbeam::main(){
+	effect::main();
+	if (ani_count == 1){
+	}
+	if (ani_count / ANIM_SPEED_L % ANI_GBEAM == 2){
+
+	}
+	if (ani_count / ANIM_SPEED_L % ANI_GBEAM == ANI_GBEAM - 1){
+//			shared_ptr<AttackRange> p(new AttackRange(x + 80, x + WID_GBEAM - 80, 0, RAND));
+	//		Game::getIns()->push_attack_list(p, ENEMY);
+		del();
+	}
+}
+
+void gbeam::draw(int cx){
+
+	DrawGraph(x - cx, y, Images::getIns()->g_gbeam[ani_count / ANIM_SPEED_L % ANI_GBEAM], true);
+	effect::draw(cx);
 }
