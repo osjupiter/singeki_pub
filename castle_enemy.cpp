@@ -4,7 +4,7 @@
 #include "Game.h"
 
 
-const int castle::castle_hp[9] = { 10000, 10000, 30000, 40000, 60000, 80000, 100000, 300000, 500000 };
+const int castle::castle_hp[9] = { 10000, 20000, 30000, 40000, 60000, 80000, 100000, 300000, 500000 };
 
 
 template<typename TYPE, std::size_t SIZE>

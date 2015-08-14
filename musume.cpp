@@ -127,7 +127,9 @@ void musume::damage(int d, Position op_a_type, UnitType op_unit_type){
 				break;
 			}
 		}
-		hp -= max(d - param->getParam(DEFENSE), 0);
+		if (d > 0){
+			hp -= max(d - param->getParam(DEFENSE), 1);
+		}
 	//	printfDx("%d %d\n", op_unit_type, d - param->getParam(DEFENSE));
 
 		if (hp < 0){
@@ -200,7 +202,9 @@ void musume::decideDirection(int front){
 			break;	
 	}
 	if (!flag) return;
-	if (((x  <= front) && dir == LEFT)
+/*	if (((x  <= front) && dir == LEFT)
 		|| ((x > front) && dir == RIGHT))
-		switchDirection();
+		switchDirection();*/
+	if (x + width <= front)  dir = RIGHT;
+	else if (x > front)dir = LEFT;
 }

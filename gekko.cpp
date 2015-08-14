@@ -5,7 +5,7 @@
 
 #define ANIM_SPEED 6
 #define ANIM_SPEED_ATK 1
-#define DIST_GEKKO 250
+#define DIST_GEKKO 280
 int gekko::num;
 
 	

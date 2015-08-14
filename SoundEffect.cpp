@@ -48,6 +48,11 @@
 		soundlist.push_back("sound/“ä‚ÌèƒLƒ‰ƒLƒ‰‰¹.mp3");
 		soundlist.push_back("sound/ƒKƒWƒKƒWƒƒJ‰¹iC³j.mp3");
 
+		soundlist.push_back("sound/sen_ge_bom18_•P‹Rm‘åO•ó‹ï‚r‚d.mp3");
+		soundlist.push_back("sound/sen_ge_bomsuijou01_ƒXƒ`[ƒ€ƒpƒ“ƒNƒƒ{‚r‚d.mp3");
+		soundlist.push_back("sound/aura1_•P‹Rmƒ`ƒƒ[ƒW‚r‚d.mp3");
+		soundlist.push_back("sound/magic-attack-holy1_–‚—UŒ‚‚r‚d.mp3");
+
 		
 		soundlist.push_back("sound/”_‰Æi‚­‚íj.mp3");
 

@@ -468,7 +468,7 @@ void Game::main(){
 
 		}
 		int wid_nowcastle = castle_list.at(now_stage - 1)->getW();
-		if (k->judge(castle_list.at(now_stage - 1)->getX() - wid_nowcastle / 2, wid_nowcastle, Position::ALL))
+		if (k->judge(castle_list.at(now_stage - 1)->getX(), wid_nowcastle, Position::ALL))
 			castle_list.at(now_stage - 1)->damage(k->getDamage(), UnitType::_NONE);
 	}
 
