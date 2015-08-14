@@ -36,6 +36,8 @@ void mahou::main(){
 	}
 	if (y > desty){	
 		arrive = true;
+		SoundController::getSE()->playSE("sound/magic-attack-holy1_–‚—UŒ‚‚r‚d.mp3", false);
+
 	}
 	if (arrive) {
 		if ((x-destx)%((width-20)/5)==0){

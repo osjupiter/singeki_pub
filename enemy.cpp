@@ -64,7 +64,9 @@ void enemy::damage(int d, Position op_a_type,UnitType op_unit_type){
 
 			}
 		}
-		hp -= max(d - defense, 0);
+		if (d > 0){
+			hp -= max(d - defense, 1);
+		}
 //		printfDx("%d %d\n",op_unit_type, d - defense);
 		if (state != UnitState::DIE && hp < 0){
 			changeState(UnitState::DIE);
@@ -144,7 +146,7 @@ Position enemy::decideTargetPos(int target_x_rand, int target_x_sky){
 	switch (atk_type){
 	case ALL:
 		if (dir == RIGHT){
-			if (abs(x-target_x_rand) <= abs(target_x_sky)) ret = RAND;
+			if (abs(x-target_x_rand) <= abs(x-target_x_sky)) ret = RAND;
 			else ret = SKY;
 		}
 		else {
@@ -182,7 +184,11 @@ void enemy::drawWait(int dx_, int cx, int ty){
 
 
 void enemy::decideDirection(int front){
-	if (((x + width/2 <= front) && dir == LEFT)
-		|| ((x + width/2 > front) && dir == RIGHT))
+	/*
+	if (((x + width <= front) && dir == LEFT)
+		|| ((x + width > front) && dir == RIGHT))
 		switchDirection();
+		*/
+	if (x + width <= front)  dir = RIGHT;
+	else if (x > front)dir = LEFT;
 }
