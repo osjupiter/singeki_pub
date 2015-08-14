@@ -887,7 +887,10 @@ void MapUnitSelector::draw(){
 	DrawBox(0,0,WINDOW_X,WINDOW_Y,GetColor(123,0,0),TRUE);
 	SetDrawBlendMode( DX_BLENDMODE_NOBLEND , 0 ) ;
 
-	DrawGraph(0,0,Images::get("pic/出撃前ユニット選択ウインドウ.png"),TRUE);
+
+
+	DrawGraph(0, 0, Images::get("pic/出撃前ユニット選択ウインドウ.png"), TRUE);
+	DrawGraph(0,0,Images::get("pic/出撃前ユニット選択ウインドウ選ぶ用.png"),TRUE);
 	if(counter<5){
 		DrawGraph(360,250,Images::get("pic/出撃ボタンNO.png"),TRUE);
 	
@@ -920,7 +923,7 @@ void MapUnitSelector::draw(){
 
 void MapUnitSelector::main(){
 	//枠内
-	if(testBox(173,65,672,400)){
+	if(testBox(173,85,672,400)){
 		//アイコンの描写
 		for(int i=UnitType::_BALOON;i<=UnitType::_SEGWAY+Data::getIns()->get("stage");i++){
 			int j=i-UnitType::_BALOON;
@@ -964,7 +967,13 @@ void MapUnitSelector::main(){
 			}
 		}
 		mouse_in::getIns()->recieveOver();
-	}else{
+	}
+	else if (mouse_in::getIns()->LeftClick() && testBox(175, 50, 270, 85)){
+		this->removeThis();
+		parentScene->addLayer(10,make_shared<MapGo>(stage_id));
+	
+	}
+	else{
 		//枠外
 		if(mouse_in::getIns()->LeftClick())this->removeThis();
 
@@ -992,6 +1001,10 @@ void MapGo::draw(){
 	DrawBox(0, 0, WINDOW_X, WINDOW_Y, GetColor(123, 0, 0), TRUE);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
+	if (Data::getIns()->get("stage") >= stage_id){
+		DrawGraph(0, 0, Images::get("pic/出撃前ユニット選択ウインドウ選ぶ用.png"), TRUE);
+
+	}
 	DrawGraph(0, 0, Images::get("pic/出撃前ユニット選択ウインドウ.png"), TRUE);
 	DrawGraph(360, 250, (testBox(431, 305, 648, 370)) ? Images::get("pic/出撃ボタンON.png") : Images::get("pic/出撃ボタンOFF.png"), TRUE);
 	
@@ -1022,7 +1035,7 @@ void MapGo::draw(){
 
 void MapGo::main(){
 	//枠内
-	if (testBox(173, 65, 672, 400)){
+	if (testBox(173, 85, 672, 400)){
 		//アイコンの描写
 		auto list = Images::getIns()->getUnitIdByStage(stage_id);
 		for (int i = 0; i < list.size(); i++){
@@ -1055,7 +1068,13 @@ void MapGo::main(){
 		}
 		
 		mouse_in::getIns()->recieveOver();
-	}else{
+	}
+	else if (Data::getIns()->get("stage") >= stage_id&&mouse_in::getIns()->LeftClick() && testBox(275, 50, 370, 85)){
+		this->removeThis();
+		parentScene->addLayer(10, make_shared<MapUnitSelector>(stage_id));
+
+	}
+	else{
 		//枠外
 		if (mouse_in::getIns()->LeftClick())this->removeThis();
 	}

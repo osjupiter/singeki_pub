@@ -326,6 +326,7 @@ void Images::load(){
 
 	
 	filelist.push_back("pic/出撃前ユニット選択ウインドウ.png");
+	filelist.push_back("pic/出撃前ユニット選択ウインドウ選ぶ用.png");
 	filelist.push_back("pic/出撃ボタンON.png");
 	filelist.push_back("pic/出撃ボタンOFF.png");
 	
