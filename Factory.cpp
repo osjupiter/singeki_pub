@@ -211,6 +211,9 @@ std::shared_ptr<effect> Factory::create_effect(int fx, int fy, int type, Directi
 	case DROP:
 		ret_ins.reset(new drop(fx, fy));
 		break;
+	case BUBBLE:
+		ret_ins.reset(new bubble(fx, fy));
+		break;
 	case HANA:
 		ret_ins.reset(new hana(fx, fy));
 		break;

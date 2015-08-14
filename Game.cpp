@@ -117,6 +117,19 @@ void Game::castle_init(){
 	
 	auto pop_list = CsvReader::parseTableDX(spownfilename[world], ",");
 
+	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0, world));
+	castle_list.push_back(p);
+	for (int i = 1; i < 8; i++){
+		if (world == 3){
+
+			castle_list.push_back(make_shared<castle_enemy_indepth>(stage_W[i], 0, i, world,pop_list));
+		}
+		else{
+
+			castle_list.push_back(make_shared<castle_enemy>(stage_W[i], 0, i, world,pop_list));
+		}
+	}
+	/*
 	shared_ptr<castle> p(new castle_musume(stage_W[0], 0, 0,world));
 	castle_list.push_back(p);
 	
@@ -142,14 +155,13 @@ void Game::castle_init(){
 
 	p = shared_ptr<castle>(new castle_enemy(stage_W[7], 0, 7, world, pop_list));
 	castle_list.push_back(p);
+	*/
 
 	if (world == 6){
-		p = shared_ptr<castle>(new mekaNemu(stage_W[8], 0, 8, world, pop_list));
-		castle_list.push_back(p);
+		castle_list.push_back(make_shared<mekaNemu>(stage_W[8], 0, 8, world, pop_list));
 	}
 	else{
-		p = shared_ptr<castle>(new boss_castle(stage_W[8], 0, 8, world, pop_list, boss_type[world - 1]));
-		castle_list.push_back(p);
+		castle_list.push_back(make_shared<boss_castle>(stage_W[8], 0, 8, world, pop_list, boss_type[world - 1]));
 
 	}
 

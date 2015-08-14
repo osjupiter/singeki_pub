@@ -32,3 +32,13 @@ public:
 	void draw(int);
 
 };
+
+
+class bubble : public effect{
+	int col;
+public:
+	bubble(int, int);
+	void main();
+	void draw(int);
+
+};

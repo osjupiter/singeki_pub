@@ -152,6 +152,7 @@ public:
 	int g_cannonshot[4];
 	int g_e_yamidrop[3][8];
 	int g_e_wisp[3][7];
+	int g_e_bubble[ANI_BUBBLE];
 	int g_yukidama1[ANI_YUKIDAMA];
 	int g_yukidama2[ANI_YUKIDAMA];
 	int g_gomi[3][ANI_GOMI];

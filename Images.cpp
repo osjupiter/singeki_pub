@@ -238,6 +238,10 @@ void Images::load(){
 	LoadDivGraph("dat/img/闇の世界/ea1.png", 7, 7, 1, 155, 168, g_e_wisp[0]);
 	LoadDivGraph("dat/img/闇の世界/ea2.png", 7, 7, 1, 155, 168, g_e_wisp[1]);
 	LoadDivGraph("dat/img/闇の世界/ea3.png", 7, 7, 1, 155, 168, g_e_wisp[2]);
+
+	LoadDivGraph("dat/img/水の中/水の中気泡.png", ANI_BUBBLE, ANI_BUBBLE, 1, WID_BUBBLE, HEI_BUBBLE, g_e_bubble);
+
+
 	houdai_yama = LoadGraph("dat/img/山/山城砲台.png");
 	/*
 */
@@ -322,6 +326,7 @@ void Images::load(){
 
 	
 	filelist.push_back("pic/出撃前ユニット選択ウインドウ.png");
+	filelist.push_back("pic/出撃前ユニット選択ウインドウ選ぶ用.png");
 	filelist.push_back("pic/出撃ボタンON.png");
 	filelist.push_back("pic/出撃ボタンOFF.png");
 	

@@ -64,7 +64,7 @@ void WorldScene::buttonPushed(string id){
 		moveX(-50);
 	}else if(id.find("stage")!=string::npos){
 		id.erase(0,5);
-		addLayer(10,make_shared<MapGo>(stoi(id)));
+		addLayer(10, make_shared<MapGo>(stoi(id)));
 	}else if(id=="gotogame"){
 		Images::getIns()->loadStage(this->stage_id);
 		SoundController::getBgm()->loadStage(this->stage_id);
