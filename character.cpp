@@ -141,7 +141,7 @@ void character::drawWait(int dx_, int cx, int ty,int freq){
 	int dx = dx_ + width / 2 - 60 / 2;
 	int dy = ty;
 	DrawLine(dx - cx, dy + 3, dx + 60 - cx, dy + 3, GetColor(85, 26, 139), 4);
-	int i = wait_time+1;
+	int i = wait_time;
 	if (freq>0)
 		DrawLine(dx - cx, dy + 3, dx + 60  * max(i, 0) / (freq * 1.0) - cx, dy + 3, GetColor(205, 149, 12), 4);
 	}
@@ -167,8 +167,8 @@ bool character::isInSight(int front){
 }
 
 void character::decideDirection(int front){
-	if (((x + width <= front - dist) && dir == LEFT)
-		|| ((x +width > front-dist) && dir == RIGHT))
+	if (((x + width <= front ) && dir == LEFT)
+		|| ((x +width > front) && dir == RIGHT))
 		switchDirection();
 }
 
