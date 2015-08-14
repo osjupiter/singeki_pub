@@ -54,5 +54,7 @@ vector<vector<string>> CsvReader::parseTableDX(string name, const string &delim)
 		table.emplace_back(split(str, delim));
 		if (FileRead_eof(fp))break;
     }
+	FileRead_close(fp);
+
     return table;
 }
