@@ -4,6 +4,8 @@
 #define ANIM_SPEED_WISP 3
 #define ANIM_SPEED_DROP 3
 
+#define ANIM_SPEED_BUBBLE 3
+
 
 wisp::wisp(int fx, int fy) :effect(fx, fy){
 	type = WISP;
@@ -44,4 +46,25 @@ void drop::draw(int cx){
 	effect::draw(cx);
 }
 
+
+bubble::bubble(int fx, int fy) :effect(fx, fy){
+	type = BUBBLE;
+	width = WID_BUBBLE;
+	height = HEI_BUBBLE;
+	col = rand() % 3;
+
+}
+void bubble::main(){
+	effect::main();
+	
+
+	if (ani_count / ANIM_SPEED_DROP == ANI_BUBBLE)
+		del();
+}
+
+void bubble::draw(int cx){
+	DrawGraph(x - cx, y, Images::getIns()->g_e_bubble[ani_count / ANIM_SPEED_BUBBLE % ANI_BUBBLE], true);
+	
+	effect::draw(cx);
+}
 

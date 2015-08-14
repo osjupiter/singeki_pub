@@ -67,11 +67,21 @@ protected:
 public:
 	castle_enemy(int, int, int, int,vector<vector<string>>);
 	
-	void main(int);
+	virtual void main(int);
 	void draw(int);
 	
 //	virtual void damage(int, UnitType op_unit_type);
 };
+class castle_enemy_indepth : public castle_enemy{
+protected:
+
+	
+public:
+	castle_enemy_indepth(int, int, int, int, vector<vector<string>>);
+	void main(int);
+
+};
+
 
 
 

@@ -141,3 +141,20 @@ void castle_enemy::draw(int cx){
 
 	castle::draw(cx);
 }
+
+castle_enemy_indepth::castle_enemy_indepth(int fx, int fy, int st, int wl, vector<vector<string>> list) : castle_enemy( fx,  fy, st, wl, list){
+
+}
+void castle_enemy_indepth::main(int front){
+	castle_enemy::main(front);
+	switch (state){
+	case CastleState::ACTIVE:
+		if (rand() % 12 == 0){
+			int rand_x = rand() % (Game::stage_W[stage] - Game::stage_W[stage - 1]);
+			int rand_y = 0;//rand() % (WINDOW_Y)-WINDOW_Y/2;
+
+			Game::getIns()->effect_create(Game::stage_W[stage - 1] + 325 + rand_x, rand_y, BUBBLE);
+			break;
+		}
+	}
+}

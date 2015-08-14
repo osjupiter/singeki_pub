@@ -238,6 +238,10 @@ void Images::load(){
 	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea1.png", 7, 7, 1, 155, 168, g_e_wisp[0]);
 	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea2.png", 7, 7, 1, 155, 168, g_e_wisp[1]);
 	LoadDivGraph("dat/img/ˆÅ‚Ì¢ŠE/ea3.png", 7, 7, 1, 155, 168, g_e_wisp[2]);
+
+	LoadDivGraph("dat/img/…‚Ì’†/…‚Ì’†‹C–A.png", ANI_BUBBLE, ANI_BUBBLE, 1, WID_BUBBLE, HEI_BUBBLE, g_e_bubble);
+
+
 	houdai_yama = LoadGraph("dat/img/R/Ré–C‘ä.png");
 	/*
 */
