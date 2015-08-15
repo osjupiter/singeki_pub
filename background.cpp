@@ -34,6 +34,8 @@ background::background(int x_st, int st, int ly, int w_st,bool mv):object(x_st,0
 		height = WINDOW_Y;
 		pic_wid = 650;
 		move = Images::getIns()->back_ismove[stage][layer]!=0;//(scroll_type[stage][layer] == 1);
+		//TODO:’´—áŠOˆ—forŠC‚Ì’ê‚R
+		if (Images::getIns()->back_ismove[stage][layer] == 666){ pic_wid = 1300; move = false; }
 		dx=0;
 		if (move){
 			gap = 0;
