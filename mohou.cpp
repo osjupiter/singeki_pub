@@ -42,8 +42,8 @@ void mahou::main(){
 
 	}
 	if (arrive) {
-		if ((x-destx)%((width-20)/5)==0){
-			shared_ptr<AttackRange> p(new AttackRange(x, x + width - 20, power/5, RAND));
+		if ((x-destx)%((width-20)/3)==0){
+			shared_ptr<AttackRange> p(new AttackRange(x, x + width - 20, power/3, RAND));
 			Game::getIns()->push_attack_list(p, MUSUME);
 			
 			
