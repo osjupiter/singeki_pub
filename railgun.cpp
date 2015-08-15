@@ -5,7 +5,7 @@
 
 #define ANIM_SPEED 1
 #define ANIM_SPEED_C 1
-#define DIST_RAILGUN 120
+#define DIST_RAILGUN 90
 int railgun::num = 0;
 
 railgun::railgun(int fx, int ln, int lv) : enemy(fx, ln, lv, UnitType::_RAILGUN){

@@ -4,7 +4,7 @@
 #include "Game.h"
 
 #define ANIM_SPEED 4
-#define DIST_DENGUMO (0)
+#define DIST_DENGUMO (40)
 dengumo::dengumo(int fx, int ln, int lv) :enemy(fx, ln, lv, UnitType::_DENGUMO){
 	width = WID_DENGUMO;
 	height = HEI_DENGUMO;

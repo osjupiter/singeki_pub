@@ -19,6 +19,7 @@
 #define THUNDER_POINT(x) x- MEKANEMU_DIST
 #define RANGE_TUNDER 130
 mekaNemu::mekaNemu(int fx, int fy, int st,int wl, vector<vector<string>> list) :castle_enemy(fx, fy, st,wl,list){
+	hp = 350000;
 	x = fx - WID_MEKANEMU;
 	width = WID_MEKANEMU;
 	wait_time = MEKANEMU_FREQ;
@@ -91,7 +92,7 @@ void mekaNemu::draw(int cx){
 
 		DrawLine(dx - cx, dy + 3, dx + 60 - cx, dy + 3, GetColor(255, 0, 0), 5);
 	
-		for (int j = dx; i >10000; i -= 10000, j += 7){
+		for (int j = dx; i >20000; i -= 20000, j += 7){
 			DrawLine(j - cx, dy + 9, j - cx, dy + 15, GetColor(0, 255, 0), 3);
 
 		}
