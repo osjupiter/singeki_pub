@@ -1201,7 +1201,7 @@ void Images::load(){
 					  { 0, 1, 0, 0, 0 },
 					  { 0, 0, 0, 0, 0 },
 					  { 0, 0, 0, 777, 0 },
-					  { 0, 1, 1, 1, 1 },
+					  { 666, 1, 1, 1, 1 },
 				  };
 				  for (int i = 0; i < 8; i++){
 					  for (int j = 0; j < 5; j++){
@@ -1269,11 +1269,11 @@ void Images::load(){
 			back[6][3] = LoadGraph("dat/img/メカシティ/メカシティ７－２.png");
 			back[6][4] = LoadGraph("dat/img/メカシティ/メカシティ７－１.png");
 
-			back[7][0] = LoadGraph("dat/img/メカシティ/メカシティ8-5.png");
-			back[7][1] = LoadGraph("dat/img/メカシティ/メカシティ8-4.png");
-			back[7][2] = LoadGraph("dat/img/メカシティ/メカシティ8-3.png");
-			back[7][3] = LoadGraph("dat/img/メカシティ/メカシティ8-2.png");
-			back[7][4] = LoadGraph("dat/img/メカシティ/メカシティ8-1.png");
+			back[7][0] = LoadGraph("dat/img/メカシティ/メカシティ8-8.png");
+			back[7][1] = LoadGraph("dat/img/メカシティ/メカシティ8-6.png");
+			back[7][2] = LoadGraph("dat/img/メカシティ/メカシティ8-4.png");
+			back[7][3] = LoadGraph("dat/img/メカシティ/メカシティ8-3.png");
+			back[7][4] = LoadGraph("dat/img/メカシティ/メカシティ8-2.png");
 
 			g_castle[0][0] = LoadGraph("dat/img/sirodummy.png");
 			g_castle[0][1] = LoadGraph("dat/img/sirodummy.png");
