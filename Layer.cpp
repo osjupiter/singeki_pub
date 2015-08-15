@@ -4,6 +4,7 @@
 #include"Game.h"
 #include"Scene.h"
 #include <sstream>
+#include "define.h"
 
 boolean Layer::testBox(int x1,int y1,int x2,int y2){
 	return mouse_in::testBox(x1,y1,x2,y2);
@@ -752,7 +753,7 @@ void HOHEILayer::main(){
 	
 		if(timer>=need){timer=need;if(++flag>40)flag=0;}
 		if(!p->pauseNow&&testBox(x+5,y+5,x+75,y+75)){
-			if(m->LeftClick()&&(timer==need)){
+			if (m->LeftClick() && (timer == need) || DEBUG_MODE&&CheckHitKey(KEY_INPUT_SPACE) && (timer == need)){
 				game->birth(game->getNowStage()-1, HOHEI);
 				timer=0;
 				flag=0;
