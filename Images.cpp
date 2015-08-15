@@ -251,8 +251,6 @@ void Images::load(){
 	g_mekahaikyo=LoadGraph("dat/img/メカ廃墟.png");
 
 	
-	LoadDivGraph("dat/img/メカねむ娘.png", ANI_MEKANEMU, ANI_MEKANEMU, 1, WID_MEKANEMU, HEI_CASTLE, g_castle[8]);
-	LoadDivGraph("dat/img/ラスボス雷.png", 3, 3, 1, 324, 364, g_thunder_mekanemu);
 
 
 
@@ -1327,7 +1325,9 @@ void Images::load(){
 			LoadDivGraph("dat/img/敵ユニット/メカシティ/くろいしみw.png", ANI_KUROSHIMI_W, ANI_KUROSHIMI_W, 1, WID_KUROSHIMI, HEI_KUROSHIMI, g_kuroshimi_w);
 			LoadDivGraph("dat/img/敵ユニット/メカシティ/くろいしみa.png", ANI_KUROSHIMI_A, ANI_KUROSHIMI_A, 1, WID_KUROSHIMI, HEI_KUROSHIMI, g_kuroshimi_a);
 
+			LoadDivGraph("dat/img/メカねむ娘.png", ANI_MEKANEMU, ANI_MEKANEMU, 1, WID_MEKANEMU, HEI_CASTLE, g_castle[8]);
 
+			LoadDivGraph("dat/img/ラスボス雷.png", 3, 3, 1, 324, 364, g_thunder_mekanemu);
 			break;
 
 		default:
