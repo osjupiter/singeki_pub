@@ -230,7 +230,7 @@ void GameScene::beforemain(){
 	}
 	if(pauseState==3){
 		if (DEBUG_MODE&&Buf[KEY_INPUT_Z] == 1){
-			game->stageInc();
+			game->debugDamegeEnemyCastle();
 		}
 		else{
 			pause();

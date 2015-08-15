@@ -751,3 +751,11 @@ shared_ptr<Parameter> Game::getParam(int id){
 		return param_list[id];
 	}
 
+void Game::debugDamegeEnemyCastle(){
+	castle_list[nowstage]->damage(1000000000,UnitType::_HOHEI);
+	for (int j = 0; j < 3; j++){
+		for (auto i : enemy_list[j]){
+			i->damage(1000000000,Position::RAND,UnitType::_HOHEI);
+		}
+	}
+}

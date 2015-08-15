@@ -124,4 +124,6 @@ public:
 	ParamType* Game::getRainForce(int);
 	shared_ptr<Parameter> getParam(int id);
 
+	void debugDamegeEnemyCastle();
+
 };
