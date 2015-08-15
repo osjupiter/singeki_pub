@@ -1231,7 +1231,7 @@ void Images::load(){
 			back[0][4] = LoadGraph("dat/img/メカシティ/メカシティ１－１.png");
 
 			back[1][0] = 0;
-			back[1][1] = LoadGraph("dat/img/メカシティ/メカシティ２－４.png");
+			back[1][1] = LoadGraph("dat/img/メカシティ/メカシティ2－４.png");
 			back[1][2] = LoadGraph("dat/img/メカシティ/メカシティ２－３.png");
 			back[1][3] = LoadGraph("dat/img/メカシティ/メカシティ２－２.png");
 			back[1][4] = LoadGraph("dat/img/メカシティ/メカシティ２－１.png");
