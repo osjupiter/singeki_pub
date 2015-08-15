@@ -685,7 +685,7 @@ void ChipFactoryLayer:: main(){
 			ss << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
 			if(timer>=5&&m->isntOver()){
 				hov[i]->setPos(hogex,y);
-				hov[i]->setString(Images::getIns()->getParamName(game->getRainForce(id)[i]), Images::getIns()->getParamSummary(game->getRainForce(id)[i]), "", ss.str());
+				hov[i]->setString(Images::getIns()->getParamName(game->getRainForce(id)[i]), Images::getIns()->getParamSummary(game->getRainForce(id)[i]), ss.str(),"" );
 				parentScene->addLayer(18,hov[i]);
 				
 			}
