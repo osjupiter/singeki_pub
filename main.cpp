@@ -35,7 +35,7 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	SetMouseDispFlag( FALSE );
 	SetOutApplicationLogValidFlag( false ) ; 
 	//SetMainWindowText("くっきー") ;
-	SetMainWindowText("侵略どうでしょう") ;
+	SetMainWindowText("侵略どうですか2レコンキスタ") ;
 	SetWindowIconID(MAINICON);
 	// ＤＸライブラリ初期化処理
 	if( DxLib_Init() == -1 ) return -1;

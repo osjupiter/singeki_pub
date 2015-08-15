@@ -96,6 +96,8 @@ void mekaNemu::draw(int cx){
 			DrawLine(j - cx, dy + 9, j - cx, dy + 15, GetColor(0, 255, 0), 3);
 
 		}
+		DrawLine(dx - cx, dy + 3, dx + 60 * max(i, 0) / (20000 * 1.0) - cx, dy + 3, GetColor(0, 255, 0), 5);
+
 		break;
 	case CastleState::STAY:
 	/*	DrawGraph(x - cx, y, Images::getIns()->g_castle[stage][ani_count / ANIM_SPEED%ANI_MEKANEMU], true);
