@@ -131,7 +131,7 @@ void SelectLayer::main(){
 				ss << "生産コスト:"<< game->getParam(tmpID)->getParam(ParamType::COST);
 				costman=ss.str();
 			}
-			if (m->isntOver()){ parentScene->addLayer(18, std::make_shared<HoverLayer>(tmpx, tmpy, Images::getIns()->getUnitName(UnitType(tmpID)), Images::getIns()->getUnitSummary(UnitType(tmpID)), costman)); }
+			if (m->isntOver()){ parentScene->addLayer(18, std::make_shared<HoverLayer>(tmpx, tmpy, Images::getIns()->getUnitName(UnitType(tmpID)), Images::getIns()->getUnitSummary(UnitType(tmpID)), Images::getIns()->getUnitTarget(UnitType(i)), costman)); }
 			if(m->LeftClick(false)){
 				p->getGame()->setProduct(id,tmpID);
 				parentScene->rmLayer(thisLayerID);
@@ -655,7 +655,7 @@ ChipFactoryLayer::ChipFactoryLayer(std::shared_ptr<Game> g,int _x,int _y,int _id
 
 	for(int i=0;i<3;i++){
 		//hov[i]=std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss.str());
-		hov[i]=std::make_shared<HoverLayer>(0,0,"","","");
+		hov[i]=std::make_shared<HoverLayer>(0,0,"","","","");
 		
 	}
 
@@ -685,7 +685,7 @@ void ChipFactoryLayer:: main(){
 			ss << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
 			if(timer>=5&&m->isntOver()){
 				hov[i]->setPos(hogex,y);
-				hov[i]->setString(Images::getIns()->getParamName(game->getRainForce(id)[i]), Images::getIns()->getParamSummary(game->getRainForce(id)[i]), ss.str());
+				hov[i]->setString(Images::getIns()->getParamName(game->getRainForce(id)[i]), Images::getIns()->getParamSummary(game->getRainForce(id)[i]), "", ss.str());
 				parentScene->addLayer(18,hov[i]);
 				
 			}
@@ -695,7 +695,7 @@ void ChipFactoryLayer:: main(){
 					stringstream ss2;
 					SoundController::getSE()->playSE("sound/se_maoudamashii_system39.mp3");
 					ss2 << "開発コスト:"<< game->getParam(id)->getCostForLevelUp(game->getRainForce(id)[i]);
-					hov[i]->setString(Images::getIns()->getParamName(game->getRainForce(id)[i]), Images::getIns()->getParamSummary(game->getRainForce(id)[i]), ss2.str());
+					hov[i]->setString(Images::getIns()->getParamName(game->getRainForce(id)[i]), Images::getIns()->getParamSummary(game->getRainForce(id)[i]), ss2.str(),"");
 					//parentScene->addLayer(18,std::make_shared<HoverLayer>(hogex,y,game->getParamName(game->getRainForce(id)[i]),game->getParamSummary(game->getRainForce(id)[i]),ss2.str()));
 				}
 			}
@@ -767,13 +767,11 @@ void HOHEILayer::main(){
 }
 
 
-HoverLayer::HoverLayer(int _x,int _y,string _m1,string _m2,string _m3){
+HoverLayer::HoverLayer(int _x,int _y,string _m1,string _m2,string _m3,string _m4){
 	x=_x;
 	y=_y;
 	w=100,h=60;
-	mes1=_m1;
-	mes2=_m2;
-	mes3=_m3;
+	setString(_m1,_m2,_m3,_m4);
 	//if(y<WINDOW_Y/2)flag=1;
 	//else flag=0;
 	flag=0;
@@ -794,6 +792,7 @@ void HoverLayer::draw(){
 
 	DrawFormatStringToHandle(hogex+10,hogey+30,GetColor(255,255,0),Images::getIns()->font,"%s",mes3.c_str());
 
+	DrawFormatStringToHandle(hogex +90, hogey , GetColor(255, 255, 0), Images::getIns()->font, "%s", mes4.c_str());
 
 
 }
@@ -808,10 +807,11 @@ void HoverLayer::main(){
 
 
 
-void HoverLayer::setString(string m1,string m2,string m3){
+void HoverLayer::setString(string m1,string m2,string m3,string m4){
 		mes1=m1;
 	mes2=m2;
 	mes3=m3;
+	mes4 = m4;
 }
 
 
@@ -932,7 +932,7 @@ void MapUnitSelector::main(){
 			int tmpy = 155 + j / 5 * 50;
 			if(testBox(tmpx-25,tmpy-25,tmpx+25,tmpy+25)){
 				auto m = mouse_in::getIns();
-				if (m->isntOver()){ parentScene->addLayer(18, std::make_shared<HoverLayer>(tmpx, tmpy, Images::getIns()->getUnitName(UnitType(i)), Images::getIns()->getUnitSummary(UnitType(i)), "")); }
+				if (m->isntOver()){ parentScene->addLayer(18, std::make_shared<HoverLayer>(tmpx, tmpy, Images::getIns()->getUnitName(UnitType(i)), Images::getIns()->getUnitSummary(UnitType(i)), Images::getIns()->getUnitTarget(UnitType(i)), "")); }
 				if (m->LeftClick(false)){
 					if (!flag[i] && counter >= 5)break;
 					flag[i] = !flag[i];
@@ -1045,7 +1045,7 @@ void MapGo::main(){
 			int tmpy = 155 + j / 5 * 50;
 			if (testBox(tmpx - 25, tmpy - 25, tmpx + 25, tmpy + 25)){
 				auto m = mouse_in::getIns();
-				if (m->isntOver()){ parentScene->addLayer(18, std::make_shared<HoverLayer>(tmpx, tmpy, Images::getIns()->getUnitName(UnitType(list.at(i))), Images::getIns()->getUnitSummary(UnitType(list.at(i))), "")); }
+				if (m->isntOver()){ parentScene->addLayer(18, std::make_shared<HoverLayer>(tmpx, tmpy, Images::getIns()->getUnitName(UnitType(list.at(i))), Images::getIns()->getUnitSummary(UnitType(list.at(i))), Images::getIns()->getUnitTarget(UnitType(list.at(i))), "")); }
 			}
 		}
 

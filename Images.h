@@ -23,6 +23,7 @@ class Images
 	vector<string> pramName;
 	vector<string> unitName;
 	vector<string> unitSummary;
+	vector<string> unitTarget;
 
 	vector<int> unitByStage[6];
 
@@ -187,6 +188,7 @@ public:
 	string getParamName(ParamType p);
 	string getUnitName(UnitType p);
 	string getUnitSummary(UnitType p);
+	string getUnitTarget(UnitType p);
 	vector<int> getUnitIdByStage(int sid);
 
 };

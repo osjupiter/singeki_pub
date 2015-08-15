@@ -387,6 +387,8 @@ void Images::load(){
 	pramName = res.at(1);
 	unitName = res.at(2);
 	unitSummary = res.at(3);
+	unitTarget = res.at(4);
+
 	auto data = CsvReader::parseTableDX("dat/ステージ情報.csv", ",");
 	stageName = data.at(0);
 	stageSummary = data.at(1);
@@ -1382,6 +1384,10 @@ void Images::load(){
 	string Images::getUnitSummary(UnitType p){
 		int i = static_cast<int>(p);
 		return unitSummary.at(i);
+	}
+	string Images::getUnitTarget(UnitType p){
+		int i = static_cast<int>(p);
+		return unitTarget.at(i);
 	}
 
 	vector<int> Images::getUnitIdByStage(int sid){

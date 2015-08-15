@@ -243,15 +243,15 @@ public:
 class HoverLayer:public Layer{
 private:
 	int x,y,w,h;
-	string mes1,mes2,id,mes3;
+	string mes1,mes2,id,mes3,mes4;
 	int flag;
 	
 public:
-	HoverLayer(int,int,string,string,string);
+	HoverLayer(int,int,string,string,string,string);
 	void draw();
 	void main();
 	void called();
-	void setString(string,string,string);
+	void setString(string,string,string,string);
 	void setPos(int,int);
 
 
