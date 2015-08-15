@@ -3,7 +3,7 @@
 #include "Game.h"
 #define ANIM_SPEED 3
 
-#define BIRTH_NUM END_MUSUME
+#define BIRTH_NUM _NOUKA
 #define RAND_UNIT_NUM 7
 UnitType rand_unit[RAND_UNIT_NUM] = { _HOHEI, _BIG, _BAZOOKA, _SEGWAY, _YOUJO, _TATEKO, _HIME };
 
