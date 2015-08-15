@@ -1184,9 +1184,7 @@ void Images::load(){
 
 			LoadDivGraph("dat/img/敵ユニット/水の中/偶像の光.png", ANI_GLIGHT, 4, 1, WID_GLIGHT, HEI_GLIGHT, g_glight);
 
-			LoadDivGraph("dat/img/敵ユニット/水の中/偶像の洗脳術.png", ANI_GBEAM, ANI_GBEAM, 1, WID_GBEAM, HEI_GBEAM, g_gbeam);
-			LoadDivGraph("dat/img/敵ユニット/水の中/洗脳状態.png", ANI_SENNOU, ANI_SENNOU, 1, WID_SENNOU, HEI_SENNOU, g_sennou);
-
+		
 			break;
 		case 6:
 		{

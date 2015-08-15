@@ -85,7 +85,7 @@ void character::draw(int cx){
 	}
 	int dy = (type == RAND || type == ALL) ? y + 3 : y + height - 10;
 
-	drawWait(x,cx,dy-5);
+	//drawWait(x,cx,dy-5);
 }
 
 
